@@ -7,6 +7,10 @@ Thumbs.db
 /doc.html
 /bitrix/modules/rbs.payment/log.txt
 
+/desktop_app/
+/desktop_app/*
+
+/upload/
 /upload/*
 /bitrix/*
 
