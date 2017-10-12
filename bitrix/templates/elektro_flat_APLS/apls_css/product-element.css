@@ -1,0 +1,170 @@
+/*Карточка товара*/
+.catalog-detail .catalog-detail-preview-text,
+.article_rating .rating,
+.price_buy_detail .payment_methods {
+    display: none;
+}
+
+.not-filled-product {
+    width: 100%;
+    float:left;
+    margin: 15px 0px 15px 0px;
+    padding: 20px 20px;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    font-size: 12px;
+    color: #ef7f1a;
+    position: relative;
+    border: 1px dashed #ef7f1a;
+}
+.not-filled-product .CatalogItemWarningTitle {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #ef7f1a;
+}
+.not-filled-product .CatalogItemWarningIcon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.not-filled-product .CatalogItemWarningText {
+}
+
+.CatalogItemPromo {
+    width: 100%;
+    float:left;
+    margin: 15px 0px 0px 0px;
+    padding: 20px 20px;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    font-size: 12px;
+    color: #a0a4bc;
+    position: relative;
+    border: 1px dashed #dee0ee;
+}
+.CatalogItemPromoIcon {
+    font-size: 16px;
+    position: absolute;
+    top: -9px;
+    left: 25px;
+}
+
+.CatalogItemPromo .CatalogItemPromoData .CatalogItemPromoTitle {
+    font-size: 13px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ef7f1a;
+    color: #a0a4bc;
+}
+.CatalogItemPromo .CatalogItemPromoData .CatalogItemPromoText {
+    font-size: 11px;
+    padding-bottom: 10px;
+}
+.CatalogItemPromo a.show_promo {
+    display: block;
+    color: #a0a4bc;
+}
+.CatalogItemPromo a.show_promo:hover {
+    color: #FFFFFF;
+}
+.catalog-detail-property-info-text {
+    float: left;
+    font-size: 9px;
+    margin-top: 10px;
+}
+.catalog-detail-property-info-text .catalog-detail-property-info-text-element {
+    padding: 3px 0px;
+}
+.tabs__box-content .catalog-detail {
+    max-width: 600px;
+}
+
+/* Дополнительыне реквизиты услуг в карте товара */
+.catalog-detail .ProductAvailableServicesWrapper {}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesTitle {
+    font-size: 12px;
+    color: #a0a4bc;
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock {
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    margin: 10px 10px 0 0;
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock a {
+    display: block;
+    height: auto;
+    width: auto;
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock .ProductAvailableServicesIconText {
+    display: none;
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock:hover .ProductAvailableServicesIconText {
+    display: block;
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock .ProductAvailableServicesIconText {
+    position: absolute;
+    bottom: 28px;
+    left: 5px;
+    padding: 10px;
+    background: rgba(87, 91, 113, 0.8);
+    color: #ffffff;
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock .ProductAvailableServicesIconText:after {
+    content: "";
+    border-top: 11px solid rgba(87, 91, 113, 0.8);
+    border-right: 11px solid transparent;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    bottom: -11px;
+    left: 5px;
+    margin: 0px;
+    padding: 0px;
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock .ProductAvailableServicesIcon {
+    height: 20px;
+}
+.ServiceCentersCatalogDetail {}
+.ServiceCentersCatalogDetail .ServiceCentersUnitTitle {
+    font-weight: 800;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.ServiceCentersCatalogDetail .ServiceCentersUnitAdres {}
+.ServiceCentersCatalogDetail .ServiceCentersUnitLogo {
+    padding: 10px;
+}
+.ServiceCentersCatalogDetail .ServiceCentersUnitLogo img {
+    height: 50px;
+}
+.apls-product-details-table {
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.apls-product-details-table tr {
+    border-bottom: 2px solid #FFFFFF;
+}
+.apls-product-details-table tr td {
+    font-size: 13px;
+    padding: 10px;
+    border-right: 2px solid #FFFFFF;
+}
+.apls-product-details-table tr td:first-child {
+    width: 200px;
+    font-weight: 700;
+    text-align: right;
+}
+.apls-product-details-table tr:nth-child(even) {
+    background-color: #fafafd;
+}
+.catalog-detail .LAWYER_GOODS_NOTICE {
+    font-size: 9px;
+}

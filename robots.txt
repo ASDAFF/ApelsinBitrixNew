@@ -1,0 +1,15 @@
+User-Agent: *
+Disallow: /admin/
+Disallow: /ajax/
+Disallow: /personal/
+Disallow: /filter/
+Disallow: /catalog/compare/
+Disallow: *ADD_TO_COMPARE
+Disallow: *bx_bogus_href
+Disallow: *?q=
+Disallow: *?captcha
+Disallow: *?manufacturers
+Disallow: *index.php
+Disallow: *?action
+Disallow: *?login
+Disallow: *?clear_cache

@@ -1,0 +1,5 @@
+<?
+$MESS["APLS_COMPONENT_NAME"] = "Контакты менеджеров";
+$MESS["APLS_COMPONENT_DESCR"] = "Выводим контакты";
+$MESS["APLS_MANAGER_CONTACTS"] = "APLS_MANAGER_CONTACTS";
+?>

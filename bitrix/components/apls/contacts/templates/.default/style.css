@@ -1,0 +1,167 @@
+.Clear {
+    clear: both;
+}
+
+.APLS_contacts {
+ height: 500px;
+}
+.APLS_contacts_regions {
+    padding: 0 0 10px 0;
+
+}
+.APLS_contacts_regions>.APLS_contacts_regions_block {
+    display: inline-block;
+    color: #8184a1;
+    text-decoration: none;
+    border: 1px solid #dee0ee;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+.APLS_contacts_regions>.APLS_contacts_regions_block:hover {
+    background: #8184A1;
+    color: #FFFFFF;
+    border: 1px solid #8184A1;
+}
+.APLS_contacts_regions>.APLS_contacts_regions_block.ActiveBlockRegions {
+    background: #ef7f1a;
+    color: #FFFFFF;
+    border: 1px solid #ef7f1a;
+}
+
+.APLS_contacts_shops {
+    position: relative;
+    border: 1px solid #dee0ee;
+    height: 500px;
+}
+.APLS_contacts_shops>.APLS_map  {
+    padding-right: 0px;
+    margin-right: 220px;
+    height: 100%;
+}
+
+.APLS_contacts_shops>.APLS_contacts_shops_list {
+    float: right;
+    background: #FFFFFF;
+    overflow: auto;
+    height: 100%;
+    width: 220px;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block {
+    border-left: 1px solid #dee0ee;
+    border-bottom: 1px solid #dee0ee;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block.ActiveBlock {
+    border-left: 1px solid #ef7f1a;
+    border-right: 1px solid #ef7f1a;
+    border-bottom: 1px solid #ef7f1a;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block:last-child {
+    /*border-bottom: none;*/
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_shops_address {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 0px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_shops_address:hover,
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_shops_address.ActiveBlock {
+    background: #ef7f1a;
+    color: #FFFFFF;
+}
+
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_buildings {
+    display: none;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_buildings>.APLS_map_in_contact {
+    height: 400px;
+    display: none;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_buildings>.ContactData {
+    margin: 10px 20px 10px 20px;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_buildings>.ContactData>.AdressBlock {
+    margin-bottom: 10px;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_buildings>.ContactData .DateTimeTable tr>td:first-child {
+    font-weight: 800;
+    text-align: right;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_buildings>.ContactData .DateTimeTable .weekdays {
+
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_buildings>.ContactData .DateTimeTable .weekend {
+    color: #ef7f1a;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_buildings .APLS_contacts_buildings_time_Y {
+    background-color: #d9ee8f;
+    color: #637133;
+    padding: 10px 0px;
+    margin: 10px;
+    text-align: center;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_buildings .APLS_contacts_buildings_time_N {
+    background-color: #fdd4e0;
+    color: #99475f;
+    padding: 10px 0px;
+    margin: 10px;
+    text-align: center;
+}
+.APLS_contacts_shops_list>.APLS_contacts_shops_block>.APLS_contacts_buildings .fa {
+    width: 13px;
+    height: 13px;
+    margin-right: 3px;
+}
+
+.bx-yandex-view-layout,
+.bx-yandex-view-map {
+    height: 100%;
+}
+a.GoToMapButton,
+a.GoToMapButton:link,
+a.GoToMapButton:visited {
+    display: none;
+    text-align: center;
+    padding: 5px 10px;
+    background: #ef7f1a;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 787px) {
+    .APLS_contacts {
+        height: auto;
+    }
+    .APLS_contacts_regions>.APLS_contacts_regions_block {
+        margin: 0 0 1px 0;
+        text-align: center;
+        padding: 10px 0px;
+        font-size: 14px;
+        font-weight: 700;
+        display: block;
+        background: #ef7f1a;
+        color: #FFFFFF;
+        border: none;
+    }
+    .APLS_contacts_shops>.APLS_contacts_shops_list {
+        float: none;
+        width: auto;
+        height: auto;
+    }
+    .APLS_contacts_shops_list>.APLS_contacts_shops_block {
+        border-left: none;
+    }
+    .APLS_contacts_shops {
+        height: auto;
+    }
+    .APLS_contacts_shops>.APLS_map {
+        margin: 0px;
+        height: 400px;
+    }
+    a.GoToMapButton,
+    a.GoToMapButton:link,
+    a.GoToMapButton:visited {
+        display: block;
+    }
+}

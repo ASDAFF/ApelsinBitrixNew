@@ -1,0 +1,24 @@
+/* Особенности товаров */
+.FeaturesProductsWrapper {
+    margin-bottom: 15px;
+}
+
+.FeaturesProductsIconBlock {
+    /*background: #00a2df;*/
+    height: 40px;
+    width: 40px;
+    float: left;
+}
+
+.FeaturesProductsWrapper .FeaturesProductsTextBlock {
+    /*background: #00aa00;*/
+    margin-left: 40px;
+    padding: 3px 10px;
+}
+
+.FeaturesProductsWrapper .FeaturesProductsTextBlock .FeaturesProductsName {
+    font-weight: bold;
+}
+
+.FeaturesProductsWrapper .FeaturesProductsTextBlock .FeaturesProductsText {
+}

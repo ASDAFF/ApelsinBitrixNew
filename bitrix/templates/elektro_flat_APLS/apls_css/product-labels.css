@@ -1,0 +1,66 @@
+/* товары из спсика в каталоге - стикеры на товаре */
+.catalog-item-price-percent,
+.catalog-detail-item-price-percent{
+    color: #ef7f1a !important;
+}
+.catalog-item-price-view .catalog-item-image .sticker {
+    display: none;
+}
+talog-item .catalog-item-image .time_buy_sticker,
+.catalog-item-card .item-image .time_buy_sticker {
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    -khtml-border-radius: 0;
+    border-radius: 0;
+}
+
+.catalog-item .catalog-item-image .time_buy_figure,
+.catalog-item-card .item-image .time_buy_figure {
+    border-top: 93px solid #ef7f1a;
+    border-right: 93px solid transparent;
+}
+
+.catalog-item .catalog-item-image .sticker .discount,
+.catalog-item .catalog-item-image .sticker .hit,
+.catalog-item .catalog-item-image .sticker .new,
+.catalog-item .catalog-item-image .sticker .stock,
+.catalog-item-card .item-image .sticker .discount,
+.catalog-item-card .item-image .sticker .hit,
+.catalog-item-card .item-image .sticker .new,
+.catalog-item-card .item-image .sticker .stock,
+.catalog-detail-pictures .detail_picture .sticker .discount,
+.catalog-detail-pictures .detail_picture .sticker .hit,
+.catalog-detail-pictures .detail_picture .sticker .new,
+.catalog-detail-pictures .detail_picture .sticker .stock,
+.left-slider .item-image .sticker .discount,
+.left-slider .item-image .sticker .hit,
+.left-slider .item-image .sticker .new,
+.left-slider .item-image .sticker .stock {
+    background: #ef7f1a;
+}
+
+.catalog-item .catalog-item-image .sticker .discount:after,
+.catalog-item .catalog-item-image .sticker .hit:after,
+.catalog-item .catalog-item-image .sticker .new:after,
+.catalog-item .catalog-item-image .sticker .stock:after,
+.left-slider .item-image .sticker .discount:after,
+.left-slider .item-image .sticker .hit:after,
+.left-slider .item-image .sticker .new:after,
+.left-slider .item-image .sticker .stock:after {
+    border-color: #ef7f1a transparent #ef7f1a #ef7f1a;
+}
+
+.catalog-item-card .item-image .sticker .discount:before,
+.catalog-item-card .item-image .sticker .hit:before,
+.catalog-item-card .item-image .sticker .new:before,
+.catalog-item-card .item-image .sticker .stock:before,
+.catalog-detail-pictures .detail_picture .sticker .discount:before,
+.catalog-detail-pictures .detail_picture .sticker .hit:before,
+.catalog-detail-pictures .detail_picture .sticker .new:before,
+.catalog-detail-pictures .detail_picture .sticker .stock:before,
+.left-slider .item-image .sticker .discount:before,
+.left-slider .item-image .sticker .hit:before,
+.left-slider .item-image .sticker .new:before,
+.left-slider .item-image .sticker .stock:before {
+    border-color: #ef7f1a #ef7f1a #ef7f1a transparent;
+}

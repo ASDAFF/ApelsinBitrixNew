@@ -1,0 +1,262 @@
+#apiship_pvz{
+	background-color : white;
+	padding          : 10px;
+	overflow         : hidden;
+	font-family      : Arial;
+	/*width            : 900px;*/
+	width            : 100%;
+	height           : 586px;
+}
+#apiship_mask{
+	width            : 100%;
+	height           : 100%;
+	opacity          : 0.8;
+	position         : fixed;
+	z-index          : 2000;
+	background-color : black;
+	display          : none;
+	top              : 0px;
+	padding          : 5px
+}
+#apiship_head{
+	height:35px;
+	clear: both;
+	padding-top: 7px;
+	position: relative;
+	top: -480px;
+}
+#apiship_logo{
+	background  : url('/bitrix/images/ipol.apiship/widjet/logo.png') no-repeat transparent;
+	width       : 169px;
+	height      : 8px;
+}
+#apiship_logo:hover{
+	background-position: 0px -9px;
+}
+#apiship_logo a{
+	text-decoration : none;
+	width           : 100%;
+	height          : 100%;
+	display         : block;
+}
+#apiship_closer{
+	position   : absolute;
+	background : url('/bitrix/images/ipol.apiship/widjet/close.png') no-repeat transparent;
+	height     : 22px;
+	width      : 22px;
+	right      : 15px;
+	top        : 18px;
+	z-index    : 1000;
+	cursor     : pointer;
+}
+#apiship_closer:hover{
+	background-position: 0px -22px;
+}
+#apiship_map{
+	float: left;
+	height: 500px;
+	/*width: 900px;*/
+	width: 100%;
+}
+#apiship_info{
+	float:left;
+	position:relative;
+	height: auto;
+	overflow: hidden;
+	width: 245px;
+	color: black;
+	top: -490px;
+	left: 10px;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #5D5D5D;
+}
+#apiship_sign{
+	height: 38px;
+	line-height: 38px;
+	font-size: 14px;
+	padding-left: 98px;
+	background: url('/bitrix/images/ipol.apiship/widjet/logo2.png') no-repeat;
+	background-position: 10px;
+	border-bottom: 1px solid #e3e3e3;
+	background-size: contain;
+}
+.apiship_delivInfo{
+	/*height: 72px;*/
+	font-weight: bold;
+	font-size: 12px;
+	border-bottom: 1px dashed #e3e3e3;
+	border-top: 1px dashed #e3e3e3;
+	line-height: 35px;
+	padding: 0px 9px;
+	background-color: #fafafa;
+}
+.apiship_provider_img{
+	display: inline-block;
+	padding-right: 5px;
+	height: 10px;
+	margin-top: -2px;
+}
+.apiship_provider_baloon_img{
+	display: block;
+	position: absolute;
+	height: 14px;
+	top: 5px;
+	left: 5px;
+}
+#apiship_wrapper{
+	height: 400px;
+	overflow: auto;
+	width: 245px;
+	border: none;
+	outline: none;
+	background-color: #fafafa;
+}
+#apiship_wrapper p{
+	cursor : pointer;
+	padding: 5px 6px;
+	margin:  5px 6px;
+	font-size: 12px;
+}
+.apiship_chosen{
+	background-color : #ebebeb;
+}
+#apiship_ten{
+	position: relative;
+	top: -5px;
+	background-color: white;
+	height: 10px;
+	box-shadow: 0 0 5px 5px white;
+	width: 235px;
+
+	opacity: 0.7;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+    -moz-opacity: 0.7;
+    -khtml-opacity: 0.7;
+}
+/*балун*/
+#apiship_baloon{
+	background-color:white;
+	/* width: 258px; */
+	font-family: Arial;
+	font-size: 12px;
+}
+#apiship_baloon > div{
+	margin: 10px 0px;
+}
+.apiship_baloonDiv a{
+	color: #666666;
+	text-decoration: none;
+	border-bottom:1px dashed #666666;
+}
+.apiship_baloonDiv{
+	max-width: 235px;
+	padding-left:8px;
+	float:left;
+}
+.apiship_icon{
+	float:left;
+	width:12px;
+	min-height: 12px;
+	margin-top:4px;
+}
+.apiship_iAdress{
+	font-size: 14px;
+}
+.apiship_iTelephone{background: url('/bitrix/images/ipol.apiship/widjet/phone.png') no-repeat;}
+.apiship_iTime{background: url('/bitrix/images/ipol.apiship/widjet/clock.png') no-repeat;}
+#apiship_button{
+	width:130px;
+	height:25px;
+	background: url('/bitrix/images/ipol.apiship/widjet/chooze.png') no-repeat;
+	display: block;
+	margin: auto;
+	text-decoration:none;
+}
+#apiship_button:hover{
+	background-position: 0px -25px;
+}
+#apiship_title{
+	padding-bottom: 12px;
+	border-bottom: 1px solid #e5e5e5;
+	/*width: 898px;*/
+	width: 100%;
+}
+#apiship_title > div,#apiship_cityPicker > div{
+	font-size: 12px;
+	font-family: Arial;
+	/*float:left;*/
+}
+#apiship_cityPicker > div{
+	float: left;
+}
+#apiship_cityPicker > div:first-child{
+	padding-top:9px;
+	margin-bottom: 10px;
+}
+#apiship_cityPicker{
+	width: 300px;
+	float: left;
+}
+#apiship_citySel{
+	display:none;
+}
+#apiship_cityName{
+	text-decoration:none;
+	border-bottom:1px dotted #007ACF;
+}
+#apiship_cityLabel{
+	padding: 9px 12px 0px 12px;
+}
+#apiship_cityLabel a{
+	margin-bottom: 9px;
+	color: #3366CC;
+	display:block;
+}
+#apiship_cityLabel a:hover{
+	color: #24478F;
+	text-decoration: none !important;
+}
+#apiship_cityLabel:hover {
+	/*background: #FFFFFF;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.506);
+	position: absolute;
+	z-index: 100;*/
+}
+#apiship_cityLabel:hover > #apiship_citySel{
+	/*display: block;*/
+}
+#apiship_cityLabel:hover > #apiship_cityName{
+	text-decoration:underline;
+	border-bottom:none;
+}
+.apiship_mark{
+	height: 32px;
+	width: 125px;
+	/*padding-left: 473px;*/
+	line-height: 20px;
+	cursor: default;
+	text-align: right;
+	float: right;
+}
+.apiship_mark table{
+	border-collapse: collapse;
+	width: 80%;
+}
+#apiship_logoPlace{
+	width: 300px;
+	height: 38px;
+	background-image: url("/bitrix/images/ipol.apiship/apishipogo.png");
+	background-repeat:no-repeat;
+	background-position: 241px 2px;
+}
+#apiship_separator{
+	background-color: #e3e3e3;
+	width: 1px;
+	height: 38px;
+}
+
+#apiship_citySel .search-suggest{
+	margin-top: 0px;
+	padding: 0px;
+}

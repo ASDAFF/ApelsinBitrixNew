@@ -1,0 +1,24 @@
+.promotions__item {
+    position: relative;
+}
+.promotions__item-image-wrap .time_buy_cont,
+.promotions-detail__picture-wrap .time_buy_cont {
+    background: #ef7f1a;
+}
+.promotions-detail__picture-wrap .time_buy_timer .countdown-period {
+    color: #FFFFFF;
+}
+.promotions__item-date-wrap {
+    height: 20px;
+}
+.promotions__item-date-wrap .promotions__item-date {
+    font-size: 11px;
+}
+.promotions__item-name-wrap-wrap {
+    height: 49px;
+}
+.promotions__item-name-wrap-wrap .promotions__item-name {
+    font-size: 13px;
+    text-align: center;
+}
+

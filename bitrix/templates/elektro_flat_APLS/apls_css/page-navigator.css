@@ -1,0 +1,43 @@
+.NavigatorBigIcon .NavigatorBigIconElementHref {
+    float: left;
+    display: block;
+    border: 1px solid #dee0ee;
+    width: 223px;
+    height: 200px;
+    text-align: center;
+    color: #8184a1;
+    text-decoration: none;
+    margin: 0px 0px 5px 0px;
+    padding: 5px;
+}
+.NavigatorBigIcon .NavigatorBigIconElementHref:nth-child(4n + 2) {
+    margin: 0px 5px 5px 5px;
+}
+.NavigatorBigIcon .NavigatorBigIconElementHref:nth-child(4n + 3) {
+    margin: 0px 5px 5px 0px;
+}
+
+.NavigatorBigIcon .NavigatorBigIconElementHref:hover {
+    padding: 4px;
+    border: 2px solid #ef7f1a;
+    color: #ef7f1a;
+    cursor: pointer;
+}
+.NavigatorBigIcon .NavigatorBigIconElementHref .NavigatorBigIconElement img {
+    display: block;
+    margin: 20px auto;
+    width: 182px;
+    height: 122px;
+}
+.NavigatorBigIcon .NavigatorBigIconElementHref .NavigatorBigIconElement img.hover,
+.NavigatorBigIcon .NavigatorBigIconElementHref .NavigatorBigIconElement:hover img.main{
+    display: none;
+}
+.NavigatorBigIcon .NavigatorBigIconElementHref .NavigatorBigIconElement:hover img.hover {
+    display: block;
+}
+.NavigatorBigIcon .NavigatorBigIconElement .title {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}

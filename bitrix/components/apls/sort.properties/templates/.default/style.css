@@ -1,0 +1,176 @@
+.Clear {
+    clear: both;
+}
+
+.statusBar {
+    display: none;
+    position: fixed;
+    right: 45px;
+    bottom: 10px;
+    height: 30px;
+    width: 450px;
+    background-color: #fff;
+    border: 1px solid #bfccb3;
+    color: #444;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    z-index: 100;
+}
+
+.noSaveBar {
+    background-color: #fdd4e0;
+}
+
+.noSave {
+    color: #99475f;
+}
+
+.savedBar {
+    background-color: #d9ee8f;
+}
+
+.saved {
+    color: #748928;
+}
+
+.statusBarText {
+    display: inline-block;
+    font-size: 15px;
+    padding: 4px 5px;
+}
+
+.statusBarButton {
+    display: inline-block;
+    margin: 3px;
+    position: absolute;
+    right: 4px;
+    margin-right: -1px;
+    height: 22px;
+    width: 150px;
+    background: #FFFFFF;
+    border: 1px solid #dee0ee;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.statusBarButton:hover {
+    background: #8184a1;
+    border: 1px solid #8184a1;
+    color: #dee0ee;
+}
+
+.statusBarButton>button{
+}
+
+.APLSSortPropertiesBlock {
+    vertical-align: top;
+}
+.APLSSortPropertiesWrapper {
+    color: #444;
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+}
+.APLSSortPropertiesWrapper .text {
+    color: #444;
+}
+
+.APLSSortPropertiesBlock {
+    height: 400px;
+    overflow-y:auto;
+}
+
+
+.APLSSortPropertiesList:first-child,
+.APLSSortPropertiesList:last-child {
+    width: 33%;
+
+}
+
+.APLSSortPropertiesName>th {
+    text-align: center;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.APLSSortPropertiesList {
+    padding: 10px;
+    border: 1px solid #fff;
+    margin: 0;
+    vertical-align: top;
+    background: #e0eef3;
+}
+
+
+.APLSSortPropertiesList>div,
+.APLSSortPropertiesList .APLSSortableElement {
+    background-color: #fff;
+    cursor: pointer;
+    min-height: 30px;
+}
+
+.APLSSortableElement:hover {
+    background-color: #eee;
+}
+
+.APLSSortPropertiesList .APLSSortableElement {
+    position: relative;
+    padding-left: 40px;
+    min-height: 30px;
+    margin-bottom: 5px;
+}
+
+.APLSSortPropertiesList .APLSSortableElement .sort-handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: inline-block;
+    cursor: move;
+    padding: 8px;
+}
+.APLSSortPropertiesList .APLSSortableElement .sort-handle .icon-bar {
+    width: 14px;
+    height: 2px;
+    background-color: #aaa;
+    margin: 2px 0px;
+}
+
+.APLSSortPropertiesList .ui-selecting {
+    background-color: #eee;
+}
+.APLSSortPropertiesList .ui-selected {
+    background-color: #eee;
+    cursor: move;
+}
+
+.APLSSortPropertiesList .APLSSortableElement>.text {
+    display: table;
+    height: 30px;
+}
+.APLSSortPropertiesList .APLSSortableElement>.text>span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.result  {
+    display: block;
+}
+
+.scrollUp {
+    position:fixed;
+    top:auto;
+    bottom:8px;
+    left:auto;
+    right:10px;
+}
+
+.scrollUp>img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}

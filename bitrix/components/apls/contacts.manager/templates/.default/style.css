@@ -1,0 +1,58 @@
+.APLSStaffBlock {
+    display: block;
+    float: left;
+    width: 211px;
+    border: 1px solid #dee0ee;
+    padding: 10px 10px;
+    margin: 3px;
+}
+
+.APLSStaffBlock:hover {
+    border: 1px solid #ef7f1a;
+}
+
+.APLSStaffBlockFIO {
+    text-align: right;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ef7f1a;
+}
+
+.APLSStaffBlockPosition {
+    text-align: right;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: lowercase;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #dee0ee;
+}
+
+.APLSStaffBlockContants {
+    height: 60px;
+}
+
+.APLSStaffBlockContants>.APLSStaffBlockContantsBlock {
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+.APLSStaffBlockInfo {
+    height: 50px;
+    width: 211px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 1;
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+@media screen and (max-width: 787px) {
+    .APLSStaffBlock {
+
+    }
+}

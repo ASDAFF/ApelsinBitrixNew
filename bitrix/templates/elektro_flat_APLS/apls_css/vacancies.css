@@ -1,0 +1,74 @@
+/* Вакансии */
+.VacanciesValidBlock {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    font: 14px/16px "PT Sans", helvetica, "segoe UI", arial, sans-serif;
+    padding-bottom: 20px;
+    width: 470px;
+    margin: 10px 5px 10px 5px;
+
+}
+
+.VacanciesValidBlockArchive {
+    display: none;
+}
+
+.VacanciesValidBlockColumn_01,
+.VacanciesValidBlockColumn_02 {
+    width: 478px;
+}
+
+.VacanciesValidBlockColumn_01 {
+    float: left;
+}
+
+.VacanciesValidBlockColumn_02 {
+    float: right;
+}
+
+.VacanciesValidBlockTitle {
+    clear: both;
+    background: #ef7f1a;
+}
+
+.VacanciesValidBlockTitleText {
+    color: #fff;
+    font: 20px/32px "PT Sans", helvetica, "segoe UI", arial, sans-serif;
+    font-weight: bold;
+    padding: 0 6px;
+    height: 32px;
+    text-align: center;
+    text-shadow: none;
+}
+
+.VacanciesValidString {
+    border-bottom: 1px #999 dotted;
+    font: 14px/16px "PT Sans", helvetica, "segoe UI", arial, sans-serif;
+}
+
+.VacanciesValidString:hover {
+    background: #fdd19a;
+    cursor: pointer;
+    color: #ef7f1a;
+}
+
+.validVacancyAdress,
+.validVacancyContactUser,
+.validVacancyContactInfo {
+    float: left;
+    padding: 10px 2px;
+    text-align: center;
+}
+
+.validVacancyAdress {
+    width: 190px;
+    width: 320px;
+    font: 14px/32px "PT Sans", helvetica, "segoe UI", arial, sans-serif;
+}
+
+.validVacancyContactUser {
+    width: 130px;
+}
+
+.validVacancyContactInfo {
+    width: 130px;
+}

@@ -1,0 +1,34 @@
+/*кредит*/
+.LogoBanks {
+    border: 1px solid #edeef8;
+    margin: 3px;
+    /*width: 167px;*/
+    padding: 8px;
+    float: left;
+    cursor: pointer;
+}
+
+.LogoBanksSmall {
+    height: 75px;
+    float: left;
+    margin-right: 15px;
+}
+
+.logoText {
+    margin-top: 25px;
+}
+
+.contentBank {
+    display: none;
+}
+
+.tableBanksDataLeft td {
+    text-align: left !important;
+}
+
+.LogoBanks:hover {
+    border: 2px solid #ef7f1a;;
+    margin: 3px;
+    padding: 7px;
+    cursor: pointer;
+}
