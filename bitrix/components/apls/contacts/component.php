@@ -23,6 +23,7 @@ $daysArray = array(
     "SUN" => array("DayName" => "ВС", "Weekend" => true),
 );
 $arResult["TYPE"] = $arParams['CONTACTS_TYPE'];
+$arResult["CSS"] = $arParams['CSS'];
 
 try {
     $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLID(APLS_GetGlobalParam::getParams("ContactsRegions"));

@@ -321,6 +321,12 @@ input[type="text"] {
     /*overflow-y: auto;*/
     font-size: 10px;
 }
+
+.point_of_delivery.APLS_contacts_shops,
+.studio_furniture.APLS_contacts_shops {
+    height: 300px;
+}
+
 /* ИКОНКИ */
 .fa.delivery-small-icon,
 .fa.bonus-small-icon,

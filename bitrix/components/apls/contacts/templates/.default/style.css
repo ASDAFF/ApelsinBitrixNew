@@ -3,7 +3,8 @@
 }
 
 .APLS_contacts {
- height: 500px;
+ /*height: 500px;*/
+    margin-bottom: 20px;
 }
 .APLS_contacts_regions {
     padding: 0 0 10px 0;

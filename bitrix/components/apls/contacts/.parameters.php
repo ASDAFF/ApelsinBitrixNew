@@ -98,6 +98,10 @@ $arComponentParameters = array(
             "MULTIPLE" => "N",
             "VALUES" => $contactType,
         ),
+        'CONTACTS_TYPE' => array (
+            'CSS' => "CSS",
+            'TYPE' => 'STRING',
+        ),
     ),
 )
 ?>
