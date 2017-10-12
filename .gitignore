@@ -1,0 +1,41 @@
+.DS_Store
+Thumbs.db
+*.sql
+/.idea/
+/.git/
+/sitemap*.xml
+/doc.html
+/bitrix/modules/rbs.payment/log.txt
+
+/upload/*
+/bitrix/*
+
+business_encode_*
+
+# Отображаем все компоненты крмое bitrix
+/bitrix/*
+!bitrix/components
+bitrix/components/bitrix/
+
+# Отображаем интерфейс init.php
+!bitrix/php_interface/
+bitrix/php_interface/*
+!bitrix/php_interface/init.php
+
+# Отображаем все шаблоны
+!bitrix/templates
+
+# Отображаем файл .settings.php
+# !bitrix/.settings.php
+
+# отображаем apls страницы из админки
+!bitrix/admin/
+bitrix/admin/*
+!bitrix/admin/apls/*
+
+# отображаем модуль оплаты
+!bitrix/modules/
+bitrix/modules/*
+!bitrix/modules/rbs.payment/
+
+/test/*
