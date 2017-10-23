@@ -74,3 +74,13 @@
     color: #ef7f1a;
     text-align: center;
 }
+
+.filter .bx_ui_slider_track .bx-ui-slider-pricebar-vn {
+    background: #f7cfaa;
+}
+.filter .bx_ui_slider_track .bx-ui-slider-pricebar-v {
+    background: #ef7f1a;
+}
+.filter .bx_ui_slider_range .bx_ui_slider_handle {
+    background: #ef7f1a;
+}
