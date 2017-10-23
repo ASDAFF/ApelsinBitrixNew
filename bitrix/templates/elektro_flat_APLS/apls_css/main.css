@@ -46,7 +46,8 @@ button[disabled] {
 .left-column .subscribe,
 .left-column .news-block,
 .left-column .reviews-block,
-.b-share_theme_counter {
+.b-share_theme_counter,
+.catalog-item-card .item-desc {
     display: none!important;
 }
 .pop-up .popup-window-close-icon,
