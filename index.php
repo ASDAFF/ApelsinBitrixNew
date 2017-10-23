@@ -1,5 +1,5 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Интернет-магазин электроинструмента");
+$APPLICATION->SetTitle("Интернет-магазин АПЕЛЬСИН");
 global $arSetting;
 if(in_array("CONTENT", $arSetting["HOME_PAGE"]["VALUE"])):?>
     <h1 id="pagetitle">О МАГАЗИНЕ</h1>
