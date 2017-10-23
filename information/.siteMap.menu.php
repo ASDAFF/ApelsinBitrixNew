@@ -35,7 +35,7 @@
         ""
     ),
     Array(
-        "Наши услуги",
+        "Услуги",
         "/information/service/",
         Array(),
         Array(),

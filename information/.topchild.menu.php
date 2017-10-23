@@ -1,6 +1,6 @@
 <?$aMenuLinks = Array(
     Array(
-        "Наши услуги",
+        "Услуги",
         "service/",
         Array(),
         Array(),
