@@ -160,7 +160,7 @@ if($arSetting["VENDORS_VIEW"]["VALUE"] == "SECTIONS"):
 		</div>
 
 		<?//LIMIT//
-		$arAvailableLimit = array("12", "48", "900");
+		$arAvailableLimit = array("12", "24", "48");
 
 		$limit = $APPLICATION->get_cookie("limit") ? $APPLICATION->get_cookie("limit") : "12";
 
@@ -168,12 +168,12 @@ if($arSetting["VENDORS_VIEW"]["VALUE"] == "SECTIONS"):
 			$limit = "12";	
 			$APPLICATION->set_cookie("limit", $limit, false, "/", SITE_SERVER_NAME); 
 		}
-		if($_REQUEST["limit"] == "48") {
-			$limit = "48";
+		if($_REQUEST["limit"] == "24") {
+			$limit = "24";
 			$APPLICATION->set_cookie("limit", $limit, false, "/", SITE_SERVER_NAME); 
 		}
-		if($_REQUEST["limit"] == "900") {
-			$limit = "900";
+		if($_REQUEST["limit"] == "48") {
+			$limit = "48";
 			$APPLICATION->set_cookie("limit", $limit, false, "/", SITE_SERVER_NAME); 
 		}?>
 

@@ -120,7 +120,7 @@ if(is_array($arElementsNew) && !empty($arElementsNew)) {
 	if($arParams["HIDE_BUTTON_ALL"] == "N"):
 		$arAvailableLimit = array("12", "48", "900");
 	else:
-		$arAvailableLimit = array("12", "48");
+		$arAvailableLimit = array("12", "24", "48");
 	endif;
 	
 	if($arParams["HIDE_BUTTON_ALL"] == "Y" && $APPLICATION->get_cookie("limit") == "900")
@@ -132,6 +132,10 @@ if(is_array($arElementsNew) && !empty($arElementsNew)) {
 		$limit = "12";
 		$APPLICATION->set_cookie("limit", $limit, false, "/", SITE_SERVER_NAME); 
 	}
+    if($_REQUEST["limit"]) {
+        $limit = "24";
+        $APPLICATION->set_cookie("limit", $limit, false, "/", SITE_SERVER_NAME);
+    }
 	if($_REQUEST["limit"] == "48") {
 		$limit = "48";
 		$APPLICATION->set_cookie("limit", $limit, false, "/", SITE_SERVER_NAME); 
