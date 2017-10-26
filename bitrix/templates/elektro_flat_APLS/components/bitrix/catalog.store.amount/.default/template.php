@@ -6,13 +6,26 @@ if(strlen($arResult["ERROR_MESSAGE"])>0)
 	ShowError($arResult["ERROR_MESSAGE"]);
 
 if(count($arResult["STORES"]) > 0):
+    $counter = 1;
 	foreach($arResult["STORES"] as $pid => $arProperty):?>
-		<div class="catalog-detail-store">			
-			<span class="name">
-				<?=$arProperty["TITLE"].(isset($arProperty["PHONE"]) ? GetMessage("S_PHONE").$arProperty["PHONE"] : "").(isset($arProperty["SCHEDULE"]) ? GetMessage("S_SCHEDULE").$arProperty["SCHEDULE"] : "");?>
-				<?=($arParams["SHOW_GENERAL_STORE_INFORMATION"] == "Y") ? GetMessage("S_BALANCE") : "";?>				
-			</span>
-			<span class="val"><?=$arProperty["AMOUNT"]?></span>
-		</div>
+        <?if($arProperty["AMOUNT"] > 0):?>
+            <?
+            if($counter++%2 !== 0) {
+                $class = "first";
+            } else {
+                $class = "second";
+            }
+            ?>
+            <div class="catalog-detail-store <?=$class?>">
+                <div class="title"><?=$arProperty["TITLE"]?></div>
+                <?if(isset($arProperty["PHONE"])):?>
+                <div class="phone">тел: <?=$arProperty["PHONE"]?></div>
+                <?endif;?>
+                <?if(isset($arProperty["SCHEDULE"])):?>
+                <div class="schedule"><?=$arProperty["SCHEDULE"]?></div>
+                <?endif;?>
+                <div class="amount"><?=$arProperty["AMOUNT"]?></div>
+            </div>
+        <?endif;?>
 	<?endforeach;
 endif;?>
