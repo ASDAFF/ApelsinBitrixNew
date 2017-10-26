@@ -35,8 +35,7 @@ bitrix/php_interface/*
 # отображаем apls страницы из админки
 !bitrix/admin/
 bitrix/admin/*
-!bitrix/admin/apls/
-!bitrix/admin/apls/*
+!bitrix/admin/apls*
 
 # отображаем модуль оплаты
 !bitrix/modules/
