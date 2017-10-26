@@ -5427,7 +5427,7 @@ a.catalog_item_toogle_filter_reset{
 .catalog-detail .advantages{
 	float:left;
 	margin:10px 0px 0px 0px;
-	padding:0px 20px;
+	padding:0px 0px;
 	-moz-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	box-sizing:border-box;
