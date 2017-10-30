@@ -7,6 +7,7 @@ class APLS_CatalogConfigurator
 
     protected static $instance = null;
     protected static $propertiesArray = array();
+    protected static $HLPropParamsEntityDataClass = null;
     const HIGHLOAD_PROPERTIES_PARAMS = "FilterPropertiesParams";
     const XML_ID_FIELD = "UF_XML_ID";
     const DETAIL_PROPERTY_FIELD = "UF_DETAIL_PROPERTY";
@@ -23,6 +24,7 @@ class APLS_CatalogConfigurator
      */
     protected function __construct()
     {
+        static::$HLPropParamsEntityDataClass = APLS_GetHighloadEntityDataClass::getByHLName(static::HIGHLOAD_PROPERTIES_PARAMS);
         static::updateСatalogActiveProperties();
     }
 
@@ -76,8 +78,7 @@ class APLS_CatalogConfigurator
             $propertiesParamsXMLID = array(); // внешние коды свойств из HL-блока
             $propertiesParamsXMLIDnoActiv = array(); // внешние коды неактивных свойств из HL-блока
             // поулчаем данные из HL-блока
-            $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLName(static::HIGHLOAD_PROPERTIES_PARAMS);
-            $rsData = $entity_data_class::getList(array(
+            $rsData = static::$HLPropParamsEntityDataClass::getList(array(
                 "select" => array('ID', static::XML_ID_FIELD, static::ACTIVITY_FIELD),
                 "filter" => array()
             ));
@@ -102,15 +103,15 @@ class APLS_CatalogConfigurator
 
             // деактивация свойств в HL-блоке
             foreach ($toDeactivate as $item) {
-                $entity_data_class::update($propertiesParamsXMLIDtoID[$item], array(static::ACTIVITY_FIELD => 0));
+                static::$HLPropParamsEntityDataClass::update($propertiesParamsXMLIDtoID[$item], array(static::ACTIVITY_FIELD => 0));
             }
             // активация свойств в HL-блоке
             foreach ($toActivate as $item) {
-                $entity_data_class::update($propertiesParamsXMLIDtoID[$item], array(static::ACTIVITY_FIELD => 1));
+                static::$HLPropParamsEntityDataClass::update($propertiesParamsXMLIDtoID[$item], array(static::ACTIVITY_FIELD => 1));
             }
             // добавление свойств в HL-блоке
             foreach ($newProperties as $item) {
-                $entity_data_class::add(array(
+                static::$HLPropParamsEntityDataClass::add(array(
                     static::XML_ID_FIELD => $item,
                     static::ACTIVITY_FIELD => 1,
                     static::APPROVED_FIELD => 0,
@@ -154,9 +155,8 @@ class APLS_CatalogConfigurator
         }
         try {
             $filter[static::ACTIVITY_FIELD] = 1;
-            $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLName(static::HIGHLOAD_PROPERTIES_PARAMS);
             // поулчаем даныне из HL-Блоке
-            $rsData = $entity_data_class::getList(array(
+            $rsData = static::$HLPropParamsEntityDataClass::getList(array(
                 "select" => array(
                     'ID',
                     static::XML_ID_FIELD,
@@ -175,6 +175,7 @@ class APLS_CatalogConfigurator
                 // проверяет сли свойство из HL-блока срели свойств каталога, на случай если даныне устаревшие
                 if (isset(static::$propertiesArray[$xmlId])) {
                     $params[$xmlId]["ID"] = static::$propertiesArray[$xmlId]["ID"];
+                    $params[$xmlId]["HLID"] = $arData['ID'];
                     $params[$xmlId]["NAME"] = static::$propertiesArray[$xmlId]["NAME"];
                     $params[$xmlId]["XML_ID"] = $xmlId;
                     $params[$xmlId]["DETAIL_PROPERTY"] = $arData[static::DETAIL_PROPERTY_FIELD];
@@ -182,7 +183,7 @@ class APLS_CatalogConfigurator
                     $params[$xmlId]["SMART_FILTER"] = $arData[static::SMART_FILTER_FIELD];
                     $params[$xmlId]["APPROVED"] = $arData[static::APPROVED_FIELD];
                     // подготавливаем вспомогательный массив для сортировки
-                    if($sortByName) {
+                    if ($sortByName) {
                         $forSort[$xmlId] = strtolower(static::$propertiesArray[$xmlId]["NAME"]);
                     } else {
                         $forSort[$xmlId] = static::$propertiesArray[$xmlId]["SORT"];
@@ -199,6 +200,56 @@ class APLS_CatalogConfigurator
         } catch (Exception $e) {
             return array();
         }
+    }
+
+    /**
+     * @param string $id - id записи в hl-Блоке
+     * @param array $data - массив изменяемых полей поле=>значение
+     */
+    public static function setHLPropParamsFieldValue($id, $data)
+    {
+        static::getInstance();
+        static::$HLPropParamsEntityDataClass::update($id, $data);
+    }
+
+    /**
+     * устанавлвиаем значения поля ACTIVITY для hl-Блока настройки свойств
+     * @param string $id - id записи в hl-Блоке
+     * @param $value - 1|0
+     */
+    public static function setHLPropParamsApprovedValue($id, $value)
+    {
+        static::setHLPropParamsFieldValue($id, array(static::ACTIVITY_FIELD => $value));
+    }
+
+    /**
+     * устанавлвиаем значения поля DETAIL_PROPERTY для hl-Блока настройки свойств
+     * @param string $id - id записи в hl-Блоке
+     * @param $value - 1|0
+     */
+    public static function setHLPropParamsDetailPropertyValue($id, $value)
+    {
+        static::setHLPropParamsFieldValue($id, array(static::DETAIL_PROPERTY_FIELD => $value));
+    }
+
+    /**
+     * устанавлвиаем значения поля COMPARE_PROPERTY для hl-Блока настройки свойств
+     * @param string $id - id записи в hl-Блоке
+     * @param $value - 1|0
+     */
+    public static function setHLPropParamsComparePropertyValue($id, $value)
+    {
+        static::setHLPropParamsFieldValue($id, array(static::COMPARE_PROPERTY_FIELD => $value));
+    }
+
+    /**
+     * устанавлвиаем значения поля SMART_FILTER для hl-Блока настройки свойств
+     * @param string $id - id записи в hl-Блоке
+     * @param $value - 1|0
+     */
+    public static function setHLPropParamsSmartFilterValue($id, $value)
+    {
+        static::setHLPropParamsFieldValue($id, array(static::SMART_FILTER_FIELD => $value));
     }
 
     /**
@@ -225,8 +276,7 @@ class APLS_CatalogConfigurator
     {
         static::getInstance();
         try {
-            $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLName(static::HIGHLOAD_PROPERTIES_PARAMS);
-            $rsData = $entity_data_class::getList(array(
+            $rsData = static::$HLPropParamsEntityDataClass::getList(array(
                 "select" => array(static::XML_ID_FIELD, $field),
                 "filter" => array($field => true)
             ));
