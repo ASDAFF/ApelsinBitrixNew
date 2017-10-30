@@ -180,6 +180,7 @@ class APLS_CatalogConfigurator
                     $params[$xmlId]["DETAIL_PROPERTY"] = $arData[static::DETAIL_PROPERTY_FIELD];
                     $params[$xmlId]["COMPARE_PROPERTY"] = $arData[static::COMPARE_PROPERTY_FIELD];
                     $params[$xmlId]["SMART_FILTER"] = $arData[static::SMART_FILTER_FIELD];
+                    $params[$xmlId]["APPROVED"] = $arData[static::APPROVED_FIELD];
                     // подготавливаем вспомогательный массив для сортировки
                     if($sortByName) {
                         $forSort[$xmlId] = strtolower(static::$propertiesArray[$xmlId]["NAME"]);
