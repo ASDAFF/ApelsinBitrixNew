@@ -138,12 +138,13 @@ class APLS_CatalogConfigurator
      *          <SMART_FILTER> => 1 | 0,
      *      ),]
      * )
+     * @param array $filter - массив ключ значение для отбора по полям.
      * @param bool $update - требует ли обновления данных в highload, по умолчанию true.
      *                  Рекомендуется всегда использовать с дефолтным вариантом
      *                  кроме случаев когда данные заведомо точно обвновлены.
      * @return array - массив значений или пустой массив в случае ошибки
      */
-    public static function getHighloadPropertiesParams($update = true)
+    public static function getHighloadPropertiesParams($filter = array(), $update = true)
     {
         static::getInstance();
         // обновляем данные в HL-блоке если нужно
@@ -151,6 +152,7 @@ class APLS_CatalogConfigurator
             static::updateHighloadPropertiesParams();
         }
         try {
+            $filter[static::ACTIVITY_FIELD] = 1;
             $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLName(static::HIGHLOAD_PROPERTIES_PARAMS);
             // поулчаем даныне из HL-Блоке
             $rsData = $entity_data_class::getList(array(
@@ -162,7 +164,7 @@ class APLS_CatalogConfigurator
                     static::COMPARE_PROPERTY_FIELD,
                     static::SMART_FILTER_FIELD
                 ),
-                "filter" => array(static::ACTIVITY_FIELD => 1)
+                "filter" => $filter
             ));
             $params = array();
             // собираем результирующий массив
