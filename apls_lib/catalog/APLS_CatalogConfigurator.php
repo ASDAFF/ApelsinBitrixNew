@@ -138,13 +138,14 @@ class APLS_CatalogConfigurator
      *          <SMART_FILTER> => 1 | 0,
      *      ),]
      * )
+     * @param bool $sortByName - если true, то сортируем по имени, елси fakse то по sort
      * @param array $filter - массив ключ значение для отбора по полям.
      * @param bool $update - требует ли обновления данных в highload, по умолчанию true.
      *                  Рекомендуется всегда использовать с дефолтным вариантом
      *                  кроме случаев когда данные заведомо точно обвновлены.
      * @return array - массив значений или пустой массив в случае ошибки
      */
-    public static function getHighloadPropertiesParams($filter = array(), $update = true)
+    public static function getHighloadPropertiesParams($sortByName = true, $filter = array(), $update = true)
     {
         static::getInstance();
         // обновляем данные в HL-блоке если нужно
@@ -166,7 +167,8 @@ class APLS_CatalogConfigurator
                 ),
                 "filter" => $filter
             ));
-            $params = array();
+            $params = $forSort = $paramsSorted = array();
+            $forSort = array();
             // собираем результирующий массив
             while ($arData = $rsData->Fetch()) {
                 $xmlId = $arData[static::XML_ID_FIELD];
@@ -178,9 +180,21 @@ class APLS_CatalogConfigurator
                     $params[$xmlId]["DETAIL_PROPERTY"] = $arData[static::DETAIL_PROPERTY_FIELD];
                     $params[$xmlId]["COMPARE_PROPERTY"] = $arData[static::COMPARE_PROPERTY_FIELD];
                     $params[$xmlId]["SMART_FILTER"] = $arData[static::SMART_FILTER_FIELD];
+                    // подготавливаем вспомогательный массив для сортировки
+                    if($sortByName) {
+                        $forSort[$xmlId] = strtolower(static::$propertiesArray[$xmlId]["NAME"]);
+                    } else {
+                        $forSort[$xmlId] = static::$propertiesArray[$xmlId]["SORT"];
+                    }
                 }
             }
-            return $params;
+            // сортируем вспомогательные массивы
+            asort($forSort);
+            // создаем отсортированный результирующий массив
+            foreach (array_keys($forSort) as $xmlId) {
+                $paramsSorted[$xmlId] = $params[$xmlId];
+            }
+            return $paramsSorted;
         } catch (Exception $e) {
             return array();
         }
