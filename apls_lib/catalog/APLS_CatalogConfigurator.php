@@ -7,8 +7,12 @@ class APLS_CatalogConfigurator
 
     protected static $instance = null;
     protected static $propertiesArray = array();
+    protected static $propertiesIDtoXMLID = array();
     protected static $HLPropParamsEntityDataClass = null;
+    protected static $HLPropParamsSortEntityDataClass = null;
+    protected static $HLPropParamsSortArray = null;
     const HIGHLOAD_PROPERTIES_PARAMS = "FilterPropertiesParams";
+    const HIGHLOAD_PROPERTIES_SORT = "PropertyGoods";
     const XML_ID_FIELD = "UF_XML_ID";
     const DETAIL_PROPERTY_FIELD = "UF_DETAIL_PROPERTY";
     const COMPARE_PROPERTY_FIELD = "UF_COMPARE_PROPERTY";
@@ -18,6 +22,7 @@ class APLS_CatalogConfigurator
     const DEFAULT_DETAIL_PROPERTY_VALUE = 1;
     const DEFAULT_COMPARE_PROPERTY_VALUE = 1;
     const DEFAULT_SMART_FILTER_VALUE = 0;
+    const DEFAULT_SORT_INDEX = 3000;
 
     /**
      * APLS_CatalogConfigurator constructor.
@@ -310,7 +315,66 @@ class APLS_CatalogConfigurator
         );
         while ($prop_fields = $properties->GetNext()) {
             static::$propertiesArray[$prop_fields["XML_ID"]] = $prop_fields;
+            static::$propertiesIDtoXMLID[$prop_fields["ID"]] = $prop_fields["XML_ID"];
         }
+    }
+
+    /**
+     * обновляет индекс сортировки у всех свойств
+     */
+    public static function updateAllСatalogPropertySortIndex()
+    {
+        // получаем XML_ID свойсвта по его индексу
+        $catalogId = APLS_GetGlobalParam::getParams("HIGHLOAD_CATALOG_ID");
+        $properties = CIBlockProperty::GetList(
+            array("ID"),
+            array("IBLOCK_ID" => $catalogId)
+        );
+        while ($prop_fields = $properties->GetNext()) {
+            static::updateСatalogPropertySortIndex($prop_fields["ID"]);
+        }
+    }
+
+    /**
+     * обновляет индекс сортировки у свойства по его ID
+     * @param $propertyId - id свойства для обновления индекса сортировки
+     * @return bool - true | false
+     */
+    public static function updateСatalogPropertySortIndex($propertyId)
+    {
+        static::getInstance();
+        $xml_id = null;
+        $sortIndex = static::DEFAULT_SORT_INDEX;
+        // получаем XML_ID свойсвта по его индексу
+        $catalogId = APLS_GetGlobalParam::getParams("HIGHLOAD_CATALOG_ID");
+        $properties = CIBlockProperty::GetList(
+            array("XML_ID"),
+            array("ID" => $propertyId, "IBLOCK_ID" => $catalogId)
+        );
+        while ($prop_fields = $properties->GetNext()) {
+            $xml_id = $prop_fields["XML_ID"];
+        }
+        // првоеряем удалось ли получить XML_ID свойсвта
+        if ($xml_id !== null) {
+            // проверяем создан ли список отсортированных свойств и если нет, то создаем
+            if (static::$HLPropParamsSortArray === null) {
+                static::$HLPropParamsSortEntityDataClass = APLS_GetHighloadEntityDataClass::getByHLName(static::HIGHLOAD_PROPERTIES_SORT);
+                $rsData = static::$HLPropParamsSortEntityDataClass::getList(array(
+                    "select" => array('UF_XML_ID', 'UF_SORT'),
+                    "filter" => array()
+                ));
+                while ($arData = $rsData->Fetch()) {
+                    static::$HLPropParamsSortArray[$arData["UF_XML_ID"]] = $arData["UF_SORT"];
+                }
+            }
+            // если текущее свойство есть среди отсортированных то присваиваем известный индекс сортировки
+            if (isset(static::$HLPropParamsSortArray[$xml_id])) {
+                $sortIndex = static::$HLPropParamsSortArray[$xml_id];
+            }
+            $ibp = new CIBlockProperty;
+            return $ibp->Update($propertyId, array("SORT" => $sortIndex,));
+        }
+        return false;
     }
 
     /**
