@@ -132,21 +132,24 @@ class APLS_CatalogConfigurator
      * array(
      *      [<внешний код> => array(
      *          <ID> => id свойства,
+     *          <HLID> => id в HL-блоке,
      *          <NAME> => Имя свойства,
      *          <XML_ID> => Внешний код свойства,
      *          <DETAIL_PROPERTY> => 1 | 0,
      *          <COMPARE_PROPERTY> => 1 | 0,
      *          <SMART_FILTER> => 1 | 0,
+     *          <APPROVED> => 1 | 0,
      *      ),]
      * )
-     * @param bool $sortByName - если true, то сортируем по имени, елси fakse то по sort
-     * @param array $filter - массив ключ значение для отбора по полям.
      * @param bool $update - требует ли обновления данных в highload, по умолчанию true.
      *                  Рекомендуется всегда использовать с дефолтным вариантом
      *                  кроме случаев когда данные заведомо точно обвновлены.
+     * @param bool $sortByName - если true, то сортируем по имени, елси fakse то по sort
+     * @param array $filter - массив ключ значение для отбора по полям.
+     * @param string $searchString - строка поиска по имени, id в HL-блоке, id своства и внешнему коду
      * @return array - массив значений или пустой массив в случае ошибки
      */
-    public static function getHighloadPropertiesParams($sortByName = true, $filter = array(), $update = true)
+    public static function getHighloadPropertiesParams($update = true, $sortByName = true, $filter = array(), $searchString = "")
     {
         static::getInstance();
         // обновляем данные в HL-блоке если нужно
@@ -154,6 +157,10 @@ class APLS_CatalogConfigurator
             static::updateHighloadPropertiesParams();
         }
         try {
+            $searchString = preg_replace("/\s{2,}/", " ", trim($searchString));
+            if ($searchString !== "") {
+                $searchArray = explode(" ", strtolower($searchString));
+            }
             $filter[static::ACTIVITY_FIELD] = 1;
             // поулчаем даныне из HL-Блоке
             $rsData = static::$HLPropParamsEntityDataClass::getList(array(
@@ -172,21 +179,38 @@ class APLS_CatalogConfigurator
             // собираем результирующий массив
             while ($arData = $rsData->Fetch()) {
                 $xmlId = $arData[static::XML_ID_FIELD];
-                // проверяет сли свойство из HL-блока срели свойств каталога, на случай если даныне устаревшие
+                $id = static::$propertiesArray[$xmlId]["ID"];
+                $name = static::$propertiesArray[$xmlId]["NAME"];
+                // проверяет есть-ли свойство из HL-блока среди свойств каталога, на случай если даныне устаревшие
                 if (isset(static::$propertiesArray[$xmlId])) {
-                    $params[$xmlId]["ID"] = static::$propertiesArray[$xmlId]["ID"];
-                    $params[$xmlId]["HLID"] = $arData['ID'];
-                    $params[$xmlId]["NAME"] = static::$propertiesArray[$xmlId]["NAME"];
-                    $params[$xmlId]["XML_ID"] = $xmlId;
-                    $params[$xmlId]["DETAIL_PROPERTY"] = $arData[static::DETAIL_PROPERTY_FIELD];
-                    $params[$xmlId]["COMPARE_PROPERTY"] = $arData[static::COMPARE_PROPERTY_FIELD];
-                    $params[$xmlId]["SMART_FILTER"] = $arData[static::SMART_FILTER_FIELD];
-                    $params[$xmlId]["APPROVED"] = $arData[static::APPROVED_FIELD];
-                    // подготавливаем вспомогательный массив для сортировки
-                    if ($sortByName) {
-                        $forSort[$xmlId] = strtolower(static::$propertiesArray[$xmlId]["NAME"]);
+                    $searchTrigger = false;
+                    // првоверяем есть ли у нас массив поиска по строке
+                    if (isset($searchArray) && !empty($searchArray)) {
+                        // ищем хотябы одно совпадение
+                        foreach ($searchArray as $search) {
+                            if (substr_count(strtolower($name . " " . $xmlId . " " . $id . " " . $arData['ID']), $search) > 0) {
+                                $searchTrigger = true;
+                            }
+                        }
                     } else {
-                        $forSort[$xmlId] = static::$propertiesArray[$xmlId]["SORT"];
+                        // если массива поиска нет, то считаем что поиск успешно пройден
+                        $searchTrigger = true;
+                    }
+                    if ($searchTrigger) {
+                        $params[$xmlId]["ID"] = $id;
+                        $params[$xmlId]["HLID"] = $arData['ID'];
+                        $params[$xmlId]["NAME"] = $name;
+                        $params[$xmlId]["XML_ID"] = $xmlId;
+                        $params[$xmlId]["DETAIL_PROPERTY"] = $arData[static::DETAIL_PROPERTY_FIELD];
+                        $params[$xmlId]["COMPARE_PROPERTY"] = $arData[static::COMPARE_PROPERTY_FIELD];
+                        $params[$xmlId]["SMART_FILTER"] = $arData[static::SMART_FILTER_FIELD];
+                        $params[$xmlId]["APPROVED"] = $arData[static::APPROVED_FIELD];
+                        // подготавливаем вспомогательный массив для сортировки
+                        if ($sortByName) {
+                            $forSort[$xmlId] = strtolower($name);
+                        } else {
+                            $forSort[$xmlId] = static::$propertiesArray[$xmlId]["SORT"];
+                        }
                     }
                 }
             }
@@ -213,13 +237,13 @@ class APLS_CatalogConfigurator
     }
 
     /**
-     * устанавлвиаем значения поля ACTIVITY для hl-Блока настройки свойств
+     * устанавлвиаем значения поля APPROVED для hl-Блока настройки свойств
      * @param string $id - id записи в hl-Блоке
      * @param $value - 1|0
      */
     public static function setHLPropParamsApprovedValue($id, $value)
     {
-        static::setHLPropParamsFieldValue($id, array(static::ACTIVITY_FIELD => $value));
+        static::setHLPropParamsFieldValue($id, array(static::APPROVED_FIELD => $value));
     }
 
     /**
