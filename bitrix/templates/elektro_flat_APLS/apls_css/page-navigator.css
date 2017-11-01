@@ -1,14 +1,41 @@
+.sale-personal-section__item-link:link,
+.sale-personal-section__item-link:visited{
+    background:transparent;
+    border: 1px solid #dee0ee;
+}
+.sale-personal-section__item-link .sale-personal-section__item-title {
+    font-size: 16px;
+    padding: 0 5px;
+    font-weight: 700;
+}
+.sale-personal-section__item-link .sale-personal-section__item-icon > i,
+.sale-personal-section__item-link .sale-personal-section__item-title {
+    color: #8184a1 !important;
+
+}
+.sale-personal-section__item-link:hover{
+    background:transparent;
+    border: 1px solid #ef7f1a;
+}
+.sale-personal-section__item-link:hover .sale-personal-section__item-icon > i,
+.sale-personal-section__item-link:hover .sale-personal-section__item-title {
+    color: #ef7f1a !important;
+}
+.sale-personal-section__item-link:hover .sale-personal-section__item-count {
+    background: #ef7f1a;
+}
+
+
 .NavigatorBigIcon .NavigatorBigIconElementHref {
     float: left;
     display: block;
     border: 1px solid #dee0ee;
-    width: 223px;
-    height: 200px;
+    width: 229px;
+    height: 158px;
     text-align: center;
     color: #8184a1;
     text-decoration: none;
     margin: 0px 0px 5px 0px;
-    padding: 5px;
 }
 .NavigatorBigIcon .NavigatorBigIconElementHref:nth-child(4n + 2) {
     margin: 0px 5px 5px 5px;
@@ -18,16 +45,15 @@
 }
 
 .NavigatorBigIcon .NavigatorBigIconElementHref:hover {
-    padding: 4px;
-    border: 2px solid #ef7f1a;
+    border: 1px solid #ef7f1a;
     color: #ef7f1a;
     cursor: pointer;
 }
 .NavigatorBigIcon .NavigatorBigIconElementHref .NavigatorBigIconElement img {
     display: block;
-    margin: 20px auto;
-    width: 182px;
-    height: 122px;
+    margin: 10px auto;
+    margin-top: 40px;
+    height: 42px;
 }
 .NavigatorBigIcon .NavigatorBigIconElementHref .NavigatorBigIconElement img.hover,
 .NavigatorBigIcon .NavigatorBigIconElementHref .NavigatorBigIconElement:hover img.main{
@@ -38,6 +64,7 @@
 }
 .NavigatorBigIcon .NavigatorBigIconElement .title {
     font-size: 16px;
-    font-weight: 600;
+    padding: 0 5px;
+    font-weight: 700;
     text-align: center;
 }
