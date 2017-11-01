@@ -74,6 +74,8 @@ global $arSmartFilter;
 $arSmartFilter = makeFilter($arParams["IBLOCK_ID"], $arParams["SECTION_ID"], (string)$arParams["FILTER_NAME"], $arParams["HIDE_NOT_AVAILABLE"]);
 
 /* Сэда надо будет добавить наш обработчик который будет удалять ненужные свойства из умного фильтра */
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogConfigurator.php";
+APLS_CatalogConfigurator::getSmartFilterRezultArray($arResult["ITEMS"]);
 
 //PROPERTY_COLOR//
 foreach($arResult["ITEMS"] as $key => $arItem) {

@@ -40,6 +40,27 @@ class APLS_CatalogConfigurator
     }
 
     /**
+     * возвращает массив SMART_FILTER для bitrix:catalog
+     */
+    public static function getSmartFilterRezultArray(&$properies)
+    {
+        $smartFilter = static::getSmartFilterCode();
+        foreach ($properies as $key => $propery) {
+            if (!in_array($propery["CODE"], $smartFilter)) {
+                unset($properies[$key]);
+            }
+        }
+    }
+
+    /**
+     * возвращает массив SMART_FILTER для bitrix:catalog
+     */
+    public static function getSmartFilterCode()
+    {
+        return static::getPropertiesCodeFromHLPropertiesParams(static::SMART_FILTER_FIELD);
+    }
+
+    /**
      * возвращает массмов COMPARE_PROPERTY_CODE для bitrix:catalog
      */
     public static function getComparePropertyCode()
@@ -290,6 +311,32 @@ class APLS_CatalogConfigurator
         while ($prop_fields = $properties->GetNext()) {
             static::$propertiesArray[$prop_fields["XML_ID"]] = $prop_fields;
         }
+    }
+
+    /**
+     * Возвращает внешний код открытого каталога товаров
+     * @return null | внешний код текущего каталога
+     */
+    public static function getCatalogExternalId()
+    {
+        $externalID = null;
+        $iden = explode("/", $_SERVER['REQUEST_URI']);
+        if (isset($iden[1]) && $iden[1] == "catalog" && isset($iden[2]) && $iden[2] !== "") {
+            $code = $iden[2];
+            $db_list = CIBlockSection::GetList(
+                array("SORT" => "ASC"),
+                array('CODE' => $code),
+                true,
+                array("EXTERNAL_ID", "NAME"),
+                false
+            );
+            while ($ar_result = $db_list->GetNext()) {
+                echo $ar_result['NAME'] . " - " . $ar_result['EXTERNAL_ID'] . '<br>';
+                $externalID = $ar_result['EXTERNAL_ID'];
+            }
+        }
+        var_dump($externalID);
+        return $externalID;
     }
 
     /**
