@@ -204,7 +204,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogConfigur
 		"OFFERS_SORT_ORDER" => "asc",
 		"OFFERS_SORT_FIELD2" => "id",
 		"OFFERS_SORT_ORDER2" => "desc",
-		"USE_BIG_DATA" => "Y",
+		"USE_BIG_DATA" => "N",
 		"BIG_DATA_RCM_TYPE" => "any",
 		"PAGER_TEMPLATE" => "arrows",
 		"DISPLAY_TOP_PAGER" => "N",
