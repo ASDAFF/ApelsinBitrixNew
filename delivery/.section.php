@@ -1,4 +1,6 @@
 <?
 $sSectionName = "Доставка";
-$arDirProperties = array();
+$arDirProperties = array(
+
+);
 ?>

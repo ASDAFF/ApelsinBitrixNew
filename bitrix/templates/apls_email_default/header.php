@@ -2,26 +2,53 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<? if (\Bitrix\Main\Loader::includeModule('mail')) : ?>
+<?=\Bitrix\Mail\Message::getQuoteStartMarker(true); ?>
+<? endif; ?>
 <?
-$serverName = "http://".$arParams["SERVER_NAME"];
+$protocol = \Bitrix\Main\Config\Option::get("main", "mail_link_protocol", 'https', $arParams["SITE_ID"]);
+$serverName = $protocol."://".$arParams["SERVER_NAME"];
 ?>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Магазин Апельсин</title>
     <style type="text/css">
 	body {
 	    font-family: "Open Sans", sans-serif;
-	    font-size: 13px;
-	    font-weight: 400;
-	    color: #8184a1;
+	    font-size: 13px !important;
+	    font-weight: 400 !important;
+	    color: #8184a1 !important;
 	    text-align: left;
 	    line-height: 1.3;
-	    background: #f4f5fd;
+	    background: #f4f5fd !important;
+	    width:100% !important;
 	}
-	
+
+	a {
+		color: #ef7f1a !important;
+		text-decoration: none;
+		display: inline-block;
+		vertical-align: middle;
+		text-decoration: none;
+	}
+
+	a.button_apls {
+		display: inline-block;
+		background: #ef7f1a!important;
+		padding: 5px;
+		color: #FFFFFF !important;
+	}
+
+	.wrapper {
+		font-size: 12px;
+	    background: #f4f5fd !important;
+	    width:100% !important;
+	    color: #8184a1 !important;
+	}
+
 	.clear {
 	    clear: both;
 	}
-	
+
 	.center {
 	    width: 800px;
 	    margin: 0px auto;
@@ -34,8 +61,8 @@ $serverName = "http://".$arParams["SERVER_NAME"];
 	}
 	
 	.head .logo {
-	    height: 60px;
-	    margin: 10px 0px;
+	    margin: 5px 0px;
+	    height: 70px;
 	}
 	
 	.content {
@@ -72,8 +99,15 @@ $serverName = "http://".$arParams["SERVER_NAME"];
 	    font-size: 16px;
 	    width: 150px;
 	}
+	table.bx_ordercart_order_sum {
+	    border-collapse: collapse;
+	}
+	table.bx_ordercart_order_sum td.custom_t1 {
+		padding-right: 5px;
+		text-align: right;
+	    font-weight: 800;
+	}
 	table.bx_order_list_table_order {
-	    overflow:hidden;
 	    border:1px solid #d3d3d3;
 	    background:#fefefe;
 	    border-collapse: collapse;
@@ -226,22 +260,16 @@ $APPLICATION->ShowPanel();
 ?>
 </head>
 <body>
-<? if (\Bitrix\Main\Loader::includeModule('mail')) : ?>
-<?=\Bitrix\Mail\Message::getQuoteStartMarker(true); ?>
-<? endif; ?>
-<?
-$protocol = \Bitrix\Main\Config\Option::get("main", "mail_link_protocol", 'https', $arParams["SITE_ID"]);
-?>
-
-<div class="center">
-    <div class="head">
-        <a href="<?=$serverName?>"><img class="logo" src="<?=$serverName?>/bitrix/templates/elektro_flat/images/apelsin_logo.png" alt="logo"></a>
-        <div class="contacts">
-            <div class="phone">7 (4912) 240 220</div>
-            <div class="phone">7 (4912) 502 020</div>
-            <div class="email">info@apelsin.ru</div>
-        </div>
-    </div>
-    <div class="content">
-        <!-- ***************** CONTENT  ********************-->	
-        
+<div class="wrapper">
+	<div class="center">
+		<div class="head">
+			<a href="<?=$serverName?>"><img class="logo" src="/bitrix/templates/elektro_flat_APLS/images/apls_logo.png" alt="Магазин Апельсин"></a>
+			<div class="contacts">
+				<div class="phone">7 (4912) 240 220</div>
+				<div class="phone">7 (4912) 502 020</div>
+				<div class="email">info@apelsin.ru</div>
+			</div>
+		</div>
+		<div class="content">
+			<!-- ***************** CONTENT  ********************-->	
+			

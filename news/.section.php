@@ -1,4 +1,6 @@
 <?
 $sSectionName = "Новости";
-$arDirProperties = Array();
+$arDirProperties = array(
+
+);
 ?>

@@ -1,4 +1,6 @@
 <?
 $sSectionName = "Акции и скидки";
-$arDirProperties = Array();
+$arDirProperties = array(
+
+);
 ?>

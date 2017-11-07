@@ -1,0 +1,137 @@
+Host: rc.apelsin.ru:80
+Date: 2017-10-17 09:12:47
+Module: main
+ MySql Query Error: CHECK TABLE `b_catalog_subscribe` [[2006] MySQL server has gone away]
+    CDatabaseMysql::Query < require_once
+	/home/bitrix/www/bitrix/modules/main/admin/repair_db.php:253
+	/home/bitrix/www/bitrix/admin/repair_db.php:2
+----------
+Host: rc.apelsin.ru:80
+Date: 2017-10-17 09:13:17
+Module: main
+ MySql Query Error: SHOW COLUMNS FROM `site_checker_b_finder_dest` [[1146] Table 'sitemanager.site_checker_b_finder_dest' doesn't exist]
+    CDatabaseMysql::Query < CSiteCheckerTest::check_mysql_table_structure < CSiteCheckerTest::Start < require
+	/home/bitrix/www/bitrix/modules/main/classes/general/site_checker.php:2438
+	/home/bitrix/www/bitrix/modules/main/classes/general/site_checker.php:252
+	/home/bitrix/www/bitrix/modules/main/admin/site_checker.php:408
+	/home/bitrix/www/bitrix/admin/site_checker.php:1
+----------
+Host: rc.apelsin.ru:80
+Date: 2017-10-17 09:13:17
+Module: main
+ MySql Query Error: SHOW COLUMNS FROM `site_checker_b_lang` [[1146] Table 'sitemanager.site_checker_b_lang' doesn't exist]
+    CDatabaseMysql::Query < CSiteCheckerTest::check_mysql_table_structure < CSiteCheckerTest::Start < require
+	/home/bitrix/www/bitrix/modules/main/classes/general/site_checker.php:2438
+	/home/bitrix/www/bitrix/modules/main/classes/general/site_checker.php:252
+	/home/bitrix/www/bitrix/modules/main/admin/site_checker.php:408
+	/home/bitrix/www/bitrix/admin/site_checker.php:1
+----------
+Host: rc.apelsin.ru:80
+Date: 2017-10-22 14:45:14
+Module: rbs.payment
+RBS PAYMENT https://securepayments.sberbank.ru/payment/rest/register.do REQUEST: {"orderNumber":"46_0","amount":31160,"returnUrl":"http:\/\/rc.apelsin.ru\/sale\/payment\/result.php?ID=46","description":"","currency":"643","userName":"apelsin-api","password":"A7TLeSpRYngR"} RESPONSE: {"orderId":"8ae5dea6-6247-7340-8ae5-dea6001457ef","formUrl":"https:\/\/securepayments.sberbank.ru\/payment\/merchants\/rbs\/payment_ru.html?mdOrder=8ae5dea6-6247-7340-8ae5-dea6001457ef"}
+    RBS::logger < RBS::gateway < RBS::register_order < require_once < require
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/rbs.php:161
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/rbs.php:214
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/payment.php:52
+	/home/bitrix/www/bitrix/php_interface/include/sale_payment/payment/payment.php:2
+	/home/bitrix/www/bitrix/modules/sale/lib/paysystem/compatibilityhandler.php:205
+----------
+Host: rc.apelsin.ru:80
+Date: 2017-10-27 11:59:39
+Module: main
+ MySql Query Error: 
+					SELECT  BE.ID as ID,BE.IBLOCK_ID as IBLOCK_ID,BE.CODE as CODE,BE.XML_ID as XML_ID,BE.NAME as NAME,BE.ACTIVE as ACTIVE,IF(EXTRACT(HOUR_SECOND FROM BE.ACTIVE_FROM)>0, DATE_FORMAT(BE.ACTIVE_FROM, '%d.%m.%Y %H:%i:%s'), DATE_FORMAT(BE.ACTIVE_FROM, '%d.%m.%Y')) as DATE_ACTIVE_FROM,IF(EXTRACT(HOUR_SECOND FROM BE.ACTIVE_TO)>0, DATE_FORMAT(BE.ACTIVE_TO, '%d.%m.%Y %H:%i:%s'), DATE_FORMAT(BE.ACTIVE_TO, '%d.%m.%Y')) as DATE_ACTIVE_TO,BE.SORT as SORT,BE.PREVIEW_TEXT as PREVIEW_TEXT,BE.PREVIEW_TEXT_TYPE as PREVIEW_TEXT_TYPE,BE.DETAIL_TEXT as DETAIL_TEXT,BE.DETAIL_TEXT_TYPE as DETAIL_TEXT_TYPE,DATE_FORMAT(BE.DATE_CREATE, '%d.%m.%Y %H:%i:%s') as DATE_CREATE,BE.CREATED_BY as CREATED_BY,BE.TAGS as TAGS,DATE_FORMAT(BE.TIMESTAMP_X, '%d.%m.%Y %H:%i:%s') as TIMESTAMP_X,BE.MODIFIED_BY as MODIFIED_BY,BE.IBLOCK_SECTION_ID as IBLOCK_SECTION_ID,B.DETAIL_PAGE_URL as DETAIL_PAGE_URL,BE.DETAIL_PICTURE as DETAIL_PICTURE,BE.PREVIEW_PICTURE as PREVIEW_PICTURE,L.DIR as LANG_DIR,BE.XML_ID as EXTERNAL_ID,B.IBLOCK_TYPE_ID as IBLOCK_TYPE_ID,B.CODE as IBLOCK_CODE,B.XML_ID as IBLOCK_EXTERNAL_ID,B.LID as LID , CAT_PR.QUANTITY as CATALOG_QUANTITY, CAT_PR.QUANTITY_RESERVED as CATALOG_QUANTITY_RESERVED,  IF (CAT_PR.QUANTITY_TRACE = 'D', 'Y', CAT_PR.QUANTITY_TRACE) as CATALOG_QUANTITY_TRACE,  CAT_PR.QUANTITY_TRACE as CATALOG_QUANTITY_TRACE_ORIG,  IF (CAT_PR.CAN_BUY_ZERO = 'D', 'N', CAT_PR.CAN_BUY_ZERO) as CATALOG_CAN_BUY_ZERO,  CAT_PR.CAN_BUY_ZERO as CATALOG_CAN_BUY_ZERO_ORIG,  IF (CAT_PR.NEGATIVE_AMOUNT_TRACE = 'D', 'N', CAT_PR.NEGATIVE_AMOUNT_TRACE) as CATALOG_NEGATIVE_AMOUNT_TRACE,  CAT_PR.NEGATIVE_AMOUNT_TRACE as CATALOG_NEGATIVE_AMOUNT_ORIG,  IF (CAT_PR.SUBSCRIBE = 'D', 'Y', CAT_PR.SUBSCRIBE) as CATALOG_SUBSCRIBE,  CAT_PR.SUBSCRIBE as CATALOG_SUBSCRIBE_ORIG,  CAT_PR.AVAILABLE as CATALOG_AVAILABLE,  CAT_PR.WEIGHT as CATALOG_WEIGHT, CAT_PR.WIDTH as CATALOG_WIDTH, CAT_PR.LENGTH as CATALOG_LENGTH, CAT_PR.HEIGHT as CATALOG_HEIGHT,  CAT_PR.MEASURE as CATALOG_MEASURE,  CAT_VAT.RATE as CATALOG_VAT, CAT_PR.VAT_ID as CATALOG_VAT_ID, CAT_PR.VAT_INCLUDED as CATALOG_VAT_INCLUDED,  CAT_PR.PRICE_TYPE as CATALOG_PRICE_TYPE, CAT_PR.RECUR_SCHEME_TYPE as CATALOG_RECUR_SCHEME_TYPE,  CAT_PR.RECUR_SCHEME_LENGTH as CATALOG_RECUR_SCHEME_LENGTH, CAT_PR.TRIAL_PRICE_ID as CATALOG_TRIAL_PRICE_ID,  CAT_PR.WITHOUT_ORDER as CATALOG_WITHOUT_ORDER, CAT_PR.SELECT_BEST_PRICE as CATALOG_SELECT_BEST_PRICE,  CAT_PR.PURCHASING_PRICE as CATALOG_PURCHASING_PRICE, CAT_PR.PURCHASING_CURRENCY as CATALOG_PURCHASING_CURRENCY,  CAT_PR.TYPE as CATALOG_TYPE, CAT_PR.BUNDLE as CATALOG_BUNDLE
+					FROM 
+			b_iblock B
+			INNER JOIN b_lang L ON B.LID=L.LID
+			INNER JOIN b_iblock_element BE ON BE.IBLOCK_ID = B.ID
+			 left join b_catalog_product CAT_PR on (CAT_PR.ID = BE.ID)  left join b_catalog_iblock CAT_IB on ((CAT_PR.VAT_ID IS NULL OR CAT_PR.VAT_ID = 0) AND CAT_IB.IBLOCK_ID = BE.IBLOCK_ID)  left join b_catalog_vat CAT_VAT on (CAT_VAT.ID = IF((CAT_PR.VAT_ID IS NULL OR CAT_PR.VAT_ID = 0), CAT_IB.VAT_ID, CAT_PR.VAT_ID)) 
+
+		
+					WHERE 1=1 
+			AND (
+			
+				(EXISTS (
+						SELECT IBLOCK_ID FROM b_iblock_site WHERE IBLOCK_ID = B.ID
+						AND (((SITE_ID='s1')))
+					))
+				AND (((BE.ACTIVE_TO >= now() OR BE.ACTIVE_TO IS NULL) AND (BE.ACTIVE_FROM <= now() OR BE.ACTIVE_FROM IS NULL)))
+				AND ((((BE.ACTIVE='Y'))))
+				AND ((((BE.IBLOCK_ID = '16'))))
+			)
+			AND (((BE.WF_STATUS_ID=1 AND BE.WF_PARENT_ELEMENT_ID IS NULL)))
+			AND ((
+				B.ID IN (
+			SELECT IBLOCK_ID
+			FROM b_iblock_group IBG
+			WHERE IBG.GROUP_ID IN (2)
+			AND IBG.PERMISSION >= 'R'
+		
+				AND (IBG.PERMISSION='X' OR B.ACTIVE='Y')
+			)
+				OR (B.RIGHTS_MODE = 'E' AND EXISTS (
+				SELECT ER.ELEMENT_ID
+				FROM b_iblock_element_right ER
+				INNER JOIN b_iblock_right IBR ON IBR.ID = ER.RIGHT_ID
+				INNER JOIN b_user_access UA ON UA.ACCESS_CODE = IBR.GROUP_CODE AND UA.USER_ID = 0
+				WHERE ER.ELEMENT_ID = BE.ID
+				AND IBR.OP_EREAD = 'Y'
+				
+			))
+			))
+					
+					 ORDER BY  RAND(470261)  ,BE.ID desc 
+					LIMIT 6
+				 [[1053] Server shutdown in progress]
+    CDatabaseMysql::Query < CIBlockElement::GetList < Bitrix\Iblock\Component\Base::getElementList < Bitrix\Iblock\Component\ElementList::getElementList < CatalogSectionComponent::getElementList
+	/home/bitrix/www/bitrix/modules/iblock/classes/mysql/iblockelement.php:671
+	/home/bitrix/www/bitrix/modules/iblock/lib/component/base.php:1493
+	/home/bitrix/www/bitrix/modules/iblock/lib/component/elementlist.php:840
+	/home/bitrix/www/bitrix/components/bitrix/catalog.section/class.php:532
+	/home/bitrix/www/bitrix/modules/iblock/lib/component/base.php:607
+----------
+Host: rc.apelsin.ru:80
+Date: 2017-10-31 14:58:58
+Module: rbs.payment
+RBS PAYMENT https://securepayments.sberbank.ru/payment/rest/register.do REQUEST: {"orderNumber":"52_0","amount":2584520,"returnUrl":"http:\/\/rc.apelsin.ru\/sale\/payment\/result.php?ID=52","description":"\u041a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u0439 \u043a \u0437\u0430\u043a\u0430\u0437\u0443, \u043a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u0439 \u043a \u0437\u0430\u043a\u0430\u0437\u0443","currency":"643","userName":"apelsin-api","password":"A7TLeSpRYngR"} RESPONSE: {"orderId":"94767670-7e2d-7812-9476-7670001457ef","formUrl":"https:\/\/securepayments.sberbank.ru\/payment\/merchants\/rbs\/payment_ru.html?mdOrder=94767670-7e2d-7812-9476-7670001457ef"}
+    RBS::logger < RBS::gateway < RBS::register_order < require_once < require
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/rbs.php:161
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/rbs.php:214
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/payment.php:52
+	/home/bitrix/www/bitrix/php_interface/include/sale_payment/payment/payment.php:2
+	/home/bitrix/www/bitrix/modules/sale/lib/paysystem/compatibilityhandler.php:205
+----------
+Host: rc.apelsin.ru:80
+Date: 2017-10-31 15:53:45
+Module: rbs.payment
+RBS PAYMENT https://securepayments.sberbank.ru/payment/rest/register.do REQUEST: {"orderNumber":"53_0","amount":1004900,"returnUrl":"http:\/\/rc.apelsin.ru\/sale\/payment\/result.php?ID=53","description":"","currency":"643","userName":"apelsin-api","password":"A7TLeSpRYngR"} RESPONSE: {"orderId":"199ebef6-7929-7aef-199e-bef6001457ef","formUrl":"https:\/\/securepayments.sberbank.ru\/payment\/merchants\/rbs\/payment_ru.html?mdOrder=199ebef6-7929-7aef-199e-bef6001457ef"}
+    RBS::logger < RBS::gateway < RBS::register_order < require_once < require
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/rbs.php:161
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/rbs.php:214
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/payment.php:52
+	/home/bitrix/www/bitrix/php_interface/include/sale_payment/payment/payment.php:2
+	/home/bitrix/www/bitrix/modules/sale/lib/paysystem/compatibilityhandler.php:205
+----------
+Host: rc.apelsin.ru:80
+Date: 2017-10-31 16:05:23
+Module: rbs.payment
+RBS PAYMENT https://securepayments.sberbank.ru/payment/rest/register.do REQUEST: {"orderNumber":"53_0","amount":1549900,"returnUrl":"http:\/\/rc.apelsin.ru\/sale\/payment\/result.php?ID=53","description":"","currency":"643","userName":"apelsin-api","password":"A7TLeSpRYngR"} RESPONSE: {"errorCode":"1","errorMessage":"\u0417\u0430\u043a\u0430\u0437 \u0441 \u0442\u0430\u043a\u0438\u043c \u043d\u043e\u043c\u0435\u0440\u043e\u043c \u0443\u0436\u0435 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d"}
+    RBS::logger < RBS::gateway < RBS::register_order < require_once < require
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/rbs.php:161
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/rbs.php:214
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/payment.php:52
+	/home/bitrix/www/bitrix/php_interface/include/sale_payment/payment/payment.php:2
+	/home/bitrix/www/bitrix/modules/sale/lib/paysystem/compatibilityhandler.php:205
+----------
+Host: rc.apelsin.ru:80
+Date: 2017-10-31 16:05:23
+Module: rbs.payment
+RBS PAYMENT https://securepayments.sberbank.ru/payment/rest/register.do REQUEST: {"orderNumber":"53_1","amount":1549900,"returnUrl":"http:\/\/rc.apelsin.ru\/sale\/payment\/result.php?ID=53","description":"","currency":"643","userName":"apelsin-api","password":"A7TLeSpRYngR"} RESPONSE: {"orderId":"2b509425-d128-788f-2b50-9425001457ef","formUrl":"https:\/\/securepayments.sberbank.ru\/payment\/merchants\/rbs\/payment_ru.html?mdOrder=2b509425-d128-788f-2b50-9425001457ef"}
+    RBS::logger < RBS::gateway < RBS::register_order < require_once < require
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/rbs.php:161
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/rbs.php:214
+	/home/bitrix/www/bitrix/modules/rbs.payment/payment/payment.php:52
+	/home/bitrix/www/bitrix/php_interface/include/sale_payment/payment/payment.php:2
+	/home/bitrix/www/bitrix/modules/sale/lib/paysystem/compatibilityhandler.php:205
+----------
