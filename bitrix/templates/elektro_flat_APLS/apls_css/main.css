@@ -451,3 +451,82 @@ ul.left-menu > li > a {
     font-weight: 700;
     font-size: 11px !important;
 }
+
+/* хлебные крошки */
+.breadcrumb__arrow {
+    display: none;
+}
+.breadcrumb {
+    width: 100%;
+    float: none;
+}
+.breadcrumb__item {
+    display: inline-block;
+    background: #f6f6fb;
+    text-decoration: none;
+    margin: 0 .5em 1em 1em!important;
+    position: relative;
+    height: 3em;
+    max-width: 180px;
+    font-size: 10px;
+}
+.breadcrumb__item::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    border-width: 1.5em 0 1.5em 1em;
+    border-style: solid;
+    border-color: #f6f6fb #f6f6fb #f6f6fb transparent;
+    left: -1em;
+}
+.breadcrumb__item::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    border-top: 1.5em solid transparent;
+    border-bottom: 1.5em solid transparent;
+    border-left: 1em solid #f6f6fb;
+    right: -1em;
+}
+.breadcrumb__item:first-child {
+    margin: 0 .5em 1em 0!important;
+}
+.breadcrumb__item:first-child::before {
+    display: none;
+}
+.breadcrumb__item>.breadcrumb__link,
+.breadcrumb__item>.breadcrumb__title {
+    display: table-cell;
+    vertical-align: middle;
+    height: 3em!important;
+    padding: 0 1em;
+    color: #8184a1;
+}
+.breadcrumb__item:hover {
+    background: #ef7f1a;
+}
+.breadcrumb__item:hover::before {
+    border-color: #ef7f1a #ef7f1a #ef7f1a transparent;
+}
+.breadcrumb__item:hover::after {
+    border-left: 1em solid #ef7f1a;
+}
+.breadcrumb__item:hover>.breadcrumb__link,
+.breadcrumb__item:hover>.breadcrumb__title {
+    color: #FFFFFF;
+}
+.breadcrumb__item:hover:last-child {
+    background: #f6f6fb;
+}
+.breadcrumb__item:hover:last-child::before {
+    border-color: #f6f6fb #f6f6fb #f6f6fb transparent;
+}
+.breadcrumb__item:hover:last-child::after {
+    border-left: 1em solid #f6f6fb;
+}
+.breadcrumb__item:hover:last-child>.breadcrumb__link,
+.breadcrumb__item:hover:last-child>.breadcrumb__title {
+    color: #8184a1;
+}

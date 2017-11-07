@@ -8,6 +8,9 @@ $strReturn = "";
 $itemSize = count($arResult);
 for($index = 0; $index < $itemSize; $index++) {
 	$title = htmlspecialcharsex($arResult[$index]["TITLE"]);
+	if(strlen($title) > 50) {
+        $title = substr($title, 0, 50)."...";
+    }
 
 	$nextRef = ($index < $itemSize-2 && $arResult[$index+1]["LINK"] <> "" ? " itemref='breadcrumb_".($index + 1)."'" : "");
 	$child = ($index > 0 ? " itemprop='child'" : "");
