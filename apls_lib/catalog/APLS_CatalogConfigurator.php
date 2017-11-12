@@ -320,6 +320,15 @@ class APLS_CatalogConfigurator
     }
 
     /**
+     * @param $id - id свойства в инфоблоке
+     * @return string - XML-ID свойсвта в инфоблоке
+     */
+    public function getPropertiesXMLIDfromID($id) {
+        static::getInstance();
+        return static::$propertiesIDtoXMLID[$id];
+    }
+
+    /**
      * обновляет индекс сортировки у всех свойств
      */
     public static function updateAllСatalogPropertySortIndex()
@@ -372,6 +381,10 @@ class APLS_CatalogConfigurator
                 $sortIndex = static::$HLPropParamsSortArray[$xml_id];
             }
             $ibp = new CIBlockProperty;
+            echo "<pre>";
+            var_dump($propertyId);
+            var_dump($xml_id);
+            var_dump($sortIndex);
             return $ibp->Update($propertyId, array("SORT" => $sortIndex,));
         }
         return false;

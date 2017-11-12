@@ -13,5 +13,5 @@ require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItAfterUpdateElemen
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItAfterUpdateUser.php");
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItOnAfterUpdateKontragenty.php");
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItOnAfterSaveSaleOrder.php");
-
+require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItOnAfterIBlockPropertyAdd.php");
 
