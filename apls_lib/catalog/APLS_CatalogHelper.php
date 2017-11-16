@@ -1,4 +1,5 @@
 <?php
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/APLS_GetGlobalParam.php";
 class APLS_CatalogHelper
 {
     private static $HIGHLOAD_CATALOG_ID = null;
