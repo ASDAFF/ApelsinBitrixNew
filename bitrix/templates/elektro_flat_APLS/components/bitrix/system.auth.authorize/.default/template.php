@@ -1,5 +1,16 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
+<div class="APLS_MESSAGE_RC">
+    Сайт находится в разработке.<br>
+    Регистрация пользователей закрыта.<br>
+    Доступ только для разработчиков и администрации.<br><br>
+    <a href="apelsin.ru">Перейти на сайт компании</a>
+    <br><br><br>
+</div>
+<script language="JavaScript">
+    window.location.href = "http://apelsin.ru"
+</script>
+
 <div class="content-form login-form">
 	<div class="fields">
 		<?ShowMessage($arParams["~AUTH_RESULT"]);
