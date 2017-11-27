@@ -16,7 +16,6 @@ function OnAfterIBlockPropertyAddUpdateHandler (&$arFields) {
                 "select" => array('UF_SORT'),
                 "filter" => array('UF_XML_ID' => $xmlID)
             ));
-            var_dump($arFields);
             while ($arData = $rsData->Fetch()) {
                 if (isset($arData['UF_SORT'])) {
                     $sort = $arData['UF_SORT'];
