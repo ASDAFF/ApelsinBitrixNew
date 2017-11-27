@@ -1,61 +1,78 @@
 <?php
-AddEventHandler("iblock", "OnAfterIBlockElementUpdate", "DoItAfterUpdateElement");
-AddEventHandler("iblock", "OnAfterIBlockElementAdd", "DoItAfterUpdateElement");
 
-define("SHOP_IBLOC_ID_FOR_THIS_SCRIPT", "13");
-define("ACTIVE_TRIGGER_PROPERTY_XML_ID", "26e05687-c602-4c36-8b63-debb1b4e0250");
-define("ACTIVE_TRIGGER_PROPERTY_VALUE_DEACTIVE", "Нет");
-define("ACTIVE_TRIGGER_PROPERTY_VALUE_ACTIVE", "Да");
-define("SITE_DEL_SECTION_XML_ID","98557c36-f99a-11e6-80ec-00155dfef48a");
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/APLS_GetGlobalParam.php";
 
-if(CModule::IncludeModule("iblock")) {
-    $rs = CIBlockSection::GetList(array(), array("XML_ID"=>SITE_DEL_SECTION_XML_ID), false, array("nTopCount"=>1));
-    if($obRes = $rs->GetNextElement())
-    {
-        $arRes = $obRes->GetFields();
-        define("SITE_DEL_SECTION_ID", $arRes['ID']);
-    }
-    if($arRes['ACTIVE'] === "Y") {
-        $sec = new CIBlockSection;
-        $arLoadProductArray = Array("ACTIVE" => "N");
-        $sec->Update(SITE_DEL_SECTION_ID, $arLoadProductArray);
-    }
-}
+use Bitrix\Catalog\MeasureRatioTable;
 
-function DoItAfterUpdateElement (&$arFields) {
-	if ($arFields["IBLOCK_ID"] == SHOP_IBLOC_ID_FOR_THIS_SCRIPT && $arFields["RESULT"]) {
-		$rs = CIBlockElement::GetList(array(), array("ID"=>$arFields["ID"]), false, array("nTopCount"=>1));
+AddEventHandler("catalog", "OnProductUpdate", ["APLS_ElementUpdater", "updateValues"]);
 
-		if($obRes = $rs->GetNextElement())
-		{
-			$arRes = $obRes->GetFields();
-            $el = new CIBlockElement;
-            $updateArray = array();
-			if($arRes['IBLOCK_SECTION_ID'] === SITE_DEL_SECTION_ID) {
-                if($arRes['ACTIVE'] === "Y") {
-                    $updateArray["ACTIVE"] = "N";
-//                    $arLoadProductArray = Array("ACTIVE" => "N");
-//                    $el->Update($arFields["ID"], $arLoadProductArray);
-                }
-            } else {
-                $arRes["PROPERTIES"] = $obRes->GetProperties();
-                foreach ($arRes["PROPERTIES"] as $key => $val) {
-                    if($val["XML_ID"] === ACTIVE_TRIGGER_PROPERTY_XML_ID) {
-                        if($val["VALUE"] === ACTIVE_TRIGGER_PROPERTY_VALUE_DEACTIVE && $arRes["ACTIVE"] === "Y") {
-                            $updateArray["ACTIVE"] = "N";
-//                            $arLoadProductArray = Array("ACTIVE" => "N");
-//                            $el->Update($arFields["ID"], $arLoadProductArray);
-                        } elseif ($val["VALUE"] === ACTIVE_TRIGGER_PROPERTY_VALUE_ACTIVE && $arRes["ACTIVE"] === "N") {
-                            $updateArray["ACTIVE"] = "Y";
-//                            $arLoadProductArray = Array("ACTIVE" => "Y");
-//                            $el->Update($arFields["ID"], $arLoadProductArray);
-                        }
-                    }
-                }
+class APLS_ElementUpdater
+{
+    const arCODE = array(
+        "DOSTAVKADLINA" => "LENGTH",
+        "DOSTAVKASHIRINA" => "WIDTH",
+        "DOSTAVKAVYSOTA" => "HEIGHT"
+    );
+
+    const arKoeff = array(
+        "CODE" => "KOEFFITSIENT"
+    );
+
+    public static function updateValues($arFields) {
+        $arDimensions = self::getCatalogValue($arFields);
+        $arResult = self::getDimensionsValue(APLS_GetGlobalParam::getParams("HIGHLOAD_CATALOG_ID"), $arFields);
+        $update = array();
+        foreach (self::arCODE as $key => $dimension) {
+            if($arDimensions[$dimension] !== $arResult[$dimension] && $arResult[$dimension] !== NULL) {
+                $update[self::arCODE["$key"]] = $arResult[$dimension];
             }
-            if(!empty($updateArray)) {
-                $el->Update($arFields["ID"], $updateArray);
+        }
+        if(!empty($update)) {
+            $catalogProduct = new CCatalogProduct ();
+            $catalogProduct->Update($arFields, $update);
+        }
+        $ratio = self::getCoefficientValue(APLS_GetGlobalParam::getParams("HIGHLOAD_CATALOG_ID"), $arFields);
+        $db_ratio = CCatalogMeasureRatio::getList(array(), array("PRODUCT_ID" => $arFields), false, false, array());
+        $ar_ratio = $db_ratio->Fetch();
+        $updateRatio = array();
+        if ($ar_ratio["RATIO"] !== $ratio["RATIO"] && $ratio["RATIO"] !== NULL) {
+            $updateRatio["RATIO"] = $ratio["RATIO"];
+            MeasureRatioTable::update($ar_ratio["ID"], $updateRatio);
+        }
+    }
+
+    protected static function getCatalogValue($elementID) {
+        $getCatalogValue = new CCatalogProduct;
+        $arCatalogValue = $getCatalogValue->GetList(array("ID" => $elementID), array(), self::arCODE);
+        $res_arr = $arCatalogValue->Fetch();
+        $dimensionsArray = array();
+        foreach (self::arCODE as $key => $dimension) {
+            $dimensionsArray[self::arCODE[$key]] = $res_arr[$dimension];
+        }
+        return $dimensionsArray;
+    }
+
+    protected static function getDimensionsValue($iblock_ID, $elementID) {
+        $dimensionsArray = array();
+        foreach (self::arCODE as $key => $code) {
+            $dimensions = CIBlockElement::GetProperty($iblock_ID, $elementID, array("sort" => "asc"), array("CODE" => $key));
+            $res_arr = $dimensions->Fetch();
+            if ($res_arr["VALUE"] !== "") {
+                $dimensionsArray[self::arCODE[$key]] = $res_arr["VALUE"];
             }
-		}
-	}
+        }
+        return $dimensionsArray;
+    }
+
+    protected static function getCoefficientValue($iblock_ID, $elementID) {
+        $coefficientArray = CIBlockElement::GetProperty($iblock_ID, $elementID, array("sort" => "asc"), self::arKoeff);
+        $coefficientValue = array();
+        while ($res_arr = $coefficientArray->Fetch()) {
+            if ($res_arr["VALUE"] !== "") {
+                $coefficientValue["PRODUCT_ID"] = $elementID;
+                $coefficientValue["RATIO"] = $res_arr["VALUE"];
+            }
+        }
+        return $coefficientValue;
+    }
 }
