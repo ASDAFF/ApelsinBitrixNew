@@ -23,7 +23,7 @@ class APLS_ElementUpdater
         $arResult = self::getDimensionsValue(APLS_GetGlobalParam::getParams("HIGHLOAD_CATALOG_ID"), $arFields);
         $update = array();
         foreach (self::arCODE as $key => $dimension) {
-            if($arDimensions[$dimension] !== $arResult[$dimension] && $arResult[$dimension] !== NULL) {
+            if(isset($arResult[$dimension]) && $arDimensions[$dimension] !== $arResult[$dimension] && $arResult[$dimension] !== NULL && $arResult[$dimension] !== "") {
                 $update[self::arCODE["$key"]] = $arResult[$dimension];
             }
         }
@@ -35,7 +35,7 @@ class APLS_ElementUpdater
         $db_ratio = CCatalogMeasureRatio::getList(array(), array("PRODUCT_ID" => $arFields), false, false, array());
         $ar_ratio = $db_ratio->Fetch();
         $updateRatio = array();
-        if ($ar_ratio["RATIO"] !== $ratio["RATIO"] && $ratio["RATIO"] !== NULL) {
+        if (isset($ar_ratio["RATIO"]) && $ar_ratio["RATIO"] !== $ratio["RATIO"] && $ratio["RATIO"] !== NULL && $ratio["RATIO"] !== "") {
             $updateRatio["RATIO"] = $ratio["RATIO"];
             MeasureRatioTable::update($ar_ratio["ID"], $updateRatio);
         }
