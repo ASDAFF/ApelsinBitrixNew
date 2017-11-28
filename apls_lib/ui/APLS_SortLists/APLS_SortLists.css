@@ -1,0 +1,52 @@
+.apls-sort-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    /*background: #f6f6fb;*/
+    padding: 1em;
+}
+.apls-sort-list .apls-sort-list-title {
+    /*padding: 0 1em 1em 0;*/
+    font-size: 20px;
+}
+.apls-sort-list .apls-sort-list-content {
+    background: #f6f6fb;
+    min-height: 1em;
+}
+.apls-sort-list .apls-sort-list-title+.apls-sort-list-content {
+    margin-top: 1em;
+}
+.apls-sort-list .apls-sort-list-content .apls-sort-list-element {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-bottom: .5em;
+    border: 1px solid #dee0ee;
+}
+.apls-sort-list .apls-sort-list-content .apls-sort-list-element:last-child {
+    margin-bottom: 0;
+}
+.apls-sort-list .apls-sort-list-content .apls-sort-list-element.ui-selected-apls {
+    border-color: #05bd00;
+}
+.apls-sort-list .apls-sort-list-content .apls-sort-list-element .sort-handle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 1em;
+    cursor: move;
+}
+.apls-sort-list .apls-sort-list-content .apls-sort-list-element .sort-handle .icon-bar {
+    width: 14px;
+    height: 2px;
+    background-color: #aaa;
+    margin: 1px 0;
+}
+.apls-sort-list .apls-sort-list-content .apls-sort-list-element .text {
+    padding: 1em 1em 1em 0em;
+    cursor: pointer;
+}
