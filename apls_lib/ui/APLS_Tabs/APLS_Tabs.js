@@ -1,4 +1,4 @@
-$(document).ready(function () {
+function aplsTabsAddClickEvent() {
     $(".apls-tabs-wrapper .apls-tabs-name-area .apls-tab-name").click(function () {
         var tabId = $(this).attr("tabId");
         var tabsWrapperId = $(this).attr("tabsWrapperId");
@@ -10,4 +10,7 @@ $(document).ready(function () {
     $(".apls-tabs-wrapper .apls-tab-content").hide();
     $(".apls-tabs-wrapper .apls-tab-content:first-child").show();
     $(".apls-tabs-wrapper .apls-tab-name:first-child").addClass("open-tab");
+}
+$(document).ready(function () {
+    aplsTabsAddClickEvent();
 });
