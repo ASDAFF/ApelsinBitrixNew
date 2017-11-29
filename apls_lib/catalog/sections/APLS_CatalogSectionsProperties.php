@@ -65,7 +65,10 @@ class APLS_CatalogSectionsProperties
     public static function getSectionNodeIntersectProperties($xmlid)
     {
         self::getInstance();
-        return self::$sectionNodeIntersectProperties[$xmlid];
+        if(isset(self::$sectionNodeIntersectProperties[$xmlid])) {
+            return self::$sectionNodeIntersectProperties[$xmlid];
+        }
+        return array();
     }
 
     /**
@@ -76,7 +79,10 @@ class APLS_CatalogSectionsProperties
     public static function getSectionNodeProperties($xmlid)
     {
         self::getInstance();
-        return self::$sectionNodeProperties[$xmlid];
+        if(isset(self::$sectionNodeProperties[$xmlid])) {
+            return self::$sectionNodeProperties[$xmlid];
+        }
+        return array();
     }
 
     /**
