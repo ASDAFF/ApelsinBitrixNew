@@ -9,7 +9,7 @@ require $_SERVER["DOCUMENT_ROOT"]."/apls_lib/main/APLS_GetGlobalParam.php";
 # Классы событий
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/main/users/UpdatedUserModel.php");
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/main/users/UpdateUserController.php");
-require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItAfterUpdateElement.php");
+//require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItAfterUpdateElement.php");
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItAfterUpdateUser.php");
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItOnAfterUpdateKontragenty.php");
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItOnAfterSaveSaleOrder.php");
