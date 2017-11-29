@@ -3,7 +3,7 @@ $APPLICATION->SetTitle("Каталог товаров");?>
 
 <?
 define('BX_DISABLE_INDEX_PAGE', true);
-include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogConfigurator.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_CatalogSectionsSettings.php";
 ?>
 
 <?$APPLICATION->IncludeComponent(
@@ -88,7 +88,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogConfigur
 			1 => "PREVIEW_PICTURE",
 			2 => "",
 		),
-		"COMPARE_PROPERTY_CODE" => APLS_CatalogConfigurator::getComparePropertyCode(),
+		"COMPARE_PROPERTY_CODE" => APLS_CatalogSectionsSettings::getComparePropertyCodeList(),
 		"COMPARE_OFFERS_FIELD_CODE" => array(
 			0 => "",
 			1 => "",
@@ -141,7 +141,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogConfigur
 			3 => "",
 		),
 		"LIST_OFFERS_LIMIT" => "",
-		"DETAIL_PROPERTY_CODE" => APLS_CatalogConfigurator::getDetailPropertyCode(),
+		"DETAIL_PROPERTY_CODE" => APLS_CatalogSectionsSettings::getDetailPropertyCodeList(),
 		"DETAIL_META_KEYWORDS" => "-",
 		"DETAIL_META_DESCRIPTION" => "-",
 		"DETAIL_BROWSER_TITLE" => "-",

@@ -13,6 +13,7 @@
 .apls-sort-list .apls-sort-list-content {
     background: #f6f6fb;
     min-height: 1em;
+    height: 100%;
 }
 .apls-sort-list .apls-sort-list-title+.apls-sort-list-content {
     margin-top: 1em;

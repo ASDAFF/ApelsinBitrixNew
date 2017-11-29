@@ -1,0 +1,74 @@
+ul.SectionsMenuUl {
+    margin: 0 0 0 1em;
+    padding: 0px;
+    list-style-type: none;
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #8184a1;
+}
+.SectionsMenuWrapper>ul.SectionsMenuUl {
+    margin: 0px;
+}
+ul.SectionsMenuUl .SectionsMenuBlock {
+    position: relative;
+    border: 1px solid #dee0ee;
+    background: #FFFFFF;
+    margin-bottom: 2px;
+}
+ul.SectionsMenuUl .SectionsMenuBlock:hover {
+    background: #f6f6fb;
+}
+ul.SectionsMenuUl .SectionsMenuBlock .SectionsMenuSHButton  {
+    height: 2em;
+    width: 2em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+ul.SectionsMenuUl .SectionsMenuBlock .SectionsMenuSHButton.isHideIcon {
+    cursor: zoom-in;
+}
+ul.SectionsMenuUl .SectionsMenuBlock .SectionsMenuSHButton.isShowIcon {
+    cursor: zoom-out;
+}
+ul.SectionsMenuUl .SectionsMenuBlock .SectionsMenuSHButton.isHideIcon:before,
+ul.SectionsMenuUl .SectionsMenuBlock .SectionsMenuSHButton.isShowIcon:before {
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+}
+ul.SectionsMenuUl .SectionsMenuBlock .SectionsMenuSHButton.isHideIcon:before {
+    top: .6em;
+    left: .9em;
+    border-left: .4em solid #dee0ee;
+    border-top: .4em solid transparent;
+    border-bottom: .4em solid transparent;
+}
+ul.SectionsMenuUl .SectionsMenuBlock .SectionsMenuSHButton.isShowIcon:before {
+    top: .9em;
+    left: .6em;
+    border-top: .4em solid #dee0ee;
+    border-left: .4em solid transparent;
+    border-right: .4em solid transparent;
+}
+ul.SectionsMenuUl .SectionsMenuBlock .SectionsMenuName {
+    /*height: 1em;*/
+    line-height: 1em;
+    margin: 0;
+    padding: .5em 1em;
+    cursor: pointer;
+}
+ul.SectionsMenuUl .SectionsMenuBlock .SectionsMenuSHButton + .SectionsMenuName {
+    margin: 0 0 0 2em;
+    padding: .5em 0;
+}
+ul.SectionsMenuUl .SectionsMenuBlock .SectionsMenuNoSHButton + .SectionsMenuName {
+    margin: 0;
+    padding: .5em 2em;
+}
+.HideElement {
+    display: none;
+}

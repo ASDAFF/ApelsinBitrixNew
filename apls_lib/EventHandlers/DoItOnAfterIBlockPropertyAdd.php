@@ -1,6 +1,6 @@
 <?
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/hlblock/APLS_GetHighloadEntityDataClass.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogConfigurator.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogProperties.php";
 
 function OnAfterIBlockPropertyAddUpdateHandler (&$arFields) {
     $sort = 3000;
@@ -9,7 +9,7 @@ function OnAfterIBlockPropertyAddUpdateHandler (&$arFields) {
             if(isset($arFields['XML_ID'])) {
                 $xmlID = $arFields['XML_ID'];
             } else {
-                $xmlID = APLS_CatalogConfigurator::getPropertiesXMLIDfromID($arFields['ID']);
+                $xmlID = APLS_CatalogProperties::convertPropertyIDtoXMLID($arFields['ID']);
             }
             $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLName("PropertyGoods");
             $rsData = $entity_data_class::getList(array(

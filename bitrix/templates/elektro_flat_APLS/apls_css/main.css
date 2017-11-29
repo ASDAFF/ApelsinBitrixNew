@@ -22,6 +22,10 @@
     padding-right: 0;
 }
 
+.HideElement {
+    display: none;
+}
+
 a,
 a span {
     text-decoration: none!important;

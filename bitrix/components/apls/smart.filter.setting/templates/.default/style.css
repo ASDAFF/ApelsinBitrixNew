@@ -1,0 +1,150 @@
+.SmartFilterSettingWrapper {
+    color: #8184a1;
+}
+.SmartFilterSettingMainWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 6em;
+}
+.SmartFilterSettingSectionsTreeWrapper {
+    width: 19%;
+}
+.SmartFilterSettingPropertiesWrapper {
+    width: 80%;
+}
+.SmartFilterSettingPropertiesWrapper  .InfoTabWrapper h2 {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    color: #d44b38;
+    margin: 1em 0;
+}
+.SmartFilterSettingPropertiesWrapper  .InfoTabWrapper .InfoTabWrapperBlock {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.SmartFilterSettingPropertiesWrapper .InfoTabWrapper .InfoTabProperty {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    background: #FFFFFF;
+    border: 1px solid #dee0ee;
+    padding: 1em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    width: 45%;
+}
+.SmartFilterSettingPropertiesWrapper .InfoTabWrapper .InfoTabProperty .name {
+    width: 40%;
+}
+.SmartFilterSettingPropertiesWrapper .InfoTabWrapper .InfoTabProperty .xmlID {
+    text-align: right;
+    width: 60%;
+    color: rgb(37, 150, 91);
+    border-left: 1px solid #dee0ee;
+}
+.SmartFilterSettingNoData {
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    color: #b22300;
+    text-align: center;
+    padding-top: 9em;
+}
+ul.SectionsMenuUl .SectionsMenuBlock.ThisSection,
+ul.SectionsMenuUl .SectionsMenuBlock.ThisSection:hover {
+    background: #ff9a9a;
+}
+ul.SectionsMenuUl .SectionsMenuBlock.ThisSection .SectionsMenuName {
+    color: #FFFFFF;
+}
+ul.SectionsMenuUl .SectionsMenuBlock.ThisSection .SectionsMenuSHButton.isHideIcon:before {
+    border-left: .4em solid #FFFFFF;
+    border-top: .4em solid transparent;
+    border-bottom: .4em solid transparent;
+}
+ul.SectionsMenuUl .SectionsMenuBlock.ThisSection .SectionsMenuSHButton.isShowIcon:before {
+    border-top: .4em solid #FFFFFF;
+    border-left: .4em solid transparent;
+    border-right: .4em solid transparent;
+}
+.apls-smart-filter-setting-sort-lists-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.apls-smart-filter-setting-sort-lists-wrapper>.apls-sort-list {
+    width: 47%;
+}
+.apls-smart-filter-setting-sort-lists-wrapper>.apls-sort-list.show .apls-sort-list-element.hide,
+.apls-smart-filter-setting-sort-lists-wrapper>.apls-sort-list.hide .apls-sort-list-element.show {
+    background: #ffdddd;
+}
+
+.apls-smart-filter-setting-sort-lists-wrapper>.apls-sort-list.show .apls-sort-list-element.hide.modified-property,
+.apls-smart-filter-setting-sort-lists-wrapper>.apls-sort-list.hide .apls-sort-list-element.show.modified-property {
+    background: #ffddf7;
+}
+
+.apls-smart-filter-setting-sort-lists-wrapper>.apls-sort-list.show .apls-sort-list-element.show.modified-property,
+.apls-smart-filter-setting-sort-lists-wrapper>.apls-sort-list.hide .apls-sort-list-element.hide.modified-property {
+    background: #e7ffd5;
+}
+
+.SmartFilterSettingWrapper .SmartFilterSettingButtonPanel {
+    background: #FFFFFF;
+    padding: 1em;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    font-size: 14px;
+    border-top: 1px solid #dee0ee;
+    border-left: 1px solid #dee0ee;
+}
+.SmartFilterSettingWrapper .SmartFilterSettingButtonPanel .SmartFilterSettingSaveButton,
+.SmartFilterSettingWrapper .SmartFilterSettingButtonPanel .SmartFilterSettingRefreshButton,
+.SmartFilterSettingWrapper .SmartFilterSettingButtonPanel .SmartFilterSettingDefaultButton {
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 1em;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+}
+.SmartFilterSettingWrapper .SmartFilterSettingButtonPanel .SmartFilterSettingSaveButton {
+    margin: 0 1em 0 0;
+    background: rgb(64,199,129);
+    border-bottom: 4px solid rgb(37, 150, 91);
+    color: rgb(19, 78, 47);
+}
+.SmartFilterSettingWrapper .SmartFilterSettingButtonPanel .SmartFilterSettingRefreshButton {
+    margin: 0 1em 0 0;
+    background: rgb(255, 211, 45);
+    border: none;
+    border-bottom: 4px solid rgb(199, 167, 44);
+    color: rgb(144, 121, 34);
+}
+.SmartFilterSettingWrapper .SmartFilterSettingButtonPanel .SmartFilterSettingDefaultButton {
+    margin: 0;
+    background: rgb(212,75,56);
+    border: none;
+    border-bottom: 4px solid rgb(165, 51, 36);
+    color: rgb(90, 26, 17);
+}
+.SmartFilterSettingWrapper .SmartFilterSettingButtonPanel .SmartFilterSettingSaveButton:hover {
+    background: rgb(37, 150, 91);
+}
+.SmartFilterSettingWrapper .SmartFilterSettingButtonPanel .SmartFilterSettingRefreshButton:hover {
+    background: rgb(199, 167, 44);
+}
+.SmartFilterSettingWrapper .SmartFilterSettingButtonPanel .SmartFilterSettingDefaultButton:hover {
+    background: rgb(165, 51, 36);
+}
