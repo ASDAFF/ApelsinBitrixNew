@@ -168,3 +168,20 @@
 .catalog-detail .LAWYER_GOODS_NOTICE {
     font-size: 9px;
 }
+.price_buy_detail .APLS_RetailPrice {
+    padding: .5em;
+    font-size: 12px;
+    /*margin: .5em 0 0 0;*/
+    /*border: 1px solid #dee0ee;*/
+    color: #a0a4bc;
+}
+.price_buy_detail .APLS_RetailPrice .text {
+    /*font-size: 12px;*/
+    white-space: nowrap;
+    margin-right: .5em;
+}
+.price_buy_detail .APLS_RetailPrice .price {
+    white-space: nowrap;
+    /*font-size: 16px;*/
+    font-weight: 800;
+}

@@ -51,6 +51,18 @@ class APLS_CatalogItemInfo
         return $html;
     }
 
+    public static function getRetailPrice($prices) {
+        $html = "";
+        foreach ($prices as $price) {
+            if($price["PRICE_ID"] === "1" && isset($price["PRINT_VALUE"]) && $price["PRINT_VALUE"] !== "") {
+                $html .= "<div class='APLS_RetailPrice'>";
+                $html .= "Цена в магазине: <span class='price'>".$price["PRINT_VALUE"]."</span>";
+                $html .= "</div>";
+            }
+        }
+        return $html;
+    }
+
     public static function getServiceCenters($servisString) {
         $APLS_ServiceCenters = new APLS_CatalogItemDetailsServiceCenters($servisString);
         return $APLS_ServiceCenters->getHtml();
