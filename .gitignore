@@ -6,6 +6,7 @@ Thumbs.db
 /sitemap*.xml
 /doc.html
 /bitrix/modules/rbs.payment/log.txt
+/log.txt
 
 /desktop_app/
 /desktop_app/*
