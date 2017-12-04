@@ -1,5 +1,6 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Личный кабинет");?>
+$APPLICATION->SetTitle("Личный кабинет");
+define('BX_DISABLE_INDEX_PAGE', true);?>
 
 <?$APPLICATION->IncludeComponent(
 	"bitrix:sale.personal.section", 
