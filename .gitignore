@@ -21,6 +21,7 @@ business_encode_*
 /bitrix/*
 !bitrix/components
 bitrix/components/bitrix/
+!bitrix/.settings_extra.php
 
 # Отображаем интерфейс init.php
 !bitrix/php_interface/
