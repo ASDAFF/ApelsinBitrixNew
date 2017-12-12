@@ -3,6 +3,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_ad
 require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/iblock/iblock.php");
 require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/iblock/prolog.php");
 $APPLICATION->SetTitle("Выгрузка изображений для разделов");
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogHelper.php";
 
 $_SESSION["uploader"]["message"] = array();
 $_SESSION["uploader"]["images_data"] = array();
@@ -83,7 +84,7 @@ function setInfoblockElementsImages($key, $iblock_id, $dir)
 		$_SESSION["uploader"]["message"][] = "Не найдено ни одного изображения";
 	}
 }
-
+$_SESSION["uploader"]["iblock_id"] = APLS_CatalogHelper::getShopIblockId();
 // проверяем был ли получен запрос и если да, то приступаем к обработке
 if ($REQUEST_METHOD == "POST" && $_REQUEST["Load"] != "" && $USER->GetID() == APLS_ALLOWED_USER && check_bitrix_sessid()) {
 	if (checkPostValue("iblock_id") && checkPostValue("images_dir")) {
