@@ -12,7 +12,6 @@ $_SESSION["uploader"]["elements_xml_id"] = array();
 $_SESSION["uploader"]["counter"] = 0;
 
 // Задаем константы
-define(APLS_ALLOWED_USER, "1");
 define(APLS_TEST_DEBUG, FALSE);
 define(APLS_IMAGE_KEY, "image");
 define(APLS_THUMBS_KEY, "thumbs");
@@ -86,7 +85,7 @@ function setInfoblockElementsImages($key, $iblock_id, $dir)
 }
 $_SESSION["uploader"]["iblock_id"] = APLS_CatalogHelper::getShopIblockId();
 // проверяем был ли получен запрос и если да, то приступаем к обработке
-if ($REQUEST_METHOD == "POST" && $_REQUEST["Load"] != "" && $USER->GetID() == APLS_ALLOWED_USER && check_bitrix_sessid()) {
+if ($REQUEST_METHOD == "POST" && $_REQUEST["Load"] != "" && check_bitrix_sessid()) {
 	if (checkPostValue("iblock_id") && checkPostValue("images_dir")) {
 		// получаем ID инфоблока
 		$_SESSION["uploader"]["iblock_id"] = $_REQUEST["iblock_id"];
