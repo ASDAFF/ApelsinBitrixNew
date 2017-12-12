@@ -1,0 +1,116 @@
+.sections-no-image-list-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    color: #8184a1;
+    background: #FFFFFF;
+}
+.sections-no-image-list-wrapper .apls-sort-list {
+    width: 49%;
+}
+
+.sections-no-image-list-wrapper .apls-sort-list-title {
+
+}
+
+.apls-sort-list .apls-sort-list-content {
+    background: transparent!important;
+}
+.apls-sort-list .apls-sort-list-content .apls-sort-list-element .text {
+    padding: .5em 0em .5em 0em!important;
+}
+
+.sections-no-image-list-wrapper .apls-sort-list-element .text {
+    display: block;
+    width: 100%;
+}
+.sections-no-image-list-wrapper .apls-sort-list-element .text span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.sections-no-image-list-wrapper .apls-sort-list-element .text .pathToRoot {
+    font-size: 13px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+.sections-no-image-list-wrapper .apls-sort-list-element .text .pathToRoot .pathToRootNode {
+    margin: 0 0.2em;
+}
+
+
+
+/* хлебные крошки */
+.breadcrumb__item {
+    display: inline-block;
+    background: #f6f6fb;
+    text-decoration: none;
+    margin: 0 .5em 0 1em;
+    position: relative;
+    height: 3em;
+    max-width: 180px;
+    font-size: 10px;
+}
+.breadcrumb__item::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    border-width: 1.5em 0 1.5em 1em;
+    border-style: solid;
+    border-color: #f6f6fb #f6f6fb #f6f6fb transparent;
+    left: -1em;
+}
+.breadcrumb__item::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    border-top: 1.5em solid transparent;
+    border-bottom: 1.5em solid transparent;
+    border-left: 1em solid #f6f6fb;
+    right: -1em;
+}
+.breadcrumb__item:first-child {
+    margin: 0 .5em 0 0;
+}
+.breadcrumb__item:first-child::before {
+    display: none;
+}
+.breadcrumb__item>.breadcrumb__link,
+.breadcrumb__item>.breadcrumb__title {
+    display: table-cell;
+    vertical-align: middle;
+    height: 3em;
+    padding: 0 1em;
+    color: #8184a1;
+    text-decoration: none;
+}
+.breadcrumb__item:hover {
+    background: #ef7f1a;
+}
+.breadcrumb__item:hover::before {
+    border-color: #ef7f1a #ef7f1a #ef7f1a transparent;
+}
+.breadcrumb__item:hover::after {
+    border-left: 1em solid #ef7f1a;
+}
+.breadcrumb__item:hover>.breadcrumb__link,
+.breadcrumb__item:hover>.breadcrumb__title {
+    color: #FFFFFF;
+}
+.breadcrumb__item:hover:last-child {
+    background: #f6f6fb;
+}
+.breadcrumb__item:hover:last-child::before {
+    border-color: #f6f6fb #f6f6fb #f6f6fb transparent;
+}
+.breadcrumb__item:hover:last-child::after {
+    border-left: 1em solid #f6f6fb;
+}
+.breadcrumb__item:hover:last-child>.breadcrumb__link,
+.breadcrumb__item:hover:last-child>.breadcrumb__title {
+    color: #8184a1;
+}
