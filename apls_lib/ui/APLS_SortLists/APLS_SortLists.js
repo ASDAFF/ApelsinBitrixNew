@@ -1,6 +1,6 @@
 function aplsSortListAddSelectableAndSortable() {
     $('.apls-sort-list-content').selectable({
-        cancel: '.sort-handle',
+        cancel: '.sort-handle, a, .no-select-item',
         items: ">div",
         selected: function( e, ui ) {
             if ($( ui.selected ).hasClass( "ui-selected-apls" )) {
@@ -15,7 +15,7 @@ function aplsSortListAddSelectableAndSortable() {
     }).sortable({
         connectWith: ".apls-sort-list-content",
         handle: 'div, .sort-handle, .ui-selected-apls',
-        cancel: ">div",
+        cancel: ">div, a, .no-select-item",
         helper: function (e, item) {
             if (!item.hasClass('ui-selected-apls')) {
                 item.parent().children('.ui-selected-apls').removeClass('ui-selected-apls');
