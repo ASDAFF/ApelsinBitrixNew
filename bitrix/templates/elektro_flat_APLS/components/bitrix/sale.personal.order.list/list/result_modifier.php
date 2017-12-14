@@ -108,7 +108,8 @@ foreach($arResult["ORDERS"] as $key => $val) {
 						$propertyList["VALUE"] = $propertyList["OPTIONS"][$propertyList["VALUE"]];
 					}
 				}
-				$arResult["ORDERS"][$key]["ORDER"]["ORDER_PROPS"][] = $propertyList;
+				/** скрываем все доп поля на странице со списком заказов **/
+//				$arResult["ORDERS"][$key]["ORDER"]["ORDER_PROPS"][] = $propertyList;
 			}
 		}
 	}	
