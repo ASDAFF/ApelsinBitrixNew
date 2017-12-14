@@ -8384,11 +8384,15 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 .sale-profile-detail-form-property input[type="text"]{
 	width:319px;
 	height:30px;
-	margin:0px;
+	margin-top:3px;
 	padding:0px 9px;
 	-moz-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	box-sizing:border-box;
+}
+
+.personal input[type="file"] {
+	margin-top:3px;
 }
 
 .personal textarea,
