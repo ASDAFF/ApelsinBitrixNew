@@ -9,5 +9,5 @@ $MESS ['NEW_PASSWORD_REQ'] = "Новый пароль";
 $MESS ['MAIN_SAVE'] = "Сохранить";
 $MESS ['MAIN_PSWD'] = "Пароль";
 $MESS ['LEGEND_PROFILE'] = "Личные данные";
-$MESS["UF_CARD_NUMBER_TITLE"] = "Персональная карта клиента.";
+$MESS["UF_CARD_NUMBER_TITLE"] = "Персональная карта клиента";
 ?>
