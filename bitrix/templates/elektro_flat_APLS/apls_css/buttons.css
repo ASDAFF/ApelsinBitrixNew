@@ -13,14 +13,20 @@
 /* оранжевая кнопка */
 .btn_buy,
 .btn_buy.popdef,
-.btn_buy.apuo_detail {
+.btn_buy.apuo_detail,
+.bx-soa-order-save .btn_buy.popdef,
+.btn_buy.popdef.next,
+.cart-buttons .btn_buy.popdef {
     border: 1px solid #ef7f1a;
     background: transparent;
     color: #ef7f1a;
 }
 .btn_buy:hover,
 .btn_buy.popdef:hover,
-.btn_buy.apuo_detail:hover {
+.btn_buy.apuo_detail:hover,
+.bx-soa-order-save .btn_buy.popdef:hover,
+.btn_buy.popdef.next:hover,
+.cart-buttons .btn_buy.popdef:hover {
     border: 1px solid #ef7f1a;
     background: #ef7f1a !important;
     color: #FFFFFF;
@@ -32,14 +38,16 @@
 /* серая кнокпа */
 .btn_buy.popdef,
 .btn_buy.apuo,
-#altop_search form input[type="submit"] {
+#altop_search form input[type="submit"],
+.btn_buy.ppp.prev {
     border: 1px solid #dee0ee;
     background: transparent;
     color: #8184a1;
 }
 .btn_buy.popdef:hover,
 .btn_buy.apuo:hover,
-#altop_search form input[type="submit"]:hover {
+#altop_search form input[type="submit"]:hover,
+.btn_buy.ppp.prev:hover {
     border: 1px solid #ef7f1a;
     background: #ef7f1a !important;
     color: #FFFFFF;

@@ -334,6 +334,13 @@ input[type="text"] {
     height: 300px;
 }
 
+.hint_agreement .checkbox span.input-checkbox i {
+    color: #ef7f1a;
+}
+.hint_agreement .checkbox span.input-checkbox.cheked {
+    border: 2px solid #ef7f1a;
+}
+
 /* ИКОНКИ */
 .fa.delivery-small-icon,
 .fa.bonus-small-icon,
