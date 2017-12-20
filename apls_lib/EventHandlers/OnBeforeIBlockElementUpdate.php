@@ -1,5 +1,6 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogProperties.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/APLS_GetGlobalParam.php";
 
 AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", ["APLS_ActivateUpdater", "init"]);
 
@@ -28,6 +29,7 @@ class APLS_ActivateUpdater
     private static $dimensions_koeff_id = array();
     private static $dimensions_id = array();
     private static $siteDelSectionId;
+    private static $options = array();
 
     private function __construct()
     {
@@ -45,6 +47,14 @@ class APLS_ActivateUpdater
             self::$dimensions_id[$key] = APLS_CatalogProperties::convertPropertyXMLIDtoID($code);
         }
         self::$siteDelSectionId = self::getNonActiveProducts();
+        $property_enums = CIBlockPropertyEnum::GetList(
+            Array("DEF"=>"DESC", "SORT"=>"ASC"),
+            Array("IBLOCK_ID"=>APLS_GetGlobalParam::getParams("HIGHLOAD_CATALOG_ID"), "CODE"=>self::$checkedProduct_code)
+        );
+        while($enum_fields = $property_enums->GetNext())
+        {
+            self::$options[$enum_fields["ID"]] = $enum_fields["XML_ID"];
+        }
     }
 
     private static function getInstance()
@@ -64,34 +74,28 @@ class APLS_ActivateUpdater
         if ($res_arr['IBLOCK_SECTION_ID'] === self::$siteDelSectionId && $res_arr["ACTIVE"] === "Y") {
             $arFields["ACTIVE"] = "N";
         } else {
-            $property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$arFields["IBLOCK_ID"], "CODE"=>self::$checkedProduct_code));
-            $options = array();
-            while($enum_fields = $property_enums->GetNext())
-            {
-                $options[$enum_fields["ID"]] = $enum_fields["XML_ID"];
-            }
-                if ($options[self::getArrayPropertyValue($arFields, self::$checkedProduct_id)] == "true") {
-                    $arr_akt = CIBlockElement::GetProperty($arFields["IBLOCK_ID"], $arFields["ID"], array(), array("CODE" => self::$aktivnost_code));
-                    if ($prop_akt = $arr_akt->Fetch()) {
-                        if (
-                            self::getArrayPropertyValue($arFields, self::$aktivnost_id) !== $prop_akt["VALUE"] &&
-                            self::getArrayPropertyValue($arFields, self::$aktivnost_id) !== NULL
-                        ) {
-                            $yes = "false";
-                            $no = "true";
-                        } else {
-                            $yes = "true";
-                            $no = "false";
-                        }
-                        if ($activeValue === "N" && $prop_akt["VALUE_XML_ID"] === $yes) {
-                            $arFields["ACTIVE"] = "Y";
-                        } elseif ($activeValue === "Y" && $prop_akt["VALUE_XML_ID"] === $no) {
-                            $arFields["ACTIVE"] = "N";
-                        }
+            if (self::$options[self::getArrayPropertyValue($arFields, self::$checkedProduct_id)] == "true") {
+                $arr_akt = CIBlockElement::GetProperty($arFields["IBLOCK_ID"], $arFields["ID"], array(), array("CODE" => self::$aktivnost_code));
+                if ($prop_akt = $arr_akt->Fetch()) {
+                    if (
+                        self::getArrayPropertyValue($arFields, self::$aktivnost_id) !== $prop_akt["VALUE"] &&
+                        self::getArrayPropertyValue($arFields, self::$aktivnost_id) !== NULL
+                    ) {
+                        $yes = "false";
+                        $no = "true";
+                    } else {
+                        $yes = "true";
+                        $no = "false";
                     }
-                } else {
-                    $arFields["ACTIVE"] = "N";
+                    if ($activeValue === "N" && $prop_akt["VALUE_XML_ID"] === $yes) {
+                        $arFields["ACTIVE"] = "Y";
+                    } elseif ($activeValue === "Y" && $prop_akt["VALUE_XML_ID"] === $no) {
+                        $arFields["ACTIVE"] = "N";
+                    }
                 }
+            } else {
+                $arFields["ACTIVE"] = "N";
+            }
         }
 
         $updateArray = array();
@@ -120,35 +124,6 @@ class APLS_ActivateUpdater
                     $updateArray["UF_XMLID"] = $arFields["XML_ID"];
                     $updateArray[$ufkey] = null;
                 }
-                /*
-                 * HL
-                 * a1 не быть
-                 * a2 быть такимже как и в изменении
-                 * a3 быть не таким как в изменении
-                 *
-                 * Товар
-                 * b1 не быть
-                 * b2 быть как в изменении
-                 * b3 быть не таким как в изменении
-                 *
-                 * a1b1 - изменения
-                 * a1b3 - изменения
-                 * a3b1 - изменение
-                 * a3b3 - изменение
-                 *
-                 * a2b2 - пустота
-                 * a3b2 - пустота
-                 *
-                 * a1b2 - игнорим
-                 * a2b1 - игнорим
-                 * a2b3 - игнорим
-                 *
-                 * */
-
-
-//
-//                $updateArray["UF_XMLID"] = $arFields["XML_ID"];
-//                $updateArray["UF_" . $key] = $dimensionsEditValue;
             }
         }
         self::setHLbValue($updateArray, $arFields["XML_ID"]);
