@@ -259,17 +259,69 @@ $APPLICATION->ShowPanel();
 */
 ?>
 </head>
-<body>
-<div class="wrapper">
-	<div class="center">
-		<div class="head">
-			<a href="<?=$serverName?>"><img class="logo" src="/bitrix/templates/elektro_flat_APLS/images/apls_logo.png" alt="Магазин Апельсин"></a>
-			<div class="contacts">
-				<div class="phone">7 (4912) 240 220</div>
-				<div class="phone">7 (4912) 502 020</div>
-				<div class="email">info@apelsin.ru</div>
+<body  style='font-family: "Open Sans", sans-serif;
+	   font-size: 13px !important;
+	   font-weight: 400 !important;
+	   color: #8184a1 !important;
+	   text-align: left;
+	   line-height: 1.3;
+	   background: #f4f5fd !important;
+	   width:100% !important'
+>
+<div class="wrapper" style='font-size: 12px;
+                     background: #f4f5fd !important;
+                     width:100% !important;
+                     color: #8184a1 !important'
+>
+	<div class="center" style='width: 800px;
+	                    margin: 0px auto;'
+    >
+		<div class="head" style='font-family: "Open Sans", sans-serif;
+	                      height: 80px;
+	                      padding: 0 20px;'
+        >
+			<a href="<?=$serverName?>" style='color: #ef7f1a !important;
+                                       text-decoration: none;
+                                       display: inline-block;
+                                       vertical-align: middle;
+                                       text-decoration: none'
+            ><img class="logo" src="/bitrix/templates/elektro_flat_APLS/images/apls_logo.png"
+                                            alt="Магазин Апельсин" style='margin: 5px 0px;
+	                                                               height: 70px'
+                >
+            </a>
+			<div class="contacts" style='float: right'>
+				<div class="phone" style='height: 80px;
+	                               line-height: 80px;
+	                               font-family: "Open Sans", sans-serif;
+                                   text-align: right;
+                                   float: right;
+                                   font-weight: 300;
+                                   font-size: 16px;
+                                   width: 150px'
+                >7 (4912) 240 220</div>
+				<div class="phone" style='height: 80px;
+	                               line-height: 80px;
+	                               font-family: "Open Sans", sans-serif;
+                                   text-align: right;
+                                   float: right;
+                                   font-weight: 300;
+                                   font-size: 16px;
+                                   width: 150px'
+                >7 (4912) 502 020</div>
+				<div class="email" style='height: 80px;
+                                   line-height: 80px;
+                                   font-family: "Open Sans", sans-serif;
+                                   text-align: right;
+                                   float: right;
+                                   font-weight: 300;
+                                   font-size: 16px;
+                                   width: 150px'>info@apelsin.ru
+                </div>
 			</div>
 		</div>
-		<div class="content">
+		<div class="content" style='background: #fff;
+	                         padding: 20px;'
+        >
 			<!-- ***************** CONTENT  ********************-->	
 			
