@@ -7,9 +7,9 @@
     <a href="apelsin.ru">Перейти на сайт компании</a>
     <br><br><br>
 </div>
-<script language="JavaScript">
-    window.location.href = "http://apelsin.ru"
-</script>
+<!--<script language="JavaScript">-->
+<!--    window.location.href = "http://apelsin.ru"-->
+<!--</script>-->
 
 <div class="content-form login-form">
 	<div class="fields">
