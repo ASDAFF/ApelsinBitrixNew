@@ -26,7 +26,7 @@
 
 .equipment-order.basket .thead,
 .equipment-order.detail .thead{
-    background: #fafafd !important;
+    background: #edeef8 !important;
 }
 .equipment-order.basket .tbody,
 .equipment-order.detail .tbody {
@@ -43,7 +43,7 @@
 .cart-items .equipment .tbody .myorders_itog,
 .cart-items .equipment-order .myorders_itog {
     border: none !important;
-    background-color: #fafafd !important;
+    background-color: #edeef8 !important;
     margin: 0 !important;
 }
 .myorders_itog .cart-allsum .allsum,
