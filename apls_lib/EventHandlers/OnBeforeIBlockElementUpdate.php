@@ -1,6 +1,7 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogProperties.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/APLS_GetGlobalParam.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogHelper.php";
 
 AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", ["APLS_ActivateUpdater", "init"]);
 
@@ -49,7 +50,7 @@ class APLS_ActivateUpdater
         self::$siteDelSectionId = self::getNonActiveProducts();
         $property_enums = CIBlockPropertyEnum::GetList(
             Array("DEF"=>"DESC", "SORT"=>"ASC"),
-            Array("IBLOCK_ID"=>APLS_GetGlobalParam::getParams("HIGHLOAD_CATALOG_ID"), "CODE"=>self::$checkedProduct_code)
+            Array("IBLOCK_ID"=>APLS_CatalogHelper::getShopIblockId(), "CODE"=>self::$checkedProduct_code)
         );
         while($enum_fields = $property_enums->GetNext())
         {
@@ -67,6 +68,9 @@ class APLS_ActivateUpdater
 
     public static function init(&$arFields)
     {
+        if($arFields["IBLOCK_ID"] != APLS_CatalogHelper::getShopIblockId()) {
+            return;
+        }
         self::getInstance();
         $rs = CIBlockElement::GetList(array(), array("ID" => $arFields["ID"]), false, array("nTopCount" => 1));
         $res_arr = $rs->Fetch();
