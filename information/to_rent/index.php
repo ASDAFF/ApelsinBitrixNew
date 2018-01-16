@@ -1,7 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Ищем помещение");
-?><?/*<p class="TextP">Компания "Апельсин" рассмотрит предложения по аренде магазина площадью 3 000 - 50 000 м², склада, базы для торговли строительно-отделочными материалами в Центральном Федеральном Округе.</p>
+?><p class="TextP">Компания "Апельсин" рассмотрит предложения по аренде магазина площадью 3 000 - 50 000 м², склада, базы для торговли строительно-отделочными материалами в Центральном Федеральном Округе.</p>
 <p class="TextP">Компания "Апельсин" рассмотрит предложения по аренде/выкупу земельных участков и торговых площадей для торговли строительно-отделочными материалами.</p>
 <p class="TextListName">Информация для собственников земельных участков:</p>
 <p class="TextListName InfoText">Требования к участкам:</p>
@@ -57,4 +57,4 @@ $APPLICATION->SetTitle("Ищем помещение");
 <p class="TextP">Просим направлять Ваше предложение с обязательным приложением необходимых документов по объекту и ситуационным планом (карта с отмеченными границами участка).</p>
 <p class="TextP">Кузнецов Дмитрий Сергеевич</p>
 <p class="TextP"><a href="tel:84912240330">8(4912)240-330</a>, <a href="tel:89209700701">8(920)970-07-01</a></p>
-<p class="TextP"><a href="mailto:kuznetsov.dmitriy@apelsin.ru">kuznetsov.dmitriy@apelsin.ru</a></p>*/?><? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");?>
+<p class="TextP"><a href="mailto:kuznetsov.dmitriy@apelsin.ru">kuznetsov.dmitriy@apelsin.ru</a></p><? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");?>
