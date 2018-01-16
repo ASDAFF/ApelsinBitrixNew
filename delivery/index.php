@@ -2,7 +2,7 @@
 $APPLICATION->SetTitle("Доставка и подъем");
 ?>
 
-	<script type="text/javascript">
+	<?/*<script type="text/javascript">
 		ymaps.ready(init);
 
 		function init() {
@@ -1252,6 +1252,6 @@ $APPLICATION->SetTitle("Доставка и подъем");
 				<td>Линолеум и ковролин 4,0</td>
 				<td>100 руб</td>
 			</tr>
-		</table>
+		</table>*/?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
