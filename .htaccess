@@ -1,9 +1,9 @@
 Options -Indexes
 ErrorDocument 404 /404.php
 
-Order deny,allow
-deny from all
-Allow from 92.39.137.126 91.203.65.233 10.50.58.15 91.203.65.231
+#Order deny,allow
+#deny from all
+#Allow from 92.39.137.126 91.203.65.233 10.50.58.15 91.203.65.231
 
 <IfModule mod_php5.c>
   php_flag allow_call_time_pass_reference 1
