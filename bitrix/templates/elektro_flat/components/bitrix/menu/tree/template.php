@@ -45,6 +45,9 @@ global $arSetting;?>
 						dropdownMenu = $(this).children(".submenu"),
 						dropdownMenuLeft = pos.left + $(this).width() + 9 + "px",
 						dropdownMenuTop = pos.top - 5 + "px";
+					if(pos.top + dropdownMenu.outerHeight() > $(window).height() + $(window).scrollTop() - 46) {
+						dropdownMenuTop = pos.top - dropdownMenu.outerHeight() + $(this).outerHeight() + 5 + "px";
+					}
 					dropdownMenu.css({"left": dropdownMenuLeft, "top": dropdownMenuTop});
 					dropdownMenu.stop(true, true).delay(200).fadeIn(150);
 				<?elseif($arSetting["CATALOG_LOCATION"]["VALUE"] == "HEADER"):?>

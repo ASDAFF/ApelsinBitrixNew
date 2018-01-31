@@ -619,7 +619,7 @@ if(!empty($arResult["PROPERTIES"]["VERSIONS_PERFORMANCE"]["VALUE"]) || !empty($a
 if(!empty($arResult["PROPERTIES"]["MANUFACTURER"]["VALUE"])) {
 	$obElement = CIBlockElement::GetByID($arResult["PROPERTIES"]["MANUFACTURER"]["VALUE"]);
 	if($arEl = $obElement->GetNext()) {
-		$arResult["PROPERTIES"]["MANUFACTURER"]["NAME"] = $arEl["NAME"];
+		$arResult["PROPERTIES"]["MANUFACTURER"]["FULL_VALUE"]["NAME"] = $arEl["NAME"];
 		
 		//PREVIEW_PICTURE//
 		if($arEl["PREVIEW_PICTURE"] > 0) {
@@ -631,13 +631,13 @@ if(!empty($arResult["PROPERTIES"]["MANUFACTURER"]["VALUE"])) {
 					BX_RESIZE_IMAGE_PROPORTIONAL,
 					true
 				);
-				$arResult["PROPERTIES"]["MANUFACTURER"]["PREVIEW_PICTURE"] = array(
+				$arResult["PROPERTIES"]["MANUFACTURER"]["FULL_VALUE"]["PREVIEW_PICTURE"] = array(
 					"SRC" => $arFileTmp["src"],
 					"WIDTH" => $arFileTmp["width"],
 					"HEIGHT" => $arFileTmp["height"],
 				);
 			} else {
-				$arResult["PROPERTIES"]["MANUFACTURER"]["PREVIEW_PICTURE"] = $arFile;
+				$arResult["PROPERTIES"]["MANUFACTURER"]["FULL_VALUE"]["PREVIEW_PICTURE"] = $arFile;
 			}
 		}
 	}
@@ -748,30 +748,66 @@ if(!empty($arResult["PROPERTIES"]["FILES_DOCS"]["VALUE"])) {
 }
 
 //PROPERTIES_FILTER_HINT//
-if(!empty($arResult["DISPLAY_PROPERTIES"])) {
-	$rsProperty = CIBlockSectionPropertyLink::GetArray($arParams["IBLOCK_ID"],$arResult["IBLOCK_SECTION_ID"]);
-	foreach($arResult["DISPLAY_PROPERTIES"] as $code => $arProp) {
-		if("F" == $arProp["PROPERTY_TYPE"]) {
-			unset($arResult["DISPLAY_PROPERTIES"][$code]);
-		} else {
-			$arResult["DISPLAY_PROPERTIES"][$code]["FILTER_HINT"] = $rsProperty[$arProp["ID"]]["FILTER_HINT"];			
+//MAIN_PROPERTIES//
+if(!empty($arResult["DISPLAY_PROPERTIES"]) || !empty($arParams["MAIN_BLOCK_PROPERTY_CODE"])) {
+	$rsProperty = CIBlockSectionPropertyLink::GetArray($arParams["IBLOCK_ID"], $arResult["IBLOCK_SECTION_ID"]);
+	//PROPERTIES_FILTER_HINT//
+	if(!empty($arResult["DISPLAY_PROPERTIES"])) {	
+		foreach($arResult["DISPLAY_PROPERTIES"] as $code => $arProp) {		
+			$arResult["DISPLAY_PROPERTIES"][$code]["FILTER_HINT"] = $rsProperty[$arProp["ID"]]["FILTER_HINT"];		
 		}
+		unset($code, $arProp);
+	}
+	//MAIN_PROPERTIES//
+	if(!empty($arParams["MAIN_BLOCK_PROPERTY_CODE"])) {
+		$arResult["DISPLAY_MAIN_PROPERTIES"] = array();
+		foreach($arParams["MAIN_BLOCK_PROPERTY_CODE"] as $pid) {
+			if(!isset($arResult["PROPERTIES"][$pid]))
+				continue;
+			$prop = &$arResult["PROPERTIES"][$pid];
+			$boolArr = is_array($prop["VALUE"]);
+			if(($boolArr && !empty($prop["VALUE"])) || (!$boolArr && (string)$prop["VALUE"] !== "")) {
+				$arResult["DISPLAY_MAIN_PROPERTIES"][$pid] = CIBlockFormatProperties::GetDisplayValue($arResult, $prop, "catalog_out");			
+				$arResult["DISPLAY_MAIN_PROPERTIES"][$pid]["FILTER_HINT"] = $rsProperty[$prop["ID"]]["FILTER_HINT"];
+			}
+		}
+		unset($prop, $pid);
 	}
 }
 
 //OFFERS_PROPERTIES_FILTER_HINT//
+//OFFERS_S_PROPERTIES//
+//MAIN_OFFERS_PROPERTIES//
 $mxResult = CCatalogSKU::GetInfoByProductIBlock($arParams["IBLOCK_ID"]);
 if(is_array($mxResult)) {
-	$rsProperty = CIBlockSectionPropertyLink::GetArray($mxResult["IBLOCK_ID"],$arResult["IBLOCK_SECTION_ID"]);
+	$rsProperty = CIBlockSectionPropertyLink::GetArray($mxResult["IBLOCK_ID"], $arResult["IBLOCK_SECTION_ID"]);
 	if(isset($arResult["OFFERS"]) && !empty($arResult["OFFERS"])) {
 		foreach($arResult["OFFERS"] as $key_off => $arOffer) {
-			foreach($arOffer["DISPLAY_PROPERTIES"] as $code => $arProp) {
-				$filterHint = $rsProperty[$arProp["ID"]]["FILTER_HINT"];
-				$arResult["OFFERS"][$key_off]["DISPLAY_PROPERTIES"][$code]["FILTER_HINT"] = $filterHint;
-				if($arProp["PROPERTY_TYPE"] == "S") {							
-					$arResult["OFFERS"][$key_off]["DISPLAY_S_PROPERTIES"][$code]["NAME"] = $arProp["NAME"];
-					$arResult["OFFERS"][$key_off]["DISPLAY_S_PROPERTIES"][$code]["FILTER_HINT"] = $filterHint;
-					$arResult["OFFERS"][$key_off]["DISPLAY_S_PROPERTIES"][$code]["VALUE"] = $arProp["VALUE"];
+			if(!empty($arOffer["DISPLAY_PROPERTIES"])) {
+				foreach($arOffer["DISPLAY_PROPERTIES"] as $code => $arProp) {
+					$filterHint = $rsProperty[$arProp["ID"]]["FILTER_HINT"];
+					//OFFERS_PROPERTIES_FILTER_HINT//
+					$arResult["OFFERS"][$key_off]["DISPLAY_PROPERTIES"][$code]["FILTER_HINT"] = $filterHint;					
+					//OFFERS_S_PROPERTIES//
+					if($arProp["PROPERTY_TYPE"] == "S") {							
+						$arResult["OFFERS"][$key_off]["DISPLAY_S_PROPERTIES"][$code]["NAME"] = $arProp["NAME"];
+						$arResult["OFFERS"][$key_off]["DISPLAY_S_PROPERTIES"][$code]["FILTER_HINT"] = $filterHint;
+						$arResult["OFFERS"][$key_off]["DISPLAY_S_PROPERTIES"][$code]["VALUE"] = $arProp["VALUE"];
+					}
+				}
+			}
+			//MAIN_OFFERS_PROPERTIES//
+			if(!empty($arParams["MAIN_BLOCK_OFFERS_PROPERTY_CODE"])) {
+				$arResult["OFFERS"][$key_off]["DISPLAY_MAIN_PROPERTIES"] = array();
+				foreach($arParams["MAIN_BLOCK_OFFERS_PROPERTY_CODE"] as $pid) {
+					if(!isset($arOffer["PROPERTIES"][$pid]))
+						continue;
+					$prop = &$arOffer["PROPERTIES"][$pid];
+					$boolArr = is_array($prop["VALUE"]);
+					if(($boolArr && !empty($prop["VALUE"])) || (!$boolArr && (string)$prop["VALUE"] !== "")) {
+						$arResult["OFFERS"][$key_off]["DISPLAY_MAIN_PROPERTIES"][$pid] = CIBlockFormatProperties::GetDisplayValue($arResult, $prop, "catalog_out");			
+						$arResult["OFFERS"][$key_off]["DISPLAY_MAIN_PROPERTIES"][$pid]["FILTER_HINT"] = $rsProperty[$prop["ID"]]["FILTER_HINT"];
+					}
 				}
 			}
 		}
@@ -1303,6 +1339,9 @@ foreach($arSKUPropList as $key => $arSKUProp) {
 				} else {
 					$arSKUPropList[$key]["VALUES"][$arFields["ID"]]["PICT"] = $arFile;
 				}
+			} else {
+				if(!empty($arSKUPropList[$key]["VALUES"][$arFields["ID"]]["PICT"]))
+					$arSKUPropList[$key]["VALUES"][$arFields["ID"]]["PICT"] = null;
 			}
 		}			
 	}
@@ -1354,6 +1393,9 @@ if($arResult["MODULES"]["currency"]) {
 //PROPERTY_ACCESSORIES_ID//
 $arResult["PROPERTY_ACCESSORIES_ID"] = $arResult["PROPERTIES"]["ACCESSORIES"]["VALUE"];
 
+//BACKGROUND_YOUTUBE//
+$arResult["BACKGROUND_YOUTUBE"] = $arResult["PROPERTIES"]["BACKGROUND_YOUTUBE"]["VALUE"];
+
 $arResult["PRICE_MATRIX_SHOW"]["COLS"] = $arResult["PRICE_MATRIX"]["COLS"];
 $arResult["PRICE_MATRIX_SHOW"]["MATRIX"] = $arPriceMatrix;
 
@@ -1369,6 +1411,7 @@ $this->__component->SetResultCacheKeys(
 		"DETAIL_PICTURE",
 		"MORE_PHOTO",
 		"PROPERTY_ACCESSORIES_ID",
+		"BACKGROUND_YOUTUBE",
 		"MIN_PRICE",
 		"CAN_BUY",		
 		"JS_OFFERS",

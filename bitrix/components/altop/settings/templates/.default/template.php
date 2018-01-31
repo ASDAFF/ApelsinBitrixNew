@@ -9,7 +9,7 @@ use Bitrix\Main\Localization\Loc,
 	<div class="header">
 		<?=Loc::getMessage("THEME_MODIFY")?><span class="switch"><i class="fa fa-cog"></i></span>		
 	</div>
-	<form action="<?=$APPLICATION->GetCurPage()?>" method="POST" name="style-switcher">
+	<form action="javascript:void(0)<?/*=$APPLICATION->GetCurPage()*/?>" method="POST" name="style-switcher">
 		<?=bitrix_sessid_post();
 		$i = 1;
 		foreach($arResult as $optionCode => $arOption):			
@@ -121,9 +121,10 @@ use Bitrix\Main\Localization\Loc,
 					<?$i++;
 				endif;
 			else:?>
-				<input type="hidden" name="<?=$optionCode?>" value="<?=$arOption["VALUE"]?>" />
+				<input type="hidden" name="<?=$optionCode?>" value="<?=strtr(base64_encode(serialize($arOption['VALUE'])), '+/=', '-_,')?>" />
 			<?endif;			
 		endforeach;?>
+		<input type="hidden" name="SITE_BACKGROUNDS" value="<?=strtr(base64_encode(serialize($arParams["SITE_BACKGROUNDS"])), '+/=', '-_,')?>" />
 		<div class="reset">
 			<div class="text"><?=Loc::getMessage("MORE_SETTINGS")?></div>
 			<button type="button" name="reset_button" class="btn_buy apuo"><i class="fa fa-repeat"></i><span><?=Loc::getMessage("THEME_RESET")?></span></button>
@@ -177,8 +178,8 @@ use Bitrix\Main\Localization\Loc,
 						$(".style-switcher .block #options-<?=$optionCode?>").slideToggle();
 					});
 				<?endif;
-			endforeach;?>			
-
+			endforeach;?>
+			
 			var curColor = $(".colors.custom-forms.active").data("color");				
 				customColorDiv = $(".color-scheme-custom .colors.custom-forms i"),
 				customColorInput = $(".color-scheme-custom input[id=option-color-scheme-custom]"),
@@ -203,7 +204,7 @@ use Bitrix\Main\Localization\Loc,
 				change: function(color) {
 					customColorDiv.parent().parent().find("input").attr("checked", "checked");					
 					formSwitcher.append("<input type='hidden' name='CHANGE_THEME' value='Y' />");
-					formSwitcher.submit();
+					formSwitcher.submit();					
 				}
 			});			
 					
@@ -238,7 +239,7 @@ use Bitrix\Main\Localization\Loc,
 					e.preventDefault();
 					$(this).parents(".color-scheme-custom").find(".colors.custom-forms input").attr("checked", "checked");
 					formSwitcher.append("<input type='hidden' name='CHANGE_THEME' value='Y' />");
-					formSwitcher.submit();
+					formSwitcher.submit();					
 				}
 			});
 			
@@ -254,12 +255,27 @@ use Bitrix\Main\Localization\Loc,
 			$(".style-switcher .reset button[name=reset_button]").click(function(e) {
 				formSwitcher.append("<input type='hidden' name='CHANGE_THEME' value='Y' />");
 				formSwitcher.append("<input type='hidden' name='THEME' value='default' />");
-				formSwitcher.submit();
+				formSwitcher.submit();				
 			});
 			
 			$(".style-switcher .options input[type=radio], .style-switcher .options input[type=checkbox]").click(function(e) {		
 				formSwitcher.append("<input type='hidden' name='CHANGE_THEME' value='Y' />");
-				formSwitcher.submit();
+				formSwitcher.submit();				
+			});
+
+			formSwitcher.submit(function(e) {
+				e.preventDefault();
+
+				var $form = $(e.target);
+				
+				$.ajax({
+					url: '<?=$componentPath?>/ajax.php',
+					type: "POST",
+					data: $form.serialize(),					
+					success: function() {
+						location.reload();
+					}
+				});
 			});
 		});
 	</script>	

@@ -4,6 +4,7 @@ global $arSetting;
 
 //USE_PRICE_RATIO//
 $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"]);
+$inMinPrice = in_array("MIN_PRICE", $arSetting["PRODUCT_TABLE_VIEW"]["VALUE"]);
 
 //USE_PRICE_RATIO//
 foreach($arResult["ITEMS"] as $key => $arElement) {	
@@ -76,7 +77,7 @@ foreach($arResult["ITEMS"] as $key => $arElement) {
 		$vendorIds[] = $vendorId;
 
 	//MIN_PRICE//
-	if(count($arElement["ITEM_QUANTITY_RANGES"]) > 1) {
+	if(count($arElement["ITEM_QUANTITY_RANGES"]) > 1 && $inMinPrice) {
 		$minPrice = false;
 		foreach($arElement["ITEM_PRICES"] as $itemPrice) {
 			if($itemPrice["RATIO_PRICE"] == 0)

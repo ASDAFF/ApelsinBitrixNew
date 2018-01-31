@@ -13,6 +13,7 @@ $inPercentPrice = in_array("PERCENT_PRICE", $arSetting["PRODUCT_TABLE_VIEW"]["VA
 $inArticle = in_array("ARTNUMBER", $arSetting["PRODUCT_TABLE_VIEW"]["VALUE"]);
 $inRating = in_array("RATING", $arSetting["PRODUCT_TABLE_VIEW"]["VALUE"]);
 $inPreviewText = in_array("PREVIEW_TEXT", $arSetting["PRODUCT_TABLE_VIEW"]["VALUE"]);
+$inMinPrice = in_array("MIN_PRICE", $arSetting["PRODUCT_TABLE_VIEW"]["VALUE"]);
 $inProductQnt = in_array("PRODUCT_QUANTITY", $arSetting["GENERAL_SETTINGS"]["VALUE"]);
 $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"]);
 
@@ -281,7 +282,7 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 										<?}
 									}?>
 									<span class="catalog-item-price">
-										<?if(count($arElement["ITEM_QUANTITY_RANGES"]) > 1) {?>
+										<?if(count($arElement["ITEM_QUANTITY_RANGES"]) > 1 && $inMinPrice) {?>
 											<span class="from"><?=GetMessage("CATALOG_ELEMENT_FROM")?></span>
 										<?}
 										echo number_format($arElement["MIN_PRICE"]["RATIO_PRICE"], $arCurFormat["DECIMALS"], $arCurFormat["DEC_POINT"], $arCurFormat["THOUSANDS_SEP"]);?>
@@ -576,7 +577,10 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 	<div class="clr"></div>
 </div>
 
-<?//JS//?>
+<?$signer = new \Bitrix\Main\Security\Sign\Signer;
+$signedParams = $signer->sign(base64_encode(serialize($arResult["ORIGINAL_PARAMETERS"])), "catalog.section");
+
+//JS//?>
 <script type="text/javascript">
 	BX.ready(function() {
 		BX.message({			
@@ -589,7 +593,7 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 			FILTERED_POPUP_WINDOW_MORE_OPTIONS: "<?=GetMessageJS('CATALOG_ELEMENT_MORE_OPTIONS')?>",			
 			FILTERED_COMPONENT_TEMPLATE: "<?=$this->GetFolder();?>",
 			FILTERED_OFFERS_VIEW: "<?=$arSetting['OFFERS_VIEW']['VALUE']?>",
-			FILTERED_COMPONENT_PARAMS: "<?=CUtil::PhpToJSObject($arParams, false, true)?>"
+			FILTERED_COMPONENT_PARAMS: "<?=CUtil::JSEscape($signedParams)?>"
 		});	
 		<?foreach($arResult["ITEMS"] as $key => $arElement) {
 			if((isset($arElement["OFFERS"]) && !empty($arElement["OFFERS"])) || $arElement["SELECT_PROPS"]) {				

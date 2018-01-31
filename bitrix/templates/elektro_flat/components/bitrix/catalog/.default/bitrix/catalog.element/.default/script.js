@@ -57,6 +57,7 @@
 			DELAY_ID: "",
 			DELIVERY_ID: "",
 			ARTICLE_ID: "",
+			MAIN_PROPERTIES_ID: "",
 			PROPERTIES_ID: "",
 			CONSTRUCTOR_ID: "",
 			STORE_ID: "",
@@ -86,6 +87,7 @@
 		this.obDelay = null;
 		this.obDelivery = null;
 		this.obArticle = null;
+		this.obMainProperties = null;
 		this.obProperties = null;
 		this.obTree = null;
 		this.obSelect = null;
@@ -183,11 +185,13 @@
 					this.errorCode = -16;
 				}
 
-				this.obProperties = BX(this.visual.PROPERTIES_ID);
-				if(!this.obProperties && this.config.useCatalog) {
+				this.obMainProperties = BX(this.visual.MAIN_PROPERTIES_ID);
+				if(!this.obMainProperties && this.config.useCatalog) {
 					this.errorCode = -16;
 				}
 
+				this.obProperties = BX(this.visual.PROPERTIES_ID);
+				
 				this.obConstructor = BX(this.visual.CONSTRUCTOR_ID);
 				if(!this.obConstructor && this.config.useCatalog) {
 					this.errorCode = -16;
@@ -1259,15 +1263,26 @@
 	};
 
 	window.JCCatalogElement.prototype.setOfferProperties = function(offerId) {
-		var propertiesItems = BX.findChildren(this.obProperties, {className: "offer-property"}, true);
-		if(!!propertiesItems && 0 < propertiesItems.length) {
-			for(i = 0; i < propertiesItems.length; i++) {
-				BX.addClass(propertiesItems[i], "hidden");
+		var mainPropertiesItems = BX.findChildren(this.obMainProperties, {className: "offer-property"}, true);
+		if(!!mainPropertiesItems && 0 < mainPropertiesItems.length) {
+			for(i = 0; i < mainPropertiesItems.length; i++) {
+				if(mainPropertiesItems[i].getAttribute("id") == "offer-property_" + this.visual.ID + "_" + offerId)
+					BX.removeClass(mainPropertiesItems[i], "hidden");
+				else
+					BX.addClass(mainPropertiesItems[i], "hidden");
 			}
 		}
-		var curPropertiesItem = BX("offer-property_" + this.visual.ID + "_" + offerId);
-		if(!!curPropertiesItem)
-			BX.removeClass(curPropertiesItem, "hidden");
+		if(!!this.obProperties) {
+			var propertiesItems = BX.findChildren(this.obProperties, {className: "offer-property"}, true);
+			if(!!propertiesItems && 0 < propertiesItems.length) {
+				for(i = 0; i < propertiesItems.length; i++) {
+					if(propertiesItems[i].getAttribute("id") == "offer-property_" + this.visual.ID + "_" + offerId)
+						BX.removeClass(propertiesItems[i], "hidden");
+					else
+						BX.addClass(propertiesItems[i], "hidden");
+				}
+			}
+		}
 	};
 	
 	window.JCCatalogElement.prototype.setOfferConstructor = function(offerNum) {
@@ -1752,7 +1767,7 @@
 				opacity: 100
 			},
 			draggable: false,
-			closeByEsc: false,
+			closeByEsc: true,
 			className: "pop-up modal",
 			closeIcon: {top: "-10px", right: "-10px"},
 			titleBar: {content: BX.create("span", {html: BX.message("DETAIL_POPUP_WINDOW_TITLE")})}			

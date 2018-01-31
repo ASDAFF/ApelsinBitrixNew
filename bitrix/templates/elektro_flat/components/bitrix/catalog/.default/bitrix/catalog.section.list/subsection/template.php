@@ -8,16 +8,18 @@ if(count($arResult["SECTIONS"]) < 1)
 <div class="catalog-section-list">
 	<div class="catalog-section">		
 		<div class="catalog-section-childs">
-			<?foreach($arResult["SECTIONS"] as $arSection):?>
+			<?foreach($arResult["SECTIONS"] as $arSection) {?>
 				<div class="catalog-section-child">
 					<a href="<?=$arSection['SECTION_PAGE_URL']?>" title="<?=$arSection['NAME']?>">
 						<span class="child">
-							<span class="image">
-								<?if(is_array($arSection["PICTURE"])):?>
+							<span class="graph">
+								<?if(!empty($arSection["UF_ICON"])) {?>
+									<i class="<?=$arSection['UF_ICON']?>" aria-hidden="true"></i>
+								<?} elseif(is_array($arSection["PICTURE"])) {?>								
 									<img src="<?=$arSection['PICTURE']['SRC']?>" width="<?=$arSection['PICTURE']['WIDTH']?>" height="<?=$arSection['PICTURE']['HEIGHT']?>" alt="<?=$arSection['NAME']?>" title="<?=$arSection['NAME']?>" />
-								<?else:?>
+								<?} else {?>
 									<img src="<?=SITE_TEMPLATE_PATH?>/images/no-photo.jpg" width="50" height="50" alt="<?=$arSection['NAME']?>" title="<?=$arSection['NAME']?>" />
-								<?endif;?>
+								<?}?>
 							</span>
 							<span class="text-cont">
 								<span class="text"><?=$arSection["NAME"]?></span>
@@ -25,7 +27,7 @@ if(count($arResult["SECTIONS"]) < 1)
 						</span>
 					</a>
 				</div>				
-			<?endforeach;?>
+			<?}?>
 			<div class="clr"></div>
 		</div>
 	</div>

@@ -1,9 +1,30 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
+use \Bitrix\Main\Loader;
+use \Bitrix\Sale\Delivery\ExtraServices\Manager;
+
 global $arSetting;
 
-if(!CModule::IncludeModule("iblock") || !CModule::IncludeModule("catalog"))
+if(!Loader::includeModule('iblock') || !Loader::includeModule('catalog') || !Loader::includeModule('sale'))
 	return;
+
+foreach($arResult['SHIPMENT'] as $keyS => $shipment) {
+	$arListExtraService = Manager::getValuesForShipment($shipment['ID'], $shipment['DELIVERY']['ID']);
+	$extraServiceManager = new Manager($shipment['DELIVERY']['ID']);
+	$extraService = $extraServiceManager->getItems();
+	foreach ($extraService as $itemId => $item) {
+		if(array_key_exists($itemId, $arListExtraService)) {
+			$arResult['SHIPMENT'][$keyS]['EXTRA_SERVICE'][$itemId] = array(
+				'ID' => $itemId,
+				'NAME' => $item->getName(),
+				'DESCRIPTION' => $item->getDescription(),
+				'PARAMS' => $item->getParams(),
+				'VALUE' => $arListExtraService[$itemId]
+			);
+		}
+	}
+	unset($arListExtraService, $extraServiceManager, $extraService);
+}
 
 foreach($arResult["BASKET"] as $key => $arBasketItems) {
 	$ar = CIBlockElement::GetList(

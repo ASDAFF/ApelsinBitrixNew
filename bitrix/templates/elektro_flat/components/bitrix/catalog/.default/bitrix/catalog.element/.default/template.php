@@ -24,6 +24,7 @@ $arItemIDs = array(
 	"DELAY" => $strMainID."_delay",	
 	"DELIVERY" => $strMainID."_geolocation_delivery",
 	"ARTICLE" => $strMainID."_article",
+	"MAIN_PROPERTIES" => $strMainID."_main_properties",
 	"PROPERTIES" => $strMainID."_properties",
 	"CONSTRUCTOR" => $strMainID."_constructor",
 	"STORE" => $strMainID."_store",
@@ -278,9 +279,11 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 										<?}
 									}?>
 								</div>
-								<?if(is_array($arResult["PROPERTIES"]["MANUFACTURER"]["PREVIEW_PICTURE"])) {?>
-									<img class="manufacturer" src="<?=$arResult['PROPERTIES']['MANUFACTURER']['PREVIEW_PICTURE']['SRC']?>" width="<?=$arResult['PROPERTIES']['MANUFACTURER']['PREVIEW_PICTURE']['WIDTH']?>" height="<?=$arResult['PROPERTIES']['MANUFACTURER']['PREVIEW_PICTURE']['HEIGHT']?>" alt="<?=$arResult['PROPERTIES']['MANUFACTURER']['NAME']?>" title="<?=$arResult['PROPERTIES']['MANUFACTURER']['NAME']?>" />
-								<?}?>
+								<?$arVendor = $arResult["PROPERTIES"]["MANUFACTURER"]["FULL_VALUE"];
+								if(is_array($arVendor["PREVIEW_PICTURE"])) {?>
+									<img class="manufacturer" src="<?=$arVendor['PREVIEW_PICTURE']['SRC']?>" width="<?=$arVendor['PREVIEW_PICTURE']['WIDTH']?>" height="<?=$arVendor['PREVIEW_PICTURE']['HEIGHT']?>" alt="<?=$arVendor['NAME']?>" title="<?=$arVendor['NAME']?>" />
+								<?}
+								unset($arVendor);?>
 								<?=($isOfferDetailImg || $isDetailImg ? "</a>" : "</div>");?>
 							</div>
 						<?}
@@ -302,9 +305,11 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 							<div class="sticker">
 								<?=$sticker?>
 							</div>
-							<?if(is_array($arResult["PROPERTIES"]["MANUFACTURER"]["PREVIEW_PICTURE"])) {?>
-								<img class="manufacturer" src="<?=$arResult['PROPERTIES']['MANUFACTURER']['PREVIEW_PICTURE']['SRC']?>" width="<?=$arResult['PROPERTIES']['MANUFACTURER']['PREVIEW_PICTURE']['WIDTH']?>" height="<?=$arResult['PROPERTIES']['MANUFACTURER']['PREVIEW_PICTURE']['HEIGHT']?>" alt="<?=$arResult['PROPERTIES']['MANUFACTURER']['NAME']?>" title="<?=$arResult['PROPERTIES']['MANUFACTURER']['NAME']?>" />
-							<?}?>
+							<?$arVendor = $arResult["PROPERTIES"]["MANUFACTURER"]["FULL_VALUE"];
+							if(is_array($arVendor["PREVIEW_PICTURE"])) {?>
+								<img class="manufacturer" src="<?=$arVendor['PREVIEW_PICTURE']['SRC']?>" width="<?=$arVendor['PREVIEW_PICTURE']['WIDTH']?>" height="<?=$arVendor['PREVIEW_PICTURE']['HEIGHT']?>" alt="<?=$arVendor['NAME']?>" title="<?=$arVendor['NAME']?>" />
+							<?}
+							unset($arVendor);?>
 							<?=($isDetailImg ? "</a>" : "</div>");?>							
 						</div>					
 					<?}?>
@@ -473,7 +478,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 																if(is_array($arOneValue["PICT"])) {?>
 																	<img src="<?=$arOneValue['PICT']['SRC']?>" width="<?=$arOneValue['PICT']['WIDTH']?>" height="<?=$arOneValue['PICT']['HEIGHT']?>" alt="<?=$arOneValue['NAME']?>" title="<?=$arOneValue['NAME']?>" />
 																<?} else {?>
-																	<i style="background:#<?=$arOneValue['HEX']?>"></i>
+																	<i style="background:#<?=(!empty($arOneValue['HEX'])? $arOneValue['HEX']: 'edeef8')?>"></i>
 																<?}
 															}?>
 														</span>
@@ -1049,7 +1054,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 													</div>
 												<?}?>	
 												<input type="hidden" name="ID" class="id" value="<?=$arResult['ID']?>" />
-												<?$props = "";
+												<?$props = array();
 												if(!empty($arResult["PROPERTIES"]["ARTNUMBER"]["VALUE"])) {				
 													$props[] = array(
 														"NAME" => $arResult["PROPERTIES"]["ARTNUMBER"]["NAME"],
@@ -1178,7 +1183,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 									//DETAIL_DELAY//
 									} else {
 										if($arResult["CAN_BUY"] && $arResult["MIN_PRICE"]["RATIO_PRICE"] > 0) {
-											$props = "";
+											$props = array();
 											if(!empty($arResult["PROPERTIES"]["ARTNUMBER"]["VALUE"])) {				
 												$props[] = array(
 													"NAME" => $arResult["PROPERTIES"]["ARTNUMBER"]["NAME"],
@@ -1352,22 +1357,22 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 			</div>
 			<?if(!$arResult["COLLECTION"]["THIS"]) {
 				//OFFERS_DETAIL_PROPERTIES//?>
-				<div id="<?=$arItemIDs['PROPERTIES']?>">
-					<?$sPropOffers = false;
+				<div id="<?=$arItemIDs['MAIN_PROPERTIES']?>">					
+					<?$strMainOffersProps = false;
 					if(isset($arResult["OFFERS"]) && !empty($arResult["OFFERS"]) && $arSetting["OFFERS_VIEW"]["VALUE"] != "LIST") {
 						foreach($arResult["OFFERS"] as $key => $arOffer) {
-							if(!empty($arOffer["DISPLAY_S_PROPERTIES"])) {
-								$sPropOffers = true;
+							if(!empty($arOffer["DISPLAY_MAIN_PROPERTIES"])) {
+								$strMainOffersProps = true;
 								break;
 							}
 						}
 					}
-					if(!empty($arResult["DISPLAY_PROPERTIES"]) || !empty($sPropOffers)) {?>
+					if(!empty($arResult["DISPLAY_MAIN_PROPERTIES"]) || $strMainOffersProps) {?>
 						<div class="catalog-detail-properties">
-							<div class="h4"><?=GetMessage("CATALOG_ELEMENT_PROPERTIES")?></div>
+							<div class="h4"><?=GetMessage("CATALOG_ELEMENT_MAIN_PROPERTIES")?></div>
 							<?//DETAIL_PROPERTIES//
-							if(!empty($arResult["DISPLAY_PROPERTIES"])) {
-								foreach($arResult["DISPLAY_PROPERTIES"] as $k => $v) {?>
+							if(!empty($arResult["DISPLAY_MAIN_PROPERTIES"])) {
+								foreach($arResult["DISPLAY_MAIN_PROPERTIES"] as $k => $v) {?>
 									<div class="catalog-detail-property">
 										<div class="name"><?=$v["NAME"]?></div>
 										<?if(!empty($v["FILTER_HINT"])) {?>
@@ -1379,23 +1384,27 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 										<div class="val"><?=is_array($v["DISPLAY_VALUE"]) ? implode(", ", $v["DISPLAY_VALUE"]) : $v["DISPLAY_VALUE"];?></div>
 									</div>
 								<?}
+								unset($k, $v);
 							}
 							//OFFERS_PROPERTIES//
-							if(!empty($sPropOffers)) {
+							if($strMainOffersProps) {
 								foreach($arResult["OFFERS"] as $key => $arOffer) {?>
 									<div id="offer-property_<?=$arItemIDs['ID'].'_'.$arOffer['ID']?>" class="offer-property<?=($key == $arResult['OFFERS_SELECTED'] ? '' : ' hidden');?>">
-										<?if(isset($arOffer["DISPLAY_S_PROPERTIES"]) && is_array($arOffer["DISPLAY_S_PROPERTIES"])) foreach($arOffer["DISPLAY_S_PROPERTIES"] as $k => $v) {?>
-											<div class="catalog-detail-property">
-												<div class="name"><?=$v["NAME"]?></div>
-												<?if(!empty($v["FILTER_HINT"])) {?>
-													<div class="hint-wrap">
-														<a class="hint" href="javascript:void(0);" onclick="showDetailPropertyFilterHint(this, '<?=$v['FILTER_HINT']?>');"><i class="fa fa-question-circle-o"></i></a>
-													</div>
-												<?}?>
-												<div class="dots"></div>
-												<div class="val"><?=$v["VALUE"]?></div>
-											</div>
-										<?}?>
+										<?if(!empty($arOffer["DISPLAY_MAIN_PROPERTIES"])) {
+											foreach($arOffer["DISPLAY_MAIN_PROPERTIES"] as $k => $v) {?>
+												<div class="catalog-detail-property">
+													<div class="name"><?=$v["NAME"]?></div>
+													<?if(!empty($v["FILTER_HINT"])) {?>
+														<div class="hint-wrap">
+															<a class="hint" href="javascript:void(0);" onclick="showDetailPropertyFilterHint(this, '<?=$v['FILTER_HINT']?>');"><i class="fa fa-question-circle-o"></i></a>
+														</div>
+													<?}?>
+													<div class="dots"></div>
+													<div class="val"><?=$v["VALUE"]?></div>
+												</div>
+											<?}
+											unset($k, $v);
+										}?>
 									</div>
 								<?}
 							}?>
@@ -1449,9 +1458,9 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 			</div>
 			<div class="column second">
 				<?//DETAIL_PROPERTIES//
-				if(!empty($arResult["DISPLAY_PROPERTIES"])) {?>
-					<div class="h4"><?=GetMessage("CATALOG_ELEMENT_PROPERTIES")?></div>
-					<?foreach($arResult["DISPLAY_PROPERTIES"] as $k => $v) {?>
+				if(!empty($arResult["DISPLAY_MAIN_PROPERTIES"])) {?>
+					<div class="h4"><?=GetMessage("CATALOG_ELEMENT_MAIN_PROPERTIES")?></div>
+					<?foreach($arResult["DISPLAY_MAIN_PROPERTIES"] as $k => $v) {?>
 						<div class="catalog-detail-property">
 							<div class="name"><?=$v["NAME"]?></div>
 							<?if(!empty($v["FILTER_HINT"])) {?>
@@ -1463,6 +1472,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 							<div class="val"><?=is_array($v["DISPLAY_VALUE"]) ? implode(", ", $v["DISPLAY_VALUE"]) : $v["DISPLAY_VALUE"];?></div>
 						</div>
 					<?}
+					unset($k, $v);
 				}?>
 			</div>
 		</div>	
@@ -1871,6 +1881,21 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 				<a href="<?=($arParams["AJAX_OPTION_HISTORY"] !== "Y") ? "#tab".$i : "javascript:void(0)"?>"><span><?=GetMessage("CATALOG_ELEMENT_FULL_DESCRIPTION")?></span></a>
 			</li>
 			<?$i++;
+			$strMainOffersProps = false;
+			if(isset($arResult["OFFERS"]) && !empty($arResult["OFFERS"]) && $arSetting["OFFERS_VIEW"]["VALUE"] != "LIST") {
+				foreach($arResult["OFFERS"] as $key => $arOffer) {
+					if(!empty($arOffer["DISPLAY_S_PROPERTIES"])) {
+						$strMainOffersProps = true;
+						break;
+					}
+				}
+			}
+			if((!$arResult["COLLECTION"]["THIS"] && (!empty($arResult["DISPLAY_PROPERTIES"]) || $strMainOffersProps)) || ($arResult["COLLECTION"]["THIS"] && !empty($arResult["DISPLAY_PROPERTIES"]))) {?>
+				<li class="tabs__tab">
+					<a href="<?=($arParams["AJAX_OPTION_HISTORY"] !== "Y") ? "#tab".$i : "javascript:void(0)"?>"><span><?=GetMessage("CATALOG_ELEMENT_PROPERTIES")?></span></a>
+				</li>
+				<?$i++;
+			}
 			if(!empty($arResult["PROPERTIES"]["FREE_TAB"]["VALUE"])) {?>
 				<li class="tabs__tab">
 					<a href="<?=($arParams["AJAX_OPTION_HISTORY"] !== "Y") ? "#tab".$i : "javascript:void(0)"?>"><span><?=$arResult["PROPERTIES"]["FREE_TAB"]["NAME"]?></span></a>
@@ -1989,13 +2014,77 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 					</div>
 				<?}?>	
 			</div>
-		<?}?>	
+		<?}
+		//DESCRIPTION_TAB//?>
 		<div class="tabs__box" <?=(!$arResult["COLLECTION"]["THIS"]) ? " style='display:block;'" : ""?>>
 			<div class="tabs__box-content">
 				<?=$arResult["DETAIL_TEXT"];?>
 			</div>
 		</div>
-		<?//FREE_TAB//
+		<?//PROPERTIES_TAB//
+		if(!$arResult["COLLECTION"]["THIS"] && (!empty($arResult["DISPLAY_PROPERTIES"]) || $strMainOffersProps)) {?>
+			<div class="tabs__box">					
+				<div id="<?=$arItemIDs['PROPERTIES']?>">
+					<div class="catalog-detail-properties">								
+						<?//DETAIL_PROPERTIES//
+						if(!empty($arResult["DISPLAY_PROPERTIES"])) {
+							foreach($arResult["DISPLAY_PROPERTIES"] as $k => $v) {?>
+								<div class="catalog-detail-property">
+									<div class="name"><?=$v["NAME"]?></div>
+									<?if(!empty($v["FILTER_HINT"])) {?>
+										<div class="hint-wrap">
+											<a class="hint" href="javascript:void(0);" onclick="showDetailPropertyFilterHint(this, '<?=$v['FILTER_HINT']?>');"><i class="fa fa-question-circle-o"></i></a>
+										</div>
+									<?}?>
+									<div class="dots"></div>
+									<div class="val"><?=is_array($v["DISPLAY_VALUE"]) ? implode(", ", $v["DISPLAY_VALUE"]) : $v["DISPLAY_VALUE"];?></div>
+								</div>
+							<?}
+							unset($k, $v);
+						}
+						//OFFERS_PROPERTIES//
+						if($strMainOffersProps) {
+							foreach($arResult["OFFERS"] as $key => $arOffer) {?>
+								<div id="offer-property_<?=$arItemIDs['ID'].'_'.$arOffer['ID']?>" class="offer-property<?=($key == $arResult['OFFERS_SELECTED'] ? '' : ' hidden');?>">
+									<?if(!empty($arOffer["DISPLAY_S_PROPERTIES"])) {
+										foreach($arOffer["DISPLAY_S_PROPERTIES"] as $k => $v) {?>
+											<div class="catalog-detail-property">
+												<div class="name"><?=$v["NAME"]?></div>
+												<?if(!empty($v["FILTER_HINT"])) {?>
+													<div class="hint-wrap">
+														<a class="hint" href="javascript:void(0);" onclick="showDetailPropertyFilterHint(this, '<?=$v['FILTER_HINT']?>');"><i class="fa fa-question-circle-o"></i></a>
+													</div>
+												<?}?>
+												<div class="dots"></div>
+												<div class="val"><?=$v["VALUE"]?></div>
+											</div>
+										<?}
+										unset($k, $v);
+									}?>
+								</div>
+							<?}
+						}?>
+					</div>
+				</div>					
+			</div>
+		<?} elseif($arResult["COLLECTION"]["THIS"] && !empty($arResult["DISPLAY_PROPERTIES"])) {?>
+			<div class="tabs__box">
+				<?foreach($arResult["DISPLAY_PROPERTIES"] as $k => $v) {?>
+					<div class="catalog-detail-property">
+						<div class="name"><?=$v["NAME"]?></div>
+						<?if(!empty($v["FILTER_HINT"])) {?>
+							<div class="hint-wrap">
+								<a class="hint" href="javascript:void(0);" onclick="showDetailPropertyFilterHint(this, '<?=$v['FILTER_HINT']?>');"><i class="fa fa-question-circle-o"></i></a>
+							</div>
+						<?}?>
+						<div class="dots"></div>
+						<div class="val"><?=is_array($v["DISPLAY_VALUE"]) ? implode(", ", $v["DISPLAY_VALUE"]) : $v["DISPLAY_VALUE"];?></div>
+					</div>
+				<?}
+				unset($k, $v);?>
+			</div>
+		<?}
+		//FREE_TAB//
 		if(!empty($arResult["PROPERTIES"]["FREE_TAB"]["VALUE"])) {?>
 			<div class="tabs__box">
 				<div class="tabs__box-content">
@@ -2043,7 +2132,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 									"SHOW_404" => "N",
 									"FILE_404" => "",
 									"DISPLAY_COMPARE" => $arParams["DISPLAY_COMPARE"] == 1 ? "Y" : "N",
-									"PAGE_ELEMENT_COUNT" => "8",
+									"PAGE_ELEMENT_COUNT" => (isset($arParams['NUMBER_ACCESSORIES'])? $arParams['NUMBER_ACCESSORIES']: "8"),
 									"LINE_ELEMENT_COUNT" => "",
 									"PRICE_CODE" => $arParams["PRICE_CODE"],
 									"USE_PRICE_COUNT" => $arParams["USE_PRICE_COUNT"] == 1 ? "Y" : "N",
@@ -2145,7 +2234,8 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 							"ELEMENT_ID" => $arResult["ID"],
 							"ELEMENT_AREA_ID" => $arResult["STR_MAIN_ID"],
 							"CACHE_TYPE" => $arParams["CACHE_TYPE"],
-							"CACHE_TIME" => $arParams["CACHE_TIME"]
+							"CACHE_TIME" => $arParams["CACHE_TIME"],
+							"COUNT_REVIEW" => $arParams["COUNT_REVIEW"]
 						),
 						false,
 						array("HIDE_ICONS" => "Y")
@@ -2243,6 +2333,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 			"DELAY_ID" => $arItemIDs["DELAY"],
 			"DELIVERY_ID" => $arItemIDs["DELIVERY"],
 			"ARTICLE_ID" => $arItemIDs["ARTICLE"],
+			"MAIN_PROPERTIES_ID" => $arItemIDs["MAIN_PROPERTIES"],
 			"PROPERTIES_ID" => $arItemIDs["PROPERTIES"],
 			"CONSTRUCTOR_ID" => $arItemIDs["CONSTRUCTOR"],
 			"STORE_ID" => $arItemIDs["STORE"],

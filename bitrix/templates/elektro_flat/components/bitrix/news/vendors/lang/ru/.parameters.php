@@ -37,4 +37,14 @@ $MESS["CP_BC_TPL_RCM_SIMILAR"] = "Похожие товары";
 $MESS["CP_BC_TPL_RCM_SIMILAR_ANY"] = "Продаваемые/Просматриваемые/Похожие товары";
 $MESS["CP_BC_TPL_RCM_PERSONAL_WBEST"] = "Самые продаваемые/Персональные";
 $MESS["CP_BC_TPL_RCM_RAND"] = "Любая рекомендация";
+$MESS["HIDE_SECTION"] = "Показывать свернутые категории товаров";
+$MESS["CP_BC_TPL_PRODUCT_ROW_VARIANTS"] = "Вариант отображения товаров";
+$MESS["CP_BC_TPL_SETTINGS_VARIANT"] = "Вариант";
+$MESS["CP_BC_TPL_SETTINGS_DELETE"] = "Удалить";
+$MESS["CP_BC_TPL_SETTINGS_QUANTITY"] = "Количество товаров на странице";
+$MESS["CP_BC_TPL_SETTINGS_QUANTITY_BIG_DATA"] = "Количество товаров BigData на странице";
+$MESS["CP_BC_TPL_MESS_BTN_LAZY_LOAD"] = "Текст кнопки \"Показать ещё\"";
+$MESS["CP_BC_TPL_MESS_BTN_LAZY_LOAD_DEFAULT"] = "Показать ещё";
+$MESS["CP_BC_TPL_LAZY_LOAD"] = "Показать кнопку ленивой загрузки Lazy Load";
+$MESS["CP_BC_TPL_LOAD_ON_SCROLL"] = "Подгружать товары при прокрутке до конца";
 ?>

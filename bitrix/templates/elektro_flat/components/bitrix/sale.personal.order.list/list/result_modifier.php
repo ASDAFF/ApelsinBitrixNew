@@ -24,7 +24,7 @@ foreach($arResult["ORDERS"] as $key => $val) {
 	}
 	
 	/***BASKET_ITEMS***/	
-	foreach($val["BASKET_ITEMS"] as $key2 => $arBasketItems):		
+	if(isset($val["BASKET_ITEMS"]) && is_array($val["BASKET_ITEMS"])) foreach($val["BASKET_ITEMS"] as $key2 => $arBasketItems):		
 		$ar = CIBlockElement::GetList(
 			array(), 
 			array("ID" => $arBasketItems["PRODUCT_ID"]), 

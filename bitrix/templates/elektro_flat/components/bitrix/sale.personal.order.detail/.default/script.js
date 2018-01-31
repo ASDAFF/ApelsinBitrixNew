@@ -7,7 +7,7 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 				linkOrderInformationMoreI = BX.findChild(linkOrderInformation, {'class' : 'read-more-i'}),
 				linkOrderInformationLessI = BX.findChild(linkOrderInformation, {'class' : 'read-less-i'}),
 				clientInformation = BX('sod-order-info-block'),
-				listShipmentWrapper = BX.findChildren(BX('sod-delivery-options-block'), {'class' : 'sale-order-detail-payment-options-shipment'}, true),
+				listShipmentWrapper = document.getElementsByClassName('sale-order-detail-payment-options-shipment-container'),
 				listPaymentWrapper = document.getElementsByClassName('sale-order-detail-payment-options-methods'),
 				shipmentTrackingId = document.getElementsByClassName('sale-order-detail-shipment-id');
 
@@ -35,9 +35,9 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 			},this);
 
 			Array.prototype.forEach.call(listShipmentWrapper, function(shipmentWrapper) {
-				var detailShipmentBlock = BX.findChild(shipmentWrapper, {'class' : 'sale-order-detail-payment-options-shipment-composition-map'})
-					showInformation = BX.findChild(shipmentWrapper, {'class' : 'sale-order-detail-show-link'}, true)
-					hideInformation = BX.findChild(shipmentWrapper, {'class' : 'sale-order-detail-hide-link'}, true);
+				var detailShipmentBlock = shipmentWrapper.getElementsByClassName('sale-order-detail-payment-options-shipment-composition-map')[0],
+					showInformation = shipmentWrapper.getElementsByClassName('sale-order-detail-show-link')[0],
+					hideInformation = shipmentWrapper.getElementsByClassName('sale-order-detail-hide-link')[0];
 				
 				BX.bindDelegate(shipmentWrapper, 'click', { 'class': 'sale-order-detail-show-link' }, BX.proxy(function() {
 					BX.style(showInformation, 'display', 'none');

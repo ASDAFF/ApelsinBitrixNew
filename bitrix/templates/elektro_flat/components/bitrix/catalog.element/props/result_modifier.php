@@ -570,8 +570,11 @@ foreach($arSKUPropList as $key => $arSKUProp) {
 				} else {
 					$arSKUPropList[$key]["VALUES"][$arFields["ID"]]["PICT"] = $arFile;
 				}
+			} else {
+				if(!empty($arSKUPropList[$key]["VALUES"][$arFields["ID"]]["PICT"]))
+					$arSKUPropList[$key]["VALUES"][$arFields["ID"]]["PICT"] = null;
 			}
-		}			
+		}
 	}
 }
 

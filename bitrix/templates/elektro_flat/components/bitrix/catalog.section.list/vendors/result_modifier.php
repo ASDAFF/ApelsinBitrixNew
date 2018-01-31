@@ -45,7 +45,7 @@ Collection::sortByColumn($arResult["SECTIONS"], array("SORT" => SORT_NUMERIC, "N
 
 $addToUrl = false;
 if($arParams["SEF_MODE"] == "Y") {
-	$addToUrl = "filter/manufacturer-is-".urlencode(toLower($arParams["VENDOR_NAME"]))."/apply/";
+	$addToUrl = "filter/manufacturer-is-".rawurlencode(Bitrix\Main\Text\Encoding::convertEncoding(toLower($arParams["VENDOR_NAME"]), LANG_CHARSET, "utf-8"))."/apply/";
 } else {	
 	$rsProp = CIBlock::GetProperties($arParams["IBLOCK_ID"], array(), array("CODE" => "MANUFACTURER"));
 	if($arProp = $rsProp->fetch())

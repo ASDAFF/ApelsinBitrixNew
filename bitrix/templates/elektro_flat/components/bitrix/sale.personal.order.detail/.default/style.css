@@ -269,6 +269,10 @@ div.payment-options-methods-row:last-child:after {
 	width: 100%
 }
 
+.sale-order-detail-payment-options-shipment-container:not(:last-child) {
+	margin-bottom: 20px;
+}
+
 div.sale-order-detail-payment-options-methods {
 	overflow: hidden;
 	padding: 20px 0 10px 0;

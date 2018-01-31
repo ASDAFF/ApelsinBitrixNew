@@ -39,7 +39,8 @@
 }
 
 .anythingSlider-default .panel a{
-	display:block;
+	display:table;
+	position:relative;
 	margin:0px;
 	padding:0px;
 	text-decoration:none;
@@ -51,6 +52,7 @@
 	left:22px;
 	bottom:10px;
 	z-index:599;
+	pointer-events: none;
 }
 
 .anythingSlider-default .anythingControls ul{ 
@@ -103,6 +105,7 @@
 	margin:-21px 0px 0px 0px;
 	padding:0px;
 	z-index:599;
+	pointer-events: none;
 }
 
 .anythingSlider .arrow.forward{
@@ -205,7 +208,8 @@
 .anythingSlider-promotions-block .arrow.forward,
 .anythingSlider-promotions-block .arrow.back{ 	
     top:63px;
-	margin:0px;	
+	margin:0px;
+	pointer-events: auto;
 }
 
 /***LEFT_SLIDER***/

@@ -13,7 +13,7 @@ if(!Loader::includeModule("catalog"))
 $request = Application::getInstance()->getContext()->getRequest();
 
 if($request->isPost() && check_bitrix_sessid()) {
-	$action = $request->getPost("action");	
+	$action = $request->getPost("action");
 	$arParams = $request->getPost("arParams");
 	
 	switch($action) {
@@ -39,9 +39,8 @@ if($request->isPost() && check_bitrix_sessid()) {
 			<?break;
 		case "props":
 			//PROPS//
-			$arParams = CUtil::JsObjectToPhp($arParams);
-			$arParams = str_replace("true", "Y", $arParams);
-			$arParams = str_replace("false", "N", $arParams);
+			$signer = new \Bitrix\Main\Security\Sign\Signer;
+			$arParams = unserialize(base64_decode($signer->unsign($arParams, "catalog.section")));
 			$elementId = $request->getPost("ELEMENT_ID");
 			$strMainId = $request->getPost("STR_MAIN_ID");
 
@@ -61,14 +60,12 @@ if($request->isPost() && check_bitrix_sessid()) {
 					$arPriceBase = CCatalogGroup::GetBaseGroup();
 			    	$arParams["OFFERS_SORT_FIELD_PP"] = "catalog_PRICE_".$arPriceBase['ID'];
 				}
-
 			} elseif($arParams["OFFERS_SORT_FIELD"] == "PROPERTIES") {
 				$arParams["OFFERS_SORT_FIELD_PP"] = "SORT";
 				$arParams["OFFERS_SORT_FIELD3"] = "PROPERTIES";
 			} else {
 				$arParams["OFFERS_SORT_FIELD_PP"] = $arParams["OFFERS_SORT_FIELD"];
-			}
-			?>
+			}?>
 			<?$APPLICATION->IncludeComponent("bitrix:catalog.element", "props",
 				array(
 					"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],

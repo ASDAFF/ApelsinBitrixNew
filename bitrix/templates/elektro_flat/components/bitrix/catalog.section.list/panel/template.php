@@ -9,29 +9,31 @@ if(count($arResult["SECTIONS"]) < 1)
 	<li>
 		<a href="javascript:void(0)" class="showsection"><i class="fa fa-bars"></i><span><?=GetMessage("CATALOG")?></span></a>
 		<div class="catalog-section-list" style="display:none;">
-			<?foreach($arResult["SECTIONS"] as $arSection):
+			<?foreach($arResult["SECTIONS"] as $arSection) {
 				$bHasChildren = is_array($arSection["CHILDREN"]) && count($arSection["CHILDREN"]) > 0;?>
 				<div class="catalog-section">
-					<?if($arSection["NAME"] && $arResult["SECTION"]["ID"] != $arSection["ID"]):?>
+					<?if($arSection["NAME"] && $arResult["SECTION"]["ID"] != $arSection["ID"]) {?>
 						<div class="catalog-section-title" style="<?=($bHasChildren ? 'margin:0px 0px 4px 0px;' : 'margin:0px 0px 2px 0px;');?>">
 							<a href="<?=$arSection['SECTION_PAGE_URL']?>"><?=$arSection["NAME"]?></a>
-							<?if($bHasChildren):?>
+							<?if($bHasChildren) {?>
 								<span class="showsectionchild"><i class="fa fa-minus"></i><i class="fa fa-plus"></i><i class="fa fa-minus-circle"></i><i class="fa fa-plus-circle"></i></span>
-							<?endif;?>
+							<?}?>
 						</div>
-					<?endif;
-					if($bHasChildren):?>
+					<?}
+					if($bHasChildren) {?>
 						<div class="catalog-section-childs" style="display:none;">
-							<?foreach($arSection["CHILDREN"] as $key => $arChild):?>
+							<?foreach($arSection["CHILDREN"] as $key => $arChild) {?>
 								<div class="catalog-section-child">
 									<a href="<?=$arChild['SECTION_PAGE_URL']?>" title="<?=$arChild['NAME']?>">
 										<span class="child">
-											<span class="image">
-												<?if(is_array($arChild['PICTURE_PREVIEW'])):?>
-													<img src="<?=$arChild['PICTURE_PREVIEW']['SRC']?>" width="<?=$arChild['PICTURE_PREVIEW']['WIDTH']?>" height="<?=$arChild['PICTURE_PREVIEW']['HEIGHT']?>" alt="<?=$arChild['NAME']?>" />
-												<?else:?>
-													<img src="<?=SITE_TEMPLATE_PATH?>/images/no-photo.jpg" width="50" height="50" alt="<?=$arChild['NAME']?>" />
-												<?endif;?>
+											<span class="graph">
+												<?if(!empty($arChild["UF_ICON"])) {?>
+													<i class="<?=$arChild['UF_ICON']?>" aria-hidden="true"></i>
+												<?} elseif(is_array($arChild["PICTURE_PREVIEW"])) {?>								
+													<img src="<?=$arChild['PICTURE_PREVIEW']['SRC']?>" width="<?=$arChild['PICTURE_PREVIEW']['WIDTH']?>" height="<?=$arChild['PICTURE_PREVIEW']['HEIGHT']?>" alt="<?=$arChild['NAME']?>" title="<?=$arChild['NAME']?>" />
+												<?} else {?>
+													<img src="<?=SITE_TEMPLATE_PATH?>/images/no-photo.jpg" width="50" height="50" alt="<?=$arChild['NAME']?>" title="<?=$arChild['NAME']?>" />
+												<?}?>
 											</span>
 											<span class="text-cont">
 												<span class="text"><?=$arChild["NAME"]?></span>
@@ -39,12 +41,12 @@ if(count($arResult["SECTIONS"]) < 1)
 										</span>
 									</a>
 								</div>
-							<?endforeach;?>
+							<?}?>
 							<div class="clr"></div>
 						</div>
-					<?endif;?>
+					<?}?>
 				</div>			
-			<?endforeach;?>
+			<?}?>
 		</div>
 	</li>
 </ul>

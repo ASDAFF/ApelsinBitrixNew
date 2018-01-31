@@ -6,6 +6,7 @@ global $arSetting;
 
 //USE_PRICE_RATIO//
 $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"]);
+$inMinPrice = in_array("MIN_PRICE", $arSetting["PRODUCT_TABLE_VIEW"]["VALUE"]);
 
 //USE_PRICE_RATIO//
 if(!$inPriceRatio) {
@@ -63,7 +64,7 @@ foreach($arResult["ITEMS"] as $key => $arElement) {
 	//PRICE_MATRIX//
 	$arPriceMatrix = false;
 	$arPriceMatrix = $arElement["PRICE_MATRIX"]["MATRIX"];
-	foreach($arPriceMatrix as $key_matrix => $item) {
+	if(isset($arPriceMatrix) && is_array($arPriceMatrix)) foreach($arPriceMatrix as $key_matrix => $item) {
 		foreach($item as $key2 => $item2) {
 			$arPriceMatrix[$key_matrix][$key2]["QUANTITY_FROM"] = $arElement["PRICE_MATRIX"]["ROWS"][$key2]["QUANTITY_FROM"];
 			$arPriceMatrix[$key_matrix][$key2]["QUANTITY_TO"] = ($arElement["PRICE_MATRIX"]["ROWS"][$key2]["QUANTITY_TO"] != 0? $arElement["PRICE_MATRIX"]["ROWS"][$key2]["QUANTITY_TO"]: INF);
@@ -144,7 +145,7 @@ foreach($arResult["ITEMS"] as $key => $arElement) {
 		$vendorIds[] = $vendorId;
 
 	//MIN_PRICE//
-	if(count($arElement["ITEM_QUANTITY_RANGES"]) > 1) {
+	if(count($arElement["ITEM_QUANTITY_RANGES"]) > 1 && $inMinPrice) {
 		$minPrice = false;
 		foreach($arElement["ITEM_PRICES"] as $itemPrice) {
 			if($itemPrice["RATIO_PRICE"] == 0)

@@ -45,6 +45,16 @@ if(count($arResult["ITEMS"]) <= 0)
 				<span class="catalog-review__name"><?=$arElement["PROPERTIES"]["USER_ID"]["VALUE"]?></span>
 				<span class="catalog-review__date"><?=($arElement["DATE_ACTIVE_FROM"] ? $arElement["DATE_ACTIVE_FROM"] : $arElement["DATE_CREATE"])?></span>
 				<span class="catalog-review__text"><?=$arElement["DETAIL_TEXT"]?></span>
+				<?if(!empty($arElement['PREVIEW_TEXT'])) {?>
+					<div class="catalog-review__report">
+						<div class="catalog-review__report-title">
+							<?=Loc::getMessage('CATALOG_REVIEWS_TITLE_REPORT', array('#SITE#' => SITE_SERVER_NAME))?>
+						</div>
+						<span class="catalog-review__report-text">
+							<?=$arElement['PREVIEW_TEXT']?>
+						</span>
+					</div>
+				<?}?>
 			</div>
 		</div>
 	<?endforeach;?>

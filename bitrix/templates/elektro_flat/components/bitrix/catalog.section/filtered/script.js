@@ -538,7 +538,7 @@
 				opacity: 100
 			},
 			draggable: false,
-			closeByEsc: false,	
+			closeByEsc: true,	
 			className: "pop-up modal",
 			closeIcon: {top: "-10px", right: "-10px"},
 			titleBar: {content: BX.create("span", {html: BX.message("FILTERED_POPUP_WINDOW_TITLE")})}			

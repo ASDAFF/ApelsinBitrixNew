@@ -49,7 +49,13 @@ $arComponentParameters = array(
 			"NAME" => Loc::getMessage("CATALOG_REVIEWS_LIST_ELEMENT_AREA_ID"),
 			"TYPE" => "STRING",
 			"HIDDEN" => "Y"
-		),		
+		),
+		"COUNT_REVIEW" => array(
+			"PARENT" => "BASE",
+			"NAME" => Loc::getMessage("CATALOG_REVIEWS_COUNT"),
+			"TYPE" => "STRING",
+			"HIDDEN" => "Y"
+		),
 		"CACHE_TIME"  => array(
 			"DEFAULT" => 36000000			
 		)

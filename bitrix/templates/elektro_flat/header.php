@@ -25,7 +25,9 @@ Loc::loadMessages(__FILE__);?>
 	$APPLICATION->SetPageProperty("ogimage", (CMain::IsHTTPS()? 'https' : 'http')."://".SITE_SERVER_NAME.SITE_TEMPLATE_PATH."/images/apple-touch-icon-144.png");
 	$APPLICATION->SetPageProperty("ogimagewidth", "144");
 	$APPLICATION->SetPageProperty("ogimageheight", "144");
-	Asset::getInstance()->addCss("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");	
+	Asset::getInstance()->addCss("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+	if(!CModule::IncludeModule("altop.elastofont"))
+		Asset::getInstance()->addCss("https://d1azc1qln24ryf.cloudfront.net/130672/ELASTOFONT/style-cf.css?xk463o");
 	Asset::getInstance()->addCss("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic-ext");
 	Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/colors.css");	
 	Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/js/anythingslider/slider.css");
@@ -490,6 +492,7 @@ Loc::loadMessages(__FILE__);?>
 												<a class="all" href="<?=SITE_DIR?>catalog/discount/"><?=Loc::getMessage("CR_TITLE_ALL_DISCOUNT");?></a>
 											</div>
 										</div>
+										<div class="clr"></div>
 									</div>
 								<?endif;
 							endif;?>

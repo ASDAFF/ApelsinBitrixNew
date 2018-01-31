@@ -4780,6 +4780,15 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			if (this.params.DELIVERY_NO_AJAX != 'Y')
 				this.deliveryCachedInfo[currentDelivery.ID] = currentDelivery;
 
+			deliveryNode.appendChild(
+				BX.create('DIV', {
+					props: {className: 'bx-soa-pp-company-block bx-soa-pp-company-block-s'},
+					children: [
+						BX.create('DIV', {props: {className: 'bx-soa-pp-company-desc'}})
+					]
+				})
+			);
+			
 			if (currentDelivery.PERIOD_TEXT && currentDelivery.PERIOD_TEXT.length) {
 				period = BX.create('DIV', {
 					props: {className: 'bx-soa-pp-desc-period'},

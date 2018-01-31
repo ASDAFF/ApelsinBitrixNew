@@ -1,4 +1,6 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
+$this->setFrameMode(false);
 
 use Bitrix\Main\Loader,
 	Bitrix\Iblock,
@@ -24,7 +26,7 @@ if(0 < intval($arResult["VARIABLES"]["SECTION_ID"])) {
 	$arFilter["=CODE"] = $arResult["VARIABLES"]["SECTION_CODE"];
 }
 
-$arSelect = array("ID", "IBLOCK_ID", "IBLOCK_SECTION_ID", "NAME", "PICTURE", "DESCRIPTION", "DEPTH_LEVEL", "UF_BANNER", "UF_BANNER_URL", "UF_BACKGROUND_IMAGE", "UF_PREVIEW", "UF_VIEW", "UF_VIEW_COLLECTION", "UF_SECTION_TITLE_H1");
+$arSelect = array("ID", "IBLOCK_ID", "IBLOCK_SECTION_ID", "NAME", "PICTURE", "DESCRIPTION", "DEPTH_LEVEL", "UF_BANNER", "UF_BANNER_URL", "UF_BACKGROUND_IMAGE", "UF_PREVIEW", "UF_VIEW", "UF_VIEW_COLLECTION", "UF_SECTION_TITLE_H1", "UF_YOUTUBE_BG");
 
 $showAllWoSection = "N";
 
@@ -52,13 +54,17 @@ if($obCache->InitCache($arParams["CACHE_TIME"], $cache_id, $cache_dir)) {
 		if($arSection["UF_VIEW_COLLECTION"] > 0) {
 			$arCurSection["VIEW_COLLECTION"] = true;
 		};
+		$arCurSection["SECTION_TITLE_H1"] = $arSection["UF_SECTION_TITLE_H1"];
+		if(isset($arSection["UF_YOUTUBE_BG"]) && !empty($arSection["UF_YOUTUBE_BG"])) {
+			$arCurSection["BACKGROUND_YOUTUBE"] = $arSection["UF_YOUTUBE_BG"];
+		}
 		if($arSection["UF_VIEW"] > 0) {
 			$UserField = CUserFieldEnum::GetList(array(), array("ID" => $arSection["UF_VIEW"]));
 			if($UserFieldAr = $UserField->Fetch()) {
 				$arCurSection["VIEW"] = $UserFieldAr["XML_ID"];
 			}
 		};
-		if(($arSection["UF_BACKGROUND_IMAGE"] <= 0 || $arSection["UF_VIEW"] <= 0) && $arSection["DEPTH_LEVEL"] > 1) {
+		if(($arSection["UF_BACKGROUND_IMAGE"] <= 0 || $arSection["UF_VIEW"] <= 0 || empty($arSection["UF_YOUTUBE_BG"])) && $arSection["DEPTH_LEVEL"] > 1) {
 			if($arSection["DEPTH_LEVEL"] > 2) {
 				$rsParentSectionPath = CIBlockSection::GetNavChain($arSection["IBLOCK_ID"], $arSection["IBLOCK_SECTION_ID"]);
 				while($arParentSectionPath = $rsParentSectionPath->GetNext()) {
@@ -72,7 +78,7 @@ if($obCache->InitCache($arParams["CACHE_TIME"], $cache_id, $cache_dir)) {
 					array("DEPTH_LEVEL" => "DESC"),	
 					array("IBLOCK_ID" => $arSection["IBLOCK_ID"], "ACTIVE" => "Y", "GLOBAL_ACTIVE" => "Y", "ID" => $parentSectionPathIds),
 					false,
-					array("ID", "IBLOCK_ID", "DEPTH_LEVEL", "UF_BACKGROUND_IMAGE", "UF_VIEW")
+					array("ID", "IBLOCK_ID", "DEPTH_LEVEL", "UF_BACKGROUND_IMAGE", "UF_VIEW", "UF_YOUTUBE_BG")
 				);
 				while($arSection = $rsSections->GetNext()) {						
 					if(!isset($arCurSection["BACKGROUND_IMAGE"]) && $arSection["UF_BACKGROUND_IMAGE"] > 0) {
@@ -84,10 +90,12 @@ if($obCache->InitCache($arParams["CACHE_TIME"], $cache_id, $cache_dir)) {
 							$arCurSection["VIEW"] = $UserFieldAr["XML_ID"];						
 						}
 					}
+					if(!isset($arCurSection["BACKGROUND_YOUTUBE"]) && !empty($arSection["UF_YOUTUBE_BG"])) {
+						$arCurSection["BACKGROUND_YOUTUBE"] = $arSection["UF_YOUTUBE_BG"];
+					}
 				}
 			}
 		}
-		$arCurSection["SECTION_TITLE_H1"] = $arSection["UF_SECTION_TITLE_H1"];
 		$ipropValues = new \Bitrix\Iblock\InheritedProperty\SectionValues($arSection["IBLOCK_ID"], $arSection["ID"]);
 		$arCurSection["IPROPERTY_VALUES"] = $ipropValues->getValues();
 	}
@@ -113,29 +121,29 @@ if(isset($arCurSection) && !empty($arCurSection)) {
 	<?endif;
 
 	//SUBSECTION//?>
-	<?$APPLICATION->IncludeComponent("bitrix:catalog.section.list", "subsection",
-		Array(
+	<?$APPLICATION->IncludeComponent("bitrix:catalog.section.list", "",
+		array(
 			"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 			"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 			"SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
 			"SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
-			"COUNT_ELEMENTS" => "N",
-			"TOP_DEPTH" => "1",
-			"SECTION_FIELDS" => array(),
-			"SECTION_USER_FIELDS" => array(),
-			"VIEW_MODE" => "",
-			"SHOW_PARENT_NAME" => "",
-			"SECTION_URL" => "",
 			"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 			"CACHE_TIME" => $arParams["CACHE_TIME"],
-			"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+			"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],			
+			"TOP_DEPTH" => "1",
+			"SECTION_FIELDS" => array(),
+			"SECTION_USER_FIELDS" => array(
+				0 => "UF_ICON"
+			),
+			"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
 			"ADD_SECTIONS_CHAIN" => (isset($arParams["ADD_SECTIONS_CHAIN"]) ? $arParams["ADD_SECTIONS_CHAIN"] : ""),
 			"DISPLAY_IMG_WIDTH"	 =>	"50",
 			"DISPLAY_IMG_HEIGHT" =>	"50"
 		),
-		$component
+		$component,
+		array("HIDE_ICONS" => "Y")
 	);?>
-
+	
 	<?//PREVIEW//
 	if(!empty($arCurSection["PREVIEW"])):
 		if(!$_REQUEST["PAGEN_1"] || empty($_REQUEST["PAGEN_1"]) || $_REQUEST["PAGEN_1"] <= 1):?>
@@ -170,7 +178,7 @@ if(isset($arCurSection) && !empty($arCurSection)) {
 				"SEF_RULE" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["smart_filter"],
 				"SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
 				"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-				"INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"]
+				"INSTANT_RELOAD" => ($arParams["INSTANT_RELOAD"] === 'Y' && $arParams["AJAX_MODE"] === 'Y'? 'Y': 'N')
 			),
 			$component,
 			array("HIDE_ICONS" => "Y")
@@ -302,48 +310,6 @@ if($_REQUEST["order"] == "desc") {
 	<?endforeach;?>
 </div>
 
-<?//LIMIT//
-$arAvailableLimit;
-if($arParams["HIDE_BUTTON_ALL"] == "N"):
-	$arAvailableLimit = array("12", "48", "900");
-else:
-	$arAvailableLimit = array("12", "48");
-endif;
-
-if($arParams["HIDE_BUTTON_ALL"] == "Y" && $APPLICATION->get_cookie("limit") == "900")
-	$APPLICATION->set_cookie("limit", "12", false, "/", SITE_SERVER_NAME); 
-
-$limit = $APPLICATION->get_cookie("limit") ? $APPLICATION->get_cookie("limit") : "12";
-
-//AJAX_MODE//
-if($arParams["AJAX_MODE"] == "Y") {
-	if($_REQUEST["limit"])
-		$_SESSION["limit"] = $_REQUEST["limit"];
-	
-	if($_SESSION["limit"])
-		$_REQUEST["limit"] = $_SESSION["limit"];
-}
-
-if($_REQUEST["limit"]) {
-	$limit = "12";	
-	$APPLICATION->set_cookie("limit", $limit, false, "/", SITE_SERVER_NAME); 
-}
-if($_REQUEST["limit"] == "48") {
-	$limit = "48";
-	$APPLICATION->set_cookie("limit", $limit, false, "/", SITE_SERVER_NAME); 
-}
-if($_REQUEST["limit"] == "900" && $arParams["HIDE_BUTTON_ALL"] == "N") {
-	$limit = "900";
-	$APPLICATION->set_cookie("limit", $limit, false, "/", SITE_SERVER_NAME); 
-}?>
-
-<div class="catalog-item-limit">
-	<label><span class="full"><?=Loc::getMessage("SECT_COUNT_LABEL_FULL")?></span><span class="short"><?=Loc::getMessage("SECT_COUNT_LABEL_SHORT")?></span>:</label>
-	<?foreach($arAvailableLimit as $val):?>
-		<a href="<?=$APPLICATION->GetCurPageParam("limit=".$val, array("limit"))?>" <?if($limit==$val) echo " class='selected'";?> rel="nofollow"><?if($val=="900"): echo Loc::getMessage("SECT_COUNT_ALL"); else: echo $val; endif;?></a>
-	<?endforeach;?>
-</div>
-
 <?//VIEW//
 if(!$arCurSection["VIEW_COLLECTION"]) {
 	$arAvailableView = array("table", "list", "price");
@@ -370,8 +336,7 @@ if(!$arCurSection["VIEW_COLLECTION"]) {
 	if($_REQUEST["view"] == "price") {
 		$view = "price";
 		$APPLICATION->set_cookie("view", $view, false, "/", SITE_SERVER_NAME);
-	}
-	?>
+	}?>
 
 	<div class="catalog-item-view">
 		<?foreach($arAvailableView as $val):?>
@@ -390,13 +355,22 @@ if(!$arCurSection["VIEW_COLLECTION"]) {
 	$view = "collections";
 	$arParams["DISPLAY_IMG_WIDTH"] = "480";
 	$arParams["DISPLAY_IMG_HEIGHT"] = "255";
-	$sort = "SORT";
-	$sort_order = "ASC";
 }?>
-
 <div class="clr"></div>
-<?//SECTION//?>
-<?$intSectionID = $APPLICATION->IncludeComponent("bitrix:catalog.section", $view,
+
+<?//SECTION//
+$arParams["PAGE_ELEMENT_COUNT"] = (int)$arParams["PAGE_ELEMENT_COUNT"] ?: 12;
+$arParams["LINE_ELEMENT_COUNT"] = !$arCurSection["VIEW_COLLECTION"] ? 4 : 3;
+
+CBitrixComponent::includeComponentClass("bitrix:catalog.section");
+
+if(!isset($arParams["LIST_PRODUCT_ROW_VARIANTS"]) || empty($arParams["LIST_PRODUCT_ROW_VARIANTS"])) {		
+	$arParams["LIST_PRODUCT_ROW_VARIANTS"] = Bitrix\Main\Web\Json::encode(CatalogSectionComponent::predictRowVariants($arParams["LINE_ELEMENT_COUNT"], $arParams["PAGE_ELEMENT_COUNT"]));
+}
+if($arCurSection["VIEW_COLLECTION"]) {
+	$arParams["LIST_PRODUCT_ROW_VARIANTS"] = Bitrix\Main\Web\Json::encode(CatalogSectionComponent::predictRowVariants($arParams["LINE_ELEMENT_COUNT"], $arParams["PAGE_ELEMENT_COUNT"]));
+}?>
+<?$intSectionID = $APPLICATION->IncludeComponent("bitrix:catalog.section", "",
 	array(
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -428,7 +402,7 @@ if(!$arCurSection["VIEW_COLLECTION"]) {
 		"SHOW_404" => $arParams["SHOW_404"],
 		"FILE_404" => $arParams["FILE_404"],
 		"DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
-		"PAGE_ELEMENT_COUNT" => $limit,
+		"PAGE_ELEMENT_COUNT" => $arParams["PAGE_ELEMENT_COUNT"],
 		"LINE_ELEMENT_COUNT" => $arParams["LINE_ELEMENT_COUNT"],
 		"PRICE_CODE" => $arParams["PRICE_CODE"],
 		"USE_PRICE_COUNT" => $arParams["USE_PRICE_COUNT"],
@@ -448,7 +422,10 @@ if(!$arCurSection["VIEW_COLLECTION"]) {
 		"PAGER_SHOW_ALL" => $arParams["PAGER_SHOW_ALL"],
 		"PAGER_BASE_LINK_ENABLE" => $arParams["PAGER_BASE_LINK_ENABLE"],
 		"PAGER_BASE_LINK" => $arParams["PAGER_BASE_LINK"],
-		"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
+		"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],		
+		"LAZY_LOAD" => (isset($arParams["LAZY_LOAD"]) ? $arParams["LAZY_LOAD"] : "Y"),
+		"MESS_BTN_LAZY_LOAD" => (isset($arParams["~MESS_BTN_LAZY_LOAD"]) ? $arParams["~MESS_BTN_LAZY_LOAD"] : ""),
+		"LOAD_ON_SCROLL" => (isset($arParams["LOAD_ON_SCROLL"]) ? $arParams["LOAD_ON_SCROLL"] : "Y"),
 		"OFFERS_CART_PROPERTIES" => $arParams["OFFERS_CART_PROPERTIES"],
 		"OFFERS_FIELD_CODE" => $arParams["LIST_OFFERS_FIELD_CODE"],
 		"OFFERS_PROPERTY_CODE" => $arParams["LIST_OFFERS_PROPERTY_CODE"],
@@ -465,15 +442,16 @@ if(!$arCurSection["VIEW_COLLECTION"]) {
 		"CONVERT_CURRENCY" => $arParams["CONVERT_CURRENCY"],
 		"CURRENCY_ID" => $arParams["CURRENCY_ID"],
 		"HIDE_NOT_AVAILABLE" => $arParams["HIDE_NOT_AVAILABLE"],
-		"HIDE_NOT_AVAILABLE_OFFERS" => $arParams["HIDE_NOT_AVAILABLE_OFFERS"],
+		"HIDE_NOT_AVAILABLE_OFFERS" => $arParams["HIDE_NOT_AVAILABLE_OFFERS"],		
+		"PRODUCT_ROW_VARIANTS" => $arParams["LIST_PRODUCT_ROW_VARIANTS"],
+		"TYPE" => $view,
 		"ADD_SECTIONS_CHAIN" => "N",		
 		"COMPARE_PATH" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["compare"],
 		"BACKGROUND_IMAGE" => (isset($arParams["SECTION_BACKGROUND_IMAGE"]) ? $arParams["SECTION_BACKGROUND_IMAGE"] : ""),
 		"DISABLE_INIT_JS_IN_COMPONENT" => (isset($arParams["DISABLE_INIT_JS_IN_COMPONENT"]) ? $arParams["DISABLE_INIT_JS_IN_COMPONENT"] : ""),
 		"DISPLAY_IMG_WIDTH"	 =>	$arParams["DISPLAY_IMG_WIDTH"],
 		"DISPLAY_IMG_HEIGHT" =>	$arParams["DISPLAY_IMG_HEIGHT"],
-		"PROPERTY_CODE_MOD" => $arParams["PROPERTY_CODE_MOD"],
-		"VIEW_COLLECTION" => $arCurSection["VIEW_COLLECTION"]
+		"PROPERTY_CODE_MOD" => !$arCurSection["VIEW_COLLECTION"] ? $arParams["PROPERTY_CODE_MOD"] : ""
 	),
 	false,
 	array("HIDE_ICONS" => "Y")
@@ -489,82 +467,108 @@ if(!empty($arCurSection["DESCRIPTION"])):
 endif;
 
 //BIGDATA_ITEMS//
-$arRecomData = array();
-$recomCacheID = array("IBLOCK_ID" => $arParams["IBLOCK_ID"]);
-$obCache = new CPHPCache();
-if($obCache->InitCache($arParams["CACHE_TIME"], serialize($recomCacheID), "/catalog/recommended")) {
-	$arRecomData = $obCache->GetVars();	
-} elseif($obCache->StartDataCache()) {
-	if(Loader::includeModule("catalog")) {
-		$arSKU = CCatalogSKU::GetInfoByProductIBlock($arParams["IBLOCK_ID"]);
-		$arRecomData["OFFER_IBLOCK_ID"] = (!empty($arSKU) ? $arSKU["IBLOCK_ID"] : 0);
-	}
-	$obCache->EndDataCache($arRecomData);
-}
-if(!empty($arRecomData)):
-	if(ModuleManager::isModuleInstalled("sale") && (!isset($arParams["USE_BIG_DATA"]) || $arParams["USE_BIG_DATA"] != "N")):?>
-		<?$APPLICATION->IncludeComponent("bitrix:catalog.bigdata.products", ".default", 
-			array(
-				"DISPLAY_IMG_WIDTH" => $arParams["DISPLAY_IMG_WIDTH"],
-				"DISPLAY_IMG_HEIGHT" => $arParams["DISPLAY_IMG_HEIGHT"],
-				"SHARPEN" => $arParams["SHARPEN"],
-				"DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
-				"SHOW_POPUP" => "Y",
-				"LINE_ELEMENT_COUNT" => "4",
-				"TEMPLATE_THEME" => "",
-				"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
-				"BASKET_URL" => $arParams["BASKET_URL"],
-				"ACTION_VARIABLE" => $arParams["ACTION_VARIABLE"],
-				"PRODUCT_ID_VARIABLE" => $arParams["PRODUCT_ID_VARIABLE"],
-				"PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
-				"ADD_PROPERTIES_TO_BASKET" => $arParams["ADD_PROPERTIES_TO_BASKET"],
-				"PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
-				"PARTIAL_PRODUCT_PROPERTIES" => $arParams["PARTIAL_PRODUCT_PROPERTIES"],
-				"SHOW_OLD_PRICE" => "",
-				"SHOW_DISCOUNT_PERCENT" => "",
-				"PRICE_CODE" => $arParams["PRICE_CODE"],
-				"SHOW_PRICE_COUNT" => $arParams["SHOW_PRICE_COUNT"],
-				"PRODUCT_SUBSCRIPTION" => "",
-				"PRICE_VAT_INCLUDE" => $arParams["PRICE_VAT_INCLUDE"],
-				"USE_PRODUCT_QUANTITY" => $arParams["USE_PRODUCT_QUANTITY"],
-				"SHOW_NAME" => "Y",
-				"SHOW_IMAGE" => "Y",
-				"MESS_BTN_BUY" => "",
-				"MESS_BTN_DETAIL" => "",
-				"MESS_BTN_SUBSCRIBE" => "",
-				"MESS_NOT_AVAILABLE" => "",
-				"PAGE_ELEMENT_COUNT" => "4",
-				"SHOW_FROM_SECTION" => "Y",
-				"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-				"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-				"DEPTH" => "2",
-				"CACHE_TYPE" => $arParams["CACHE_TYPE"],
-				"CACHE_TIME" => $arParams["CACHE_TIME"],
-				"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-				"SHOW_PRODUCTS_".$arParams["IBLOCK_ID"] => "Y",
-				"ADDITIONAL_PICT_PROP_".$arParams["IBLOCK_ID"] => "",
-				"LABEL_PROP_".$arParams["IBLOCK_ID"] => "",
-				"HIDE_NOT_AVAILABLE" => $arParams["HIDE_NOT_AVAILABLE"],
-				"HIDE_NOT_AVAILABLE_OFFERS" => $arParams["HIDE_NOT_AVAILABLE_OFFERS"],
-				"CONVERT_CURRENCY" => $arParams["CONVERT_CURRENCY"],
-				"CURRENCY_ID" => $arParams["CURRENCY_ID"],
-				"SECTION_ID" => $intSectionID,
-				"SECTION_CODE" => "",
-				"SECTION_ELEMENT_ID" => "",
-				"SECTION_ELEMENT_CODE" => "",
-				"ID" => "",
-				"PROPERTY_CODE_".$arParams["IBLOCK_ID"] => "",
-				"PROPERTY_CODE_MOD" => $arParams["PROPERTY_CODE_MOD"],
-				"CART_PROPERTIES_".$arParams["IBLOCK_ID"] => "",
-				"RCM_TYPE" => $arParams["BIG_DATA_RCM_TYPE"],
-				"OFFER_TREE_PROPS_".$arRecomData["OFFER_IBLOCK_ID"] => $arParams["LIST_OFFERS_PROPERTY_CODE"],
-				"ADDITIONAL_PICT_PROP_".$arRecomData["OFFER_IBLOCK_ID"] => ""
-			),
-			false,
-			array("HIDE_ICONS" => "Y")
-		);?>
-	<?endif;
-endif;
+if(!isset($arParams["USE_BIG_DATA"]) || $arParams["USE_BIG_DATA"] != "N") {
+	$arProperty = array();
+	$propCacheID = array("IBLOCK_ID" => $arParams["IBLOCK_ID"]);
+	$obCache = new CPHPCache();
+	if($obCache->InitCache($arParams["CACHE_TIME"], serialize($propCacheID), "/catalog/property")) {
+		$arProperty = $obCache->GetVars();	
+	} elseif($obCache->StartDataCache()) {
+		$dbProperty = CIBlockProperty::GetPropertyEnum("THIS_COLLECTION", array(), array("IBLOCK_ID" => $arParams["IBLOCK_ID"]));
+		if($arProp = $dbProperty->GetNext()) {
+			$arProperty = array(
+				"PROPERTY_ID" => $arProp["PROPERTY_ID"],
+				"ID" => $arProp["ID"]
+			);
+		}
+		$obCache->EndDataCache($arProperty);
+	}?>
+	<?$APPLICATION->IncludeComponent("bitrix:catalog.section", "bigdata",
+		array(
+			"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+			"IBLOCK_ID" => $arParams["IBLOCK_ID"],
+			"ELEMENT_SORT_FIELD" => "RAND",
+			"ELEMENT_SORT_ORDER" => "ASC",
+			"ELEMENT_SORT_FIELD2" => "",
+			"ELEMENT_SORT_ORDER2" => "",
+			"PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],
+			"SET_META_KEYWORDS" => "N",		
+			"SET_META_DESCRIPTION" => "N",		
+			"SET_BROWSER_TITLE" => "N",
+			"SET_LAST_MODIFIED" => "N",
+			"INCLUDE_SUBSECTIONS" => $arParams["INCLUDE_SUBSECTIONS"],
+			"SHOW_ALL_WO_SECTION" => $showAllWoSection,
+			"CUSTOM_FILTER" => !empty($arProperty) ? "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[{\"CLASS_ID\":\"CondIBProp:".$arParams["IBLOCK_ID"].":".$arProperty["PROPERTY_ID"]."\",\"DATA\":{\"logic\":\"Not\",\"value\":".$arProperty["ID"]."}}]}" : "",
+			"BASKET_URL" => $arParams["BASKET_URL"],
+			"ACTION_VARIABLE" => $arParams["ACTION_VARIABLE"],
+			"PRODUCT_ID_VARIABLE" => $arParams["PRODUCT_ID_VARIABLE"],
+			"SECTION_ID_VARIABLE" => $arParams["SECTION_ID_VARIABLE"],
+			"PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
+			"PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
+			"FILTER_NAME" => "",
+			"CACHE_TYPE" => $arParams["CACHE_TYPE"],
+			"CACHE_TIME" => $arParams["CACHE_TIME"],
+			"CACHE_FILTER" => $arParams["CACHE_FILTER"],
+			"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+			"SET_TITLE" => "N",
+			"MESSAGE_404" => "",
+			"SET_STATUS_404" => "N",
+			"SHOW_404" => "N",
+			"FILE_404" => "",
+			"DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
+			"PAGE_ELEMENT_COUNT" => "0",
+			"LINE_ELEMENT_COUNT" => "4",
+			"PRICE_CODE" => $arParams["PRICE_CODE"],
+			"USE_PRICE_COUNT" => $arParams["USE_PRICE_COUNT"],
+			"SHOW_PRICE_COUNT" => $arParams["SHOW_PRICE_COUNT"],
+			"PRICE_VAT_INCLUDE" => $arParams["PRICE_VAT_INCLUDE"],
+			"USE_PRODUCT_QUANTITY" => $arParams["USE_PRODUCT_QUANTITY"],
+			"ADD_PROPERTIES_TO_BASKET" => isset($arParams["ADD_PROPERTIES_TO_BASKET"]) ? $arParams["ADD_PROPERTIES_TO_BASKET"] : "",
+			"PARTIAL_PRODUCT_PROPERTIES" => isset($arParams["PARTIAL_PRODUCT_PROPERTIES"]) ? $arParams["PARTIAL_PRODUCT_PROPERTIES"] : "",
+			"PRODUCT_PROPERTIES" => $arParams["PRODUCT_PROPERTIES"],
+			"DISPLAY_TOP_PAGER" => "N",
+			"DISPLAY_BOTTOM_PAGER" => "N",
+			"PAGER_TITLE" => "",
+			"PAGER_SHOW_ALWAYS" => "N",
+			"PAGER_TEMPLATE" => "",
+			"PAGER_DESC_NUMBERING" => "N",
+			"PAGER_DESC_NUMBERING_CACHE_TIME" => "",
+			"PAGER_SHOW_ALL" => "N",
+			"PAGER_BASE_LINK_ENABLE" => "N",
+			"PAGER_BASE_LINK" => "",
+			"PAGER_PARAMS_NAME" => "",
+			"OFFERS_CART_PROPERTIES" => $arParams["OFFERS_CART_PROPERTIES"],
+			"OFFERS_FIELD_CODE" => $arParams["LIST_OFFERS_FIELD_CODE"],
+			"OFFERS_PROPERTY_CODE" => $arParams["LIST_OFFERS_PROPERTY_CODE"],
+			"OFFERS_SORT_FIELD" => $arParams["OFFERS_SORT_FIELD"],
+			"OFFERS_SORT_ORDER" => $arParams["OFFERS_SORT_ORDER"],
+			"OFFERS_SORT_FIELD2" => $arParams["OFFERS_SORT_FIELD2"],
+			"OFFERS_SORT_ORDER2" => $arParams["OFFERS_SORT_ORDER2"],
+			"OFFERS_LIMIT" => $arParams["LIST_OFFERS_LIMIT"],
+			"SECTION_ID" => !$productTypeFound ? $intSectionID : "",
+			"SECTION_CODE" => !$productTypeFound ? $arResult["VARIABLES"]["SECTION_CODE"] : "",
+			"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
+			"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
+			"USE_MAIN_ELEMENT_SECTION" => $arParams["USE_MAIN_ELEMENT_SECTION"],
+			"CONVERT_CURRENCY" => $arParams["CONVERT_CURRENCY"],
+			"CURRENCY_ID" => $arParams["CURRENCY_ID"],
+			"HIDE_NOT_AVAILABLE" => $arParams["HIDE_NOT_AVAILABLE"],
+			"HIDE_NOT_AVAILABLE_OFFERS" => $arParams["HIDE_NOT_AVAILABLE_OFFERS"],
+			"ADD_SECTIONS_CHAIN" => "N",
+			"RCM_TYPE" => isset($arParams["BIG_DATA_RCM_TYPE"]) ? $arParams["BIG_DATA_RCM_TYPE"] : "",
+			"SHOW_FROM_SECTION" => isset($arParams["SHOW_FROM_SECTION"]) ? $arParams["SHOW_FROM_SECTION"] : "N",
+			"BIG_DATA_TITLE" => "Y",
+			"COMPARE_PATH" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["compare"],
+			"BACKGROUND_IMAGE" => "",
+			"DISABLE_INIT_JS_IN_COMPONENT" => isset($arParams["DISABLE_INIT_JS_IN_COMPONENT"]) ? $arParams["DISABLE_INIT_JS_IN_COMPONENT"] : "",
+			"PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'3','BIG_DATA':true}]",
+			"DISPLAY_IMG_WIDTH"	 =>	$arParams["DISPLAY_IMG_WIDTH"],
+			"DISPLAY_IMG_HEIGHT" =>	$arParams["DISPLAY_IMG_HEIGHT"],
+			"PROPERTY_CODE_MOD" => $arParams["PROPERTY_CODE_MOD"]			
+		),
+		false
+	);?>
+<?}
 
 //PAGE_TITLE//
 if($productTypeFound)
@@ -581,6 +585,31 @@ if(isset($arCurSection["BACKGROUND_IMAGE"]) && is_array($arCurSection["BACKGROUN
 		"backgroundImage",
 		'style="background-image:url(\''.CHTTP::urnEncode($arCurSection['BACKGROUND_IMAGE']['SRC'], 'UTF-8').'\')"'
 	);
+endif;
+
+//BACKGROUND_YOUTUBE//
+if(isset($arCurSection["BACKGROUND_YOUTUBE"]) && $arSetting['SITE_BACKGROUND']['VALUE'] === 'Y'):
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.mb.YTPlayer.min.js');
+	$APPLICATION->AddHeadString("<script>
+		$(function(){
+			$('body').prepend(\"<div id='bgVideoYT'></div>\");
+			$('#bgVideoYT').YTPlayer({
+				videoURL: '{$arCurSection["BACKGROUND_YOUTUBE"]}',
+				mute: true,
+				showControls: false,
+				quality: 'defaul',
+				containment: 'body',
+				optimizeDisplay: true,
+				startAt: 0,
+				autoPlay: true,
+				realfullscreen: true,
+				stopMovieOnBlur: true,
+				showYTLogo: false,
+				gaTrack: false
+
+			});
+		});
+		</script>", true);
 endif;
 
 //META_PROPERTY//

@@ -1,4 +1,6 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
+$this->setFrameMode(true);
 
 global $arSetting;
 
@@ -10,17 +12,13 @@ CJSCore::Init(array("fx"));?>
 
 <script type="text/javascript">
 	//<![CDATA[
-	$(function() {
-		$(".showfilter").click(function() {
-			var clickitem = $(this);
-			clickitem.parent().toggleClass("active");
-			$(".filter").slideToggle();
-		});
-		$(".catalog_item_toogle_filter_hidden").click(function() {
-			$(".catalog_item_toogle_filter").removeClass("active");			
-			$(".filter").slideToggle();
-		});
-		<?if($arSetting["SMART_FILTER_LOCATION"]["VALUE"] == "VERTICAL"):?>
+	<?if($arSetting["SMART_FILTER_LOCATION"]["VALUE"] == "VERTICAL"):?>
+		if (window.frameCacheVars !== undefined) {
+			BX.addCustomEvent("onFrameDataReceived", filterLocation);
+		} else {
+			$(filterLocation);
+		}
+		function filterLocation() {
 			$(window).resize(function() {
 				var filter = $(".filter"),
 					currentWidth = $(".center").width();
@@ -46,9 +44,21 @@ CJSCore::Init(array("fx"));?>
 				}
 			});
 			$(window).resize();
-		<?endif;?>
-	});
+		}
+	<?endif;?>
 	
+	function showFilter(btnShow, filter) {
+		$(btnShow).parent().toggleClass("active");
+		$(filter).slideToggle();
+		return false;
+	}
+	
+	function toogleFilterHidden(toogleFilter, filter) {
+		$(toogleFilter).removeClass("active");	
+		$(filter).slideToggle();
+		return false;
+	}
+
 	//SHOW_FILTER_HINT//
 	function showFilterHint(target, hint) {		
 		BX.FilterHint = {
@@ -78,7 +88,7 @@ CJSCore::Init(array("fx"));?>
 </script>
 	
 <div class="catalog_item_toogle_filter<?=($arSetting['SMART_FILTER_LOCATION']['VALUE'] == 'VERTICAL') ? ' vertical' : '';?><?=($arSetting['SMART_FILTER_VISIBILITY']['VALUE'] == 'EXPAND') ? ' active' : '';?>">
-	<a class="showfilter" href="javascript:void(0)"><span><?=GetMessage("FILTER_DISPLAY_HIDDEN")?></span><i class="fa fa-minus"></i><i class="fa fa-plus"></i></a>
+	<a class="showfilter" onclick="showFilter(this, '.filter')" href="javascript:void(0)"><span><?=GetMessage("FILTER_DISPLAY_HIDDEN")?></span><i class="fa fa-minus"></i><i class="fa fa-plus"></i></a>
 </div>
 <div class="filter<?=($arSetting['SMART_FILTER_LOCATION']['VALUE'] == 'VERTICAL') ? ' vertical' : '';?>"<?=($arSetting["SMART_FILTER_VISIBILITY"]["VALUE"] == "EXPAND") ? " style='display:block;'" : "";?>>
 	<form name="<?=$arResult["FILTER_NAME"]."_form"?>" action="<?=$arResult["FORM_ACTION"]?>" method="get">
@@ -195,7 +205,7 @@ CJSCore::Init(array("fx"));?>
 								if(in_array($arItem["CODE"], $nsd)):
 									foreach($arItem['VALUES'] as $val => $arOption):?>
 										<div class="custom-forms <?=($arOption["CHECKED"]) ? "active" : ""?>">
-											<input type="checkbox" id="<?=$arOption['CONTROL_ID']?>" name="<?=$arOption['CONTROL_NAME']?>" <?=$arOption["CHECKED"] ? "checked=\"checked\"" : ""?> <?=$arOption["DISABLED"] ? "disabled=\"disabled\"" : ""?> value="<?=$arOption['HTML_VALUE']?>" onclick="smartFilter.click(this)" />
+											<input type="checkbox" id="<?=$arOption['CONTROL_ID']?>" name="<?=$arOption['CONTROL_NAME']?>" <?=$arOption["CHECKED"] ? "checked=\"checked\"" : ""?> <?=$arOption["DISABLED"] ? "disabled=\"disabled\"" : ""?> value="<?=$arOption['HTML_VALUE']?>" onclick="smartFilter.click(this, <?=($arParams['INSTANT_RELOAD']? '1': '0')?>)" />
 											<label data-role="label_<?=$arOption['CONTROL_ID']?>" <?=$arOption["DISABLED"] ? "class=\"disabled\"" : ""?> for="<?=$arOption['CONTROL_ID']?>"><?=strip_tags(htmlspecialchars_decode($arItem["NAME"]))?><?if($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($arOption["ELEMENT_COUNT"])):?><span class="count" data-role="count_<?=$arOption["CONTROL_ID"]?>"><?=$arOption["ELEMENT_COUNT"]?></span><?endif;?></label>
 										</div>
 									<?endforeach;
@@ -345,14 +355,14 @@ CJSCore::Init(array("fx"));?>
 									break;
 								case "K": //RADIO_BUTTONS ?>
 									<div class="custom-forms">
-										<input type="radio" id="<?="all_".$arCur['CONTROL_ID']?>" name="<?=$arCur['CONTROL_NAME_ALT']?>" value="" onclick="smartFilter.click(this)" />
+										<input type="radio" id="<?="all_".$arCur['CONTROL_ID']?>" name="<?=$arCur['CONTROL_NAME_ALT']?>" value="" onclick="smartFilter.click(this, <?=($arParams['INSTANT_RELOAD']? '1': '0')?>)" />
 										<label for="<?="all_".$arCur['CONTROL_ID']?>">
 											<?=GetMessage("CT_BCSF_FILTER_ALL")?>
 										</label>
 									</div>
 									<?foreach($arItem["VALUES"] as $val => $arOption):?>										
 										<div class="custom-forms <?=($arOption["CHECKED"]) ? "active" : ""?>">
-											<input type="radio" id="<?=$arOption['CONTROL_ID']?>" name="<?=$arOption['CONTROL_NAME_ALT']?>" <?=$arOption["CHECKED"] ? "checked=\"checked\"" : ""?> <?=$arOption["DISABLED"] ? "disabled=\"disabled\"" : ""?> value="<?=$arOption['HTML_VALUE_ALT']?>" onclick="smartFilter.click(this)" />
+											<input type="radio" id="<?=$arOption['CONTROL_ID']?>" name="<?=$arOption['CONTROL_NAME_ALT']?>" <?=$arOption["CHECKED"] ? "checked=\"checked\"" : ""?> <?=$arOption["DISABLED"] ? "disabled=\"disabled\"" : ""?> value="<?=$arOption['HTML_VALUE_ALT']?>" onclick="smartFilter.click(this, <?=($arParams['INSTANT_RELOAD']? '1': '0')?>)" />
 											<label data-role="label_<?=$arOption['CONTROL_ID']?>" <?=$arOption["DISABLED"] ? "class=\"disabled\"" : ""?> for="<?=$arOption['CONTROL_ID']?>"><?=$arOption["VALUE"]?><?if($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($arOption["ELEMENT_COUNT"])):?><span class="count" data-role="count_<?=$arOption["CONTROL_ID"]?>"><?=$arOption["ELEMENT_COUNT"]?></span><?endif;?></label>
 										</div>
 									<?endforeach;
@@ -360,7 +370,7 @@ CJSCore::Init(array("fx"));?>
 								default: //CHECKBOXES
 									foreach($arItem["VALUES"] as $val => $arOption):?>
 										<div class="custom-forms <?=($arItem['CODE'] == 'COLOR') ? 'colors' : ''?> <?=($arOption["CHECKED"]) ? "active" : ""?>">
-											<input type="checkbox" id="<?=$arOption['CONTROL_ID']?>" name="<?=$arOption['CONTROL_NAME']?>" <?=$arOption["CHECKED"] ? "checked=\"checked\"" : ""?> <?=$arOption["DISABLED"] ? "disabled=\"disabled\"" : ""?> value="<?=$arOption['HTML_VALUE']?>" onclick="smartFilter.click(this)" />
+											<input type="checkbox" id="<?=$arOption['CONTROL_ID']?>" name="<?=$arOption['CONTROL_NAME']?>" <?=$arOption["CHECKED"] ? "checked=\"checked\"" : ""?> <?=$arOption["DISABLED"] ? "disabled=\"disabled\"" : ""?> value="<?=$arOption['HTML_VALUE']?>" onclick="smartFilter.click(this, <?=($arParams['INSTANT_RELOAD']? '1': '0')?>)" />
 											<?if($arItem["CODE"] != "COLOR"):?>
 												<label data-role="label_<?=$arOption['CONTROL_ID']?>" <?=$arOption["DISABLED"] ? "class=\"disabled\"" : ""?> for="<?=$arOption['CONTROL_ID']?>"><?=$arOption["VALUE"]?><?if($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($arOption["ELEMENT_COUNT"])):?><span class="count" data-role="count_<?=$arOption["CONTROL_ID"]?>"><?=$arOption["ELEMENT_COUNT"]?></span><?endif;?></label>
 											<?elseif($arItem["CODE"] == "COLOR"):
@@ -384,7 +394,7 @@ CJSCore::Init(array("fx"));?>
 		</table>
 		<div class="clr"></div>
 		<div class="submit">
-			<a href="javascript:void(0)" class="catalog_item_toogle_filter_hidden"<?=($arSetting["SMART_FILTER_LOCATION"]["VALUE"] == "VERTICAL") ? " style='display:none;'" : "";?>><?=GetMessage("FILTER_HIDDEN")?></a>			
+			<a href="javascript:void(0)" onclick="toogleFilterHidden('.catalog_item_toogle_filter', '.filter')" class="catalog_item_toogle_filter_hidden"<?=($arSetting["SMART_FILTER_LOCATION"]["VALUE"] == "VERTICAL") ? " style='display:none;'" : "";?>><?=GetMessage("FILTER_HIDDEN")?></a>			
 			<?if($arSetting["SMART_FILTER_LOCATION"]["VALUE"] == "HORIZONTAL"):?>
 				<button type="submit" name="set_filter" id="set_filter" class="btn_buy popdef" value="y"><?=GetMessage("FILTER_SET")?></button>
 			<?endif;			

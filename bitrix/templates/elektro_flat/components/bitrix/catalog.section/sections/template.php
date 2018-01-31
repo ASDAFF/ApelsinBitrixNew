@@ -13,6 +13,7 @@ $inPercentPrice = in_array("PERCENT_PRICE", $arSetting["PRODUCT_TABLE_VIEW"]["VA
 $inArticle = in_array("ARTNUMBER", $arSetting["PRODUCT_TABLE_VIEW"]["VALUE"]);
 $inRating = in_array("RATING", $arSetting["PRODUCT_TABLE_VIEW"]["VALUE"]);
 $inPreviewText = in_array("PREVIEW_TEXT", $arSetting["PRODUCT_TABLE_VIEW"]["VALUE"]);
+$inMinPrice = in_array("MIN_PRICE", $arSetting["PRODUCT_TABLE_VIEW"]["VALUE"]);
 $inProductQnt = in_array("PRODUCT_QUANTITY", $arSetting["GENERAL_SETTINGS"]["VALUE"]);
 $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"]);
 
@@ -64,16 +65,16 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 	//SECTIONS//
 	foreach($arResult["SECTIONS"] as $arSection) {?>
 		<div class="items-section">
-			<div class="items-section__title-wrap">
+			<div class="items-section__title-wrap<?=$arParams['HIDE_SECTION'] == "Y"? ' active': ''?>">
 				<span class="items-section__title">
 					<span class="items-section__title-text"><?=$arSection["NAME"]?></span>
 					<span class="items-section__title-qnt-wrap">
 						<span class="items-section__title-qnt"><?=count($arSection["ITEMS"])?></span>
 					</span>
 				</span>
-				<i class="items-section__title-icon fa fa-minus"></i>
+				<i class="items-section__title-icon fa <?=$arParams['HIDE_SECTION'] == "Y"? 'fa-plus': 'fa-minus'?>"></i>
 			</div>
-			<div class="items-section__childs">
+			<div class="items-section__childs"<?=$arParams['HIDE_SECTION'] == "Y"? ' style="display: none;"': ''?>>
 				<div class="catalog-item-cards">
 					<?//ITEMS//
 					foreach($arSection["ITEMS"] as $key => $arElement) {
@@ -291,7 +292,7 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 													<?}
 												}?>
 												<span class="catalog-item-price">
-													<?if(count($arElement["ITEM_QUANTITY_RANGES"]) > 1) {?>
+													<?if(count($arElement["ITEM_QUANTITY_RANGES"]) > 1 && $inMinPrice) {?>
 														<span class="from"><?=GetMessage("CATALOG_ELEMENT_FROM")?></span>
 													<?}
 													echo number_format($arElement["MIN_PRICE"]["RATIO_PRICE"], $arCurFormat["DECIMALS"], $arCurFormat["DEC_POINT"], $arCurFormat["THOUSANDS_SEP"]);?>
@@ -587,7 +588,10 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 	<div class="clr"></div>
 </div>
 
-<?//JS//?>
+<?$signer = new \Bitrix\Main\Security\Sign\Signer;
+$signedParams = $signer->sign(base64_encode(serialize($arResult["ORIGINAL_PARAMETERS"])), "catalog.section");
+
+//JS//?>
 <script type="text/javascript">
 	BX.ready(function() {
 		BX.message({			
@@ -600,7 +604,7 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 			SECTIONS_POPUP_WINDOW_MORE_OPTIONS: "<?=GetMessageJS('CATALOG_ELEMENT_MORE_OPTIONS')?>",			
 			SECTIONS_COMPONENT_TEMPLATE: "<?=$this->GetFolder();?>",
 			SECTIONS_OFFERS_VIEW: "<?=$arSetting['OFFERS_VIEW']['VALUE']?>",
-			SECTIONS_COMPONENT_PARAMS: "<?=CUtil::PhpToJSObject($arParams, false, true)?>"
+			SECTIONS_COMPONENT_PARAMS: "<?=CUtil::JSEscape($signedParams)?>"
 		});	
 		<?foreach($arResult["ITEMS"] as $key => $arElement) {
 			if((isset($arElement["OFFERS"]) && !empty($arElement["OFFERS"])) || $arElement["SELECT_PROPS"]) {				

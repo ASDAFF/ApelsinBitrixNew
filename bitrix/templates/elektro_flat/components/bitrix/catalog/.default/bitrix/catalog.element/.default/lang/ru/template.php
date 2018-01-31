@@ -27,6 +27,7 @@ $MESS["CATALOG_ELEMENT_ARTNUMBER"] = "Артикул: ";
 $MESS["CATALOG_ELEMENT_BUTTON_PAYMENTS"] = "Все способы оплаты";
 $MESS["CATALOG_ELEMENT_BUTTON_CREDIT"] = "Можно оформить в кредит";
 $MESS["CATALOG_ELEMENT_BUTTON_DELIVERY"] = "Подробнее о доставке";
+$MESS["CATALOG_ELEMENT_MAIN_PROPERTIES"] = "Основные характеристики";
 $MESS["CATALOG_ELEMENT_PROPERTIES"] = "Характеристики";
 $MESS["CATALOG_ELEMENT_OFFERS_LIST"] = "Выберите нужный вариант товара";
 $MESS["CATALOG_ELEMENT_OFFERS_LIST_IMAGE"] = "Фото";

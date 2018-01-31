@@ -59,7 +59,7 @@ if(count($arResult["MORE_PHOTO"]) > 0):
 endif;
 
 //BACKGROUND_IMAGE//
-if(empty($arResult["BACKGROUND_IMAGE"])):
+if(empty($arResult["BACKGROUND_IMAGE"]) || empty($arResult["BACKGROUND_YOUTUBE"])):
 	foreach($arResult["SECTION"]["PATH"] as $arSectionPath):
 		$sectionPathIds[] = $arSectionPath["ID"];
 	endforeach;	
@@ -80,7 +80,7 @@ if(empty($arResult["BACKGROUND_IMAGE"])):
 				array("DEPTH_LEVEL" => "DESC"),	
 				array("IBLOCK_ID" => $arResult["IBLOCK_ID"], "ACTIVE" => "Y", "GLOBAL_ACTIVE" => "Y", "ID" => $sectionPathIds),
 				false,
-				array("ID", "IBLOCK_ID", "DEPTH_LEVEL", "UF_BACKGROUND_IMAGE")
+				array("ID", "IBLOCK_ID", "DEPTH_LEVEL", "UF_BACKGROUND_IMAGE", "UF_YOUTUBE_BG")
 			);
 			global $CACHE_MANAGER;
 			$CACHE_MANAGER->StartTagCache($cache_dir);
@@ -88,6 +88,9 @@ if(empty($arResult["BACKGROUND_IMAGE"])):
 			while($arSection = $rsSections->GetNext()) {
 				if(!isset($arCurSection["BACKGROUND_IMAGE"]) && $arSection["UF_BACKGROUND_IMAGE"] > 0) {
 					$arCurSection["BACKGROUND_IMAGE"] = CFile::GetFileArray($arSection["UF_BACKGROUND_IMAGE"]);
+				}
+				if(!isset($arCurSection["BACKGROUND_YOUTUBE"]) && !empty($arSection["UF_YOUTUBE_BG"])) {
+					$arCurSection["BACKGROUND_YOUTUBE"] = $arSection["UF_YOUTUBE_BG"];
 				}
 			}
 			$CACHE_MANAGER->EndTagCache();
@@ -102,7 +105,32 @@ if(empty($arResult["BACKGROUND_IMAGE"])):
 	endif;
 endif;
 
-if(($arParams["AJAX_OPTION_HISTORY"] !== "Y" && $arParams["AJAX_MODE"] == "Y") || $arParams["AJAX_MODE"] == "Y" || $arParams["AJAX_MODE"] !== "Y") {
+if((!empty($arResult["BACKGROUND_YOUTUBE"]) || !empty($arCurSection["BACKGROUND_YOUTUBE"])) && $arSetting['SITE_BACKGROUND']['VALUE'] === 'Y'):
+	$sBackgroundYouTube = (!empty($arResult["BACKGROUND_YOUTUBE"])? $arResult["BACKGROUND_YOUTUBE"]: $arCurSection["BACKGROUND_YOUTUBE"]);
+	$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.mb.YTPlayer.min.js');
+	$APPLICATION->AddHeadString("<script>
+		$(function(){
+			$('body').prepend(\"<div id='bgVideoYT'></div>\");
+			$('#bgVideoYT').YTPlayer({
+				videoURL: '{$sBackgroundYouTube}',
+				mute: true,
+				showControls: false,
+				quality: 'defaul',
+				containment: 'body',
+				optimizeDisplay: true,
+				startAt: 0,
+				autoPlay: true,
+				realfullscreen: true,
+				stopMovieOnBlur: true,
+				showYTLogo: false,
+				gaTrack: false
+			});
+		});
+		</script>", true);
+endif;
+
+if(!($arParams["AJAX_OPTION_HISTORY"] == "Y" && $arParams["AJAX_MODE"] == "Y")) {
+// if(($arParams["AJAX_OPTION_HISTORY"] !== "Y" && $arParams["AJAX_MODE"] == "Y") || $arParams["AJAX_MODE"] == "Y" || $arParams["AJAX_MODE"] !== "Y") {
 	//SUBSCRIBE//
 	if(isset($arResult["JS_OFFERS"]) && !empty($arResult["JS_OFFERS"])):
 		if($arSetting["OFFERS_VIEW"]["VALUE"] != "LIST"):		
@@ -352,7 +380,7 @@ if(($arParams["AJAX_OPTION_HISTORY"] !== "Y" && $arParams["AJAX_MODE"] == "Y") |
 					"SHOW_404" => "N",
 					"FILE_404" => "",
 					"DISPLAY_COMPARE" => $arParams["DISPLAY_COMPARE"] == 1 ? "Y" : "N",
-					"PAGE_ELEMENT_COUNT" => "8",
+					"PAGE_ELEMENT_COUNT" => (isset($arParams['NUMBER_ACCESSORIES'])? $arParams['NUMBER_ACCESSORIES']: "8"),
 					"LINE_ELEMENT_COUNT" => "",
 					"PRICE_CODE" => $arParams["PRICE_CODE"],
 					"USE_PRICE_COUNT" => $arParams["USE_PRICE_COUNT"] == 1 ? "Y" : "N",
@@ -434,7 +462,8 @@ if(($arParams["AJAX_OPTION_HISTORY"] !== "Y" && $arParams["AJAX_MODE"] == "Y") |
 				"ELEMENT_ID" => $arResult["ID"],
 				"ELEMENT_AREA_ID" => $arResult["STR_MAIN_ID"],
 				"CACHE_TYPE" => $arParams["CACHE_TYPE"],
-				"CACHE_TIME" => $arParams["CACHE_TIME"]
+				"CACHE_TIME" => $arParams["CACHE_TIME"],
+				"COUNT_REVIEW" => $arParams["COUNT_REVIEW"]
 			),
 			false,
 			array("HIDE_ICONS" => "Y")

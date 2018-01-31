@@ -20,16 +20,14 @@ JCSmartFilter.prototype.keyup = function(input) {
 	}, this), 500);
 };
 
-JCSmartFilter.prototype.click = function(checkbox) {	
+JCSmartFilter.prototype.click = function(checkbox, INSTANT_RELOAD) {	
 	if(!!this.timer) {
 		clearTimeout(this.timer);
 	}
 	
-	var customForm = BX.findParent(BX(checkbox));
-	if(!BX.hasClass(BX(customForm),"active")) {
-		BX.addClass(BX(customForm),"active");
-	} else {
-		BX.removeClass(BX(customForm),"active");
+	if(!!INSTANT_RELOAD) {
+		var customForm = BX.findParent(checkbox);
+		BX.toggleClass(BX(customForm),"active");
 	}
 	
 	this.timer = setTimeout(BX.delegate(function(){

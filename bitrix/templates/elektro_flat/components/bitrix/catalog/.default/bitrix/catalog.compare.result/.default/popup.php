@@ -39,9 +39,10 @@ if($request->isPost() && check_bitrix_sessid()) {
 			<?break;
 		case "props":
 			//PROPS//
-			$arParams = CUtil::JsObjectToPhp($arParams);
-			$arParams = str_replace("true", "Y", $arParams);
-			$arParams = str_replace("false", "N", $arParams);		
+			$signer = new \Bitrix\Main\Security\Sign\Signer;
+			$arParams = unserialize(base64_decode($signer->unsign($arParams, "catalog.compare.result")));
+			$arParams["USE_PRICE_COUNT"] = $arParams["USE_PRICE_COUNT"] ? "Y" : "N";
+			$arParams["PRICE_VAT_INCLUDE"] = $arParams["PRICE_VAT_INCLUDE"] ? "Y" : "N";
 			$elementId = $request->getPost("ELEMENT_ID");
 			$strMainId = $request->getPost("STR_MAIN_ID");
 
@@ -49,7 +50,7 @@ if($request->isPost() && check_bitrix_sessid()) {
 				$dbPriceType = CCatalogGroup::GetList(array("SORT" => "ASC"),array('ID', 'NAME', 'CAN_ACCESS'));
 				$flag = false;
 
-				while ($arPriceType = $dbPriceType->Fetch()) {
+				while($arPriceType = $dbPriceType->Fetch()) {
 				    if($arPriceType['CAN_ACCESS'] == "Y" && in_array($arPriceType['NAME'], $arParams["PRICE_CODE"])) {
 				    	$arParams["OFFERS_SORT_FIELD_PP"] = "catalog_PRICE_".$arPriceType['ID'];
 				    	$flag = true;
@@ -61,14 +62,12 @@ if($request->isPost() && check_bitrix_sessid()) {
 					$arPriceBase = CCatalogGroup::GetBaseGroup();
 			    	$arParams["OFFERS_SORT_FIELD_PP"] = "catalog_PRICE_".$arPriceBase['ID'];
 				}
-
 			} elseif($arParams["OFFERS_SORT_FIELD"] == "PROPERTIES") {
 				$arParams["OFFERS_SORT_FIELD_PP"] = "SORT";
 				$arParams["OFFERS_SORT_FIELD3"] = "PROPERTIES";
 			} else {
 				$arParams["OFFERS_SORT_FIELD_PP"] = $arParams["OFFERS_SORT_FIELD"];
-			}
-			?>
+			}?>
 			<?$APPLICATION->IncludeComponent("bitrix:catalog.element", "props",
 				array(
 					"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],

@@ -390,7 +390,10 @@ foreach($arResult["ITEMS"] as $arElement) {
 	<?}?>		
 </div>
 
-<?//JS//?>
+<?$signer = new \Bitrix\Main\Security\Sign\Signer;
+$signedParams = $signer->sign(base64_encode(serialize($arParams)), "catalog.compare.result");
+
+//JS//?>
 <script type="text/javascript">
 	BX.ready(function() {
 		BX.message({			
@@ -402,7 +405,7 @@ foreach($arResult["ITEMS"] as $arElement) {
 			COMPARE_POPUP_WINDOW_MORE_OPTIONS: "<?=GetMessageJS('CATALOG_ELEMENT_MORE_OPTIONS')?>",			
 			COMPARE_COMPONENT_TEMPLATE: "<?=$this->GetFolder();?>",
 			COMPARE_OFFERS_VIEW: "<?=$arSetting['OFFERS_VIEW']['VALUE']?>",
-			COMPARE_COMPONENT_PARAMS: "<?=CUtil::PhpToJSObject($arParams)?>"
+			COMPARE_COMPONENT_PARAMS: "<?=CUtil::JSEscape($signedParams)?>"
 		});	
 		<?foreach($arResult["ITEMS"] as $key => $arElement) {
 			if((isset($arElement["OFFERS"]) && !empty($arElement["OFFERS"])) || $arElement["SELECT_PROPS"]) {				

@@ -2,9 +2,12 @@
 
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
+use Bitrix\Main\Web\Json;
 
 if(!CModule::IncludeModule("iblock"))
 	return;
+
+CBitrixComponent::includeComponentClass("bitrix:catalog.section");
 
 $boolCatalog = CModule::IncludeModule("catalog");
 
@@ -226,6 +229,12 @@ $arTemplateParameters = array(
 		"TYPE" => "STRING",
 		"DEFAULT" => "1"
 	),
+	"HIDE_SECTION" => array(
+		"PARENT" => "VISUAL",
+		"NAME" => GetMessage("HIDE_SECTION"),
+		"TYPE" => "CHECKBOX",
+		"DEFAULT" => "N",
+	)
 );
 
 if($boolCatalog) {
@@ -307,4 +316,49 @@ if(ModuleManager::isModuleInstalled("sale")) {
 		);
 		unset($rcmTypeList);
 	}
-}?>
+}
+
+$lineElementCount = (int)$arCurrentValues["LINE_ELEMENT_COUNT"] ?: 4;
+$pageElementCount = (int)$arCurrentValues["PAGE_ELEMENT_COUNT"] ?: 12;
+
+$arTemplateParameters["PRODUCT_ROW_VARIANTS"] = array(
+	"PARENT" => "VISUAL",
+	"NAME" => GetMessage("CP_BC_TPL_PRODUCT_ROW_VARIANTS"),
+	"TYPE" => "CUSTOM",
+	"BIG_DATA" => "N",
+	"COUNT_PARAM_NAME" => "PAGE_ELEMENT_COUNT",
+	"JS_FILE" => CatalogSectionComponent::getSettingsScript($templateFolder, "dragdrop_add"),
+	"JS_EVENT" => "initDraggableAddControl",
+	"JS_MESSAGES" => Json::encode(array(
+		"variant" => GetMessage("CP_BC_TPL_SETTINGS_VARIANT"),
+		"delete" => GetMessage("CP_BC_TPL_SETTINGS_DELETE"),
+		"quantity" => GetMessage("CP_BC_TPL_SETTINGS_QUANTITY"),
+		"quantityBigData" => GetMessage("CP_BC_TPL_SETTINGS_QUANTITY_BIG_DATA")
+	)),
+	"JS_DATA" => Json::encode(CatalogSectionComponent::getTemplateVariantsMap()),
+	"DEFAULT" => Json::encode(CatalogSectionComponent::predictRowVariants($lineElementCount, $pageElementCount))
+);
+
+$arTemplateParameters["LAZY_LOAD"] = array(
+	"PARENT" => "PAGER_SETTINGS",
+	"NAME" => GetMessage("CP_BC_TPL_LAZY_LOAD"),
+	"TYPE" => "CHECKBOX",
+	"REFRESH" => "Y",
+	"DEFAULT" => "N"
+);
+
+if(isset($arCurrentValues["LAZY_LOAD"]) && $arCurrentValues["LAZY_LOAD"] === "Y") {
+	$arTemplateParameters["MESS_BTN_LAZY_LOAD"] = array(
+		"PARENT" => "PAGER_SETTINGS",
+		"NAME" => GetMessage("CP_BC_TPL_MESS_BTN_LAZY_LOAD"),
+		"TYPE" => "TEXT",
+		"DEFAULT" => GetMessage("CP_BC_TPL_MESS_BTN_LAZY_LOAD_DEFAULT")
+	);
+}
+
+$arTemplateParameters["LOAD_ON_SCROLL"] = array(
+	"PARENT" => "PAGER_SETTINGS",
+	"NAME" => GetMessage("CP_BC_TPL_LOAD_ON_SCROLL"),
+	"TYPE" => "CHECKBOX",
+	"DEFAULT" => "Y"
+);?>

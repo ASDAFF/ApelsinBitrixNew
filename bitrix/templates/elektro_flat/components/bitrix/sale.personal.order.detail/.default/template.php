@@ -284,7 +284,7 @@ if (!empty($arResult['ERRORS']['FATAL'])) {
 																<div class="clr"></div>
 															<? }
 														}
-														if ( $payment['PAID'] !== 'Y' && $arResult['CANCELED'] !== 'Y' && $arParams['GUEST_MODE'] !== 'Y' && $arResult['LOCK_CHANGE_PAYSYSTEM'] !== 'Y' ) { ?>
+														if ( $payment['PAID'] !== 'Y' && $arResult['CANCELED'] !== 'Y' && $arParams['GUEST_MODE'] !== 'Y' && $arResult['LOCK_CHANGE_PAYSYSTEM'] !== 'Y' ) {?>
 															<div class="sale-order-detail-payment-options-methods-info-change">
 																<a href="#" id="<?=$payment['ACCOUNT_NUMBER']?>" class="sale-order-detail-payment-options-methods-info-change-link">
 																	<i class="fa fa-angle-down"></i>
@@ -399,13 +399,29 @@ if (!empty($arResult['ERRORS']['FATAL'])) {
 											if (strlen($shipment['TRACKING_NUMBER'])) {
 											?>
 											<div class="sale-order-detail-payment-options-methods-shipment-list-item">
-												<span class="sale-order-list-shipment-id-name"><?= Loc::getMessage('SPOD_ORDER_TRACKING_NUMBER')?>:</span>
-												<span id="sod-tracking-id" class="sale-order-detail-shipment-id"><?= htmlspecialcharsbx($shipment['TRACKING_NUMBER'])?></span>
+												<span class="sale-order-list-shipment-id-name"><?=Loc::getMessage('SPOD_ORDER_TRACKING_NUMBER')?>:</span>
+												<span id="sod-tracking-id" class="sale-order-detail-shipment-id"><?=htmlspecialcharsbx($shipment['TRACKING_NUMBER'])?></span>
 												<i class="fa fa-clone sale-order-detail-shipment-id-icon" aria-hidden="true"></i>
 											</div>
-											<?
-											}
-											?>
+											<?}?>
+											<?//EXTRA_SERVICE//
+											if(is_array($shipment['EXTRA_SERVICE']) && !empty($shipment['EXTRA_SERVICE'])) {
+												foreach($shipment['EXTRA_SERVICE'] as $keyEX => $arEX) {
+													if($arEX['PARAMS']['TYPE'] === "Y/N" && $arEX['VALUE'] === "Y") {?>
+														<div class="sale-order-detail-payment-options-methods-shipment-list-item">
+															<?=htmlspecialcharsbx($arEX['NAME'])?>: <span style="font-weight: 700; color: #000;"><?=SaleFormatCurrency($arEX['PARAMS']['PRICE'], $arResult["CURRENCY"]);?></span>
+														</div>
+													<?} elseif($arEX['PARAMS']['TYPE'] === "STRING" && !empty($arEX['VALUE'])) {?>
+														<div class="sale-order-detail-payment-options-methods-shipment-list-item">
+															<?=htmlspecialcharsbx($arEX['NAME'])?>: <span style="font-weight: 700; color: #000;"><?=SaleFormatCurrency($arEX['PARAMS']['PRICE'] * $arEX['VALUE'], $arResult["CURRENCY"]);?></span>
+														</div>
+													<?} elseif($arEX['PARAMS']['TYPE'] === "ENUM" && !empty($arEX['VALUE'])) {?>
+														<div class="sale-order-detail-payment-options-methods-shipment-list-item">
+															<?=htmlspecialcharsbx($arEX['NAME'])?>: <span style="font-weight: 700; color: #000;"><?=htmlspecialcharsbx($arEX['PARAMS']['PRICES'][$arEX['VALUE']]['TITLE'])?> - <?=SaleFormatCurrency($arEX['PARAMS']['PRICES'][$arEX['VALUE']]['PRICE'], $arResult["CURRENCY"]);?></span>
+														</div>
+													<?}
+												}
+											}?>
 											<div class="sale-order-detail-payment-options-methods-shipment-list-item-link">
 												<a class="sale-order-detail-show-link"><i class="fa fa-angle-down"></i><?=Loc::getMessage('SPOD_LIST_SHOW_ALL');?></a>
 												<a class="sale-order-detail-hide-link"><i class="fa fa-angle-up"></i><?=Loc::getMessage('SPOD_LIST_LESS');?></a>
@@ -491,7 +507,7 @@ if (!empty($arResult['ERRORS']['FATAL'])) {
 																				<?=Loc::getMessage('SPOD_ORDER_SHIPMENT_BASKET')?>
 																			</div>
 																		</div>
-																		<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right" style="padding-bottom: 5px;">
+																		<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right">
 																			<div class="sale-order-detail-order-item-td-title">
 																				<?= Loc::getMessage('SPOD_QUANTITY')?>
 																			</div>

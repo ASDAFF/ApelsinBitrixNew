@@ -35,5 +35,11 @@ $arTemplateParameters = array(
 		"MULTIPLE" => "Y",
 		"VALUES" => $arProperty,
 		"ADDITIONAL_VALUES" => "Y",
+	),
+	"HIDE_SECTION" => array(
+		"PARENT" => "VISUAL",
+		"NAME" => GetMessage("HIDE_SECTION"),
+		"TYPE" => "CHECKBOX",
+		"DEFAULT" => "N",
 	)
 );?>

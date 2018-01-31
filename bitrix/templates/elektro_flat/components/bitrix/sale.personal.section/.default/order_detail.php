@@ -10,9 +10,13 @@ $arDetParams = array(
 	"SET_TITLE" =>$arParams["SET_TITLE"],
 	"ID" => $arResult["VARIABLES"]["ID"],
 	"ACTIVE_DATE_FORMAT" => $arParams["ACTIVE_DATE_FORMAT"],
+	"ALLOW_INNER" => $arParams["ALLOW_INNER"],
+	"ONLY_INNER_FULL" => $arParams["ONLY_INNER_FULL"],
 	"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 	"CACHE_TIME" => $arParams["CACHE_TIME"],
 	"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+	"RESTRICT_CHANGE_PAYSYSTEM" => $arParams["ORDER_RESTRICT_CHANGE_PAYSYSTEM"],
+	"HIDE_USER_INFO" => $arParams["ORDER_HIDE_USER_INFO"],
 	"CUSTOM_SELECT_PROPS" => $arParams["CUSTOM_SELECT_PROPS"]
 );
 foreach($arParams as $key => $val) {	

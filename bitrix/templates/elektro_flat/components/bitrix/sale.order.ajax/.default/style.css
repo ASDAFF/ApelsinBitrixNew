@@ -524,6 +524,12 @@
 	width:100%;
 }
 
+.bx-soa-pp-company-block-s {
+	margin: 10px 0px;
+    font-size: 13px;
+    color: #575b71;
+}
+
 .bx-soa-pp-desc-period {
 	margin-bottom: 12px;
 }
@@ -1429,6 +1435,15 @@
 		font-size:12px;
 	}
 
+	.bx-soa-pp-company-selected-price {
+		white-space:nowrap;
+	}
+	
+	.bx-soa-pp-company-selected.price .bx-soa-pp-company-selected-title{
+		width:100%;
+		white-space:normal;
+	}
+	
 	/***BASKET***/
 	.bx-soa-item-thead{
 		display:none;
@@ -1544,6 +1559,10 @@
 	/***ORDER_SAVE***/
 	.bx-soa-order-save button{
 		height:28px;
+	}
+	
+	.hint_agreement {
+		margin-bottom: 10px;
 	}
 }
 
