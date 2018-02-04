@@ -1,15 +1,17 @@
 <?global $arDiscPrFilter;
-$arDiscPrFilter = array(
+$arDiscPrFilter = [];
+$arDiscPrFilter["ID"] = getRandomElementId(16, 6, array(
     "!PROPERTY_DISCOUNT" => false,
-    "PROPERTY_THIS_COLLECTION" => false
-);?>
+    "PROPERTY_THIS_COLLECTION" => false,
+));
+?>
 <?$APPLICATION->IncludeComponent(
     "bitrix:catalog.section",
     "slider_left",
     array(
         "IBLOCK_TYPE" => "catalog",
         "IBLOCK_ID" => "16",
-        "ELEMENT_SORT_FIELD" => "RAND",
+        "ELEMENT_SORT_FIELD" => "ID",
         "ELEMENT_SORT_ORDER" => "ASC",
         "ELEMENT_SORT_FIELD2" => "",
         "ELEMENT_SORT_ORDER2" => "",
