@@ -44,7 +44,13 @@ if($this->StartResultCache(false, 'v7'.($arParams["CACHE_GROUPS"]? $USER->GetGro
 				$arResult["FACET_FILTER"]['CATALOG_AVAILABLE'] = 'Y';
 
 			$res = $this->facet->query($arResult["FACET_FILTER"]);
-			
+            
+            /*
+             * временные массивы
+             * */
+            $stringPropValToLookup = [];
+            $stringPropValToPropIdMap   = [];
+            
 			CTimeZone::Disable();
 			while ($row = $res->fetch())
 			{
@@ -64,14 +70,17 @@ if($this->StartResultCache(false, 'v7'.($arParams["CACHE_GROUPS"]? $USER->GetGro
 						$this->fillItemValues($arResult["ITEMS"][$PID], FormatDate("Y-m-d", $row["MIN_VALUE_NUM"]));
 						$this->fillItemValues($arResult["ITEMS"][$PID], FormatDate("Y-m-d", $row["MAX_VALUE_NUM"]));
 					}
+					/*
+					 * строковые св-ва в фильтре очень сильно понижают скорость работы.
+					 * изначально умный фильтр получает по одному значению за один запрос к БД.
+					 * это удобно, когда пишешь код, но на большших объемах данных жутко тормозит.
+					 * поэтому оптимальнее получить эти данные пакетно, но из коробки такого нет.
+					 * поэтому запоминаем данные.
+					 * */
 					elseif ($arResult["ITEMS"][$PID]["PROPERTY_TYPE"] == "S")
 					{
-						$addedKey = $this->fillItemValues($arResult["ITEMS"][$PID], $this->facet->lookupDictionaryValue($row["VALUE"]), true);
-						if (strlen($addedKey) > 0)
-						{
-							$arResult["ITEMS"][$PID]["VALUES"][$addedKey]["FACET_VALUE"] = $row["VALUE"];
-							$arResult["ITEMS"][$PID]["VALUES"][$addedKey]["ELEMENT_COUNT"] = $row["ELEMENT_COUNT"];
-						}
+                        $stringPropValToLookup[] = $row["VALUE"];
+                        $stringPropValToPropIdMap[ $row["VALUE"] ] = $PID;
 					}
 					else
 					{
@@ -105,6 +114,30 @@ if($this->StartResultCache(false, 'v7'.($arParams["CACHE_GROUPS"]? $USER->GetGro
 					}
 				}
 			}
+			
+			
+			/*
+			 * получаем все значения оригинальных строк в один запрос и раскладываем по конечному массиву.
+			 * */
+            if ($stringPropValToLookup) {
+                $strIn = trim(implode(", ", $stringPropValToLookup), ", ");
+    
+                $connection  = \Bitrix\Main\Application::getConnection();
+                $iterator = $connection->query("SELECT ID, VALUE FROM ".$this->facet->getDictionary()->getTableName()." WHERE ID IN (". $strIn . ")") ;
+    
+                while ($ob = $iterator->fetch()) {
+                    if ($ob["VALUE"]) {
+                        $addedKey = $ob["VALUE"];
+                        $PID = $stringPropValToPropIdMap [ $ob["ID"] ];
+            
+                        $arResult["ITEMS"][$PID]["VALUES"][$addedKey]["FACET_VALUE"] = $row["VALUE"];
+                        $arResult["ITEMS"][$PID]["VALUES"][$addedKey]["ELEMENT_COUNT"] = $row["ELEMENT_COUNT"];
+                    }
+                }
+    
+            }
+			
+			
 			CTimeZone::Enable();
 		}
 		else
