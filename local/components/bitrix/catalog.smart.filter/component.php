@@ -37,14 +37,14 @@ if($this->StartResultCache(false, 'v7'.($arParams["CACHE_GROUPS"]? $USER->GetGro
 		{
 			$this->facet->setPrices($arResult["PRICES"]);
 			$this->facet->setSectionId($this->SECTION_ID);
-			$arResult["FACET_FILTER"] = array(
-				"ACTIVE_DATE" => "Y",
-				"CHECK_PERMISSIONS" => "Y",
-			);
+            
+            $arResult["FACET_FILTER"] = [];
+            
 			if ($this->arParams['HIDE_NOT_AVAILABLE'] == 'Y')
 				$arResult["FACET_FILTER"]['CATALOG_AVAILABLE'] = 'Y';
 
 			$res = $this->facet->query($arResult["FACET_FILTER"]);
+			
 			CTimeZone::Disable();
 			while ($row = $res->fetch())
 			{
