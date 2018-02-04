@@ -133,23 +133,57 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 	{
 		$items = array();
 
-		foreach(CIBlockSectionPropertyLink::GetArray($IBLOCK_ID, $this->SECTION_ID) as $PID => $arLink)
-		{
-			if ($arLink["SMART_FILTER"] !== "Y")
-				continue;
+		/*
+		 * временные массивы
+		 * */
+		$propId = [];
+		$links = [];
+		
+		/*
+		 * получаем привязанные к разделу св-ва.
+		 * некоторые из привязанных игнорируются.
+		 * */
+        foreach(CIBlockSectionPropertyLink::GetArray($IBLOCK_ID, $this->SECTION_ID) as $PID => $arLink)
+        {
+            if ($arLink["SMART_FILTER"] !== "Y")
+                continue;
+            
+            if ($arLink["ACTIVE"] === "N")
+                continue;
+            
+            if ($arLink['FILTER_HINT'] <> '')
+            {
+                $arLink['FILTER_HINT'] = CTextParser::closeTags($arLink['FILTER_HINT']);
+            }
+            
+            $propId[] = $PID;
+            $links[ $PID ] = $arLink;
+        }
+        
+        /*
+         * Если есть привязанные к разделу св-ва.
+         * Получаем только нужные данные и одним запросом.
+         * */
+        if ($propId)
+        {
+            $proprtyQuery = \Bitrix\Iblock\PropertyTable::query();
+            $proprtyQuery->addFilter("ID", $propId);
+            $proprtyQuery->setSelect([
+                "ID",
+                "IBLOCK_ID",
+                "NAME",
+                "CODE",
+                "PROPERTY_TYPE",
+                "USER_TYPE",
+                "USER_TYPE_SETTINGS",
+            ]);
 
-			if ($arLink["ACTIVE"] === "N")
-				continue;
-
-			if ($arLink['FILTER_HINT'] <> '')
+			$iterator = $proprtyQuery->exec();
+			
+			while ($arProperty = $iterator->Fetch())
 			{
-				$arLink['FILTER_HINT'] = CTextParser::closeTags($arLink['FILTER_HINT']);
-			}
-
-			$rsProperty = CIBlockProperty::GetByID($PID);
-			$arProperty = $rsProperty->Fetch();
-			if($arProperty)
-			{
+                $arLink = $links[ $PID ];
+                
 				$items[$arProperty["ID"]] = array(
 					"ID" => $arProperty["ID"],
 					"IBLOCK_ID" => $arProperty["IBLOCK_ID"],
@@ -185,6 +219,7 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 				}
 			}
 		}
+		
 		return $items;
 	}
 
