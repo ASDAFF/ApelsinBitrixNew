@@ -24,7 +24,7 @@ function getRandomElementId ($iblockId, $count = 10, $filter = []) {
     \CModule::IncludeModule("iblock");
     
     $arSelect = ["ID"];
-    $arOrder  = ["RAND" => "ASC"];
+    $arOrder  = false;
     
     $arFilter = array(
         "IBLOCK_ID"   => $iblockId,
@@ -34,7 +34,7 @@ function getRandomElementId ($iblockId, $count = 10, $filter = []) {
     if ($filter)
         $arFilter = array_merge($arFilter, $filter);
     
-    $pageNav = array("iNumPage" => 1, "nPageSize" => $count);
+    $pageNav = array("iNumPage" => 1, "nPageSize" => 1000);
     
     $iterator = \CIBlockElement::GetList( $arOrder, $arFilter, false, $pageNav, $arSelect);
     
@@ -43,6 +43,9 @@ function getRandomElementId ($iblockId, $count = 10, $filter = []) {
     while($ob = $iterator->Fetch()) {
         $result[] = $ob["ID"];
     }
+    
+    shuffle($result);
+    $result = array_slice($result, 0, $count);
     
     // fix of empty filter by ID returned to client code
     if (!$result)
