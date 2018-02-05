@@ -561,12 +561,105 @@ class CatalogSectionComponent extends ElementList
 		{
 			$element['IBLOCK_SECTION_ID'] = $this->arResult['ID'];
 		}
-
-		parent::processElement($element);
-		$this->checkLastModified($element);
+        
+        $this->modifyElementCommonData($element);
+        $this->modifyElementPrices($element);
+        $this->setElementPanelButtons($element);
+		
+        $this->checkLastModified($element);
 	}
-
-	protected function checkLastModified($element)
+	
+    /**
+     * Fill various common fields for element.
+     *
+     * @param array &$element			Element data.
+     * @return void
+     */
+    protected function modifyElementCommonData(array &$element)
+    {
+        $element['ID'] = (int)$element['ID'];
+        $element['IBLOCK_ID'] = (int)$element['IBLOCK_ID'];
+        if ($this->isEnableCompatible())
+        {
+            $element['ACTIVE_FROM'] = (isset($element['DATE_ACTIVE_FROM']) ? $element['DATE_ACTIVE_FROM'] : null);
+            $element['ACTIVE_TO'] = (isset($element['DATE_ACTIVE_TO']) ? $element['DATE_ACTIVE_TO'] : null);
+        }
+        
+        /*
+         * отключаем выборку СЕО данных для списка товаров - эти данные не используются.
+         * */
+        //$ipropValues = new Iblock\InheritedProperty\ElementValues($element['IBLOCK_ID'], $element['ID']);
+        //$element['IPROPERTY_VALUES'] = $ipropValues->getValues();
+        
+        Iblock\Component\Tools::getFieldImageData(
+            $element,
+            array('PREVIEW_PICTURE', 'DETAIL_PICTURE'),
+            Iblock\Component\Tools::IPROPERTY_ENTITY_ELEMENT,
+            'IPROPERTY_VALUES'
+        );
+        
+        /* it is not the final version */
+        $element['PRODUCT'] = array(
+            'TYPE' => null,
+            'AVAILABLE' => null,
+            'MEASURE' => null,
+            'VAT_ID' => null,
+            'VAT_RATE' => null,
+            'VAT_INCLUDED' => null,
+            'QUANTITY' => null,
+            'QUANTITY_TRACE' => null,
+            'CAN_BUY_ZERO' => null,
+            'SUBSCRIPTION' => null
+        );
+        
+        if (isset($element['CATALOG_TYPE']))
+        {
+            $element['CATALOG_TYPE'] = (int)$element['CATALOG_TYPE']; // this key will be deprecated
+            $element['PRODUCT']['TYPE'] = $element['CATALOG_TYPE'];
+        }
+        if (isset($element['CATALOG_MEASURE']))
+        {
+            $element['CATALOG_MEASURE'] = (int)$element['CATALOG_MEASURE']; // this key will be deprecated
+            $element['PRODUCT']['MEASURE'] = $element['CATALOG_MEASURE'];
+        }
+        /*
+         * this keys will be deprecated
+         * CATALOG_*
+         */
+        if (isset($element['CATALOG_AVAILABLE']))
+            $element['PRODUCT']['AVAILABLE'] = $element['CATALOG_AVAILABLE'];
+        if (isset($element['CATALOG_VAT']))
+            $element['PRODUCT']['VAT_RATE'] = $element['CATALOG_VAT'];
+        if (isset($element['CATALOG_VAT_INCLUDED']))
+            $element['PRODUCT']['VAT_INCLUDED'] = $element['CATALOG_VAT_INCLUDED'];
+        if (isset($element['CATALOG_QUANTITY']))
+            $element['PRODUCT']['QUANTITY'] = $element['CATALOG_QUANTITY'];
+        if (isset($element['CATALOG_QUANTITY_TRACE']))
+            $element['PRODUCT']['QUANTITY_TRACE'] = $element['CATALOG_QUANTITY_TRACE'];
+        if (isset($element['CATALOG_CAN_BUY_ZERO']))
+            $element['PRODUCT']['CAN_BUY_ZERO'] = $element['CATALOG_CAN_BUY_ZERO'];
+        if (isset($element['CATALOG_SUBSCRIPTION']))
+            $element['PRODUCT']['SUBSCRIPTION'] = $element['CATALOG_SUBSCRIPTION'];
+        /* it is not the final version - end*/
+        
+        $element['PROPERTIES'] = array();
+        $element['DISPLAY_PROPERTIES'] = array();
+        $element['PRODUCT_PROPERTIES'] = array();
+        $element['PRODUCT_PROPERTIES_FILL'] = array();
+        $element['OFFERS'] = array();
+        $element['OFFER_ID_SELECTED'] = 0;
+        
+        if (!empty($this->storage['CATALOGS'][$element['IBLOCK_ID']]))
+            $element['CHECK_QUANTITY'] = $this->isNeedCheckQuantity($element['PRODUCT']);
+        
+        if ($this->getAction() === 'bigDataLoad')
+        {
+            $element['RCM_ID'] = $this->recommendationIdToProduct[$element['ID']];
+        }
+    }
+    
+    
+    protected function checkLastModified($element)
 	{
 		if ($this->arParams['SET_LAST_MODIFIED'])
 		{
