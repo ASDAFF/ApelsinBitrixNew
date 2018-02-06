@@ -131,7 +131,14 @@ if(isset($arCurSection) && !empty($arCurSection)) {
 			</div>
 		<?endif;
 	endif;
-
+ 
+	/*
+	 * Скрываем фильтр, если он пустой.
+	 * Хотя он и пустой, а нагрузку создает сильную.
+	 * */
+    if ($arParams["USE_FILTER"] == "Y")
+        $arParams["USE_FILTER"] = allowShowSmartFilter($arCurSection["ID"]) ? "Y" : "N";
+    
 	//FILTER//
 	if($arParams["USE_FILTER"] == "Y" && $arSetting["SMART_FILTER_VISIBILITY"]["VALUE"] != "DISABLE"):?>
 		<?$APPLICATION->IncludeComponent("bitrix:catalog.smart.filter", "elektro",
