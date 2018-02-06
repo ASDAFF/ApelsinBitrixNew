@@ -294,6 +294,32 @@ class CatalogSectionComponent extends ElementList
 	     * - все пользователи имеют доступ к просмотру всех товаров
 	     * */
         $filterFields = [];
+        
+        $filterFields['ACTIVE'] = 'Y';
+        
+        if (
+            (
+                $this->isIblockCatalog
+                || (
+                    $this->isMultiIblockMode()
+                    || (!$this->isMultiIblockMode() && $this->offerIblockExist($this->arParams['IBLOCK_ID']))
+                )
+            )
+            && $this->arParams['HIDE_NOT_AVAILABLE'] === 'Y'
+        )
+        {
+            $filterFields['CATALOG_AVAILABLE'] = 'Y';
+        }
+        
+        if (!empty($this->arParams['CUSTOM_FILTER']))
+        {
+            $filterFields[] = $this->arParams['CUSTOM_FILTER'];
+        }
+        
+        if (!empty($this->arParams['FILTER_IDS']))
+        {
+            $filterFields['!ID'] = $this->arParams['FILTER_IDS'];
+        }
 
 		if ($this->getAction() === 'bigDataLoad')
 		{
