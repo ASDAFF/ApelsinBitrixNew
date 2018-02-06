@@ -53,3 +53,25 @@ function getRandomElementId ($iblockId, $count = 10, $filter = []) {
     
     return $result;
 }
+
+/**
+ * Нужно ли выводить умный фильтр для указанного раздела.
+ *
+ * На первом уровне нет привязанных св-в и фильтр получается пустой
+ * или содержить только "акция" с одним вариантов "нет".
+ *
+ * Будем выводить начиная со 2-го уровня.
+ *
+ * Хотя я бы рекомендовал начиная с 3-го.
+ * Ко 2-му уровню привязано слишком мало св-в.
+ * */
+function allowShowSmartFilter ( $sectionId) {
+    if (!$sectionId)
+        throw new Exception ( '$sectionId can not be void' );
+    
+    $section = \Bitrix\Iblock\SectionTable::query()
+        ->addFilter("ID", $sectionId)->addSelect("DEPTH_LEVEL")
+        ->exec()->fetch();
+    
+    return $section["DEPTH_LEVEL"] >= 2;
+}
