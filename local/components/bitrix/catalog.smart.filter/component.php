@@ -38,7 +38,9 @@ if($this->StartResultCache(false, 'v7'.($arParams["CACHE_GROUPS"]? $USER->GetGro
 			$this->facet->setPrices($arResult["PRICES"]);
 			$this->facet->setSectionId($this->SECTION_ID);
             
-            $arResult["FACET_FILTER"] = [];
+            $arResult["FACET_FILTER"] = [
+                "CHECK_PERMISSIONS" => "N",
+            ];
             
 			if ($this->arParams['HIDE_NOT_AVAILABLE'] == 'Y')
 				$arResult["FACET_FILTER"]['CATALOG_AVAILABLE'] = 'Y';
