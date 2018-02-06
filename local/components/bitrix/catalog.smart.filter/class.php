@@ -182,7 +182,7 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 			
 			while ($arProperty = $iterator->Fetch())
 			{
-                $arLink = $links[ $PID ];
+                $arLink = $links[ $arProperty["ID"] ];
                 
 				$items[$arProperty["ID"]] = array(
 					"ID" => $arProperty["ID"],
