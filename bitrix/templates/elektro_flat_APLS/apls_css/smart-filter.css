@@ -2,85 +2,112 @@
 .catalog_item_toogle_filter .showfilter {
     border: 2px solid #ef7f1a;
     background: #ef7f1a;
-    color: #FFFFFF;
+    color: #FFF
 }
-.catalog_item_toogle_filter .showfilter span,
-.catalog_item_toogle_filter .showfilter i {
-    color: #FFFFFF;
+
+.catalog_item_toogle_filter .showfilter span, .catalog_item_toogle_filter .showfilter i {
+    color: #FFF
 }
-.catalog_item_toogle_filter .showfilter span,
-.catalog_item_toogle_filter .showfilter i,
-.catalog_item_toogle_filter .showfilter:hover span,
-.catalog_item_toogle_filter .showfilter:hover i,
-.filter form table tr td .sect__text span,
+
+.catalog_item_toogle_filter .showfilter span, .catalog_item_toogle_filter .showfilter i, .catalog_item_toogle_filter
+.showfilter:hover span, .catalog_item_toogle_filter .showfilter:hover i, .filter form table tr td .sect__text span,
 .filter form table tr td .sect__text:hover span {
     text-decoration: none;
-    border: none;
+    border: none
 }
+
+.filter.vertical form table tr td.bx_filter_box_name {
+    padding: 7px 10px 1px 10px !important;
+}
+
+.filter form table tr td .sect__name {
+    line-height: 13px
+}
+
+.filter form table tr td .sect__name .sect__text {
+    line-height: 13px
+}
+
 .filter form table tr td .sect__name .sect__text span {
-    font-size: 12px;
-}
-.filter form table tr.active td .bx_filter_block {
     font-size: 10px;
+    font-weight: 700;
+    color: #575b71;
 }
+
+.filter form table tr td .sect__name .sect__text span:hover {
+    color: #ef7f1a
+}
+
+.filter form table tr.active td .bx_filter_block {
+    font-size: 10px
+}
+
 .filter form table tr.active td .bx_filter_block .custom-forms label {
     padding: 0px 5px;
-    line-height: 20px;
+    line-height: 20px
 }
+
 .filter form table tr td .custom-forms label span {
     background: #ef7f1a;
-    color: #FFFFFF;
+    color: #FFF
 }
-.filter form table tr td .custom-forms.active label span,
-.filter form table tr td .custom-forms.active:hover label span,
-.filter form table tr td .custom-forms:hover label span   {
-    background: #FFFFFF;
-    color: #ef7f1a;
+
+.filter form table tr td .custom-forms.active label span, .filter form table tr td .custom-forms.active:hover label span,
+.filter form table tr td .custom-forms:hover label span {
+    background: #FFF;
+    color: #ef7f1a
 }
+
 .filter form table tr td .bx_filter_popup {
     border: 1px solid #ef7f1a;
     background: #ef7f1a;
-    color: #FFFFFF;
-    padding: 10px 10px;
+    color: #FFF;
+    padding: 10px 10px
 }
+
 .filter.vertical form table tr td .bx_filter_popup:before {
     border-left: none;
     border-right: 9px solid #ef7f1a;
-    border-right: none !important;
+    border-right: none !important
 }
+
 .filter.vertical form table tr td .bx_filter_popup:after {
     border-left: none;
     border-right: 10px solid #ef7f1a;
-    left: -10px;
+    left: -10px
 }
-.filter form table tr td .bx_filter_popup a,
-.filter form table tr td .bx_filter_popup a:visited {
-    border: 1px #FFFFFF solid;
+
+.filter form table tr td .bx_filter_popup a, .filter form table tr td .bx_filter_popup a:visited {
+    border: 1px #FFF solid;
     padding: 5px;
     text-decoration: none;
-    color: #FFFFFF;
+    color: #FFF
 }
+
 .filter form table tr td .bx_filter_popup a:hover {
     text-decoration: none;
-    background: #FFFFFF;
-    color: #ef7f1a;
+    background: #FFF;
+    color: #ef7f1a
 }
+
 .filter form table tr td .bx_filter_popup #modef_popup_num {
     display: inline-block;
     font-size: 14px;
     padding: 1px 5px;
     min-width: 16px;
-    background: #FFFFFF;
+    background: #FFF;
     color: #ef7f1a;
-    text-align: center;
+    text-align: center
 }
 
 .filter .bx_ui_slider_track .bx-ui-slider-pricebar-vn {
-    background: #f7cfaa;
+    background: #f7cfaa
 }
+
 .filter .bx_ui_slider_track .bx-ui-slider-pricebar-v {
-    background: #ef7f1a;
+    background: #ef7f1a
 }
+
 .filter .bx_ui_slider_range .bx_ui_slider_handle {
-    background: #ef7f1a;
+    background: #ef7f1a
 }
