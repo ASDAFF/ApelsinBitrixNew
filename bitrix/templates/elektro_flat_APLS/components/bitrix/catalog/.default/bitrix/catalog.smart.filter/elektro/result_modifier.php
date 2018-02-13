@@ -76,6 +76,20 @@ $arSmartFilter = makeFilter($arParams["IBLOCK_ID"], $arParams["SECTION_ID"], (st
 /* Сюда надо будет добавить наш обработчик который будет удалять ненужные свойства из умного фильтра */
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_CatalogSectionsSettings.php";
 APLS_CatalogSectionsSettings::getSmartFilterRezultArray($arResult["ITEMS"]);
+/* Сортируем значения свойств по алфовиту */
+foreach($arResult["ITEMS"] as $ikey => $arItem){
+    $values = array();
+    foreach ($arItem["VALUES"] as $key => $val) {
+        $values[$key] = $val['VALUE'];
+    }
+    natcasesort($values);
+    $rezValues = array();
+    foreach (array_keys($values) as $skey) {
+        $rezValues[$skey] = $arItem["VALUES"][$skey];
+    }
+    $arResult["ITEMS"][$ikey]["VALUES"] = $rezValues;
+}
+/* окончанеи работы со свойствами */
 
 //PROPERTY_COLOR//
 foreach($arResult["ITEMS"] as $key => $arItem) {
