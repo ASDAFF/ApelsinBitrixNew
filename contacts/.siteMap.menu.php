@@ -29,7 +29,7 @@
     ),
     Array(
         "Студия мебели",
-        "/contacts/studio_furniture/",
+        "https://apelsinmeb.ru/contacts/",
         Array(),
         Array(),
         ""

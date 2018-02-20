@@ -22,7 +22,7 @@ $APPLICATION->SetTitle("Контакты");?>
                 <div class="title">Отдел закупок</div>
             </div>
         </a>
-        <a href="studio_furniture/" class="NavigatorBigIconElementHref">
+        <a href="https://apelsinmeb.ru/contacts/" class="NavigatorBigIconElementHref">
             <div class="NavigatorBigIconElement">
                 <img class="main" src="img/icon/studio_furniture.svg">
                 <img class="hover" src="img/icon/studio_furniture_hover.svg">
