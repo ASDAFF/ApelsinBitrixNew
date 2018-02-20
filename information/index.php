@@ -3,14 +3,14 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Информация");
 ?>
 	<div class="NavigatorBigIcon">
-        <a href="customers_memo/" class="NavigatorBigIconElementHref">
+        <a href="service/" class="NavigatorBigIconElementHref">
             <div class="NavigatorBigIconElement">
                 <img class="main" src="img/icon/service.svg">
                 <img class="hover" src="img/icon/service_hover.svg">
                 <div class="title">Наши услуги</div>
             </div>
         </a>
-        <a href="customers_memo/" class="NavigatorBigIconElementHref">
+        <a href="loyalty-programs/" class="NavigatorBigIconElementHref">
             <div class="NavigatorBigIconElement">
                 <img class="main" src="img/icon/loyalty_programs.svg">
                 <img class="hover" src="img/icon/loyalty_programs_hover.svg">
