@@ -94,8 +94,8 @@ if($colorScheme != "YELLOW") {
 unset($file, $colorScheme);
 
 //CUSTOM_CSS//
-$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/custom.css", true);
 require_once $_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH."/includeCustomCSS.php";
+$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/custom.css", true);
 
 //SITE_BACKGROUND//
 if($arResult["SITE_BACKGROUND"]["VALUE"] == "Y" && $arResult["SITE_BACKGROUND_PICTURE"]["VALUE"] > 0) {
