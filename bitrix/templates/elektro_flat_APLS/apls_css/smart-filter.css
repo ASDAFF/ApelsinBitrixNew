@@ -9,9 +9,7 @@
     color: #FFF
 }
 
-.catalog_item_toogle_filter .showfilter span, .catalog_item_toogle_filter .showfilter i, .catalog_item_toogle_filter
-.showfilter:hover span, .catalog_item_toogle_filter .showfilter:hover i, .filter form table tr td .sect__text span,
-.filter form table tr td .sect__text:hover span {
+.catalog_item_toogle_filter .showfilter span, .catalog_item_toogle_filter .showfilter i, .catalog_item_toogle_filter .showfilter:hover span, .catalog_item_toogle_filter .showfilter:hover i, .filter form table tr td .sect__text span, .filter form table tr td .sect__text:hover span {
     text-decoration: none;
     border: none
 }
@@ -42,20 +40,28 @@
     font-size: 10px
 }
 
+.filter form table tr.active td .bx_filter_block .custom-forms {
+    width: 100%
+}
+
 .filter form table tr.active td .bx_filter_block .custom-forms label {
     padding: 0px 5px;
     line-height: 20px
 }
 
 .filter form table tr td .custom-forms label span {
-    background: #ef7f1a;
-    color: #FFF
+    background: transparent;
+    color: #a7a7a7
 }
 
-.filter form table tr td .custom-forms.active label span, .filter form table tr td .custom-forms.active:hover label span,
-.filter form table tr td .custom-forms:hover label span {
-    background: #FFF;
-    color: #ef7f1a
+.custom-forms.active label, .custom-forms.active:hover label {
+    background: #cfd1de;
+    color: #575b71
+}
+
+.filter form table tr td .custom-forms.active label span, .filter form table tr td .custom-forms.active:hover label span {
+    background: transparent;
+    color: #575b71
 }
 
 .filter form table tr td .bx_filter_popup {
