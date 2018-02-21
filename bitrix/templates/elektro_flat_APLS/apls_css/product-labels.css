@@ -1,11 +1,13 @@
 /* товары из спсика в каталоге - стикеры на товаре */
 .catalog-item-price-percent,
-.catalog-detail-item-price-percent{
+.catalog-detail-item-price-percent {
     color: #ef7f1a !important;
 }
+
 .catalog-item-price-view .catalog-item-image .sticker {
     display: none;
 }
+
 talog-item .catalog-item-image .time_buy_sticker,
 .catalog-item-card .item-image .time_buy_sticker {
     -moz-border-radius: 0;

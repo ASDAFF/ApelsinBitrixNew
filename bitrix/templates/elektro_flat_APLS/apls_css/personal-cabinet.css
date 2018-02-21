@@ -2,9 +2,11 @@
 .tr_into_in_buttom {
     cursor: pointer;
 }
+
 .tr_into_in_buttom:hover .cart-item-plus-minus a i {
     color: #f18c32 !important;
 }
+
 .cart-items .equipment-order.list .thead .cart-item-status {
     width: 155px;
 }
@@ -58,6 +60,7 @@
     text-decoration: underline !important;
     cursor: pointer;
 }
+
 .tr_into .order-recipient .field-name,
 .body_text .order-recipient .field-name {
     width: 185px;
@@ -70,10 +73,12 @@
     padding: 5px;
     margin: 10px;
 }
+
 a.btnPrint:hover,
-.notetext p a.btnPrint:hover{
+.notetext p a.btnPrint:hover {
     text-decoration: none !important;
 }
+
 .btnPrint span {
     padding-left: 5px;
 }
@@ -97,13 +102,13 @@ a.btnPrint:hover,
     width: 90px;
 }
 
-
 .field .UF_CARD_NUMBER,
 .personal-info_in .UF_CARD_NUMBER {
     display: block;
     height: auto;
     padding: 10px 0px 15px 0px;
 }
+
 .field .UF_CARD_NUMBER img,
 .personal-info_in .UF_CARD_NUMBER img {
     float: none !important;

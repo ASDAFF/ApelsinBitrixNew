@@ -59,7 +59,7 @@ Loc::loadMessages(__FILE__);?>
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/jquery.printPage.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/noEnter.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/APLS_ContentToColumns.js");
-	$APPLICATION->ShowHead();?>	
+	$APPLICATION->ShowHead();?>
 </head>
 <body>
 	<?global $arSetting;?>
@@ -503,4 +503,4 @@ Loc::loadMessages(__FILE__);?>
 										</div>
 									</div>
 									<h1 id="pagetitle"><?=$APPLICATION->ShowTitle(false);?></h1>
-								<?endif;?>		
+								<?endif;?>

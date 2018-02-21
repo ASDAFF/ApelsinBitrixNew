@@ -3,6 +3,7 @@
     margin: 0 !important;
     border-bottom: 1px solid #dee0ee !important;
 }
+
 .bx-soa-item-tr:last-child {
     border: none !important;
 }
@@ -14,83 +15,99 @@
     border-bottom: 1px solid #fafafd !important;
     margin: 0 !important;
 }
+
 .cart-items .equipment .thead,
 .cart-items .equipment-order .thead,
 .cart-items .equipment-profile .thead {
     background-color: #fafafd !important;
 }
+
 .cart-items .equipment .tbody .myorders_itog,
 .cart-items .equipment-order .myorders_itog {
     margin: 0 !important;
 }
 
 .equipment-order.basket .thead,
-.equipment-order.detail .thead{
+.equipment-order.detail .thead {
     background: #edeef8 !important;
 }
+
 .equipment-order.basket .tbody,
 .equipment-order.detail .tbody {
     background-color: #FFFFFF !important;
 }
+
 .equipment-order.basket .tbody .tr,
-.equipment-order.detail .tbody .tr  {
+.equipment-order.detail .tbody .tr {
     border: none !important;
     margin: 0 !important;
 }
+
 .equipment-order.basket .tbody .tr:nth-child(even) {
     background-color: #fafafd !important;
 }
+
 .cart-items .equipment .tbody .myorders_itog,
 .cart-items .equipment-order .myorders_itog {
     border: none !important;
     background-color: #edeef8 !important;
     margin: 0 !important;
 }
+
 .myorders_itog .cart-allsum .allsum,
 .tr_into_in.tr_into_in_buttom .cart-item-summa .sum,
 .equipment-order.detail .cart-item-summa .sum {
     color: #ef7f1a !important;
 }
+
 .cart-items .equipment-order.list .tbody .cart-item-payed span.item-payed-yes,
 .cart-items .equipment-order.detail .tbody .cart-item-payed span.item-payed-yes {
     font-weight: inherit !important;
     color: inherit !important;
 }
+
 .cart-items .equipment-order.list .tbody .cart-item-status span,
 .cart-items .equipment-order.detail .tbody .cart-item-status span {
     font-weight: 700 !important;
     color: #ef7f1a !important;
 }
+
 /* Ожидается оплата */
 .cart-items .equipment-order.detail .tbody .cart-item-status span.item-status-a,
 .cart-items .equipment-order.list .tbody .cart-item-status span.item-status-a {
 
 }
+
 /* Оплачено */
 .cart-items .equipment-order.detail .tbody .cart-item-status span.item-status-b,
 .cart-items .equipment-order.list .tbody .cart-item-status span.item-status-b {
 
 }
+
 /* Выполнен */
 .cart-items .equipment-order.detail .tbody .cart-item-status span.item-status-f,
 .cart-items .equipment-order.list .tbody .cart-item-status span.item-status-f {
 
 }
+
 /* Передан в службу доставки */
 .cart-items .equipment-order.detail .tbody .cart-item-status span.item-status-j,
 .cart-items .equipment-order.list .tbody .cart-item-status span.item-status-j {
 
 }
+
 /* Ожидает подтверждения */
 .cart-items .equipment-order.detail .tbody .cart-item-status span.item-status-n,
 .cart-items .equipment-order.list .tbody .cart-item-status span.item-status-n {
 
 }
+
 /* Комплектуется */
 .cart-items .equipment-order.detail .tbody .cart-item-status span.item-status-p,
 .cart-items .equipment-order.list .tbody .cart-item-status span.item-status-p {
 
 }
+
 /* Ожидает выдачи */
 .cart-items .equipment-order.detail .tbody .cart-item-status span.item-status-r,
 .cart-items .equipment-order.list .tbody .cart-item-status span.item-status-r {
