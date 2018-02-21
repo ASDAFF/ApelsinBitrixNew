@@ -120,6 +120,9 @@
 .catalog-item-sorting a.selected.desc:hover:after {
     border-top: 6px solid #FFFFFF;
 }
+.catalog-item-sorting a.selected.asc:hover:after {
+    border-bottom: 6px solid #FFFFFF;
+}
 
 .catalog-item-card .buy_more .compare a:hover,
 .catalog-item-card .buy_more .delay a:hover {
@@ -143,6 +146,9 @@
 
 .catalog-item-view a.selected i {
     color: #a0a4bc;
+}
+.catalog-item-view a.selected:hover i {
+    color: #FFFFFF;
 }
 
 .catalog-item-view a:hover {
