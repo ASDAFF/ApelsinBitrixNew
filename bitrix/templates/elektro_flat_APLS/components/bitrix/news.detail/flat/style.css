@@ -209,7 +209,7 @@
 		display: none!important;
 }
 
-.body_text p a {
+.body_text p:last-child a {
 	text-align: center;
 	display: block;
 	width: 200px;
@@ -220,7 +220,7 @@
 	margin: 0 auto;
 }
 
-.body_text p a:hover {
+.body_text p:last-child a:hover {
 	background: #FFFFFF;
 	color: #ef7f1a;
 }
