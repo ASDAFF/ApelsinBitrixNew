@@ -1,5 +1,5 @@
 <?
-$MESS ['FILTER_DISPLAY_HIDDEN'] = "Подобрать товары по параметрам";
+$MESS ['FILTER_DISPLAY_HIDDEN'] = "Подобрать товары";
 $MESS ['FILTER_HIDDEN'] = "Скрыть подбор";
 $MESS ['PRICE_FROM'] = "от";
 $MESS ['PRICE_TO'] = "до";
