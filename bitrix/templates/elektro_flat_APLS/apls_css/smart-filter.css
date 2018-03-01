@@ -40,6 +40,26 @@
     font-size: 10px
 }
 
+.filter form table tr.active td .bx_filter_block .price .from::after {
+    padding-left: 20px;
+}
+
+.filter form table tr.active td .bx_filter_block .price input {
+    font-size: 10px;
+}
+.filter.vertical .bx_filter_block .price:first-child:after {
+    padding: 0px 0px 0px 7px;
+}
+
+.filter.vertical form table tr.active td.bx_filter_slider {
+    padding: 6px 18px 40px 18px;
+}
+
+.filter.vertical .bx_filter_block .price input[type="text"] {
+     width: 60px;
+     height: 20px;
+}
+
 .filter form table tr.active td .bx_filter_block .custom-forms {
     width: 100%
 }
@@ -108,6 +128,10 @@
 
 .filter .bx_ui_slider_track .bx-ui-slider-pricebar-vn {
     background: #f7cfaa
+}
+
+.filter.vertical .bx_filter_block .bx_ui_slider_track {
+    top: 47px;
 }
 
 .filter .bx_ui_slider_track .bx-ui-slider-pricebar-v {
