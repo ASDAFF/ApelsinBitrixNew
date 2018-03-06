@@ -4,6 +4,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/APLS_GetGlobalParam.php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogHelper.php";
 
 AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", ["APLS_ActivateUpdater", "init"]);
+AddEventHandler("iblock", "OnBeforeIBlockElementAdd", ["APLS_ActivateUpdater", "init"]);
 
 class APLS_ActivateUpdater
 {
