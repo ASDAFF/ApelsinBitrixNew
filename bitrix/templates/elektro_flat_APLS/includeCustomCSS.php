@@ -13,3 +13,5 @@ Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/features-products.css
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/personal-cabinet.css", true);
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/section-menu.css", true);
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/orders.css", true);
+Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/credit.css", true);
+Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/loyalty.css", true);
