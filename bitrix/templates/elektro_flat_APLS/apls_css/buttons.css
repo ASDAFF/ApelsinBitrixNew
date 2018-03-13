@@ -105,6 +105,10 @@
 }
 
 /* Прочие кнопки */
+.catalog-item-sorting a:last-child {
+    display: none;
+}
+
 .catalog-item-sorting a:hover, .catalog-item-limit a:hover {
     border: 1px solid #ef7f1a;
     background: #ef7f1a !important;
