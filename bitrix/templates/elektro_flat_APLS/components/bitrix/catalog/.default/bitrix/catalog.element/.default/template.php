@@ -117,6 +117,10 @@ $templateData = array(
 		//STORES//
 		if(!!BX("catalog-detail-stores-from"))
 			BX("<?=$arItemIDs['STORE']?>").appendChild(BX.style(BX("catalog-detail-stores-from"), "display", ""));
+
+        if($("#catalog-detail-stores-from").children().length < 1) {
+            $(".tabs-catalog-detail ul li:last-child").css("display", "none");
+        }
 		
 		//FANCYBOX//
 		$(".fancybox").fancybox({
