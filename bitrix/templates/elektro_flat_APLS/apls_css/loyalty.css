@@ -1,0 +1,15 @@
+#bonus_hide {
+    display: none;
+    margin-top: 5px!important;
+}
+
+.bonus_head:hover {
+    color: #ef7f1a;
+    cursor: pointer;
+}
+
+.bonus_head {
+    padding: 0!important;
+    color: #b05a0c;
+    font-size: 16px;
+}
