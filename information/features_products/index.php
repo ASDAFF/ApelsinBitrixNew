@@ -26,16 +26,16 @@ $APPLICATION->SetTitle("Особенности товаров");
 		<div class="clear"></div>
 	</div>
 
-	<div class="FeaturesProductsWrapper">
-		<img class="FeaturesProductsIconBlock" src="../../apls_resources/DeliveryIcons/climb.svg">
-		<div class="FeaturesProductsTextBlock">
-			<div class="FeaturesProductsName">Спеццена подъема</div>
-			<div class="FeaturesProductsText">
-				Стоимость подъема товаров данной категории определена <a href="../../delivery/#listClimb" target="_blank">отдельным списком.</a>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
+<!--	<div class="FeaturesProductsWrapper">-->
+<!--		<img class="FeaturesProductsIconBlock" src="../../apls_resources/DeliveryIcons/climb.svg">-->
+<!--		<div class="FeaturesProductsTextBlock">-->
+<!--			<div class="FeaturesProductsName">Спеццена подъема</div>-->
+<!--			<div class="FeaturesProductsText">-->
+<!--				Стоимость подъема товаров данной категории определена <a href="../../delivery/#listClimb" target="_blank">отдельным списком.</a>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="clear"></div>-->
+<!--	</div>-->
 
 	<div class="FeaturesProductsWrapper">
 		<img class="FeaturesProductsIconBlock" src="../../apls_resources/DeliveryIcons/assembling.svg">
