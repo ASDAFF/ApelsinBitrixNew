@@ -179,7 +179,8 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
             ]);
 
 			$iterator = $proprtyQuery->exec();
-			
+
+			$forSort = array();
 			while ($arProperty = $iterator->Fetch())
 			{
                 $arLink = $links[ $arProperty["ID"] ];
@@ -195,9 +196,11 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 					"USER_TYPE_SETTINGS" => $arProperty["USER_TYPE_SETTINGS"],
 					"DISPLAY_TYPE" => $arLink["DISPLAY_TYPE"],
 					"DISPLAY_EXPANDED" => $arLink["DISPLAY_EXPANDED"],
-					"FILTER_HINT" => $arLink["FILTER_HINT"],
+                    "FILTER_HINT" => $arLink["FILTER_HINT"],
+                    "SORT" => $arLink["SORT"],
 					"VALUES" => array(),
 				);
+                $forSort[$arProperty["ID"]][] = $arLink["SORT"];
 
 				if (
 					$arProperty["PROPERTY_TYPE"] == "N"
@@ -219,8 +222,12 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 				}
 			}
 		}
-		
-		return $items;
+        asort($forSort);
+        $newItems = array();
+        foreach (array_keys($forSort) as $id) {
+            $newItems[$id] = $items[$id];
+        }
+		return $newItems;
 	}
 
 	public function getPriceItems()
