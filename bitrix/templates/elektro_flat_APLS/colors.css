@@ -88,6 +88,7 @@ header{
 .header_3 .schedule p{
 	font-size:12px;
 	color:#8184a1;
+	text-align: right;
 }
 
 .header_3 .schedule p.time i{
