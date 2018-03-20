@@ -1519,7 +1519,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 				</li>
 				<?$i++;
 			}?>
-			<li class="tabs__tab">
+			<li class="tabs__tab" style="display: none;">
 				<a href="#tab<?=$i?>"><span><?=GetMessage("CATALOG_ELEMENT_REVIEWS")?> <span class="reviews_count"></span></span></a>
 			</li>
 			<?$i++;
