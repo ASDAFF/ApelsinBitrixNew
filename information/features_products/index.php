@@ -4,6 +4,18 @@ $APPLICATION->SetTitle("Особенности товаров");
 ?>
 	<p class="TextP">Уважаемые покупатели, для Вашего удобства все товары имеющие ограничения или особенности в предоставлении услуг отмечены специальными значками:</p>
 
+    <div class="FeaturesProductsWrapper">
+        <img class="FeaturesProductsIconBlock" src="../../apls_resources/DeliveryIcons/terms_of_sale.svg">
+        <div class="FeaturesProductsTextBlock">
+            <div class="FeaturesProductsName">Условия продажи</div>
+            <div class="FeaturesProductsText">
+                Товар имеет особые условия продажи (кратность, комплектность, мин. количество и т.п.), поэтому возможно
+                изменение стоимости заказа при обработке оператором.
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
 	<div class="FeaturesProductsWrapper">
 		<img class="FeaturesProductsIconBlock" src="../../apls_resources/DeliveryIcons/truck_long.svg">
 		<div class="FeaturesProductsTextBlock">
@@ -58,6 +70,8 @@ $APPLICATION->SetTitle("Особенности товаров");
 		</div>
 		<div class="clear"></div>
 	</div>
+
+
 
 	<!--<div class="FeaturesProductsWrapper">-->
 	<!--	<img class="FeaturesProductsIconBlock" src="truck_1_5.png">-->
