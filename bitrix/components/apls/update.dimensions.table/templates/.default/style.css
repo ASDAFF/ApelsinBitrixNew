@@ -1,0 +1,108 @@
+.APLSMainWrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.APLS_StatusBar {
+    padding: 2px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.APLSProgressBar {
+    display: flex;
+    padding: 5px;
+    margin-right: 20px;
+    width: 49%;
+    height: 100%;
+    border: 1px solid grey;
+}
+
+.APLSProgressBar .APLSProgressBar_Header {
+    margin-right: 5px;
+    height: 27px;
+}
+
+.APLSProgressBar .APLSProgressBar_Progress {
+    width: 400px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid grey;
+    background-color: #FFFFFF;
+    /*border-radius: 10px;*/
+}
+
+.APLSProgressBar .APLSProgressBar_Bar {
+    display: inline-block;
+    width: 0%;
+    height: 25px;
+    background-color: #4d8ec6;
+    color: #111114;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.APLSProgressBar .APLSProgressBar_Button {
+    width: 150px;
+    height: 25px;
+    line-height: 25px;
+    margin-left: 5px;
+    text-align: center;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: #4d8ec6;
+}
+
+.APLSProgressBar_Button {
+    cursor: pointer;
+}
+
+.APLSManualAddition {
+    display: flex;
+    padding: 5px;
+    width: 49%;
+    height: 27px;
+    line-height: 27px;
+    border: 1px solid grey;
+}
+
+.APLSManualAddition .APLSManualAddition_Header {
+    margin-right: 5px;
+}
+
+.APLSManualAddition .APLSManualAddition_Button {
+    margin-left: 5px;
+    text-align: center;
+    width: 150px;
+    height: 25px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: #4d8ec6;
+}
+
+.APLSManualAddition_Button:hover {
+    cursor: pointer;
+}
+
+.resultHTML {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid grey;
+    background-color: #e0eef3;
+}
+
+.resultHTML .APLSResultTable_Count {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.resultHTML .APLSResultTable_String {
+    width: 100%;
+    height: 20px;
+    background-color: #ffffff;
+    border: 1px solid grey;
+}
