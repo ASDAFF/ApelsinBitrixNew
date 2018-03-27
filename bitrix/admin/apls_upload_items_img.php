@@ -165,10 +165,6 @@ if ($REQUEST_METHOD == "POST" && $_REQUEST["Load"] != "" && $USER->GetID() == AP
 }
 
 require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_admin_after.php");
-
-if ($USER->GetID() != APLS_ALLOWED_USER) {
-	$APPLICATION->AuthForm(GetMessage("ACCESS_DENIED"));
-}
 ?>
 	<p>Для корректной работы скрипта необходимо указать ID инфоблока и папку с изображениями для исходного размера и для
 		превью.</p>
