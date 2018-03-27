@@ -1,0 +1,404 @@
+.RegionAddWrapper,
+.RegionEditWrapper,
+.RegionDeleteWrapper {
+    position: relative;
+    padding: 1em 1em 0 1em;
+}
+.RegionEditWrapper input[type="text"]::-webkit-input-placeholder {color:#a1a4b3 !important;}
+.RegionEditWrapper input[type="text"]::-moz-placeholder {color:#a1a4b3 !important;}
+.RegionEditWrapper input[type="text"]:-moz-placeholder {color:#a1a4b3 !important;}
+.RegionEditWrapper input[type="text"]:-ms-input-placeholder {color:#a1a4b3 !important;}
+.RegionWrapperTitle {
+    height: 2em;
+    line-height: 2em;
+    font-size: 16px;
+    padding: 0 1em;
+    font-weight: 600;
+    position: absolute;
+    top: -2em;
+    right: 1em;
+    background: #FFFFFF;
+    border: 1px solid #dee0ee;
+    border-bottom: none;
+}
+
+.PromotionRegionWrapper {
+    border: 1px solid #dee0ee;
+    background: #FFFFFF;
+}
+.PromotionRegionsListButtonPanel {
+    margin-top: -0.5em;
+    padding: 0 1em 1em 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.PromotionRegionsListButtonPanel .NewRegionName input[type="text"]{
+    width: 400px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px .5em;
+    font-size: 14px;
+    color: #a1a4b3;
+    border: 1px solid #dee0ee;
+    border-radius: 0;
+    box-shadow: none;
+}
+.PromotionRegionsListButtonPanel .NewRegionAdd {
+    height: 10px;
+    padding: 10px;
+    color: #40c781;
+    border: 1px solid #40c781;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.PromotionRegionsListButtonPanel .NewRegionAdd:hover {
+    color: #134e2f;
+    background: #40c781;
+}
+
+.PromotionRegionButtonPanel {
+    padding: 1em;
+}
+
+.PromotionRegionButtonPanel .showRegionsListButton,
+.PromotionRegionButtonPanel .refreshButton,
+.PromotionRegionButtonPanel .saveButton {
+    display: inline-block;
+    font-size: 10px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    background: #FFFFFF;
+    cursor: pointer;
+    margin-right: 2px;
+}
+
+.PromotionRegionButtonPanel .showRegionsListButton {
+    color: #d44b38;
+    border: 1px solid #d44b38;
+}
+.PromotionRegionButtonPanel .showRegionsListButton:hover {
+    color: #5a1a11;
+    background: #d44b38;
+}
+.PromotionRegionButtonPanel .refreshButton {
+    color: #ef8b00;
+    border: 1px solid #ef8b00;
+}
+.PromotionRegionButtonPanel .refreshButton:hover {
+    color: #a96000;
+    background: #ef8b00;
+}
+.PromotionRegionButtonPanel .saveButton {
+    color: #40c781;
+    border: 1px solid #40c781;
+}
+.PromotionRegionButtonPanel .saveButton:hover {
+    color: #134e2f;
+    background: #40c781;
+}
+
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content {
+    background: transparent;
+}
+
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element.default-promotion-region .text:before {
+    content: "\2714";
+    font-weight: bold;
+    color: #40c781;
+    margin-right: 5px;
+}
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element {
+    position: relative;
+}
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .region {
+    font-weight: bold;
+}
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .cities {
+    color: #a1a4b3;
+    /*text-transform: lowercase;*/
+}
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .buttonPanel {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .editButton,
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .delButton,
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .setDefaultButton {
+    display: inline-block;
+    padding: 2px 10px;
+    text-decoration: none;
+    background: transparent;
+}
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .editButton {
+    color: #40c781;
+    border: 1px solid #40c781;
+}
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .editButton:hover {
+    background: #40c781;
+    color: #134e2f;
+}
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .setDefaultButton {
+    color: #f3b661;
+    border: 1px solid #f3b661;
+}
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .setDefaultButton:hover {
+    background: #f3b661;
+    color: #a96000;
+}
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .delButton {
+     color: #d44b38;
+     border: 1px solid #d44b38;
+ }
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .delButton:hover {
+    background: #d44b38;
+    color: #5a1a11;
+}
+.PromotionRegionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .text {
+    padding-right: 100px;
+}
+
+.RegionEditWrapper .RegionFields {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.RegionEditWrapper .RegionFields .RegionField {
+    padding-right: 1em;
+}
+.RegionEditWrapper .RegionFields .RegionField .RegionFieldName {
+    color: #a1a4b3;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: .5em 0;
+    text-transform: uppercase;
+}
+.RegionEditWrapper .RegionFields .RegionField .RegionFieldValue input[type="text"] {
+    width: 400px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px .5em;
+    font-size: 14px;
+    color: #a1a4b3;
+    border: 1px solid #dee0ee;
+    border-radius: 0;
+    box-shadow: none;
+}
+.RegionEditWrapper .RegionCitiesTitle {
+    color: #a1a4b3;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 1em 0;
+}
+.RegionEditWrapper .RegionCities {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.RegionEditWrapper .RegionCities .RegionCity {
+    width: 50%;
+}
+.RegionEditWrapper .RegionCities .RegionCity .RegionCityBlock {
+    margin-bottom: 1em;
+    padding: 1em;
+    border: 1px solid #dee0ee;
+    color: #a1a4b3;
+    position: relative;
+}
+.RegionEditWrapper .RegionCities .RegionCity:nth-child(2n+1) .RegionCityBlock {
+    margin-right: .5em;
+}
+.RegionEditWrapper .RegionCities .RegionCity:nth-child(2n) .RegionCityBlock {
+    margin-left: .5em;
+}
+
+.RegionEditWrapper .RegionCities .RegionCity .RegionCityBlock .RegionCityDellButton {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    border: 1px solid #dee0ee;
+    height: 1em;
+    width: 1em;
+    cursor: pointer;
+}
+.RegionEditWrapper .RegionCities .RegionCity .RegionCityBlock .RegionCityDellButton:hover {
+    border: 1px solid #d44b38;
+}
+.RegionEditWrapper .RegionCities .RegionCity .RegionCityBlock .RegionCityDellButton:before,
+.RegionEditWrapper .RegionCities .RegionCity .RegionCityBlock .RegionCityDellButton:after {
+    position: absolute;
+    left: .45em;
+    top: .1em;
+    content: ' ';
+    height: .8em;
+    width: 1px;
+    background-color: #dee0ee;
+}
+.RegionEditWrapper .RegionCities .RegionCity .RegionCityBlock .RegionCityDellButton:hover:before,
+.RegionEditWrapper .RegionCities .RegionCity .RegionCityBlock .RegionCityDellButton:hover:after {
+    background-color: #d44b38;
+}
+.RegionEditWrapper .RegionCities .RegionCity .RegionCityBlock .RegionCityDellButton:before {
+    transform: rotate(45deg);
+}
+.RegionEditWrapper .RegionCities .RegionCity .RegionCityBlock .RegionCityDellButton:after {
+    transform: rotate(-45deg);
+}
+
+.RegionEditWrapper .RegionCitiesAddPanel {
+    font-size: 14px !important;
+}
+
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .dropdown-block {
+    height: 2em;
+    box-shadow: none;
+    border: 1px solid #dee0ee;
+    padding: 0 2em 0 .5em;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .dropdown-block input[type="text"] {
+    color: #a1a4b3;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-container,
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-container input[type="text"] {
+    height: 2em;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-container input[type="text"] {
+    padding: 1px 0 !important;
+    color: #a1a4b3 !important;
+    font-weight: normal;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .dropdown-icon {
+    left: .5em;
+    top: .5em;
+    display: none;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-clear {
+    background: transparent;
+    position: absolute;
+    right: .5em;
+    top: .5em;
+    border: 1px solid #dee0ee;
+    height: 1em;
+    width: 1em;
+    margin-top: -1px;
+    cursor: pointer;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-clear:hover {
+    border: 1px solid #d44b38;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-clear:before,
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-clear:after {
+    position: absolute;
+    left: .45em;
+    top: .1em;
+    content: ' ';
+    height: .8em;
+    width: 1px;
+    background-color: #dee0ee;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-clear:hover:before,
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-clear:hover:after {
+    background-color: #d44b38;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-clear:before {
+    transform: rotate(45deg);
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-clear:after {
+    transform: rotate(-45deg);
+}
+
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .dropdown-fade2white,
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-loader {
+    height: 2em;
+    top: 0;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-pane {
+    border: 1px solid #dee0ee;
+    border-radius: 0;
+    box-shadow: none;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .dropdown-item-text,
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .dropdown-item-text span {
+    color: #a1a4b3 !important;
+    font-weight: normal;
+}
+
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-variants .bx-ui-sls-variant:hover,
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-variant-active {
+    background: #eeeeee;
+    border-radius: 0;
+}
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-error,
+.RegionEditWrapper .RegionCitiesAddPanel .bx-sls .bx-ui-sls-error div {
+    color: #d44b38;
+}
+
+.RegionCitiesAddPanel {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.RegionCitiesAddPanel .RegionCitiesAddPanelSearch {
+    width: 50%;
+}
+.RegionCitiesAddPanel .RegionCitiesAddPanelSearch>div {
+    margin-right: .5em;
+}
+.RegionCitiesAddPanel .RegionCitiesAddPanelButton {
+    height: 1em;
+    color: #40c781;
+    border: 1px solid #40c781;
+    padding: .5em;
+    margin-left: .5em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+}
+.RegionCitiesAddPanel .RegionCitiesAddPanelButton>span {
+    display: block;
+    font-size: .7em;
+    margin: .15em;
+}
+.RegionCitiesAddPanel .RegionCitiesAddPanelButton:hover {
+    background: #40c781;
+    color: #134e2f;
+}
+
+.RegionFields .RegionCitiesChangeNameButton {
+    height: 10px;
+    padding: 10px;
+    color: #40c781;
+    border: 1px solid #40c781;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 1em;
+}
+.RegionFields .RegionCitiesChangeNameButton>span {
+    /*display: block;*/
+    /*font-size: .7em;*/
+    /*margin: .15em;*/
+}
+.RegionFields .RegionCitiesChangeNameButton:hover {
+    background: #40c781;
+    color: #134e2f;
+}
+.RegionFields .RegionFieldValue {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}

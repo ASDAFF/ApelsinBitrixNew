@@ -1,4 +1,5 @@
-function aplsSortListAddSelectableAndSortable() {
+function aplsSortListAddSelectableAndSortable(stopFunctionName) {
+    stopFN = stopFunctionName;
     $('.apls-sort-list-content').selectable({
         cancel: '.sort-handle, a, .no-select-item',
         items: ">div",
@@ -34,6 +35,9 @@ function aplsSortListAddSelectableAndSortable() {
             ui.item.after(selected);
             ui.item.removeClass( "ui-selected-apls" );
             ui.item.remove();
+            if(typeof stopFN !== 'undefined') {
+                eval(stopFN + '()');
+            }
             $(".apls-sort-list-content.ui-selectable .apls-sort-list-element").removeClass( "ui-selected-apls" );
         }
     });

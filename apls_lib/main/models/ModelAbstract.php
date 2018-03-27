@@ -145,7 +145,7 @@ abstract class ModelAbstract
     public final function cancelAllChangesExceptFields(array $fields)
     {
         foreach (array_keys($this->data) as $field) {
-            if (in_array($field, $fields)) {
+            if (!in_array($field, $fields)) {
                 $this->data[$field] = $this->originalData[$field];
             }
         }
