@@ -33,26 +33,37 @@
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-/* Стиль для блкоа элемента */
-.AplsAdminWrapper .ElementBlock {
-    width: 50%;
+/* Стиль для спсика элементов элемента */
+.AplsAdminWrapper .ListOfElements {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
 }
-.AplsAdminWrapper  .ElementBlock .ElementBlockContent {
+.AplsAdminWrapper .ListOfElements .ElementBlock {
+    width: 100%;
+}
+.AplsAdminWrapper .ListOfElements .ElementBlock .ElementBlockContent {
     font-size: 13px;
     padding: 1em;
     border: 1px solid #dee0ee;
     color: #a1a4b3;
     position: relative;
+    margin-bottom: 1em;
 }
-.AplsAdminWrapper .ElementBlock:nth-child(2n+1) .ElementBlockContent {
+.AplsAdminWrapper .ListOfElements.TwoColumns .ElementBlock {
+    width: 50%;
+}
+.AplsAdminWrapper .ListOfElements.TwoColumns .ElementBlock:nth-child(2n+1) .ElementBlockContent {
     margin-right: .5em;
 }
-.AplsAdminWrapper .ElementBlock:nth-child(2n) .ElementBlockContent {
+.AplsAdminWrapper .ListOfElements.TwoColumns .ElementBlock:nth-child(2n) .ElementBlockContent {
     margin-left: .5em;
 }
 
-/* Стиль для кнопки удалить блкоа элемента */
-.AplsAdminWrapper .ElementBlock .ElementBlockContent .DellButton {
+/* Стиль для кнопки удалить блкоа элемента из списка */
+.AplsAdminWrapper .ListOfElements .ElementBlock .ElementBlockContent .DellButton {
     position: absolute;
     right: 1em;
     top: 1em;
@@ -61,11 +72,11 @@
     width: 1em;
     cursor: pointer;
 }
-.AplsAdminWrapper .ElementBlock .ElementBlockContent .DellButton:hover {
+.AplsAdminWrapper .ListOfElements .ElementBlock .ElementBlockContent .DellButton:hover {
     border: 1px solid #d44b38;
 }
-.AplsAdminWrapper .ElementBlock .ElementBlockContent .DellButton:before,
-.AplsAdminWrapper .ElementBlock .ElementBlockContent .DellButton:after {
+.AplsAdminWrapper .ListOfElements .ElementBlock .ElementBlockContent .DellButton:before,
+.AplsAdminWrapper .ListOfElements .ElementBlock .ElementBlockContent .DellButton:after {
     position: absolute;
     left: .45em;
     top: .1em;
@@ -74,14 +85,14 @@
     width: 1px;
     background-color: #dee0ee;
 }
-.AplsAdminWrapper .ElementBlock .ElementBlockContent .DellButton:hover:before,
-.AplsAdminWrapper .ElementBlock .ElementBlockContent .DellButton:hover:after {
+.AplsAdminWrapper .ListOfElements .ElementBlock .ElementBlockContent .DellButton:hover:before,
+.AplsAdminWrapper .ListOfElements .ElementBlock .ElementBlockContent .DellButton:hover:after {
     background-color: #d44b38;
 }
-.AplsAdminWrapper .ElementBlock .ElementBlockContent .DellButton:before {
+.AplsAdminWrapper .ListOfElements .ElementBlock .ElementBlockContent .DellButton:before {
     transform: rotate(45deg);
 }
-.AplsAdminWrapper .ElementBlock .ElementBlockContent .DellButton:after {
+.AplsAdminWrapper .ListOfElements .ElementBlock .ElementBlockContent .DellButton:after {
     transform: rotate(-45deg);
 }
 
