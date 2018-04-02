@@ -1,0 +1,132 @@
+/*
+Основной цвет рамок и разделителей: #dee0ee
+Осветленый цвет рамок и разделителей: #e7ebf9
+
+Оснвоной цвет текста: #a1a4b3
+Более яркий цвет текста: #828496
+
+Красный - светлый: #d44b38;
+Красный - темный: #5a1a11;
+
+Желтый - светлый: #ef8b00;
+Желтый - темный: #a96000;
+
+Зеленый - светлый: #40c781;
+Зеленый - темный: #134e2f;
+
+Обычный отступ: 1em;
+Большой отступ: 2em;
+Небольшой отступ отступ: .5em;
+Маленький отступ отступ: 2px;
+
+Основной размер шрифта: 13px;
+Мелкий размер шрифта: 10px;
+*/
+
+/* Стиль для основного блока админки */
+.AplsAdminWrapper {
+    position: relative;
+    background: #FFFFFF;
+    padding: 2em;
+    color: #a1a4b3;
+    font-size: 13px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* Стиль для блкоа элемента */
+.AplsAdminWrapper .ElementBlock {
+    font-size: 13px;
+    padding: 1em;
+    border: 1px solid #dee0ee;
+    color: #a1a4b3;
+    position: relative;
+}
+
+/* Стиль для кнопки удалить блкоа элемента */
+.AplsAdminWrapper .ElementBlock .DellButton {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    border: 1px solid #dee0ee;
+    height: 1em;
+    width: 1em;
+    cursor: pointer;
+}
+.AplsAdminWrapper .ElementBlock .DellButton:hover {
+    border: 1px solid #d44b38;
+}
+.AplsAdminWrapper .ElementBlock .DellButton:before,
+.AplsAdminWrapper .ElementBlock .DellButton:after {
+    position: absolute;
+    left: .45em;
+    top: .1em;
+    content: ' ';
+    height: .8em;
+    width: 1px;
+    background-color: #dee0ee;
+}
+.AplsAdminWrapper .ElementBlock .DellButton:hover:before,
+.AplsAdminWrapper .ElementBlock .DellButton:hover:after {
+    background-color: #d44b38;
+}
+.AplsAdminWrapper .ElementBlock .DellButton:before {
+    transform: rotate(45deg);
+}
+.AplsAdminWrapper .ElementBlock .DellButton:after {
+    transform: rotate(-45deg);
+}
+
+/* Стиль для текстового блока */
+.AplsAdminWrapper input[type="text"] {
+    width: 400px;
+    height: 30px;
+    margin: 0;
+    padding: 0 .5em;
+    font-size: 14px;
+    color: #a1a4b3;
+    border: 1px solid #dee0ee;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Обычная кнопка */
+.AplsAdminWrapper .Button {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #a1a4b3;
+    background: transparent;
+    border: 1px solid #dee0ee;
+    height: 1em;
+    padding: 1em;
+    cursor: pointer;
+}
+.AplsAdminWrapper .Button.Small {
+    padding: 2px 1em;
+}
+.AplsAdminWrapper .Button.Green {
+    color: #40c781;
+    border: 1px solid #40c781;
+}
+.AplsAdminWrapper .Button.Green:hover {
+    color: #134e2f;
+    background: #40c781;
+}
+.AplsAdminWrapper .Button.Yellow {
+    color: #ef8b00;
+    border: 1px solid #ef8b00;
+}
+.AplsAdminWrapper .Button.Yellow:hover {
+    color: #a96000;
+    background: #ef8b00;
+}
+.AplsAdminWrapper .Button.Red {
+    color: #d44b38;
+    border: 1px solid #d44b38;
+}
+.AplsAdminWrapper .Button.Red:hover {
+    color: #5a1a11;
+    background: #d44b38;
+}
