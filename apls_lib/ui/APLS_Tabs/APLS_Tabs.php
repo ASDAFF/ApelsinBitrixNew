@@ -35,16 +35,18 @@ class APLS_Tabs
      * Добавляет новый таб и возврящает его $tabKey
      * @param $name - имя
      * @param $content - содержимое
+     * @param $tabFunction - имя JS функции которую требуется выполнить по клику на таб
      * @param $tabKey - идентификатор таба
      * @return string - $tabKey
      */
-    public function addTab($name, $content, $tabKey = null)
+    public function addTab($name, $content, $tabFunction = "", $tabKey = null)
     {
         if($tabKey === null) {
             $tabKey = ID_GENERATOR::generateID();
         }
         $this->tabs[$tabKey]['name'] = $name;
         $this->tabs[$tabKey]['content'] = $content;
+        $this->tabs[$tabKey]['tabFunction'] = $tabFunction;
         return $tabKey;
     }
 
@@ -53,13 +55,15 @@ class APLS_Tabs
      * @param $tabKey
      * @param $newName
      * @param $newContent
+     * @param $newTabFunction - имя JS функции которую требуется выполнить по клику на таб
      * @return bool
      */
-    public function editTab($tabKey, $newName, $newContent)
+    public function editTab($tabKey, $newName, $newContent, $newTabFunction)
     {
         if ($this->issetTab($tabKey)) {
             $this->tabs[$tabKey]['name'] = $newName;
             $this->tabs[$tabKey]['content'] = $newContent;
+            $this->tabs[$tabKey]['tabFunction'] = $newTabFunction;
         } else {
             return false;
         }
@@ -73,7 +77,7 @@ class APLS_Tabs
      */
     public function editTabName($tabKey, $newName)
     {
-        return $this->editTab($tabKey, $newName, $this->tabs[$tabKey]['content']);
+        return $this->editTab($tabKey, $newName, $this->tabs[$tabKey]['content'],$this->tabs[$tabKey]['tabFunction']);
     }
 
     /**
@@ -84,8 +88,20 @@ class APLS_Tabs
      */
     public function editTabContent($tabKey, $newContent)
     {
-        return $this->editTab($tabKey, $this->tabs[$tabKey]['name'], $newContent);
+        return $this->editTab($tabKey, $this->tabs[$tabKey]['name'], $newContent,$this->tabs[$tabKey]['tabFunction']);
     }
+
+    /**
+     * изменяем функцию таба
+     * @param $tabKey
+     * @param $newTabFunction
+     * @return bool
+     */
+    public function editTabFunction($tabKey, $newTabFunction)
+    {
+        return $this->editTab($tabKey, $this->tabs[$tabKey]['name'], $this->tabs[$tabKey]['content'], $newTabFunction);
+    }
+
 
     /**
      * удаляем таб
@@ -115,8 +131,9 @@ class APLS_Tabs
         $html = "<div id='$tabsId' class='apls-tabs-wrapper $tabOrientation'>";
         $html .= "<div class='apls-tabs-name-area'>";
         foreach ($this->tabs as $tabKey => $tab) {
+            $tabFunction = $tab['tabFunction'];
             $arId[$tabKey] = $tabId = ID_GENERATOR::generateID("TAB");
-            $html .= "<div id='$tabId-NAME' class='apls-tab-name' tabId='$tabId' tabsWrapperId='$tabsId'>";
+            $html .= "<div id='$tabId-NAME' class='apls-tab-name' tabKey='$tabKey' tabId='$tabId' contentId='$tabId-CONTENT' tabsWrapperId='$tabsId' tabFunction='$tabFunction'>";
             $html .= $tab['name'];
             $html .= "</div>";
         }
