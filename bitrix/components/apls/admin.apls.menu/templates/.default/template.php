@@ -5,6 +5,7 @@ $menuArray = array(
     array(
         "name" => "Настройка акций",
         "items" => array(
+            "apls_promotion"=>"Настройка акций",
             "apls_promotion_region"=>"Настройка локаций проведения акций",
             "apls_promotion_section"=>"Настройка секций для акций",
         ),
