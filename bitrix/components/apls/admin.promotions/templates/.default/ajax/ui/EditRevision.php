@@ -8,7 +8,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . $_REQUEST['componentFolder'] ."classes/
 $revision = new PromotionRevisionModel($_REQUEST['revisionId']);
 $promotion = new PromotionModel($revision->getFieldValue('promotion'));
 ?>
-<div class="EditRevisionMainWrapper">
+<div class="EditRevisionMainWrapper" promotionId="<?=$promotion->getId()?>" revisionId="<?=$revision->getId()?>">
     <div class="PromotionTitle">Ревизия акции: <?=$promotion->getFieldValue('title')?></div>
     <div class="MainFields">
         <div class="InputField">
