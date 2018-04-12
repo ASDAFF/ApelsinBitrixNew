@@ -3,13 +3,7 @@ function aplsTabsAddClickEvent() {
         var tabId = $(this).attr("tabId");
         var tabsWrapperId = $(this).attr("tabsWrapperId");
         var tabFunction = $(this).attr("tabFunction");
-        $("#" + tabsWrapperId + " .apls-tab-name").removeClass("open-tab");
-        $("#" + tabsWrapperId + " #" + tabId + "-NAME").addClass("open-tab");
-        $("#" + tabsWrapperId + " .apls-tab-content").hide();
-        $("#" + tabsWrapperId + " #" + tabId + "-CONTENT").show();
-        if(tabFunction !== '') {
-            eval(tabFunction + '(this)');
-        }
+        aplsTabsOpenTab(tabId,tabsWrapperId,tabFunction);
     });
     $(".apls-tabs-wrapper .apls-tab-content").hide();
     $(".apls-tabs-wrapper .apls-tab-content:first-child").show();
@@ -20,6 +14,17 @@ function aplsTabsAddClickEvent() {
         eval(tabFunction + '(opentab)');
     }
 }
+
+function aplsTabsOpenTab(tabId,tabsWrapperId,tabFunction) {
+    $("#" + tabsWrapperId + " .apls-tab-name").removeClass("open-tab");
+    $("#" + tabsWrapperId + " #" + tabId + "-NAME").addClass("open-tab");
+    $("#" + tabsWrapperId + " .apls-tab-content").hide();
+    $("#" + tabsWrapperId + " #" + tabId + "-CONTENT").show();
+    if(tabFunction !== '') {
+        eval(tabFunction + '(this)');
+    }
+}
+
 $(document).ready(function () {
     aplsTabsAddClickEvent();
 });
