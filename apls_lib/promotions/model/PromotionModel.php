@@ -15,6 +15,69 @@ class PromotionModel extends PromotionModelAbstract
     const REVISION_DISABLE_FIELDS = 'disable';
     const REVISIONS_KEY = 'revisions';
 
+    const REVISION_TYPE_ALL = "all";
+    const REVISION_TYPE_COMING = "coming";
+    const REVISION_TYPE_CURRENT = "current";
+    const REVISION_TYPE_PAST = "past";
+    const REVISION_TYPE_WITHOUT = "without";
+    const REVISION_TYPE_DEFAULT = self::REVISION_TYPE_CURRENT;
+
+    private static $revisionTypeArray = array(
+        self::REVISION_TYPE_ALL,
+        self::REVISION_TYPE_COMING,
+        self::REVISION_TYPE_CURRENT,
+        self::REVISION_TYPE_PAST,
+        self::REVISION_TYPE_WITHOUT
+    );
+
+    const SORT_ASC = 'ask';
+    const SORT_DESC = 'desc';
+
+    const SORT_FIELD_REVISION_APPLY_FROM = "revision_apply_from";
+    const SORT_FIELD_REVISION_SHOW_FROM = "revision_show_from";
+    const SORT_FIELD_REVISION_START_FROM = "revision_start_from";
+    const SORT_FIELD_REVISION_STOP_FROM = "revision_stop_from";
+    const SORT_FIELD_REVISION_CREATED = "revision_created";
+    const SORT_FIELD_REVISION_CHANGED = "revision_changed";
+    const SORT_FIELD_PROMOTIONS_TITLE = "promotions_title";
+    const SORT_FIELD_PROMOTIONS_CREATED = "promotions_created";
+    const SORT_FIELD_DEFAULT = self::SORT_FIELD_REVISION_APPLY_FROM;
+
+    private static $sortRevisionFieldsArray = array(
+        self::SORT_FIELD_REVISION_APPLY_FROM,
+        self::SORT_FIELD_REVISION_SHOW_FROM,
+        self::SORT_FIELD_REVISION_START_FROM,
+        self::SORT_FIELD_REVISION_STOP_FROM,
+        self::SORT_FIELD_REVISION_CREATED,
+        self::SORT_FIELD_REVISION_CHANGED
+    );
+
+    private static $sortPromotionsFieldsArray = array(
+        self::SORT_FIELD_PROMOTIONS_TITLE,
+        self::SORT_FIELD_PROMOTIONS_CREATED
+    );
+
+    private static $sortStringToFields = array (
+        self::SORT_FIELD_REVISION_APPLY_FROM => 'apply_from',
+        self::SORT_FIELD_REVISION_SHOW_FROM => 'show_from',
+        self::SORT_FIELD_REVISION_START_FROM => 'start_from',
+        self::SORT_FIELD_REVISION_STOP_FROM => 'stop_from',
+        self::SORT_FIELD_REVISION_CREATED => 'created',
+        self::SORT_FIELD_REVISION_CHANGED => 'changed',
+        self::SORT_FIELD_PROMOTIONS_TITLE => 'title',
+        self::SORT_FIELD_PROMOTIONS_CREATED => 'created',
+    );
+
+    const PUBLISHED_ON_GLOBAL = "global_activity";
+    const PUBLISHED_ON_LOCAL = "local_activity";
+    const PUBLISHED_ON_VK = "vk_activity";
+
+    private static $publishedOnArray = array(
+        self::PUBLISHED_ON_GLOBAL,
+        self::PUBLISHED_ON_LOCAL,
+        self::PUBLISHED_ON_VK
+    );
+
     /**
      *  Возвращает список id активных ревизий для этой акции
      * @return array - массив идентификаторов
@@ -157,6 +220,145 @@ class PromotionModel extends PromotionModelAbstract
         return $promotions;
     }
 
+    public static function promotionSearch (
+        $revisionType = self::REVISION_TYPE_DEFAULT,
+        $sortingField = self::SORT_FIELD_DEFAULT,
+        $sortingType = self::SORT_ASC,
+        $searchString = "",
+        $location = "",
+        $section = "",
+        $publishedOn = array()
+    ):array {
+        if($revisionType === self::REVISION_TYPE_ALL) {
+            // если у нас поиск по всем ревизиям то поиск будет идти по текущей ревизии
+        }
+        if($revisionType === self::REVISION_TYPE_WITHOUT) {
+            // если у нас поиск по всем ревизиям то поиск будет идти не по всем полям
+        }
+        // получаем список всех акций
+        $promotions = PromotionModel::getElementList();
+        $promotionsSort = array();
+        // проверяем корректность типа ревизии
+        if(!in_array($revisionType,static::$revisionTypeArray)) {
+            $revisionType = self::REVISION_TYPE_DEFAULT;
+        }
+        // корректируем список мест пуликации
+        $publishedOn = array_intersect($publishedOn, static::$publishedOnArray);
+        // перебираем акции
+        foreach ($promotions as $promotionId => $promotion) {
+            // если акция
+            if($promotion instanceof PromotionModel) {
+                $mainRevisionId = ""; // ID ревизии по которой будет осуществлятсья дальнейший поиск
+                // находим ID ревизии по которой будет осуществлятсья дальнейший поиск согласно типу
+                switch ($revisionType) {
+                    case self::REVISION_TYPE_COMING:
+                        $mainRevisionId = $promotion->getNextRevisionId();
+                        break;
+                    case self::REVISION_TYPE_CURRENT:
+                        $mainRevisionId = $promotion->getCurrentRevisionId();
+                        break;
+                    case self::REVISION_TYPE_PAST:
+                        $mainRevisionId = $promotion->getPreviousRevisionId();
+                        break;
+                    case self::REVISION_TYPE_ALL:
+                        $mainRevisionId = $promotion->getCurrentRevisionId();
+                        break;
+                }
+                // поулчаем ревизию для дальнейшего поиска
+                $mainRevision = new PromotionRevisionModel($mainRevisionId);
+                $toDelete = false;
+                // првоеряем на соответствие типа для WITHOUT
+                if(!$toDelete &&
+                    $revisionType === self::REVISION_TYPE_WITHOUT &&
+                    (
+                        $promotion->getNextRevisionId() !== "" ||
+                        $promotion->getCurrentRevisionId() !== "" ||
+                        $promotion->getPreviousRevisionId() !== ""
+                    )
+                ) {
+                    $toDelete = true;
+                }
+                // првоеряем на соответствие типа дял остальных типов
+                if(
+                    !$toDelete &&
+                    (
+                        $mainRevisionId === "" &&
+                        $revisionType !== self::REVISION_TYPE_ALL &&
+                        $revisionType !== self::REVISION_TYPE_WITHOUT
+                    )
+                ) {
+                    $toDelete = true;
+                }
+                // првоеряем на соответствие локации
+                if(!$toDelete && $location !== "" && !PromotionRevisionModel::isRevisionAvailableForRegion($mainRevisionId, $location)) {
+                    $toDelete = true;
+                }
+                // првоеряем на соответствие секции
+                if(!$toDelete && $section !== "" && !PromotionRevisionModel::isRevisionAvailableForSection($mainRevisionId, $section)) {
+                    $toDelete = true;
+                }
+                // ищем на соответствие по публикациям
+                if(!$toDelete && !empty($publishedOn)) {
+                    foreach ($publishedOn as $place) {
+                        if($mainRevision->getFieldValue("$place") < 1) {
+                            $toDelete = true;
+                        }
+                    }
+                }
+                // ищем хотябы одно совпадение по строке
+                if(!$toDelete && $searchString !== "") {
+                    $searchString = mb_strtolower($searchString);
+                    $searchText = mb_strtolower(static::getPromotionSearchText($promotion, $mainRevision));
+                    $searchCount = 0;
+                    foreach (array_diff(explode(" ", $searchString),array(" ")) as $searchWord) {
+                        $searchWord = str_replace("_"," ", $searchWord);
+                        $searchCount += substr_count($searchText,$searchWord);
+                    }
+                    if($searchCount < 1) {
+                        $toDelete = true;
+                    }
+                }
+                // исключаем акцию из списка если надо
+                if(!$toDelete) {
+                    if(
+                        $revisionType === self::REVISION_TYPE_WITHOUT &&
+                        in_array($sortingField, static::$sortRevisionFieldsArray)
+                    ) {
+                        $promotionsSort[$promotionId] = static::getPromotionSortString(
+                            $promotion,
+                            self::SORT_FIELD_PROMOTIONS_TITLE
+                        );
+                    } else if(in_array($sortingField, static::$sortRevisionFieldsArray) && $mainRevisionId !== "") {
+                        $promotionsSort[$promotionId] = static::getRevisionSortString($mainRevision, $sortingField);
+                    } else if(in_array($sortingField, static::$sortPromotionsFieldsArray)) {
+                        $promotionsSort[$promotionId] = static::getPromotionSortString($promotion, $sortingField);
+                    } else {
+                        $promotionsSort[$promotionId] = "";
+                    }
+                }
+            }
+        }
+        if($sortingType === self::SORT_DESC) {
+            arsort($promotionsSort);
+        } else {
+            asort($promotionsSort);
+        }
+        $lastPromotionsId = array();
+        $newPromotionsId = array();
+        foreach ($promotionsSort as $promotionId => $sortValue) {
+            if($sortValue === "") {
+                $lastPromotionsId[] = $promotionId;
+            } else {
+                $newPromotionsId[] = $promotionId;
+            }
+        }
+        $newPromotions = array();
+        foreach (array_merge($newPromotionsId,$lastPromotionsId) as $promotionsId) {
+            $newPromotions[$promotionsId] = $promotions[$promotionsId];
+        }
+        return $newPromotions;
+    }
+
     /* ПРИВАТНЫЕ МЕТОДЫ */
 
     /**
@@ -289,6 +491,35 @@ class PromotionModel extends PromotionModelAbstract
         );
         return $whereObj;
     }
+
+
+    private static function getPromotionSearchText(PromotionModel $promotion, PromotionRevisionModel $revision) {
+        $searchText = "";
+        $searchText .= $promotion->getId()." ";
+        $searchText .= $promotion->getFieldValue('title')." ";
+        $searchText .= $revision->getId()." ";
+        $searchText .= $revision->getFieldValue('preview_text')." ";
+        $searchText .= $revision->getFieldValue('main_text')." ";
+        $searchText .= $revision->getFieldValue('vk_text')." ";
+        return $searchText;
+    }
+
+    private static function getPromotionSortString(PromotionModel $promotion, string $field):string {
+        $string = $promotion->getFieldValue(static::$sortStringToFields[$field]);
+        if($string instanceof Bitrix\Main\Type\DateTime) {
+            return $string->format("YmdHis");
+        }
+        return $string;
+    }
+
+    private static function getRevisionSortString(PromotionRevisionModel $revision, string $field):string {
+        $string = $revision->getFieldValue(static::$sortStringToFields[$field]);
+        if($string instanceof Bitrix\Main\Type\DateTime) {
+            return $string->format("YmdHis");
+        }
+        return $string;
+    }
+
 
     /* ПЕРЕОПРЕДЕЛЕННЫЕ МЕТОДЫ */
 
