@@ -51,7 +51,7 @@
     border: 1px solid #dee0ee;
     color: #a1a4b3;
     position: relative;
-    height: 100%;
+    /*height: 100%;*/
 }
 #AplsAdminWrapper .ListOfElements .ElementBlock .ElementBlockContent .content {
     padding: 1em;
@@ -70,7 +70,8 @@
 #AplsAdminWrapper .ListOfElements .ElementBlock .ElementBlockContent .DellButton {
     position: absolute;
     right: 1em;
-    top: 1em;
+    top: 50%;
+    margin-top: -.5em;
     border: 1px solid #dee0ee;
     height: 1em;
     width: 1em;
@@ -184,3 +185,85 @@
     color: #5a1a11;
     background: #d44b38;
 }
+
+
+/* хлебные крошки */
+.breadcrumbWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.breadcrumbWrapper .breadcrumb__item {
+    display: block;
+    background: #f6f6fb;
+    text-decoration: none;
+    margin: 0 .5em 0 1em;
+    position: relative;
+    height: 3em;
+    max-width: 180px;
+    font-size: 10px;
+}
+.breadcrumbWrapper .breadcrumb__item::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    border-width: 1.5em 0 1.5em 1em;
+    border-style: solid;
+    border-color: #f6f6fb #f6f6fb #f6f6fb transparent;
+    left: -1em;
+}
+.breadcrumbWrapper .breadcrumb__item::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    border-top: 1.5em solid transparent;
+    border-bottom: 1.5em solid transparent;
+    border-left: 1em solid #f6f6fb;
+    right: -1em;
+}
+.breadcrumbWrapper .breadcrumb__item:first-child {
+    margin: 0 .5em 0 0;
+}
+.breadcrumbWrapper .breadcrumb__item:first-child::before {
+    display: none;
+}
+.breadcrumbWrapper .breadcrumb__item>.breadcrumb__link,
+.breadcrumbWrapper .breadcrumb__item>.breadcrumb__title {
+    display: table-cell;
+    vertical-align: middle;
+    height: 3em;
+    padding: 0 1em;
+    color: #8184a1;
+    text-decoration: none;
+}
+/*.breadcrumb__item:hover {*/
+    /*background: #ef7f1a;*/
+    /*cursor: pointer;*/
+/*}*/
+/*.breadcrumb__item:hover::before {*/
+    /*border-color: #ef7f1a #ef7f1a #ef7f1a transparent;*/
+/*}*/
+/*.breadcrumb__item:hover::after {*/
+    /*border-left: 1em solid #ef7f1a;*/
+/*}*/
+/*.breadcrumb__item:hover>.breadcrumb__link,*/
+/*.breadcrumb__item:hover>.breadcrumb__title {*/
+    /*color: #FFFFFF;*/
+/*}*/
+/*.breadcrumb__item:hover:last-child {*/
+    /*background: #f6f6fb;*/
+/*}*/
+/*.breadcrumb__item:hover:last-child::before {*/
+    /*border-color: #f6f6fb #f6f6fb #f6f6fb transparent;*/
+/*}*/
+/*.breadcrumb__item:hover:last-child::after {*/
+    /*border-left: 1em solid #f6f6fb;*/
+/*}*/
+/*.breadcrumb__item:hover:last-child>.breadcrumb__link,*/
+/*.breadcrumb__item:hover:last-child>.breadcrumb__title {*/
+    /*color: #8184a1;*/
+/*}*/
