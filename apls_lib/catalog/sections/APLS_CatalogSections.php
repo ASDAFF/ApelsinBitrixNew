@@ -97,6 +97,19 @@ class APLS_CatalogSections
         return static::$sectionsXMLIDtoID[$xmlid];
     }
 
+    public static function getSelectBox($className, $LevelDivisor = "-", $valueKey = "XML_ID", $nameKey = "NAME", $startLvl = 0, $addRoot = true) {
+        $arr = static::getNodeArrayOptionsForSelect(static::getSectionsTree(), $LevelDivisor, $valueKey, $nameKey, $startLvl);
+        $html = "<select class='SectionsTreeSelectBox $className'>";
+        if($addRoot) {
+            $html .= "<option value='' selected>любой</option>";
+        }
+        foreach ($arr as $val => $name) {
+            $html .= "<option value='$val'>$name</option>";
+        }
+        $html .= "</select>";
+        return $html;
+    }
+
     protected function __construct()
     {
         static::getDataSections();
@@ -195,6 +208,17 @@ class APLS_CatalogSections
             }
         }
         return $children;
+    }
+
+    protected static function getNodeArrayOptionsForSelect($sections, $LevelDivisor = "-", $valueKey = "XML_ID", $nameKey = "NAME", $lvl = 0, $options = array()) {
+        foreach ($sections as $sectionNode) {
+            $section = APLS_CatalogSections::getSection($sectionNode["element"]);
+            $options[$section["ID"]] = str_repeat($LevelDivisor, $lvl).$section["NAME"];
+            if(isset($sectionNode["children"]) && !empty($sectionNode["children"])) {
+                $options = static::getNodeArrayOptionsForSelect($sectionNode["children"], $LevelDivisor, $valueKey, $nameKey, $lvl + 1, $options);
+            }
+        }
+        return $options;
     }
 
 }
