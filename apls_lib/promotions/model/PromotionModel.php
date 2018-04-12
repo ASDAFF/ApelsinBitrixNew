@@ -516,6 +516,8 @@ class PromotionModel extends PromotionModelAbstract
         $string = $revision->getFieldValue(static::$sortStringToFields[$field]);
         if($string instanceof Bitrix\Main\Type\DateTime) {
             return $string->format("YmdHis");
+        } elseif ($string === null) {
+            $string = "";
         }
         return $string;
     }
