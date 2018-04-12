@@ -1,0 +1,326 @@
+#AplsAdminWrapper .PromotionMainWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper,
+#AplsAdminWrapper .PromotionMainWrapper .PromotionShowWrapper {
+    width: 50%;
+}
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList {
+    margin-right: .5em;
+}
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement {
+    position: relative;
+}
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement .ElementBlockContent {
+    position: relative;
+    font-weight: 600;
+    cursor: pointer;
+    padding-right: 120px;
+}
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement .editTitle {
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    margin-top: -8px;
+    z-index: 900;
+}
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement .ElementBlockContent:hover {
+    color: #ef8b00;
+    border-color: #ef8b00;
+}
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement .ElementBlockContent.selected {
+    color: #40c781;
+    border-color: #40c781;
+}
+
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement.current .ElementBlockContent:before,
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement.past .ElementBlockContent:before,
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement.coming .ElementBlockContent:before {
+    content: "";
+    font-size: 13px;
+    position: absolute;
+    left: -3.5px;
+    top: 50%;
+    height: 0;
+    width: 0;
+    margin-top: -8px;
+    border: 3px solid #dee0ee;
+    border-top: 8px solid #dee0ee;
+    border-bottom: 8px solid #dee0ee;
+}
+
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement.current .ElementBlockContent:before,
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement.current.past .ElementBlockContent:before{
+    border-color: #40c781;
+}
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement.past .ElementBlockContent:before {
+    border-color: #dee0ee;
+}
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement.coming .ElementBlockContent:before,
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement.coming.past .ElementBlockContent:before {
+    border-color: #d44b38;
+}
+#AplsAdminWrapper .PromotionMainWrapper .PromotionListWrapper>.PromotionList .PromotionListElement.current.coming .ElementBlockContent:before {
+    border-color: #ef8b00;
+}
+
+#AplsAdminWrapper .PromotionMainWrapper .PromotionShowWrapper>.PromotionShow {
+    margin-left: 1.5em;
+}
+#AplsAdminWrapper .PromotionFilterPanel {
+    position: relative;
+    background: #f7f7f7;
+    padding: 2em;
+    /*margin-bottom: 2em;*/
+    margin: -2em -2em 2em -2em;
+    border-bottom: 1px solid #dee0ee;
+}
+#AplsAdminWrapper .PromotionFilterPanel .search-block,
+#AplsAdminWrapper .PromotionFilterPanel .filter-blocks .filter-block {
+    margin-bottom: 1em;
+}
+#AplsAdminWrapper .PromotionFilterPanel .search-block input[type="text"] {
+    width: 98% !important;
+}
+
+#AplsAdminWrapper .PromotionFilterPanel .filter-blocks,
+#AplsAdminWrapper .PromotionFilterPanel .sort-block {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+
+}
+#AplsAdminWrapper .PromotionFilterPanel .sort-block {
+    padding-top: 1em;
+}
+#AplsAdminWrapper .PromotionFilterPanel .filter-blocks>div,
+#AplsAdminWrapper .PromotionFilterPanel .sort-block>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+#AplsAdminWrapper .PromotionFilterPanel .filter-blocks>div {
+    margin-right: 4em;
+}
+#AplsAdminWrapper .PromotionFilterPanel .sort-block>div.sort-block-input {
+    margin-right: .5em;
+}
+#AplsAdminWrapper .PromotionFilterPanel .filter-blocks .filter-block-text,
+#AplsAdminWrapper .PromotionFilterPanel .sort-block .sort-block-text {
+    display: block;
+    height: 30px;
+    padding: 0 .5em;
+    font-size: 12px;
+    line-height: 30px;
+    text-transform: lowercase;
+}
+#AplsAdminWrapper .PromotionMainWrapperTitle {
+    font-size: 2em;
+    padding: .5em 0;
+}
+#AplsAdminWrapper .PromotionFilterPanel select {
+    color: #828496;
+}
+#AplsAdminWrapper .PromotionFilterPanel .addPromotionPanel {
+    position: absolute;
+    right: 2em;
+    bottom: 2em;
+}
+#AplsAdminWrapper .PromotionShow .promotion .title {
+    text-align: right;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+#AplsAdminWrapper .PromotionShow .promotion .revisions {
+    padding: 2em 0;
+}
+#AplsAdminWrapper .PromotionShow .promotion .revisions .apls-tab-name {
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+#AplsAdminWrapper .PromotionShow .promotion .revisions .apls-tab-name .date {
+    color: #0b3961;
+}
+#AplsAdminWrapper .PromotionShow .promotion .revisions .apls-tab-name .time {
+    /*color: #0b3961;*/
+}
+#AplsAdminWrapper .PromotionShow .promotion .revisions .apls-tab-name.current::before {
+    content: "";
+    font-size: 13px;
+    position: absolute;
+    left: -2.5px;
+    top: 50%;
+    height: 0;
+    width: 0;
+    margin-top: -6px;
+    border: 2px solid #40c781;
+    border-top: 6px solid #40c781;
+    border-bottom: 6px solid #40c781;
+    z-index: 900;
+
+}
+#AplsAdminWrapper .PromotionShow .promotion .revisions .apls-tab-name.disable::before {
+    content: "";
+    font-size: 13px;
+    position: absolute;
+    left: -2.5px;
+    top: 50%;
+    height: 0;
+    width: 0;
+    margin-top: -6px;
+    border: 2px solid #a1a4b3;
+    border-top: 6px solid #a1a4b3;
+    border-bottom: 6px solid #a1a4b3;
+    z-index: 900;
+
+}
+#AplsAdminWrapper .PromotionShow .promotion .revisions .apls-tab-name.disable {
+    text-decoration: line-through;
+}
+#AplsAdminWrapper .PromotionShow .promotion .promotion-button-panel {
+    text-align: right;
+}
+#AplsAdminWrapper .PromotionEditTitle {
+    font-weight: 600;
+    font-size: 1.5em;
+}
+#AplsAdminWrapper .PromotionRevisionMainWrapper {}
+#AplsAdminWrapper .PromotionRevisionMainWrapper .ButtonPanel{
+    text-align: right;
+}
+#AplsAdminWrapper .PromotionRevisionMainWrapper .ButtonPanel .Button {
+    margin-left: 0.4em;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .PromotionTitle {
+    font-weight: 600;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .MainFields,
+#AplsAdminWrapper .EditRevisionMainWrapper .SharesPlacement,
+#AplsAdminWrapper .EditRevisionMainWrapper .PromotionText {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .MainFields .InputField,
+#AplsAdminWrapper .EditRevisionMainWrapper .SharesPlacement .InputField {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-right: 2em;
+    margin-bottom: 1em;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField {
+    margin-right: 2em;
+    margin-bottom: 1em;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField textarea {
+    height: 250px;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .text:after {
+    content: ":";
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .MainFields .InputField .text,
+#AplsAdminWrapper .EditRevisionMainWrapper .SharesPlacement .InputField .text,
+#AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField .text {
+    font-size: 14px;
+    line-height: 2em;
+    color: #a1a4b3;
+    margin-right: .5em;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input {
+    position: relative;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTime {
+    width: 160px;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear {
+    position: absolute;
+    right: .6em;
+    top: .6em;
+    border: 1px solid #dee0ee;
+    height: 1em;
+    width: 1em;
+    cursor: pointer;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:hover {
+    border: 1px solid #d44b38;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:before,
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:after {
+    position: absolute;
+    left: .45em;
+    top: .1em;
+    content: ' ';
+    height: .8em;
+    width: 1px;
+    background-color: #dee0ee;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:hover:before,
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:hover:after {
+    background-color: #d44b38;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:before {
+    transform: rotate(45deg);
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:after {
+    transform: rotate(-45deg);
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper {
+    border: 1px solid #dee0ee;
+    margin-top: 3em;
+    position: relative;
+    padding: 1.5em 1em 1em 1em;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .title,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .title,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .title {
+    font-weight: 600;
+    font-size: 1.2em;
+    line-height: 1em;
+    padding: 0 1em;
+    position: absolute;
+    top: -.5em;
+    left: 1em;
+    background: #FFFFFF;
+    border-left: 1px solid #dee0ee;
+    border-right: 1px solid #dee0ee;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .content,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .content,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .content {
+    min-height: 3em;
+    /*background: #f7f7f7;*/
+    margin-bottom: 1em;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper {
+    margin-bottom: 2em;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .search .SearchInput,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .search .SearchInput,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .search .SearchInput {
+    width: 45%;
+    margin-right: 1em;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .search,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .search {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
