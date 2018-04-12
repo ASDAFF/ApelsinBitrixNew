@@ -202,6 +202,12 @@
     font-weight: 600;
     font-size: 1.5em;
     margin-bottom: 1em;
+    position: relative;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .PromotionTitle .BackButton {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .MainFields,
 #AplsAdminWrapper .EditRevisionMainWrapper .SharesPlacement,
@@ -222,11 +228,14 @@
     margin-bottom: 1em;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField {
+    width: 420px;
     margin-right: 2em;
     margin-bottom: 1em;
 }
-#AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField textarea {
-    height: 250px;
+#AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField #PreviewPromotionTextWrapper,
+#AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField #MainPromotionTextWrapper,
+#AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField #VkPromotionTextWrapper {
+    margin-bottom: .5em;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .InputField .text:after {
     content: ":";
@@ -277,6 +286,12 @@
 #AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:after {
     transform: rotate(-45deg);
 }
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .bxlhe-frame {
+    border: 1px solid #dee0ee;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .bxlhe-frame #lhe_btn_image {
+    display: none;
+}
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper {
@@ -323,4 +338,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: stretch;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .ButtonPanel {
+    text-align: right;
 }

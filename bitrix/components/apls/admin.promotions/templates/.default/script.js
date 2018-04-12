@@ -42,6 +42,7 @@ function AdminPromotionsUiShowMain(promotionId, revisionId) {
         method: 'POST',
         dataType: 'html',
         onsuccess: function (rezult) {
+            $("#AplsAdminWrapper .PromotionFilterPanel").show();
             AdminPromotionsWrapper().html(rezult);
             AdminPromotionsUiShowPromotionsListMain(promotionId, revisionId);
             // $('.PromotionListWrapper .ListOfElements .PromotionListElement').click(AdminPromotionsUiShowPromotion);
@@ -76,7 +77,7 @@ function AdminPromotionsUiShowPromotionsListMain(promotionId, revisionId) {
         onsuccess: function (rezult) {
             $('.PromotionMainWrapper .PromotionList').html(rezult);
             $('.PromotionMainWrapper .PromotionList .PromotionListElement .ElementBlockContent').click(AdminPromotionsUiShowPromotion);
-            if (typeof(promotionId) != "undefined") {
+            if (typeof(promotionId) !== "undefined") {
                 AdminPromotionsUiShowPromotionMain(promotionId, revisionId);
             } else {
                 $(".PromotionMainWrapper .PromotionShow").html("Выберите акцию для быстрого просмотра");
@@ -100,7 +101,7 @@ function AdminPromotionsUiShowPromotionMain(promotionId, revisionId) {
     data["componentFolder"] = AdminPromotionsComponentFolder();
     data["promotionId"] = promotionId;
     // alert(revisionId);
-    if (typeof(revisionId) != "undefined") {
+    if (typeof(revisionId) !== "undefined") {
         data["revisionId"] = revisionId;
     }
     BX.ajax({
@@ -140,7 +141,16 @@ function AdminPromotionsUiEditRevisionMain(revisionId) {
         method: 'POST',
         dataType: 'html',
         onsuccess: function (rezult) {
+            $("#AplsAdminWrapper .PromotionFilterPanel").hide();
             AdminPromotionsWrapper().html(rezult);
+            AdminPromotionsActionLoadText("PreviewPromotionTextWrapper");
+            AdminPromotionsActionLoadText("MainPromotionTextWrapper");
+            AdminPromotionsActionLoadText("VkPromotionTextWrapper");
+            $(".EditRevisionMainWrapper .DateTime").change(AdminPromotionsActionChangeTime);
+            $(".EditRevisionMainWrapper .DateTimeClear").click(AdminPromotionsActionClearTime);
+            $(".EditRevisionMainWrapper .PromotionTextSave").click(AdminPromotionsActionSaveText);
+            $(".EditRevisionMainWrapper .PromotionTextReset").click(AdminPromotionsActionResetText);
+            $(".EditRevisionMainWrapper .SharesPlacement select").change(AdminPromotionsActionChangeBool);
             $(".EditRevisionMainWrapper .BackButton").click(function () {
                 var promotionId = $(this).attr('promotionId');
                 var revisionId = $(this).attr('revisionId');
@@ -326,6 +336,116 @@ function AdminPromotionsActionAddRevision() {
             } else {
                 alert("Что-то пошло не так. К сожалению не удалось создать новую ревизию. Возможно такая ревизия уже существует");
             }
+        },
+        onfailure: function (rezult) {
+            alert("Произошла ошибка выполнения скрипта");
+        },
+    });
+}
+
+function AdminPromotionsActionChangeTime() {
+    AdminPromotionsActionChangeTimeMain(
+        $(".EditRevisionMainWrapper").attr("revisionId"),
+        $(this).attr("name"),
+        $(this).val()
+    );
+}
+
+function AdminPromotionsActionChangeTimeMain(revisionId,field,value) {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["revisionId"] = revisionId;
+    data["field"] = field;
+    data["value"] = value;
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/ChangeTime.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
+        },
+        onfailure: function (rezult) {
+            alert("Произошла ошибка выполнения скрипта");
+        },
+    });
+}
+
+function AdminPromotionsActionClearTime() {
+    var field = $(this).attr("field");
+    $("input[name="+field+"]").val("");
+    AdminPromotionsActionChangeTimeMain(
+        $(".EditRevisionMainWrapper").attr("revisionId"),
+        field,
+        ""
+    );
+}
+
+function AdminPromotionsActionSaveText() {
+    var inputId = $(this).attr('inputId');
+    var value = $("#"+inputId).val();
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    data["inputId"] = inputId;
+    data["value"] = value;
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/SaveText.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
+            if(rezult !== "") {
+                alert("Сохранение прошло успешно");
+            } else {
+                alert("Похоже что-то пошло не так. Неудалось сохранить данные.");
+            }
+        },
+        onfailure: function (rezult) {
+            alert("Произошла ошибка выполнения скрипта");
+        },
+    });
+}
+
+function AdminPromotionsActionResetText() {
+    var confirmVal = confirm("Вы уверены что хотите отменить несохраненные изменения?");
+    if (confirmVal == true) {
+        var divId = $(this).attr('inputId')+"Wrapper";
+        AdminPromotionsActionLoadText(divId);
+        alert("Изменения сброшены")
+    }
+}
+
+function AdminPromotionsActionLoadText(divId) {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    data["divId"] = divId;
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/LoadText.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
+            $("#"+divId).html(rezult);
+        },
+        onfailure: function (rezult) {
+            alert("Произошла ошибка выполнения скрипта");
+        },
+    });
+}
+
+function AdminPromotionsActionChangeBool() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    data["field"] = $(this).attr("name");
+    data["value"] = $(this).val();
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/ChangeBool.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
         },
         onfailure: function (rezult) {
             alert("Произошла ошибка выполнения скрипта");
