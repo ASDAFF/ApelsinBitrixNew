@@ -295,7 +295,7 @@
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper {
-    border: 1px solid #dee0ee;
+    border: 1px solid #a1a4b3;
     margin-top: 3em;
     position: relative;
     padding: 1.5em 1em 1em 1em;
@@ -311,8 +311,8 @@
     top: -.5em;
     left: 1em;
     background: #FFFFFF;
-    border-left: 1px solid #dee0ee;
-    border-right: 1px solid #dee0ee;
+    border-left: 1px solid #a1a4b3;
+    border-right: 1px solid #a1a4b3;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper>.content,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper>.content,
