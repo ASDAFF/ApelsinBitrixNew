@@ -314,12 +314,12 @@
     border-left: 1px solid #dee0ee;
     border-right: 1px solid #dee0ee;
 }
-#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .content,
-#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .content,
-#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .content {
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper>.content,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper>.content,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper>.content {
     min-height: 3em;
     /*background: #f7f7f7;*/
-    margin-bottom: 1em;
+    margin-bottom: .5em;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper {
     margin-bottom: 2em;
@@ -341,4 +341,15 @@
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .ButtonPanel {
     text-align: right;
+}
+#AplsAdminWrapper .ListOfElements.BreadcrumbElements .ElementBlock {
+    margin-bottom: .5em;
+}
+#AplsAdminWrapper .ListOfElements.BreadcrumbElements .ElementBlock .ElementBlockContent {
+    border: none;
+    padding-left: 3em;
+}
+#AplsAdminWrapper .ListOfElements.BreadcrumbElements .ElementBlock .ElementBlockContent .DellButton {
+    left: 1em;
+    right: auto;
 }

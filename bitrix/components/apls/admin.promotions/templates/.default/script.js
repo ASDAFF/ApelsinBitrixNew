@@ -146,6 +146,9 @@ function AdminPromotionsUiEditRevisionMain(revisionId) {
             AdminPromotionsActionLoadText("PreviewPromotionTextWrapper");
             AdminPromotionsActionLoadText("MainPromotionTextWrapper");
             AdminPromotionsActionLoadText("VkPromotionTextWrapper");
+            AdminPromotionsUiShowCatalogSections();
+            AdminPromotionsUiShowCatalogProducts("products","CatalogProductsWrapper");
+            AdminPromotionsUiShowCatalogProducts("exceptions","CatalogExceptionsWrapper");
             $(".EditRevisionMainWrapper .DateTime").change(AdminPromotionsActionChangeTime);
             $(".EditRevisionMainWrapper .DateTimeClear").click(AdminPromotionsActionClearTime);
             $(".EditRevisionMainWrapper .PromotionTextSave").click(AdminPromotionsActionSaveText);
@@ -159,6 +162,43 @@ function AdminPromotionsUiEditRevisionMain(revisionId) {
         },
         onfailure: function (rezult) {
             alert("Ошибка: AdminPromotionsUiEditRevision()");
+        },
+    });
+}
+
+function AdminPromotionsUiShowCatalogSections() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/ui/ShowCatalogSections.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
+            $(".CatalogSectionsWrapper .content").html(rezult);
+        },
+        onfailure: function (rezult) {
+            alert("Произошла ошибка выполнения скрипта");
+        },
+    });
+}
+
+function AdminPromotionsUiShowCatalogProducts(type,wrapperClass) {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    data["type"] = type;
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/ui/ShowCatalogProducts.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
+            $("."+wrapperClass+" .content").html(rezult);
+        },
+        onfailure: function (rezult) {
+            alert("Произошла ошибка выполнения скрипта");
         },
     });
 }
