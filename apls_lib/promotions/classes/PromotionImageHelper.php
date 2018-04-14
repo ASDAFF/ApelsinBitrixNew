@@ -83,9 +83,14 @@ class PromotionImageHelper
 
     public function createImageType($alias, $typeName)
     {
-        $typeId = PromotionImageTypeModel::createElement(array('alias' => $alias, 'type' => $typeName));
-        $this->createFtpDirs($typeId);
-        return $typeId;
+        if($alias !== null && $alias!== "" && $typeName !== null && $typeName!== "") {
+            $typeId = PromotionImageTypeModel::createElement(array('alias' => $alias, 'type' => $typeName));
+            if($typeId) {
+                $this->createFtpDirs($typeId);
+            }
+            return $typeId;
+        }
+        return false;
     }
 
     public function deleteImageType(string $typeId)
