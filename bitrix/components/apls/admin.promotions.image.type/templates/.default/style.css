@@ -1,0 +1,12 @@
+#AplsAdminWrapper .PromotionImageTypeAddPanel {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-top: 2em;
+}
+#AplsAdminWrapper .PromotionImageTypeAddPanel #ImageTypeNameInput,
+#AplsAdminWrapper .PromotionImageTypeAddPanel #ImageTypeAliasInput {
+    margin-right: 1em;
+}
