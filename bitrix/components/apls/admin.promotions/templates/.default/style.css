@@ -230,7 +230,7 @@
 #AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField {
     width: 420px;
     margin-right: 2em;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField #PreviewPromotionTextWrapper,
 #AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField #MainPromotionTextWrapper,
@@ -292,43 +292,27 @@
 #AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .bxlhe-frame #lhe_btn_image {
     display: none;
 }
-#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper,
-#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper,
-#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper {
-    border: 1px solid #a1a4b3;
-    margin-top: 3em;
-    position: relative;
-    padding: 1.5em 1em 1em 1em;
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogElements {
+    margin: 1em;
 }
-#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .title,
-#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .title,
-#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .title {
-    font-weight: 600;
-    font-size: 1.2em;
-    line-height: 1em;
-    padding: 0 1em;
-    position: absolute;
-    top: -.5em;
-    left: 1em;
-    background: #FFFFFF;
-    border-left: 1px solid #a1a4b3;
-    border-right: 1px solid #a1a4b3;
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogElements .apls-tab-name {
+    font-weight: bold;
+    text-transform: uppercase;
+    /*color: #ef8b00;*/
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogElements .apls-tab-name.open-tab {
+    color: #ef8b00;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper>.content,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper>.content,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper>.content {
-    /*min-height: 3em;*/
-    /*background: #f7f7f7;*/
     margin-bottom: .5em;
-}
-#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper {
-    margin-bottom: 2em;
 }
 
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .search .SearchInput,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .search .SearchInput,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .search .SearchInput {
-    width: 45%;
+    width: 35%;
     margin-right: 1em;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .search,

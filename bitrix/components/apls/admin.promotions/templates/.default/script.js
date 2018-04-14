@@ -143,6 +143,7 @@ function AdminPromotionsUiEditRevisionMain(revisionId) {
         onsuccess: function (rezult) {
             $("#AplsAdminWrapper .PromotionFilterPanel").hide();
             AdminPromotionsWrapper().html(rezult);
+            aplsTabsAddClickEvent();
             AdminPromotionsActionLoadText("PreviewPromotionTextWrapper");
             AdminPromotionsActionLoadText("MainPromotionTextWrapper");
             AdminPromotionsActionLoadText("VkPromotionTextWrapper");

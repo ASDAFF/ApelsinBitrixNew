@@ -4,6 +4,7 @@ define("NOT_CHECK_PERMISSIONS", true);
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionModel.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_CatalogSections.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/ui/APLS_Tabs/APLS_Tabs.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . $_REQUEST['componentFolder'] ."classes/AdminPromotions_Revision.php";
 $revision = new PromotionRevisionModel($_REQUEST['revisionId']);
 $promotion = new PromotionModel($revision->getFieldValue('promotion'));
@@ -35,6 +36,34 @@ if($revision->getFieldValue('vk_activity') > 0) {
     $boolSelect['vk_activity'][0] = 'selected';
     $boolSelect['vk_activity'][1] = '';
 }
+$catalogSectionsWrapper = '
+<div class="CatalogSectionsWrapper">
+<div class="content"></div>
+<div class="search"><input type="text" class="SearchInput"></div>
+<div class="search-result"></div>
+</div>';
+$catalogProductsWrapper = '
+<div class="CatalogProductsWrapper">
+<div class="content"></div>
+<div class="search">
+<input type="text" class="SearchInput">
+'.APLS_CatalogSections::getSelectBox("",". ","ID","NAME", 1, true).'
+</div>
+<div class="search-result"></div>
+</div>';
+$catalogExceptionsWrapper = '
+<div class="CatalogExceptionsWrapper">
+<div class="content"></div>
+<div class="search">
+<input type="text" class="SearchInput">
+'.APLS_CatalogSections::getSelectBox("",". ","ID","NAME", 1, true).'
+</div>
+<div class="search-result"></div>
+</div>';
+$tabs = new APLS_Tabs();
+$tabs->addTab("Каталоги учавствующие в акции",$catalogSectionsWrapper);
+$tabs->addTab("Товары учавствующие в акции",$catalogProductsWrapper);
+$tabs->addTab("Исключенные из акции товары",$catalogExceptionsWrapper);
 ?>
 <div class="EditRevisionMainWrapper" promotionId="<?=$promotion->getId()?>" revisionId="<?=$revision->getId()?>">
     <div class="PromotionTitle">
@@ -134,28 +163,8 @@ if($revision->getFieldValue('vk_activity') > 0) {
             </div>
         </div>
     </div>
-    <div class="CatalogSectionsWrapper">
-        <div class="title">Каталоги учавствующие в акции</div>
-        <div class="content"></div>
-        <div class="search">
-            <input type="text" class="SearchInput">
-        </div>
-    </div>
-    <div class="CatalogProductsWrapper">
-        <div class="title">Товары учавствующие в акции</div>
-        <div class="content"></div>
-        <div class="search">
-            <input type="text" class="SearchInput">
-            <?=APLS_CatalogSections::getSelectBox("",". ","ID","NAME", 1, true)?>
-        </div>
-    </div>
-    <div class="CatalogExceptionsWrapper">
-        <div class="title">Исключенные из акции товары</div>
-        <div class="content"></div>
-        <div class="search">
-            <input type="text" class="SearchInput">
-            <?=APLS_CatalogSections::getSelectBox("",". ","ID","NAME", 1, true)?>
-        </div>
+    <div class="CatalogElements">
+        <?=$tabs->getTabsHtml()?>
     </div>
     <div class="ButtonPanel">
         <div class="BackButton Button Yellow" revisionId="<?=$revision->getId()?>" promotionId="<?=$promotion->getId()?>">Назад</div>
