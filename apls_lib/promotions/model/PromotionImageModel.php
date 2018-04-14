@@ -4,5 +4,5 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionMo
 class PromotionImageModel extends PromotionModelAbstract
 {
     protected static $tableName = "apls_promotions_image";
-    protected static $requiredFields = array('b_file_nam','s_file_nam','name','type');
+    protected static $requiredFields = array('b_file_name','s_file_name','name','type');
 }
