@@ -317,7 +317,7 @@
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper>.content,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper>.content,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper>.content {
-    min-height: 3em;
+    /*min-height: 3em;*/
     /*background: #f7f7f7;*/
     margin-bottom: .5em;
 }

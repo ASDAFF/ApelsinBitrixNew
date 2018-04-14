@@ -32,7 +32,7 @@ function getAplsBreadcrumbItem($title)
         $content = "<div class='breadcrumbWrapper'>" . $pathToRoot . "</div>";
         ?>
         <div class="ElementBlock">
-            <div class="ElementBlockContent" tableId="<?=$revisionSection->getId()?>">
+            <div class="ElementBlockContent" tableId="<?=$revisionSection->getId()?>" type="section">
                 <?=$content?>
                 <div class="DellButton"></div>
             </div>

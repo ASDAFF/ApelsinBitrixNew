@@ -147,8 +147,8 @@ function AdminPromotionsUiEditRevisionMain(revisionId) {
             AdminPromotionsActionLoadText("MainPromotionTextWrapper");
             AdminPromotionsActionLoadText("VkPromotionTextWrapper");
             AdminPromotionsUiShowCatalogSections();
-            AdminPromotionsUiShowCatalogProducts("products","CatalogProductsWrapper");
-            AdminPromotionsUiShowCatalogProducts("exceptions","CatalogExceptionsWrapper");
+            AdminPromotionsUiShowCatalogProducts("product","CatalogProductsWrapper");
+            AdminPromotionsUiShowCatalogProducts("exception","CatalogExceptionsWrapper");
             $(".EditRevisionMainWrapper .DateTime").change(AdminPromotionsActionChangeTime);
             $(".EditRevisionMainWrapper .DateTimeClear").click(AdminPromotionsActionClearTime);
             $(".EditRevisionMainWrapper .PromotionTextSave").click(AdminPromotionsActionSaveText);
@@ -177,6 +177,7 @@ function AdminPromotionsUiShowCatalogSections() {
         dataType: 'html',
         onsuccess: function (rezult) {
             $(".CatalogSectionsWrapper .content").html(rezult);
+            $(".CatalogSectionsWrapper .ListOfElements .DellButton").click(AdminPromotionsActionDeleteCatalogElement);
         },
         onfailure: function (rezult) {
             alert("Произошла ошибка выполнения скрипта");
@@ -196,6 +197,7 @@ function AdminPromotionsUiShowCatalogProducts(type,wrapperClass) {
         dataType: 'html',
         onsuccess: function (rezult) {
             $("."+wrapperClass+" .content").html(rezult);
+            $("."+wrapperClass+" .ListOfElements .DellButton").click(AdminPromotionsActionDeleteCatalogElement);
         },
         onfailure: function (rezult) {
             alert("Произошла ошибка выполнения скрипта");
@@ -491,6 +493,38 @@ function AdminPromotionsActionChangeBool() {
             alert("Произошла ошибка выполнения скрипта");
         },
     });
+}
+
+function AdminPromotionsActionDeleteCatalogElement() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["tableId"] = $(this).parent().attr('tableId');
+    data["type"] = $(this).parent().attr('type');
+    var confirmVal = confirm("Вы уверены что хотите удалить эту запись?");
+    if (confirmVal === true) {
+        BX.ajax({
+            url: data["templateFolder"] + "/ajax/action/DeleteCatalogElement.php",
+            data: data,
+            method: 'POST',
+            dataType: 'html',
+            onsuccess: function (result) {
+                if(result === "yes") {
+                    if(data["type"] === 'product') {
+                        AdminPromotionsUiShowCatalogProducts("product","CatalogProductsWrapper");
+                    } else if (data["type"] === 'exception') {
+                        AdminPromotionsUiShowCatalogProducts("exception","CatalogExceptionsWrapper");
+                    } else if (data["type"] === 'section') {
+                        AdminPromotionsUiShowCatalogSections()
+                    }
+                } else {
+                    alert("Что-то пошло не так, удаление не удалось");
+                }
+            },
+            onfailure: function (rezult) {
+                alert("Произошла ошибка выполнения скрипта");
+            },
+        });
+    }
 }
 
 /*------------------------------*/

@@ -6,9 +6,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionRe
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_CatalogSections.php";
 $revision = new PromotionRevisionModel($_REQUEST['revisionId']);
 $revisionProducts = array();
-if($_REQUEST['type'] = "product") {
+if($_REQUEST['type'] === "product") {
     $revisionProducts = $revision->getCatalogProducts();
-} elseif($_REQUEST['type'] = "exception") {
+} elseif($_REQUEST['type'] === "exception") {
     $revisionProducts = $revision->getCatalogExceptions();
 }
 ?>
@@ -18,7 +18,7 @@ if($_REQUEST['type'] = "product") {
             $productXmlId = $revisionProduct->getFieldValue('product');
             ?>
             <div class="ElementBlock">
-                <div class="ElementBlockContent" tableId="<?=$revisionProduct->getId()?>">
+                <div class="ElementBlockContent" tableId="<?=$revisionProduct->getId()?>" type="<?=$_REQUEST['type']?>">
                     <div class="content"><?=$productXmlId?></div>
                     <div class="DellButton"></div>
                 </div>
