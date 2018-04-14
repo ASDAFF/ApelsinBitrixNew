@@ -2,9 +2,6 @@
 
 class FTPConnector
 {
-    private $server;
-    private $user;
-    private $pass;
 
     private $ftpConn = null;
 
