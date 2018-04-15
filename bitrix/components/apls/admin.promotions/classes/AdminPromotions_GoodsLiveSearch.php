@@ -28,18 +28,26 @@ class AdminPromotions_GoodsLiveSearch
         );
         //Если $section существует, то добавляем еще кусок запроса
         if ($section !== "") {
+            //Нам приходит ИД, но для поиска по потомкам нужен xml - конвертируем
             $xml = APLS_CatalogSections::convertSectionsIDtoXMLID($section);
             $allChildren = APLS_CatalogSections::getAllChildrenListForSection($xml);
             $childArray = "";
+            //Перебираем и записываем в строку
             foreach ($allChildren as $child) {
                 $childArray .= APLS_CatalogSections::convertSectionsXMLIDtoID($child) . ",";
             }
-            if ($childArray != "") {
+           //Проверяем не пришла ли пустота и существуют ли потомки
+            if ($childArray != "" && $childArray) {
                 $childArray = "(" . substr($childArray, 0, -1) . ")";
+                //Ищем совпадения по вспомагательной таблице ID Секции - ID Элемента
+                $testSQL = "SELECT `IBLOCK_ELEMENT_ID` FROM `b_iblock_section_element` WHERE `IBLOCK_SECTION_ID` IN $childArray";
             }
-//            var_dump($childArray);
-            //Ищем совпадения по вспомагательной таблице ID Секции - ID Элемента
-            $testSQL = "SELECT `IBLOCK_ELEMENT_ID` FROM `b_iblock_section_element` WHERE `IBLOCK_SECTION_ID` IN $childArray";
+            // Если потомков нет, то подставляем иходный ИД и немного модифицируем запрос
+            else {
+                $childArray = $section;
+                $testSQL = "SELECT `IBLOCK_ELEMENT_ID` FROM `b_iblock_section_element` WHERE `IBLOCK_SECTION_ID` = $childArray";
+            }
+            //Добавляем кусочек запроса в WHERE
             $whereObj->addElement(
                 MySQLWhereElementString::getBinaryOperationString(
                     "ID",
