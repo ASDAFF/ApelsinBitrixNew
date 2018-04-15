@@ -8,6 +8,7 @@ $menuArray = array(
             "apls_promotion"=>"Настройка акций",
             "apls_promotion_region"=>"Настройка локаций проведения акций",
             "apls_promotion_section"=>"Настройка секций для акций",
+            "apls_promotion_image"=>"Изображения акций",
             "apls_promotion_image_type"=>"Типы изображений",
         ),
     ),

@@ -1,0 +1,53 @@
+#AplsAdminWrapper .UploadImageWrapper {
+    padding: 1em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+#AplsAdminWrapper .ShowImageWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock {
+    position: relative;
+    margin-right: .5em;
+    margin-bottom: .5em;
+}
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock img {
+    display: block;
+}
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock .DeleteButton {
+    position: absolute;
+    right: .5em;
+    top: .5em;
+}
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock .DeleteButton {
+    position: absolute;
+    right: .5em;
+    top: .5em;
+    height: 1em;
+    width: 1em;
+    cursor: pointer;
+}
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock .DeleteButton:before,
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock .DeleteButton:after {
+    position: absolute;
+    right: .45em;
+    top: 0;
+    content: ' ';
+    height: 1em;
+    width: 1px;
+    background-color: #dee0ee;
+}
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock .DeleteButton:hover:before,
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock .DeleteButton:hover:after {
+    background-color: #d44b38;
+}
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock .DeleteButton:before {
+    transform: rotate(45deg);
+}
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock .DeleteButton:after {
+    transform: rotate(-45deg);
+}
