@@ -43,6 +43,9 @@ class MySQLWhereElementString
         self::OPERATOR_B_EQUAL,
         self::OPERATOR_B_NOT_EQUAL,
         self::OPERATOR_B_LIKE,
+        self::OPERATOR_B_IS,
+        self::OPERATOR_B_IN,
+        self::OPERATOR_B_NOT_IN
     );
 
     private $unaryOperators = array(
