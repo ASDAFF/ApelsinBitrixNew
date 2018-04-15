@@ -3,7 +3,7 @@ function aplsTabsAddClickEvent() {
         var tabId = $(this).attr("tabId");
         var tabsWrapperId = $(this).attr("tabsWrapperId");
         var tabFunction = $(this).attr("tabFunction");
-        aplsTabsOpenTab(tabId,tabsWrapperId,tabFunction);
+        aplsTabsOpenTab(tabId,tabsWrapperId,tabFunction,this);
     });
     $(".apls-tabs-wrapper .apls-tab-content").hide();
     $(".apls-tabs-wrapper .apls-tab-content:first-child").show();
@@ -15,13 +15,13 @@ function aplsTabsAddClickEvent() {
     }
 }
 
-function aplsTabsOpenTab(tabId,tabsWrapperId,tabFunction) {
+function aplsTabsOpenTab(tabId,tabsWrapperId,tabFunction,obj) {
     $("#" + tabsWrapperId + " .apls-tab-name").removeClass("open-tab");
     $("#" + tabsWrapperId + " #" + tabId + "-NAME").addClass("open-tab");
     $("#" + tabsWrapperId + " .apls-tab-content").hide();
     $("#" + tabsWrapperId + " #" + tabId + "-CONTENT").show();
     if(tabFunction !== '') {
-        eval(tabFunction + '(this)');
+        eval(tabFunction + '(obj)');
     }
 }
 
