@@ -39,14 +39,16 @@ if($revision->getFieldValue('vk_activity') > 0) {
 $catalogSectionsWrapper = '
 <div class="CatalogSectionsWrapper">
 <div class="content"></div>
-<div class="search"><input type="text" class="SearchInput"></div>
+<div class="search">
+<input type="text" class="SearchInput" id="ShowLiveSearchSection">
+</div>
 <div class="search-result"></div>
 </div>';
 $catalogProductsWrapper = '
 <div class="CatalogProductsWrapper">
 <div class="content"></div>
 <div class="search">
-<input type="text" class="SearchInput">
+<input type="text" class="SearchInput" id="ShowLiveSearchProduct">
 '.APLS_CatalogSections::getSelectBox("",". ","ID","NAME", 1, true).'
 </div>
 <div class="search-result"></div>
@@ -55,7 +57,7 @@ $catalogExceptionsWrapper = '
 <div class="CatalogExceptionsWrapper">
 <div class="content"></div>
 <div class="search">
-<input type="text" class="SearchInput">
+<input type="text" class="SearchInput" id="ShowLiveSearchException">
 '.APLS_CatalogSections::getSelectBox("",". ","ID","NAME", 1, true).'
 </div>
 <div class="search-result"></div>
