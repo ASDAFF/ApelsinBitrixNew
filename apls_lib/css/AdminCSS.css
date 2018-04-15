@@ -186,6 +186,50 @@
     background: #d44b38;
 }
 
+#AplsAdminWrapper .AddElement {
+    left: 0;
+    right: auto;
+    position: absolute;
+    top: 0;
+    border: 1px solid #dee0ee;
+    height: 2em;
+    width: 2em;
+    cursor: pointer;
+    text-align: center;
+    color: #8184a1;
+}
+
+#AplsAdminWrapper .AddElement:hover {
+    background-color: #40c781;
+    color: black;
+}
+
+#AplsAdminWrapper .search-result .SearchProduct,
+#AplsAdminWrapper .search-result .SearchException {
+    padding-top: 1em;
+}
+
+#AplsAdminWrapper .search-result .SearchProduct .content,
+#AplsAdminWrapper .search-result .SearchException .content{
+    display: inline-block;
+    width: 74%;
+}
+
+#AplsAdminWrapper .search-result .SearchProduct .ElementBlock .ElementBlockContent .AddButton,
+#AplsAdminWrapper .search-result .SearchException .ElementBlock .ElementBlockContent .AddButton{
+    width: 18%;
+    padding: 1em;
+    display: inline-block;
+    position: absolute;
+    float: right;
+    cursor: pointer;
+    text-align: right;
+}
+
+#AplsAdminWrapper .search-result .SearchProduct .ElementBlock .ElementBlockContent .AddButton:hover
+#AplsAdminWrapper .search-result .SearchException .ElementBlock .ElementBlockContent .AddButton:hover{
+    color: #40c781;
+}
 
 /* хлебные крошки */
 .breadcrumbWrapper {
@@ -239,6 +283,14 @@
     padding: 0 1em;
     color: #8184a1;
     text-decoration: none;
+}
+
+.SearchBlock {
+    padding-top: 1em;
+}
+
+.SearchBlock .ElementBlock .ElementBlockContent {
+    padding-left: 3em;
 }
 /*.breadcrumb__item:hover {*/
     /*background: #ef7f1a;*/

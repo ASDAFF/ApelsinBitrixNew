@@ -27,6 +27,29 @@ function AdminPromotionsComponentFolder() {
     return $("#AplsAdminWrapper.PromotionWrapper").attr("componentFolder");
 }
 
+/**
+ * Вернет jQuery объект блока ответственного за вывод результатов поиска секции каталога
+ * @returns {jQuery|HTMLElement}
+ */
+function AdminPromotionsSectionsSearchResult() {
+    return $(".EditRevisionMainWrapper .CatalogSectionsWrapper .search-result");
+}
+
+/**
+ * Вернет jQuery объект блока ответственного за вывод товара (элемента каталога)
+ * @returns {jQuery|HTMLElement}
+ */
+function AdminPromotionsElementsSearchResult() {
+    return $(".EditRevisionMainWrapper .CatalogProductsWrapper .search-result");
+}
+
+/**
+ * Вернет jQuery объект блока ответственного за вывод исключений товаров (элементов каталога)
+ * @returns {jQuery|HTMLElement}
+ */
+function AdminPromotionsExceptionsElementsSearchResult() {
+    return $(".EditRevisionMainWrapper .CatalogExceptionsWrapper .search-result");
+}
 
 /*----------------------*/
 /* AJAX UI - /ajax/ui/  */
@@ -160,9 +183,75 @@ function AdminPromotionsUiEditRevisionMain(revisionId) {
                 var revisionId = $(this).attr('revisionId');
                 AdminPromotionsUiShowMain(promotionId, revisionId);
             });
+            BX.bind(BX("ShowLiveSearchSection"), "keyup", BX.delegate(AdminPromotionUiShowLiveSearchSection, BX));
+            BX.bind(BX("ShowLiveSearchProduct"), "keyup", BX.delegate(AdminPromotionUiShowLiveSearchElement, BX));
+            BX.bind(BX("ShowLiveSearchException"), "keyup", BX.delegate(AdminPromotionUiShowLiveSearchExceptionElement, BX));
         },
         onfailure: function (rezult) {
             alert("Ошибка: AdminPromotionsUiEditRevision()");
+        },
+    });
+}
+
+function AdminPromotionUiShowLiveSearchSection() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["componentFolder"] = AdminPromotionsComponentFolder();
+    data["catalogSectionLiveSearch"] = $(".EditRevisionMainWrapper .CatalogSectionsWrapper .search .SearchInput").val();
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/ui/ShowLiveSearchSectionsResult.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
+            AdminPromotionsSectionsSearchResult().html(rezult);
+            $(".EditRevisionMainWrapper .CatalogSectionsWrapper .search-result .SearchBlock .ElementBlockContent .AddElement")
+                .click(AdminPromotionsActionAddSection);
+        },
+        onfailure: function (rezult) {
+            alert("Ошибка: AdminPromotionUiShowLiveSearchSection()");
+        },
+    });
+}
+
+function AdminPromotionUiShowLiveSearchElement() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["elementLiveSearch"] = $(".EditRevisionMainWrapper .CatalogProductsWrapper .search .SearchInput").val();
+    data["selectCatalogSection"] = $(".EditRevisionMainWrapper .CatalogProductsWrapper .search .SectionsTreeSelectBox").val();
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/ui/ShowLiveSearchElementsResult.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
+            AdminPromotionsElementsSearchResult().html(rezult);
+            $(".EditRevisionMainWrapper .CatalogProductsWrapper .search-result .SearchProduct .ElementBlockContent .AddButton")
+                .click(AdminPromotionsActionAddProduct);
+        },
+        onfailure: function (rezult) {
+            alert("Ошибка: AdminPromotionUiShowLiveSearchSection()");
+        },
+    });
+}
+
+function AdminPromotionUiShowLiveSearchExceptionElement() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["elementLiveSearch"] = $(".EditRevisionMainWrapper .CatalogExceptionsWrapper .search .SearchInput").val();
+    data["selectCatalogSection"] = $(".EditRevisionMainWrapper .CatalogExceptionsWrapper .search .SectionsTreeSelectBox").val();
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/ui/ShowLiveSearchException.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
+            AdminPromotionsExceptionsElementsSearchResult().html(rezult);
+            $(".EditRevisionMainWrapper .CatalogExceptionsWrapper .search-result .SearchException .ElementBlockContent .AddButton")
+                .click(AdminPromotionsActionAddException);
+        },
+        onfailure: function (rezult) {
+            alert("Ошибка: AdminPromotionUiShowLiveSearchSection()");
         },
     });
 }
@@ -197,7 +286,7 @@ function AdminPromotionsUiShowCatalogProducts(type,wrapperClass) {
         method: 'POST',
         dataType: 'html',
         onsuccess: function (rezult) {
-            $("."+wrapperClass+" .content").html(rezult);
+            $("."+wrapperClass+">.content").html(rezult);
             $("."+wrapperClass+" .ListOfElements .DellButton").click(AdminPromotionsActionDeleteCatalogElement);
         },
         onfailure: function (rezult) {
@@ -528,6 +617,74 @@ function AdminPromotionsActionDeleteCatalogElement() {
     }
 }
 
+function AdminPromotionsActionAddSection() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["xml_id"] = $(this).attr("id");
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/AddSection.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
+            if(rezult === "yes") {
+                AdminPromotionsUiShowCatalogSections();
+            } else {
+                alert("Ошибка при создании записи");
+            }
+        },
+        onfailure: function (rezult) {
+            alert("Ошибка: AdminPromotionsActionAddSection()");
+        },
+    });
+}
+
+function AdminPromotionsActionAddProduct() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["xml_id"] = $(this).attr("id");
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/AddProduct.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
+            if(rezult === "yes") {
+                AdminPromotionsUiShowCatalogProducts("product","CatalogProductsWrapper");
+            } else {
+                alert("Ошибка при создании записи");
+            }
+        },
+        onfailure: function (rezult) {
+            alert("Ошибка: AdminPromotionsActionAddProduct()");
+        },
+    });
+}
+
+function AdminPromotionsActionAddException() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["xml_id"] = $(this).attr("id");
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/AddException.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (rezult) {
+            if(rezult === "yes") {
+                AdminPromotionsUiShowCatalogProducts("exception","CatalogExceptionsWrapper");
+            } else {
+                alert("Ошибка при создании записи");
+            }
+        },
+        onfailure: function (rezult) {
+            alert("Ошибка: AdminPromotionsActionAddException()");
+        },
+    });
+}
 /*------------------------------*/
 /* AJAX HELPERS - /ajax/helper/ */
 /*------------------------------*/
