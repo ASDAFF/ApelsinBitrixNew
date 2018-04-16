@@ -185,7 +185,9 @@ function AdminPromotionsUiEditRevisionMain(revisionId) {
             });
             BX.bind(BX("ShowLiveSearchSection"), "keyup", BX.delegate(AdminPromotionUiShowLiveSearchSection, BX));
             BX.bind(BX("ShowLiveSearchProduct"), "keyup", BX.delegate(AdminPromotionUiShowLiveSearchElement, BX));
+            $(".EditRevisionMainWrapper .CatalogProductsWrapper .search .SectionsTreeSelectBox").change(AdminPromotionUiShowLiveSearchElement);
             BX.bind(BX("ShowLiveSearchException"), "keyup", BX.delegate(AdminPromotionUiShowLiveSearchExceptionElement, BX));
+            $(".EditRevisionMainWrapper .CatalogExceptionsWrapper .search .SectionsTreeSelectBox").change(AdminPromotionUiShowLiveSearchExceptionElement);
         },
         onfailure: function (rezult) {
             alert("Ошибка: AdminPromotionsUiEditRevision()");
