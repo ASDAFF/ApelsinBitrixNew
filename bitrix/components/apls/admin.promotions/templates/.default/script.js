@@ -295,6 +295,70 @@ function AdminPromotionsUiShowCatalogProducts(type,wrapperClass) {
     });
 }
 
+function AdminPromotionsUiShowRevisionImages() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["componentFolder"] = AdminPromotionsComponentFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/ui/ShowRevisionImages.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (result) {
+            $("#AplsAdminWrapper .RevisionImagesWrapper").html(result);
+            $("#AplsAdminWrapper .RevisionImagesWrapper .PromotionImage").click(AdminPromotionsUiEditRevisionImages);
+            $("#AplsAdminWrapper .RevisionImagesWrapper .DeleteButton").click(AdminPromotionsActionDeleteImage);
+        },
+        onfailure: function () {
+            alert("Ошибка: AdminPromotionsUiShowRevisionImages()");
+        },
+    });
+}
+
+function AdminPromotionsUiEditRevisionImages() {
+    $("#AplsAdminWrapper .RevisionImagesWrapper .EditPointer").hide();
+    $(this).parent().find(".EditPointer").show();
+    $("#AplsAdminWrapper .RevisionImagesWrapper .PromotionImageEditWrapper").show();
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["componentFolder"] = AdminPromotionsComponentFolder();
+    data["typeId"] = $(this).attr("typeId");
+    data["imageId"] = $(this).find(".Image").attr("imageId");
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/ui/EditRevisionImages.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (result) {
+            $("#AplsAdminWrapper .PromotionImageEditWrapper").html(result);
+            $("#AplsAdminWrapper .PromotionImageEditWrapper .ImageBlock").click(AdminPromotionsActionSelectImage);
+        },
+        onfailure: function () {
+            alert("Ошибка: AdminPromotionsUiEditRevisionImages()");
+        },
+    });
+}
+
+function AdminPromotionsUiShowNewImage(typeId, imageId) {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["typeId"] = typeId;
+    data["imageId"] = imageId;
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/ui/ShowImage.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (result) {
+            $("#AplsAdminWrapper .RevisionImagesWrapper .type-"+typeId).html(result);
+        },
+        onfailure: function () {
+            alert("Ошибка: AdminPromotionsUiEditRevisionImages()");
+        },
+    });
+}
+
 /*------------------------------*/
 /* AJAX ACTIONS - /ajax/action/ */
 /*------------------------------*/
@@ -685,10 +749,52 @@ function AdminPromotionsActionAddException() {
         },
     });
 }
-/*------------------------------*/
-/* AJAX HELPERS - /ajax/helper/ */
-/*------------------------------*/
 
+function AdminPromotionsActionSelectImage() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["componentFolder"] = AdminPromotionsComponentFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    data["typeId"] = $(this).attr("typeId");
+    data["imageId"] = $(this).attr("imageId");
+    $("#AplsAdminWrapper .PromotionImageEditWrapper .ImageBlock").removeClass("ThisImage");
+    $(this).addClass("ThisImage");
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/SelectImage.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (result) {
+            AdminPromotionsUiShowNewImage(data["typeId"], data["imageId"])
+        },
+        onfailure: function () {
+            alert("Ошибка: AdminPromotionsUiEditRevisionImages()");
+        },
+    });
+}
+
+function AdminPromotionsActionDeleteImage() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["componentFolder"] = AdminPromotionsComponentFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    data["typeId"] = $(this).attr("typeId");
+    if($(".PromotionImageEditWrapper .ShowImageWrapper").attr("typeId") === data["typeId"]) {
+        $("#AplsAdminWrapper .PromotionImageEditWrapper .ImageBlock").removeClass("ThisImage");
+    }
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/DeleteImage.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (result) {
+            AdminPromotionsUiShowNewImage(data["typeId"], "")
+        },
+        onfailure: function () {
+            alert("Ошибка: AdminPromotionsUiEditRevisionImages()");
+        },
+    });
+}
 
 /*----------------------*/
 /* AFTER LOAD DOCUMENTS */

@@ -62,7 +62,9 @@ $catalogExceptionsWrapper = '
 </div>
 <div class="search-result"></div>
 </div>';
+$RevisionImagesWrapper = '<div class="RevisionImagesWrapper"></div>';
 $tabs = new APLS_Tabs();
+$tabs->addTab("Изображения",$RevisionImagesWrapper,"AdminPromotionsUiShowRevisionImages");
 $tabs->addTab("Каталоги учавствующие в акции",$catalogSectionsWrapper);
 $tabs->addTab("Товары учавствующие в акции",$catalogProductsWrapper);
 $tabs->addTab("Исключенные из акции товары",$catalogExceptionsWrapper);

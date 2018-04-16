@@ -337,3 +337,137 @@
     left: 1em;
     right: auto;
 }
+#AplsAdminWrapper .RevisionImagesWrapper .ImagesList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+#AplsAdminWrapper .RevisionImagesWrapper .ImagesList .PromotionImageWrapper {
+    position: relative;
+    margin: 0 .5em 0 .5em;
+}
+#AplsAdminWrapper .RevisionImagesWrapper .ImagesList .PromotionImageWrapper .ImageTypeTitle {
+    text-align: center;
+    padding: .5em 0;
+}
+#AplsAdminWrapper .RevisionImagesWrapper .ImagesList .PromotionImageWrapper .PromotionImage {
+    min-width: 150px;
+    height: 150px;
+    background: #f7f7f7;
+    text-align: center;
+    cursor: pointer;
+}
+#AplsAdminWrapper .RevisionImagesWrapper .ImagesList .PromotionImageWrapper .PromotionImage .noImage {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background: #f7f7f7;
+}
+#AplsAdminWrapper .RevisionImagesWrapper .ImagesList .PromotionImageWrapper .PromotionImage .noImage:after {
+    content: "no image";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    text-align: center;
+    margin-top: -.5em;
+    color: #c0c0c0;
+}
+#AplsAdminWrapper .RevisionImagesWrapper .ImagesList .PromotionImageWrapper .PromotionImage img {
+    height: 150px;
+}
+#AplsAdminWrapper .RevisionImagesWrapper .ImagesList .PromotionImageWrapper .EditPointer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+}
+#AplsAdminWrapper .RevisionImagesWrapper .ImagesList .PromotionImageWrapper .EditPointer:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    margin-left: -1.5em;
+    border: 1.5em solid transparent;
+    border-bottom: 1.5em solid #dee0ee;
+}
+#AplsAdminWrapper .RevisionImagesWrapper .ImagesList .PromotionImageWrapper .EditPointer:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    margin-left: -1.5em;
+    margin-bottom: -1px;
+    border: 1.5em solid transparent;
+    border-bottom: 1.5em solid #FFFFFF;
+}
+#AplsAdminWrapper .RevisionImagesWrapper .PromotionImageEditWrapper {
+    display: none;
+    border: 1px solid #dee0ee;
+    padding: 1em 1em .5em 1em;
+}
+
+#AplsAdminWrapper .UploadImageWrapper {
+    padding: 1em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+#AplsAdminWrapper .ShowImageWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock {
+    position: relative;
+    margin-right: .5em;
+    margin-bottom: .5em;
+    cursor: pointer;
+}
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock.ThisImage:after {
+    content: "\2714";
+    font-size: 4em;
+    line-height: 1em;
+    height: 1em;
+    width: 1em;
+    text-align: center;
+    color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -.5em;
+    margin-left: -.5em;
+    text-shadow: 0 0 5px rgb(0,0,0);
+}
+#AplsAdminWrapper .ShowImageWrapper .ImageBlock img {
+    position: relative;
+    display: block;
+}
+#AplsAdminWrapper .ShowImageWrapper .noImage {
+    width: 100%;
+    text-align: center;
+    margin-bottom: .5em;
+}
+#AplsAdminWrapper .PromotionImageWrapper .ImageTypeTitle {
+    position: relative;
+}
+#AplsAdminWrapper .PromotionImageWrapper .ImageTypeTitle .DeleteButton:before {
+    content: "\2716";
+    height: 1em;
+    width: 1em;
+    line-height: 1em;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: .5em;
+    cursor: pointer;
+}
+#AplsAdminWrapper .PromotionImageWrapper .ImageTypeTitle .DeleteButton:hover:before {
+    color: #d44b38;
+}
