@@ -361,6 +361,45 @@ function AdminPromotionsUiShowNewImage(typeId, imageId) {
     });
 }
 
+function AdminPromotionsUiShowRevisionSections() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["componentFolder"] = AdminPromotionsComponentFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/ui/ShowRevisionSections.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (result) {
+            $("#AplsAdminWrapper .RevisionSectionsWrapper").html(result);
+            aplsSortListAddSelectableAndSortable("AdminPromotionsActionSaveRevisionSections");
+        },
+        onfailure: function () {
+            alert("Ошибка: AdminPromotionsUiShowRevisionSections()");
+        },
+    });
+}
+function AdminPromotionsUiShowRevisionLocations() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["componentFolder"] = AdminPromotionsComponentFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/ui/ShowRevisionLocations.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (result) {
+            $("#AplsAdminWrapper .RevisionLocationsWrapper").html(result);
+            aplsSortListAddSelectableAndSortable("AdminPromotionsActionSaveRevisionLocations");
+        },
+        onfailure: function () {
+            alert("Ошибка: AdminPromotionsUiShowRevisionLocations()");
+        },
+    });
+}
+
 /*------------------------------*/
 /* AJAX ACTIONS - /ajax/action/ */
 /*------------------------------*/
@@ -794,6 +833,52 @@ function AdminPromotionsActionDeleteImage() {
         },
         onfailure: function () {
             alert("Ошибка: AdminPromotionsUiEditRevisionImages()");
+        },
+    });
+}
+
+function AdminPromotionsActionSaveRevisionSections() {
+    var sections = [];
+    var data = [];
+    $("#AplsAdminWrapper .RevisionSectionsWrapper .PromotionSectionsSelectedList .apls-sort-list-element").each(function (i,elem) {
+        sections[i] = $(this).attr("sectionId");
+    });
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    data["sections"] = sections;
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/SaveRevisionSections.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (result) {
+            // alert(result);
+        },
+        onfailure: function (result) {
+            alert("Произошла ошибка выполнения скрипта");
+        },
+    });
+}
+
+function AdminPromotionsActionSaveRevisionLocations() {
+    var location = [];
+    var data = [];
+    $("#AplsAdminWrapper .RevisionLocationsWrapper .PromotionLocationsSelectedList .apls-sort-list-element").each(function (i,elem) {
+        location[i] = $(this).attr("locationId");
+    });
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    data["locations"] = location;
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/SaveRevisionLocations.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (result) {
+            // alert(result);
+        },
+        onfailure: function (result) {
+            alert("Произошла ошибка выполнения скрипта");
         },
     });
 }

@@ -471,3 +471,23 @@
 #AplsAdminWrapper .PromotionImageWrapper .ImageTypeTitle .DeleteButton:hover:before {
     color: #d44b38;
 }
+#AplsAdminWrapper .RevisionSectionsWrapper,
+#AplsAdminWrapper .RevisionLocationsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: 1em;
+}
+#AplsAdminWrapper .RevisionSectionsWrapper .PromotionSectionsSelectedList,
+#AplsAdminWrapper .RevisionSectionsWrapper .PromotionSectionsUnselectedList,
+#AplsAdminWrapper .RevisionLocationsWrapper .PromotionLocationsSelectedList,
+#AplsAdminWrapper .RevisionLocationsWrapper .PromotionLocationsUnselectedList {
+    width: 49%;
+}
+
+#AplsAdminWrapper .RevisionSectionsWrapper .apls-sort-list,
+#AplsAdminWrapper .RevisionLocationsWrapper .apls-sort-list  {
+    height: 100%;
+    padding: 0;
+}

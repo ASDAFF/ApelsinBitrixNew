@@ -36,6 +36,9 @@ if($revision->getFieldValue('vk_activity') > 0) {
     $boolSelect['vk_activity'][0] = 'selected';
     $boolSelect['vk_activity'][1] = '';
 }
+$revisionImagesWrapper = '<div class="RevisionImagesWrapper"></div>';
+$revisionSectionsWrapper = '<div class="RevisionSectionsWrapper"></div>';
+$revisionLocationsWrapper = '<div class="RevisionLocationsWrapper"></div>';
 $catalogSectionsWrapper = '
 <div class="CatalogSectionsWrapper">
 <div class="content"></div>
@@ -62,9 +65,10 @@ $catalogExceptionsWrapper = '
 </div>
 <div class="search-result"></div>
 </div>';
-$RevisionImagesWrapper = '<div class="RevisionImagesWrapper"></div>';
 $tabs = new APLS_Tabs();
-$tabs->addTab("Изображения",$RevisionImagesWrapper,"AdminPromotionsUiShowRevisionImages");
+$tabs->addTab("Изображения",$revisionImagesWrapper,"AdminPromotionsUiShowRevisionImages");
+$tabs->addTab("Разделы",$revisionSectionsWrapper,"AdminPromotionsUiShowRevisionSections");
+$tabs->addTab("Локации",$revisionLocationsWrapper,"AdminPromotionsUiShowRevisionLocations");
 $tabs->addTab("Каталоги учавствующие в акции",$catalogSectionsWrapper);
 $tabs->addTab("Товары учавствующие в акции",$catalogProductsWrapper);
 $tabs->addTab("Исключенные из акции товары",$catalogExceptionsWrapper);
