@@ -17,7 +17,8 @@
     right: 10px;
 }
 .PromotionSectionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .editButton,
-.PromotionSectionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .delButton {
+.PromotionSectionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .delButton,
+.PromotionSectionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .changeAliasButton {
     display: inline-block;
     padding: 2px 10px;
     text-decoration: none;
@@ -30,6 +31,14 @@
 .PromotionSectionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .editButton:hover {
     background: #40c781;
     color: #134e2f;
+}
+.PromotionSectionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .changeAliasButton {
+    color: #ef8b00;
+    border: 1px solid #ef8b00;
+}
+.PromotionSectionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .changeAliasButton:hover {
+    background: #ef8b00;
+    color: #a96000;
 }
 .PromotionSectionsList .apls-sort-list .apls-sort-list-content .apls-sort-list-element .delButton {
     color: #d44b38;
@@ -51,7 +60,8 @@
     justify-content: flex-start;
     align-items: stretch;
 }
-.PromotionSectionsListButtonPanel .NewSectionName input[type="text"]{
+.PromotionSectionsListButtonPanel .NewSectionName input[type="text"],
+.PromotionSectionsListButtonPanel .NewSectionAlias input[type="text"] {
     width: 400px;
     height: 30px;
     margin: 0px;
@@ -61,6 +71,9 @@
     border: 1px solid #dee0ee;
     border-radius: 0;
     box-shadow: none;
+}
+.PromotionSectionsListButtonPanel .NewSectionName input[type="text"] {
+    margin-right: .5em;
 }
 .PromotionSectionsListButtonPanel .NewSectionAdd {
     height: 10px;

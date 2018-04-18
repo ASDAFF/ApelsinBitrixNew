@@ -4,6 +4,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionMo
 class PromotionSectionModel extends PromotionModelAbstract
 {
     protected static $tableName = "apls_promotions_sections";
-    protected static $requiredFields = array('section');
+    protected static $requiredFields = array('section','alias');
     protected static $optionalFields = array('sort');
 }

@@ -11,6 +11,7 @@ function AdminPromotionsSectionListShow() {
             aplsSortListAddSelectableAndSortable("AdminPromotionsSectionStopSort");
             $('.PromotionSectionsList .buttonPanel .delButton').click(AdminPromotionsSectionDelete);
             $('.PromotionSectionsList .buttonPanel .editButton').click(AdminPromotionsSectionEdit);
+            $('.PromotionSectionsList .buttonPanel .changeAliasButton').click(AdminPromotionsSectionAliasEdit);
             $('.PromotionSectionsListButtonPanel .NewSectionAdd').click(AdminPromotionsSectionAdd);
         },
         onfailure: function (rezult) {
@@ -63,6 +64,29 @@ function AdminPromotionsSectionEdit() {
     }
 }
 
+function AdminPromotionsSectionAliasEdit() {
+    var data = [];
+    data["templateFolder"] = $(".PromotionSectionsWrapper").attr("templateFolder");
+    data["sectionId"] = $(this).attr('sectionId');
+    var oldAlias = $(this).attr('alias');
+    var newAlias = prompt('Как алиас будет у этой секции?', oldAlias);
+    if(newAlias != null && newAlias != "") {
+        data["newAlias"] = newAlias;
+        BX.ajax({
+            url: data["templateFolder"] + "/ajax/editAlias.php",
+            data: data,
+            method: 'POST',
+            dataType: 'html',
+            onsuccess: function (rezult) {
+                AdminPromotionsSectionListShow();
+            },
+            onfailure: function (rezult) {
+                alert("Произошла ошибка выполнения скрипта");
+            },
+        });
+    }
+}
+
 function AdminPromotionsSectionStopSort() {
     var sections = [];
     var data = [];
@@ -79,6 +103,7 @@ function AdminPromotionsSectionStopSort() {
         onsuccess: function (rezult) {
             $('.PromotionSectionsList .buttonPanel .delButton').click(AdminPromotionsSectionDelete);
             $('.PromotionSectionsList .buttonPanel .editButton').click(AdminPromotionsSectionEdit);
+            $('.PromotionSectionsList .buttonPanel .changeAliasButton').click(AdminPromotionsSectionAliasEdit);
         },
         onfailure: function (rezult) {
             alert("Произошла ошибка выполнения скрипта");
@@ -90,6 +115,7 @@ function AdminPromotionsSectionAdd() {
     var data = [];
     data["templateFolder"] = $(".PromotionSectionsWrapper").attr("templateFolder");
     data["sectionName"] = $(".PromotionSectionsListButtonPanel .NewSectionName input").val();
+    data["sectionAlias"] = $(".PromotionSectionsListButtonPanel .NewSectionAlias input").val();
     BX.ajax({
         url: data["templateFolder"] + "/ajax/add.php",
         data: data,
