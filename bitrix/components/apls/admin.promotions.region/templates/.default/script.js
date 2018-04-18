@@ -89,6 +89,8 @@ function AdminPromotionsRegionUiShowRegionsEdit(regionId) {
         dataType: 'html',
         onsuccess: function (rezult) {
             $(".PromotionRegionWrapper").html(rezult);
+            BX.bind(BX("RegionFieldValueRegionName"), "keyup", BX.delegate(AdminPromotionsRegionChangeName, BX));
+            BX.bind(BX("RegionFieldValueRegionAlias"), "keyup", BX.delegate(AdminPromotionsRegionChangeName, BX));
             AdminPromotionsRegionUiCitiesShow(regionId);
         },
         onfailure: function (rezult) {
@@ -106,6 +108,7 @@ function AdminPromotionsRegionAdd() {
     data["templateFolder"] = $(".PromotionRegionWrapper").attr("templateFolder");
     data["componentFolder"] = $(".PromotionRegionWrapper").attr("componentFolder");
     data["regionName"] = $(".PromotionRegionsListButtonPanel .NewRegionName input").val();
+    data["regionAlias"] = $(".PromotionRegionsListButtonPanel .NewRegionAlias input").val();
     BX.ajax({
         url: data["templateFolder"] + "/ajax/actions/regionAdd.php",
         data: data,
@@ -181,15 +184,16 @@ function AdminPromotionsRegionChangeName() {
     var data = [];
     data["templateFolder"] = $(".PromotionRegionWrapper").attr("templateFolder");
     data["componentFolder"] = $(".PromotionRegionWrapper").attr("componentFolder");
-    data["regionId"] = $(".RegionField.RegionId .RegionFieldValue input").val();
-    data["regionName"] = $(".RegionField.RegionName .RegionFieldValue input").val();
+    data["regionId"] = $("#RegionFieldValueRegionId").val();
+    data["regionName"] = $("#RegionFieldValueRegionName").val();
+    data["regionAlias"] = $("#RegionFieldValueRegionAlias").val();
     BX.ajax({
         url: data["templateFolder"] + "/ajax/actions/regionChangeName.php",
         data: data,
         method: 'POST',
         dataType: 'html',
         onsuccess: function (rezult) {
-            alert(rezult);
+            // alert(rezult);
         },
         onfailure: function (rezult) {
             alert("Произошла ошибка выполнения скрипта");

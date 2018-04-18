@@ -34,7 +34,8 @@
     justify-content: flex-start;
     align-items: stretch;
 }
-.PromotionRegionsListButtonPanel .NewRegionName input[type="text"]{
+.PromotionRegionsListButtonPanel .NewRegionName input[type="text"],
+.PromotionRegionsListButtonPanel .NewRegionAlias input[type="text"] {
     width: 400px;
     height: 30px;
     margin: 0px;
@@ -44,6 +45,9 @@
     border: 1px solid #dee0ee;
     border-radius: 0;
     box-shadow: none;
+}
+.PromotionRegionsListButtonPanel .NewRegionName input[type="text"] {
+    margin-right: .5em;
 }
 .PromotionRegionsListButtonPanel .NewRegionAdd {
     height: 10px;

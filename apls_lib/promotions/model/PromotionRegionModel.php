@@ -5,7 +5,7 @@ class PromotionRegionModel extends PromotionModelAbstract
 {
     protected static $tableName = "apls_promotions_region";
     protected static $privateFields = array('default');
-    protected static $requiredFields = array('region');
+    protected static $requiredFields = array('region','alias');
     protected static $optionalFields = array('sort');
 
     const DEFAULT_FIELD = 'default';

@@ -5,7 +5,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionRegionModel.php";
 
 $add = false;
-if(isset($_REQUEST['regionName']) && $_REQUEST['regionName'] != "") {
-    $add = PromotionRegionModel::createElement(array('region'=>$_REQUEST['regionName']));
+if(isset($_REQUEST['regionName']) && $_REQUEST['regionName'] != "" && isset($_REQUEST['regionAlias']) && $_REQUEST['regionAlias'] != "") {
+    $add = PromotionRegionModel::createElement(array('region'=>$_REQUEST['regionName'],'alias'=>$_REQUEST['regionAlias']));
 }
 echo $add;

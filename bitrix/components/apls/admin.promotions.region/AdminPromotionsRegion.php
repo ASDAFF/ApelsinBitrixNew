@@ -51,6 +51,7 @@ class AdminPromotionsRegion
         $html .= "<div class='PromotionRegionsList'>".$regionList->getSortListHtml()."</div>";
         $html .= "<div class='PromotionRegionsListButtonPanel'>";
         $html .= "<div class='NewRegionName'><input type='text' required placeholder='Название региона'></div>";
+        $html .= "<div class='NewRegionAlias'><input type='text' required placeholder='Алиас'></div>";
         $html .= "<div class='NewRegionAdd'>Создать регион</div>";
         $html .= "</div>";
         $html .= "
@@ -77,7 +78,6 @@ class AdminPromotionsRegion
         if($region->getRegion() == "") {
             return static::getRegionAddHtml();
         }
-        $saveButton = "<div class='RegionCitiesChangeNameButton' onclick='AdminPromotionsRegionChangeName()'><span>Сохранить название</span></div>";
         $html = "<div class='RegionEditWrapper'>";
         $html .= static::getTitle("Изменение региона: ".$region->getRegion());
         $html .= "<div class='RegionFields'>";
@@ -91,8 +91,15 @@ class AdminPromotionsRegion
             $region->getFieldValue('region'),
             "Название региона",
             "RegionName",
-            false,
-            $saveButton
+            false
+
+        );
+        $html .= static::getRegionFieldHtml(
+            $region->getFieldValue('alias'),
+            "Псевдоним",
+            "RegionAlias",
+            false
+
         );
         $html .= "</div>";
         $html .= "<div class='RegionCitiesTitle'>Территории</div>";
@@ -120,7 +127,7 @@ class AdminPromotionsRegion
         $html = "";
         $html .= "<div class='RegionField $fieldClass'>";
         $html .= "<div class='RegionFieldName'>$name</div>";
-        $html .= "<div class='RegionFieldValue'><input type='text' value='$value' $disabled required>$afterInputHtml</div>";
+        $html .= "<div class='RegionFieldValue'><input id='RegionFieldValue$fieldClass' type='text' value='$value' $disabled required>$afterInputHtml</div>";
         $html .= "</div>";
         return $html;
     }
