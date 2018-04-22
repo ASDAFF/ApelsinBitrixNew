@@ -107,8 +107,8 @@ class PromotionRegionModel extends PromotionModelAbstract
                 '1'
             )
         );
-        if (isset($arr[0])) {
-            return $arr[0];
+        if (!empty($arr)) {
+            return array_shift($arr);
         } else {
             $orderByObj = new MySQLOrderByString();
             $orderByObj->add('sort', MySQLOrderByString::ASC);
@@ -118,11 +118,15 @@ class PromotionRegionModel extends PromotionModelAbstract
                 null,
                 $orderByObj
             );
-            if (isset($arr[0])) {
-                return $arr[0];
+            if (!empty($arr)) {
+                return array_shift($arr);
             } else {
                 return new PromotionRegionModel("");
             }
         }
+    }
+
+    public static function getUserRegion(): PromotionRegionModel {
+        return static::getDefaultRegion();
     }
 }
