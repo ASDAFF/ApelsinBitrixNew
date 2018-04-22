@@ -328,8 +328,12 @@ abstract class ModelAbstract
             $changeString = "";
             foreach ($updateFieldsValue as $field => $change) {
                 if (in_array($field, $fields)) {
-                    $change = static::getSqlHelper()->forSql($change);
-                    $changeString .= "`$field`='$change',";
+                    if($change === null) {
+                        $changeString .= "`$field`=NULL,";
+                    } else {
+                        $change = static::getSqlHelper()->forSql($change);
+                        $changeString .= "`$field`='$change',";
+                    }
                 }
             }
             if ($changeString !== "") {
