@@ -190,8 +190,12 @@ abstract class ModelAbstract
             $changes = $this->getChangesData();
             $changeString = "";
             foreach ($changes as $field => $change) {
-                $change = static::getSqlHelper()->forSql($change);
-                $changeString .= "`$field`='$change',";
+                if($change === null) {
+                    $changeString .= "`$field`=NULL,";
+                } else {
+                    $change = static::getSqlHelper()->forSql($change);
+                    $changeString .= "`$field`='$change',";
+                }
             }
             if ($changeString !== "") {
                 try {
@@ -271,8 +275,12 @@ abstract class ModelAbstract
             // генериурем SQL части с полями и значениями
             foreach ($fieldsValue as $field => $val) {
                 $fieldsString .= "`$field`,";
-                $val = static::getSqlHelper()->forSql($val);
-                $valueString .= "'$val',";
+                if($val === null) {
+                    $valueString .= "NULL,";
+                } else {
+                    $val = static::getSqlHelper()->forSql($val);
+                    $valueString .= "'$val',";
+                }
             }
             // удаляем лишнюю запятую
             if ($fieldsString != "" && $valueString != "") {
