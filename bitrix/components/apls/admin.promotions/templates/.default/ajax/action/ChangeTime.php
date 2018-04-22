@@ -10,6 +10,8 @@ if($_REQUEST['value'] !== "") {
 } elseif ($_REQUEST['field'] === 'apply_from') {
     $dateTime = new DateTime();
     $dateTimeString = $dateTime->format("Y-m-d H:i:s");
+} else {
+    $dateTimeString = null;
 }
 PromotionRevisionModel::updateElement($_REQUEST['revisionId'], array($_REQUEST['field']=>$dateTimeString));
 
