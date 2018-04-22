@@ -31,6 +31,7 @@ class PromotionRevisionModel extends PromotionModelAbstract
         'show_from',
         'start_from',
         'stop_from',
+        'title',
         'preview_text',
         'main_text',
         'vk_text',
@@ -368,8 +369,11 @@ class PromotionRevisionModel extends PromotionModelAbstract
         return $images;
     }
 
-    public function getImage($imageTypeId) {
-
+    public function verificationOfEditingRights() {
+        if ($this->originalData['created_user'] == CUser::GetID()) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -466,7 +470,7 @@ class PromotionRevisionModel extends PromotionModelAbstract
 
     protected function beforeSaveElement(): bool
     {
-        if ($this->originalData['created_user'] == CUser::GetID()) {
+        if ($this->verificationOfEditingRights()) {
             $this->data['changed'] = static::mysqlDateTime();
             return true;
         }

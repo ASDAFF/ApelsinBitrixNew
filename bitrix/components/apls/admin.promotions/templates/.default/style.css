@@ -209,6 +209,17 @@
     top: 0;
     right: 0;
 }
+#AplsAdminWrapper .EditRevisionMainWrapper .EditingRightsMessage {
+    margin-bottom: 2em;
+    background: #d44b38;
+    padding: 1em;
+    color: #FFFFFF;
+    font-size: 1.3em;
+}
+#AplsAdminWrapper .EditRevisionMainWrapper .EditingRightsMessage .user {
+    font-weight: bold;
+    font-style: italic;
+}
 #AplsAdminWrapper .EditRevisionMainWrapper .MainFields,
 #AplsAdminWrapper .EditRevisionMainWrapper .SharesPlacement,
 #AplsAdminWrapper .EditRevisionMainWrapper .PromotionText {
@@ -219,7 +230,8 @@
     align-items: stretch;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .MainFields .InputField,
-#AplsAdminWrapper .EditRevisionMainWrapper .SharesPlacement .InputField {
+#AplsAdminWrapper .EditRevisionMainWrapper .MainFields .InputField,
+#AplsAdminWrapper .EditRevisionMainWrapper .TitleText .InputField {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -241,6 +253,7 @@
     content: ":";
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .MainFields .InputField .text,
+#AplsAdminWrapper .EditRevisionMainWrapper .TitleText .InputField .text,
 #AplsAdminWrapper .EditRevisionMainWrapper .SharesPlacement .InputField .text,
 #AplsAdminWrapper .EditRevisionMainWrapper .PromotionText .InputField .text {
     font-size: 14px;
@@ -254,7 +267,8 @@
 #AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTime {
     width: 160px;
 }
-#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear {
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear,
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .TitleTextDelete {
     position: absolute;
     right: .6em;
     top: .6em;
@@ -263,11 +277,14 @@
     width: 1em;
     cursor: pointer;
 }
-#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:hover {
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:hover,
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .TitleTextDelete:hover  {
     border: 1px solid #d44b38;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:before,
-#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:after {
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:after,
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .TitleTextDelete:before,
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .TitleTextDelete:after {
     position: absolute;
     left: .45em;
     top: .1em;
@@ -277,13 +294,17 @@
     background-color: #dee0ee;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:hover:before,
-#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:hover:after {
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:hover:after,
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .TitleTextDelete:hover:before,
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .TitleTextDelete:hover:after {
     background-color: #d44b38;
 }
-#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:before {
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:before,
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .TitleTextDelete:before {
     transform: rotate(45deg);
 }
-#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:after {
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .DateTimeClear:after,
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .TitleTextDelete:after {
     transform: rotate(-45deg);
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .bxlhe-frame {
@@ -292,6 +313,11 @@
 #AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .bxlhe-frame #lhe_btn_image {
     display: none;
 }
+
+#AplsAdminWrapper .EditRevisionMainWrapper .InputField .input .TitleField {
+    width: 800px;
+}
+
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogElements {
     margin: 1em;
 }

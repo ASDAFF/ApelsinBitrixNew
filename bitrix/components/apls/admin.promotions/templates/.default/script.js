@@ -173,6 +173,8 @@ function AdminPromotionsUiEditRevisionMain(revisionId) {
             AdminPromotionsUiShowCatalogSections();
             AdminPromotionsUiShowCatalogProducts("product","CatalogProductsWrapper");
             AdminPromotionsUiShowCatalogProducts("exception","CatalogExceptionsWrapper");
+            BX.bind(BX("RevisionTitleField"), "keyup", BX.delegate(AdminPromotionsActionSetTitle, BX));
+            $(".EditRevisionMainWrapper .TitleTextDelete").click(AdminPromotionsActionClearTitle);
             $(".EditRevisionMainWrapper .DateTime").change(AdminPromotionsActionChangeTime);
             $(".EditRevisionMainWrapper .DateTimeClear").click(AdminPromotionsActionClearTime);
             $(".EditRevisionMainWrapper .PromotionTextSave").click(AdminPromotionsActionSaveText);
@@ -380,6 +382,7 @@ function AdminPromotionsUiShowRevisionSections() {
         },
     });
 }
+
 function AdminPromotionsUiShowRevisionLocations() {
     var data = [];
     data["templateFolder"] = AdminPromotionsTemplateFolder();
@@ -881,6 +884,29 @@ function AdminPromotionsActionSaveRevisionLocations() {
             alert("Произошла ошибка выполнения скрипта");
         },
     });
+}
+
+function AdminPromotionsActionSetTitle () {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
+    data["title"] = $("#RevisionTitleField").val();
+    BX.ajax({
+        url: data["templateFolder"] + "/ajax/action/SaveTitle.php",
+        data: data,
+        method: 'POST',
+        dataType: 'html',
+        onsuccess: function (result) {
+        },
+        onfailure: function () {
+            alert("Произошла ошибка выполнения скрипта");
+        },
+    });
+}
+
+function AdminPromotionsActionClearTitle() {
+    $("#RevisionTitleField").val("");
+    AdminPromotionsActionSetTitle();
 }
 
 /*----------------------*/

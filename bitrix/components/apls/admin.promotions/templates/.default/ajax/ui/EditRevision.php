@@ -72,11 +72,36 @@ $tabs->addTab("Локации",$revisionLocationsWrapper,"AdminPromotionsUiShowR
 $tabs->addTab("Каталоги учавствующие в акции",$catalogSectionsWrapper);
 $tabs->addTab("Товары учавствующие в акции",$catalogProductsWrapper);
 $tabs->addTab("Исключенные из акции товары",$catalogExceptionsWrapper);
+$editingRights = $revision->verificationOfEditingRights();
+$rsUser = CUser::GetByID($revision->getFieldValue('created_user'));
+$arUser = $rsUser->Fetch();
+if($arUser['NAME'] !== "" && $arUser['LAST_NAME'] !== "") {
+    $name = $arUser['LOGIN']." (".$arUser['NAME']." ".$arUser['LAST_NAME'].")";
+} else if($arUser['NAME'] !== "" || $arUser['LAST_NAME'] !== "") {
+    $name = $arUser['LOGIN']." (".$arUser['NAME'].$arUser['LAST_NAME'].")";
+} else {
+    $name = $arUser['LOGIN'];
+}
 ?>
 <div class="EditRevisionMainWrapper" promotionId="<?=$promotion->getId()?>" revisionId="<?=$revision->getId()?>">
     <div class="PromotionTitle">
         Ревизия акции: <?=$promotion->getFieldValue('title')?>
         <div class="BackButton Button Yellow" revisionId="<?=$revision->getId()?>" promotionId="<?=$promotion->getId()?>">Назад</div>
+    </div>
+    <?if(!$editingRights):?>
+        <div class="EditingRightsMessage">
+            <b>ВНИМАНИЕ!</b> Данная ревизия создана пользователем <span class="user"><?=$name?></span>.<br>
+            У вас нет прав на редактирование ревизии. Все изменения по этой ревизии будут недействительны.
+        </div>
+    <?endif?>
+    <div class="TitleText">
+        <div class="InputField">
+            <div class="text">Заголовок ревизии</div>
+            <div class="input">
+                <input id="RevisionTitleField" type="text" class="TitleField" value="<?=$revision->getFieldValue("title")?>" name="title">
+                <div class="TitleTextDelete" field="title"></div>
+            </div>
+        </div>
     </div>
     <div class="MainFields">
         <div class="InputField">
