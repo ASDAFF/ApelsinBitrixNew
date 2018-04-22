@@ -7,6 +7,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionSe
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionCatalogProduct.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionCatalogSection.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionCatalogException.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionImageInRevisionModel.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionImageModel.php";
 
 class PromotionRevisionModel extends PromotionModelAbstract
 {
@@ -344,6 +346,30 @@ class PromotionRevisionModel extends PromotionModelAbstract
                 PromotionCatalogException::deleteElement($element->getId());
             }
         }
+    }
+
+    /**
+     * Возвращает многомерный массив объектов PromotionImageModel определенных для данной ревизии,
+     * где в качестве ключа используется ID типа изображения
+     * @return array - array[<typeID>] = obj PromotionImageModel
+     */
+    public function getImages() {
+        $images = array();
+        $imagesInRevision = PromotionImageInRevisionModel::searchByRevision($this->getId());
+        foreach ($imagesInRevision as $imageInRevision) {
+            if($imageInRevision instanceof PromotionImageInRevisionModel) {
+                $imageId = $imageInRevision->getFieldValue('img');
+                $image = new PromotionImageModel($imageId);
+                if($image->getFieldValue('type') !== "") {
+                    $images[$image->getFieldValue('type')] = $image;
+                }
+            }
+        }
+        return $images;
+    }
+
+    public function getImage($imageTypeId) {
+
     }
 
     /**
