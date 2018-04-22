@@ -370,7 +370,9 @@ class PromotionRevisionModel extends PromotionModelAbstract
     }
 
     public function verificationOfEditingRights() {
-        if ($this->originalData['created_user'] == CUser::GetID()) {
+        $rsUser = CUser::GetByID(CUser::GetID());
+        $arUser = $rsUser->Fetch();
+        if ($this->originalData['created_user'] == $arUser['LOGIN']) {
             return true;
         }
         return false;
@@ -419,9 +421,11 @@ class PromotionRevisionModel extends PromotionModelAbstract
 
     protected static function beforeCreateElement(array &$fieldsValue, array &$attr): bool
     {
+        $rsUser = CUser::GetByID(CUser::GetID());
+        $arUser = $rsUser->Fetch();
         $fieldsValue['created'] = static::mysqlDateTime();
         $fieldsValue['changed'] = static::mysqlDateTime();
-        $fieldsValue['created_user'] = CUser::GetID();
+        $fieldsValue['created_user'] = $arUser['LOGIN'];
         if (!isset($fieldsValue['disable'])) {
             $fieldsValue['disable'] = "0";
         }
@@ -480,7 +484,7 @@ class PromotionRevisionModel extends PromotionModelAbstract
     protected static function beforeUpdateElement($id, array &$updateFieldsValue, array &$attr): bool
     {
         $thisElement = new PromotionRevisionModel($id);
-        if ($thisElement->getFieldValue('created_user') == CUser::GetID()) {
+        if ($thisElement->verificationOfEditingRights()) {
             $updateFieldsValue['changed'] = static::mysqlDateTime();
             return true;
         }
@@ -490,6 +494,6 @@ class PromotionRevisionModel extends PromotionModelAbstract
     protected static function beforeDeleteElement($id, array &$attr): bool
     {
         $thisElement = new PromotionRevisionModel($id);
-        return $thisElement->getFieldValue('created_user') == CUser::GetID();
+        return $thisElement->verificationOfEditingRights();
     }
 }

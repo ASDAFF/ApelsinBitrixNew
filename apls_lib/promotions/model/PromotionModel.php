@@ -436,6 +436,15 @@ class PromotionModel extends PromotionModelAbstract
         }
     }
 
+    public function verificationOfEditingRights() {
+        $rsUser = CUser::GetByID(CUser::GetID());
+        $arUser = $rsUser->Fetch();
+        if ($this->originalData['created_user'] == $arUser['LOGIN']) {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Подготавлвиает обхект поиска по ревизиям акции основываясь на активности
      * @param bool $disable - заблокированные или активные
@@ -527,8 +536,10 @@ class PromotionModel extends PromotionModelAbstract
 
     protected static function beforeCreateElement(array &$fieldsValue, array &$attr): bool
     {
+        $rsUser = CUser::GetByID(CUser::GetID());
+        $arUser = $rsUser->Fetch();
         $fieldsValue['created'] = static::mysqlDateTime();
-        $fieldsValue['created_user'] = CUser::GetID();
+        $fieldsValue['created_user'] = $arUser['LOGIN'];
         return true;
     }
 
@@ -570,6 +581,23 @@ class PromotionModel extends PromotionModelAbstract
             return PromotionRevisionModel::createElement($attr, $params);
         }
         return true;
+    }
+
+    protected function beforeSaveElement(): bool
+    {
+        return $this->verificationOfEditingRights();
+    }
+
+    protected static function beforeUpdateElement($id, array &$updateFieldsValue, array &$attr): bool
+    {
+        $thisElement = new PromotionRevisionModel($id);
+        return $thisElement->verificationOfEditingRights();
+    }
+
+    protected static function beforeDeleteElement($id, array &$attr): bool
+    {
+        $thisElement = new PromotionRevisionModel($id);
+        return $thisElement->verificationOfEditingRights();
     }
 
 }

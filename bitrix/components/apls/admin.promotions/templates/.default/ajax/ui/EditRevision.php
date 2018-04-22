@@ -73,13 +73,15 @@ $tabs->addTab("Каталоги учавствующие в акции",$catalog
 $tabs->addTab("Товары учавствующие в акции",$catalogProductsWrapper);
 $tabs->addTab("Исключенные из акции товары",$catalogExceptionsWrapper);
 $editingRights = $revision->verificationOfEditingRights();
-$rsUser = CUser::GetByID($revision->getFieldValue('created_user'));
+$rsUser = CUser::GetByLogin($revision->getFieldValue('created_user'));
 $arUser = $rsUser->Fetch();
-if($arUser['NAME'] !== "" && $arUser['LAST_NAME'] !== "") {
+if(!$arUser) {
+    $name = $revision->getFieldValue('created_user');
+}else if($arUser['NAME'] !== "" && $arUser['LAST_NAME'] !== "") {
     $name = $arUser['LOGIN']." (".$arUser['NAME']." ".$arUser['LAST_NAME'].")";
 } else if($arUser['NAME'] !== "" || $arUser['LAST_NAME'] !== "") {
     $name = $arUser['LOGIN']." (".$arUser['NAME'].$arUser['LAST_NAME'].")";
-} else {
+} else if($arUser['LOGIN'] !== "") {
     $name = $arUser['LOGIN'];
 }
 ?>
