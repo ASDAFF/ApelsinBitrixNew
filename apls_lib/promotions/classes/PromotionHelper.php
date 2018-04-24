@@ -28,21 +28,27 @@ class PromotionHelper
                     RIS.`section`,
                     REV.`global_activity`,
                     REV.`local_activity`,
-                    REV.`vk_activity`
+                    REV.`vk_activity`,
+                    REV.`show_from`,
+                    REV.`start_from`
                     FROM (
                         SELECT
                         REV.`id`, 
                         REV.`promotion`,
                         REV.`global_activity`,
                         REV.`local_activity`,
-                        REV.`vk_activity`
+                        REV.`vk_activity`,
+                        REV.`show_from`,
+                        REV.`start_from`
                         FROM (
                             SELECT 
                             `id`, 
                             `promotion`,
                             `global_activity`,
                             `local_activity`,
-                            `vk_activity`
+                            `vk_activity`,
+                            `show_from`,
+                            `start_from`
                             FROM `apls_promotions_revision` 
                             WHERE 
                             `disable`<'1' AND
@@ -55,6 +61,11 @@ class PromotionHelper
                     on REV.`id` = RIS.`revision`
                     WHERE 
                     `$activityType` > '0' AND
+                    (
+                      (`show_from` IS NOT NULL AND `show_from`<=now()) OR
+                      (`show_from` IS NULL AND `start_from` IS NOT NULL AND `start_from`<=now()) OR
+                      (`show_from` IS NULL AND `start_from` IS NULL)
+                    ) AND
                     REV.`promotion` IS NOT NULL AND 
                     (
                         RIS.`revision` IN (SELECT `revision` FROM `apls_promotions_in_region` WHERE `region`='$region') OR
