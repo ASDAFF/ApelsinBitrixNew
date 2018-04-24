@@ -24,6 +24,8 @@ class PromotionImageHelper
     private $ftpConn = null;
     private $uploadDir = "";
 
+    use MySQLTrait;
+
     public function __construct()
     {
         $this->ftpConn = new FTPConnector(self::FTP_SERVER, self::FTP_USER, self::FTP_PASS);
@@ -83,9 +85,9 @@ class PromotionImageHelper
 
     public function createImageType($alias, $typeName)
     {
-        if($alias !== null && $alias!== "" && $typeName !== null && $typeName!== "") {
+        if ($alias !== null && $alias !== "" && $typeName !== null && $typeName !== "") {
             $typeId = PromotionImageTypeModel::createElement(array('alias' => $alias, 'type' => $typeName));
-            if($typeId) {
+            if ($typeId) {
                 $this->createFtpDirs($typeId);
             }
             return $typeId;
@@ -144,6 +146,40 @@ class PromotionImageHelper
         }
         if (!in_array(self::B_IMG_PATH, $typeDir)) {
             ftp_mkdir($connId, $typeId . "/" . self::B_IMG_PATH);
+        }
+    }
+
+    /** Сверка изображения двух ревизий
+     * @param string $firstRevisionId - Id первой ревизии
+     * @param string $secondRevisionId - Id второй ревизии
+     * @param string $typeId - ID типа изображения
+     * @return bool
+     */
+    public function checkRevisionsId(string $firstRevisionId, string $secondRevisionId, string $typeId): bool
+    {
+        $sql = "
+                SELECT
+                IMG.`ID`
+                FROM `apls_promotions_image` IMG
+                LEFT JOIN `apls_promotions_image_in_revision` REV ON
+                '$firstRevisionId' = REV.`revision` AND
+                '$secondRevisionId' = REV.`revision`
+                WHERE IMG.`type` = '$typeId'
+                ";
+        $imgIds = static::getConnection(PromotionModelAbstract::getConnectionName())->query($sql);
+        $result = array();
+        while ($img = $imgIds->fetch()) {
+            $result[] = $img["ID"];
+
+        }
+        if ($result[0] != "" && $result[1] != "") {
+            if ($result[0] == $result[1]) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return true;
         }
     }
 }
