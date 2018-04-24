@@ -133,6 +133,9 @@ class MySQLWhereElementString
 
     private function valueString($value, array $options, string $prefix = ""): string
     {
+        if($value instanceof \Bitrix\Main\Type\DateTime) {
+            $value = $value->format("Y-m-d H:i:s");
+        }
         if (in_array(self::OPTION_IS_FIELD, $options)) {
             if ($prefix != "") {
                 return "$prefix.`$value`";

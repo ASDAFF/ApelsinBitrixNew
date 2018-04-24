@@ -6,6 +6,10 @@ trait MySQLTrait
 {
     protected static $connectionName = "";
 
+    public static final function getConnectionName() {
+        return static::$connectionName;
+    }
+
     public static final function getConnection($connectionName = "")
     {
         if ($connectionName === "") {

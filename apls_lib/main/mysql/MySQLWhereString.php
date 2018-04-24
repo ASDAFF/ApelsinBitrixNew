@@ -69,7 +69,7 @@ class MySQLWhereString
 
     public function removeBlock(string $id)
     {
-        $this->remove($id);
+        return $this->remove($id);
     }
 
     public function setBlock(string $id, MySQLWhereString $elementsBlock)
