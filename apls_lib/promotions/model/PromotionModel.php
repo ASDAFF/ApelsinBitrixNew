@@ -590,7 +590,7 @@ class PromotionModel extends PromotionModelAbstract
 
     protected static function beforeUpdateElement($id, array &$updateFieldsValue, array &$attr): bool
     {
-        $thisElement = new PromotionRevisionModel($id);
+        $thisElement = new PromotionModel($id);
         return $thisElement->verificationOfEditingRights();
     }
 
