@@ -596,7 +596,7 @@ class PromotionModel extends PromotionModelAbstract
 
     protected static function beforeDeleteElement($id, array &$attr): bool
     {
-        $thisElement = new PromotionRevisionModel($id);
+        $thisElement = new PromotionModel($id);
         return $thisElement->verificationOfEditingRights();
     }
 
