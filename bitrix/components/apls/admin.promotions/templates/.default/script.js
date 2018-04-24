@@ -167,9 +167,6 @@ function AdminPromotionsUiEditRevisionMain(revisionId) {
             $("#AplsAdminWrapper .PromotionFilterPanel").hide();
             AdminPromotionsWrapper().html(rezult);
             aplsTabsAddClickEvent();
-            AdminPromotionsActionLoadText("PreviewPromotionTextWrapper");
-            AdminPromotionsActionLoadText("MainPromotionTextWrapper");
-            AdminPromotionsActionLoadText("VkPromotionTextWrapper");
             AdminPromotionsUiShowCatalogSections();
             AdminPromotionsUiShowCatalogProducts("product","CatalogProductsWrapper");
             AdminPromotionsUiShowCatalogProducts("exception","CatalogExceptionsWrapper");
@@ -177,8 +174,9 @@ function AdminPromotionsUiEditRevisionMain(revisionId) {
             $(".EditRevisionMainWrapper .TitleTextDelete").click(AdminPromotionsActionClearTitle);
             $(".EditRevisionMainWrapper .DateTime").change(AdminPromotionsActionChangeTime);
             $(".EditRevisionMainWrapper .DateTimeClear").click(AdminPromotionsActionClearTime);
-            $(".EditRevisionMainWrapper .PromotionTextSave").click(AdminPromotionsActionSaveText);
-            $(".EditRevisionMainWrapper .PromotionTextReset").click(AdminPromotionsActionResetText);
+            BX.bind(BX("PreviewPromotionText"), "keyup", BX.delegate(AdminPromotionsActionSaveText, $("#PreviewPromotionText")));
+            BX.bind(BX("MainPromotionText"), "keyup", BX.delegate(AdminPromotionsActionSaveText, $("#MainPromotionText")));
+            BX.bind(BX("VkPromotionText"), "keyup", BX.delegate(AdminPromotionsActionSaveText, $("#VkPromotionText")));
             $(".EditRevisionMainWrapper .SharesPlacement select").change(AdminPromotionsActionChangeBool);
             $(".EditRevisionMainWrapper .BackButton").click(function () {
                 var promotionId = $(this).attr('promotionId');
@@ -621,54 +619,22 @@ function AdminPromotionsActionClearTime() {
 }
 
 function AdminPromotionsActionSaveText() {
-    var inputId = $(this).attr('inputId');
-    var value = $("#"+inputId).val();
     var data = [];
     data["templateFolder"] = AdminPromotionsTemplateFolder();
     data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
-    data["inputId"] = inputId;
-    data["value"] = value;
+    data["field"] = $(this).attr('field');
+    data["value"] = $(this).val();
     BX.ajax({
         url: data["templateFolder"] + "/ajax/action/SaveText.php",
         data: data,
         method: 'POST',
         dataType: 'html',
-        onsuccess: function (rezult) {
-            if(rezult !== "") {
-                alert("Сохранение прошло успешно");
-            } else {
+        onsuccess: function (result) {
+            if(result !== "yes") {
                 alert("Похоже что-то пошло не так. Неудалось сохранить данные.");
             }
         },
-        onfailure: function (rezult) {
-            alert("Произошла ошибка выполнения скрипта");
-        },
-    });
-}
-
-function AdminPromotionsActionResetText() {
-    var confirmVal = confirm("Вы уверены что хотите отменить несохраненные изменения?");
-    if (confirmVal == true) {
-        var divId = $(this).attr('inputId')+"Wrapper";
-        AdminPromotionsActionLoadText(divId);
-        alert("Изменения сброшены")
-    }
-}
-
-function AdminPromotionsActionLoadText(divId) {
-    var data = [];
-    data["templateFolder"] = AdminPromotionsTemplateFolder();
-    data["revisionId"] = $(".EditRevisionMainWrapper").attr("revisionId");
-    data["divId"] = divId;
-    BX.ajax({
-        url: data["templateFolder"] + "/ajax/action/LoadText.php",
-        data: data,
-        method: 'POST',
-        dataType: 'html',
-        onsuccess: function (rezult) {
-            $("#"+divId).html(rezult);
-        },
-        onfailure: function (rezult) {
+        onfailure: function () {
             alert("Произошла ошибка выполнения скрипта");
         },
     });

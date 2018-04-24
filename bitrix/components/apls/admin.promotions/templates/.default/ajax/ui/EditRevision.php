@@ -138,25 +138,25 @@ if(!$arUser) {
         <div class="InputField">
             <div class="text">Превью текст</div>
             <div class="input">
-                <div id="PreviewPromotionTextWrapper"></div>
-                <div class="PromotionTextSave Button Small Green" inputId="PreviewPromotionText">применить</div>
-                <div class="PromotionTextReset Button Small Red" inputId="PreviewPromotionText">отменить</div>
+                <div id="PreviewPromotionTextWrapper">
+                    <textarea id="PreviewPromotionText" name="PreviewPromotionText" class="TestHtmlEditor" field="preview_text"><?=$revision->getFieldValue("preview_text")?></textarea>
+                </div>
             </div>
         </div>
         <div class="InputField">
             <div class="text">Основной текст</div>
             <div class="input">
-                <div id="MainPromotionTextWrapper"></div>
-                <div class="PromotionTextSave Button Small Green" inputId="MainPromotionText">применить</div>
-                <div class="PromotionTextReset Button Small Red" inputId="MainPromotionText">отменить</div>
+                <div id="MainPromotionTextWrapper">
+                    <textarea id="MainPromotionText" name="MainPromotionText" class="TestHtmlEditor" field="main_text"><?=$revision->getFieldValue("main_text")?></textarea>
+                </div>
             </div>
         </div>
         <div class="InputField">
             <div class="text">Текст для VK</div>
             <div class="input">
-                <div id="VkPromotionTextWrapper"></div>
-                <div class="PromotionTextSave Button Small Green" inputId="VkPromotionText">применить</div>
-                <div class="PromotionTextReset Button Small Red" inputId="VkPromotionText">отменить</div>
+                <div id="VkPromotionTextWrapper">
+                    <textarea id="VkPromotionText" name="VkPromotionText" class="TestHtmlEditor" field="vk_text"><?=$revision->getFieldValue("vk_text")?></textarea>
+                </div>
             </div>
         </div>
     </div>
