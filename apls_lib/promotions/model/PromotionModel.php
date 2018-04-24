@@ -310,7 +310,7 @@ class PromotionModel extends PromotionModelAbstract
                     $searchString = mb_strtolower($searchString);
                     $searchText = mb_strtolower(static::getPromotionSearchText($promotion, $mainRevision));
                     $searchCount = 0;
-                    foreach (array_diff(explode(" ", $searchString),array(" ")) as $searchWord) {
+                    foreach (array_diff(explode(" ", $searchString),array("")) as $searchWord) {
                         $searchWord = str_replace("_"," ", $searchWord);
                         $searchCount += substr_count($searchText,$searchWord);
                     }
