@@ -441,7 +441,9 @@
     border: 1px solid #dee0ee;
     padding: 1em 1em .5em 1em;
 }
-
+#AplsAdminWrapper .RevisionImagesWrapper .PromotionImageEditWrapper .PromotionImageEditSearchPanel {
+    margin-bottom: 1em;
+}
 #AplsAdminWrapper .UploadImageWrapper {
     padding: 1em;
     text-align: center;

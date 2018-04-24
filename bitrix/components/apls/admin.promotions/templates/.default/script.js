@@ -142,6 +142,7 @@ function AdminPromotionsUiShowPromotionMain(promotionId, revisionId) {
             $(".PromotionMainWrapper .PromotionShow .RevisionsList .ButtonPanel .del").click(AdminPromotionsActionDeleteRevision);
             $(".PromotionMainWrapper .PromotionShow .RevisionsList .ButtonPanel .edit").click(AdminPromotionsUiEditRevision);
             aplsTabsAddClickEvent();
+            scroll(0,0);
         },
         onfailure: function (rezult) {
             alert("Ошибка: AdminPromotionsUiShowPromotionMain()");
@@ -311,6 +312,7 @@ function AdminPromotionsUiShowRevisionImages() {
             $("#AplsAdminWrapper .RevisionImagesWrapper").html(result);
             $("#AplsAdminWrapper .RevisionImagesWrapper .PromotionImage").click(AdminPromotionsUiEditRevisionImages);
             $("#AplsAdminWrapper .RevisionImagesWrapper .DeleteButton").click(AdminPromotionsActionDeleteImage);
+            BX.bind(BX("PromotionImageEditSearchString"), "keyup", BX.delegate(AdminPromotionsUiEditRevisionImagesSearching, $("#PromotionImageEditSearchString")));
         },
         onfailure: function () {
             alert("Ошибка: AdminPromotionsUiShowRevisionImages()");
@@ -319,27 +321,46 @@ function AdminPromotionsUiShowRevisionImages() {
 }
 
 function AdminPromotionsUiEditRevisionImages() {
+    var typeId = $(this).attr("typeId");
+    var imageId = $(this).find(".Image").attr("imageId");
     $("#AplsAdminWrapper .RevisionImagesWrapper .EditPointer").hide();
     $(this).parent().find(".EditPointer").show();
     $("#AplsAdminWrapper .RevisionImagesWrapper .PromotionImageEditWrapper").show();
+    $("#AplsAdminWrapper .RevisionImagesWrapper #PromotionImageEditSearchString").val("");
+    $("#AplsAdminWrapper .RevisionImagesWrapper #PromotionImageEditSearchString").attr("typeId",typeId);
+    if(typeof(imageId) != "undefined") {
+        $("#AplsAdminWrapper .RevisionImagesWrapper #PromotionImageEditSearchString").attr("imageId",imageId);
+    } else {
+        $("#AplsAdminWrapper .RevisionImagesWrapper #PromotionImageEditSearchString").removeAttr("imageId");
+    }
+    AdminPromotionsUiEditRevisionImagesSearch(typeId,imageId,"");
+}
+function AdminPromotionsUiEditRevisionImagesSearch(typeId,imageId,searchString) {
     var data = [];
     data["templateFolder"] = AdminPromotionsTemplateFolder();
     data["componentFolder"] = AdminPromotionsComponentFolder();
-    data["typeId"] = $(this).attr("typeId");
-    data["imageId"] = $(this).find(".Image").attr("imageId");
+    data["typeId"] = typeId;
+    data["imageId"] = imageId;
+    data["searchString"] = searchString;
     BX.ajax({
         url: data["templateFolder"] + "/ajax/ui/EditRevisionImages.php",
         data: data,
         method: 'POST',
         dataType: 'html',
         onsuccess: function (result) {
-            $("#AplsAdminWrapper .PromotionImageEditWrapper").html(result);
+            $("#AplsAdminWrapper .PromotionImageEditWrapper .PromotionImageEditSearchResult").html(result);
             $("#AplsAdminWrapper .PromotionImageEditWrapper .ImageBlock").click(AdminPromotionsActionSelectImage);
         },
         onfailure: function () {
             alert("Ошибка: AdminPromotionsUiEditRevisionImages()");
         },
     });
+}
+function AdminPromotionsUiEditRevisionImagesSearching() {
+    var searchString = $(this).val();
+    var typeId = $(this).attr('typeId');
+    var imageId = $(this).attr('imageId');
+    AdminPromotionsUiEditRevisionImagesSearch(typeId,imageId,searchString);
 }
 
 function AdminPromotionsUiShowNewImage(typeId, imageId) {
@@ -776,6 +797,7 @@ function AdminPromotionsActionSelectImage() {
         dataType: 'html',
         onsuccess: function (result) {
             AdminPromotionsUiShowNewImage(data["typeId"], data["imageId"])
+            $("#PromotionImageEditSearchString").attr("imageId",data["imageId"]);
         },
         onfailure: function () {
             alert("Ошибка: AdminPromotionsUiEditRevisionImages()");
@@ -791,6 +813,7 @@ function AdminPromotionsActionDeleteImage() {
     data["typeId"] = $(this).attr("typeId");
     if($(".PromotionImageEditWrapper .ShowImageWrapper").attr("typeId") === data["typeId"]) {
         $("#AplsAdminWrapper .PromotionImageEditWrapper .ImageBlock").removeClass("ThisImage");
+        $("#PromotionImageEditSearchString").removeAttr("imageId");
     }
     BX.ajax({
         url: data["templateFolder"] + "/ajax/action/DeleteImage.php",

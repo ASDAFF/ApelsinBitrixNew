@@ -37,4 +37,9 @@ $imageTypes = PromotionImageTypeModel::getElementList();?>
         </div>
     <?endforeach;?>
 </div>
-<div class="PromotionImageEditWrapper"></div>
+<div class="PromotionImageEditWrapper">
+    <div class="PromotionImageEditSearchPanel">
+        <input type="text" id="PromotionImageEditSearchString">
+    </div>
+    <div class="PromotionImageEditSearchResult"></div>
+</div>
