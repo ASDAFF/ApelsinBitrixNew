@@ -25,20 +25,28 @@ class PromotionHelper
         $sql = "SELECT
                     REV.`promotion`, 
                     RIS.`revision`, 
-                    RIS.`section` 
+                    RIS.`section`,
+                    REV.`global_activity`,
+                    REV.`local_activity`,
+                    REV.`vk_activity`
                     FROM (
                         SELECT
                         REV.`id`, 
-                        REV.`promotion` 
+                        REV.`promotion`,
+                        REV.`global_activity`,
+                        REV.`local_activity`,
+                        REV.`vk_activity`
                         FROM (
                             SELECT 
                             `id`, 
-                            `promotion` 
+                            `promotion`,
+                            `global_activity`,
+                            `local_activity`,
+                            `vk_activity`
                             FROM `apls_promotions_revision` 
                             WHERE 
                             `disable`<'1' AND
-                            `apply_from` < now() AND
-                            `$activityType`>'0'
+                            `apply_from` < now()
                             order by `apply_from` DESC
                         ) as REV
                         group by REV.`promotion`
@@ -46,6 +54,7 @@ class PromotionHelper
                     RIGHT JOIN `apls_promotions_in_sections` as RIS
                     on REV.`id` = RIS.`revision`
                     WHERE 
+                    `$activityType` > '0' AND
                     REV.`promotion` IS NOT NULL AND 
                     (
                         RIS.`revision` IN (SELECT `revision` FROM `apls_promotions_in_region` WHERE `region`='$region') OR
