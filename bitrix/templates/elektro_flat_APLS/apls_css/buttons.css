@@ -221,3 +221,50 @@
 .bx-soa-cart-total-line-total .bx-soa-cart-d {
     color: #ef7f1a;
 }
+
+
+/* Апельсиновские кнопки */
+.StylishButton {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #a1a4b3;
+    background: transparent;
+    border: 1px solid #dee0ee;
+    height: 1em;
+    padding: 1em;
+    cursor: pointer;
+}
+.StylishButton:hover {
+    color: #a1a4b3;
+    background: #dee0ee;
+}
+.StylishButton.Small {
+    padding: 2px 1em;
+}
+.StylishButton.Green {
+    color: #40c781;
+    border: 1px solid #40c781;
+}
+.StylishButton.Green:hover {
+    color: #134e2f;
+    background: #40c781;
+}
+.StylishButton.Yellow {
+    color: #ef8b00;
+    border: 1px solid #ef8b00;
+}
+.StylishButton.Yellow:hover {
+    color: #a96000;
+    background: #ef8b00;
+}
+.StylishButton.Red {
+    color: #d44b38;
+    border: 1px solid #d44b38;
+}
+.StylishButton.Red:hover {
+    color: #5a1a11;
+    background: #d44b38;
+}
