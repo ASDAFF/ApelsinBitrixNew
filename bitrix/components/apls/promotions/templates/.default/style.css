@@ -1,0 +1,191 @@
+.PromotionsCitiesSectionsWrapper {
+    margin-bottom: 10px;
+}
+.PromotionsCitiesSection {
+    float: left;
+    margin: 0 5px 5px 0;
+}
+.PromotionsCitiesSection .Element {
+    text-transform: uppercase;
+    border: 1px solid #f6f6fb;
+    background: #f6f6fb;
+    color: #8184a1;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    font-size: 10px;
+}
+.PromotionsCitiesSection .Element a {
+    display: block;
+    padding: .5em 1em;
+    color: #8184a1;
+}
+.PromotionsCitiesSection .Element:hover,
+.PromotionsCitiesSection .Element.thisSection {
+    border: 1px solid #ef7f1a;
+    background: #ef7f1a;
+    color: #FFFFFF;
+}
+.PromotionsCitiesSection .Element:hover a,
+.PromotionsCitiesSection .Element.thisSection a {
+    color: #FFFFFF;
+}
+.PromotionsCitiesSection .Element .counter {
+    font-size: 8px;
+    padding: 2px 4px;
+    margin-left: 4px;
+}
+.PromotionsCitiesSection .Element .sectionName {
+    font-size: 10px;
+    padding: 0;
+}
+.PromotionsCitiesSection .Element:hover .counter,
+.PromotionsCitiesSection .Element.thisSection .counter {
+    background: #FFFFFF;
+    color: #ef7f1a;
+}
+
+.PromotionsWrapper {}
+.PromotionsWrapper .PromotionElement {
+    position: relative;
+    float: left;
+    border: 1px solid #dee0ee;
+    width: 230px; /* 232 с рамкой */
+    height: 400px;
+}
+
+.PromotionsWrapper .PromotionElement .PromotionImage {
+    width: 230px;
+    height: 125px;
+}
+.PromotionsWrapper .PromotionElement .PromotionImage img {
+    width: 230px;
+    height: 125px;
+}
+.PromotionsWrapper .PromotionElement .PromotionContent {
+    padding: 1em 1em 1em 1em;
+}
+.PromotionsWrapper .PromotionElement .PromotionContent .PromotionTitle {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: .5em;
+    font-size: 14px;
+}
+.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText {
+    font-size: 13px;
+    line-height: 1.2;
+}
+.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText>p {
+    margin-bottom: 1em;
+    padding: 0;
+}
+.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText .inf {
+    font-style: italic;
+    color: #969ab7;
+}
+.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText .main {
+    font-weight: bold;
+}
+.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText .center {
+    text-align: center;
+}
+
+.PromotionsWrapper .PromotionElement .PromotionFooter {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.PromotionsWrapper .PromotionElement .PromotionFooter .ButtonMore {
+    display: block;
+    border: 1px solid #ef7f1a;
+    color: #ef7f1a;
+    font-weight: bold;
+    margin: 1em auto .5em auto;
+    width: 130px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1em;
+    text-transform: uppercase;
+    padding: .5em;
+    cursor: pointer;
+}
+.PromotionsWrapper .PromotionElement .PromotionFooter .ButtonMore:hover {
+    background: #ef7f1a;
+    color: #FFFFFF;
+}
+.PromotionsWrapper .PromotionElement .PromotionFooter .DateTime {
+    font-size: 10px;
+    height: 1em;
+    line-height: 1em;
+    padding: 0 1em .5em 1em;
+    text-align: center;
+    color: #b0b2bd;
+}
+
+
+
+@media (min-width: 1253px) {
+    .PromotionsWrapper .PromotionElement {
+        margin: 0 10px 10px 0;
+    }
+    .PromotionsWrapper .PromotionElement:nth-child(4n + 4) {
+        margin-right: 0;
+    }
+}
+@media (max-width: 1253px) and (min-width: 788px) {
+    .PromotionsWrapper .PromotionElement {
+        margin: 0 11px 11px 0;
+    }
+    .PromotionsWrapper .PromotionElement:nth-child(3n + 3) {
+        margin-right: 0;
+    }
+}
+@media screen and (max-width: 787px) and (min-width: 450px) {
+    .PromotionsWrapper .PromotionElement {
+        width: auto;
+        float: none;
+        height: auto;
+        margin-bottom: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+    .PromotionsWrapper .PromotionElement .PromotionImage {
+        width: 30%;
+        height: auto;
+    }
+    .PromotionsWrapper .PromotionElement .PromotionImage img {
+        width: 100%;
+        height: auto;
+    }
+    .PromotionsWrapper .PromotionElement .PromotionContent {
+        width: 70%;
+        padding: 0;
+    }
+    .PromotionsWrapper .PromotionElement .PromotionContent .PromotionTitle {
+        padding: 1em 1em 1em 1em;
+        margin: 0;
+        text-align: left;
+    }
+    .PromotionsWrapper .PromotionElement .PromotionContent .PromotionText {
+        padding: 0 1em 1em 1em;
+    }
+}
+@media screen and (max-width: 450px) {
+
+    .PromotionsWrapper .PromotionElement {
+        width: auto;
+        float: none;
+        margin-bottom: 10px;
+    }
+    .PromotionsWrapper .PromotionElement .PromotionImage {
+        width: 100%;
+        height: auto;
+    }
+    .PromotionsWrapper .PromotionElement .PromotionImage img {
+        width: 100%;
+        height: auto;
+    }
+}
