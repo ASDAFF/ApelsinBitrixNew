@@ -93,7 +93,9 @@ class PromotionRevisionModel extends PromotionModelAbstract
         $arrSectionsId = array();
         $promotionInSection = PromotionInSectionModel::searchByRevision($this->id);
         foreach ($promotionInSection as $element) {
-            $arrSectionsId[$element['id']] = $element['region'];
+            if($element instanceof PromotionInSectionModel) {
+                $arrSectionsId[$element->getId()] = $element->getFieldValue("section");
+            }
         }
         return $arrSectionsId;
     }
