@@ -600,4 +600,20 @@ class PromotionModel extends PromotionModelAbstract
         return $thisElement->verificationOfEditingRights();
     }
 
+    public function beforeCreateCopy(array &$fieldsValue, array &$attr):bool {
+        return static::beforeCreateElement($fieldsValue, $attr);
+    }
+
+    public function afterCreateCopy(string $id, array &$fieldsValue, array &$attr):bool {
+        if(isset($attr[static::REVISIONS_KEY])) {
+            foreach ($attr[static::REVISIONS_KEY] as $revisionId) {
+                if(is_string($revisionId) && PromotionRevisionModel::isRevisionInPromotion($revisionId,$this->id)) {
+                    $revision = new PromotionRevisionModel($revisionId);
+                    $revision->createCopy(array("promotion"=>$id));
+                }
+            }
+
+        }
+        return true;
+    }
 }
