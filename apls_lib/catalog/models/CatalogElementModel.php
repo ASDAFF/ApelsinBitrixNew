@@ -4,6 +4,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/models/ModelAbstract.ph
 class CatalogElementModel extends ModelAbstract
 {
     protected static $tableName = "b_iblock_element";
+    protected static $inSectionTableName = "b_iblock_section_element";
     protected static $autoincrement = true;
 
     protected static $privateFields = array();
@@ -43,5 +44,22 @@ class CatalogElementModel extends ModelAbstract
         "SHOW_COUNTER",
         "SHOW_COUNTER_START"
     );
+
+    public static function searchBySectionId($sectionId) {
+        $sql = static::selectSQL(
+            static::$inSectionTableName,array("IBLOCK_ELEMENT_ID"),
+            MySQLWhereElementString::getBinaryOperationString(
+                'IBLOCK_SECTION_ID',
+                MySQLWhereElementString::OPERATOR_B_EQUAL,
+                $sectionId
+            )
+        );
+        $recordSet = static::getConnection()->query($sql);
+        $items = array();
+        foreach ($recordSet as $item) {
+            $items = new CatalogElementModel($item["IBLOCK_ELEMENT_ID"]);
+        }
+        return $items;
+    }
 
 }
