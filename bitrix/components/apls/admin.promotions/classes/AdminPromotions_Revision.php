@@ -42,6 +42,7 @@ class AdminPromotions_Revision
             $html .= "</div>";
             $html .= "<div class='ButtonPanel'>";
                 $html .= "<div class='Button Small Green edit' revisionId='".$this->revision->getId()."'>Править</div>";
+                $html .= "<div class='Button Small Green createCopy' revisionId='".$this->revision->getId()."'>Создать копию</div>";
                 if($this->revision->getFieldValue('disable') > 0) {
                     $html .= "<div class='Button Small Yellow enable' revisionId='".$this->revision->getId()."'>Активировать</div>";
                 } else {

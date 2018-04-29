@@ -141,6 +141,7 @@ function AdminPromotionsUiShowPromotionMain(promotionId, revisionId) {
             $(".PromotionMainWrapper .PromotionShow .RevisionsList .ButtonPanel .enable").click(AdminPromotionsActionEnableRevision);
             $(".PromotionMainWrapper .PromotionShow .RevisionsList .ButtonPanel .del").click(AdminPromotionsActionDeleteRevision);
             $(".PromotionMainWrapper .PromotionShow .RevisionsList .ButtonPanel .edit").click(AdminPromotionsUiEditRevision);
+            $(".PromotionMainWrapper .PromotionShow .RevisionsList .ButtonPanel .createCopy").click(AdminPromotionsActionCreateCopyRevision);
             aplsTabsAddClickEvent();
             scroll(0,0);
         },
@@ -335,6 +336,7 @@ function AdminPromotionsUiEditRevisionImages() {
     }
     AdminPromotionsUiEditRevisionImagesSearch(typeId,imageId,"");
 }
+
 function AdminPromotionsUiEditRevisionImagesSearch(typeId,imageId,searchString) {
     var data = [];
     data["templateFolder"] = AdminPromotionsTemplateFolder();
@@ -356,6 +358,7 @@ function AdminPromotionsUiEditRevisionImagesSearch(typeId,imageId,searchString) 
         },
     });
 }
+
 function AdminPromotionsUiEditRevisionImagesSearching() {
     var searchString = $(this).val();
     var typeId = $(this).attr('typeId');
@@ -571,6 +574,31 @@ function AdminPromotionsActionDeleteRevision() {
                     AdminPromotionsUiShowPromotionMain(
                         $(".PromotionShowWrapper .PromotionShow .promotion").attr("promotionId")
                     );
+                }
+            },
+            onfailure: function (rezult) {
+                alert("Произошла ошибка выполнения скрипта");
+            },
+        });
+    }
+}
+
+function AdminPromotionsActionCreateCopyRevision() {
+    var data = [];
+    data["templateFolder"] = AdminPromotionsTemplateFolder();
+    data["revisionId"] = $(this).attr('revisionId');
+    var confirmVal = confirm("Вы уверены что хотите создать дубликат данной ревизии?");
+    if (confirmVal == true) {
+        BX.ajax({
+            url: data["templateFolder"] + "/ajax/action/CreateCopyRevision.php",
+            data: data,
+            method: 'POST',
+            dataType: 'html',
+            onsuccess: function (result) {
+                if(result !== "") {
+                    AdminPromotionsUiEditRevisionMain(result);
+                } else {
+                    alert("К сожалению не удалось создать копию ревизии");
                 }
             },
             onfailure: function (rezult) {
