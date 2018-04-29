@@ -498,4 +498,65 @@ class PromotionRevisionModel extends PromotionModelAbstract
         $thisElement = new PromotionRevisionModel($id);
         return $thisElement->verificationOfEditingRights();
     }
+
+    public function beforeCreateCopy(array &$fieldsValue, array &$attr):bool {
+        $applyFromOld = $this->originalData["apply_from"];
+        $applyFromNew = $this->originalData["apply_from"];
+        if($applyFromOld instanceof \Bitrix\Main\Type\DateTime) {
+            $applyFromOld = $applyFromOld->format("Y-m-d H:i:s");
+        }
+        if($applyFromNew instanceof \Bitrix\Main\Type\DateTime) {
+            $applyFromNew = $applyFromNew->format("Y-m-d H:i:s");
+        }
+        if($applyFromOld == $applyFromNew) {
+            $fieldsValue["apply_from"] = static::mysqlDateTime();
+        }
+        return static::beforeCreateElement($fieldsValue, $attr);
+    }
+
+    public function afterCreateCopy(string $id, array &$fieldsValue, array &$attr):bool {
+        $promotionInRegion = PromotionInRegionModel::searchByRevision($this->id);
+        foreach ($promotionInRegion as $item) {
+            if($item instanceof ModelAbstract) {
+                $item->createCopy(array("revision"=>$id));
+            }
+        }
+        unset($promotionInRegion);
+        $promotionInSection = PromotionInSectionModel::searchByRevision($this->id);
+        foreach ($promotionInSection as $item) {
+            if($item instanceof ModelAbstract) {
+                $item->createCopy(array("revision"=>$id));
+            }
+        }
+        unset($promotionInSection);
+        $promotionImageInRevision = PromotionImageInRevisionModel::searchByRevision($this->id);
+        foreach ($promotionImageInRevision as $item) {
+            if($item instanceof ModelAbstract) {
+                $item->createCopy(array("revision"=>$id));
+            }
+        }
+        unset($promotionImageInRevision);
+        $promotionCatalogSection = PromotionCatalogSection::searchByRevision($this->id);
+        foreach ($promotionCatalogSection as $item) {
+            if($item instanceof ModelAbstract) {
+                $item->createCopy(array("revision"=>$id));
+            }
+        }
+        unset($promotionCatalogSection);
+        $promotionCatalogProduct = PromotionCatalogProduct::searchByRevision($this->id);
+        foreach ($promotionCatalogProduct as $item) {
+            if($item instanceof ModelAbstract) {
+                $item->createCopy(array("revision"=>$id));
+            }
+        }
+        unset($promotionCatalogProduct);
+        $promotionCatalogException = PromotionCatalogException::searchByRevision($this->id);
+        foreach ($promotionCatalogException as $item) {
+            if($item instanceof ModelAbstract) {
+                $item->createCopy(array("revision"=>$id));
+            }
+        }
+        unset($promotionCatalogException);
+        return true;
+    }
 }
