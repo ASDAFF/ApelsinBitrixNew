@@ -190,6 +190,9 @@ abstract class ModelAbstract
             $changes = $this->getChangesData();
             $changeString = "";
             foreach ($changes as $field => $change) {
+                if($change instanceof \Bitrix\Main\Type\DateTime) {
+                    $change = $change->format("Y-m-d H:i:s");
+                }
                 if($change === null) {
                     $changeString .= "`$field`=NULL,";
                 } else {
@@ -238,6 +241,36 @@ abstract class ModelAbstract
     }
 
     /**
+     * создает новый элемент по средством копирования данных из текущего
+     * @param array $fieldsValue - знаечния измененных полей если требуется
+     * @param array $attr -
+     * @return string - id новой записи в случае успеха и пустую строку в случае провала
+     */
+    public final function createCopy(array $fieldsValue = array(), array $attr = array()) {
+        $data = $this->originalData;
+        foreach ($fieldsValue as $key => $value) {
+            $data[$key] = $value;
+        }
+        if($this->beforeCreateCopy($data, $attr)) {
+            $id = static::createElement($data);
+            if($this->afterCreateCopy($id, $data, $attr)) {
+                return $id;
+            } else {
+                static::deleteElement($id);
+            }
+        }
+        return "";
+    }
+
+    public function beforeCreateCopy(array &$fieldsValue, array &$attr):bool {
+        return true;
+    }
+
+    public function afterCreateCopy(string $id, array &$fieldsValue, array &$attr):bool {
+        return true;
+    }
+
+    /**
      * Возвращает елемент по идентификатору в виде объекта
      * @param $id - идентификатор записи
      * @return ModelAbstract
@@ -259,6 +292,11 @@ abstract class ModelAbstract
     public static final function createElement(array $fieldsValue = array(), array $attr = array())
     {
         static::unsetAllExcept($fieldsValue, static::getPublicFields());
+        foreach ($fieldsValue as $key => $val) {
+            if($val instanceof \Bitrix\Main\Type\DateTime) {
+                $fieldsValue[$key] = $val->format("Y-m-d H:i:s");
+            }
+        }
         $ok = static::beforeCreateElement($fieldsValue, $attr);
         // Если beforeCreateElement вернула true и дял всех обязательных полей есть значения
         if ($ok && static::fieldsInFieldsValue($fieldsValue, static::$requiredFields)) {
@@ -323,6 +361,11 @@ abstract class ModelAbstract
     {
         static::unsetAllExcept($fieldsValue, static::getPublicFields());
         $ok = static::beforeUpdateElement($id, $updateFieldsValue, $attr);
+        foreach ($updateFieldsValue as $key => $val) {
+            if($val instanceof \Bitrix\Main\Type\DateTime) {
+                $updateFieldsValue[$key] = $val->format("Y-m-d H:i:s");
+            }
+        }
         if ($ok) {
             $fields = static::getPublicFields();
             $changeString = "";
