@@ -122,6 +122,23 @@
     color: #b0b2bd;
 }
 
+.PromotionWrapper .PromotionBannerBlock {
+    margin-bottom: 2em;
+}
+.PromotionWrapper .PromotionBannerBlock .PromotionBanner {
+    width: 100%;
+}
+.PromotionWrapper .ButtonPanel {
+    margin-top: 1em;
+    text-align: center;
+}
+.PromotionWrapper .ButtonPanel>.StylishButton {
+    display: inline-block;
+}
+.PromotionWrapper .PromotionBigImage {
+    max-width: 400px;
+    margin-left: 2em;
+}
 
 
 @media (min-width: 1253px) {

@@ -44,8 +44,18 @@ if(isset($_GET['p1']) && $_GET['p1']==="id" && isset($_GET['p2']) && $_GET['p2']
     $arResult = array(
         "pageType" => "promotion",
         "promotion" => $promotion,
-        "revision" => $revision
+        "revision" => $revision,
+        "bannerImageType"=> "-",
+        "bigImageType"=> "-",
     );
+    $bannerImageType = PromotionImageTypeModel::searchTypeByAlias("banner");
+    if($bannerImageType instanceof PromotionImageTypeModel) {
+        $arResult["bannerImageType"] = $bannerImageType->getId();
+    }
+    $bigImageType = PromotionImageTypeModel::searchTypeByAlias("big");
+    if($bigImageType instanceof PromotionImageTypeModel) {
+        $arResult["bigImageType"] = $bigImageType->getId();
+    }
     $title = $revision->getFieldValue("title");
     if($title === "" || $title === null) {
         $title = "Акциия";
