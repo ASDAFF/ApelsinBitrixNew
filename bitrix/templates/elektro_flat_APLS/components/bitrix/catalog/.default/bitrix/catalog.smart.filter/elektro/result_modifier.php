@@ -91,13 +91,26 @@ foreach($arResult["ITEMS"] as $ikey => $arItem){
 }
 /* окончанеи работы со свойствами */
 
+foreach($arResult["ITEMS"] as $ikey => $arItem){
+    $values = array();
+    foreach ($arItem["VALUES"] as $key => $val) {
+        $values[$key] = $val['VALUE'];
+    }
+    natcasesort($values);
+    $rezValues = array();
+    foreach (array_keys($values) as $skey) {
+        $rezValues[$skey] = $arItem["VALUES"][$skey];
+    }
+    $arResult["ITEMS"][$ikey]["VALUES"] = $rezValues;
+}
+
 //PROPERTY_COLOR//
 foreach($arResult["ITEMS"] as $key => $arItem) {
 	if($arItem["CODE"] == "COLOR" && !empty($arItem["VALUES"])) {
 		$properties = CIBlockProperty::GetList(array("sort" => "asc", "name" => "asc"), array("ACTIVE" => "Y", "IBLOCK_ID" => $arParams["IBLOCK_ID"], "CODE" => $arItem["CODE"]));
 		if($prop_fields = $properties->GetNext()) {
 			$IBLOCK_ID = $prop_fields["LINK_IBLOCK_ID"];
-		}		
+		}
 		foreach($arItem["VALUES"] as $val => $ar) {
 			$arSelect = array("ID", "IBLOCK_ID", "NAME", "PROPERTY_HEX", "PROPERTY_PICT");
 			$arFilter = array("IBLOCK_ID" => $IBLOCK_ID, "NAME" => $ar["VALUE"]);

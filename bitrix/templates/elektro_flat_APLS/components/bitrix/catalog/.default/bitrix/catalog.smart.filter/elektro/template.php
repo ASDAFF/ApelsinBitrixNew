@@ -206,8 +206,35 @@ CJSCore::Init(array("fx"));?>
 				</tr>
 			<?endif;
 
+//
+//            foreach($arResult["ITEMS"] as $ikey => $arItem){
+//
+//                $values = array();
+//                foreach ($arItem["VALUES"] as $key => $val) {
+//                    $values[$key] = $val['VALUE'];
+//                }
+//                natcasesort($values);
+//                $rezValues = array();
+//                foreach (array_keys($values) as $skey) {
+//                    $rezValues[$skey] = $arItem["VALUES"][$skey];
+//                }
+//                $arResult["ITEMS"][$ikey]["VALUES"] = $rezValues;
+//            }
+
 			/***OTHER_PROPERTIES***/
 			foreach($arResult["ITEMS"] as $key => $arItem):
+
+//                $values = array();
+//                foreach ($arItem["VALUES"] as $key => $val) {
+//                    $values[$key] = $val['VALUE'];
+//                }
+//                natcasesort($values);
+//                $rezValues = array();
+//                foreach (array_keys($values) as $skey) {
+//                    $rezValues[$skey] = $arItem["VALUES"][$skey];
+//                }
+//                $arItem["VALUES"] = $rezValues;
+
 				if(empty($arItem["VALUES"]) || isset($arItem["PRICE"]))
 					continue;
 
