@@ -57,7 +57,7 @@ class CatalogElementModel extends ModelAbstract
         $recordSet = static::getConnection()->query($sql);
         $items = array();
         foreach ($recordSet as $item) {
-            $items = new CatalogElementModel($item["IBLOCK_ELEMENT_ID"]);
+            $items[] = new CatalogElementModel($item["IBLOCK_ELEMENT_ID"]);
         }
         return $items;
     }
