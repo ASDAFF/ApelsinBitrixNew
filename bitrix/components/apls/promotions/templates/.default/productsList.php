@@ -50,6 +50,7 @@ if(!empty($resArray["products"])) {
 } else {
     $productElementIdList = array();
 }
+
 if(!empty($resArray["exceptions"])) {
     foreach ($resArray["exceptions"] as $exception) {
         $exceptionElementIdList[] = $exception->getFieldValue("product");
@@ -65,7 +66,7 @@ if(!empty($catalogElementIdList) && empty($productElementIdList)){
     $resultArrayFilterId = array_merge($catalogElementIdList,$productElementIdList);
     $resultArrayFilterId = array_diff($resultArrayFilterId, $exceptionElementIdList);
 } elseif (empty($catalogElementIdList) && !empty($productElementIdList)) {
-    $resultArrayFilterId = array_diff($resultArrayFilterId, $exceptionElementIdList);
+    $resultArrayFilterId = array_diff($productElementIdList, $exceptionElementIdList);
 }
 
 global $arPromProdPrFilter;
@@ -88,7 +89,7 @@ function GetSectionIdByXml ($catalogXml) {
     return $catalogId;
 }
 
-if($arPromProdPrFilter):
+if(!empty($resultArrayFilterId)):
 ?>
 <div class="promotions-detail__products">
     <?$APPLICATION->IncludeComponent("bitrix:main.include", "",
