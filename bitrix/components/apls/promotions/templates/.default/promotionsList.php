@@ -37,6 +37,7 @@ if($arResult["urlRegion"] !== "") {
             $revision = $promotion->getCurrentRevision();
             $title = $revision->getFieldValue('title');
             $previewText = $revision->getFieldValue('preview_text');
+            $mainText = $revision->getFieldValue('main_text');
             $images = $revision->getImages();
             $startFrom = $revision->getFieldValue('start_from');
             $stopFrom = $revision->getFieldValue('stop_from');
@@ -70,7 +71,9 @@ if($arResult["urlRegion"] !== "") {
                     <div class="PromotionText"><?= $previewText ?></div>
                 </div>
                 <div class="PromotionFooter">
+                    <?if( $mainText !== null && $mainText !== "" ):?>
                     <a class="ButtonMore" href="<?=$moreUrl.$promotion->getId()?>/">Подробности</a>
+                    <?endif;?>
                     <div class="DateTime"><?=$dateTime?></div>
                 </div>
             </div>
