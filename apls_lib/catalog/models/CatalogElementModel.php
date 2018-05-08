@@ -1,5 +1,6 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/models/ModelAbstract.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/models/CatalogSectionModel.php";
 
 class CatalogElementModel extends ModelAbstract
 {
@@ -62,4 +63,21 @@ class CatalogElementModel extends ModelAbstract
         return $items;
     }
 
+    public static function searchByElementId($elementId) {
+        $sql = static::selectSQL(
+            static::$inSectionTableName,array("IBLOCK_SECTION_ID"),
+            MySQLWhereElementString::getBinaryOperationString(
+                'IBLOCK_ELEMENT_ID',
+                MySQLWhereElementString::OPERATOR_B_EQUAL,
+                $elementId
+            )
+        );
+        $recordSet = static::getConnection()->query($sql);
+//        var_dump($recordSet->next());
+        $items = array();
+        foreach ($recordSet as $item) {
+            $items[] = new CatalogSectionModel($item["IBLOCK_SECTION_ID"]);
+        }
+        return $items;
+    }
 }
