@@ -97,13 +97,20 @@ class PromotionHelper
         return $result;
     }
 
+
+    public static function getPromotionsIdByElementId($productXmlId, $region = 'rzn'):array
+    {
+        $promotionsIdList = array();
+        return $promotionsIdList;
+    }
+
     /**Метод возвращает массив ID акций, к которым пркреплен искомый товар в определенной локации, если товар не
      * прикреплен ни к одной акции возвращает пустой массив $resultArray
      * @param $productXmlId - xml_id товара
      * @param string $region -алиас локации
      * @return array
      */
-    public static function getPromotionsIdByElementId($productXmlId, $region = 'rzn'):array
+    public static function getPromotionsIdByElementXmlIdOld($productXmlId, $region = 'rzn'):array
     {
         $resultArray = array();
         //*Проверка прикреплен ли товар, к какой-либо акции*//
