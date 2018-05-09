@@ -98,9 +98,11 @@ class PromotionHelper
     }
 
 
-    public static function getPromotionsIdByElementId($productXmlId, $region = 'rzn'):array
+    public static function getPromotionsIdByElementId($productId, $region):array
     {
         $promotionsIdList = array();
+        // должны получить xmlId товара по его Id
+        // должны запустить метод getPromotionsIdByElementXmlId
         return $promotionsIdList;
     }
 

@@ -6,13 +6,28 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/apls_lib/catalog/APLS_CatalogItemDeta
 include_once $_SERVER["DOCUMENT_ROOT"] . '/apls_lib/catalog/APLS_CatalogItemDetailsInfo.php';
 include_once $_SERVER["DOCUMENT_ROOT"] . '/apls_lib/catalog/APLS_CatalogItemDetailsAction.php';
 include_once $_SERVER["DOCUMENT_ROOT"] . '/apls_lib/catalog/APLS_CatalogItemDetailsServiceCenters.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/classes/PromotionHelper.php";
 
 class APLS_CatalogItemInfo
 {
 
-    public static function getLables($properties,$textSpan = false)
+    const promotionCss = "stock";
+    const promotionText = "Акция";
+
+    public static function getLables($elementId, $properties, $textSpan = false)
     {
         $html = "";
+        $promotions = PromotionHelper::getPromotionsIdByElementId(
+            $elementId,
+            PromotionRegionModel::getUserRegion()->getId()
+        );
+        if(!empty($promotions)) {
+            if($textSpan) {
+                $html .= "<span class='" . self::promotionCss . "'><span class='text'>" . self::promotionText . "</span></span>";
+            } else {
+                $html .= "<span class='" . self::promotionCss . "'>" . self::promotionText . "</span>";
+            }
+        }
         try {
             $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLName("ApelsinCatalogElementLables");
             $rsData = $entity_data_class::getList(array(
