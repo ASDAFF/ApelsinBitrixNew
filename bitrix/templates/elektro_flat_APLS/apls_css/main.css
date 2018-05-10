@@ -512,6 +512,7 @@ ul.left-menu > li > a {
 }
 
 /* хлебные крошки */
+/*
 .breadcrumb__arrow {
     display: none;
 }
@@ -604,6 +605,7 @@ ul.left-menu > li > a {
 .breadcrumb__item:hover:last-child > .breadcrumb__title {
     color: #8184a1;
 }
+*/
 
 /* Страница Спасибо за покупку */
 .wrapperPageFinalPayment {
