@@ -127,8 +127,16 @@ if(isset($_GET['p1']) && $_GET['p1']==="id" && isset($_GET['p2']) && $_GET['p2']
         $promotionsId = $PromotionsData["promotionsInSections"][$arResult["section"]];
     }
     // получаем список акций
+    $promotionsTemp = array();
+    $promotionsSort = array();
     foreach ($promotionsId as $promotionId) {
-        $arResult["promotions"][] = new PromotionModel($promotionId);
+        $promotion = new PromotionModel($promotionId);
+        $promotionsTemp[$promotion->getId()] = $promotion;
+        $promotionsSort[$promotion->getId()] = $promotion->getFieldValue('sort');
+    }
+    asort($promotionsSort);
+    foreach (array_keys($promotionsSort) as $promotionId) {
+        $arResult["promotions"][] = $promotionsTemp[$promotionId];
     }
     // поулчаем список секций
     foreach ($PromotionsData['sections'] as $sectionsId) {
