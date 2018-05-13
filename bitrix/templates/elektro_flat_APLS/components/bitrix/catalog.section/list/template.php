@@ -49,7 +49,7 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 			$class = "";
 			if(array_key_exists("PROPERTIES", $arElement) && is_array($arElement["PROPERTIES"])) {
                 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogItemInfo.php";
-                $sticker .= APLS_CatalogItemInfo::getLables($arElement['ID'],$arElement["PROPERTIES"]);
+                $sticker .= APLS_CatalogItemInfo::getLables($arElement['XML_ID'],$arElement["PROPERTIES"]);
 				//NEW//
 				if(array_key_exists("NEWPRODUCT", $arElement["PROPERTIES"]) && !$arElement["PROPERTIES"]["NEWPRODUCT"]["VALUE"] == false)
 					$sticker .= "<span class='new'>".GetMessage("CATALOG_ELEMENT_NEWPRODUCT")."</span>";

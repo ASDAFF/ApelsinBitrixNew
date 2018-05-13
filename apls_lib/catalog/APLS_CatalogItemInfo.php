@@ -14,11 +14,11 @@ class APLS_CatalogItemInfo
     const promotionCss = "stock";
     const promotionText = "Акция";
 
-    public static function getLables($elementId, $properties, $textSpan = false)
+    public static function getLables($elementXmlId, $properties, $textSpan = false)
     {
         $html = "";
-        $promotions = PromotionHelper::getPromotionsIdByElementId(
-            $elementId,
+        $promotions = PromotionHelper::getPromotionsIdByElementXmlId(
+            $elementXmlId,
             PromotionRegionModel::getUserRegion()->getId()
         );
         if(!empty($promotions)) {

@@ -26,7 +26,9 @@ class PromotionHelper
         self::VK_ACTIVITY
     );
 
-    public static function getActualPromotionsDataForRegion($region, $activityType = self::DEFAULT_ACTIVITY)
+    private static $actualPromotions = array();
+
+    public static function getActualPromotionsDataForRegionNoCache($region, $activityType = self::DEFAULT_ACTIVITY)
     {
         if (!in_array($activityType, static::$activityTypes)) {
             $activityType = self::DEFAULT_ACTIVITY;
@@ -97,6 +99,13 @@ class PromotionHelper
         $result['sections'] = array_unique($sections);
         $result['promotionsInSections'] = $promotionsInSections;
         return $result;
+    }
+
+    public static function getActualPromotionsDataForRegion($region, $activityType = self::DEFAULT_ACTIVITY) {
+        if(!isset(static::$actualPromotions[$region][$activityType])) {
+            static::$actualPromotions[$region][$activityType] = static::getActualPromotionsDataForRegionNoCache($region,$activityType);
+        }
+        return static::$actualPromotions[$region][$activityType];
     }
 
     /**
