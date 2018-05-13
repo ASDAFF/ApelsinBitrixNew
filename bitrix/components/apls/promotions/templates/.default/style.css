@@ -69,23 +69,37 @@
     text-align: center;
     margin-bottom: .5em;
     font-size: 14px;
+    text-transform: uppercase;
 }
 .PromotionsWrapper .PromotionElement .PromotionContent .PromotionText {
     font-size: 13px;
     line-height: 1.2;
+    text-align: center;
 }
-.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText>p {
+.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText{
     margin-bottom: 1em;
     padding: 0;
 }
-.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText .inf {
+.PromotionWrapper .PromotionMainText {
+    font-size: 15px;
+    line-height: 1.2;
+}
+.PromotionWrapper .PromotionMainText>p {
+    margin-bottom: 1em;
+    padding: 0;
+}
+.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText .inf,
+.PromotionWrapper .PromotionMainText .inf {
     font-style: italic;
     color: #969ab7;
+    font-size: .8em;
 }
-.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText .main {
+.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText .main,
+.PromotionWrapper .PromotionMainText .main {
     font-weight: bold;
 }
-.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText .center {
+.PromotionsWrapper .PromotionElement .PromotionContent .PromotionText .center,
+.PromotionWrapper .PromotionMainText .center {
     text-align: center;
 }
 
@@ -140,6 +154,35 @@
     margin-left: 2em;
 }
 
+.PromotionWrapper .PromotionCatalogItems .items-section__title-text {
+    border-bottom: none;
+    font-size: 13px;
+    color: #8184a1;
+}
+.PromotionWrapper .PromotionCatalogItems .items-section__title-wrap {
+    background: transparent;
+    border: 1px solid #dee0ee;
+}
+.PromotionWrapper .PromotionCatalogItems .items-section__title-qnt {
+    background: #dee0ee;
+    height: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    padding: 0px 3px;
+    color: #8184a1;
+}
+.PromotionWrapper .PromotionCatalogItems .items-section__title-icon {
+    font-size: 12px;
+    margin-top: -6px;
+}
+.PromotionWrapper .PromotionCatalogItems .items-section__title-wrap:hover .items-section__title-text {
+    border-bottom: none;
+}
+.PromotionWrapper .PromotionCatalogItems .items-section__title-wrap:hover .items-section__title-qnt {
+    background: #ef7f1a;
+    color: #ffffff;
+}
 
 @media (min-width: 1253px) {
     .PromotionsWrapper .PromotionElement {
