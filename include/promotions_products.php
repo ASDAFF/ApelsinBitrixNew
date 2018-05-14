@@ -1,6 +1,6 @@
 <?global $arPromProdPrFilter;
 $arPromProdPrFilter["PROPERTY_THIS_COLLECTION"] = false;?>
-<?$APPLICATION->IncludeComponent("bitrix:catalog.section", "sections",
+<?$APPLICATION->IncludeComponent("bitrix:catalog.section", "sections_price",
 	array(
         "COMPONENT_TEMPLATE" => ".default",
 		"IBLOCK_TYPE" => "catalog",

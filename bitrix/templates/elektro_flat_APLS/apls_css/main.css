@@ -634,3 +634,8 @@ ul.left-menu > li > a {
 .pageFinalPaymentOrderNunber {
     color: #ef7f1a;
 }
+
+/*.catalog-promotions-price-view .catalog-item .catalog-item-info,*/
+.catalog-promotions-price-view .catalog-item {
+    border: 1px solid transparent;;
+}
