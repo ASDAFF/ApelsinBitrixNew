@@ -214,18 +214,19 @@ class PromotionHelper
      * @param $catalogXmlId - xml_id каталога
      * @return bool - Возвращает TRUE если товар присутствует в каталоге
      */
-    protected static function checkProductXmlIdIsSubjectToCatalog($productXmlId, $catalogXmlId)
+    public static function checkProductXmlIdIsSubjectToCatalog($productXmlId, $catalogXmlId)
     {
         $productId = PromotionHelper::getProductIdByXml($productXmlId);
         $referenceCatalogId = CatalogElementModel::searchByElementId($productId);
-        if (!empty($referenceCatalogId)) {
-            foreach ($referenceCatalogId as $catalog) {
-                $resultCatalogId = $catalog->getFieldValue("XML_ID");
-            }
-            if ($resultCatalogId == $catalogXmlId) {
+        $resultCatalogXmlId = $referenceCatalogId[0]->getFieldValue("XML_ID");
+        $catalogChildren = APLS_CatalogSections::getAllChildrenListForSection($catalogXmlId);
+        if (!empty($catalogChildren) && in_array($resultCatalogXmlId, $catalogChildren)) {
+            return TRUE;
+        } else {
+            if ($resultCatalogXmlId == $catalogXmlId) {
                 return TRUE;
             } else {
-                return FALSE;
+                return false;
             }
         }
     }
