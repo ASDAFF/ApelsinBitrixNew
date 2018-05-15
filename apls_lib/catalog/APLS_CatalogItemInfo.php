@@ -17,6 +17,7 @@ class APLS_CatalogItemInfo
     public static function getLables($elementXmlId, $properties, $textSpan = false)
     {
         $html = "";
+        /*
         $promotions = PromotionHelper::getPromotionsIdByElementXmlId(
             $elementXmlId,
             PromotionRegionModel::getUserRegion()->getId()
@@ -28,6 +29,7 @@ class APLS_CatalogItemInfo
                 $html .= "<span class='" . self::promotionCss . "'>" . self::promotionText . "</span>";
             }
         }
+        */
         try {
             $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLName("ApelsinCatalogElementLables");
             $rsData = $entity_data_class::getList(array(
