@@ -1,11 +1,14 @@
-<?global $arDiscPrFilter;
+<?
+/*
+global $arDiscPrFilter;
 $arDiscPrFilter = [];
 $arDiscPrFilter["ID"] = getRandomElementId(16, 6, array(
     "!PROPERTY_DISCOUNT" => false,
     "PROPERTY_THIS_COLLECTION" => false,
 ));
+*/
 ?>
-<?$APPLICATION->IncludeComponent(
+<?/*$APPLICATION->IncludeComponent(
     "bitrix:catalog.section",
     "slider_left",
     array(
@@ -125,3 +128,4 @@ $arDiscPrFilter["ID"] = getRandomElementId(16, 6, array(
     ),
     false
 );
+*/
