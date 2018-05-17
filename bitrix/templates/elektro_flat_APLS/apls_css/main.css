@@ -512,7 +512,8 @@ ul.left-menu > li > a {
 }
 
 .catalog-detail .article_rating {
-    display: none;
+    width: 280px;
+    margin: 0px;
 }
 
 /* хлебные крошки */
