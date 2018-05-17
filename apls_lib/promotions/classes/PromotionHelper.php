@@ -28,6 +28,31 @@ class PromotionHelper
 
     private static $actualPromotions = array();
 
+    private static $actualPromotionsCatalogSections = array();
+    private static $actualPromotionsCatalogProducts = array();
+    private static $actualPromotionsCatalogExceptions = array();
+
+    /**
+     * Принудительно обновляет и возвращает данные по актуальным акцим
+     * Результирующий массив имеет структуру:
+     * array (
+     *      promotions => <массив действующих акций>
+     *      revisions => <массив действующих ревизий>
+     *      sections => <массив актуальных разделов действующих акций>
+     *      promotionsInSections => array (
+     *          <ключ секции> => массив акций
+     *          ...
+     *      )
+     *      revisionPromotion => array (
+     *          <id ревизии> => <id акции>
+     *          ...
+     *      )
+     * )
+     *
+     * @param $region - регион действия акции
+     * @param string $activityType - тип активности
+     * @return array - массив результирующих данных
+     */
     public static function getActualPromotionsDataForRegionNoCache($region, $activityType = self::DEFAULT_ACTIVITY)
     {
         if (!in_array($activityType, static::$activityTypes)) {
@@ -87,8 +112,10 @@ class PromotionHelper
         $revisions = array();
         $sections = array();
         $promotionsInSections = array();
+        $revisionPromotion = array();
         while ($record = $records->fetch()) {
             $promotionsInSections[$record['section']][] = $record['promotion'];
+            $revisionPromotion[$record['revision']] = $record['promotion'];
             $promotions[] = $record['promotion'];
             $revisions[] = $record['revision'];
             $sections[] = $record['section'];
@@ -98,9 +125,31 @@ class PromotionHelper
         $result['revisions'] = array_unique($revisions);
         $result['sections'] = array_unique($sections);
         $result['promotionsInSections'] = $promotionsInSections;
+        $result['revisionPromotion'] = $revisionPromotion;
         return $result;
     }
 
+    /**
+     * Возвращает данные по актуальным акцим
+     * Результирующий массив имеет структуру:
+     * array (
+     *      promotions => <массив действующих акций>
+     *      revisions => <массив действующих ревизий>
+     *      sections => <массив актуальных разделов действующих акций>
+     *      promotionsInSections => array (
+     *          <ключ секции> => массив акций
+     *          ...
+     *      )
+     *      revisionPromotion => array (
+     *          <id ревизии> => <id акции>
+     *          ...
+     *      )
+     * )
+     *
+     * @param $region - регион действия акции
+     * @param string $activityType - тип активности
+     * @return array - массив результирующих данных
+     */
     public static function getActualPromotionsDataForRegion($region, $activityType = self::DEFAULT_ACTIVITY) {
         if(!isset(static::$actualPromotions[$region][$activityType])) {
             static::$actualPromotions[$region][$activityType] = static::getActualPromotionsDataForRegionNoCache($region,$activityType);
@@ -109,198 +158,123 @@ class PromotionHelper
     }
 
     /**
-     * Метод возвращает массив ID акций, к которым пркреплен искомый товар в определенной локации, если товар не
-     * прикреплен ни к одной акции возвращает пустой массив $resultArray
-     * @param $productId - ID товара
-     * @param $region - ID региона
-     * @return array
+     * вернет список XML_ID секций каталога для указанной ревизии
+     * @param $revisionId - id ревизии
+     * @return array - массив секций каталога
      */
-    public static function getPromotionsIdByElementId($productId, $region):array
-    {
-        // должны получить xmlId товара по его Id
-        $productXmlId = PromotionHelper::getProductXmlIdById ($productId);
-        // должны запустить метод getPromotionsIdByElementXmlId
-        return PromotionHelper::getPromotionsIdByElementXmlId($productXmlId, $region);
+    public static function getActualPromotionCatalogSectionByRevision($revisionId):array {
+        if(!isset(static::$actualPromotionsCatalogSections[$revisionId])) {
+            $result = PromotionCatalogSection::getElementList(
+                MySQLWhereElementString::getBinaryOperationString (
+                    "revision",
+                    MySQLWhereElementString::OPERATOR_B_EQUAL,
+                    $revisionId
+                )
+            );
+
+            static::$actualPromotionsCatalogSections[$revisionId] = array();
+            foreach ($result as $element) {
+                if($element instanceof ModelAbstract) {
+                    $section = $element->getFieldValue('section');
+                    static::$actualPromotionsCatalogSections[$revisionId][] = $section;
+                    $catalogChildren = APLS_CatalogSections::getAllChildrenListForSection($section);
+                    foreach ($catalogChildren as $child) {
+                        static::$actualPromotionsCatalogSections[$revisionId][] = $child;
+                    }
+                }
+            }
+        }
+        return static::$actualPromotionsCatalogSections[$revisionId];
+    }
+
+    /**
+     * вернет список XML_ID товаров для указанной ревизии
+     * @param $revisionId - id ревизии
+     * @return array - массив товаров
+     */
+    public static function getActualPromotionCatalogProductsByRevision($revisionId) {
+        if(!isset(static::$actualPromotionsCatalogProducts[$revisionId])) {
+            $result = PromotionCatalogProduct::getElementList(
+                MySQLWhereElementString::getBinaryOperationString (
+                    "revision",
+                    MySQLWhereElementString::OPERATOR_B_EQUAL,
+                    $revisionId
+                )
+            );
+            static::$actualPromotionsCatalogProducts[$revisionId] = array();
+            foreach ($result as $element) {
+                if($element instanceof ModelAbstract) {
+                    static::$actualPromotionsCatalogProducts[$revisionId][] = $element->getFieldValue('product');
+                }
+            }
+        }
+        return static::$actualPromotionsCatalogProducts[$revisionId];
+    }
+
+    /**
+     * вернет список XML_ID товаров-исключений для указанной ревизии
+     * @param $revisionId - id ревизии
+     * @return array - массив товаров-исключений
+     */
+    public static function getActualPromotionCatalogExceptionsByRevision($revisionId) {
+        if(!isset(static::$actualPromotionsCatalogExceptions[$revisionId])) {
+            $result = PromotionCatalogException::getElementList(
+                MySQLWhereElementString::getBinaryOperationString (
+                    "revision",
+                    MySQLWhereElementString::OPERATOR_B_EQUAL,
+                    $revisionId
+                )
+            );
+            static::$actualPromotionsCatalogExceptions[$revisionId] = array();
+            foreach ($result as $element) {
+                if($element instanceof ModelAbstract) {
+                    static::$actualPromotionsCatalogExceptions[$revisionId][] = $element->getFieldValue('product');
+                }
+            }
+        }
+        return static::$actualPromotionsCatalogExceptions[$revisionId];
     }
 
     /**
      * Метод возвращает массив ID акций, к которым пркреплен искомый товар в определенной локации, если товар не
      * прикреплен ни к одной акции возвращает пустой массив $resultArray
+     * @param $productId - id товара
      * @param $productXmlId - xml_id товара
      * @param $region - ID локации акции
      * @return array
      */
-    public static function getPromotionsIdByElementXmlId($productXmlId, $region): array
-    {
+    public static function getPromotionsId($productId, $productXmlId, $region): array {
+        //Создаем результирующий массив
+        $promotionIdList = array();
+        $revisionsIdList = array();
         //Получаем массив всех активных акций, ревизий
         $actualPromotions = PromotionHelper::getActualPromotionsDataForRegion($region);
-        $whereObj = new MySQLWhereString();
-        //Создаем результирующий массив
-        $resultPromotionId = array();
-        //Перебираем подмассив ревизий
         foreach ($actualPromotions['revisions'] as $revisionId) {
-            //Формируем запрос к таблице соответвий ревизий добавленных к ним товаров
-            $whereObjProduct = $whereObj->addElement(
-                MySQLWhereElementString::getBinaryOperationString(
-                    "revision",
-                    MySQLWhereElementString::OPERATOR_B_EQUAL,
-                    $revisionId)
-            );
-            $resultProduct = PromotionCatalogProduct::getElementList($whereObj);
-            foreach ($resultProduct as $product) {
-                //Перебираем все полученные XML_ID товаров и сразу сравниваем с XML_ID искомого товара
-                if (
-                    $product instanceof PromotionCatalogProduct &&
-                    $productXmlId == $product->getFieldValue('product')
-                ) {
-                    //Записываем совпадения в результирующий массив
-                    $resultRevisionId[] = $revisionId;
-                }
-            }
-            //Удаляем элемент запроса к базе
-            $whereObj->removeElement($whereObjProduct);
-            //Формируем новый запрос к таблице соответвий ревизий и добавленным к ним каталогам
-            $whereObjCatalog = $whereObj->addElement(
-                MySQLWhereElementString::getBinaryOperationString(
-                    "revision",
-                    MySQLWhereElementString::OPERATOR_B_EQUAL,
-                    $revisionId)
-            );
-            $resultCatalog = PromotionCatalogSection::getElementList($whereObj);
-            if (!empty($resultCatalog)) {
-                foreach ($resultCatalog as $catalog) {
-                    //Перебираем все полученные XML_ID каталогов и проверяем состоит ли искомый товар в каталоге и добавлен ли товар в искдючения к данной ревизии
-                    if (
-                        $catalog instanceof PromotionCatalogSection &&
-                        PromotionHelper::checkProductXmlIdIsSubjectToCatalog($productXmlId, $catalog->getFieldValue('section')) &&
-                        PromotionHelper::checkProductXmlIdIsSubjectToException($productXmlId, $revisionId)
-                    ) {
-                        //Записываем совпадения в результирующий массив
-                        $resultRevisionId[] = $revisionId;
+            $exceptions = static::getActualPromotionCatalogExceptionsByRevision($revisionId);
+            if(empty($exceptions) || !in_array($productXmlId,$exceptions)) {
+                $products = static::getActualPromotionCatalogProductsByRevision($revisionId);
+                if(!empty($products) && in_array($productXmlId,$products)) {
+                    $revisionsIdList[] = $revisionId;
+                } else {
+                    $sections = static::getActualPromotionCatalogSectionByRevision($revisionId);
+                    if(!empty($sections)) {
+                        $referenceCatalogId = CatalogElementModel::searchByElementId($productId);
+                        if(!empty($referenceCatalogId)) {
+                            $section = array_shift($referenceCatalogId)->getFieldValue("XML_ID");
+                            if(in_array($section,$sections)) {
+                                $revisionsIdList[] = $revisionId;
+                            }
+                        }
                     }
                 }
             }
-            //Удаляем элемент запроса к базе
-            $whereObj->removeElement($whereObjCatalog);
         }
-        //При нахождении совпадений и записи в массив подходящих ревизий $resultRevisionId, перебираем их и получаем ИД соответсвующей акции
-        if (!empty($resultRevisionId)) {
-            foreach ($resultRevisionId as $revId) {
-                $whereObjRevision = $whereObj->addElement(
-                    MySQLWhereElementString::getBinaryOperationString(
-                        "ID",
-                        MySQLWhereElementString::OPERATOR_B_EQUAL,
-                        $revId)
-                );
-                $resultRevision = PromotionRevisionModel::getElementList($whereObj);
-                foreach ($resultRevision as $revision) {
-                    if ($revision instanceof PromotionRevisionModel) {
-                        //Записываем получившиеся значения в итоговый массив
-                        $resultPromotionId[] = $revision->getFieldValue('promotion');
-                    }
-                }
-                $whereObj->removeElement($whereObjRevision);
-            }
-            //Точка выхода с какими-либо значениями
-            return $resultPromotionId;
+        //При нахождении совпадений и записи в массив подходящих ревизий $resultRevisionId,
+        // перебираем их и получаем ИД соответсвующей акции
+        foreach ($revisionsIdList as $revId) {
+            $promotionIdList[] = $actualPromotions['revisionPromotion'][$revId];
         }
         //Точка выхода с пустым массивом
-        return $resultPromotionId;
-    }
-
-    /**
-     * Проверяет присутствует ли товар в каталоге
-     * @param $productXmlId - xml_id товара
-     * @param $catalogXmlId - xml_id каталога
-     * @return bool - Возвращает TRUE если товар присутствует в каталоге
-     */
-    public static function checkProductXmlIdIsSubjectToCatalog($productXmlId, $catalogXmlId)
-    {
-        $productId = PromotionHelper::getProductIdByXml($productXmlId);
-        $referenceCatalogId = CatalogElementModel::searchByElementId($productId);
-        $resultCatalogXmlId = $referenceCatalogId[0]->getFieldValue("XML_ID");
-        $catalogChildren = APLS_CatalogSections::getAllChildrenListForSection($catalogXmlId);
-        if (!empty($catalogChildren) && in_array($resultCatalogXmlId, $catalogChildren)) {
-            return TRUE;
-        } else {
-            if ($resultCatalogXmlId == $catalogXmlId) {
-                return TRUE;
-            } else {
-                return false;
-            }
-        }
-    }
-
-    /**
-     * Проверяет присутствует ли товар в исключениях в конкретной ревизии
-     * @param $productXmlId - xml_id товара
-     * @param $revisionId - ID ревизии
-     * @return bool - Возвращает TRUE если исключенный товар присутствует в ревизии
-     */
-    protected static function checkProductXmlIdIsSubjectToException($productXmlId, $revisionId)
-    {
-        $whereObj = new MySQLWhereString();
-        $select = $whereObj->addElement(
-            MySQLWhereElementString::getBinaryOperationString(
-                "revision",
-                MySQLWhereElementString::OPERATOR_B_EQUAL,
-                $revisionId)
-        );
-        $result = PromotionCatalogException::getElementList($whereObj);
-        foreach ($result as $exception) {
-            if ($exception instanceof PromotionCatalogException) {
-                $resultProductId = $exception->getFieldValue('product');
-            }
-        }
-        $whereObj->removeElement($select);
-        if ($productXmlId == $resultProductId) {
-            return FALSE;
-        } else {
-            return TRUE;
-        }
-    }
-
-    /** Возвращает ID товара по XML_ID
-     * @param $xml XML_ID товара
-     * @return int|string
-     */
-    public static function getProductIdByXml($xml): int
-    {
-        $whereObj = new MySQLWhereString();
-        $whereObj->addElement(
-            MySQLWhereElementString::getBinaryOperationString(
-                "XML_ID",
-                MySQLWhereElementString::OPERATOR_B_EQUAL,
-                $xml)
-        );
-        $result = CatalogElementModel::getElementList($whereObj);
-        foreach ($result as $product) {
-            if ($product instanceof CatalogElementModel) {
-                $productId = $product->getId();
-            }
-        }
-        return $productId;
-    }
-
-    /**
-     * Возвращает XML_ID по ID
-     * @param $productId - ID товара
-     * @return string
-     */
-    public static function getProductXmlIdById ($productId):string {
-        $whereObj = new MySQLWhereString();
-        $whereObj->addElement(
-            MySQLWhereElementString::getBinaryOperationString(
-                "ID",
-                MySQLWhereElementString::OPERATOR_B_EQUAL,
-                $productId)
-        );
-        $result = CatalogElementModel::getElementList($whereObj);
-        foreach ($result as $product) {
-            if ($product instanceof CatalogElementModel) {
-                $productXmlid = $product->getFieldValue('XML_ID');
-            }
-        }
-        return $productXmlid;
+        return $promotionIdList;
     }
 }

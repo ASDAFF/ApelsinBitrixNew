@@ -7,6 +7,7 @@ class PromotionRegionModel extends PromotionModelAbstract
     protected static $privateFields = array('default');
     protected static $requiredFields = array('region','alias');
     protected static $optionalFields = array('sort');
+    protected static $userRegion = null;
 
     const DEFAULT_FIELD = 'default';
 
@@ -127,6 +128,9 @@ class PromotionRegionModel extends PromotionModelAbstract
     }
 
     public static function getUserRegion(): PromotionRegionModel {
-        return static::getDefaultRegion();
+        if(static::$userRegion === null) {
+            static::$userRegion = static::getDefaultRegion();
+        }
+        return static::$userRegion;
     }
 }

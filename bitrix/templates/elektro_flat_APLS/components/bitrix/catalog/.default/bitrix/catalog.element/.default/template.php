@@ -144,7 +144,7 @@ $sticker = "";
 $timeBuy = "";
 if(array_key_exists("PROPERTIES", $arResult) && is_array($arResult["PROPERTIES"])) {
     include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogItemInfo.php";
-    $sticker .= APLS_CatalogItemInfo::getLables($arResult['XML_ID'],$arResult["PROPERTIES"]);
+    $sticker .= APLS_CatalogItemInfo::getLables($arResult['ID'],$arResult['XML_ID'],$arResult["PROPERTIES"]);
 	//NEW//
 	if(array_key_exists("NEWPRODUCT", $arResult["PROPERTIES"]) && !$arResult["PROPERTIES"]["NEWPRODUCT"]["VALUE"] == false)
 		$sticker .= "<span class='new'>".GetMessage("CATALOG_ELEMENT_NEWPRODUCT")."</span>";

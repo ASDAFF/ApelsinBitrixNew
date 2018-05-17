@@ -14,11 +14,11 @@ class APLS_CatalogItemInfo
     const promotionCss = "stock";
     const promotionText = "Акция";
 
-    public static function getLables($elementXmlId, $properties, $textSpan = false)
+    public static function getLables($elementId, $elementXmlId, $properties, $textSpan = false)
     {
         $html = "";
-        /*
-        $promotions = PromotionHelper::getPromotionsIdByElementXmlId(
+        $promotions = PromotionHelper::getPromotionsId(
+            $elementId,
             $elementXmlId,
             PromotionRegionModel::getUserRegion()->getId()
         );
@@ -29,7 +29,6 @@ class APLS_CatalogItemInfo
                 $html .= "<span class='" . self::promotionCss . "'>" . self::promotionText . "</span>";
             }
         }
-        */
         try {
             $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLName("ApelsinCatalogElementLables");
             $rsData = $entity_data_class::getList(array(
