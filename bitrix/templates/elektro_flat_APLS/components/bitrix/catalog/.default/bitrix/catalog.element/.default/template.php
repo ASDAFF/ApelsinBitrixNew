@@ -1651,6 +1651,8 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 		<?}?>
 	</div>	
 	<div class="clr"></div>
+            <?=APLS_CatalogItemInfo::getLawyerGoodsNotice()?>
+    <div class="clr"></div>
 </div>
 
 <?if(isset($arResult["OFFERS"]) && !empty($arResult["OFFERS"])) {

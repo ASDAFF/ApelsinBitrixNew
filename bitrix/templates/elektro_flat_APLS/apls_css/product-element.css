@@ -8,7 +8,7 @@
 .not-filled-product {
     width: 100%;
     float: left;
-    margin: 15px 0px 15px 0px;
+    margin-bottom: 20px;
     padding: 20px 20px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -38,7 +38,7 @@
 .CatalogItemPromo {
     width: 100%;
     float: left;
-    margin: 15px 0px 0px 0px;
+    margin: 0px 0px 20px 0px;
     padding: 20px 20px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -96,6 +96,7 @@
 
 /* Дополнительыне реквизиты услуг в карте товара */
 .catalog-detail .ProductAvailableServicesWrapper {
+    margin: 0px 0px 10px 0px;
 }
 
 .catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesTitle {
@@ -199,7 +200,8 @@
     background-color: #fafafd;
 }
 
-.catalog-detail .LAWYER_GOODS_NOTICE {
+.LAWYER_GOODS_NOTICE {
+    margin-top: 2em;
     font-size: 9px;
 }
 

@@ -64,9 +64,13 @@ class APLS_CatalogItemInfo
         $APLS_Action = new APLS_CatalogItemDetailsAction($promotions);
         $APLS_DetailsInfo = new APLS_CatalogItemDetailsInfo($properties);
         $html .= $APLS_CIDPB->getHtml();
-        $html .= $APLS_Action->getHtml();
         $html .= $APLS_DetailsInfo->getHtml();
-        $html .= '<div class="LAWYER_GOODS_NOTICE">';
+        $html .= $APLS_Action->getHtml();
+        return $html;
+    }
+
+    public static function getLawyerGoodsNotice() {
+        $html = '<div class="LAWYER_GOODS_NOTICE">';
         $html .= APLS_GetGlobalParam::getParams("LAWYER_GOODS_NOTICE ");
         $html .= '</div>';
         return $html;

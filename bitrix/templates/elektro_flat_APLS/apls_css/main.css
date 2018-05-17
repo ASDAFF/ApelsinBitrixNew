@@ -511,6 +511,10 @@ ul.left-menu > li > a {
     font-size: 11px !important;
 }
 
+.catalog-detail .article_rating {
+    display: none;
+}
+
 /* хлебные крошки */
 /*
 .breadcrumb__arrow {
