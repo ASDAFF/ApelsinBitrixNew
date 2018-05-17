@@ -453,7 +453,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
                 <?
                 /*** Выводим наш блок с реквизитами товаров ***/
                 include_once $_SERVER["DOCUMENT_ROOT"].'/apls_lib/catalog/APLS_CatalogItemInfo.php';
-                echo APLS_CatalogItemInfo::getItemMorInfo($arResult["PROPERTIES"]);
+                echo APLS_CatalogItemInfo::getItemMorInfo($arResult["ID"],$arResult["XML_ID"],$arResult["PROPERTIES"]);
                 ?>
 				<div class="column three">
 					<div class="price_buy_detail" itemprop="offers" itemscope itemtype="http://schema.org/Offer">

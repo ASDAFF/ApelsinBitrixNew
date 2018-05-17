@@ -53,10 +53,15 @@ class APLS_CatalogItemInfo
         return $html;
     }
 
-    public static function getItemMorInfo($properties) {
+    public static function getItemMorInfo($elementId, $elementXmlId,$properties) {
         $html = "";
         $APLS_CIDPB = new APLS_CatalogItemDetailsPropertiesBlock($properties);
-        $APLS_Action = new APLS_CatalogItemDetailsAction($properties);
+        $promotions = PromotionHelper::getPromotionsId(
+            $elementId,
+            $elementXmlId,
+            PromotionRegionModel::getUserRegion()->getId()
+        );
+        $APLS_Action = new APLS_CatalogItemDetailsAction($promotions);
         $APLS_DetailsInfo = new APLS_CatalogItemDetailsInfo($properties);
         $html .= $APLS_CIDPB->getHtml();
         $html .= $APLS_Action->getHtml();

@@ -1,58 +1,36 @@
 <?php
 
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/APLS_GetGlobalParam.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionModel.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionRevisionModel.php";
 
 class APLS_CatalogItemDetailsAction {
 
 	private $html = "";
-    private $promoFields = array();
-    private $promoTitle = "";
-    private $promoText = "";
-    private $promoImg = "";
-    private $promoUrl = "";
-    private $globalParams = array();
-    const YES_VALUE = array("true", "Y", "Да");
+    const PROMOTIONS_PAGE = "/promotions/";
 
-	public function __construct(array $property) {
-        $this->globalParams = APLS_GetGlobalParam::getParams(array("PROMO","PROMO_TEXT","PROMO_IBLOCK_ID"));
-        if (isset($property[$this->globalParams["PROMO_TEXT"]]["VALUE"]) && $property[$this->globalParams["PROMO_TEXT"]]["VALUE"] != "" &&
-            (in_array($property[$this->globalParams["PROMO"]]["VALUE"], self::YES_VALUE))) {
-            $this->promoTitle = $property[$this->globalParams["PROMO_TEXT"]]["VALUE"];
-            $this->getPromoData();
+	public function __construct(array $promotionsId) {
+	    foreach ($promotionsId as $promotionId) {
+            $this->generatePromotionHtml($promotionId);
         }
 	}
 
-	private function getPromoData() {
-        $arSelect = Array("PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_PAGE_URL");
-        $arFilter = Array("IBLOCK_ID"=>$this->globalParams["PROMO_IBLOCK_ID"], "=NAME"=>$this->promoTitle, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y");
-        $res = CIBlockElement::GetList(Array(),$arFilter,false,false,$arSelect);
-        while($ob = $res->GetNextElement())
-        {
-            $this->promoFields = $ob->GetFields();
-            if(isset($this->promoFields["PREVIEW_TEXT"])) {
-                $this->promoText = $this->promoFields["PREVIEW_TEXT"];
-            }
-            if(isset($this->promoFields["DETAIL_PAGE_URL"])) {
-                $this->promoUrl = $this->promoFields["DETAIL_PAGE_URL"];
-            }
-            if(isset($this->promoFields["PREVIEW_PICTURE"])) {
-                $this->promoImg = CFile::GetPath($this->promoFields["PREVIEW_PICTURE"]);
-            }
-        }
-        $this->generateHtml();
-    }
-
-    private function generateHtml() {
-	    if($this->promoTitle != "") {
+    private function generatePromotionHtml(string $promotionId) {
+        $promotion = new PromotionModel($promotionId);
+        $revisionId = $promotion->getCurrentRevisionId();
+        if($revisionId !== "") {
+            $revision = new PromotionRevisionModel($revisionId);
+            $mainText = $revision->getFieldValue('main_text');
             $this->html .= "<div class='CatalogItemPromo'>";
             $this->html .= "<i class='fa fa-scissors CatalogItemPromoIcon'></i>";
             $this->html .= "<div class='CatalogItemPromoData'>";
-            $this->html .= "<div class='CatalogItemPromoTitle'>".$this->promoTitle."</div>";
-            if($this->promoText != "") {
-                $this->html .= "<div class='CatalogItemPromoText'>".$this->promoText."</div>";
-            }
-            if($this->promoUrl != "") {
-                $this->html .= "<a class='content_button btn_buy apuo show_promo' href='" . $this->promoUrl . "'>подробнее об акции</a>";
+            $this->html .= "<div class='CatalogItemPromoTitle'>".$revision->getFieldValue('title')."</div>";
+            $this->html .= "<div class='CatalogItemPromoText'>".$revision->getFieldValue('preview_text')."</div>";
+            if($mainText !== "" && $mainText !== null) {
+                $this->html .= "<a 
+                target='_blank' 
+                class='content_button btn_buy apuo show_promo' 
+                href='" . self::PROMOTIONS_PAGE."id/".$promotionId . "/'>подробнее об акции</a>";
             }
             $this->html .= "</div>";
             $this->html .= "</div>";
