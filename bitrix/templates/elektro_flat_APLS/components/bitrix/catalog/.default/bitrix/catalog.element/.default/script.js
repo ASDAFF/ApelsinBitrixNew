@@ -1793,7 +1793,7 @@
 		
 		this.obPopupWin.setContent(strContent);
 		this.obPopupWin.setButtons(buttons);
-		this.obPopupWin.show();	
+		// this.obPopupWin.show();
 	};
 
 	window.JCCatalogElement.prototype.BasketRedirect = function() {
