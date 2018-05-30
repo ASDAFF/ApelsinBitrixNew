@@ -29,9 +29,17 @@
 .bx-soa-order-save .btn_buy.popdef:hover,
 .btn_buy.popdef.next:hover,
 .cart-buttons .btn_buy.popdef:hover {
-    border: 1px solid #ef7f1a;
+    border: 1px solid #ef7f1a !important;
     background: #ef7f1a !important;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
+}
+.btn_buy:hover span,
+.btn_buy.popdef:hover span,
+.btn_buy.apuo_detail:hover span,
+.bx-soa-order-save .btn_buy.popdef:hover span,
+.btn_buy.popdef.next:hover span,
+.cart-buttons .btn_buy.popdef:hover span {
+    color: #FFFFFF !important;
 }
 
 .btn_buy i {
@@ -275,4 +283,25 @@
 .StylishButton.Orange:hover {
     color: #ffffff;
     background: #ef7f1a;
+}
+
+/* Заблокированные кнопки */
+.btn_buy:disabled, .btn_buy:disabled:hover,
+button[disabled], button[disabled]:hover,
+.catalog-detail .compare a.catalog-item-compared, .catalog-detail .compare a.catalog-item-compared:hover,
+.catalog-detail .delay a.catalog-item-delayed, .catalog-detail .delay a.catalog-item-delayed:hover,
+.catalog-item-card .buy_more .compare a.catalog-item-compared, .catalog-item-card .buy_more .compare a.catalog-item-compared:hover,
+.catalog-item-card .buy_more .delay a.catalog-item-delayed, .catalog-item-card .buy_more .delay a.catalog-item-delayed:hover {
+    color: #a0a4bc !important;
+    background: #edeef8 !important;
+    border: 1px solid #edeef8 !important;
+}
+button[disabled]:hover span,
+.btn_buy[disabled]:hover span,
+.btn_buy.popdef[disabled]:hover span,
+.btn_buy.apuo_detail[disabled]:hover span,
+.bx-soa-order-save .btn_buy.popdef[disabled]:hover span,
+.btn_buy.popdef.next[disabled]:hover span,
+.cart-buttons .btn_buy.popdef[disabled]:hover span {
+    color: #a0a4bc !important;
 }
