@@ -1,0 +1,524 @@
+.contacts_wrapper {
+    width: 100%;
+}
+
+.APLS_contacts_regions {
+    padding: 0 0 10px 0;
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+
+}
+
+.APLS_contacts_regions .APLS_contacts_region_list {
+    display: inline-block;
+}
+
+.APLS_contacts_regions .contact_settings {
+    display: inline-block;
+    float: right;
+}
+
+.APLS_contacts_regions .APLS_contacts_region_list>.APLS_contacts_regions_block{
+    display: inline-block;
+    color: #8184a1;
+    text-decoration: none;
+    border: 1px solid #dee0ee;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+.APLS_contacts_regions .APLS_contacts_region_list>.APLS_contacts_regions_block:hover{
+    background: #8184A1;
+    color: #FFFFFF;
+    border: 1px solid #8184A1;
+}
+.APLS_contacts_regions .APLS_contacts_region_list>.APLS_contacts_regions_block.ActiveBlockRegions {
+    background: #ef7f1a;
+    color: #FFFFFF;
+    border: 1px solid #ef7f1a;
+}
+
+.APLS_contacts_regions .contact_settings {
+    padding-right: 15px;
+}
+
+.APLS_contacts_regions .contact_settings .contacts_settings_map,
+.APLS_contacts_regions .contact_settings .contacts_edit_list{
+    display: inline-block;
+    padding: 5px 15px;
+}
+
+.APLS_contacts_regions .contact_settings .contacts_edit_list>strong,
+.APLS_contacts_regions .contact_settings .contacts_edit_list>i{
+    font-size: 16px;
+    color: #8184a1;
+    cursor: pointer;
+}
+
+.APLS_contacts_regions .contact_settings .contacts_settings_map>strong,
+.APLS_contacts_regions .contact_settings .contacts_settings_map>i {
+    font-size: 16px;
+    color: #8184a1;
+    cursor: pointer;
+}
+
+.APLS_contacts_regions .contact_settings .contacts_edit_list.activeSetting>strong,
+.APLS_contacts_regions .contact_settings .contacts_edit_list.activeSetting>i{
+    font-size: 16px;
+    color: #ef7f1a;
+    cursor: pointer;
+}
+
+.APLS_contacts_regions .contact_settings .contacts_settings_map.activeSetting>strong,
+.APLS_contacts_regions .contact_settings .contacts_settings_map.activeSetting>i {
+    font-size: 16px;
+    color: #ef7f1a;
+    cursor: pointer;
+}
+
+.contacts_wrapper .contacts_map {
+    height: 600px;
+    border: 1px solid #dee0ee;
+    margin-bottom: 10px;
+    display: none;
+}
+
+
+.contacts_wrapper .cities_list .shop_element_header {
+    width: 100%;
+    background-color: #edeef8;
+    display: block;
+    position: relative;
+}
+
+.contacts_wrapper .cities_list .shop_element_header .element_header_name,
+.contacts_wrapper .cities_list .shop_element_header .element_header_time,
+.contacts_wrapper .cities_list .shop_element_header .element_header_feature,
+.contacts_wrapper .cities_list .shop_element_header .element_header_feedback{
+    color: #575b71;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+}
+
+.contacts_wrapper .cities_list .shop_element_header .element_header_name{
+    display: inline-block;
+    width: 29%;
+}
+
+.contacts_wrapper .cities_list .shop_element_header .element_header_time{
+    display: inline-block;
+    width: 27%;
+}
+
+.contacts_wrapper .cities_list .shop_element_header .element_header_feature,
+.contacts_wrapper .cities_list .shop_element_header .element_header_feedback{
+    display: inline-block;
+    width: 17%;
+}
+
+.contacts_wrapper .cities_list .shop_element_list {
+    display: block;
+    position: relative;
+}
+
+.contacts_wrapper .cities_list .shop_element {
+    min-height: 90px;
+    margin-top: 3px;
+    border: 1px solid #dee0ee;
+    padding: 10px 20px;
+}
+
+.contacts_wrapper .cities_list .shop_element:hover {
+    border: 1px solid #ef7f1a;
+    cursor: pointer;
+}
+
+/*Название и адрес магазина*/
+
+.contacts_wrapper .cities_list .shop_element_list {
+    display: block;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_name {
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: 35%;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_name .shop_element_title {
+    padding-left: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    size: 12px;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_name .shop_element_address,
+.contacts_wrapper .cities_list .shop_element .shop_element_name .shop_element_mail,
+.contacts_wrapper .cities_list .shop_element .shop_element_name .shop_element_phone1,
+.contacts_wrapper .cities_list .shop_element .shop_element_name .shop_element_phone2{
+    padding-top: 2px;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_feature {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 25%;
+    height: auto;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_feature .shop_element_icon {
+    padding-top: 8px;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_feature .shop_element_icon img {
+    width: 17px;
+    padding-right: 3px;
+}
+
+/*.contacts_wrapper .cities_list .shop_element .shop_element_feature .shop_element_icon:hover  {*/
+    /*color: #ef7f1a;*/
+/*}*/
+
+.contacts_wrapper .cities_list .shop_element .shop_element_feature .shop_element_icon:first-child {
+    padding-top: 0px;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_feature .shop_element_empty {
+    color: #FFFFFF;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_time {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 24%;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_time .APLS_contacts_buildings_time_N {
+    text-transform: uppercase;
+    font-weight: 700;
+    size: 12px;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_feedback {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 15%;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_feedback .shop_element_feedback_dir,
+.contacts_wrapper .cities_list .shop_element .shop_element_feedback .shop_element_feedback_shopmap,
+.contacts_wrapper .cities_list .shop_element .shop_element_feedback .shop_element_feedback_map_scheme{
+    display: block;
+    color: #8184a1;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #dee0ee;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_feedback .shop_element_feedback_shopmap,
+.contacts_wrapper .cities_list .shop_element .shop_element_feedback .shop_element_feedback_map_scheme{
+    margin-top: 9px;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_feedback .shop_element_feedback_dir:hover,
+.contacts_wrapper .cities_list .shop_element .shop_element_feedback .shop_element_feedback_shopmap:hover,
+.contacts_wrapper .cities_list .shop_element .shop_element_feedback .shop_element_feedback_map_scheme:hover{
+    background: #8184A1;
+    color: #FFFFFF;
+    border: 1px solid #8184A1;
+}
+
+/*Обратная связь*/
+
+.feedback {
+    width:100%;
+    height: 2000px;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    /*z-index: 9000;*/
+    position:fixed;
+    top:0px;
+}
+
+.feedback .feedback_mail {
+    margin:20% 40%;
+    width:396px;
+    background-color: #eef2f4;
+    position: absolute;
+    height: auto;
+    min-height: 325px;
+    max-height: 500px;
+}
+
+.feedback .feedback_mail .feedback_mail_header {
+    background: #ef7f1a;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 14px 20px;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-align: left;
+}
+
+.feedback .feedback_mail .feedback_mail_form {
+    padding: 20px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_name,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_phone,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_text{
+    width: 100%;
+    display: table;
+    margin-bottom: 5px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_name .feedback_mail_name_header,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_phone .feedback_mail_phone_header,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_text .feedback_mail_text_header{
+    width: 125px;
+    display: table-cell;
+    vertical-align: middle;
+    color: #575b71;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_name .feedback_mail_name_text,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_phone .feedback_mail_phone_text,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_text .feedback_mail_text_text{
+    display: table-cell;
+    vertical-align: top;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_name .feedback_mail_name_text input,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_phone .feedback_mail_phone_text input{
+    width: 90%;
+    height: 25px;
+    padding: 0px 9px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_text .feedback_mail_text_text textarea {
+    width: 97%;
+    height: 61px;
+    min-height: 61px;
+    max-height: 61px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_agreement {
+    font-size: 11px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_agreement .feedback_mail_agreement_checkbox {
+    padding-right: 10px;
+    display: table-cell;
+    height: 45px;
+    vertical-align: middle;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_agreement .feedback_mail_agreement_checkbox input {
+    width: 12px;
+    height: 12px;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_agreement .feedback_mail_agreement_label {
+    display: table-cell;
+    height: 45px;
+    vertical-align: middle;
+}
+
+.feedback .feedback_mail .feedback_mail_close {
+    border-radius: 12px !important;
+    background-color: #575b71;
+    right: -10px;
+    top: -10px;
+    width: 24px;
+    height: 24px;
+    display: table;
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    opacity: 1;
+    text-align: center;
+}
+
+.feedback .feedback_mail .feedback_mail_close:hover {
+    background-color: #ef7f1a;
+    cursor: pointer;
+}
+
+.feedback .feedback_mail .feedback_mail_close i {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0px;
+    padding: 0px;
+    font-size: 17px;
+    color: #fff;
+}
+
+.feedback .feedback_mail .feedback_mail_close i:hover {
+    color: #8184a1;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_submit {
+    display: block;
+    width: 100%;
+    float: left;
+    margin-top: 9px;
+    padding-bottom: 20px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_submit .feedback_mail_submit_button {
+    height: 31px;
+    float: right;
+    padding: 0px 20px;
+    border: 1px solid #dee0ee;
+    background: transparent;
+    color: #8184a1;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_submit .feedback_mail_submit_button:hover {
+    color: #FFFFFF;
+    background: #ef7f1a;
+    cursor: pointer;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_error {
+    width: 100%;
+    display: table;
+    background-color: #fdd4e0;
+    margin: 0px 0px 5px 0px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_error .feedback_mail_error_text {
+    color: #99475f;
+    font-size: 13px;
+    display: table-cell;
+    vertical-align: top;
+    margin: 0px;
+    padding: 0px 0px 0px 18px;
+}
+
+/*@media (min-width: 1253px) {*/
+    /*.shop_element_header .element_header_name {*/
+        /*width: 25%!important;*/
+    /*}*/
+/*}*/
+
+@media (max-width: 1253px) and (min-width: 788px) {
+    .shop_element_header .element_header_time {
+        width: 23%!important;
+    }
+}
+
+@media screen and (max-width: 787px) and (min-width: 300px) {
+    .APLS_contacts_region_list {
+        display: block;
+        padding: 0px 5px;
+        width: 100%;
+    }
+    .APLS_contacts_region_list .APLS_contacts_regions_block {
+        display: block!important;
+        position: relative;
+        margin-top: 5px;
+        padding: 15px 10px!important;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .contact_settings {
+        float: none!important;
+        display: block!important;
+        margin-top: 10px;
+        padding-right: 0px!important;
+    }
+
+    .contact_settings .contacts_edit_list {
+        float: right;
+    }
+    .shop_element_header {
+        padding: 5px 0px;
+    }
+
+    .shop_element_header div {
+        padding: 0px!important;
+        font-size: 14px!important;
+    }
+
+    .shop_element_header .element_header_name {
+        width: 30%!important;
+    }
+
+    .shop_element_header .element_header_feature {
+        width: 24%!important;
+    }
+
+    .shop_element_header .element_header_time {
+        width: 24%!important;
+    }
+
+    .shop_element_list .shop_element {
+        padding: 5px 5px!important;
+        min-height: 115px!important;
+    }
+
+    #shop_element_10, #shop_element_13 {
+        min-height: 125px!important;
+    }
+
+    .shop_element_list .shop_element .shop_element_name {
+        width: 37%!important;
+    }
+
+    .shop_element_list .shop_element .shop_element_name .shop_element_title{
+        padding-left: 0px!important;
+    }
+
+    .shop_element_list .shop_element .shop_element_time {
+        width: 22%!important;
+    }
+
+    .shop_element_list .shop_element .shop_element_feature {
+        width: 21%!important;
+    }
+
+    .shop_element_list .shop_element .shop_element_feature .shop_element_icon {
+        padding-top: 4px!important;
+    }
+
+    .shop_element_list .shop_element .shop_element_feature .shop_element_icon:first-child {
+        padding-top: 0px!important;
+    }
+
+    .shop_element_feature .shop_element_icon img {
+        display: none;
+    }
+
+    .shop_element .shop_element_feedback {
+        width: 20%!important;
+    }
+
+    .shop_element .shop_element_feedback .shop_element_feedback_dir {
+        padding: 3px 3px!important;
+    }
+
+    .feedback .feedback_mail {
+        margin:40% 2%;
+    }
+
+}

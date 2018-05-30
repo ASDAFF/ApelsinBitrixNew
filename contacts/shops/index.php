@@ -9,9 +9,9 @@ includeSistemClasses("../../");
 
 $APPLICATION->IncludeComponent(
 	"apls:contacts", 
-	".default", 
+	"list",
 	array(
-		"COMPONENT_TEMPLATE" => ".default",
+		"COMPONENT_TEMPLATE" => "list",
 		"INIT_MAP_TYPE" => "SATELLITE",
 		"MAP_DATA" => "a:3:{s:10:\"yandex_lat\";d:55.73829999999371;s:10:\"yandex_lon\";d:37.59459999999997;s:12:\"yandex_scale\";i:10;}",
 		"MAP_WIDTH" => "600",
