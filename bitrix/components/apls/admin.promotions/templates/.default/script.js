@@ -1019,6 +1019,30 @@ function AdminPromotionsActionClearTitle() {
     AdminPromotionsActionSetTitle();
 }
 
+function AdminPromotionsActionClearElementsWrapper(elementType) {
+    var confirmVal = confirm("Вы уверены что хотите удалить все элементы из раздела "+elementType+"?");
+    if (confirmVal == true) {
+        var data = [];
+        data['revisionId'] = $('.EditRevisionMainWrapper').attr('revisionid');
+        data['elementType'] = elementType;
+        BX.ajax({
+            url: AdminPromotionsTemplateFolder() + "/ajax/action/DeleteAllElements.php",
+            data: data,
+            method: 'POST',
+            dataType: 'html',
+            onsuccess: function (result) {
+                if (elementType == 'Sections') {
+                    AdminPromotionsUiShowCatalogSections();
+                } else if (elementType == 'Products') {
+                    AdminPromotionsUiShowCatalogProducts("product","CatalogProductsWrapper");
+                } else if (elementType == 'Exceptions') {
+                    AdminPromotionsUiShowCatalogProducts("exception","CatalogExceptionsWrapper");
+                }
+            },
+        });
+    }
+}
+
 /*----------------------*/
 /* AFTER LOAD DOCUMENTS */
 /*----------------------*/
