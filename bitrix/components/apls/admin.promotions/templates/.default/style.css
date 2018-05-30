@@ -342,9 +342,95 @@
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .search .SearchInput,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .search .SearchInput,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .search .SearchInput {
-    width: 35%;
+    width: 100%;
     margin-right: 1em;
 }
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .Settings {
+    width: 100%;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .Settings .search,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .Settings .search,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .Settings .search{
+    width: 28%;
+    display: inline-block;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .Settings .downloadFail{
+    margin-left: 2em;
+    display: inline-block;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .Settings .downloadFail,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .Settings .downloadFail{
+    display: inline-block;
+    margin-left: 1em;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .Settings .AcceptBtn,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .Settings .AcceptBtn,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .AcceptBtn{
+    display: inline-block;
+    width: 6%;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .Settings .AcceptBtn .AcceptBtnOK,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .Settings .AcceptBtn .AcceptBtnOK,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .AcceptBtn .AcceptBtnOK{
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #dee0ee;
+    background: #f7f7f7;
+    height: 18px;
+    font-size: 14px;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .Settings .AcceptBtn .AcceptBtnOK:hover,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .Settings .AcceptBtn .AcceptBtnOK:hover,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .AcceptBtn .AcceptBtnOK:hover{
+    background: #dee0ee;
+    cursor: pointer;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .Settings .delete,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .Settings .delete,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .Settings .delete{
+    margin-left: 1em;
+    display: inline-block;
+    width: 15%;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .Settings .delete .deleteBtn,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .Settings .delete .deleteBtn,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .Settings .delete .deleteBtn{
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #dee0ee;
+    background: #f7f7f7;
+    height: 18px;
+    font-size: 14px;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogSectionsWrapper .Settings .delete .deleteBtn:hover,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .Settings .delete .deleteBtn:hover,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .Settings .delete .deleteBtn:hover{
+    background: #dee0ee;
+    cursor: pointer;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .Settings .settingsSelect,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .Settings .settingsSelect{
+    display: inline-block;
+    margin-left: 2em;
+    width: 24%;
+}
+
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .Settings .settingsSelect .SectionsTreeSelectBox ,
+#AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .Settings .settingsSelect .SectionsTreeSelectBox {
+    width: 100%;
+}
+
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogProductsWrapper .search,
 #AplsAdminWrapper .EditRevisionMainWrapper .CatalogExceptionsWrapper .search {
     display: flex;

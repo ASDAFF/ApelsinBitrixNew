@@ -42,26 +42,63 @@ $revisionLocationsWrapper = '<div class="RevisionLocationsWrapper"></div>';
 $catalogSectionsWrapper = '
 <div class="CatalogSectionsWrapper">
 <div class="content"></div>
+<div class="Settings">
 <div class="search">
 <input type="text" class="SearchInput" id="ShowLiveSearchSection">
+</div>
+<div class="downloadFail">
+<input id="CatalogUploadFile" class="downloadFailBtn" type="file" name="content" value="Загрузить XML" />
+</div>
+<div class="AcceptBtn">
+<div id="CatalogAcceptBtnOK" class="AcceptBtnOK">Загрузить</div>
+</div>
+<div class="delete">
+<div id="SectionDeleteBtn" class="deleteBtn">Удалить все секции</div>
+</div>
 </div>
 <div class="search-result"></div>
 </div>';
 $catalogProductsWrapper = '
 <div class="CatalogProductsWrapper">
 <div class="content"></div>
+<div class="Settings">
 <div class="search">
 <input type="text" class="SearchInput" id="ShowLiveSearchProduct">
+</div>
+<div class="settingsSelect">
 '.APLS_CatalogSections::getSelectBox("",". ","ID","NAME", 1, true).'
+</div>
+<div class="downloadFail">
+<input id="ProductUploadFile" class="downloadFailBtn" type="file" name="content" value="Загрузить XML" />
+</div>
+<div class="AcceptBtn">
+<div id="ProductAcceptBtnOK" class="AcceptBtnOK">Загрузить</div>
+</div>
+<div class="delete">
+<div id="ProductDeleteBtn" class="deleteBtn">Удалить все секции</div>
+</div>
 </div>
 <div class="search-result"></div>
 </div>';
 $catalogExceptionsWrapper = '
 <div class="CatalogExceptionsWrapper">
 <div class="content"></div>
+<div class="Settings">
 <div class="search">
 <input type="text" class="SearchInput" id="ShowLiveSearchException">
+</div>
+<div class="settingsSelect">
 '.APLS_CatalogSections::getSelectBox("",". ","ID","NAME", 1, true).'
+</div>
+<div class="downloadFail">
+<input id="ExceptionUploadFile" class="downloadFailBtn" type="file" name="content" value="Загрузить XML" />
+</div>
+<div class="AcceptBtn">
+<div id="ExceptionAcceptBtnOK" class="AcceptBtnOK">Загрузить</div>
+</div>
+<div class="delete">
+<div id="ExceptionDeleteBtn" class="deleteBtn">Удалить все секции</div>
+</div>
 </div>
 <div class="search-result"></div>
 </div>';

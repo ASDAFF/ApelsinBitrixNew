@@ -27,7 +27,7 @@ class AdminPromotions_GoodsLiveSearch
                 "%" . $searchString . "%")
         );
         //Если $section существует, то добавляем еще кусок запроса
-        if ($section !== "") {
+        if ($section !== "" && $section !== 'undefined') {
             //Нам приходит ИД, но для поиска по потомкам нужен xml - конвертируем
             $xml = APLS_CatalogSections::convertSectionsIDtoXMLID($section);
             $allChildren = APLS_CatalogSections::getAllChildrenListForSection($xml);

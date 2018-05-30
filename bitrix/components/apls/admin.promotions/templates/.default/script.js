@@ -190,6 +190,12 @@ function AdminPromotionsUiEditRevisionMain(revisionId) {
             $(".EditRevisionMainWrapper .CatalogProductsWrapper .search .SectionsTreeSelectBox").change(AdminPromotionUiShowLiveSearchElement);
             BX.bind(BX("ShowLiveSearchException"), "keyup", BX.delegate(AdminPromotionUiShowLiveSearchExceptionElement, BX));
             $(".EditRevisionMainWrapper .CatalogExceptionsWrapper .search .SectionsTreeSelectBox").change(AdminPromotionUiShowLiveSearchExceptionElement);
+            $('#CatalogAcceptBtnOK').click(AdminPromotionsUIDownloadCatalogXmlFile);
+            $('#ProductAcceptBtnOK').click(AdminPromotionsUIDownloadProductXmlFile);
+            $('#ExceptionAcceptBtnOK').click(AdminPromotionsUIDownloadExceptionXmlFile);
+            $('#SectionDeleteBtn').click(function () {AdminPromotionsActionClearElementsWrapper('Sections');});
+            $('#ProductDeleteBtn').click(function () {AdminPromotionsActionClearElementsWrapper('Products');});
+            $('#ExceptionDeleteBtn').click(function () {AdminPromotionsActionClearElementsWrapper('Exceptions');});
         },
         onfailure: function (rezult) {
             alert("Ошибка: AdminPromotionsUiEditRevision()");
@@ -425,6 +431,92 @@ function AdminPromotionsUiShowRevisionLocations() {
     });
 }
 
+function AdminPromotionsUIDownloadCatalogXmlFile() {
+    var file_data = $('#CatalogUploadFile').prop('files')[0];
+    var revisionId = $('.EditRevisionMainWrapper').attr('revisionid');
+    var form_data = new FormData();
+    form_data.append('file', file_data);
+    form_data.append('revision', revisionId);
+    if (file_data.type !== 'text/xml') {
+        alert('Загружен неверный тип файла, выберете файл с расширением .xml');
+        // очистить форму
+    } else {
+        $.ajax({
+            url: AdminPromotionsTemplateFolder() + "/ajax/ui/DownloadCatalogXml.php",
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (result) {
+                $(".CatalogSectionsWrapper .content").html(result);
+                AdminPromotionsUiShowCatalogSections();
+            },
+            failure: function () {
+                alert("Произошла ошибка выполнения скрипта AdminPromotionsUIDownloadFile");
+            },
+        });
+    }
+}
+
+function AdminPromotionsUIDownloadProductXmlFile() {
+    var file_data = $('#ProductUploadFile').prop('files')[0];
+    var revisionId = $('.EditRevisionMainWrapper').attr('revisionid');
+    var form_data = new FormData();
+    form_data.append('file', file_data);
+    form_data.append('revision', revisionId);
+    if (file_data.type !== 'text/xml') {
+        alert('Загружен неверный тип файла, выберете файл с расширением .xml');
+        // очистить форму
+    } else {
+        $.ajax({
+            url: AdminPromotionsTemplateFolder() + "/ajax/ui/DownloadProductXml.php",
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (result) {
+                $(".CatalogProductsWrapper .content").html(result);
+                AdminPromotionsUiShowCatalogProducts("product","CatalogProductsWrapper");
+            },
+            failure: function () {
+                alert("Произошла ошибка выполнения скрипта AdminPromotionsUIDownloadFile");
+            },
+        });
+    }
+}
+
+function AdminPromotionsUIDownloadExceptionXmlFile() {
+    var file_data = $('#ExceptionUploadFile').prop('files')[0];
+    var revisionId = $('.EditRevisionMainWrapper').attr('revisionid');
+    var form_data = new FormData();
+    form_data.append('file', file_data);
+    form_data.append('revision', revisionId);
+    if (file_data.type !== 'text/xml') {
+        alert('Загружен неверный тип файла, выберете файл с расширением .xml');
+        // очистить форму
+    } else {
+        $.ajax({
+            url: AdminPromotionsTemplateFolder() + "/ajax/ui/DownloadExceptionXml.php",
+            dataType: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (result) {
+                $(".CatalogExceptionsWrapper .content").html(result);
+                AdminPromotionsUiShowCatalogProducts("exception","CatalogExceptionsWrapper");
+            },
+            failure: function () {
+                alert("Произошла ошибка выполнения скрипта AdminPromotionsUIDownloadFile");
+            },
+        });
+    }
+}
 /*------------------------------*/
 /* AJAX ACTIONS - /ajax/action/ */
 /*------------------------------*/
@@ -713,6 +805,7 @@ function AdminPromotionsActionDeleteCatalogElement() {
     data["templateFolder"] = AdminPromotionsTemplateFolder();
     data["tableId"] = $(this).parent().attr('tableId');
     data["type"] = $(this).parent().attr('type');
+    alert(data["tableId"]);
     var confirmVal = confirm("Вы уверены что хотите удалить эту запись?");
     if (confirmVal === true) {
         BX.ajax({
