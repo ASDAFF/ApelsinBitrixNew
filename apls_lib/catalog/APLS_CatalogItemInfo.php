@@ -96,15 +96,20 @@ class APLS_CatalogItemInfo
 
     public static function getItemElementOldPrice($price, $properties) {
         $html = "";
-        $newPriceValue = substr($price,0, strpos($price," "));
-        $oldPriceValue = trim($properties[static::OLD_PRICE_CODE]["VALUE"]);
+        $newPriceValue = substr($price,0, strpos($price," р"));
+        $oldPriceValue = number_format (trim($properties[static::OLD_PRICE_CODE]["VALUE"]) , 2 , "." , " " );
+        $fractionPoint = strpos($oldPriceValue,".");
+        $fraction = substr($oldPriceValue, $fractionPoint+1);
+        if($fraction === "00") {
+            $oldPriceValue = substr($oldPriceValue,0, $fractionPoint);
+        }
         if(
             $properties[static::OLD_PRICE_BOOL_CODE]["VALUE"] === static::YES_BOOL_VALUE &&
             $oldPriceValue != "" &&
             $newPriceValue < $oldPriceValue
         ) {
             $html .= "<span class='catalog-detail-item-price-old catalog-item-price-old'>";
-            $html .= $properties[static::OLD_PRICE_CODE]["VALUE"]." ".static::RUB_STRING;
+            $html .= $oldPriceValue." ".static::RUB_STRING;
             $html .= "</span>";
         }
         return $html;
