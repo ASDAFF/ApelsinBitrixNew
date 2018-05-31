@@ -224,3 +224,7 @@
     /*font-size: 16px;*/
     font-weight: 800;
 }
+
+.price_buy_detail .catalog-detail-item-price-old {
+    font-size: 18px;
+}

@@ -480,7 +480,8 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 												<?}?>
 												<span class="catalog-detail-item-price">
 													<span class="catalog-detail-item-price-current">
-														<?=$arOffer["MIN_PRICE"]["PRINT_RATIO_PRICE"]?>
+                                                        <?=APLS_CatalogItemInfo::getItemElementPrice($arResult["MIN_PRICE"]["PRINT_RATIO_PRICE"], $arResult["PROPERTIES"])?>
+														<?//=$arOffer["MIN_PRICE"]["PRINT_RATIO_PRICE"]?>
 													</span>
 													<span class="unit">
 														<?=GetMessage("CATALOG_ELEMENT_UNIT")." ".(($inPriceRatio) ? $arOffer["CATALOG_MEASURE_RATIO"] : "1")." ".$arOffer["CATALOG_MEASURE_NAME"];?>
@@ -680,7 +681,8 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 									<?}?>
 									<span class="catalog-detail-item-price">
 										<span class="catalog-detail-item-price-current">
-											<?=$arResult["MIN_PRICE"]["PRINT_RATIO_PRICE"]?>
+                                            <?=APLS_CatalogItemInfo::getItemElementPrice($arResult["MIN_PRICE"]["PRINT_RATIO_PRICE"], $arResult["PROPERTIES"])?>
+											<?//=$arResult["MIN_PRICE"]["PRINT_RATIO_PRICE"]?>
 										</span>
 										<span class="unit">
 											<?=GetMessage("CATALOG_ELEMENT_UNIT")." ".(($inPriceRatio) ? $arResult["CATALOG_MEASURE_RATIO"] : "1")." ".$arResult["CATALOG_MEASURE_NAME"];?>

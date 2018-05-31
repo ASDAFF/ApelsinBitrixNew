@@ -14,6 +14,12 @@ class APLS_CatalogItemInfo
     const promotionCss = "stock";
     const promotionText = "Акция";
 
+    const OLD_PRICE_CODE = "ROZNICHNAYATSENA";
+    const OLD_PRICE_BOOL_CODE = "PRIZNAKAKTSII";
+
+    const YES_BOOL_VALUE = "Да";
+    const RUB_STRING = "руб.";
+
     public static function getLables($elementId, $elementXmlId, $properties, $textSpan = false)
     {
         $html = "";
@@ -85,6 +91,23 @@ class APLS_CatalogItemInfo
                 $html .= "</div>";
             }
         }
+        return $html;
+    }
+
+    public static function getItemElementPrice($price, $properties) {
+        $html = "";
+        $newPriceValue = substr($price,0, strpos($price," "));
+        $oldPriceValue = trim($properties[static::OLD_PRICE_CODE]["VALUE"]);
+        if(
+            $properties[static::OLD_PRICE_BOOL_CODE]["VALUE"] === static::YES_BOOL_VALUE &&
+            $oldPriceValue != "" &&
+            $newPriceValue < $oldPriceValue
+        ) {
+            $html .= "<span class='catalog-detail-item-price-old'>";
+            $html .= $properties[static::OLD_PRICE_CODE]["VALUE"]." ".static::RUB_STRING;
+            $html .= "</span>";
+        }
+        $html .= "<span class='catalog-detail-item-price-percent'>$price</span>";
         return $html;
     }
 
