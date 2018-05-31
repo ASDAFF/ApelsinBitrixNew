@@ -254,7 +254,8 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 											<span><?=$currency?></span>
 										</span>
 									<?}?>
-								</span>								
+								</span>
+                                <?=APLS_CatalogItemInfo::getItemElementOldPrice($arElement["MIN_PRICE"]["PRINT_RATIO_PRICE"], $arElement["PROPERTIES"])?>
 								<?if($arElement["TOTAL_OFFERS"]["MIN_PRICE"]["RATIO_PRICE"] < $arElement["TOTAL_OFFERS"]["MIN_PRICE"]["RATIO_BASE_PRICE"]) {?>
 									<span class="catalog-item-price-old">
 										<?=$arElement["TOTAL_OFFERS"]["MIN_PRICE"]["PRINT_RATIO_BASE_PRICE"];?>								
@@ -305,7 +306,8 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 											<span><?=$currency?></span>
 										</span>
 									<?}?>
-								</span>											
+								</span>
+                                <?=APLS_CatalogItemInfo::getItemElementOldPrice($arElement["MIN_PRICE"]["PRINT_RATIO_PRICE"], $arElement["PROPERTIES"])?>
 								<?if($arElement["MIN_PRICE"]["RATIO_PRICE"] < $arElement["MIN_PRICE"]["RATIO_BASE_PRICE"]) {?>
 									<span class="catalog-item-price-old">
 										<?=$arElement["MIN_PRICE"]["PRINT_RATIO_BASE_PRICE"];?>

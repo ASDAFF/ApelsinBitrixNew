@@ -343,6 +343,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_T
 													</span>
 												<?}?>
 											</span>
+                                            <?=APLS_CatalogItemInfo::getItemElementOldPrice($arResult["MIN_PRICE"]["PRINT_RATIO_PRICE"], $arResult["PROPERTIES"])?>
 											<?if($arOffer["MIN_PRICE"]["RATIO_PRICE"] < $arOffer["MIN_PRICE"]["RATIO_BASE_PRICE"]) {?>
 												<span class="catalog-item-price-old">
 													<?=$arOffer["MIN_PRICE"]["PRINT_RATIO_BASE_PRICE"];?>

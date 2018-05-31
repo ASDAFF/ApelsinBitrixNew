@@ -516,6 +516,10 @@ ul.left-menu > li > a {
     margin: 0px;
 }
 
+.catalog-item-price-view .item-price .catalog-item-price-old {
+    display: block;
+}
+
 /* хлебные крошки */
 /*
 .breadcrumb__arrow {

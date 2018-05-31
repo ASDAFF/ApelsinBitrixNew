@@ -197,6 +197,7 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 											</span>
 										<?}
 									}?>
+                                    <?=APLS_CatalogItemInfo::getItemElementOldPrice($arElement["MIN_PRICE"]["PRINT_RATIO_PRICE"], $arElement["PROPERTIES"])?>
 									<span class="catalog-item-price">
 										<?=($arElement["TOTAL_OFFERS"]["FROM"] == "Y" ? "<span class='from'>".GetMessage("CATALOG_ELEMENT_FROM")."</span> " : "").number_format($arElement["TOTAL_OFFERS"]["MIN_PRICE"]["RATIO_PRICE"], $arCurFormat["DECIMALS"], $arCurFormat["DEC_POINT"], $arCurFormat["THOUSANDS_SEP"]);?>
 										<span class="unit">
@@ -239,6 +240,7 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 											</span>
 										<?}
 									}?>
+                                    <?=APLS_CatalogItemInfo::getItemElementOldPrice($arElement["MIN_PRICE"]["PRINT_RATIO_PRICE"], $arElement["PROPERTIES"])?>
 									<span class="catalog-item-price">
 										<?if(count($arElement["ITEM_QUANTITY_RANGES"]) > 1) {?>
 											<span class="from"><?=GetMessage("CATALOG_ELEMENT_FROM")?></span>

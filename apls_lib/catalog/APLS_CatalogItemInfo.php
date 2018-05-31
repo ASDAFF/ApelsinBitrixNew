@@ -94,7 +94,7 @@ class APLS_CatalogItemInfo
         return $html;
     }
 
-    public static function getItemElementPrice($price, $properties) {
+    public static function getItemElementOldPrice($price, $properties) {
         $html = "";
         $newPriceValue = substr($price,0, strpos($price," "));
         $oldPriceValue = trim($properties[static::OLD_PRICE_CODE]["VALUE"]);
@@ -103,11 +103,10 @@ class APLS_CatalogItemInfo
             $oldPriceValue != "" &&
             $newPriceValue < $oldPriceValue
         ) {
-            $html .= "<span class='catalog-detail-item-price-old'>";
+            $html .= "<span class='catalog-detail-item-price-old catalog-item-price-old'>";
             $html .= $properties[static::OLD_PRICE_CODE]["VALUE"]." ".static::RUB_STRING;
             $html .= "</span>";
         }
-        $html .= "<span class='catalog-detail-item-price-percent'>$price</span>";
         return $html;
     }
 

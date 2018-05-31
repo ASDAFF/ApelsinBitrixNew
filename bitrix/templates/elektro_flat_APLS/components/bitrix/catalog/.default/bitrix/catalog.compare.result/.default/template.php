@@ -164,6 +164,7 @@ foreach($arResult["ITEMS"] as $arElement) {
 									</span>
 								</span>
 							<?} else {
+                                echo APLS_CatalogItemInfo::getItemElementOldPrice($arResult["MIN_PRICE"]["PRINT_RATIO_PRICE"], $arResult["PROPERTIES"]);
 								if($arElement["TOTAL_OFFERS"]["MIN_PRICE"]["DISCOUNT_VALUE"] < $arElement["TOTAL_OFFERS"]["MIN_PRICE"]["VALUE"]) {?>	
 									<span class="catalog-item-price-old">
 										<?=$arElement["TOTAL_OFFERS"]["MIN_PRICE"]["PRINT_VALUE"];?>								
@@ -215,6 +216,7 @@ foreach($arResult["ITEMS"] as $arElement) {
 										</span>
 									</span>
 								<?} else {
+                                    echo APLS_CatalogItemInfo::getItemElementOldPrice($arResult["MIN_PRICE"]["PRINT_RATIO_PRICE"], $arResult["PROPERTIES"]);
 									if($arElement["MIN_PRICE"]["DISCOUNT_VALUE"] < $arElement["MIN_PRICE"]["VALUE"]) {?>									
 										<span class="catalog-item-price-old">
 											<?=$arElement["MIN_PRICE"]["PRINT_VALUE"];?>													
