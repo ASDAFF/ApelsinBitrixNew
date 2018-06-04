@@ -26,7 +26,7 @@ $arResult["TYPE"] = $arParams['CONTACTS_TYPE'];
 $arResult["CSS"] = $arParams['CSS'];
 
 try {
-    $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLID(APLS_GetGlobalParam::getParams("ContactsRegions"));
+    $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLName("ContactsRegions");
 } catch (Exception $e) {
     echo 'Выброшено исключение: ', $e->getMessage(), "<br>";
 }
@@ -41,7 +41,7 @@ while ($arData = $rsData->Fetch()) {
 }
 
 try {
-    $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLID(APLS_GetGlobalParam::getParams("ContactsBuildings"));
+    $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLName("ContactsBuildings");
 } catch (Exception $e) {
     echo 'Выброшено исключение: ', $e->getMessage(), "<br>";
 }
