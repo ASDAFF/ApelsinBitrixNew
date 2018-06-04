@@ -98,4 +98,19 @@
         float: none;
         width: auto;
     }
+    /*Контакты*/
+    .element_header_feedback {
+        display: none!important;
+    }
+    .shop_element .shop_element_feedback {
+        display: none!important;
+    }
+    .element_header_name, .element_header_feature, element_header_time {
+        width: 25%!important;
+    }
+    .shop_element .shop_element_name,
+    .shop_element .shop_element_feature,
+    .shop_element .shop_element_time {
+        width: 33%!important;
+    }
 }
