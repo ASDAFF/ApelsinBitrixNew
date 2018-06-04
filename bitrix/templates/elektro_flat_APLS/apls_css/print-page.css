@@ -1,0 +1,101 @@
+@media print {
+    /* Общая стилистика */
+    .content-wrapper .left-column,
+    .already_seen,
+    footer,
+    .header_2,
+    #callbackAnch,
+    .contacts .geolocation,
+    .top-menu,
+    .bx-panel.clvt {
+        display: none !important;
+    }
+    .header_1,
+    .header_2,
+    .header_3,
+    .header_4,
+    .header_1 .logo {
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+    .header_1,
+    .header_3,
+    .header_4 {
+        padding-right: 20px;
+    }
+    .page-wrapper .center header,
+    .page-wrapper .center {
+        width: 100%;
+        min-height: inherit;
+        height: auto;
+        display: block;
+    }
+    .content,
+    .workarea {
+        width: auto;
+        margin: 0;
+    }
+
+    /* Заказы пользователя */
+    .equipment-order .thead {
+        border-top: 1px solid #666 !important;
+    }
+    .equipment-order.detail .thead,
+    .equipment-order.detail .tbody,
+    .equipment-order.basket .thead,
+    .equipment-order.basket .tbody .tr,
+    .equipment-order.basket .myorders_itog {
+        border-bottom: 1px solid #666 !important;
+    }
+    .order-item-actions {
+        display: none;
+    }
+
+    /* Корзина */
+    .bigdata-items {
+        display: none;
+    }
+    .cart-items .equipment .thead,
+    .cart-items .equipment .tbody .tr,
+    .cart-items .equipment .tbody .myorders_itog {
+        border-bottom: 1px solid #666 !important;
+    }
+
+    /* главная страница */
+    .anythingContainer,
+    .promotions-block,
+    .advantages {
+        display: none;
+    }
+
+    /* Список товаров */
+    /* Карта товара */
+    .filtered-items,
+    .catalog-detail-buy,
+    .compare_delay,
+    .catalog-detail-buttons,
+    .catalog-detail-buttons,
+    .tabs-catalog-detail .tabs,
+    #catalog-reviews-to {
+        display: none !important;
+    }
+    .tabs-catalog-detail .tabs__box {
+        display: block !important;
+    }
+
+    /* Акции */
+    .PromotionsWrapper .PromotionElement {
+        margin: 0 2px 10px 0 !important;
+    }
+    .PromotionsWrapper .PromotionElement {
+        border: none;
+    }
+
+    /* Вакансии */
+    .VacanciesValidBlockColumn_01, .VacanciesValidBlockColumn_02{
+        float: none;
+        width: auto;
+    }
+}
