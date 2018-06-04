@@ -40,14 +40,14 @@
 
     /* Заказы пользователя */
     .equipment-order .thead {
-        border-top: 1px solid #666 !important;
+        /*border-top: 1px solid #666 !important;*/
     }
     .equipment-order.detail .thead,
     .equipment-order.detail .tbody,
     .equipment-order.basket .thead,
     .equipment-order.basket .tbody .tr,
     .equipment-order.basket .myorders_itog {
-        border-bottom: 1px solid #666 !important;
+        /*border-bottom: 1px solid #666 !important;*/
     }
     .order-item-actions {
         display: none;
@@ -60,7 +60,7 @@
     .cart-items .equipment .thead,
     .cart-items .equipment .tbody .tr,
     .cart-items .equipment .tbody .myorders_itog {
-        border-bottom: 1px solid #666 !important;
+        /*border-bottom: 1px solid #666 !important;*/
     }
 
     /* главная страница */
