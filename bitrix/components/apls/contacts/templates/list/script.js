@@ -1,14 +1,13 @@
 function ContactsTemplateFolder() {
-    return $('.contacts_wrapper').attr('templateFolder');
+    return $('.contacts_wrapper').attr('templatefolder');
 }
 
 $(document).ready(function () {
     var checkMap = false;
     var checkList = true;
 
-
-    APLS_contacts_show_region($(".APLS_contacts_regions_block").first());
     ContactsSetting($('.contacts_edit_list'));
+    $('.APLS_contacts_region_list .APLS_contacts_regions_block:first-child').addClass("ActiveBlockRegions");
 
     $('.APLS_contacts_regions_block').click(function () {
         APLS_contacts_show_region(this);
@@ -75,7 +74,7 @@ $(document).ready(function () {
             method: 'POST',
             dataType: 'html',
             onsuccess: function (data) {
-                $('.contacts_map').html(data);
+                // $('.contacts_map').html(data);
             }
         });
     }
@@ -92,7 +91,7 @@ $(document).ready(function () {
             method: 'POST',
             dataType: 'html',
             onsuccess: function (data) {
-                $('.contacts_map').html(data);
+                // $('.contacts_map').html(data);
             }
         });
     }

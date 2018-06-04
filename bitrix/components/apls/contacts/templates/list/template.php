@@ -87,7 +87,41 @@ include_once($_SERVER["DOCUMENT_ROOT"] . $templateFolder . "/APLSContactsDateTim
         <?endforeach;?>
         </div>
     </div>
-    <div class="contacts_map"></div>
+    <div id="ymap_contacts" class="contacts_map"></div>
 </div>
-
-
+<?
+$count = max(array_keys($arResult['shops']));
+$coords = '[';
+foreach ($arResult['shops'] as $key=>$shop) {
+    if ($key !== $count) {
+        $coords .= '['.$arResult['shops'][$key]['UF_COORDS'].'],';
+    } else {
+        $coords .= '['.$arResult['shops'][$key]['UF_COORDS'].']';
+    }
+}
+$coords .= ']';
+?>
+<script type="text/javascript">
+    ymaps.ready(init);
+    var myMap, myPlacemark;
+    var folder = $('.contacts_wrapper').attr('templatefolder');
+    function init() {
+        myMap = new ymaps.Map("ymap_contacts", {
+            center: [<?=$arResult["shops"][1]['UF_COORDS']?>],
+            zoom: <?=$arResult["shops"][1]['UF_ZOOM']?>
+        });
+        myCollection = new ymaps.GeoObjectCollection({}, {});
+        var coords = <?=$coords?>;
+        for (var i = 0; i < coords.length; i++) {
+            myCollection.add(new ymaps.Placemark(coords[i],{
+                hintContent: '<?=$arResult['shops'][1]['UF_SHORT_ADDRESS']?>',
+                balloonContent: '<?=$arResult['shops'][1]['UF_LONG_ADDRESS']?>'
+            }, {
+                iconLayout: 'default#image',
+                iconImageHref: folder+'/icon/label.svg',
+                iconImageSize: [40, 52]
+            }));
+        }
+        myMap.geoObjects.add(myCollection);
+    }
+</script>
