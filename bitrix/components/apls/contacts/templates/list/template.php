@@ -9,6 +9,8 @@ include_once($_SERVER["DOCUMENT_ROOT"] . $templateFolder . "/APLSContactsDateTim
     <div class="APLS_contacts_regions">
         <div class="APLS_contacts_region_list">
         <?
+        $currentTime = new DateTime(date("G:i"));
+        $thisDay = date(D);
         foreach ($arResult['region'] as $regionData):
             ?><div class="APLS_contacts_regions_block" regionID = "<?=$regionData["ID"]?>"><?=$regionData["UF_REGION"]?></div><?
         endforeach;?>

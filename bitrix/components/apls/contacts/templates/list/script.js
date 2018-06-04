@@ -7,7 +7,7 @@ $(document).ready(function () {
     var checkList = true;
 
     ContactsSetting($('.contacts_edit_list'));
-    $('.APLS_contacts_region_list .APLS_contacts_regions_block:first-child').addClass("ActiveBlockRegions");
+    APLS_contacts_show_region($('.APLS_contacts_regions_block').first());
 
     $('.APLS_contacts_regions_block').click(function () {
         APLS_contacts_show_region(this);

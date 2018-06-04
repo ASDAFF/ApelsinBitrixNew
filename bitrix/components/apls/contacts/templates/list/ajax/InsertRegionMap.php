@@ -42,9 +42,11 @@ $select = array('UF_COORDS','UF_ZOOM','UF_REGION','ID');
         }
         ?>
         <script>
-            myMap.setCenter([<?=$code[$elementId]['coords']?>],<?=$code[$elementId]['zoom']?>,{
-                checkZoomRange: true
-            });
+            if (myMap) {
+                myMap.setCenter([<?=$code[$elementId]['coords']?>],<?=$code[$elementId]['zoom']?>,{
+                    checkZoomRange: true
+                });
+            }
         </script>
 <?
 } else {
