@@ -13,13 +13,13 @@
         Array(),
         ""
     ),
-    Array(
-        "Пункты выдачи",
-        "/contacts/point_of_delivery/",
-        Array(),
-        Array(),
-        ""
-    ),
+//    Array(
+//        "Пункты выдачи",
+//        "/contacts/point_of_delivery/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
     Array(
         "Отдел закупок",
         "/contacts/suppliers/",

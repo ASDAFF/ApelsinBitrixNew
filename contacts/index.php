@@ -8,13 +8,13 @@ $APPLICATION->SetTitle("Контакты");?>
                 <div class="title">Магазины</div>
             </div>
         </a>
-        <a href="point_of_delivery/" class="NavigatorBigIconElementHref">
-            <div class="NavigatorBigIconElement">
-                <img class="main" src="img/icon/point_of_delivery.svg">
-                <img class="hover" src="img/icon/point_of_delivery_hover.svg">
-                <div class="title">Пункты выдачи</div>
-            </div>
-        </a>
+<!--        <a href="point_of_delivery/" class="NavigatorBigIconElementHref">-->
+<!--            <div class="NavigatorBigIconElement">-->
+<!--                <img class="main" src="img/icon/point_of_delivery.svg">-->
+<!--                <img class="hover" src="img/icon/point_of_delivery_hover.svg">-->
+<!--                <div class="title">Пункты выдачи</div>-->
+<!--            </div>-->
+<!--        </a>-->
         <a href="suppliers/" class="NavigatorBigIconElementHref">
             <div class="NavigatorBigIconElement">
                 <img class="main" src="img/icon/suppliers.svg">
