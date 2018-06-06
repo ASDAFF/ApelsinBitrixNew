@@ -87,8 +87,9 @@
 .contacts_wrapper .cities_list .shop_element_header {
     width: 100%;
     background-color: #edeef8;
-    display: block;
-    position: relative;
+    display: table;
+    border: 1px solid #edeef8;
+    /*position: relative;*/
 }
 
 .contacts_wrapper .cities_list .shop_element_header .element_header_name,
@@ -99,23 +100,24 @@
     font-size: 16px;
     font-weight: 600;
     text-align: center;
-    padding: 10px;
+    padding: 10px 00px;
+    display: table-cell;
 }
 
 .contacts_wrapper .cities_list .shop_element_header .element_header_name{
-    display: inline-block;
-    width: 29%;
+    /*display: inline-block;*/
+    width: 32%;
 }
 
 .contacts_wrapper .cities_list .shop_element_header .element_header_time{
-    display: inline-block;
-    width: 27%;
+    /*display: inline-block;*/
+    width: 30%;
 }
 
 .contacts_wrapper .cities_list .shop_element_header .element_header_feature,
 .contacts_wrapper .cities_list .shop_element_header .element_header_feedback{
-    display: inline-block;
-    width: 17%;
+    /*display: inline-block;*/
+    width: 19%;
 }
 
 .contacts_wrapper .cities_list .shop_element_list {
@@ -124,10 +126,11 @@
 }
 
 .contacts_wrapper .cities_list .shop_element {
-    min-height: 90px;
+    display: table;
+    width: 100%;
     margin-top: 3px;
     border: 1px solid #dee0ee;
-    padding: 10px 20px;
+    padding: 8px 0px;
 }
 
 .contacts_wrapper .cities_list .shop_element:hover {
@@ -137,15 +140,10 @@
 
 /*Название и адрес магазина*/
 
-.contacts_wrapper .cities_list .shop_element_list {
-    display: block;
-}
-
 .contacts_wrapper .cities_list .shop_element .shop_element_name {
-    position: relative;
-    display: inline-block;
-    float: left;
-    width: 35%;
+    display: table-cell;
+    width: 32%;
+    padding-left: 20px;
 }
 
 .contacts_wrapper .cities_list .shop_element .shop_element_name .shop_element_title {
@@ -163,11 +161,9 @@
 }
 
 .contacts_wrapper .cities_list .shop_element .shop_element_feature {
-    display: inline-block;
-    position: relative;
-    float: left;
-    width: 25%;
-    height: auto;
+    display: table-cell;
+    width: 19%;
+    text-align: center;
 }
 
 .contacts_wrapper .cities_list .shop_element .shop_element_feature .shop_element_icon {
@@ -179,10 +175,6 @@
     padding-right: 3px;
 }
 
-/*.contacts_wrapper .cities_list .shop_element .shop_element_feature .shop_element_icon:hover  {*/
-    /*color: #ef7f1a;*/
-/*}*/
-
 .contacts_wrapper .cities_list .shop_element .shop_element_feature .shop_element_icon:first-child {
     padding-top: 0px;
 }
@@ -192,10 +184,9 @@
 }
 
 .contacts_wrapper .cities_list .shop_element .shop_element_time {
-    display: inline-block;
-    position: relative;
-    float: left;
-    width: 24%;
+    display: table-cell;
+    width: 30%;
+    text-align: center;
 }
 
 .contacts_wrapper .cities_list .shop_element .shop_element_time .APLS_contacts_buildings_time_N {
@@ -204,11 +195,21 @@
     size: 12px;
 }
 
+.contacts_wrapper .cities_list .shop_element .shop_element_time .APLS_contacts_buildings_time_Y {
+    text-transform: uppercase;
+    font-weight: 700;
+    size: 12px;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_time .DateTimeTable {
+    margin: auto;
+}
+
 .contacts_wrapper .cities_list .shop_element .shop_element_feedback {
-    display: inline-block;
-    position: relative;
-    float: left;
-    width: 15%;
+    display: table-cell;
+    width: 19%;
+    padding-right: 15px;
+    vertical-align: middle;
 }
 
 .contacts_wrapper .cities_list .shop_element .shop_element_feedback .shop_element_feedback_dir,
@@ -473,7 +474,6 @@
     }
 
     .shop_element_list .shop_element {
-        padding: 5px 5px!important;
         min-height: 115px!important;
     }
 
@@ -483,6 +483,7 @@
 
     .shop_element_list .shop_element .shop_element_name {
         width: 37%!important;
+        padding-left: 5px!important;
     }
 
     .shop_element_list .shop_element .shop_element_name .shop_element_title{
@@ -511,6 +512,7 @@
 
     .shop_element .shop_element_feedback {
         width: 20%!important;
+        padding-right: 5px!important;
     }
 
     .shop_element .shop_element_feedback .shop_element_feedback_dir {

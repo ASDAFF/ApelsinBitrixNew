@@ -98,10 +98,14 @@ $(document).ready(function () {
 
     $('.shop_element').mouseenter(function () {
         $(this).find('.shop_element_title').css('color', '#ef7f1a');
+        $(this).find('.APLS_contacts_buildings_time_Y').css('color', '#189900');
+        $(this).find('.APLS_contacts_buildings_time_N').css('color', '#ef2b29');
     });
 
     $('.shop_element').mouseleave(function () {
         $(this).find('.shop_element_title').css('color', '#8184a1');
+        $(this).find('.APLS_contacts_buildings_time_Y').css('color', '#8184a1');
+        $(this).find('.APLS_contacts_buildings_time_N').css('color', '#8184a1');
     });
 
     /**
