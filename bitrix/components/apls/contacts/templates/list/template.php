@@ -46,21 +46,23 @@ include_once($_SERVER["DOCUMENT_ROOT"] . $templateFolder . "/APLSContactsDateTim
                     <?endif;?>
                 </div>
                 <div class="shop_element_feature">
-                    <?if($rowData["UF_CREDIT_DEPARTMENT"] == "1"):?>
-                        <div class="shop_element_icon"><img src="<?=$templateFolder?>/icon/shop_procent.svg"> Кредитный отдел</div>
-                    <?endif;?>
-                    <?if($rowData["UF_WHOLESALE_DEP"] == "1"):?>
-                        <div class="shop_element_icon"><img src="<?=$templateFolder?>/icon/shop_optov.svg"> Оптовый отдел</div>
-                    <?endif;?>
-                    <?if($rowData["UF_DELIVERY_GOOD"] == "1"):?>
-                        <div class="shop_element_icon"><img src="<?=$templateFolder?>/icon/shop_korzina.svg"> Пункт выдачи</div>
-                    <?endif;?>
-                    <?if($rowData["UF_24_HOUR"] == "1"):?>
-                        <div class="shop_element_icon"><img src="<?=$templateFolder?>/icon/shop_chaci.svg"> 24 часа</div>
-                    <?endif;?>
-                    <?if($rowData["UF_CREDIT_DEPARTMENT"] == "0"&& $rowData["UF_WHOLESALE_DEP"] == "0" && $rowData["UF_DELIVERY_GOOD"] == "0" &&$rowData["UF_24_HOUR"] == "0"):?>
-                        <div class="shop_element_empty">-</div>
-                    <?endif;?>
+                    <div class="shop_element_feature_table">
+                        <?if($rowData["UF_CREDIT_DEPARTMENT"] == "1"):?>
+                            <div class="shop_element_icon"><img src="<?=$templateFolder?>/icon/shop_procent.svg"> Кредитный отдел</div>
+                        <?endif;?>
+                        <?if($rowData["UF_WHOLESALE_DEP"] == "1"):?>
+                            <div class="shop_element_icon"><img src="<?=$templateFolder?>/icon/shop_optov.svg"> Оптовый отдел</div>
+                        <?endif;?>
+                        <?if($rowData["UF_DELIVERY_GOOD"] == "1"):?>
+                            <div class="shop_element_icon"><img src="<?=$templateFolder?>/icon/shop_korzina.svg"> Пункт выдачи</div>
+                        <?endif;?>
+                        <?if($rowData["UF_24_HOUR"] == "1"):?>
+                            <div class="shop_element_icon"><img src="<?=$templateFolder?>/icon/shop_chaci.svg"> 24 часа</div>
+                        <?endif;?>
+                        <?if($rowData["UF_CREDIT_DEPARTMENT"] == "0"&& $rowData["UF_WHOLESALE_DEP"] == "0" && $rowData["UF_DELIVERY_GOOD"] == "0" &&$rowData["UF_24_HOUR"] == "0"):?>
+                            <div class="shop_element_empty">-</div>
+                        <?endif;?>
+                    </div>
                 </div>
                 <div class="shop_element_time">
                     <?if ($currentTime >= new DateTime(date($rowData["UF_" . strtoupper($thisDay) . "_S"])) && $currentTime <= new DateTime(date($rowData["UF_" . strtoupper($thisDay) . "_E"]))):?>

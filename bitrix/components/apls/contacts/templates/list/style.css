@@ -163,7 +163,11 @@
 .contacts_wrapper .cities_list .shop_element .shop_element_feature {
     display: table-cell;
     width: 19%;
-    text-align: center;
+}
+
+.contacts_wrapper .cities_list .shop_element .shop_element_feature .shop_element_feature_table {
+    width: 74%;
+    margin: auto;
 }
 
 .contacts_wrapper .cities_list .shop_element .shop_element_feature .shop_element_icon {
