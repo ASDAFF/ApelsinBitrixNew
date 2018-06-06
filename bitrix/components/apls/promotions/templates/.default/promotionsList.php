@@ -5,6 +5,17 @@ if($arResult["urlRegion"] !== "") {
     $sectionUrl .= $arResult["urlRegion"]."/";
 }
 ?>
+<script type="text/javascript">
+    //JS_MESSAGE//
+    BX.message({
+        CITY_CHANGE_COMPONENT_TEMPLATE: "<?=$this->GetFolder();?>",
+        CITY_CHANGE_WINDOW_TITLE: "Смените регион действия акций",
+        CITY_CHANGE_URL: "<?=$arResult["sefFolder"]?>",
+    });
+</script>
+<div class="PromotionsCities">
+    <a id="CITY_CHANGE_BUTTON" class="btn">Сменить регион</a>
+</div>
 <div class="PromotionsCitiesSectionsWrapper">
     <div class="PromotionsCitiesSection">
         <div class="Element" sectionkey="all"><a href="<?=$sectionUrl?>"><span class="sectionName">Все</span></a></div>
