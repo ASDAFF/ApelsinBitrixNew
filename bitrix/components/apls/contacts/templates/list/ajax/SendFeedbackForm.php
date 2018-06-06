@@ -11,22 +11,27 @@ if (
     $_REQUEST['formText'] !== '' &&
     $_REQUEST['formAgreement'] !== "false"
 ) {
-    $text = '';
-    $text .= '<p>Имя: ';
-    $text .= $_REQUEST['formName'];
-    $text .= '</p>';
-    $text .= '<p>Телефон: ';
-    $text .= $_REQUEST['formPhone'];
-    $text .= '</p>';
-    $text .= '<p>Сообщение: ';
-    $text .= $_REQUEST['formText'];
-    $text .= '</p>';
-    $title = 'Новый отзыв с сайта apelsin.ru по точке ' . $_REQUEST['shopName'];
-    if (mail($_REQUEST['mail'], $title, $text)) {
-        $close = 'true';
-    } else {
-        $close = 'false';
-    }
+//    $text = '';
+//    $text .= '<p>Имя: ';
+//    $text .= $_REQUEST['formName'];
+//    $text .= '</p>';
+//    $text .= '<p>Телефон: ';
+//    $text .= $_REQUEST['formPhone'];
+//    $text .= '</p>';
+//    $text .= '<p>Сообщение: ';
+//    $text .= $_REQUEST['formText'];
+//    $text .= '</p>';
+//    $title = 'Новый отзыв с сайта apelsin.ru по точке ' . $_REQUEST['shopName'];
+    $arEventFields = array(
+        'AUTHOR' => $_REQUEST['formName'],
+        'AUTHOR_EMAIL' => $_REQUEST['formPhone'],
+        'TEXT' => $_REQUEST['formText'],
+        'EMAIL_TO' => $_REQUEST['mail'],
+        'SHOP' => $_REQUEST['shopName'],
+    );
+    $arrSITE =  CAdvContract::GetSiteArray($CONTRACT_ID);
+    CEvent::Send("CONTACT_FEEDBACK_FORM", $arrSITE, $arEventFields);
+    $close = 'true';
 }
 
 if (
