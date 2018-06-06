@@ -4,6 +4,7 @@ define("NOT_CHECK_PERMISSIONS", true);
 require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 ?>
 <?
+use Bitrix\Main\Mail\Event;
 $response = array();
 if (
     $_REQUEST['formName'] !== '' &&
@@ -22,15 +23,27 @@ if (
 //    $text .= $_REQUEST['formText'];
 //    $text .= '</p>';
 //    $title = 'Новый отзыв с сайта apelsin.ru по точке ' . $_REQUEST['shopName'];
-    $arEventFields = array(
+//    $arEventFields = array(
+//        'AUTHOR' => $_REQUEST['formName'],
+//        'AUTHOR_EMAIL' => $_REQUEST['formPhone'],
+//        'TEXT' => $_REQUEST['formText'],
+//        'EMAIL_TO' => $_REQUEST['mail'],
+//        'SHOP' => $_REQUEST['shopName'],
+//    );
+//    $arrSITE =  CAdvContract::GetSiteArray($CONTRACT_ID);
+//    CEvent::Send("CONTACT_FEEDBACK_FORM", $arrSITE, $arEventFields);
+    $data = array(
         'AUTHOR' => $_REQUEST['formName'],
         'AUTHOR_EMAIL' => $_REQUEST['formPhone'],
         'TEXT' => $_REQUEST['formText'],
         'EMAIL_TO' => $_REQUEST['mail'],
         'SHOP' => $_REQUEST['shopName'],
     );
-    $arrSITE =  CAdvContract::GetSiteArray($CONTRACT_ID);
-    CEvent::Send("CONTACT_FEEDBACK_FORM", $arrSITE, $arEventFields);
+    Event::send(array(
+        "EVENT_NAME" => "NEW_USER",
+        "LID" => "s1",
+        "C_FIELDS" => $data,
+    ));
     $close = 'true';
 }
 
