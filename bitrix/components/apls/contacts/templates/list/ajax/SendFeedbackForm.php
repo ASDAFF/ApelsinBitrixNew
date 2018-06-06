@@ -12,26 +12,6 @@ if (
     $_REQUEST['formText'] !== '' &&
     $_REQUEST['formAgreement'] !== "false"
 ) {
-//    $text = '';
-//    $text .= '<p>Имя: ';
-//    $text .= $_REQUEST['formName'];
-//    $text .= '</p>';
-//    $text .= '<p>Телефон: ';
-//    $text .= $_REQUEST['formPhone'];
-//    $text .= '</p>';
-//    $text .= '<p>Сообщение: ';
-//    $text .= $_REQUEST['formText'];
-//    $text .= '</p>';
-//    $title = 'Новый отзыв с сайта apelsin.ru по точке ' . $_REQUEST['shopName'];
-//    $arEventFields = array(
-//        'AUTHOR' => $_REQUEST['formName'],
-//        'AUTHOR_EMAIL' => $_REQUEST['formPhone'],
-//        'TEXT' => $_REQUEST['formText'],
-//        'EMAIL_TO' => $_REQUEST['mail'],
-//        'SHOP' => $_REQUEST['shopName'],
-//    );
-//    $arrSITE =  CAdvContract::GetSiteArray($CONTRACT_ID);
-//    CEvent::Send("CONTACT_FEEDBACK_FORM", $arrSITE, $arEventFields);
     $data = array(
         'AUTHOR' => $_REQUEST['formName'],
         'AUTHOR_EMAIL' => $_REQUEST['formPhone'],
@@ -39,8 +19,8 @@ if (
         'EMAIL_TO' => $_REQUEST['mail'],
         'SHOP' => $_REQUEST['shopName'],
     );
-    Event::send(array(
-        "EVENT_NAME" => "NEW_USER",
+    $close = Event::send(array(
+        "EVENT_NAME" => "CONTACT_FEEDBACK_FORM",
         "LID" => "s1",
         "C_FIELDS" => $data,
     ));

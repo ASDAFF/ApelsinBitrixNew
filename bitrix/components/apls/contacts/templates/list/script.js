@@ -144,7 +144,6 @@ $(document).ready(function () {
                                 $('#feedback').remove();
                                 $('#feedback_mail').remove();
                             } else {
-                                alert ('Спасибо за обращение!');
                                 $('#feedback').remove();
                                 $('#feedback_mail').remove();
                             }
