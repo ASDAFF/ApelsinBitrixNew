@@ -22,9 +22,11 @@ if (
     $text .= $_REQUEST['formText'];
     $text .= '</p>';
     $title = 'Новый отзыв с сайта apelsin.ru по точке ' . $_REQUEST['shopName'];
-//    mail($_REQUEST['mail'], $title, $text);
-    mail('aleksmelkov@gmail.com', $title, $text);
-    $close = 'true';
+    if (mail($_REQUEST['mail'], $title, $text)) {
+        $close = 'true';
+    } else {
+        $close = 'false';
+    }
 }
 
 if (

@@ -139,8 +139,12 @@ $(document).ready(function () {
                         dataType: 'JSON',
                         onsuccess: function (feedbackData) {
                             if (feedbackData.success.close !== 'true') {
+                                alert('Ошибка отправки');
                                 $('.feedback_mail_name').before(feedbackData.success.error);
+                                $('#feedback').remove();
+                                $('#feedback_mail').remove();
                             } else {
+                                alert ('Спасибо за обращение!');
                                 $('#feedback').remove();
                                 $('#feedback_mail').remove();
                             }
