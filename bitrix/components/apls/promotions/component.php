@@ -56,7 +56,7 @@ if(isset($_GET['p1']) && $_GET['p1']==="id" && isset($_GET['p2']) && $_GET['p2']
     }
     $title = $revision->getFieldValue("title");
     if($title === "" || $title === null) {
-        $title = "Акциия";
+        $title = "Акция";
     }
     $APPLICATION->AddChainItem($title, "");
     $APPLICATION->SetTitle($title);
