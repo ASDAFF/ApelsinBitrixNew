@@ -648,3 +648,12 @@ ul.left-menu > li > a {
 .catalog-promotions-price-view .catalog-item {
     border: 1px solid transparent;;
 }
+
+/*Футер*/
+.footer-bottom__block-wrap.fb-left .footer-bottom__block.footer-bottom__links ul li:first-child {
+    display: none;
+}
+
+.footer-bottom__block-wrap.fb-right .footer-bottom__block.footer-bottom__counter {
+    display: none;
+}
