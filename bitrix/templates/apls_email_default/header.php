@@ -290,6 +290,7 @@ $APPLICATION->ShowPanel();
 	                                                               height: 70px'
                 >
             </a>
+			<!--
 			<div class="contacts" style='float: right'>
 				<div class="phone" style='height: 80px;
 	                               line-height: 80px;
@@ -319,6 +320,7 @@ $APPLICATION->ShowPanel();
                                    width: 150px'>info@apelsin.ru
                 </div>
 			</div>
+			-->
 		</div>
 		<div class="content" style='background: #fff;
 	                         padding: 20px;'

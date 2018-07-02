@@ -13,6 +13,7 @@
                               padding: 25px 0;
                               font-weight: 300'
             >&copy; 2011-2017 компания АПЕЛЬСИН<br>Россия, Рязань</div>
+			<!--
 			<div class="contacts" style='float: right'>
 				<div class="phone" style='height: 80px;
                                    line-height: 80px;
@@ -42,6 +43,7 @@
                                    width: 150px'
                 >info@apelsin.ru</div>
 			</div>
+			-->
 		</div>
 	</div>
 </div>
