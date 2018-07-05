@@ -233,4 +233,7 @@
     .apls-product-details-table tr td:first-child {
         width: auto;
     }
+    .catalog-detail-store .schedule {
+        position: relative;
+    }
 }
