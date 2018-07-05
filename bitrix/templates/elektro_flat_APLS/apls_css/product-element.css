@@ -228,3 +228,9 @@
 .price_buy_detail .catalog-detail-item-price-old {
     font-size: 18px;
 }
+
+@media screen and (max-width: 787px) {
+    .apls-product-details-table tr td:first-child {
+        width: auto;
+    }
+}
