@@ -236,4 +236,19 @@
     .catalog-detail-store .schedule {
         position: relative;
     }
+    .breadcrumb-share {
+        display: block;
+    }
+    .breadcrumb {
+        width: auto;
+        float: none;
+    }
+    .breadcrumb__item {
+        float: none;
+    }
+    .breadcrumb__arrow,
+    #breadcrumb_0,
+    .breadcrumb__item:last-child {
+        display: none !important;
+    }
 }
