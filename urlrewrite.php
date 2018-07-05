@@ -7,10 +7,22 @@ $arUrlRewrite = array(
 		"PATH" => "/desktop_app/router.php",
 	),
 	array(
+		"CONDITION" => "#^/promotions/([^/\\.]+)/([^/\\.]+).*#",
+		"RULE" => "p1=\$1&p2=\$2",
+		"ID" => "apls:promotions",
+		"PATH" => "/promotions/index.php",
+	),
+	array(
 		"CONDITION" => "#^/bitrix/services/ymarket/#",
 		"RULE" => "",
 		"ID" => "",
 		"PATH" => "/bitrix/services/ymarket/index.php",
+	),
+	array(
+		"CONDITION" => "#^/promotions/([^/\\.]+).*# ",
+		"RULE" => "p1=\$1",
+		"ID" => "apls:promotions",
+		"PATH" => "/promotions/index.php",
 	),
 	array(
 		"CONDITION" => "#^/online/(/?)([^/]*)#",
@@ -23,12 +35,6 @@ $arUrlRewrite = array(
 		"RULE" => "",
 		"ID" => "bitrix:stssync.server",
 		"PATH" => "/bitrix/services/stssync/calendar/index.php",
-	),
-	array(
-		"CONDITION" => "#^/promotions/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/promotions/index.php",
 	),
 	array(
 		"CONDITION" => "#^/personal/#",

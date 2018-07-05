@@ -1,7 +1,9 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Новости");?>
 
-<?$APPLICATION->IncludeComponent("bitrix:news", "flat",
+<?$APPLICATION->IncludeComponent(
+	"bitrix:news", 
+	"flat", 
 	array(
 		"IBLOCK_TYPE" => "content",
 		"IBLOCK_ID" => "20",
@@ -14,7 +16,7 @@ $APPLICATION->SetTitle("Новости");?>
 		"USE_RATING" => "N",
 		"USE_CATEGORIES" => "N",
 		"USE_REVIEW" => "N",
-		"USE_FILTER" => "N",		
+		"USE_FILTER" => "N",
 		"SORT_BY1" => "sort",
 		"SORT_ORDER1" => "asc",
 		"SORT_BY2" => "active_from",
@@ -38,22 +40,28 @@ $APPLICATION->SetTitle("Новости");?>
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"USE_PERMISSIONS" => "N",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"LIST_ACTIVE_DATE_FORMAT" => "j F Y",
+		"LIST_ACTIVE_DATE_FORMAT" => "",
 		"LIST_FIELD_CODE" => array(
-			0 => "DATE_CREATE"
+			0 => "",
+			1 => "",
 		),
-		"LIST_PROPERTY_CODE" => array(),
+		"LIST_PROPERTY_CODE" => array(
+			0 => "",
+			1 => "",
+		),
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"DISPLAY_NAME" => "Y",
 		"META_KEYWORDS" => "-",
 		"META_DESCRIPTION" => "-",
 		"BROWSER_TITLE" => "-",
-		"DETAIL_ACTIVE_DATE_FORMAT" => "j F Y",
+		"DETAIL_ACTIVE_DATE_FORMAT" => "",
 		"DETAIL_FIELD_CODE" => array(
-			0 => "DATE_CREATE"
+			0 => "",
+			1 => "",
 		),
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "LINKED"
+			0 => "LINKED",
+			1 => "",
 		),
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
@@ -68,17 +76,22 @@ $APPLICATION->SetTitle("Новости");?>
 		"PAGER_DESC_NUMBERING" => "N",
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "3600",
 		"PAGER_SHOW_ALL" => "N",
-		"DISPLAY_DATE" => "Y",
+		"DISPLAY_DATE" => "N",
 		"DISPLAY_PICTURE" => "Y",
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"AJAX_OPTION_ADDITIONAL" => "",
-		"COMPONENT_TEMPLATE" => ".default",
+		"COMPONENT_TEMPLATE" => "flat",
 		"SET_LAST_MODIFIED" => "N",
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"PAGER_BASE_LINK_ENABLE" => "N",
 		"SHOW_404" => "Y",
 		"FILE_404" => "",
+		"TEMPLATE_THEME" => "blue",
+		"STRICT_SECTION_CHECK" => "N",
+		"USE_SHARE" => "N",
+		"MEDIA_PROPERTY" => "",
+		"SLIDER_PROPERTY" => "",
 		"SEF_URL_TEMPLATES" => array(
 			"news" => "",
 			"section" => "",
