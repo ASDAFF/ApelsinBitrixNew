@@ -235,6 +235,7 @@
     }
     .catalog-detail-store .schedule {
         position: relative;
+        right: 0;
     }
     .breadcrumb-share {
         display: block;
