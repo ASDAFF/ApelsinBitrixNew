@@ -8,6 +8,11 @@ Main\EventManager::getInstance()->addEventHandler(
     'OnSaleOrderBeforeSaved',
     'SaleOrderDoItOnSave'
 );
+Main\EventManager::getInstance()->addEventHandler(
+    'sale',
+    'OnSaleCancelOrder',
+    'SaleOrderDoItOnSaleCancelOrder'
+);
 
 function SaleOrderDoItOnSave (Main\Event $event) {
     $CARD_NUMBER_ID = 25;
@@ -76,5 +81,11 @@ function SaleOrderDoItOnSave (Main\Event $event) {
                 $KILOMETRS->setValue($EXTRA_SERVICES["KILOMETRS"]);
             }
         }
+    }
+}
+
+function SaleOrderDoItOnSaleCancelOrder ($orderId, $value) {
+    if($value == "Y") {
+        CSaleOrder::StatusOrder($orderId, "D");
     }
 }
