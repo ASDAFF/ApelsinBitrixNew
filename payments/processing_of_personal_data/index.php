@@ -206,6 +206,4 @@ $APPLICATION->SetTitle("ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ");
 
     </ol>
 
-    <p class="TextP">Обновлено 29.06.2017.</p>
-
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
