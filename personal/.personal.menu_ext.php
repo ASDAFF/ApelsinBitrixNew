@@ -24,13 +24,13 @@ $aMenuLinks = Array(
 		Array(),
 		""
 	),
-	Array(
-		"Ожидаемые товары",
-		"/personal/subscribe/",
-		Array(),
-		Array(),
-		""
-	),
+//	Array(
+//		"Ожидаемые товары",
+//		"/personal/subscribe/",
+//		Array(),
+//		Array(),
+//		""
+//	),
 	Array(
 		"Архив заказов",
 		"/personal/orders/?filter_history=Y",
@@ -52,13 +52,13 @@ $aMenuLinks = Array(
 //		Array(),
 //		"CBXFeatures::IsFeatureEnabled('SaleAccounts')"
 //	),
-	Array(
-		"Профили заказов",
-		"/personal/profiles/",
-		Array(),
-		Array(),
-		""
-	),
+//	Array(
+//		"Профили заказов",
+//		"/personal/profiles/",
+//		Array(),
+//		Array(),
+//		""
+//	),
 //	Array(
 //		"Email рассылки",
 //		"/personal/mailings/",
