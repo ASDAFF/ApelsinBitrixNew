@@ -83,9 +83,10 @@ function SaleOrderDoItOnSave (Main\Event $event) {
         }
     }
 }
-
+/*
 function SaleOrderDoItOnSaleCancelOrder ($orderId, $value) {
     if($value == "Y") {
         CSaleOrder::StatusOrder($orderId, "D");
     }
 }
+*/
