@@ -1,0 +1,139 @@
+
+.NewsWrapper .NewsElement {
+    position: relative;
+    float: left;
+    border: 1px solid #dee0ee;
+    width: 230px;
+    height: 320px;
+}
+
+.NewsWrapper .NewsElement .NewsImage img {
+    width: 230px;
+    height: 125px;
+    vertical-align: top;
+    border: none;
+}
+
+.NewsWrapper .NewsElement .NewsContent {
+    padding: 1em;
+}
+
+.NewsWrapper .NewsElement .NewsContent .NewsTitle {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: .5em;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.NewsWrapper .NewsElement .NewsContent .NewsText {
+    margin-bottom: 1em;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.NewsWrapper .NewsElement .NewsFooter {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 15px;
+}
+
+.NewsWrapper .NewsElement .NewsFooter .ButtonMore {
+    display: block;
+    border: 1px solid #ef7f1a;
+    color: #ef7f1a;
+    font-weight: bold;
+    margin: 1em auto .5em auto;
+    width: 130px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1em;
+    text-transform: uppercase;
+    padding: .5em;
+    cursor: pointer;
+}
+
+.NewsWrapper .NewsElement .NewsFooter .ButtonMore:hover {
+    background: #ef7f1a;
+    color: #FFFFFF;
+}
+
+@media (min-width: 1253px) {
+    .NewsWrapper .NewsElement {
+        margin: 0 10px 10px 0;
+    }
+
+    .NewsWrapper .NewsElement:nth-child(4n + 4) {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 1253px) and (min-width: 788px) {
+    .NewsWrapper .NewsElement {
+        margin: 0 11px 11px 0;
+    }
+    .NewsWrapper .NewsElement:nth-child(3n + 3) {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 787px) and (min-width: 450px) {
+    .NewsWrapper .NewsElement {
+        width: auto;
+        float: none;
+        height: auto;
+        margin-bottom: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+    .NewsWrapper .NewsElement .NewsImage {
+        width: 30%;
+        height: auto;
+    }
+    .NewsWrapper .NewsElement .NewsImage img {
+        width: 100%;
+        height: auto;
+    }
+    .NewsWrapper .NewsElement .NewsContent {
+        width: 70%;
+        padding: 0;
+    }
+    .NewsWrapper .NewsElement .NewsContent .NewsTitle {
+        padding: 1em 1em 1em 1em;
+        margin: 0;
+        text-align: left;
+    }
+    .NewsWrapper .NewsElement .NewsContent .NewsText {
+        padding: 0 1em 1em 1em;
+    }
+    .NewsWrapper .NewsElement .NewsFooter {
+        padding-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    .NewsWrapper .NewsElement {
+        width: auto;
+        float: none;
+        margin-bottom: 10px;
+    }
+    .NewsWrapper .NewsElement .NewsImage {
+        width: 100%;
+        height: auto;
+    }
+    .NewsWrapper .NewsElement .NewsImage img {
+        width: 100%;
+        height: auto;
+    }
+    .NewsWrapper .NewsElement .NewsFooter {
+        padding-bottom: 0;
+    }
+}
