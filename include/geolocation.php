@@ -1,4 +1,4 @@
-<?$APPLICATION->IncludeComponent(
+<?/*$APPLICATION->IncludeComponent(
 	"altop:geolocation", 
 	".default", 
 	array(
