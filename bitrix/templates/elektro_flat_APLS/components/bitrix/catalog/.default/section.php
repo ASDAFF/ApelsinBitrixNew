@@ -133,8 +133,8 @@ if(isset($arCurSection) && !empty($arCurSection)) {
 	endif;
  
 	/*
-	 * Скрываем фильтр, если он пустой.
-	 * Хотя он и пустой, а нагрузку создает сильную.
+	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+	 * пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 	 * */
     if ($arParams["USE_FILTER"] == "Y")
         $arParams["USE_FILTER"] = allowShowSmartFilter($arCurSection["ID"]) ? "Y" : "N";
@@ -221,6 +221,7 @@ if($obCache->InitCache($arParams["CACHE_TIME"], $cache_id, $cache_dir)) {
 $arAvailableSort = array(
 	"default" => Array("sort", "asc"),
 	"price" => Array("PROPERTY_MINIMUM_PRICE", "asc"),
+    "item_name" => Array("NAME", "asc"),
 	"rating" => Array("PROPERTY_rating", "desc"),
 );
 
@@ -246,6 +247,10 @@ if($_REQUEST["sort"] == "price") {
 if($_REQUEST["sort"] == "rating") {
 	$sort = "PROPERTY_rating";
 	$APPLICATION->set_cookie("sort", $sort, false, "/", SITE_SERVER_NAME);
+}
+if($_REQUEST["sort"] == "item_name") {
+    $sort = "NAME";
+    $APPLICATION->set_cookie("sort", $sort, false, "/", SITE_SERVER_NAME);
 }
 
 $sort_order = $APPLICATION->get_cookie("order") ? $APPLICATION->get_cookie("order") : "asc";
