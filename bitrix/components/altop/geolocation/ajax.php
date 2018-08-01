@@ -4,6 +4,9 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_befo
 $APPLICATION->ShowAjaxHead();
 $APPLICATION->AddHeadScript("/bitrix/js/main/dd.js");
 
+
+session_start();
+
 use Bitrix\Main\Loader,
 	Bitrix\Main\Application,
 	Bitrix\Main\Text\Encoding;
@@ -117,11 +120,18 @@ if($request->isPost() && check_bitrix_sessid()) {
 				$searchResult = Encoding::convertEncoding($searchResult, SITE_CHARSET, "utf-8");
 
 			//SET_GEOLOCATION_COOKIES//
-			$APPLICATION->set_cookie("GEOLOCATION_CITY", $searchResult["city"], time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+            $APPLICATION->set_cookie("GEOLOCATION_CITY", $searchResult["city"], time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
 			if(!empty($locationId))
 				$APPLICATION->set_cookie("GEOLOCATION_LOCATION_ID", $locationId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
 			if(!empty($contactsId))
 				$APPLICATION->set_cookie("GEOLOCATION_CONTACTS_ID", $contactsId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+
+            // ПРОКИДЫВАЕМ ЧЕРЕЗ СЕССИЮ
+			$_SESSION['GEOLOCATION_CITY'] = $searchResult["city"];
+            if(!empty($locationId))
+                $_SESSION['GEOLOCATION_LOCATION_ID'] = $locationId;
+            if(!empty($contactsId))
+                $_SESSION['GEOLOCATION_CONTACTS_ID'] = $contactsId;
 			
 			echo json_encode($searchResult);
 			break;		
@@ -211,6 +221,15 @@ if($request->isPost() && check_bitrix_sessid()) {
 			$APPLICATION->set_cookie("GEOLOCATION_LOCATION_ID", $locationId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
 			if(!empty($contactsId))
 				$APPLICATION->set_cookie("GEOLOCATION_CONTACTS_ID", $contactsId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+
+            // ПРОКИДЫВАЕМ ЧЕРЕЗ СЕССИЮ
+            if(!empty($setResult["city"]))
+                $_SESSION['GEOLOCATION_CITY'] = $setResult["city"];
+            if(empty($setResult["city"]) && !empty($setResult["region"]))
+                $_SESSION['GEOLOCATION_CITY'] = $setResult["region"];
+            $_SESSION['GEOLOCATION_LOCATION_ID'] = $locationId;
+            if(!empty($contactsId))
+                $_SESSION['GEOLOCATION_CONTACTS_ID'] = $contactsId;
 			break;
 	}
 	die();

@@ -41,10 +41,28 @@ if(!isset($arParams["COOKIE_TIME"]))
 $arParams["OPTIONS"] = array("GEOLOCATION_CITY", "GEOLOCATION_LOCATION_ID", "GEOLOCATION_CONTACTS_ID");
 
 $request = Application::getInstance()->getContext()->getRequest();
-$arParams["GEOLOCATION_CITY"] = $request->getCookie("GEOLOCATION_CITY");
-if(SITE_CHARSET != "utf-8")
-	$arParams["GEOLOCATION_CITY"] = Encoding::convertEncoding($arParams["GEOLOCATION_CITY"], "utf-8", SITE_CHARSET);
-$arParams["GEOLOCATION_CONTACTS_ID"] = intval($request->getCookie("GEOLOCATION_CONTACTS_ID"));
+
+/* Устанавливаем значения в куки из сессии */
+if(isset($_SESSION['GEOLOCATION_CITY'])) {
+    $APPLICATION->set_cookie("GEOLOCATION_CITY", $_SESSION['GEOLOCATION_CITY'], time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+    $arParams["GEOLOCATION_CITY"] = $_SESSION['GEOLOCATION_CITY'];
+} else {
+    if(SITE_CHARSET != "utf-8") {
+        $arParams["GEOLOCATION_CITY"] = Encoding::convertEncoding($arParams["GEOLOCATION_CITY"], "utf-8", SITE_CHARSET);
+    } else {
+        $arParams["GEOLOCATION_CITY"] = $request->getCookie("GEOLOCATION_CITY");
+    }
+
+}
+if(isset($_SESSION['GEOLOCATION_LOCATION_ID'])) {
+    $APPLICATION->set_cookie("GEOLOCATION_LOCATION_ID", $_SESSION['GEOLOCATION_LOCATION_ID'], time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+}
+if(isset($_SESSION['GEOLOCATION_CONTACTS_ID'])) {
+    $APPLICATION->set_cookie("GEOLOCATION_CONTACTS_ID", $_SESSION['GEOLOCATION_CONTACTS_ID'], time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+    $arParams["GEOLOCATION_CONTACTS_ID"] = intval($_SESSION['GEOLOCATION_CONTACTS_ID']);
+} else {
+    $arParams["GEOLOCATION_CONTACTS_ID"] = intval($request->getCookie("GEOLOCATION_CONTACTS_ID"));
+}
 
 global $arSetting;
 $arParams["USE_GEOLOCATION"] = $arSetting["USE_GEOLOCATION"]["VALUE"];
