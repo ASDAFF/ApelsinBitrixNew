@@ -7774,6 +7774,14 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 	float:left;
 }
 
+
+/*СКРЫТИЕ ВКЛАДКИ АРХИВА ЗАКАЗОВ*/
+.sale-personal-section__list .sale-personal-section__item:nth-child(5) {
+	display: none;
+}
+/*-----**/
+
+
 .sale-personal-section__item{
 	width:25%;
 	height:160px;

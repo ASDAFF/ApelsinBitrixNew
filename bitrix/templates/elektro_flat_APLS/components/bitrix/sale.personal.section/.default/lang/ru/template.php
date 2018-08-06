@@ -1,5 +1,5 @@
 <?
-$MESS["SPS_ORDER_PAGE_NAME"] = "Текущие заказы";
+$MESS["SPS_ORDER_PAGE_NAME"] = "Заказы";
 $MESS["SPS_BASKET_PAGE_NAME"] = "Моя корзина";
 $MESS["SPS_DELAY_PAGE_NAME"] = "Отложенные";
 $MESS["SPS_SUBSCRIBE_PAGE_NAME"] = "Ожидаемые";

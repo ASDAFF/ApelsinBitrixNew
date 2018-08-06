@@ -4,7 +4,7 @@ global $APPLICATION, $USER;
 
 $aMenuLinks = Array(
 	Array(
-		"Текущие заказы",
+		"Заказы",
 		"/personal/orders/",
 		Array(),
 		Array(),
@@ -24,22 +24,22 @@ $aMenuLinks = Array(
 		Array(),
 		""
 	),
+	Array(
+		"Ожидаемые товары",
+		"/personal/subscribe/",
+		Array(),
+		Array(),
+		""
+	),
 //	Array(
-//		"Ожидаемые товары",
-//		"/personal/subscribe/",
+//		"Архив заказов",
+//		"/personal/orders/?filter_history=Y",
 //		Array(),
 //		Array(),
 //		""
 //	),
 	Array(
-		"Архив заказов",
-		"/personal/orders/?filter_history=Y",
-		Array(),
-		Array(),
-		""
-	),
-	Array(
-		"Личные данные",
+		"Профиль пользователя",
 		"/personal/private/",
 		Array(), 
 		Array(), 
@@ -66,25 +66,25 @@ $aMenuLinks = Array(
 //		Array(),
 //		""
 //	),
-    Array(
-        "Пользовательское соглашение",
-        "/payments/terms_of_use/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Политика конфиденциальности",
-        "/payments/processing_of_personal_data/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Оферта интернет магазина",
-        "/payments/offer/",
-        Array(),
-        Array(),
-        ""
-    ),
+//    Array(
+//        "Пользовательское соглашение",
+//        "/payments/terms_of_use/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
+//    Array(
+//        "Политика конфиденциальности",
+//        "/payments/processing_of_personal_data/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
+//    Array(
+//        "Оферта интернет магазина",
+//        "/payments/offer/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
 );?>

@@ -25,7 +25,7 @@ define('BX_DISABLE_INDEX_PAGE', true);?>
         "CACHE_TYPE" => "A",
         "CHECK_RIGHTS_PRIVATE" => "N",
         "COMPATIBLE_LOCATION_MODE_PROFILE" => "N",
-        "CUSTOM_PAGES" => "[[\"/payments/terms_of_use/\",\"Пользовательское соглашение\",\"fa-info-circle\"],[\"/payments/processing_of_personal_data/\",\"Политика конфиденциальности\",\"fa-info-circle\"],[\"/payments/offer/\",\"Оферта интернет магазина\",\"fa-info-circle\"]]",
+//        "CUSTOM_PAGES" => "[[\"/payments/terms_of_use/\",\"Пользовательское соглашение\",\"fa-info-circle\"],[\"/payments/processing_of_personal_data/\",\"Политика конфиденциальности\",\"fa-info-circle\"],[\"/payments/offer/\",\"Оферта интернет магазина\",\"fa-info-circle\"]]",
         "CUSTOM_SELECT_PROPS" => array(
         ),
         "NAV_TEMPLATE" => "",
@@ -71,7 +71,7 @@ define('BX_DISABLE_INDEX_PAGE', true);?>
         "SHOW_ACCOUNT_PAGE" => "N",
         "SHOW_ACCOUNT_PAY_COMPONENT" => "Y",
         "SHOW_BASKET_PAGE" => "Y",
-        "SHOW_CONTACT_PAGE" => "Y",
+        "SHOW_CONTACT_PAGE" => "N",
         "SHOW_ORDER_PAGE" => "Y",
         "SHOW_PRIVATE_PAGE" => "Y",
         "SHOW_PROFILE_PAGE" => "N",
