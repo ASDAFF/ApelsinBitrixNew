@@ -102,15 +102,65 @@ a.btnPrint:hover,
     width: 90px;
 }
 
-.field .UF_CARD_NUMBER,
-.personal-info_in .UF_CARD_NUMBER {
+.field .UF_CARD_NUMBER {
     display: block;
     height: auto;
     padding: 10px 0px 15px 0px;
 }
 
-.field .UF_CARD_NUMBER img,
-.personal-info_in .UF_CARD_NUMBER img {
+.field .UF_CARD_NUMBER img {
     float: none !important;
     width: 220px;
+}
+
+/*Личный кабинет - карта*/
+.personal-info_left_column {
+    display: inline-block;
+    float: left;
+}
+.personal-info_right_column {
+    display: inline-block;
+    padding-left: 10px;
+}
+.personal-info_right_column .UF_CARD_NUMBER {
+    display: block;
+    height: auto;
+}
+
+.personal-info_right_column .UF_CARD_NUMBER img {
+    float: none !important;
+    height: 200px;
+}
+.personal-info_right_column .input_card_number {
+    position: absolute;
+    z-index: 1000;
+    padding-left: 49px;
+    padding-top: 120px;
+}
+.personal-info_right_column input[type="text"] {
+    width: 145px!important;
+    height: 25px!important;
+    border-radius: 5px!important;
+}
+.personsl_photo_cell {
+    position: relative;
+}
+.personsl_photo_cell img {
+    border: 1px solid #edeef8;
+}
+.personsl_photo_cell input[type="file"] {
+    padding-left: 10px;
+    padding-top: 22px;
+}
+@media screen and (max-width: 787px) and (min-width: 450px) {
+    .personal-info_right_column {
+        padding-left: 0;
+        padding-top: 15px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .personal-info_right_column {
+        padding-left: 0;
+        padding-top: 15px;
+    }
 }

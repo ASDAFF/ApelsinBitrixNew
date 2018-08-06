@@ -5,7 +5,8 @@
 	echo ShowNote(GetMessage('PROFILE_DATA_SAVED'));?>
     <script type="text/javascript">
         $( document ).ready(function() {
-            Inputmask("64777[9]{7}").mask($( "input[name*='UF_CARD_NUMBER"));
+            Inputmask("64777[9]{7}").mask($( "input[name*='UF_CARD_NUMBER']"));
+//            $('.personal-info_right_column input[type="text"]').html(mask);
         });
     </script>
 <div class="workarea personal">
@@ -19,35 +20,41 @@
 		<h2><?=GetMessage("LEGEND_PROFILE")?></h2>
 		<div class="personal-info">
 			<div class="personal-info_in">
-				<?=GetMessage('NAME')?><br>
-				<input type="text" name="NAME" maxlength="50" class="input_text_style" value="<?=$arResult["arUser"]["NAME"]?>" />
-				<br><br>
-				
-				<?=GetMessage('LAST_NAME')?><br>
-				<input type="text" name="LAST_NAME" maxlength="50" class="input_text_style" value="<?=$arResult["arUser"]["LAST_NAME"]?>" />
-				<br><br>
+                <div class="personal-info_left_column">
+                    <?=GetMessage('NAME')?><br>
+                    <input type="text" name="NAME" maxlength="50" class="input_text_style" value="<?=$arResult["arUser"]["NAME"]?>" />
+                    <br><br>
 
-                <?echo GetMessage("UF_CARD_NUMBER_TITLE");?><br>
-                <input type="text" name="UF_CARD_NUMBER" maxlength="255" value="<?=$arResult["arUser"]["UF_CARD_NUMBER"]?>" />
-                <div class="UF_CARD_NUMBER">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/images/card.png" alt="Номер карты" title="<?echo GetMessage("UF_CARD_NUMBER_TITLE");?>">
+                    <?=GetMessage('LAST_NAME')?><br>
+                    <input type="text" name="LAST_NAME" maxlength="50" class="input_text_style" value="<?=$arResult["arUser"]["LAST_NAME"]?>" />
+                    <br><br>
+
+                    <div class="personsl_photo_cell">
+                        <?if(empty($arResult["arUser"]["PERSONAL_PHOTO"])):?>
+                            <img src="<?=SITE_TEMPLATE_PATH?>/images/userpic.jpg" width="69" height="69"/>
+                            <input type="file" name="PERSONAL_PHOTO" size="20" class="typefile" />
+                        <?else:?>
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td valign="middle" style="padding:0px 10px 0px 0px;">
+                                        <img src="<?=$arResult["arUser"]["PERSONAL_IMG"]["SRC"]?>" width="<?=$arResult["arUser"]["PERSONAL_IMG"]["WIDTH"]?>" height="<?=$arResult["arUser"]["PERSONAL_IMG"]["HEIGHT"]?>" />
+                                    </td>
+                                    <td valign="middle">
+                                        <input type="file" name="PERSONAL_PHOTO" size="20" class="typefile" />
+                                    </td>
+                                </tr>
+                            </table>
+                        <?endif;?>
+                    </div>
                 </div>
-
-				<?=GetMessage('PERSONAL_PHOTO')?><br>
-				<?if(empty($arResult["arUser"]["PERSONAL_PHOTO"])):?>
-					<input type="file" name="PERSONAL_PHOTO" size="20" class="typefile" />
-				<?else:?>
-					<table border="0" cellpadding="0" cellspacing="0">
-						<tr>
-							<td valign="middle" style="padding:0px 10px 0px 0px;">
-								<img src="<?=$arResult["arUser"]["PERSONAL_IMG"]["SRC"]?>" width="<?=$arResult["arUser"]["PERSONAL_IMG"]["WIDTH"]?>" height="<?=$arResult["arUser"]["PERSONAL_IMG"]["HEIGHT"]?>" />
-							</td>
-							<td valign="middle">
-								<input type="file" name="PERSONAL_PHOTO" size="20" class="typefile" />
-							</td>
-						</tr>
-					</table>
-				<?endif;?>
+                <div class="personal-info_right_column">
+                    <div class="input_card_number">
+                        <input class="card_number" type="text" name="UF_CARD_NUMBER" maxlength="255" value="<?=$arResult["arUser"]["UF_CARD_NUMBER"]?>"  placeholder="64777"/>
+                    </div>
+                    <div class="UF_CARD_NUMBER">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/images/card_new.png" alt="Номер карты" title="<?echo GetMessage("UF_CARD_NUMBER_TITLE");?>">
+                    </div>
+                </div>
 			</div>
 		</div>
 
