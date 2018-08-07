@@ -26,7 +26,7 @@ class FTPConnector
         $timeout = self::DEFAULT_TIMEOUT,
         $pasv = self::DEFAULT_PASV)
     {
-        $this->ftpConn = @ftp_connect($host,$port,$timeout) or die("Не удалось установить соединение с $host");
+        $this->ftpConn = @ftp_ssl_connect($host,$port,$timeout) or die("Не удалось установить соединение с $host");
         if (@ftp_login($this->ftpConn, $user, $pass)) {
             ftp_pasv($this->ftpConn, $pasv);
         }
