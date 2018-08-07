@@ -7,9 +7,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/files/FTPConnector.php";
 
 class PromotionImageHelper
 {
-    const FTP_SERVER = "apls.compuproject.com";
-    const FTP_USER = "compuprojectapls";
-    const FTP_PASS = "NS6odoPvrr!ME";
+    const FTP_SERVER = "185.42.230.85";
+    const FTP_USER = "ftpuser";
+    const FTP_PASS = "RNmzExGF";
     const B_IMG_PATH = "b_img";
     const S_IMG_PATH = "s_img";
     const S_IMG_SIZE = "100";
