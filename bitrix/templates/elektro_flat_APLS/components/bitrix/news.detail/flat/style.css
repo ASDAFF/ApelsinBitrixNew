@@ -225,4 +225,7 @@
 	color: #ef7f1a;
 }
 
-
+/*Добавление стиля для доп информации в новости*/
+.bx-newsdetail-content .ymap {
+	clear: both;
+}
