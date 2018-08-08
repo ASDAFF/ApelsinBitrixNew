@@ -15,8 +15,8 @@
 			events : this.contextEvents
 		});
 	};
-	BX.extend(BasketButton, BX.PopupWindowButton);
-	
+	// BX.extend(BasketButton, BX.PopupWindowButton);
+
 	window.JCCatalogSearchProducts = function (arParams) {
 		this.productType = 0;
 
