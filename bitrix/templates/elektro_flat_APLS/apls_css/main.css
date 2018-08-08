@@ -31,6 +31,10 @@
     display: none;
 }
 
+body div.popup-window-overlay {
+    background: rgba(87, 91, 113, 0.4);
+}
+
 a,
 a span {
     text-decoration: none !important;
