@@ -123,15 +123,17 @@ if($request->isPost() && check_bitrix_sessid()) {
             $APPLICATION->set_cookie("GEOLOCATION_CITY", $searchResult["city"], time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
 			if(!empty($locationId))
 				$APPLICATION->set_cookie("GEOLOCATION_LOCATION_ID", $locationId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
-			if(!empty($contactsId))
-				$APPLICATION->set_cookie("GEOLOCATION_CONTACTS_ID", $contactsId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+//			if(!empty($contactsId))
+//				$APPLICATION->set_cookie("GEOLOCATION_CONTACTS_ID", $contactsId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+            $APPLICATION->set_cookie("GEOLOCATION_CONTACTS_ID", $contactsId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
 
             // ПРОКИДЫВАЕМ ЧЕРЕЗ СЕССИЮ
 			$_SESSION['GEOLOCATION_CITY'] = $searchResult["city"];
             if(!empty($locationId))
                 $_SESSION['GEOLOCATION_LOCATION_ID'] = $locationId;
-            if(!empty($contactsId))
-                $_SESSION['GEOLOCATION_CONTACTS_ID'] = $contactsId;
+//            if(!empty($contactsId))
+//                $_SESSION['GEOLOCATION_CONTACTS_ID'] = $contactsId;
+            $_SESSION['GEOLOCATION_CONTACTS_ID'] = $contactsId;
 			
 			echo json_encode($searchResult);
 			break;		
@@ -172,7 +174,7 @@ if($request->isPost() && check_bitrix_sessid()) {
 				false, 
 				false, 
 				array("ID", "IBLOCK_ID", "PREVIEW_TEXT")
-			);				
+			);
 			while($obElement = $rsElements->GetNextElement()) {
 				$arElement = $obElement->GetFields();
 				$arElement["PROPERTIES"] = $obElement->GetProperties();					
@@ -219,8 +221,9 @@ if($request->isPost() && check_bitrix_sessid()) {
 			if(empty($setResult["city"]) && !empty($setResult["region"]))
 				$APPLICATION->set_cookie("GEOLOCATION_CITY", $setResult["region"], time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
 			$APPLICATION->set_cookie("GEOLOCATION_LOCATION_ID", $locationId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
-			if(!empty($contactsId))
-				$APPLICATION->set_cookie("GEOLOCATION_CONTACTS_ID", $contactsId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+//			if(!empty($contactsId))
+//				$APPLICATION->set_cookie("GEOLOCATION_CONTACTS_ID", $contactsId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+            $APPLICATION->set_cookie("GEOLOCATION_CONTACTS_ID", $contactsId, time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
 
             // ПРОКИДЫВАЕМ ЧЕРЕЗ СЕССИЮ
             if(!empty($setResult["city"]))
@@ -228,8 +231,9 @@ if($request->isPost() && check_bitrix_sessid()) {
             if(empty($setResult["city"]) && !empty($setResult["region"]))
                 $_SESSION['GEOLOCATION_CITY'] = $setResult["region"];
             $_SESSION['GEOLOCATION_LOCATION_ID'] = $locationId;
-            if(!empty($contactsId))
-                $_SESSION['GEOLOCATION_CONTACTS_ID'] = $contactsId;
+//            if(!empty($contactsId))
+//                $_SESSION['GEOLOCATION_CONTACTS_ID'] = $contactsId;
+            $_SESSION['GEOLOCATION_CONTACTS_ID'] = $contactsId;
 			break;
 	}
 	die();
