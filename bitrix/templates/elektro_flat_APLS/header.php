@@ -100,7 +100,7 @@ Loc::loadMessages(__FILE__);?>
 					<div class="header_4">
 						<div class="contacts">
 							<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/geolocation.php"), false, array("HIDE_ICONS" => "Y"));?>
-							<a id="callbackAnch" class="btn_buy apuo callback_anch" href="javascript:void(0)"><span class="cont"><i class="fa fa-phone"></i><span class="text"><?=Loc::getMessage("ALTOP_CALL_BACK")?></span></span></a>
+<!--							<a id="callbackAnch" class="btn_buy apuo callback_anch" href="javascript:void(0)"><span class="cont"><i class="fa fa-phone"></i><span class="text">--><?//=Loc::getMessage("ALTOP_CALL_BACK")?><!--</span></span></a>-->
 						</div>
 					</div>
 				</div>

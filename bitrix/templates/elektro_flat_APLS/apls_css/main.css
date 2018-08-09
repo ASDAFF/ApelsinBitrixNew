@@ -661,3 +661,40 @@ ul.left-menu > li > a {
 .footer-bottom__block-wrap.fb-right .footer-bottom__block.footer-bottom__counter {
     display: none;
 }
+
+/* телефоны в шапке */
+.header_3 .schedule .main_phone {
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+}
+.header_3 .schedule .main_phone .title {
+    font-size: 12px;
+}
+.header_3 .schedule .main_phone .phone {
+    font-size: 14px;
+    font-weight: 700;
+}
+.header_3 .schedule .time div {
+    font-size: 13px;
+    text-align: right;
+    font-weight: 600;
+}
+.header_3 .schedule .time div span {
+    font-size: 10px;
+    font-weight: 400;
+}
+.header_4 .geolocation {
+    height: 28px;
+    padding-top: 2px;
+}
+.header_4 .telephone .info_phone .title {
+    font-size: 12px;
+}
+.header_4 .telephone .info_phone .phone {
+    font-size: 14px;
+    font-weight: 700;
+}
+.header_4 .telephone .info_phone .phone span {
+    font-size: 12px;
+    font-weight: 400;
+}
