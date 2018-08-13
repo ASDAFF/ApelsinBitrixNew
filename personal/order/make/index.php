@@ -31,7 +31,7 @@ $APPLICATION->SetTitle("Оформление заказа");?>
 		"SKIP_USELESS_BLOCK" => "Y",
 		"BASKET_POSITION" => "before",
 		"SHOW_BASKET_HEADERS" => "N",
-		"DELIVERY_FADE_EXTRA_SERVICES" => "Y",
+		"DELIVERY_FADE_EXTRA_SERVICES" => "N",
 		"SHOW_COUPONS_BASKET" => "N",
 		"SHOW_COUPONS_DELIVERY" => "N",
 		"SHOW_COUPONS_PAY_SYSTEM" => "N",
@@ -61,8 +61,7 @@ $APPLICATION->SetTitle("Оформление заказа");?>
 		"PRODUCT_COLUMNS_VISIBLE" => array(
 			0 => "PREVIEW_PICTURE",
 			1 => "PROPS",
-			2 => "DISCOUNT_PRICE_PERCENT_FORMATED",
-			3 => "PRICE_FORMATED",
+			2 => "PRICE_FORMATED",
 		),
 		"ADDITIONAL_PICT_PROP_16" => "-",
 		"BASKET_IMAGES_SCALING" => "standard",
@@ -88,7 +87,8 @@ $APPLICATION->SetTitle("Оформление заказа");?>
 		"USER_CONSENT_ID" => "0",
 		"USER_CONSENT_IS_CHECKED" => "Y",
 		"USER_CONSENT_IS_LOADED" => "N",
-		"ADDITIONAL_PICT_PROP_17" => "-"
+		"ADDITIONAL_PICT_PROP_17" => "-",
+		"USE_PHONE_NORMALIZATION" => "Y"
 	),
 	false
 );?>
