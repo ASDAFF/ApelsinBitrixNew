@@ -33,8 +33,9 @@ $totalPrice = 0;
 $arResult = array();
 
 if($arBasketItems) {
-	foreach($arBasketItems as $arItem) {		
-		$totalQnt += $arItem["QUANTITY"];
+	foreach($arBasketItems as $arItem) {
+//        $totalQnt += $arItem["QUANTITY"];
+        $totalQnt ++;
 		$totalPrice += $arItem["PRICE"] * $arItem["QUANTITY"];			
 	}
 
