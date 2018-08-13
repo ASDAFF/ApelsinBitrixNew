@@ -119,4 +119,29 @@ class APLS_CatalogItemInfo
         $APLS_ServiceCenters = new APLS_CatalogItemDetailsServiceCenters($servisString);
         return $APLS_ServiceCenters->getHtml();
     }
+
+    public static function getPOSCreditBtn($price) {
+        $json = "var productName = $('#pagetitle').text();";
+        $json .= "var options = '{inn: \"623006579773\", kpp: \"\", ttName: \"390006, г.Рязань, ул. Есенина, д.13\",manualOrderInput: false, order: [{model: \"'+productName+'\", price: ".$price."},{model: \"'+productName+'\", price: ".$price."}]}';";
+        $html = '';
+        $html .= '<div id="pos-credit-container" class="pos-credit-container">';
+        $html .= '<div class="pochta-bank-img-container">';
+        $html .= '<i class="fa fa-percent"></i>';
+        $html .= '</div>';
+        $html .= '<div class="pos-credit-title">Оформить в рассрочку</div>';
+        $html .= '';
+        $html .= '</div>';
+        $html .= '<script src="https://my.pochtabank.ru/sdk/v1/pos-credit.js"></script>';
+        $html .= '<script>';
+        $html .= '$(document).ready(function() {';
+        $html .= '$("#pos-credit-container").click(function() {';
+        $html .= $json;
+        $html .= "window.PBSDK.posCredit.mount('#pos-credit-container', options);";
+        $html .= "window.PBSDK.posCredit.on('done', function(id){console.log('Id заявки: ' + id)});";
+//        $html .= "window.PBSDK.posCredit.unmount('#pos-credit-container');";
+        $html .= '});';
+        $html .= '});';
+        $html .= '</script>';
+        return $html;
+    }
 }

@@ -136,6 +136,12 @@ $templateData = array(
 				$("#fancybox-title").css({"top":"100%", "bottom":"auto"});
 			} 
 		});
+
+        $('.body').click(function () {
+            if ($('#fancybox-wrap').css('display') == 'block') {
+                $('#fancybox-wrap').css('display','none');
+            }
+        });
 	});
 </script>
 
@@ -1089,7 +1095,9 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 							<div class="catalog-detail-buttons">
 								<a rel="nofollow" target="_blank" href="<?=!empty($arParams['BUTTON_DELIVERY_HREF']) ? $arParams['BUTTON_DELIVERY_HREF'] : 'javascript:void(0)'?>" class="btn_buy apuo pcd"><i class="fa fa-truck"></i><span><?=GetMessage('CATALOG_ELEMENT_BUTTON_DELIVERY')?></span></a>
 							</div>
-						<?}?>							
+						<?}?>
+<!--                        --><?//=APLS_CatalogItemInfo::getPOSCreditBtn($arResult["MIN_PRICE"]["PRICE"]);?>
+<!--                        --><?//=var_dump($arResult)?>
 					</div>
 				</div>
 			</div>
