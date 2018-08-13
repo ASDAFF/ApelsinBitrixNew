@@ -113,3 +113,8 @@
 .cart-items .equipment-order.list .tbody .cart-item-status span.item-status-r {
 
 }
+
+/* отмена правки спсика твоаров */
+#bx-soa-basket .bx-soa-section-title-container .bx-soa-section-edit {
+    display: none;
+}
