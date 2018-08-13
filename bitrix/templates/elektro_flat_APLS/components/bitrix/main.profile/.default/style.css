@@ -1,0 +1,44 @@
+.personal_tabs .personal_tab_title {
+    padding: 1em 1.5em;
+    font-size: 13px;
+    font-weight: 600;
+    color: #575b71;
+    background: #dee0ee;
+    border: 1px solid #dee0ee;
+    display: inline-block;
+    cursor: pointer;
+}
+.personal_tabs .personal_tab_title.checked {
+    color: #575b71;
+    background: #fff;
+    border-bottom: 2px solid #fff;
+    margin-bottom: -1px;
+}
+.personal_tabs .personal_tab_title.checked:hover{
+    border-bottom: 2px solid #fff;
+}
+.personal_tabs .personal_tab_title:hover {
+    color: #575b71;
+    background: #fff;
+    border-bottom: 1px solid #fff;
+}
+.personal-info.personal_delivery {
+    display: none;
+}
+.personal-info.personal_delivery .sale-profile-detail-block-wrap{
+    border: 0!important;
+    margin-bottom: 0!important;
+}
+.personal-info.personal_delivery .sale-profile-detail-form-group.sale-profile-detail-form-property-text:last-child {
+    margin-bottom: 0!important;
+}
+.personal-info.personal_delivery .sale-profile-detail-form-btn .btn_buy.popdef {
+    margin-top: 10px;
+    margin-left: -1px;
+}
+.personal_delivery {
+    display: none;
+}
+.personal_pass {
+    display: none;
+}

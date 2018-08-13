@@ -7,7 +7,8 @@ $MESS ['PERSONAL_PHOTO'] = "Изображение профиля";
 $MESS ['NEW_PASSWORD_CONFIRM'] = "Подтверждение пароля";
 $MESS ['NEW_PASSWORD_REQ'] = "Новый пароль";
 $MESS ['MAIN_SAVE'] = "Сохранить";
-$MESS ['MAIN_PSWD'] = "Пароль";
+$MESS ['MAIN_PSWD'] = "Сменить пароль";
 $MESS ['LEGEND_PROFILE'] = "Личные данные";
 $MESS["UF_CARD_NUMBER_TITLE"] = "Персональная карта клиента";
+$MESS ['LEGEND_DELIVERY'] = 'Данные для оповещения';
 ?>

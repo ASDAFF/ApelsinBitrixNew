@@ -1,0 +1,21 @@
+.pers_data_save {
+    margin-top: 10px!important;
+    margin-left: -1px!important;
+    float: left;
+    height: 31px;
+    padding: 0px 20px;
+    border: 1px solid #dee0ee;
+    background: transparent;
+    color: #8184a1;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.pers_data_save:hover {
+    border: 1px solid #ef7f1a;
+    background: #ef7f1a !important;
+    color: #FFFFFF;;
+}

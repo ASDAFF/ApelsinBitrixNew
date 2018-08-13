@@ -3,12 +3,6 @@
 <?=ShowError($arResult["strProfileError"]);?>
 <?if($arResult['DATA_SAVED'] == 'Y')
 	echo ShowNote(GetMessage('PROFILE_DATA_SAVED'));?>
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            Inputmask("64777[9]{7}").mask($( "input[name*='UF_CARD_NUMBER']"));
-//            $('.personal-info_right_column input[type="text"]').html(mask);
-        });
-    </script>
 <div class="workarea personal">
 	<form method="post" name="form1" action="<?=$arResult["FORM_TARGET"]?>" enctype="multipart/form-data">
 		<?=$arResult["BX_SESSION_CHECK"]?>
@@ -17,8 +11,12 @@
 		<input type="hidden" name="LOGIN" value=<?=$arResult["arUser"]["LOGIN"]?> />
 		<input type="hidden" name="EMAIL" value=<?=$arResult["arUser"]["EMAIL"]?> />
 
-		<h2><?=GetMessage("LEGEND_PROFILE")?></h2>
-		<div class="personal-info">
+        <div class="personal_tabs">
+            <div id="personal_fio" class="personal_tab_title checked"><?=GetMessage("LEGEND_PROFILE")?></div>
+            <div id="personal_delivery" class="personal_tab_title"><?=GetMessage('LEGEND_DELIVERY')?></div>
+            <div id="personal_pass" class="personal_tab_title"><?=GetMessage("MAIN_PSWD")?></div>
+        </div>
+		<div class="personal-info personal_fio">
 			<div class="personal-info_in">
                 <div class="personal-info_left_column">
                     <?=GetMessage('NAME')?><br>
@@ -58,8 +56,27 @@
 			</div>
 		</div>
 
-		<h2><?=GetMessage("MAIN_PSWD")?></h2>
-		<div class="personal-info">
+        <div class="personal-info personal_delivery">
+            <?
+            $db_sales = CSaleOrderUserProps::GetList(
+                array("DATE_UPDATE" => "DESC"),
+                array("USER_ID" => $USER->GetID())
+            );
+            while ($ar_sales = $db_sales->Fetch())
+            {
+                $ar_profId [$ar_sales['NAME']] = $ar_sales['ID'];
+            }
+            $profId = array_shift($ar_profId);
+            $APPLICATION->IncludeComponent(
+                "bitrix:sale.personal.profile.detail",
+                "short",
+                array(
+                    "ID" => $profId,
+                )
+            );
+            ?>
+        </div>
+		<div class="personal-info personal_pass">
 			<div class="personal-info_in">
 				<?=GetMessage('NEW_PASSWORD_REQ')?><br>
 				<input type="password" name="NEW_PASSWORD" maxlength="50" class="input_text_style" value="" autocomplete="off" />
