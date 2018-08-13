@@ -229,6 +229,10 @@
     font-size: 18px;
 }
 
+.catalog-detail .catalog-detail-price .unit {
+    white-space: nowrap;
+}
+
 @media screen and (max-width: 787px) {
     .apls-product-details-table tr td:first-child {
         width: auto;
