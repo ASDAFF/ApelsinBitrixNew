@@ -11,9 +11,27 @@
 		<input type="hidden" name="LOGIN" value=<?=$arResult["arUser"]["LOGIN"]?> />
 		<input type="hidden" name="EMAIL" value=<?=$arResult["arUser"]["EMAIL"]?> />
 
+        <?
+        $db_sales = CSaleOrderUserProps::GetList(
+            array("DATE_UPDATE" => "DESC"),
+            array("USER_ID" => $USER->GetID())
+        );
+        while ($ar_sales = $db_sales->Fetch())
+        {
+            if(isset($ar_sales)){
+                $ar_profId [$ar_sales['NAME']] = $ar_sales['ID'];
+            } else {
+                $ar_profId = NULL;
+            }
+        }
+        ?>
         <div class="personal_tabs">
             <div id="personal_fio" class="personal_tab_title checked"><?=GetMessage("LEGEND_PROFILE")?></div>
-            <div id="personal_delivery" class="personal_tab_title"><?=GetMessage('LEGEND_DELIVERY')?></div>
+            <?
+                if ($ar_profId !== NULL) {
+                   ?><div id="personal_delivery" class="personal_tab_title"><?=GetMessage('LEGEND_DELIVERY')?></div><?
+                }
+            ?>
             <div id="personal_pass" class="personal_tab_title"><?=GetMessage("MAIN_PSWD")?></div>
         </div>
 		<div class="personal-info personal_fio">
@@ -56,26 +74,21 @@
 			</div>
 		</div>
 
-        <div class="personal-info personal_delivery">
             <?
-            $db_sales = CSaleOrderUserProps::GetList(
-                array("DATE_UPDATE" => "DESC"),
-                array("USER_ID" => $USER->GetID())
-            );
-            while ($ar_sales = $db_sales->Fetch())
-            {
-                $ar_profId [$ar_sales['NAME']] = $ar_sales['ID'];
+            if ($ar_profId !== NULL) {
+                ?><div class="personal-info personal_delivery"><?
+                $profId = array_shift($ar_profId);
+                $APPLICATION->IncludeComponent(
+                    "bitrix:sale.personal.profile.detail",
+                    "short",
+                    array(
+                        "ID" => $profId,
+                    )
+                );
+                ?></div><?
             }
-            $profId = array_shift($ar_profId);
-            $APPLICATION->IncludeComponent(
-                "bitrix:sale.personal.profile.detail",
-                "short",
-                array(
-                    "ID" => $profId,
-                )
-            );
             ?>
-        </div>
+
 		<div class="personal-info personal_pass">
 			<div class="personal-info_in">
 				<?=GetMessage('NEW_PASSWORD_REQ')?><br>
