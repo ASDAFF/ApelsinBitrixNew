@@ -698,3 +698,18 @@ ul.left-menu > li > a {
     font-size: 12px;
     font-weight: 400;
 }
+/*Кнопка скрытия меню*/
+.menu-header .menu-header-swap {
+    float: right;
+    display: inline-block;
+    padding: 28px 0px 7px 0px;
+    font-size: 18px;
+    color: #dee0ee;
+    cursor: pointer;
+}
+.menu-header .menu-header-swap .fa.fa-plus{
+    display: none;
+}
+.menu-header .h3 {
+    display: inline-block;
+}
