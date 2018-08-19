@@ -713,3 +713,6 @@ ul.left-menu > li > a {
 .menu-header .h3 {
     display: inline-block;
 }
+.menu-header{
+    cursor: pointer;
+}

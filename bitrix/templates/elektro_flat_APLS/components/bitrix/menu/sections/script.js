@@ -9,7 +9,7 @@ $(document).ready(function () {
     });
 
     function getSwapLeftMenu() {
-        $('.menu-header-swap').click(function () {
+        $('.menu-header').click(function () {
             var checker = $('.menu-header-swap .fa-plus').css('display');
             if (checker == 'none') {
                 $('.menu-header-swap .fa-plus').css('display','block');
