@@ -97,6 +97,8 @@
 /* Дополнительыне реквизиты услуг в карте товара */
 .catalog-detail .ProductAvailableServicesWrapper {
     margin: 0px 0px 10px 0px;
+    border:1px dashed #dee0ee;
+    padding: 0px 20px;
 }
 
 .catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesTitle {
@@ -202,7 +204,10 @@
 
 .LAWYER_GOODS_NOTICE {
     margin-top: 2em;
-    font-size: 9px;
+    font-size: 11px;
+    padding: 20px;
+    background: #ffdddd;
+    color:#5a1a11;
 }
 
 .price_buy_detail .APLS_RetailPrice {
