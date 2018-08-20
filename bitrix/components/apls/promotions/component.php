@@ -1,10 +1,12 @@
 <?
+
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionModel.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionImageInRevisionModel.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionImageModel.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/classes/PromotionHelper.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionImageTypeModel.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/classes/PromotionImageHelper.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/geolocation/geolocationRegionHelper.php";
 
 function getPromotionListRegion($regionAlias) {
     $elementList = PromotionRegionModel::getElementList(
@@ -88,6 +90,12 @@ if(isset($_GET['p1']) && $_GET['p1']==="id" && isset($_GET['p2']) && $_GET['p2']
     // вспомогательные временные переменные
     $region = null;
     $section = null;
+
+    // получаем даныне региона по геолокации
+    $geolocationRegionId = geolocationRegionHelper::getGeolocationRegionId();
+    if(!empty($geolocationRegionId)) {
+        $regionObj = new PromotionRegionModel($geolocationRegionId);
+    }
     // определение региона и секции по ссылке
     if (isset($_GET['p1']) && $_GET['p1']!=="" && isset($_GET['p2']) && $_GET['p2']!=="") {
         $region = getPromotionListRegion($_GET['p1']);
@@ -101,11 +109,24 @@ if(isset($_GET['p1']) && $_GET['p1']==="id" && isset($_GET['p2']) && $_GET['p2']
         $arResult["region"] = $region->getId();
         $arResult["regionName"] = $region->getFieldValue("region");
         $arResult["urlRegion"] = $region->getFieldValue("alias");
+    } else if(isset($regionObj) && $regionObj instanceof PromotionRegionModel) {
+        $arResult["region"] = $regionObj->getId();
+        $arResult["regionName"] = $regionObj->getFieldValue("region");
+        $arResult["urlRegion"] = $regionObj->getFieldValue("alias");
     } else {
         $region = PromotionRegionModel::getUserRegion();
         $arResult["region"] = $region->getId();
         $arResult["regionName"] = $region->getFieldValue("region");
     }
+//    if($region instanceof PromotionRegionModel) {
+//        $arResult["region"] = $region->getId();
+//        $arResult["regionName"] = $region->getFieldValue("region");
+//        $arResult["urlRegion"] = $region->getFieldValue("alias");
+//    } else {
+//        $region = PromotionRegionModel::getUserRegion();
+//        $arResult["region"] = $region->getId();
+//        $arResult["regionName"] = $region->getFieldValue("region");
+//    }
     // данные по секции
     if($section instanceof PromotionSectionModel) {
         $arResult["section"] = $section->getId();
