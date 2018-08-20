@@ -14,7 +14,7 @@ if($arResult["urlRegion"] !== "") {
     });
 </script>
 <div class="PromotionsCities">
-    <a id="CITY_CHANGE_BUTTON" class="btn">в других регионах</a>
+    <a id="CITY_CHANGE_BUTTON" class="btn">Посмотреть в других регионах</a>
 </div>
 <div class="PromotionsCitiesSectionsWrapper">
     <div class="PromotionsCitiesSection">
