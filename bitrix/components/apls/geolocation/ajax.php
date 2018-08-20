@@ -6,6 +6,5 @@ $APPLICATION->ShowAjaxHead();
 session_start();
 
 if($request->isPost()) {
-    $_SESSION['GEOLOCATION_REGION_ALIAS'] = $request->getPost("regionAlias");
-    $_SESSION['GEOLOCATION_REGION_NAME'] = $request->getPost("regionName");
+    $_SESSION['GEOLOCATION_REGION_ID'] = $request->getPost("regionId");
 }

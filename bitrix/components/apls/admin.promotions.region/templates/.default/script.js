@@ -91,6 +91,7 @@ function AdminPromotionsRegionUiShowRegionsEdit(regionId) {
             $(".PromotionRegionWrapper").html(rezult);
             BX.bind(BX("RegionFieldValueRegionName"), "keyup", BX.delegate(AdminPromotionsRegionChangeName, BX));
             BX.bind(BX("RegionFieldValueRegionAlias"), "keyup", BX.delegate(AdminPromotionsRegionChangeName, BX));
+            BX.bind(BX("RegionFieldValueHeadHtml"), "keyup", BX.delegate(AdminPromotionsRegionChangeName, BX));
             AdminPromotionsRegionUiCitiesShow(regionId);
         },
         onfailure: function (rezult) {
@@ -187,6 +188,7 @@ function AdminPromotionsRegionChangeName() {
     data["regionId"] = $("#RegionFieldValueRegionId").val();
     data["regionName"] = $("#RegionFieldValueRegionName").val();
     data["regionAlias"] = $("#RegionFieldValueRegionAlias").val();
+    data["headHtml"] = $("#RegionFieldValueHeadHtml").val();
     BX.ajax({
         url: data["templateFolder"] + "/ajax/actions/regionChangeName.php",
         data: data,

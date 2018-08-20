@@ -102,6 +102,15 @@ class AdminPromotionsRegion
 
         );
         $html .= "</div>";
+        $html .= "<div class='RegionTextFields'>";
+        $html .= static::getRegionTextFieldHtml(
+            $region->getFieldValue('head_html'),
+            "HTML для шапки",
+            "HeadHtml",
+            false
+
+        );
+        $html .= "</div>";
         $html .= "<div class='RegionCitiesTitle'>Территории</div>";
         $html .= "<div class='RegionCities'></div>";
         $html .= "<div class='RegionCitiesTitle'>Добавить территорию</div>";
@@ -128,6 +137,20 @@ class AdminPromotionsRegion
         $html .= "<div class='RegionField $fieldClass'>";
         $html .= "<div class='RegionFieldName'>$name</div>";
         $html .= "<div class='RegionFieldValue'><input id='RegionFieldValue$fieldClass' type='text' value='$value' $disabled required>$afterInputHtml</div>";
+        $html .= "</div>";
+        return $html;
+    }
+
+    private static function getRegionTextFieldHtml($value, $name, $fieldClass = "", $disabled = false, $afterInputHtml = "") {
+        if($disabled) {
+            $disabled = "disabled";
+        } else {
+            $disabled = "";
+        }
+        $html = "";
+        $html .= "<div class='RegionField RegionTextField $fieldClass'>";
+        $html .= "<div class='RegionFieldName'>$name</div>";
+        $html .= "<div class='RegionFieldValue'><textarea id='RegionFieldValue$fieldClass' type='text' $disabled required>$value</textarea>$afterInputHtml</div>";
         $html .= "</div>";
         return $html;
     }

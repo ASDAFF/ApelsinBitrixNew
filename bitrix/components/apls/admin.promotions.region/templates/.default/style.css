@@ -170,23 +170,30 @@
     padding-right: 100px;
 }
 
-.RegionEditWrapper .RegionFields {
+.RegionEditWrapper .RegionFields,
+.RegionEditWrapper .RegionTextFields {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: stretch;
 }
-.RegionEditWrapper .RegionFields .RegionField {
+.RegionEditWrapper .RegionFields .RegionField,
+.RegionEditWrapper .RegionTextFields .RegionTextField{
     padding-right: 1em;
 }
-.RegionEditWrapper .RegionFields .RegionField .RegionFieldName {
+.RegionEditWrapper .RegionFields .RegionFieldText {
+
+}
+.RegionEditWrapper .RegionFields .RegionField .RegionFieldName,
+.RegionEditWrapper .RegionTextFields .RegionTextField .RegionFieldName {
     color: #a1a4b3;
     font-weight: 600;
     letter-spacing: 1px;
     padding: .5em 0;
     text-transform: uppercase;
 }
-.RegionEditWrapper .RegionFields .RegionField .RegionFieldValue input[type="text"] {
+.RegionEditWrapper .RegionFields .RegionField .RegionFieldValue input[type="text"],
+.RegionEditWrapper .RegionTextFields .RegionTextField .RegionFieldValue textarea {
     width: 400px;
     height: 30px;
     margin: 0px;
@@ -196,6 +203,10 @@
     border: 1px solid #dee0ee;
     border-radius: 0;
     box-shadow: none;
+}
+.RegionEditWrapper .RegionTextFields .RegionTextField .RegionFieldValue textarea {
+    height: 200px;
+    padding: .5em;
 }
 .RegionEditWrapper .RegionCitiesTitle {
     color: #a1a4b3;

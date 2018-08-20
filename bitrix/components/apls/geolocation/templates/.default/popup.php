@@ -13,8 +13,7 @@ $regions = PromotionRegionModel::getElementList(null, null, null, $orderByObj);
         <?if($region instanceof PromotionRegionModel):?>
             <div
                 class="geolocation-region-item"
-                regionAlias="<?=$region->getFieldValue('alias')?>"
-                regionName="<?=$region->getFieldValue('region')?>"
+                regionId="<?=$region->getId()?>"
             >
                 <?=$region->getFieldValue('region')?>
             </div>
@@ -29,6 +28,7 @@ $regions = PromotionRegionModel::getElementList(null, null, null, $orderByObj);
         data["componentFolder"] = BX.message("GEOLOCATION_COMPONENT_PATH");
         data["regionAlias"] = $(this).attr('regionAlias');
         data["regionName"] = $(this).attr('regionName');
+        data["regionId"] = $(this).attr('regionId');
         BX.ajax({
             url: data["componentFolder"] + "/ajax.php",
             data: data,

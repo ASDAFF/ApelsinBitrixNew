@@ -1,10 +1,7 @@
 <?php
 
-use Bitrix\Main\Loader,
-    Bitrix\Main\Application,
-    Bitrix\Main\Text\Encoding,
-    Bitrix\Iblock,
-    Bitrix\Main\Service\GeoIp;
+use Bitrix\Main\Application;
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionRegionModel.php";
 
 if(!isset($arParams["CACHE_TIME"]))
     $arParams["CACHE_TIME"] = 36000000;
@@ -15,16 +12,17 @@ if($arParams["IBLOCK_ID"] <= 0)
 
 $request = Application::getInstance()->getContext()->getRequest();
 
-if(isset($_SESSION['GEOLOCATION_REGION_ALIAS'])) {
-    $arParams["GEOLOCATION_REGION_ALIAS"] = $_SESSION['GEOLOCATION_REGION_ALIAS'];
-    $APPLICATION->set_cookie("GEOLOCATION_REGION_ALIAS", $_SESSION['GEOLOCATION_REGION_ALIAS'], time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+if(isset($_SESSION['GEOLOCATION_REGION_ID'])) {
+    $arParams["GEOLOCATION_REGION_ID"] = $_SESSION['GEOLOCATION_REGION_ID'];
+    $APPLICATION->set_cookie("GEOLOCATION_REGION_ID", $_SESSION['GEOLOCATION_REGION_ID'], time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
 } else {
-    $arParams["GEOLOCATION_REGION_ALIAS"] = $request->getCookie("GEOLOCATION_REGION_ALIAS");
+    $arParams["GEOLOCATION_REGION_ID"] = $request->getCookie("GEOLOCATION_REGION_ID");
 }
-if(isset($_SESSION['GEOLOCATION_REGION_NAME'])) {
-    $arParams["GEOLOCATION_REGION_NAME"] = $_SESSION['GEOLOCATION_REGION_NAME'];
-    $APPLICATION->set_cookie("GEOLOCATION_REGION_NAME", $_SESSION['GEOLOCATION_REGION_NAME'], time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
-} else {
-    $arParams["GEOLOCATION_REGION_NAME"] = $request->getCookie("GEOLOCATION_REGION_ALIAS");
+if(!empty($arParams["GEOLOCATION_REGION_ID"])) {
+    $region = new PromotionRegionModel($arParams["GEOLOCATION_REGION_ID"]);
+    $arParams["GEOLOCATION_REGION_ALIAS"] = $region->getFieldValue("alias");
+    $arParams["GEOLOCATION_REGION_NAME"] = $region->getFieldValue("region");
+    $arResult["CONTACTS"] = $region->getFieldValue("head_html");
 }
+
 $this->IncludeComponentTemplate();
