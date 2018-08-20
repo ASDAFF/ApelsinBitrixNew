@@ -44,7 +44,11 @@ $templateData = array(
 
 //JS//?>
 <script type="text/javascript">
-	BX.ready(function() {			
+	BX.ready(function() {
+        /*Скрываем левое меню каталога в карте товара*/
+        $('.menu-header-swap .fa-plus').css('display','block');
+        $('.menu-header-swap .fa-minus').css('display','none');
+        $('.left-column .left-menu').css('display','none');
 		//DETAIL_SUBSCRIBE//
 		if(!!BX("catalog-subscribe-from"))
 			BX("<?=$arItemIDs['SUBSCRIBE']?>").appendChild(BX.style(BX("catalog-subscribe-from"), "display", ""));
@@ -142,6 +146,8 @@ $templateData = array(
                 $('#fancybox-wrap').css('display','none');
             }
         });
+
+
 	});
 </script>
 
