@@ -1,5 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_CatalogSections.php";
+
 if(count($arResult["ITEMS"]) < 1) {
 	echo "<br />";
 	ShowNote(GetMessage("CATALOG_EMPTY_RESULT"), "infotext");
@@ -11,6 +13,17 @@ $curPage = $APPLICATION->GetCurPage();
 global $arSetting;
 $inProductQnt = in_array("PRODUCT_QUANTITY", $arSetting["GENERAL_SETTINGS"]["VALUE"]);
 
+if (APLS_CatalogSections::getAllChildrenListForSection($arResult["XML_ID"]) == NULL) {
+    ?>
+    <script>
+        $(document).ready(function () {
+            $('.menu-header-swap .fa-plus').css('display','block');
+            $('.menu-header-swap .fa-minus').css('display','none');
+            $('.left-column .left-menu').css('display','none');
+        });
+    </script>
+    <?
+}
 //CATALOG//?>
 <div id="catalog">
 	<div class="catalog-item-price-view" itemtype="http://schema.org/ItemList">
