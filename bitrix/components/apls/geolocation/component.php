@@ -14,15 +14,32 @@ $request = Application::getInstance()->getContext()->getRequest();
 
 if(isset($_SESSION['GEOLOCATION_REGION_ID'])) {
     $arParams["GEOLOCATION_REGION_ID"] = $_SESSION['GEOLOCATION_REGION_ID'];
-    $APPLICATION->set_cookie("GEOLOCATION_REGION_ID", $_SESSION['GEOLOCATION_REGION_ID'], time() + $arParams["COOKIE_TIME"], "/", SITE_SERVER_NAME);
+    $APPLICATION->set_cookie(
+        "GEOLOCATION_REGION_ID",
+        $_SESSION['GEOLOCATION_REGION_ID'],
+        time() + $arParams["COOKIE_TIME"],
+        "/",
+        SITE_SERVER_NAME
+    );
 } else {
     $arParams["GEOLOCATION_REGION_ID"] = $request->getCookie("GEOLOCATION_REGION_ID");
 }
-if(!empty($arParams["GEOLOCATION_REGION_ID"])) {
+if(empty($arParams["GEOLOCATION_REGION_ID"])) {
+    $region = PromotionRegionModel::getDefaultRegion();
+    $arParams["GEOLOCATION_REGION_ID"] = $region->getId();
+    $_SESSION['GEOLOCATION_REGION_ID'] = $region->getId();
+    $APPLICATION->set_cookie(
+        "GEOLOCATION_REGION_ID",
+        $_SESSION['GEOLOCATION_REGION_ID'],
+        time() + $arParams["COOKIE_TIME"],
+        "/",
+        SITE_SERVER_NAME
+    );
+} else {
     $region = new PromotionRegionModel($arParams["GEOLOCATION_REGION_ID"]);
-    $arParams["GEOLOCATION_REGION_ALIAS"] = $region->getFieldValue("alias");
-    $arParams["GEOLOCATION_REGION_NAME"] = $region->getFieldValue("region");
-    $arResult["CONTACTS"] = $region->getFieldValue("head_html");
 }
+$arParams["GEOLOCATION_REGION_ALIAS"] = $region->getFieldValue("alias");
+$arParams["GEOLOCATION_REGION_NAME"] = $region->getFieldValue("region");
+$arResult["CONTACTS"] = $region->getFieldValue("head_html");
 
 $this->IncludeComponentTemplate();
