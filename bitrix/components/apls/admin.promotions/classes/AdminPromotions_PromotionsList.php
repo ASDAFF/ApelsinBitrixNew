@@ -43,22 +43,48 @@ class AdminPromotions_PromotionsList
     }
 
     private function showElement(PromotionModel $promotion):string {
-        $tabs = new APLS_Tabs();
         $stile = "";
-        $revisionStatus = "<div class='revision-status-panel'>";
+        $regionsArray = array();
+        $sectionsArray = array();
         if($promotion->getNextRevisionId() !== "") {
             $stile .= " coming";
-            $revisionStatus .= "<div class='coming'>coming</div>";
         }
         if($promotion->getCurrentRevisionId() !== "") {
             $stile .= " current";
-            $revisionStatus .= "<div class='current'>current</div>";
+            $revId = $promotion->getCurrentRevisionId();
+            $revision = new PromotionRevisionModel($revId);
+            // определение регионов
+            if($revision->hasProblemsWithRegions()) {
+                $stile .= " problems-with-regions";
+                $regionsArray[] = "Не указан ни один регион";
+            } else {
+                if($promotion->getFieldValue("in_all_regions")) {
+                    $regionsArray[] = "Во всех регионах";
+                } else {
+                    $regions = PromotionInRegionModel::searchByRevision($revId);
+                    foreach ($regions as $promInRegion) {
+                        if ($promInRegion instanceof PromotionInRegionModel) {
+                            $region = new PromotionRegionModel($promInRegion->getFieldValue('region'));
+                            $regionsArray[] = $region->getFieldValue('region');
+                        }
+                    }
+                }
+            }
+            // определение секций
+            $sections = $revision->getSections();
+            foreach ($sections as $section) {
+                if($section instanceof PromotionSectionModel) {
+                    $sectionsArray[] = $section->getFieldValue("section");
+                }
+            }
+            if(empty($sectionsArray)) {
+                $stile .= " problems-with-sections";
+                $sectionsArray[] = "Не указана ни одна секция";
+            }
         }
         if($promotion->getPreviousRevisionId() !== "") {
             $stile .= " past";
-            $revisionStatus .= "<div class='past'>past</div>";
         }
-        $revisionStatus .= "</div>";
 
 
         $html = "";
@@ -67,9 +93,17 @@ class AdminPromotions_PromotionsList
                 $html .= "<div class='content'>";
                 $html .= $promotion->getFieldValue('title');
                 $html .= "</div>";
+                $html .= "<div class='regions'>";
+                foreach ($regionsArray as $regionName) {
+                    $html .= "<div class='region'>$regionName</div>";
+                }
+                $html .= "</div>";
+                $html .= "<div class='sections'>";
+                foreach ($sectionsArray as $sectionName) {
+                    $html .= "<div class='section'>$sectionName</div>";
+                }
+                $html .= "</div>";
             $html .= "</div>";
-//        $html .= $revisionStatus;
-//        $html .= "</div>";
         $html .= "</div>";
         return $html;
     }

@@ -15,6 +15,13 @@ if($revision->getFieldValue('disable') > 0) {
     $boolSelect['disable'][0] = 'selected';
     $boolSelect['disable'][1] = '';
 }
+if($revision->getFieldValue('in_all_regions') > 0) {
+    $boolSelect['in_all_regions'][0] = '';
+    $boolSelect['in_all_regions'][1] = 'selected';
+} else {
+    $boolSelect['in_all_regions'][0] = 'selected';
+    $boolSelect['in_all_regions'][1] = '';
+}
 if($revision->getFieldValue('global_activity') > 0) {
     $boolSelect['global_activity'][0] = '';
     $boolSelect['global_activity'][1] = 'selected';
@@ -204,6 +211,15 @@ if(!$arUser) {
                 <select name="disable">
                     <option value="0" <?=$boolSelect['disable'][0]?>>Активна</option>
                     <option value="1" <?=$boolSelect['disable'][1]?>>Не активна</option>
+                </select>
+            </div>
+        </div>
+        <div class="InputField">
+            <div class="text">Во всех регионах</div>
+            <div class="input">
+                <select name="in_all_regions">
+                    <option value="0" <?=$boolSelect['in_all_regions'][0]?>>Нет</option>
+                    <option value="1" <?=$boolSelect['in_all_regions'][1]?>>Да</option>
                 </select>
             </div>
         </div>

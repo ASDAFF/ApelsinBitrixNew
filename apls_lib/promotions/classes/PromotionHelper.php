@@ -66,7 +66,8 @@ class PromotionHelper
                     REV.`local_activity`,
                     REV.`vk_activity`,
                     REV.`show_from`,
-                    REV.`start_from`
+                    REV.`start_from`,
+                    REV.`in_all_regions`
                     FROM (
                         SELECT
                         REV.`id`, 
@@ -75,7 +76,8 @@ class PromotionHelper
                         REV.`local_activity`,
                         REV.`vk_activity`,
                         REV.`show_from`,
-                        REV.`start_from`
+                        REV.`start_from`,
+                        REV.`in_all_regions`
                         FROM (
                             SELECT 
                             `id`, 
@@ -84,7 +86,8 @@ class PromotionHelper
                             `local_activity`,
                             `vk_activity`,
                             `show_from`,
-                            `start_from`
+                            `start_from`,
+                            `in_all_regions`
                             FROM `apls_promotions_revision` 
                             WHERE 
                             `disable`<'1' AND
@@ -105,7 +108,7 @@ class PromotionHelper
                     REV.`promotion` IS NOT NULL AND 
                     (
                         RIS.`revision` IN (SELECT `revision` FROM `apls_promotions_in_region` WHERE `region`='$region') OR
-                        RIS.`revision` NOT IN (SELECT `revision` FROM `apls_promotions_in_region` WHERE `region`<>'$region')
+                        REV.`in_all_regions` > 0
                     )";
         $records = static::getConnection(self::CONNECTION_NAME)->query($sql);
         $promotions = array();

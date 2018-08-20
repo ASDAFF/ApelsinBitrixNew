@@ -22,6 +22,7 @@ class PromotionRevisionModel extends PromotionModelAbstract
         'promotion',
         'apply_from',
         'disable',
+        'in_all_regions',
     );
     protected static $optionalFields = array(
         'global_activity',
@@ -380,6 +381,15 @@ class PromotionRevisionModel extends PromotionModelAbstract
         return false;
     }
 
+    public function hasProblemsWithRegions() {
+        $inAllRegions = $this->getFieldValue("in_all_regions");
+        if($inAllRegions < 1 && empty(PromotionInRegionModel::searchByRevision($this->id))) {
+            return true;
+        }
+        return false;
+    }
+
+
     /**
      * Проверяет относится данная ревизия указанной акции
      * @param $revisionId - идентификатор ревизии
@@ -403,9 +413,11 @@ class PromotionRevisionModel extends PromotionModelAbstract
      */
     public static function isRevisionAvailableForRegion(string $revisionId, string $regionId): bool
     {
+        $revision = new PromotionRevisionModel($revisionId);
+        $inAllRegions = $revision->getFieldValue("in_all_regions");
         return
             PromotionInRegionModel::isRevisionInRegion($revisionId, $regionId) ||
-            empty(PromotionInRegionModel::searchByRevision($revisionId));
+            $inAllRegions > 0;
     }
 
     /**
@@ -430,6 +442,9 @@ class PromotionRevisionModel extends PromotionModelAbstract
         $fieldsValue['created_user'] = $arUser['LOGIN'];
         if (!isset($fieldsValue['disable'])) {
             $fieldsValue['disable'] = "0";
+        }
+        if (!isset($fieldsValue['in_all_regions'])) {
+            $fieldsValue['in_all_regions'] = "0";
         }
         return true;
     }
