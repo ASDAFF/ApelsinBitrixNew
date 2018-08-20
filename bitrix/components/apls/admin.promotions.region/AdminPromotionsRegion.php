@@ -102,6 +102,28 @@ class AdminPromotionsRegion
 
         );
         $html .= "</div>";
+        $html .= "<div class='RegionFields'>";
+        $html .= static::getRegionFieldHtml(
+            $region->getFieldValue('longitude'),
+            "Долгота",
+            "RegionLongitude",
+            false
+
+        );
+        $html .= static::getRegionFieldHtml(
+            $region->getFieldValue('latitude'),
+            "Широта",
+            "RegionLatitude",
+            false
+
+        );
+        $html .= static::getRegionFieldHtml(
+            $region->getFieldValue('zoom'),
+            "Приближение",
+            "RegionZoom",
+            false
+        );
+        $html .= "</div>";
         $html .= "<div class='RegionTextFields'>";
         $html .= static::getRegionTextFieldHtml(
             $region->getFieldValue('head_html'),

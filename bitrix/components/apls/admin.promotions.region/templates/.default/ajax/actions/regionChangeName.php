@@ -7,6 +7,9 @@ if(isset($_REQUEST['regionId']) && isset($_REQUEST['regionName']) && $_REQUEST['
     $region = new PromotionRegionModel($_REQUEST['regionId']);
     $region->setFieldValue('region', $_REQUEST['regionName']);
     $region->setFieldValue('alias', $_REQUEST['regionAlias']);
+    $region->setFieldValue('longitude', $_REQUEST['regionLongitude']);
+    $region->setFieldValue('latitude', $_REQUEST['regionLatitude']);
+    $region->setFieldValue('zoom', $_REQUEST['regionZoom']);
     $region->setFieldValue('head_html', $_REQUEST['headHtml']);
     $region->saveElement();
 }
