@@ -699,12 +699,25 @@ ul.left-menu > li > a {
     font-weight: 400;
 }
 /*Кнопка скрытия меню*/
+.menu_header_block{
+    padding: 7px 12px 7px 14px;
+    background: #ef7f1a;
+    border: 2px solid #ef7f1a;
+}
+.menu_header_block .h3 {
+    font-size: 13px;
+    color: #FFFFFF;
+    padding: 0;
+    font-weight: 500;
+}
+.menu-header {
+    padding: 28px 0px 7px 0px;
+}
 .menu-header .menu-header-swap {
     float: right;
     display: inline-block;
-    padding: 28px 0px 7px 0px;
     font-size: 18px;
-    color: #dee0ee;
+    color: #FFFFFF;
     cursor: pointer;
 }
 .menu-header .menu-header-swap .fa.fa-plus{

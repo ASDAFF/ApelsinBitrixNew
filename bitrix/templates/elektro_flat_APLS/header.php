@@ -210,10 +210,12 @@ Loc::loadMessages(__FILE__);?>
 								else:
 									if($arSetting["CATALOG_LOCATION"]["VALUE"] == "LEFT"):?>
                                         <div class="menu-header">
-                                            <div class="h3"><?=Loc::getMessage("BASE_HEADER");?></div>
-                                            <div class="menu-header-swap">
-                                                <i class="fa fa-minus"></i>
-                                                <i class="fa fa-plus"></i>
+                                            <div class="menu_header_block">
+                                                <div class="h3"><?=Loc::getMessage("BASE_HEADER");?></div>
+                                                <div class="menu-header-swap">
+                                                    <i class="fa fa-minus"></i>
+                                                    <i class="fa fa-plus"></i>
+                                                </div>
                                             </div>
                                         </div>
 										<?$APPLICATION->IncludeComponent("bitrix:menu", $arSetting["CATALOG_VIEW"]["VALUE"] == "FOUR_LEVELS" ? "tree" : "sections",

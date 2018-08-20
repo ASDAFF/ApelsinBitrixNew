@@ -1,11 +1,15 @@
 $(document).ready(function () {
     getSwapLeftMenu();
 
-    $('.menu-header').mouseover(function () {
-        $('.menu-header-swap').css('color','#ef7f1a')
+    $('.menu_header_block').mouseover(function () {
+        $('.menu_header_block .h3').css('color','#ef7f1a');
+        $('.menu_header_block').css('background','transparent');
+        $('.menu_header_block .menu-header-swap').css('color','#ef7f1a');
     });
-    $('.menu-header').mouseout(function () {
-        $('.menu-header-swap').css('color','#dee0ee')
+    $('.menu_header_block').mouseout(function () {
+        $('.menu_header_block').css('background','#ef7f1a');
+        $('.menu_header_block .h3').css('color','#ffffff');
+        $('.menu_header_block .menu-header-swap').css('color','#ffffff');
     });
 
     function getSwapLeftMenu() {
