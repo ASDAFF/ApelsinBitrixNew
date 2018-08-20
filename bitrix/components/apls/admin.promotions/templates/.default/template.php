@@ -22,6 +22,8 @@ $this->addExternalCss("/apls_lib/ui/APLS_SortLists/APLS_SortLists.css");
 /* COMPONENT_FOLDER */
 $componentFolder = $this->getComponent()->getPath()."/";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionModel.php";
+$sections = PromotionSectionModel::getElementList();
+$regions = PromotionRegionModel::getElementList();
 ?>
 <div type=""
     id='AplsAdminWrapper'

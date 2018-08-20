@@ -63,11 +63,11 @@ class AdminPromotions_PromotionsList
 
         $html = "";
         $html .= "<div class='ElementBlock PromotionListElement $stile ID-".$promotion->getId()."'>";
-        $html .= "<div class='ElementBlockContent' promotionId='".$promotion->getId()."'>";
-        $html .= "<div class='content'>";
-        $html .= $promotion->getFieldValue('title');
-        $html .= "</div>";
-        $html .= "</div>";
+            $html .= "<div class='ElementBlockContent' promotionId='".$promotion->getId()."'>";
+                $html .= "<div class='content'>";
+                $html .= $promotion->getFieldValue('title');
+                $html .= "</div>";
+            $html .= "</div>";
 //        $html .= $revisionStatus;
 //        $html .= "</div>";
         $html .= "</div>";
