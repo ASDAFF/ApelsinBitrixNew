@@ -720,6 +720,9 @@ ul.left-menu > li > a {
     color: #FFFFFF;
     cursor: pointer;
 }
+.menu-header .menu-header-swap .fa.fa-minus{
+    display: block;
+}
 .menu-header .menu-header-swap .fa.fa-plus{
     display: none;
 }
