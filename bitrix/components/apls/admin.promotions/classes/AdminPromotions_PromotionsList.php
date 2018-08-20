@@ -58,7 +58,7 @@ class AdminPromotions_PromotionsList
                 $stile .= " problems-with-regions";
                 $regionsArray[] = "Не указан ни один регион";
             } else {
-                if($promotion->getFieldValue("in_all_regions")) {
+                if($revision->getFieldValue("in_all_regions") > 0) {
                     $regionsArray[] = "Во всех регионах";
                 } else {
                     $regions = PromotionInRegionModel::searchByRevision($revId);
