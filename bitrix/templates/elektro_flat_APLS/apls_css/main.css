@@ -620,6 +620,10 @@ ul.left-menu > li > a {
 }
 */
 
+.catalog-item-price-view .unit {
+    width: 68px !important;
+}
+
 /* Страница Спасибо за покупку */
 .wrapperPageFinalPayment {
     margin-top: 10px;
