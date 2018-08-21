@@ -1,5 +1,6 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionCityModel.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/geolocation/model/GeolocationRegionsContacts.php";
 
 class PromotionRegionModel extends PromotionModelAbstract
 {
@@ -10,6 +11,56 @@ class PromotionRegionModel extends PromotionModelAbstract
     protected static $userRegion = null;
 
     const DEFAULT_FIELD = 'default';
+
+    /**
+     * Список магазинов этого региона
+     * @param $ask - сортировать по возрастанию или по убыванию
+     * @return array
+     */
+    public function getContacts(bool $ask = true) {
+        $orderByObj = new MySQLOrderByString();
+        if($ask) {
+            $orderByObj->add('sort',MySQLOrderByString::ASC);
+        } else {
+            $orderByObj->add('sort',MySQLOrderByString::DESC);
+        }
+        return GeolocationRegionsContacts::getElementList(
+            MySQLWhereElementString::getBinaryOperationString(
+                'region',
+                MySQLWhereElementString::OPERATOR_B_EQUAL,
+                $this->id
+            ),
+            null,
+            null,
+            $orderByObj
+        );
+    }
+
+    /**
+     * Добавить адрес магазина
+     * @param string $name - название контакта
+     * @param array $fields - массив ключ значение с дополнительными полями
+     * @return bool|int|string - идентификатор созданной записи или false в случае ошибки
+     */
+    public function addContacts(string $name, array $fields = array())
+    {
+        $fields['name'] = $name;
+        $fields['region'] = $this->id;
+        return GeolocationRegionsContacts::createElement($fields);
+    }
+
+    /**
+     * Удалить адрес магазина
+     * @param string $contactId - идентификатор записи контакта
+     * @return bool
+     */
+    public function deleteContacts(string $contactId): bool
+    {
+        if (GeolocationRegionsContacts::isContactInRegion($contactId, $this->id)) {
+            return GeolocationRegionsContacts::deleteElement($contactId);
+        }
+        return false;
+    }
 
     /**
      * Список городов этого региона
