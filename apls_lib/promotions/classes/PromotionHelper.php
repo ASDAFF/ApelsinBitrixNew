@@ -124,9 +124,16 @@ class PromotionHelper
             $sections[] = $record['section'];
         }
         $result = array();
+        $orderByObj = new MySQLOrderByString();
+        $orderByObj->add('sort',MySQLOrderByString::ASC);
+        $allSections = PromotionSectionModel::getElementList(null,null,null,$orderByObj);
+        foreach ($allSections as $section) {
+            if($section instanceof PromotionSectionModel and in_array($section->getId(),$sections)) {
+                $result['sections'][] = $section->getId();
+            }
+        }
         $result['promotions'] = array_unique($promotions);
         $result['revisions'] = array_unique($revisions);
-        $result['sections'] = array_unique($sections);
         $result['promotionsInSections'] = $promotionsInSections;
         $result['revisionPromotion'] = $revisionPromotion;
         return $result;
