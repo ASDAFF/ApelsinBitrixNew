@@ -24,9 +24,10 @@ $resBasketDelay = CSaleBasket::GetList(
 		"QUANTITY"
 	)
 );
-
+$arResult["QUANTITY"] = 0;
 while($ar = $resBasketDelay->Fetch()) {
-	$arResult["QUANTITY"] += $ar["QUANTITY"];
+//    $arResult["QUANTITY"] += $ar["QUANTITY"];
+    $arResult["QUANTITY"] ++;
 }
 
 $this->IncludeComponentTemplate();
