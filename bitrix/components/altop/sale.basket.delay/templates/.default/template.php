@@ -3,7 +3,7 @@
 <div class="delay_line">
 	<?$frame = $this->createFrame("delay")->begin();?>
 		<a href="<?=$arParams["PATH_TO_DELAY"]?>" title="<?=GetMessage("MY_DELAY")?>" rel="nofollow">
-			<i class="fa fa-heart"></i>
+			<i class="fa fa-archive"></i>
 			<span class="text"><?=GetMessage("MY_DELAY")?></span>
 			<span class="qnt_cont">
 				<span class="qnt">
