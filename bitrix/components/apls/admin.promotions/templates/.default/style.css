@@ -218,11 +218,51 @@
     font-size: 1.5em;
 }
 #AplsAdminWrapper .PromotionRevisionMainWrapper {}
+#AplsAdminWrapper .PromotionRevisionMainWrapper .imageItemsList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+#AplsAdminWrapper .PromotionRevisionMainWrapper .imageItemsList .imageItem {
+    display: block;
+    position: relative;
+    padding: 5px;
+}
+#AplsAdminWrapper .PromotionRevisionMainWrapper .imageItemsList .imageItem .imageItemTitle {
+    padding-bottom: .5em;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+}
+#AplsAdminWrapper .PromotionRevisionMainWrapper .imageItemsList .imageItem .Image {
+    height: 80px;
+}
+#AplsAdminWrapper .PromotionRevisionMainWrapper .imageItemsList .imageItem .Image.noImage {
+    height: 80px;
+    width: 80px;
+    position: relative;
+    background: #f7f7f7;
+}
+#AplsAdminWrapper .PromotionRevisionMainWrapper .imageItemsList .imageItem .Image.noImage:after {
+    content: "no image";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    text-align: center;
+    margin-top: -.5em;
+    color: #c0c0c0;
+}
 #AplsAdminWrapper .PromotionRevisionMainWrapper .ButtonPanel{
     text-align: right;
 }
 #AplsAdminWrapper .PromotionRevisionMainWrapper .ButtonPanel .Button {
     margin-left: 0.4em;
+}
+#AplsAdminWrapper .PromotionRevisionMainWrapper .revision-text-content {
+    padding: 2em 0;
 }
 #AplsAdminWrapper .EditRevisionMainWrapper .PromotionTitle {
     font-weight: 600;

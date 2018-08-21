@@ -36,7 +36,7 @@ foreach ($revisions as $revision) {
         }
         $revisionUi = new AdminPromotions_Revision($revision->getId());
         $content = $revisionUi->show();
-        $tabs->addTab($applyFrom,$content,"",$revision->getId());
+        $tabs->addTab($applyFrom,$content,"aplsOpenTheInnerTab",$revision->getId());
         if($revision->getFieldValue('disable') > 0) {
             $disableRevisionIdArr[] = $revision->getId();
         }
