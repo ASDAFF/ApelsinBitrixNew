@@ -45,6 +45,13 @@ $APPLICATION->SetTitle("Информация");
 				<div class="title">Особенности товаров</div>
 			</div>
 		</a>
+        <a href="about/" class="NavigatorBigIconElementHref">
+            <div class="NavigatorBigIconElement">
+                <img class="main" src="img/icon/features_products.svg">
+                <img class="hover" src="img/icon/features_products_hover.svg">
+                <div class="title">О компании</div>
+            </div>
+        </a>
 		<div class="clear"></div>
 	</div>
 

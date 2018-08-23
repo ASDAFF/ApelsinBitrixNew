@@ -35,6 +35,13 @@
         ""
     ),
     Array(
+        "О компании",
+        "/information/about/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
         "Наши услуги",
         "/information/service/",
         Array(),
