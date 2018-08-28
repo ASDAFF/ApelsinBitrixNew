@@ -42,6 +42,13 @@
         ""
     ),
     Array(
+        "О продавце",
+        "/information/about_the_seller/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
         "Наши услуги",
         "/information/service/",
         Array(),

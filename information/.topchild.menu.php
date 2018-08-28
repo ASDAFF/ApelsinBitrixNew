@@ -47,5 +47,12 @@
         Array(),
         Array(),
         ""
-    )
+    ),
+    Array(
+        "О продавце",
+        "/information/about_the_seller/",
+        Array(),
+        Array(),
+        ""
+    ),
 );?>
