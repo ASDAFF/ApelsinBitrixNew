@@ -16,7 +16,6 @@
 		"PROPERTY_CODE_MOD" => array(
 			0 => "",
 			1 => "",
-			2 => "",
 		),
 		"OFFERS_FIELD_CODE" => array(
 			0 => "",
@@ -47,7 +46,7 @@
 			0 => "iblock_catalog",
 		),
 		"CATEGORY_0_iblock_catalog" => array(
-			0 => "all",
+			0 => "16",
 		),
 		"CONVERT_CURRENCY" => "N",
 		"CURRENCY_ID" => "",
