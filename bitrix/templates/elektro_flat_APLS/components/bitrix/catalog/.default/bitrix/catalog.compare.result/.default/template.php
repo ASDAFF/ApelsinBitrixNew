@@ -11,7 +11,7 @@ $delUrlID = "";
 foreach($arResult["ITEMS"] as $arElement) {
 	$delUrlID .= "&ID[]=".$arElement["ID"];
 }
-
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogItemInfo.php";
 //COMPARE_LIST//?>
 <div class="compare-list-result">
 	<div class="sort tabfilter">
