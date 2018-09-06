@@ -42,3 +42,19 @@
 .personal_pass {
     display: none;
 }
+@media screen and (max-width: 450px) {
+    .personal_tabs {
+        text-align: center!important;
+    }
+    .personal_tabs .personal_tab_title {
+        width: 88%!important;
+        text-align: center!important;
+    }
+    .personal_tabs .personal_tab_title {
+        margin-bottom: 5px;
+    }
+    .personal_tabs .personal_tab_title.checked {
+        margin-bottom: 5px;
+        border: 1px solid #dee0ee!important;
+    }
+}
