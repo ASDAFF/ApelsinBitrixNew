@@ -2335,6 +2335,13 @@ footer{
 	margin:0px;
 }
 
+.lawProductContent {
+	padding: 20px;
+	background-color: #edeef8;
+	margin-bottom: 5px;
+	font-size: 11px;
+}
+
 /***FOOTER_MENU***/
 .footer_menu_soc_pay{
 	width:1174px;

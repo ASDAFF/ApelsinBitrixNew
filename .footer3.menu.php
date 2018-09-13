@@ -69,13 +69,13 @@
         Array(),
         ""
     ),
-    Array(
-        "Пользовательское соглашение",
-        "/payments/terms_of_use/",
-        Array(),
-        Array(),
-        ""
-    ),
+//    Array(
+//        "Пользовательское соглашение",
+//        "/payments/terms_of_use/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
     Array(
         "Политика конфиденциальности",
         "/payments/processing_of_personal_data/",

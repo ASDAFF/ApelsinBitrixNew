@@ -208,6 +208,7 @@
     padding: 20px;
     background: #ffdddd;
     color:#5a1a11;
+    display: none;
 }
 
 .price_buy_detail .APLS_RetailPrice {
