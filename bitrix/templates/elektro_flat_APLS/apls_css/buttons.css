@@ -8,7 +8,7 @@
 .foot_panel .cart_line .oformit_cont .btn_buy.popdef.oformit:hover {
     border: 1px solid #FFFFFF;
     background: #FFFFFF !important;
-    color: #ef7f1a;
+    color: #ef7f1a!important;
 }
 
 /* оранжевая кнопка */
