@@ -24,13 +24,13 @@ $aMenuLinks = Array(
 		Array(),
 		""
 	),
-	Array(
-		"Ожидаемые товары",
-		"/personal/subscribe/",
-		Array(),
-		Array(),
-		""
-	),
+//	Array(
+//		"Ожидаемые товары",
+//		"/personal/subscribe/",
+//		Array(),
+//		Array(),
+//		""
+//	),
 //	Array(
 //		"Архив заказов",
 //		"/personal/orders/?filter_history=Y",
