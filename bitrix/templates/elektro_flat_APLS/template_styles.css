@@ -10399,7 +10399,7 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 
 	/***SUBSCRIBE_BOTTOM***/
 	.subscribe_bottom{
-		display:block;
+		display:none;
 		margin:15px 0px 0px 0px;
 		padding:15px 0px 20px 0px;
 	}
@@ -12313,6 +12313,9 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 	}
 
 	@media screen and (max-width:499px){
+		.lawProductContent {
+			padding-bottom: 20px;
+		}
 		.cart-items .equipment-profile .thead .cart-item-number,
 		.cart-items .equipment-profile .thead .cart-item-date{
 			display:none;
