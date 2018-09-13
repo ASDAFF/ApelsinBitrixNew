@@ -2336,9 +2336,9 @@ footer{
 }
 
 .lawProductContent {
-	padding: 20px;
+	padding: 25px 20px 0 20px;
 	background-color: #edeef8;
-	margin-bottom: 5px;
+	/*margin-top: 5px;*/
 	font-size: 11px;
 }
 

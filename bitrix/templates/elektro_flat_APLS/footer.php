@@ -55,11 +55,6 @@ Loc::loadMessages(__FILE__);?>
 				</div>
 			</div>
 			<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/viewed_products.php"), false);?>
-                <div class="lawProductContent">Информация о товаре, представленном на сайте, не является публичной
-                    офертой. Характеристики, комплект поставки, внешний вид, страна и место производства товара могут
-                    отличаться от указанных или могут быть изменены производителем без отображения в каталоге магазина
-                    АПЕЛЬСИН. Условия приобретения товара требуют согласования с менеджером магазина. Предложение
-                    действительно с момента согласования его с менеджером Интернет-магазина.</div>
                 <footer>
 				<div class="center<?=($arSetting['SITE_BACKGROUND']['VALUE'] == 'Y' ? ' inner' : '');?>">
 					<div class="footer_menu_soc_pay">
@@ -136,7 +131,14 @@ Loc::loadMessages(__FILE__);?>
 							</div>
 						</div>
 					</div>
-					<div class="footer-bottom">						
+                </div>
+                    <div class="lawProductContent">Информация о товаре, представленном на сайте, не является публичной
+                        офертой. Характеристики, комплект поставки, внешний вид, страна и место производства товара могут
+                        отличаться от указанных или могут быть изменены производителем без отображения в каталоге магазина
+                        АПЕЛЬСИН. Условия приобретения товара требуют согласования с менеджером магазина. Предложение
+                        действительно с момента согласования его с менеджером Интернет-магазина.
+                    </div>
+					<div class="footer-bottom">
 						<div class="footer-bottom__blocks">
 							<div class="footer-bottom__block-wrap fb-left">
 								<div class="footer-bottom__block footer-bottom__copyright">
