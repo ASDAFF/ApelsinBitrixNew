@@ -60,7 +60,8 @@ foreach ($sectionsIDtoXMLID as $sectionId => $sectionXMLId) {
                 $pathToRoot = getAplsBreadcrumbItem($sections[$node]["NAME"], $catalogUrl.$sections[$node]["CODE"]) . $pathToRoot;
             }
         }
-        $pathToRoot .= getAplsBreadcrumbItem($section["NAME"],null, "onclick='APLS_copyToClipboardSectionGUID(\"".$section["XML_ID"]."\",\"".$section["NAME"]."\")'");
+        $pathToRoot = getAplsBreadcrumbItem($section["NAME"], $catalogUrl.$section["CODE"]) . $pathToRoot;
+//        $pathToRoot .= getAplsBreadcrumbItem($section["NAME"],null, "onclick='APLS_copyToClipboardSectionGUID(\"".$section["XML_ID"]."\",\"".$section["NAME"]."\")'");
         $sortListElements->addSortListElement(new APLS_SortListElement("<span class='pathToRoot'>" . $pathToRoot . "</span>"));
     }
 }
