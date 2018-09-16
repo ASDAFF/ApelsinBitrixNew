@@ -17,13 +17,13 @@ $APPLICATION->SetTitle("Информация");
                 <div class="title">Программы лояльности</div>
             </div>
         </a>
-		<a href="customers_memo/" class="NavigatorBigIconElementHref">
-			<div class="NavigatorBigIconElement">
-			<img class="main" src="img/icon/customers_memo.svg">
-			<img class="hover" src="img/icon/customers_memo_hover.svg">
-			<div class="title">Памятка покупателю</div>
-			</div>
-		</a>
+<!--		<a href="customers_memo/" class="NavigatorBigIconElementHref">-->
+<!--			<div class="NavigatorBigIconElement">-->
+<!--			<img class="main" src="img/icon/customers_memo.svg">-->
+<!--			<img class="hover" src="img/icon/customers_memo_hover.svg">-->
+<!--			<div class="title">Памятка покупателю</div>-->
+<!--			</div>-->
+<!--		</a>-->
 		<a href="service_centers/" class="NavigatorBigIconElementHref">
 			<div class="NavigatorBigIconElement">
 				<img class="main" src="img/icon/service_centers.svg">

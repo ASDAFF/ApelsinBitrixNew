@@ -6,13 +6,13 @@
         Array(),
         ""
     ),
-    Array(
-        "Памятка покупателю",
-        "/information/customers_memo/",
-        Array(),
-        Array(),
-        ""
-    ),
+//    Array(
+//        "Памятка покупателю",
+//        "/information/customers_memo/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
     Array(
         "Сервисные центры",
         "/information/service_centers/",
