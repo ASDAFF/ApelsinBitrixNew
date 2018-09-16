@@ -26,6 +26,7 @@ $menuArray = array(
         "name" => "Инспекторы каталога",
         "items" => array(
             "apls_catalog_sections_no_image"=>"Каталоги без картинок",
+            "apls_items_no_image"=>"Товары без картинок",
         ),
     ),
     array(
