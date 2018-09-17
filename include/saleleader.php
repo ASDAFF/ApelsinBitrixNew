@@ -1,20 +1,29 @@
-<?global $arHitPrFilter;
+<?
+$propertyCode = "KHITPRODAZH";
+$yesCodValue = "0";
+$property_enums = CIBlockPropertyEnum::GetList(Array("ID"=>"ASC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>16, "CODE"=>$propertyCode));
+while ($enum_fields = $property_enums->GetNext()) {
+    if($enum_fields["VALUE"] == "Да") {
+        $yesCodValue = $enum_fields["ID"];
+    }
+}
+
+global $arHitPrFilter;
 $arHitPrFilter = array(
-    "!PROPERTY_SALELEADER" => false,
-	"PROPERTY_THIS_COLLECTION" => false
+    "PROPERTY_".$propertyCode => $yesCodValue
 );?>
 <?$APPLICATION->IncludeComponent("bitrix:catalog.section", "filtered",
 	array(
 		"IBLOCK_TYPE" => "catalog",
-		"IBLOCK_ID" => "#IBLOCK_ID#",
+		"IBLOCK_ID" => "16",
 		"ELEMENT_SORT_FIELD" => "RAND",
 		"ELEMENT_SORT_ORDER" => "ASC",
 		"ELEMENT_SORT_FIELD2" => "",
 		"ELEMENT_SORT_ORDER2" => "",
 		"PROPERTY_CODE" => array(
-			0 => "NEWPRODUCT",
-			1 => "SALELEADER",
-			2 => "DISCOUNT",
+            0 => "NOVINKA",
+            1 => "KHITPRODAZH",
+            2 => "AKTSIYA",
 			3 => "",
 		),
 		"SET_META_KEYWORDS" => "N",		
@@ -42,10 +51,14 @@ $arHitPrFilter = array(
 		"DISPLAY_COMPARE" => "Y",
 		"PAGE_ELEMENT_COUNT" => "8",
 		"LINE_ELEMENT_COUNT" => "",
-		"PRICE_CODE" => array(
-			0 => "BASE"
-		),
-		"USE_PRICE_COUNT" => "Y",
+        "PRICE_CODE" => array(
+            0 => "Розничная цена",
+            1 => "М. оптовая",
+            2 => "Ср. оптовая",
+            3 => "Оптовая",
+            4 => "Кр. оптовая",
+        ),
+		"USE_PRICE_COUNT" => "N",
 		"SHOW_PRICE_COUNT" => "1",
 		"PRICE_VAT_INCLUDE" => "Y",
 		"USE_PRODUCT_QUANTITY" => "Y",

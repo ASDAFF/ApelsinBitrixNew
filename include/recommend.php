@@ -33,9 +33,13 @@
 		"COMPOSITE_FRAME_MODE" => "A",
 		"COMPOSITE_FRAME_TYPE" => "AUTO",
 		"SHOW_OLD_PRICE" => "N",
-		"PRICE_CODE" => array(
-			0 => "BASE",
-		),
+        "PRICE_CODE" => array(
+            0 => "Розничная цена",
+            1 => "М. оптовая",
+            2 => "Ср. оптовая",
+            3 => "Оптовая",
+            4 => "Кр. оптовая",
+        ),
 		"SHOW_PRICE_COUNT" => "1",
 		"PRICE_VAT_INCLUDE" => "Y",
 		"CONVERT_CURRENCY" => "N",
