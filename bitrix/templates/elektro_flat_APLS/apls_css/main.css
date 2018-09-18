@@ -736,3 +736,11 @@ ul.left-menu > li > a {
 .menu-header{
     cursor: pointer;
 }
+
+/* Каталог */
+.catalog-item-card .item-all-title {
+    height: 45px;
+}
+.catalog-item-card .item-price-cont {
+    height: 42px;
+}
