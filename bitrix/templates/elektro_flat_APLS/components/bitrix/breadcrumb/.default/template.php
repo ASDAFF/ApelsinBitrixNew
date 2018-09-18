@@ -22,5 +22,8 @@ for($index = 0; $index < $itemSize; $index++) {
 //		$strReturn .= "<div class='breadcrumb__item'>".$arrow.($index == 0 ? "<i class='fa fa-home breadcrumb__icon_main'></i>" : "")."<span class='".($index == 0 ? "breadcrumb__title_main" : "breadcrumb__title")."'>".$title."</span></div>";
 	}
 }
+if($index < 3) {
+    $strReturn = "";
+}
 
 return $strReturn;
