@@ -40,8 +40,13 @@ $APPLICATION->SetTitle("Моя корзина");?>
 		"OFFERS_SORT_FIELD2" => "id",
 		"OFFERS_SORT_ORDER2" => "asc",
 		"OFFERS_LIMIT" => "",
-		"PRICE_CODE" => array(
-		),
+        "PRICE_CODE" => array(
+            0 => "Розничная цена",
+            1 => "М. оптовая",
+            2 => "Ср. оптовая",
+            3 => "Оптовая",
+            4 => "Кр. оптовая",
+        ),
 		"PRICE_VAT_INCLUDE" => "Y",
 		"CONVERT_CURRENCY" => "N",
 		"OFFERS_CART_PROPERTIES" => array(
