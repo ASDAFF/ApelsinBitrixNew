@@ -33,7 +33,7 @@ if(strlen($arResult["ID"]) > 0) {
         <div class="sale-profile-detail-form-group sale-profile-detail-form-property-text">
             <label><?=$value['NAME']?></label>
             <div name="<?=$value['NAME']?>" id="<?=$elKey?>" class="sale-profile-detail-form-property">
-                <input type="text" maxlength="50" value="<?=$value['VALUE']?>">
+                <input autocomplete="new-password" type="text" maxlength="50" value="<?=$value['VALUE']?>">
             </div>
         </div>
         <?endforeach;?>

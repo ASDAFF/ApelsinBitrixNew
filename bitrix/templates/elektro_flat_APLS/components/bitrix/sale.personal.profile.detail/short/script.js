@@ -17,4 +17,10 @@ $(document).ready(function () {
             },
         });
     });
+	$('input').each(function () {
+        if ($(this).parent().attr('name') == 'Контактный телефон') {
+            Inputmask('8 ([9]{3}) [9]{3}-[9]{2}-[9]{2}').mask($(this));
+            // alert($(this).val());
+        }
+    });
 });
