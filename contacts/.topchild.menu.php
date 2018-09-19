@@ -1,11 +1,11 @@
 <?$aMenuLinks = Array(
-	Array(
-		"Магазины", 
-		"shops/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
+//	Array(
+//		"Магазины",
+//		"shops/",
+//		Array(),
+//		Array(),
+//		""
+//	),
 //	Array(
 //		"Пункты выдачи",
 //		"point_of_delivery/",

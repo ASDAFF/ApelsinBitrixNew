@@ -1,11 +1,11 @@
 <?$aMenuLinks = Array(
-    Array(
-        "Контакты",
-        "/contacts/",
-        Array(),
-        Array(),
-        ""
-    ),
+//    Array(
+//        "Контакты",
+//        "/contacts/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
     Array(
         "Магазины",
         "/contacts/shops/",
