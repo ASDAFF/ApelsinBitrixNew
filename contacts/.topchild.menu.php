@@ -23,10 +23,8 @@
 	Array(
 		"Студия мебели", 
 		"https://apelsinmeb.ru/contacts/",
-		Array(), 
-		Array(), 
+		Array(),
+		Array("target"=>"target=\"_blank\""),
 		"" 
 	)
-
-
 );?>

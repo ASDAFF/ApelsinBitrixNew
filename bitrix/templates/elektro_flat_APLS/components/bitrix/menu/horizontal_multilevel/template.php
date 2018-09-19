@@ -17,7 +17,7 @@ $this->setFrameMode(true);?>
 						<ul class="dropdown-menu">
 				<?else:?>
 					<li<?=$arItem["SELECTED"] ? " class='active'" : ""?>>
-						<a href="<?=$arItem['LINK']?>"><?=$arItem["TEXT"]?></a>
+						<a href="<?=$arItem['LINK']?>"<?=$arItem["PARAMS"]["target"]?>><?=$arItem["TEXT"]?></a>
 					</li>
 				<?endif;
 				$previousLevel = $arItem["DEPTH_LEVEL"];						
