@@ -34,23 +34,30 @@
         Array(),
         ""
     ),
-    Array(
-        "О компании",
-        "/information/about/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "О продавце",
-        "/information/about_the_seller/",
-        Array(),
-        Array(),
-        ""
-    ),
+//    Array(
+//        "О компании",
+//        "/information/about/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
+//    Array(
+//        "О продавце",
+//        "/information/about_the_seller/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
     Array(
         "Наши услуги",
         "/information/service/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Как купить",
+        "/information/how_to_buy/",
         Array(),
         Array(),
         ""
