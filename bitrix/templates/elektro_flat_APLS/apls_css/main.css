@@ -744,3 +744,6 @@ ul.left-menu > li > a {
 .catalog-item-card .item-price-cont {
     height: 42px;
 }
+iframe {
+    border: none;
+}
