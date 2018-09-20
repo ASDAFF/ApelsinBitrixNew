@@ -199,7 +199,10 @@ if(strlen($arResult["ERROR_MESSAGE"])<=0):?>
 			</tr>
 		<?endif;?>
 	</table>
-
+    <?if($arResult["STATUS_ID"]=="J"):?>
+        <h2>Ваш заказ</h2>
+        <iframe src="//my.gdemoi.ru/pro/applications/delivery/?key=b1a6544b6ba37c0d283361e60922176e&external_id=<?=$arResult["ACCOUNT_NUMBER"]?>&performer_type=employee&display_fields=period&panel_align=br&panel_scale=medium&map=roadmap" width="100%" height="400"></iframe>
+    <?endif;?>
 	<div class="order-item-actions">
 		<a class="btn_buy apuo order_repeat" href="<?=$arResult['URL_TO_LIST']?>?COPY_ORDER=Y&ID=<?=$arResult['ACCOUNT_NUMBER']?>" title="<?=GetMessage('SALE_REPEAT_ORDER')?>"><i class="fa fa-repeat"></i><span><?=GetMessage("SALE_REPEAT_ORDER")?></span></a>
 		<?if($arResult["CAN_CANCEL"]=="Y"):?>

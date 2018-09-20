@@ -223,7 +223,11 @@ else
 												<?}?>
 											</div>
 										</div>
-									</div>
+                                        <?if($val["ORDER"]["STATUS_ID"]=="J"):?>
+                                            <h2>Ваш заказ</h2>
+                                            <iframe src="//my.gdemoi.ru/pro/applications/delivery/?key=b1a6544b6ba37c0d283361e60922176e&external_id=<?=$val["ORDER"]["ACCOUNT_NUMBER"]?>&performer_type=employee&display_fields=period&panel_align=br&panel_scale=medium&map=roadmap" width="100%" height="400"></iframe>
+                                        <?endif;?>
+                                    </div>
 								</div>
 
 								<table class="order-recipient <?=$accountHashNumber?>" style="display:none;">
