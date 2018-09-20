@@ -1,7 +1,7 @@
 <?$aMenuLinks = Array(
     Array(
         "Информация",
-        "javascript:void(0)",
+        "/information/",
         Array(),
         Array(),
         ""
