@@ -26,7 +26,7 @@ if($arParams["SHOW_BASKET_PAGE"] === "Y") {
 	$availablePages[] = array(
 		"path" => $arParams["PATH_TO_BASKET"].$delimeter."delay=Y",
 		"name" => Loc::getMessage("SPS_DELAY_PAGE_NAME"),
-		"icon" => "<i class='fa fa-heart' aria-hidden='true'></i>",
+		"icon" => "<i class='fa fa-archive' aria-hidden='true'></i>",
 		"count" => $arResult["BASKET"]["DelDelCanBuy"]["COUNT"]
 	);
 }

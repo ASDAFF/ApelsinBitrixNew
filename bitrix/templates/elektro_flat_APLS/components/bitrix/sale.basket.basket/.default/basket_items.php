@@ -118,7 +118,7 @@ use Bitrix\Sale\DiscountCouponsManager;?>
 							<?if(in_array("DELAY", $arParams["COLUMNS_LIST"])):?>
 								<div class="cart-item-actions">								
 									<div class="delay">
-										<a class="setaside" href="<?=str_replace("#ID#", $arBasketItems["ID"], $arUrlTempl["delay"])?>" title="<?=GetMessage("SALE_OTLOG")?>"><i class="fa fa-heart-o"></i></a>
+										<a class="setaside" href="<?=str_replace("#ID#", $arBasketItems["ID"], $arUrlTempl["delay"])?>" title="<?=GetMessage("SALE_OTLOG")?>"><i class="fa fa-archive"></i></a>
 									</div>
 									<?if(in_array("DELETE", $arParams["COLUMNS_LIST"])):?>
 										<div class="delete">
