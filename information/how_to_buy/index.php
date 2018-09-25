@@ -2,6 +2,12 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Как купить");
 ?>
+    <style>
+        img {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    </style>
     <h2>1. Авторизация</h2>
     <p>
         Для оформления заказа Зарегистрируйтесь или Авторизуйтесь в Личном кабинете
