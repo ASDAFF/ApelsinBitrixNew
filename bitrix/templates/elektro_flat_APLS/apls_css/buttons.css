@@ -305,3 +305,10 @@ button[disabled]:hover span,
 .cart-buttons .btn_buy.popdef[disabled]:hover span {
     color: #a0a4bc !important;
 }
+
+/* Кнопки на баннере */
+.banners-main .banners-main__item .btn_buy {
+    border: 1px solid #ffffff;
+    background: transparent;
+    color: #ffffff;
+}
