@@ -748,3 +748,6 @@ iframe {
     border: none;
     border: 1px solid #dee0ee;
 }
+.banners_left a:last-child{
+    cursor: default!important;
+}
