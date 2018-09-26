@@ -751,3 +751,8 @@ iframe {
 .banners_left a:last-child{
     cursor: default!important;
 }
+@media screen and (max-width: 1013px) {
+    #bx-soa-total-mobile .bx-soa-cart-total-button-container.hidden {
+        display: none!important;
+    }
+}
