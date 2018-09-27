@@ -1,25 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Creator: CorelDRAW X6 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="2020px" height="1900px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 480 451"
- xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style type="text/css">
-   <![CDATA[
-    .str0 {stroke:gray;stroke-width:0.0867014}
-    .str1 {stroke:#575B71;stroke-width:21.3552;stroke-linecap:round;stroke-linejoin:round}
-    .fil1 {fill:none}
-    .fil2 {fill:#575B71}
-    .fil0 {fill:gray}
-   ]]>
-  </style>
- </defs>
- <g id="Слой_x0020_1">
-  <metadata id="CorelCorpID_0Corel-Layer"/>
-  <path class="fil0 str0" d="M191 213l0 -1c1,0 1,0 1,1 -1,0 0,1 -1,0z"/>
-  <path class="fil1 str1" d="M465 193c-13,53 -76,140 -131,184 -31,25 -89,64 -139,64 -36,0 -82,-48 -51,-83 9,-10 27,-23 39,-29 13,-6 23,-7 35,1 23,15 20,36 57,13 9,-6 18,-13 25,-20l23 -22c15,-15 28,-29 42,-48 27,-38 10,-39 -5,-58 -19,-23 -3,-45 10,-63 10,-13 31,-38 57,-24 34,19 51,31 38,84zm0 0c-13,53 -76,140 -131,184 -31,25 -89,64 -139,64 -36,0 -82,-48 -51,-83 9,-10 27,-23 39,-29 13,-6 23,-7 35,1 23,15 20,36 57,13 9,-6 18,-13 25,-20l23 -22c15,-15 28,-29 42,-48 27,-38 10,-39 -5,-58 -19,-23 -3,-45 10,-63 10,-13 31,-38 57,-24 34,19 51,31 38,84z"/>
-  <path class="fil2" d="M378 90l-19 16c-5,-4 -28,-44 -88,-67 -10,-4 -29,-10 -41,-10 -4,4 -15,26 -20,34l-1 2 -21 -35c-22,-1 -68,19 -86,33 -32,24 -54,57 -68,96 -2,6 -8,26 -6,32 2,2 13,8 17,10 4,2 15,8 18,11 -2,2 -30,18 -35,21 -2,18 19,62 30,79 13,18 23,29 40,44 5,4 10,7 16,12 -3,15 -3,17 -3,28 -7,-2 -25,-15 -31,-20 -226,-223 89,-498 274,-313 9,9 17,18 25,29z"/>
-  <path class="fil2" d="M196 200l54 -82c14,-21 37,-7 31,10l-62 97c-10,10 -20,2 -31,-2 -32,-13 -65,-26 -97,-40 -16,-7 -7,-25 5,-23l100 39z"/>
- </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  version="1.1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 width="100" height="93" viewBox="-0.9 -0.3 100 93" enable-background="new -0.9 -0.3 100 93" xml:space="preserve">
+<defs>
+</defs>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#808080" stroke="#808080" stroke-width="0.2286" stroke-miterlimit="10" d="
+	M39,43.5l0-0.1c0.1,0.1,0.1,0,0.2,0.1C39.1,43.6,39.2,43.7,39,43.5L39,43.5z"/>
+<path fill="none" stroke="#585B71" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+	M94.7,39.3C92,50.1,79.2,67.8,68,76.8c-6.3,5-18.1,13.1-28.3,13.1c-7.3,0-16.6-9.8-10.4-16.9c1.7-2,5.4-4.8,8-5.9
+	c2.6-1.2,4.8-1.4,7.2,0.1c4.7,3,4.1,7.3,11.7,2.6c1.8-1.1,3.7-2.7,5.2-4l4.7-4.4c3.1-3,5.8-5.9,8.6-9.7c5.5-7.7,2-8-1.1-11.8
+	c-3.8-4.7-0.6-9.2,2-12.8c2-2.7,6.4-7.8,11.6-4.8C93.9,26.1,97.4,28.5,94.7,39.3L94.7,39.3z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#585B71" d="M77,18.4l-3.8,3.3c-1.1-0.8-5.6-9-18-13.7c-2-0.8-6-2-8.3-2
+	c-0.7,0.8-3.1,5.3-4.2,6.8l-0.3,0.4L38.2,6c-4.5-0.2-13.8,3.8-17.6,6.7C14.1,17.5,9.5,24.4,6.8,32.2c-0.4,1.2-1.5,5.4-1.3,6.5
+	c0.4,0.5,2.6,1.7,3.5,2.1c0.8,0.5,3.1,1.7,3.6,2.2c-0.4,0.5-6.1,3.7-7.1,4.3c-0.4,3.7,3.8,12.7,6.2,16.1c2.6,3.7,4.7,6,8.2,8.9
+	c1,0.8,2.1,1.5,3.2,2.4c-0.6,3.1-0.6,3.4-0.7,5.7c-1.4-0.4-5-3.1-6.4-4.1c-46-45.5,18-101.7,55.9-63.9C73.6,14.2,75.4,16.2,77,18.4
+	L77,18.4z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#585B71" d="M39.9,40.9l11-16.8c2.8-4.2,7.5-1.5,6.4,2.1L44.6,46
+	c-2.1,2-4.1,0.4-6.3-0.5c-6.6-2.7-13.3-5.2-19.8-8.1c-3.3-1.4-1.5-5.1,1-4.6L39.9,40.9z"/>
 </svg>

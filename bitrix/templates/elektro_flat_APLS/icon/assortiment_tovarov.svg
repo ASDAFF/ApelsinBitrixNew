@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Creator: CorelDRAW X6 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="2689px" height="1900px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 1173 828"
- xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style type="text/css">
-   <![CDATA[
-    .str0 {stroke:#575B71;stroke-width:37.883;stroke-linecap:round;stroke-linejoin:round}
-    .fil0 {fill:none}
-   ]]>
-  </style>
- </defs>
- <g id="Слой_x0020_1">
-  <metadata id="CorelCorpID_0Corel-Layer"/>
-  <path class="fil0 str0" d="M685 348l469 0 0 462 -469 0 0 -462zm0 0l469 0 0 462 -469 0 0 -462zm-415 -329l415 0 0 790 -415 0 0 -790zm0 0l415 0 0 790 -415 0 0 -790zm-251 418l251 0 0 372 -251 0 0 -372zm0 0l251 0 0 372 -251 0 0 -372zm136 -182l115 0 0 175 -115 0 0 -175zm0 0l115 0 0 175 -115 0 0 -175zm530 314l288 0 0 240 -288 0 0 -4 0 0 0 -236zm0 0l288 0 0 240 -288 0 0 -4 0 0 0 -236zm2 -379l374 0 0 154 -374 0 0 -154zm0 0l374 0 0 154 -374 0 0 -154z"/>
- </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  version="1.1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 width="133" height="94" viewBox="-0.3 -0.3 133 94" enable-background="new -0.3 -0.3 133 94" xml:space="preserve">
+<defs>
+</defs>
+<rect x="77" y="21.6" fill="none" stroke="#585B71" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="41.8" height="17.2"/>
+<polygon fill="none" stroke="#585B71" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+	76.9,64 109.1,64 109.1,90.8 76.9,90.9 76.9,90.5 76.9,90.4 "/>
+<rect x="17.7" y="28.9" fill="none" stroke="#585B71" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="12.8" height="19.6"/>
+<rect x="2.5" y="49.2" fill="none" stroke="#585B71" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="28" height="41.6"/>
+<rect x="30.5" y="2.5" fill="none" stroke="#585B71" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="46.4" height="88.3"/>
+<rect x="76.9" y="39.2" fill="none" stroke="#585B71" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="52.4" height="51.6"/>
 </svg>
