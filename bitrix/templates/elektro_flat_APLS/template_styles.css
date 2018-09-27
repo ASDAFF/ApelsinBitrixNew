@@ -1311,7 +1311,8 @@ ul.new_leader_disc li a .icon:after{
 .advantages{
 	width:100%;	
 	display:table;
-	margin-top:16px;	
+	margin-top:17px;
+	color: #575b71;
 }
 
 .advantages .advantages-item{	
@@ -1321,7 +1322,7 @@ ul.new_leader_disc li a .icon:after{
 
 .advantages .advantages-item-icon,
 .advantages .advantages-item-text{
-	display:table-cell;
+	/*display:table-cell;*/
 	vertical-align:middle;
 }
 

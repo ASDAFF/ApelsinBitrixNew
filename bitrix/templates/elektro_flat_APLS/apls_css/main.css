@@ -751,6 +751,22 @@ iframe {
 .banners_left a:last-child{
     cursor: default!important;
 }
+.advantages-item {
+    width: 25%;
+}
+.advantages .advantages-item-icon,
+.advantages .advantages-item-text,
+.advantages .advantages-item-previw {
+    text-align: center;
+    display: block;
+}
+.advantages .advantages-item-text {
+    text-transform: uppercase;
+    padding-top: 10px;
+}
+.advantages-item-icon img {
+    height: 60px;
+}
 @media screen and (max-width: 1013px) {
     #bx-soa-total-mobile .bx-soa-cart-total-button-container.hidden {
         display: none!important;

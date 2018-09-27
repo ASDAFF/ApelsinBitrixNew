@@ -9,11 +9,14 @@ if(count($arResult["ITEMS"]) < 1)
 	<?foreach($arResult["ITEMS"] as $arItem):?>
 		<div class="advantages-item">		
 			<div class="advantages-item-icon">
-				<i class="fa<?=(!empty($arItem['DISPLAY_PROPERTIES']['ICON']['VALUE'])) ? ' '.$arItem['DISPLAY_PROPERTIES']['ICON']['VALUE'] : ''?>"></i>
+                <img src="<?=SITE_TEMPLATE_PATH?>/icon/<?=$arItem["CODE"]?>.svg">
 			</div>
 			<div class="advantages-item-text">
-				<?=$arItem['NAME']?>
+				<b><?=$arItem['NAME']?></b>
 			</div>
+            <div class="advantages-item-previw">
+                <?=$arItem['PREVIEW_TEXT']?>
+            </div>
 		</div>
 	<?endforeach;?>
 </div>
