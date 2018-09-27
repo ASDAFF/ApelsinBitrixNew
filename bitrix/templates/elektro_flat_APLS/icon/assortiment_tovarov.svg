@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Creator: CorelDRAW X6 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="2787px" height="1977px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 499 354"
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="2689px" height="1900px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1173 828"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
   <style type="text/css">
    <![CDATA[
-    .str0 {stroke:gray;stroke-width:16.1192;stroke-linecap:round;stroke-linejoin:round}
+    .str0 {stroke:#575B71;stroke-width:37.883;stroke-linecap:round;stroke-linejoin:round}
     .fil0 {fill:none}
    ]]>
   </style>
  </defs>
  <g id="Слой_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <g id="_1352418352">
-   <polygon class="fil0 str0" points="291,146 491,146 491,343 291,343 "/>
-   <rect class="fil0 str0" x="115" y="8" width="177" height="336"/>
-   <polygon class="fil0 str0" points="8,184 115,184 115,343 8,343 "/>
-   <polygon class="fil0 str0" points="66,108 115,108 115,183 66,183 "/>
-   <polygon class="fil0 str0" points="291,244 414,244 414,346 254,346 254,344 291,344 "/>
-   <polygon class="fil0 str0" points="291,81 451,81 451,146 291,146 "/>
-  </g>
+  <path class="fil0 str0" d="M685 348l469 0 0 462 -469 0 0 -462zm0 0l469 0 0 462 -469 0 0 -462zm-415 -329l415 0 0 790 -415 0 0 -790zm0 0l415 0 0 790 -415 0 0 -790zm-251 418l251 0 0 372 -251 0 0 -372zm0 0l251 0 0 372 -251 0 0 -372zm136 -182l115 0 0 175 -115 0 0 -175zm0 0l115 0 0 175 -115 0 0 -175zm530 314l288 0 0 240 -288 0 0 -4 0 0 0 -236zm0 0l288 0 0 240 -288 0 0 -4 0 0 0 -236zm2 -379l374 0 0 154 -374 0 0 -154zm0 0l374 0 0 154 -374 0 0 -154z"/>
  </g>
 </svg>
