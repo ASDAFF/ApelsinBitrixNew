@@ -5,7 +5,11 @@ $this->setFrameMode(true);
 if(count($arResult["ITEMS"]) < 1)
 	return;?>
 
-<div class="banners-main">	
+<div class="banners-main">
+    <div class="banners-main_headers">
+        <div class="banners-main_header">Акции и скидки</div>
+        <a href="/promotions/" class="banners-main_link">Все акции и скидки</a>
+    </div>
 	<?$width = 0;
 	foreach($arResult["ITEMS"] as $arItem):
 		if(!isset($arItem["DISPLAY_PROPERTIES"]["WIDTH"]))
