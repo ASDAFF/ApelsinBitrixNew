@@ -1,37 +1,38 @@
-/*На всякий случай сохраняю первоначальную главную страницу контактов с плитками*/
-
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Контакты");?>
-    <div class="NavigatorBigIcon">
-        <a href="shops/" class="NavigatorBigIconElementHref">
-            <div class="NavigatorBigIconElement">
-                <img class="main" src="img/icon/shops.svg">
-                <img class="hover" src="img/icon/shops_hover.svg">
-                <div class="title">Магазины</div>
-            </div>
-        </a>
-<!--        <a href="point_of_delivery/" class="NavigatorBigIconElementHref">-->
-<!--            <div class="NavigatorBigIconElement">-->
-<!--                <img class="main" src="img/icon/point_of_delivery.svg">-->
-<!--                <img class="hover" src="img/icon/point_of_delivery_hover.svg">-->
-<!--                <div class="title">Пункты выдачи</div>-->
-<!--            </div>-->
-<!--        </a>-->
-        <a href="suppliers/" class="NavigatorBigIconElementHref">
-            <div class="NavigatorBigIconElement">
-                <img class="main" src="img/icon/suppliers.svg">
-                <img class="hover" src="img/icon/suppliers_hover.svg">
-                <div class="title">Отдел закупок</div>
-            </div>
-        </a>
-        <a href="https://apelsinmeb.ru/contacts/" class="NavigatorBigIconElementHref">
-            <div class="NavigatorBigIconElement">
-                <img class="main" src="img/icon/studio_furniture.svg">
-                <img class="hover" src="img/icon/studio_furniture_hover.svg">
-                <div class="title">Студия мебели</div>
-            </div>
-        </a>
-        <div class="clear"></div>
-    </div>
+$APPLICATION->SetTitle("Адреса магазинов");?>
 
+<?
+include_once $_SERVER['DOCUMENT_ROOT'].'/apls_lib/apls_lib.php';
+includeSistemClasses("../../");
+
+$APPLICATION->IncludeComponent(
+    "apls:contacts",
+    "list",
+    array(
+        "COMPONENT_TEMPLATE" => "list",
+        "INIT_MAP_TYPE" => "SATELLITE",
+        "MAP_DATA" => "a:3:{s:10:\"yandex_lat\";d:55.73829999999371;s:10:\"yandex_lon\";d:37.59459999999997;s:12:\"yandex_scale\";i:10;}",
+        "MAP_WIDTH" => "600",
+        "MAP_HEIGHT" => "500",
+        "CONTROLS" => array(
+            0 => "ZOOM",
+            1 => "MINIMAP",
+            2 => "TYPECONTROL",
+            3 => "SCALELINE",
+        ),
+        "OPTIONS" => array(
+            0 => "ENABLE_SCROLL_ZOOM",
+            1 => "ENABLE_DBLCLICK_ZOOM",
+            2 => "ENABLE_DRAGGING",
+        ),
+        "MAP_ID" => "esa_13",
+        "HIGHLOAD_SHOPS_ID" => "4",
+        "HIGHLOAD_REGION_ID" => "6",
+        "REGION_ID" => "POINTS_SHOPS",
+        "CONTACTS_TYPE" => "1"
+    ),
+    false
+);
+
+?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php")?>

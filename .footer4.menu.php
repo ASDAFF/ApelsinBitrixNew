@@ -7,13 +7,13 @@ $aMenuLinks = Array(
 		Array(), 
 		"" 
 	),
-//	Array(
-//		"Магазины",
-//		"/contacts/shops/",
-//		Array(),
-//		Array(),
-//		""
-//	),
+	Array(
+		"Адреса магазинов",
+		"/contacts/shops/",
+		Array(),
+		Array(),
+		""
+	),
 //	Array(
 //		"Пункты выдачи",
 //		"/contacts/point_of_delivery/",
