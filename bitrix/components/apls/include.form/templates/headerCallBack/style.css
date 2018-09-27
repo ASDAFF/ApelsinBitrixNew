@@ -7,6 +7,7 @@
     padding: 8px 20px 8px 20px;
     font-size: 15px;
     font-weight: 600;
+    text-align: center;
     color: #fff;
     background-color: #ef7f1a;
     border: 1px solid #ef7f1a;
@@ -103,12 +104,25 @@
     height: 45px;
     vertical-align: middle;
 }
-@media screen and (max-width:787px){
+@media screen and (min-width:319px) and (max-width:374px){
+    .headerCallBack {
+        width: 80%!important;
+    }
     .consultation_btn {
-        padding-bottom: 15px;
+        padding-bottom: 20px;
+    }
+    .callBackModal {
+        left: 10%;
+        top: 10%;
+        width: 80%;
+    }
+}
+@media screen and (min-width:375px) and (max-width:787px){
+    .consultation_btn {
+        padding-bottom: 20px;
     }
     .headerCallBack {
-        width: 50%;
+        width: 60%;
     }
     .callBackModal {
         left: 10%;
