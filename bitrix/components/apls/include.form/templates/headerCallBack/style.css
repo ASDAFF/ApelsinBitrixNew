@@ -103,3 +103,16 @@
     height: 45px;
     vertical-align: middle;
 }
+@media screen and (max-width:787px){
+    .consultation_btn {
+        padding-bottom: 15px;
+    }
+    .headerCallBack {
+        width: 50%;
+    }
+    .callBackModal {
+        left: 10%;
+        top: 10%;
+        width: 80%;
+    }
+}

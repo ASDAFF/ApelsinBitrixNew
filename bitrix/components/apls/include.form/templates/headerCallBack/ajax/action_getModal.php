@@ -19,7 +19,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_be
             <input id="callBack_Email" type="text" placeholder="E-mail">
         </div>
         <div class="callBackModal_content_agree">
-            <div class="callBackModal_content_agree_input"><input type="checkbox"></div>
+            <div class="callBackModal_content_agree_input"><input type="checkbox" checked></div>
             <div class="callBackModal_content_agree_text">
                 При отправке данной формы Вы подтверждаете свою дееспособность и согласие на обработку персональных
                 данных согласно <a href="/payments/terms_of_use/">пользовательскому соглашению</a>, <a
