@@ -1,0 +1,105 @@
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+.headerCallBack {
+    width: 20%;
+    padding: 8px 20px 8px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #ef7f1a;
+    border: 1px solid #ef7f1a;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+}
+.headerCallBack:hover {
+    background-color: #ffffff;
+    color: #ef7f1a;
+}
+.callBackOverflow {
+    position: fixed;
+    z-index: 2000;
+    width: 100%;
+    height: 100%;
+    background: rgba(87, 91, 113, 0.4);
+}
+.callBackModal {
+    position: absolute;
+    left: 40%;
+    top: 30%;
+    width: 20%;
+    z-index: 2001;
+    background-color: #eef2f4;
+}
+.closeBtn {
+    position: absolute;
+    right: 0;
+    margin-top: -25px;
+    margin-right: -27px;
+    cursor: pointer;
+}
+.closeBtn i {
+    font-size: 34px;
+    color: #ef7f1a;
+    font-weight: 700;
+}
+.callBackModal_header {
+    padding: 10px;
+    text-align: center;
+    background-color: #ef7f1a;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+.callBackModal_content {
+    padding: 20px;
+}
+.callBackModal_content_header {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    padding-bottom: 20px;
+}
+.callBackModal_content_input {
+    margin-bottom: 20px;
+}
+.callBackModal_content_input input {
+    padding: 5px 10px 5px 10px;
+    width: 93%;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #dee0ee;
+}
+.callBackModal_content_btn {
+    text-align: center;
+    padding: 10px;
+    background-color: #ef7f1a;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #ef7f1a;
+}
+.callBackModal_content_btn:hover {
+    background-color: #ffffff;
+    color: #ef7f1a;
+    border: 1px solid #ef7f1a;
+}
+.callBackModal_content_agree {
+    padding-bottom: 15px;
+}
+.callBackModal_content_agree_input {
+    padding-right: 10px;
+    display: table-cell;
+    height: 45px;
+    vertical-align: middle;
+}
+.callBackModal_content_agree_text {
+    font-size: 11px;
+    color: #8184a1;
+    display: table-cell;
+    height: 45px;
+    vertical-align: middle;
+}

@@ -764,6 +764,13 @@ iframe {
 .advantages-item-icon img {
     height: 60px;
 }
+.consultation_page img{
+    margin-bottom: 15px;
+    width: 100%;
+}
+.consultation_btn {
+    padding-top: 15px;
+}
 @media screen and (max-width: 1013px) {
     #bx-soa-total-mobile .bx-soa-cart-total-button-container.hidden {
         display: none!important;
