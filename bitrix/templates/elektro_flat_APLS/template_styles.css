@@ -1477,7 +1477,6 @@ ul.new_leader_disc li a .icon:after{
 	overflow:hidden;
 }
 .banners-main_headers {
-	padding: 17px 10px;
 	border-top: 1px dotted #dee0ee;
 }
 .banners-main_header {
@@ -1485,11 +1484,13 @@ ul.new_leader_disc li a .icon:after{
 	font-size: 18px;
 	font-weight: 600;
 	color: #575b71;
+	padding: 10px 10px;
 }
 .banners-main_link {
-	color: #a0a4bc;
+	color: #a0a4bc!important;
+	padding: 10px 10px;
 	float: right;
-	text-decoration: none !important;
+	text-decoration: none!important;
 }
 .banners-main__row{
 	width:100%;	
