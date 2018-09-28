@@ -105,6 +105,7 @@ foreach ($arResult['shops'] as $key=>$shop) {
 }
 $coords .= ']';
 ?>
+
 <script type="text/javascript">
     ymaps.ready(init);
     var myMap, myPlacemark;
@@ -116,16 +117,26 @@ $coords .= ']';
         });
         myCollection = new ymaps.GeoObjectCollection({}, {});
         var coords = <?=$coords?>;
-        for (var i = 0; i < coords.length; i++) {
-            myCollection.add(new ymaps.Placemark(coords[i],{
-                hintContent: '<?=$arResult['shops'][1]['UF_SHORT_ADDRESS']?>',
-                balloonContent: '<?=$arResult['shops'][1]['UF_LONG_ADDRESS']?>'
-            }, {
-                iconLayout: 'default#image',
-                iconImageHref: folder+'/icon/label.svg',
-                iconImageSize: [40, 52]
-            }));
-        }
+        <? for ($i = 0; $i < $count; $i++) :?>
+                myCollection.add(new ymaps.Placemark(coords[<?=$i?>],{
+                    hintContent:"<?=$arResult['shops'][$i+1]['UF_SHORT_ADDRESS']?>",
+                    balloonContent:"<?=$arResult['shops'][$i+1]['UF_LONG_ADDRESS']?>"
+                  }, {
+                        iconLayout: 'default#image',
+                        iconImageHref: folder+'/icon/label.svg',
+                        iconImageSize: [40, 52]
+                     }));
+            <?endfor;?>
+//        for (var i = 1; i < coords.length; i++) {
+//            myCollection.add(new ymaps.Placemark(coords[i],{
+//                hintContent: '<?//=$arResult['shops'][1]['UF_SHORT_ADDRESS']?>//',
+//                balloonContent: '<?//=$arResult['shops'][1]['UF_LONG_ADDRESS']?>//'
+//            }, {
+//                iconLayout: 'default#image',
+//                iconImageHref: folder+'/icon/label.svg',
+//                iconImageSize: [40, 52]
+//            }));
+//        }
         myMap.geoObjects.add(myCollection);
     }
 </script>
