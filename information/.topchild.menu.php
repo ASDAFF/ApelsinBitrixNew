@@ -1,7 +1,21 @@
 <?$aMenuLinks = Array(
     Array(
+        "О компании",
+        "about/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
         "Услуги",
         "service/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Как купить",
+        "how_to_buy/",
         Array(),
         Array(),
         ""
