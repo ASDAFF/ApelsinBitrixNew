@@ -771,6 +771,56 @@ iframe {
 .consultation_btn {
     padding-top: 15px;
 }
+/*Страница оплаты*/
+.payments_list {
+    width: 100%;
+    padding-top: 20px;
+}
+.payments_list.payment_last_element {
+    padding-bottom: 20px;
+}
+.payments_list .payment_logo {
+    width: 7%;
+    height: 72px;
+    float: left;
+}
+.payments_list .payment_logo img {
+    height: 70%;
+}
+.payments_list .payment_content {
+    width: 90%;
+    display: inline-block;
+}
+.payments_list .payment_header {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+@media screen and (max-width: 450px) {
+    .payments_list .payment_logo {
+        width: 15%;
+        height: 65px;
+    }
+    .payments_list .payment_logo img {
+        height: 50%;
+    }
+    .payments_list .payment_content {
+        width: 70%;
+    }
+}
+@media screen and (min-width: 451px) and (max-width: 1024px) {
+    .payments_list .payment_logo {
+        width: 11%;
+        height: 70px;
+    }
+    .payments_list .payment_logo img {
+        height: 60%;
+    }
+    .payments_list .payment_content {
+        width: 80%;
+    }
+}
+
 @media screen and (max-width: 1013px) {
     #bx-soa-total-mobile .bx-soa-cart-total-button-container.hidden {
         display: none!important;
