@@ -511,4 +511,19 @@ Loc::loadMessages(__FILE__);?>
 										</div>
 									</div>
 									<h1 id="pagetitle"><?=$APPLICATION->ShowTitle(false);?></h1>
+									<?
+									$curDir = substr($APPLICATION->GetCurDir(),0, -1);
+									$bannerDir = $_SERVER["DOCUMENT_ROOT"] . "/include/banners".$curDir;
+									$bannerImage = "";
+									if(file_exists($bannerDir.".jpg")) {
+									    $bannerImage = "/include/banners".$curDir.".jpg";
+									} elseif(file_exists($bannerDir.".png")) {
+									    $bannerImage = "/include/banners".$curDir.".png";
+									}
+									?>
+									<?if($bannerImage != ""):?>
+                                        <div class="page-banner">
+                                            <img src="<?=$bannerImage?>">
+                                        </div>
+                                    <?endif;?>
 								<?endif;?>
