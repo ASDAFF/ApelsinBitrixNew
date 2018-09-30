@@ -10,6 +10,16 @@
     transition: none !important;
 }
 
+.page-banner {
+    width: 100%;
+    margin: 0px 0px 11px 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+.page-banner img {
+    width: inherit;
+}
+
 .clear {
     clear: both;
 }
