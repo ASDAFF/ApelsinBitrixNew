@@ -1,3 +1,21 @@
+.sections-no-image-header {
+    /*margin-bottom: 10px;*/
+}
+.sections-no-image-btn {
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid #f6f6fb;
+    background-color: #ffffff;
+    width: 10%;
+    cursor: pointer;
+}
+.sections-no-image-btn:hover {
+    background-color: #ef7f1a;
+    color: #ffffff;
+    border-color: #ef7f1a;
+}
 .sections-no-image-list-wrapper .apls-sort-list-title {
 
 }
