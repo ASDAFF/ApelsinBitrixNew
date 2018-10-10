@@ -1,18 +1,14 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/EventHandlers.php");
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/agents/PromotionsReportAgent.php";
-
+//
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_CatalogSections.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/models/CatalogElementModel.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogHelper.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/ui/APLS_SortLists/APLS_SortList.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/ui/APLS_SortLists/APLS_SortListElement.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/ui/APLS_SortLists/APLS_SortListElements.php";
-use CIBlockSection;
 
 require __DIR__ . "/functions.php";
 
-function updateActiveCatalog () {
+function updateActiveCatalog() {
     $items = array();
     $shopIBlockId = APLS_CatalogHelper::getShopIblockId();
     $whereIBLOCKID = MySQLWhereElementString::getBinaryOperationString('IBLOCK_ID', MySQLWhereElementString::OPERATOR_B_EQUAL, $shopIBlockId);
@@ -29,7 +25,6 @@ function updateActiveCatalog () {
             unset($sectionsIDtoXMLID[$item->getFieldValue('IBLOCK_SECTION_ID')]);
         }
     }
-
     $updateCatalog = new CIBlockSection();
     foreach ($sectionsIDtoXMLID as $sectionId => $sectionXMLId) {
         if (!empty(APLS_CatalogSections::getAllChildrenListForSection($sectionXMLId))) {
