@@ -88,3 +88,30 @@
     font-size: 22px;
     font-weight: 600;
 }
+@media screen and (max-width: 736px) {
+    .errorWrapperContent {
+        width: 95%;
+    }
+    .errorWrapperBtnList {
+        width: 100%;
+    }
+    .errorWrapperColumnLeft {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+    .errorWrapperColumnRight {
+        width: 100%;
+    }
+    .errorWrapperRow1 {
+        margin-bottom: 0;
+    }
+    .errorWrapperRow1 .errorWrapperBtnRow {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+}
+@media screen and (min-width: 737px) and (max-width: 1024px){
+    .errorWrapperContent {
+        width: 90%;
+    }
+}
