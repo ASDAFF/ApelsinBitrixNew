@@ -16,7 +16,7 @@ CHTTP::SetStatus("404 Not Found");
             <div class="errorWrapperBtnContainer">
                 <ul class="errorWrapperBtnList">
                     <li><a class="errorWrapperBtn" href="/catalog/">В наличии более 45 000 товаров</a></li>
-                    <li><a class="errorWrapperBtn" href="/catalog/">Лучшие акции и уникальные предложения</a></li>
+                    <li><a class="errorWrapperBtn" href="/promotions">Лучшие акции и уникальные предложения</a></li>
                 </ul>
             </div>
             <div class="errorWrapperText">и еще много всего</div>
