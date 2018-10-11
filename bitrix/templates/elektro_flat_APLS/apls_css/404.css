@@ -1,0 +1,90 @@
+.errorWrapper {
+    width: 100%;
+}
+.errorWrapperContent {
+    width: 60%;
+    margin: auto;
+}
+.errorWrapperImg img {
+    width: 100%;
+}
+.errorWrapperHeader {
+    padding-top: 15px;
+    text-align: center;
+    font-size: 22px;
+}
+.errorWrapperDisclaimer {
+    text-align: center;
+    font-size: 22px;
+    padding-bottom: 20px;
+}
+.errorWrapperBtnList {
+    width: 48%;
+    padding: 0!important;
+    margin: auto!important;
+}
+.errorWrapperBtnList li {
+    list-style-type: none;
+    border: 1px solid #ef7f1a;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 12px;
+    cursor: pointer;
+    padding: 3px 0;
+}
+.errorWrapperBtnList li:last-child {
+    margin-bottom: 0;
+}
+.errorWrapperBtnList li a {
+    color: #ef7f1a;
+    padding: 4px 8px;
+}
+.errorWrapperText {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 22px;
+}
+.errorWrapperColumnLeft {
+    width: 48%;
+    display: inline-block;
+    margin-right: 12px;
+}
+.errorWrapperRow1 {
+    margin-bottom: 12px;
+}
+.errorWrapperRow1 .errorWrapperBtnRow {
+    display: inline-block;
+    width: 47%;
+}
+.errorWrapperRow1 .errorWrapperBtnRow:first-child {
+    margin-right: 12px;
+}
+.errorWrapperRow1 .errorWrapperBtnRow a {
+    display: block;
+    padding: 4px 8px;
+    border: 1px solid #ef7f1a;
+    text-align: center;
+    cursor: pointer;
+    color: #ef7f1a;
+    font-size: 12px;
+}
+.errorWrapperBtnLong a{
+    display: block;
+    padding: 4px 8px;
+    border: 1px solid #ef7f1a;
+    text-align: center;
+    cursor: pointer;
+    color: #ef7f1a;
+    font-size: 12px;
+}
+.errorWrapperColumnRight {
+    width: 48%;
+    display: inline-block;
+}
+.errorWrapperPromotions {
+    padding-top: 15px;
+}
+.errorWrapperPromotions .errorWrapperPromotionsHeader{
+    font-size: 22px;
+    font-weight: 600;
+}
