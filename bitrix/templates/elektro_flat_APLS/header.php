@@ -31,7 +31,8 @@ Loc::loadMessages(__FILE__);?>
 	Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/spectrum/spectrum.js");	
 	Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/countUp.min.js");	
 	Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/countdown/jquery.plugin.js");
-	Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/countdown/jquery.countdown.js");	
+	Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/countdown/jquery.countdown.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/apelsin.main.js");
 	Asset::getInstance()->addString("
 		<script type='text/javascript'>
 			$(function() {

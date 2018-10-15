@@ -837,3 +837,45 @@ iframe {
         display: none!important;
     }
 }
+
+/* Фиксированное меню и поле поиска */
+.top-menu-fixed {
+    position: fixed;
+    top: 48px;
+    left: 0px;
+    z-index: 999;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+.top-menu-fixed .center.inner {
+    width: 1234px;
+    margin: 0 auto;
+}
+#altop_search.altop-search-fixed {
+    position: fixed;
+    top: 1px;
+    margin-left: 21px;
+    z-index: 999;
+    width: 500px;
+}
+@media (max-width: 1253px) and (min-width: 1014px) {
+    .top-menu-fixed .center.inner {
+        width: 994px;
+        margin: 0 auto;
+    }
+    #altop_search.altop-search-fixed {
+        width: 280px;
+        margin-left: 30px;
+    }
+}
+@media (max-width: 1013px) and (min-width: 788px) {
+    #altop_search.altop-search-fixed {
+        position: fixed;
+        top: 43px;
+        margin-left: 0;
+        left: 0;
+        z-index: 999;
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+}
