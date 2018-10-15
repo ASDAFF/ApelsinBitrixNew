@@ -6,7 +6,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionIm
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/classes/PromotionHelper.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionImageTypeModel.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/classes/PromotionImageHelper.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/geolocation/geolocationRegionHelper.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/geolocation/GeolocationRegionHelper.php";
 
 function getPromotionListRegion($regionAlias) {
     $elementList = PromotionRegionModel::getElementList(
@@ -92,7 +92,7 @@ if(isset($_GET['p1']) && $_GET['p1']==="id" && isset($_GET['p2']) && $_GET['p2']
     $section = null;
 
     // получаем даныне региона по геолокации
-    $geolocationRegionId = geolocationRegionHelper::getGeolocationRegionId();
+    $geolocationRegionId = GeolocationRegionHelper::getGeolocationRegionId();
     if(!empty($geolocationRegionId)) {
         $regionObj = new PromotionRegionModel($geolocationRegionId);
     }

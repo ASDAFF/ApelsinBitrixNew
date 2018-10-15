@@ -1,11 +1,11 @@
 <?
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/model/PromotionRegionModel.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/geolocation/geolocationRegionHelper.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/geolocation/GeolocationRegionHelper.php";
 
 $regions = PromotionRegionModel::getElementList();
 $url = $request->getPost("arParams");
-$regionId = geolocationRegionHelper::getGeolocationRegionId();
+$regionId = GeolocationRegionHelper::getGeolocationRegionId();
 ?>
 <div class="CityChangeList">
     <?foreach ($regions as $region):?>
