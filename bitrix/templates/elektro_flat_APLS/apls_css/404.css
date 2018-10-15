@@ -19,24 +19,31 @@
     padding-bottom: 20px;
 }
 .errorWrapperBtnList {
-    width: 48%;
+    width: 53%;
     padding: 0!important;
     margin: auto!important;
 }
 .errorWrapperBtnList li {
     list-style-type: none;
-    border: 1px solid #ef7f1a;
+    border: 1px solid #dee0ee;
+    font-weight: 600;
     font-size: 12px;
     text-align: center;
     margin-bottom: 12px;
     cursor: pointer;
     padding: 3px 0;
 }
+.errorWrapperBtnList li:hover {
+    background-color: #ef7f1a;
+}
+.errorWrapperBtnList li:hover a {
+    color: #FFFFFF;
+}
 .errorWrapperBtnList li:last-child {
     margin-bottom: 0;
 }
 .errorWrapperBtnList li a {
-    color: #ef7f1a;
+    color: #575b71;
     padding: 4px 8px;
 }
 .errorWrapperText {
@@ -62,20 +69,30 @@
 .errorWrapperRow1 .errorWrapperBtnRow a {
     display: block;
     padding: 4px 8px;
-    border: 1px solid #ef7f1a;
+    border: 1px solid #dee0ee;
     text-align: center;
     cursor: pointer;
-    color: #ef7f1a;
+    color: #575b71;
+    font-weight: 600;
     font-size: 12px;
+}
+.errorWrapperRow1 .errorWrapperBtnRow a:hover {
+    background-color: #ef7f1a;
+    color: #FFFFFF;
 }
 .errorWrapperBtnLong a{
     display: block;
     padding: 4px 8px;
-    border: 1px solid #ef7f1a;
+    border: 1px solid #dee0ee;
     text-align: center;
     cursor: pointer;
-    color: #ef7f1a;
+    color: #575b71;
+    font-weight: 600;
     font-size: 12px;
+}
+.errorWrapperBtnLong a:hover{
+    background-color: #ef7f1a;
+    color: #FFFFFF;
 }
 .errorWrapperColumnRight {
     width: 48%;
