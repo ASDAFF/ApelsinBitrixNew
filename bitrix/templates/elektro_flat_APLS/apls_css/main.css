@@ -858,6 +858,11 @@ iframe {
     z-index: 999;
     width: 500px;
 }
+.title-search-result-fixed {
+    position: fixed !important;
+    top: 60px !important;
+    z-index: 9999;
+}
 @media (max-width: 1253px) and (min-width: 1014px) {
     .top-menu-fixed .center.inner {
         width: 994px;
@@ -877,5 +882,10 @@ iframe {
         z-index: 999;
         width: 100%;
         border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .title-search-result-fixed {
+        width: 95% !important;
+        top: 100px !important;
+        left: 10px !important;
     }
 }

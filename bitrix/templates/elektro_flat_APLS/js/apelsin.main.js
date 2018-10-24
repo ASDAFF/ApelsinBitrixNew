@@ -11,13 +11,17 @@ $( document ).ready(function() {
     });
 });
 $( document ).ready(function() {
-    $(function($) {
-        function fixSerch() {
-            if ($(window).scrollTop() > 80)
-                $('#altop_search').addClass("altop-search-fixed");
-            else
-                $('#altop_search').removeClass("altop-search-fixed");
+    function fixSerch() {
+        if ($(window).scrollTop() > 80) {
+
+            $('#altop_search').addClass("altop-search-fixed");
+            $('.title-search-result').addClass("title-search-result-fixed");
+        } else {
+            $('#altop_search').removeClass("altop-search-fixed");
+            $('.title-search-result').removeClass("title-search-result-fixed");
         }
+    }
+    $(function($) {
         $(window).scroll(fixSerch);
         fixSerch();
     });
