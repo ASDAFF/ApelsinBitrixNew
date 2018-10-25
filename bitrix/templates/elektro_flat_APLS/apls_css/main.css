@@ -10,6 +10,11 @@
     transition: none !important;
 }
 
+.body,
+header {
+    background: #FFFFFF !important;
+}
+
 #bx-panel {
     position: fixed !important;
     width: 100% !important;
