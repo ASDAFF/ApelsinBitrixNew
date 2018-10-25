@@ -10,6 +10,16 @@
     transition: none !important;
 }
 
+#bx-panel {
+    position: fixed !important;
+    width: 100% !important;
+    bottom: 0;
+}
+#bx-panel .bx-core-popup-menu {
+    top: auto !important;
+    bottom: 150px !important;
+}
+
 .page-banner {
     width: 100%;
     margin: 0px 0px 11px 0px;
