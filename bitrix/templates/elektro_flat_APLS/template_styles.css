@@ -9863,23 +9863,11 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 
 	/***ADVANTAGES***/
 	.advantages .advantages-item{
-		display: block;
-		width: 50%;
+		display: inline-block;
+		width: 25%;
 		margin:0px 0px 10px 0px;
+        vertical-align: top;
 	}
-	.advantages .advantages-item:nth-child(1){
-		float: left;
-	}
-	.advantages .advantages-item:nth-child(2){
-		float: left;
-	}
-	.advantages .advantages-item:nth-child(3){
-		float: right;
-	}
-	.advantages .advantages-item:last-child{
-		margin:0px;
-	}
-
 	.advantages .advantages-item-icon{
 		padding:0px 10px;
 	}
