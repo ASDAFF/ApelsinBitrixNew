@@ -69,13 +69,13 @@
         Array(),
         ""
     ),
-    Array(
-        "Транспортные компании",
-        "/information/transport_companies/",
-        Array(),
-        Array(),
-        ""
-    ),
+//    Array(
+//        "Транспортные компании",
+//        "/information/transport_companies/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
 //    Array(
 //        "Пользовательское соглашение",
 //        "/payments/terms_of_use/",
