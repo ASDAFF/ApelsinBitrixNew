@@ -7,7 +7,7 @@ if(count($arResult["ITEMS"]) < 1)
 
 <div class="advantages">
 	<?foreach($arResult["ITEMS"] as $arItem):?>
-		<div class="advantages-item">		
+		<div id="advantages_<?=$arItem["CODE"]?>" class="advantages-item">
 			<div class="advantages-item-icon">
                 <img src="<?=SITE_TEMPLATE_PATH?>/icon/<?=$arItem["CODE"]?>.svg">
 			</div>
@@ -18,5 +18,25 @@ if(count($arResult["ITEMS"]) < 1)
                 <?=$arItem['PREVIEW_TEXT']?>
             </div>
 		</div>
+        <?
+        global $APPLICATION;
+        $randId = rand(1, 9999);
+        $APPLICATION->IncludeComponent(
+            "apls:popap.by.button",
+            "",
+            Array(
+                "ALIAS" => "popapByButton_".$arItem["CODE"],
+                "BUTTON_ID" => "advantages_".$arItem["CODE"],
+                "BUTTON_TEXT" => "",
+                "TITLE_TEXT" => $arItem['NAME'],
+                "FILE_PATH" => "/include/advantages/".$arItem["CODE"].".php?g=$randId",
+                "OVERLAY"=>"Y",
+                "AUTO_HIDE"=>"Y",
+                "OVERFLOW_HIDDEN"=>"Y",
+                "CLOSE_BUTTON" => "Y",
+            ),
+            false
+        );
+        ?>
 	<?endforeach;?>
 </div>

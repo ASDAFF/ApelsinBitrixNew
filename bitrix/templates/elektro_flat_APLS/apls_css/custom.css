@@ -5,6 +5,18 @@ ul.left-menu > li > a {
     font-size: 15px !important;
 }
 
+.popup-window-content {
+    max-width: 800px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.popup-window-titlebar h2 {
+    font-size: 20px;
+    line-height: 49px;
+    margin: 0;
+    padding: 0 1em;
+}
+
 @media screen and (max-width: 787px) {
     .panel_1 .catalog-section-title a {
         font-size: 1.5em;
