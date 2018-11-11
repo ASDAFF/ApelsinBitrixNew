@@ -15,7 +15,9 @@ if(count($arResult["ITEMS"]) < 1)
 			"backText": "<i class='fa fa-chevron-left'></i>",
 			"hashTags": false,
 			"autoPlay": true,
-			"autoPlayLocked": true
+			"autoPlayLocked": true,
+            "delay": 15000,
+            "resumeDelay": 15000,
 		});
 		$(window).resize(function () {
 			currentWidth = $(".content-wrapper").children(".center").width();
