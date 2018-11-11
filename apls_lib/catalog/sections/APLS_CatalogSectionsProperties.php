@@ -15,6 +15,7 @@ class APLS_CatalogSectionsProperties
     private static $sectionNodeProperties = array();
     private static $smartFilterSettings = array();
     private static $smartFilterSettingsValueId = array();
+    private static $allProperties = array();
 
     const SECTIONS_PROPERTIES_MAP = "KartaSvyazeyKatalogaIM";
     const PROPERTY_FIELD = "UF_GUIDSVOYSTVA";
@@ -55,6 +56,11 @@ class APLS_CatalogSectionsProperties
     {
         self::getInstance();
         return self::$unknownPropertiesData;
+    }
+
+    public static function getAllProperties() {
+        self::getInstance();
+        return static::$allProperties;
     }
 
     /**
@@ -196,6 +202,7 @@ class APLS_CatalogSectionsProperties
             "filter" => array()
         ));
         while ($arData = $rsData->Fetch()) {
+            static::$allProperties[] = $arData[static::PROPERTY_FIELD];
             if (in_array($arData[static::PROPERTY_FIELD], APLS_CatalogProperties::getNotSystemProperties())) {
                 if ($arData[static::SECTION_FIELD] !== "" && $arData[static::PROPERTY_FIELD] !== "") {
                     self::$sectionsPropertiesMapData[$arData[static::SECTION_FIELD]][] = $arData[static::PROPERTY_FIELD];
@@ -203,6 +210,7 @@ class APLS_CatalogSectionsProperties
                 }
             }
         }
+        static::$allProperties = array_unique(static::$allProperties);
         self::$unknownPropertiesData = array_diff(APLS_CatalogProperties::getNotSystemProperties(), $notRootPropertiesData);
     }
 

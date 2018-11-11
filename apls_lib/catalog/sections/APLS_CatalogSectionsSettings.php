@@ -37,10 +37,15 @@ class APLS_CatalogSectionsSettings
 
     public static function getComparePropertyCodeList()
     {
-        $intersectProperties = APLS_CatalogSectionsProperties::getSectionNodeIntersectProperties(static::getCatalogExternalId());
-        $systemProperties = APLS_CatalogProperties::getSystemPropertiesCOMPARE();
-        $arrXmlId = array_merge($intersectProperties,$systemProperties);
-        return APLS_CatalogProperties::convertPropertyArrayXMLIDtoID($arrXmlId);
+//        $intersectProperties = APLS_CatalogSectionsProperties::getSectionNodeIntersectProperties(static::getCatalogExternalId());
+        if(static::isComparePage()) {
+            $intersectProperties = APLS_CatalogSectionsProperties::getAllProperties();
+            $systemProperties = APLS_CatalogProperties::getSystemPropertiesCOMPARE();
+            $arrXmlId = array_merge($intersectProperties,$systemProperties);
+            return APLS_CatalogProperties::convertPropertyArrayXMLIDtoID($arrXmlId);
+        } else {
+            return array();
+        }
     }
 
     public static function getDetailPropertyCodeList()
@@ -97,6 +102,12 @@ class APLS_CatalogSectionsSettings
             }
         }
         return $externalID;
+    }
+
+    public static function isComparePage() {
+        $externalID = null;
+        $iden = explode("/", $_SERVER['REQUEST_URI']);
+        return isset($iden[1]) && $iden[1] == "catalog" && isset($iden[2]) && $iden[2] == "compare";
     }
 
 
