@@ -1,0 +1,36 @@
+.header_2 #altop_search {
+    border: 1px solid #dee0ee;
+}
+ul.left-menu > li > a {
+    font-size: 15px !important;
+}
+
+@media screen and (max-width: 787px) {
+    .panel_1 .catalog-section-title a {
+        font-size: 1.5em;
+        padding: .7em 1em;
+    }
+    .panel_1 .catalog-section-child a {
+        font-size: 1.5em;
+        padding: .3em 1em;
+    }
+    .panel_1 .catalog-section-child a .child .text {
+        font-size: 1em !important;
+    }
+    .advantages-item-icon img {
+        height: 30px;
+    }
+    .anythingContainer {
+        display: none;
+    }
+    .header_1 {
+        width: auto;
+    }
+    header {
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+    .header_1 .logo a img {
+        width: 150px;
+    }
+}

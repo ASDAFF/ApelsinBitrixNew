@@ -16,6 +16,7 @@ Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/orders.css", true);
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/credit.css", true);
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/loyalty.css", true);
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/404.css", true);
+Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/custom.css", true);
 
 // версия для печати должна быть последней
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/apls_css/print-page.css", true);
