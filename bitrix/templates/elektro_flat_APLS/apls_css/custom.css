@@ -18,16 +18,20 @@ ul.left-menu > li > a {
 }
 
 @media screen and (max-width: 787px) {
-    .panel_1 .catalog-section-title a {
-        font-size: 1.5em;
-        padding: .7em 1em;
+    .panel_1 .catalog-section-title a,
+    .panel_2 .submenu a {
+        font-size: 20px !important;
+        padding: .7em 1em !important;
     }
-    .panel_1 .catalog-section-child a {
-        font-size: 1.5em;
-        padding: .3em 1em;
+    .panel_1 .catalog-section-child a,
+    .panel_2 .submenu a ul li a {
+        font-size: 20px !important;
+        padding: .3em 1em !important;
     }
-    .panel_1 .catalog-section-child a .child .text {
-        font-size: 1em !important;
+    .panel_1 .catalog-section-child a .child .text,
+    .panel_2 .submenu a ul li a  {
+        font-size: 20px !important;
+        font-weight: 400 !important;
     }
     .advantages-item-icon img {
         height: 30px;
