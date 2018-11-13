@@ -549,6 +549,21 @@ ul.left-menu > li > a {
     display: block;
 }
 
+.banners_left a {
+    border: 1px dashed #dee0ee;
+}
+.banners_left a img {
+    width: 201px !important;
+    height: auto;
+}
+
+.advantages + .promotions-block {
+    border-top: 1px dashed #dee0ee;
+}
+.banners-main_headers {
+    border-top: 1px dashed #dee0ee;
+}
+
 /* хлебные крошки */
 /*
 .breadcrumb__arrow {
