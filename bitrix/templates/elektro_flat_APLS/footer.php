@@ -41,7 +41,7 @@ Loc::loadMessages(__FILE__);?>
 							);?>
 						<?endif;?>
 					</div>
-					<?$APPLICATION->IncludeComponent("bitrix:subscribe.form", "bottom", 
+					<?/*$APPLICATION->IncludeComponent("bitrix:subscribe.form", "bottom",
 						array(
 							"USE_PERSONALIZATION" => "Y",	
 							"PAGE" => "/personal/mailings/",
@@ -51,7 +51,7 @@ Loc::loadMessages(__FILE__);?>
 							"CACHE_NOTES" => ""
 						),
 						false
-					);?>					
+					);*/?>
 				</div>
 			</div>
 			<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/viewed_products.php"), false);?>
