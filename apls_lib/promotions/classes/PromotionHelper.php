@@ -91,7 +91,11 @@ class PromotionHelper
                             FROM `apls_promotions_revision` 
                             WHERE 
                             `disable`<'1' AND
-                            `apply_from` < now()
+                            `apply_from` < now() AND
+                            (
+                              `stop_from` >= now() OR
+                              `stop_from` IS NULL
+                            )
                             order by `apply_from` DESC
                         ) as REV
                         group by REV.`promotion`
