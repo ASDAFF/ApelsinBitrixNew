@@ -169,7 +169,7 @@ if(!empty($arNewActiveItems) && CModule::IncludeModule("iblock")) {
 	$arSelect = array("ID", "IBLOCK_ID", "PREVIEW_PICTURE", "DETAIL_PICTURE", "PROPERTY_COLLECTION");
 
 	$arFilter = array(
-		"IBLOCK_LID" => SITE_ID,
+//		"IBLOCK_LID" => SITE_ID,
 		"IBLOCK_ACTIVE" => "Y",
 		"ACTIVE_DATE" => "Y",
 		"ACTIVE" => "Y",

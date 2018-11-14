@@ -102,7 +102,8 @@ if(!empty($query) && $_REQUEST["ajax_call"] === "y" && (!isset($_REQUEST["INPUT_
 		if($full_text_engine === "sphinx") {
 			$arResult["SPHINX"] = true;
 			$str_query = $arResult["alt_query"] ? $arResult["alt_query"] : $arResult["query"];
-			$arSearch = $arSphinx->search(array("QUERY" => $str_query,"SITE_ID" => SITE_ID),$aSort,array(),false);
+//			$arSearch = $arSphinx->search(array("QUERY" => $str_query,"SITE_ID" => SITE_ID),$aSort,array(),false);
+            $arSearch = $arSphinx->search(array("QUERY" => $str_query),$aSort,array(),false);
 			$j = 0;
 			foreach($arSearch as $arItem) {
 				$j++;
@@ -270,7 +271,8 @@ if(!empty($query) && $_REQUEST["ajax_call"] === "y" && (!isset($_REQUEST["INPUT_
 		if($full_text_engine === "sphinx") {
 			$arResult["SPHINX"] = true;
 			$str_other_query = $arResult["alt_query"] ? $arResult["alt_query"] : $arResult["query"];
-			$arSearch = $arSphinx->search(array("QUERY" => $str_query,"SITE_ID" => SITE_ID),$aSort,array("LIMIT" => $arParams["TOP_COUNT"]),false);
+//			$arSearch = $arSphinx->search(array("QUERY" => $str_query,"SITE_ID" => SITE_ID),$aSort,array("LIMIT" => $arParams["TOP_COUNT"]),false);
+            $arSearch = $arSphinx->search(array("QUERY" => $str_query),$aSort,array("LIMIT" => $arParams["TOP_COUNT"]),false);
 			foreach($arSearch as $arItem) {
 				$j++;
 				if($j > $arParams["TOP_COUNT"]) {
