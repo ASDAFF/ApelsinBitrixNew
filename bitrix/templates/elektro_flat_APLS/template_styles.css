@@ -13380,7 +13380,7 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 	}
 	
 	.vendors_bottom{
-		display:block;
+		display:none;
 	}
 	
 	.subscribe_bottom{
@@ -13389,7 +13389,7 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 
 	.news-block,
 	.reviews-block{
-		display:block;
+		display:none;
 	}
 	
 	.already_seen ul{
