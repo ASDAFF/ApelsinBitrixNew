@@ -35,3 +35,6 @@ header .header_4 .info_phone .title {
 #shop_element_1 .shop_element_feature_table .shop_element_icon:last-child {
     display: none;
 }
+.APLS_RetailPrice {
+    display: none;
+}
