@@ -570,10 +570,11 @@ ul.left-menu > li > a {
     margin: 5px 0;
 }
 .adventagesBtnBlock {
+    padding-top: 5px;
     text-align: center;
 }
 .adventagesBtn {
-    padding: 10px 20px;
+    padding: 5px 20px;
     border: 1px solid #ef7f1a;
     background-color: #ef7f1a;
     color: #ffffff!important;

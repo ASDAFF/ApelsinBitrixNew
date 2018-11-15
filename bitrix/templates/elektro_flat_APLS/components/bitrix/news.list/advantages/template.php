@@ -32,7 +32,7 @@ if(count($arResult["ITEMS"]) < 1)
                     "OVERLAY"=>"Y",
                     "AUTO_HIDE"=>"Y",
                     "OVERFLOW_HIDDEN"=>"Y",
-                    "CLOSE_BUTTON" => "Y",
+                    "CLOSE_BUTTON" => "N",
                 ),
                 false
             );
