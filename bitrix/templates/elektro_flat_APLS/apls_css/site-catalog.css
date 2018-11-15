@@ -1,5 +1,7 @@
 body .bx-panel.clvt,
 footer .foot_panel_all,
+header .header_3,
+header .header_4 .info_phone .title,
 .catalog-item-info .buy_more,
 .catalog-item-info .compare_delay,
 .catalog-item-info .available,
@@ -9,7 +11,9 @@ footer .foot_panel_all,
 .tvr_search .buy_more {
     display: none !important;
 }
-
+header .header_4 .info_phone .title {
+    margin-top: 0;
+}
 .top-menu-fixed {
     top: 0;
 }
