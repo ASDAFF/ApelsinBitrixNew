@@ -557,6 +557,8 @@ ul.left-menu > li > a {
     height: auto;
 }
 
+
+
 .advantages + .promotions-block {
     border-top: 1px dashed #dee0ee;
 }
@@ -566,12 +568,25 @@ ul.left-menu > li > a {
 .lawProductContentForSiteCatalog {
     display:none;
 }
+.popup-window-with-titlebar .popup-window-content {
+    padding: 2em 3em;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+}
+.popup-window-with-titlebar .popup-window-content span{
+    color: #ef7f1a!important;
+}
+.popup-window-titlebar {
+    text-align: center;
+}
 .popup-window-content p{
     margin: 5px 0;
 }
 .adventagesBtnBlock {
-    padding-top: 5px;
+    margin-top: 2em;
     text-align: center;
+    padding: 5px 0;
 }
 .adventagesBtn {
     padding: 5px 20px;
@@ -810,6 +825,7 @@ iframe {
 }
 .advantages-item {
     width: 25%;
+    cursor: pointer;
 }
 .advantages .advantages-item-icon,
 .advantages .advantages-item-text,

@@ -50,7 +50,7 @@
 <p>от посредничества между Клиентом и Банком.</p><br>
 <p>Мы не берем в свою пользу</p>
 <p>ни процентов от сделки по обеспечению</p>
-<p>ни платы за обслуживание.</p><br>
+<p>ни платы за обслуживание.</p>
 <!--<a href="/information/loyalty-programs/#credit">Подробнее</a>-->
 <div class="adventagesBtnBlock">
     <a class="adventagesBtn" href="/information/loyalty-programs/#credit">Подробнее</a>

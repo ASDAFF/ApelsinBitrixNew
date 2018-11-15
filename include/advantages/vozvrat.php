@@ -3,7 +3,7 @@
 <p>Или просто передумали?</p><br>
 
 <p>Вернем деньги за приобретенный у нас товар </p>
-<p>даже позже чем 2 недели.</p><br>
+<p>даже позже чем 2 недели.</p>
 <div class="adventagesBtnBlock">
     <a class="adventagesBtn" href="/payments/index.php#exchange">Подробнее</a>
 </div>
