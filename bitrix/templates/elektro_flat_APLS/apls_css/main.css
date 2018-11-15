@@ -563,7 +563,9 @@ ul.left-menu > li > a {
 .banners-main_headers {
     border-top: 1px dashed #dee0ee;
 }
-
+.lawProductContentForSiteCatalog {
+    display:none;
+}
 /* хлебные крошки */
 /*
 .breadcrumb__arrow {

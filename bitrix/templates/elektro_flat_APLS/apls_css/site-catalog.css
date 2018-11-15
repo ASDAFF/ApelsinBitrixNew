@@ -26,3 +26,9 @@ header .header_4 .info_phone .title {
     border-bottom: 2px solid #ef7f1a;
     margin: 0;
 }
+.lawProductContent {
+    display: none;
+}
+.lawProductContentForSiteCatalog {
+    display: block;
+}
