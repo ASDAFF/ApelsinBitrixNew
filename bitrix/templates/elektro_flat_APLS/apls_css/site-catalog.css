@@ -32,3 +32,6 @@ header .header_4 .info_phone .title {
 .lawProductContentForSiteCatalog {
     display: block;
 }
+#shop_element_1 .shop_element_feature_table:last-child {
+    display: none;
+}
