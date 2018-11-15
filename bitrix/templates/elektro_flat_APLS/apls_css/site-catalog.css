@@ -2,8 +2,10 @@ body .bx-panel.clvt,
 footer .foot_panel_all,
 .catalog-item-info .buy_more,
 .catalog-item-info .compare_delay,
+.catalog-item-info .available,
 .price_buy_detail .catalog-detail-buy,
 .price_buy_detail .compare_delay,
+.price_buy_detail .available,
 .tvr_search .buy_more {
     display: none !important;
 }
