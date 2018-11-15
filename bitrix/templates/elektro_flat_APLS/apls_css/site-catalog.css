@@ -18,6 +18,7 @@ header .header_4 .info_phone .title {
     top: 0;
 }
 #altop_search.altop-search-fixed {
+    display: none;
     top: 33px;
     left: 0;
     right: 0;
