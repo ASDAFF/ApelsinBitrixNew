@@ -9,3 +9,15 @@ footer .foot_panel_all,
 .tvr_search .buy_more {
     display: none !important;
 }
+
+.top-menu-fixed {
+    top: 0;
+}
+#altop_search.altop-search-fixed {
+    top: 33px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-bottom: 2px solid #ef7f1a;
+    margin: 0;
+}
