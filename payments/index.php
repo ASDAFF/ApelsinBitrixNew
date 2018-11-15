@@ -44,6 +44,7 @@ $APPLICATION->SetTitle("Оплата");
             </div>
         </div>
     </div>
+    <a name="exchange"></a>
     <div class="payments_list payment_last_element">
         <div class="payment_logo"><img src="icons/bonus.svg"></div>
         <div class="payment_content">
