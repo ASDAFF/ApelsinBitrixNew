@@ -3,6 +3,7 @@
 use Bitrix\Main\Localization\Loc;
 
 if(strlen($arResult["ID"]) > 0) {
+//    ShowError($arResult["ERROR_MESSAGE"]);
         $db_sales = CSaleOrderUserProps::GetList(
             array("DATE_UPDATE" => "DESC"),
             array("USER_ID" => $USER->GetID())

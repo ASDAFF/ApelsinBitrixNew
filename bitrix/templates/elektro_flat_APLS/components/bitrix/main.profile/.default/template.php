@@ -1,8 +1,19 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
 <?=ShowError($arResult["strProfileError"]);?>
-<?if($arResult['DATA_SAVED'] == 'Y')
-	echo ShowNote(GetMessage('PROFILE_DATA_SAVED'));?>
+<?
+if ($arResult['DATA_SAVED'] == 'Y') {
+    if ($arResult["arUser"]["UF_MESSAGE_ERROR"] == 'error') {
+        echo ShowError(GetMessage('ERROR'));
+    } elseif ($arResult["arUser"]["UF_MESSAGE_ERROR"] == 'error1') {
+        echo ShowError(GetMessage('ERROR1'));
+    } elseif ($arResult["arUser"]["UF_MESSAGE_ERROR"] == 'error2') {
+        echo ShowError(GetMessage('ERROR2'));
+    } else {
+        echo ShowNote(GetMessage('PROFILE_DATA_SAVED'));
+    }
+}
+?>
 <div class="workarea personal">
 	<form method="post" name="form1" action="<?=$arResult["FORM_TARGET"]?>" enctype="multipart/form-data">
 		<?=$arResult["BX_SESSION_CHECK"]?>
