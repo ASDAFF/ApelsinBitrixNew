@@ -13,6 +13,7 @@ Thumbs.db
 
 /upload/
 /apls_upload/*
+/apls_temp/*
 /upload/*
 /bitrix/*
 
