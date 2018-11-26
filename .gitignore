@@ -12,6 +12,7 @@ Thumbs.db
 /desktop_app/*
 
 /upload/
+/apls_upload/*
 /upload/*
 /bitrix/*
 
