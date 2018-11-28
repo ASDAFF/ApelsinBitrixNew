@@ -232,5 +232,11 @@ Loc::loadMessages(__FILE__);?>
 			<?endif;?>
 		</div>
 	</div>
+<script data-skip-moving="true">
+    (function(w,d,u){
+        var s=d.createElement('script');s.async=1;s.src=u+'?'+(Date.now()/60000|0);
+        var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+    })(window,document,'https://cdn.bitrix24.ru/b7541479/crm/site_button/loader_2_c4p5x1.js');
+</script>
 </body>
 </html>
