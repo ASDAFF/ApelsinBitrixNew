@@ -37,7 +37,8 @@ if ($arResult['DATA_SAVED'] == 'Y') {
         }
         ?>
         <div class="personal_tabs">
-            <div id="personal_fio" class="personal_tab_title checked"><?=GetMessage("LEGEND_PROFILE")?></div>
+            <div id="personal_card" class="personal_tab_title checked"><?=GetMessage("LEGEND_CARD")?></div>
+            <div id="personal_fio" class="personal_tab_title"><?=GetMessage("LEGEND_PROFILE")?></div>
             <?
                 if ($ar_profId !== NULL) {
                    ?><div id="personal_delivery" class="personal_tab_title"><?=GetMessage('LEGEND_DELIVERY')?></div><?
@@ -45,9 +46,47 @@ if ($arResult['DATA_SAVED'] == 'Y') {
             ?>
             <div id="personal_pass" class="personal_tab_title"><?=GetMessage("MAIN_PSWD")?></div>
         </div>
+        <div class="personal-info personal_card">
+
+            <div class="personal-info_in">
+                <?
+                if($arResult["arUser"]["UF_CARD_NUMBER"] == null){
+                    ?><div class="personal-info_left_column" style="display: none"><?
+                } else {
+                    ?><div class="personal-info_left_column"><?
+                }
+                ?>
+                    <div class="personal-info_codebar_block">
+                        <div class="personal-info_codebar_block_header"><?=GetMessage($arResult["arUser"]["UF_1C_TYPE_PRICE"]);?></div>
+                        <div class="personal-info_codebar_next_step"></div>
+                        <div class="personal-info_codebar">
+                            <?
+                            include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/hlblock/APLS_GetHighloadEntityDataClass.php";
+                            $entityClass = APLS_GetHighloadEntityDataClass::getByHLName('Kontragenty');
+                            $res = $entityClass::getList(array(
+                                'select' => array('*'),
+                                'filter' => array('UF_NOMERKARTYKLIENTA' => $arResult["arUser"]["UF_CARD_NUMBER"].'%')
+                            ));
+                            $row = $res->fetch();
+                            ?>
+                            <img src="<?=$templateFolder?>/barcode.php?f=png&s=ean-13&d=<?=$row['UF_NOMERKARTYKLIENTA']?>&w=280&h=140&th=15&ts=12&ph=5">
+                        </div>
+                        <div class="personal-info_codebar_bonus"></div>
+                    </div>
+                </div>
+                <div class="personal-info_right_column">
+                    <div class="input_card_number">
+                        <input class="card_number" type="text" name="UF_CARD_NUMBER" maxlength="255" value="<?=$arResult["arUser"]["UF_CARD_NUMBER"]?>"  placeholder="64777"/>
+                    </div>
+                    <div class="UF_CARD_NUMBER">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/images/card_new.png" alt="Номер карты" title="<?echo GetMessage("UF_CARD_NUMBER_TITLE");?>">
+                    </div>
+                </div>
+            </div>
+        </div>
 		<div class="personal-info personal_fio">
 			<div class="personal-info_in">
-                <div class="personal-info_left_column">
+<!--                <div class="personal-info_left_column">-->
                     <?=GetMessage('NAME')?><br>
                     <input type="text" name="NAME" maxlength="50" class="input_text_style" value="<?=$arResult["arUser"]["NAME"]?>" />
                     <br><br>
@@ -73,18 +112,9 @@ if ($arResult['DATA_SAVED'] == 'Y') {
                             </table>
                         <?endif;?>
                     </div>
-                </div>
-                <div class="personal-info_right_column">
-                    <div class="input_card_number">
-                        <input class="card_number" type="text" name="UF_CARD_NUMBER" maxlength="255" value="<?=$arResult["arUser"]["UF_CARD_NUMBER"]?>"  placeholder="64777"/>
-                    </div>
-                    <div class="UF_CARD_NUMBER">
-                        <img src="<?=SITE_TEMPLATE_PATH?>/images/card_new.png" alt="Номер карты" title="<?echo GetMessage("UF_CARD_NUMBER_TITLE");?>">
-                    </div>
-                </div>
+<!--                </div>-->
 			</div>
 		</div>
-
             <?
             if ($ar_profId !== NULL) {
                 ?><div class="personal-info personal_delivery"><?
@@ -99,7 +129,6 @@ if ($arResult['DATA_SAVED'] == 'Y') {
                 ?></div><?
             }
             ?>
-
 		<div class="personal-info personal_pass">
 			<div class="personal-info_in">
 				<?=GetMessage('NEW_PASSWORD_REQ')?><br>
@@ -110,8 +139,7 @@ if ($arResult['DATA_SAVED'] == 'Y') {
 				<input type="password" name="NEW_PASSWORD_CONFIRM" maxlength="50" class="input_text_style" value="" autocomplete="off" />
 			</div>
 		</div>
-
-		<button type="submit" name="save" class="btn_buy popdef bt3" value="<?=GetMessage('MAIN_SAVE')?>"><?=GetMessage("MAIN_SAVE")?></button>
+            <button type="submit" name="save" class="btn_buy popdef bt3" value="<?=GetMessage('MAIN_SAVE')?>"><?=GetMessage("MAIN_SAVE")?></button>
 	</form>
 </div>
 <div class="clr"></div>
