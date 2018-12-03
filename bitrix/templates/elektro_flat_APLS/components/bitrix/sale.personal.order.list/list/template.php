@@ -88,15 +88,15 @@ else
 										<?if(IntVal($val["ORDER"]["PAY_SYSTEM_ID"]) > 0) {
 											echo $arResult["INFO"]["PAY_SYSTEM"][$val["ORDER"]["PAY_SYSTEM_ID"]]["NAME"];
 											/* APLS - Кнопка оплаты активна только при определенном статусе */
-                                            if($val["ORDER"]["STATUS_ID"]=="A" && isset($val["ORDER"]["PSA_ACTION_FILE"]) && !empty($val["ORDER"]["PSA_ACTION_FILE"])):?>
-                                                <br />
-                                                <a href="<?=$val["ORDER"]["PSA_ACTION_FILE"]?>&GOTOPAY=yes" target="_blank"><?=GetMessage("STPOL_REPEAT_PAY")?></a>
-                                            <?endif;
+//                                            if($val["ORDER"]["STATUS_ID"]=="A" && isset($val["ORDER"]["PSA_ACTION_FILE"]) && !empty($val["ORDER"]["PSA_ACTION_FILE"])):?>
+<!--                                                <br />-->
+<!--                                                <a href="--><?//=$val["ORDER"]["PSA_ACTION_FILE"]?><!--&GOTOPAY=yes" target="_blank">--><?//=GetMessage("STPOL_REPEAT_PAY")?><!--</a>-->
+<!--                                            --><?//endif;
                                             /* APLS - Кнопка оплаты активна только при определенном статусе - END */
-//											if(isset($val["ORDER"]["PSA_ACTION_FILE"]) && !empty($val["ORDER"]["PSA_ACTION_FILE"])) {?>
-<!--												<br />-->
-<!--												<a href="--><?//=$val["ORDER"]["PSA_ACTION_FILE"]?><!--" target="_blank">--><?//=GetMessage("STPOL_REPEAT_PAY")?><!--</a>-->
-<!--											--><?//}
+											if(isset($val["ORDER"]["PSA_ACTION_FILE"]) && !empty($val["ORDER"]["PSA_ACTION_FILE"])) {?>
+												<br />
+												<a href="<?=$val["ORDER"]["PSA_ACTION_FILE"]?>" target="_blank"><?=GetMessage("STPOL_REPEAT_PAY")?></a>
+											<?}
 										} else {
 											echo GetMessage("STPOL_NONE");
 										}?>

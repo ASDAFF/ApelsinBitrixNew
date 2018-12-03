@@ -66,12 +66,12 @@ if (in_array($response['errorCode'], array(1,2,3,4,5,7))) {
 // 	echo $error;
 } elseif ($response['errorCode'] == 0){
 	$_SESSION['ORDER_NUMBER'] = $order_number;
-    if($request->get('GOTOPAY') && $request->get('GOTOPAY')=="yes") {
+//    if($request->get('GOTOPAY') && $request->get('GOTOPAY')=="yes") {
         if ($request->get('ORDER_ID') && $request->get('PAYMENT_ID'))
             echo '<script>window.location="' . $response['formUrl'] . '"</script>';
         else
             header("Location:" . $response['formUrl']);
-    }
+//    }
 } else {
 // 	if (!ENCODING)
 // 		$response = $APPLICATION->ConvertCharsetArray($response, "utf-8", "windows-1251");

@@ -35,15 +35,15 @@ if(strlen($arResult["ERROR_MESSAGE"])<=0):?>
 								echo $arResult["PAY_SYSTEM"]["NAME"];								
 								if($arResult["CAN_REPAY"]=="Y"):
                                     /* APLS - Кнопка оплаты активна только при определенном статусе */
-                                    if($arResult["STATUS_ID"]=="A" && $arResult["CAN_REPAY"]=="Y"):?>
-                                        <br />
-                                        <a href="<?=$arResult["PAY_SYSTEM"]["PSA_ACTION_FILE"]?>&GOTOPAY=yes" target="_blank"><?=GetMessage("SALE_REPEAT_PAY")?></a>
-                                    <?endif;
+//                                    if($arResult["STATUS_ID"]=="A" && $arResult["CAN_REPAY"]=="Y"):?>
+<!--                                        <br />-->
+<!--                                        <a href="--><?//=$arResult["PAY_SYSTEM"]["PSA_ACTION_FILE"]?><!--&GOTOPAY=yes" target="_blank">--><?//=GetMessage("SALE_REPEAT_PAY")?><!--</a>-->
+<!--                                    --><?//endif;
                                     /* APLS - Кнопка оплаты активна только при определенном статусе - END */
-//									if($arResult["PAY_SYSTEM"]["PSA_NEW_WINDOW"] == "Y"):?>
-<!--										<br />-->
-<!--										<a href="--><?//=$arResult["PAY_SYSTEM"]["PSA_ACTION_FILE"]?><!--" target="_blank">--><?//=GetMessage("SALE_REPEAT_PAY")?><!--</a>-->
-<!--									--><?//endif;
+									if($arResult["PAY_SYSTEM"]["PSA_NEW_WINDOW"] == "Y"):?>
+										<br />
+										<a href="<?=$arResult["PAY_SYSTEM"]["PSA_ACTION_FILE"]?>" target="_blank"><?=GetMessage("SALE_REPEAT_PAY")?></a>
+									<?endif;
 								endif;
 							else:
 								echo GetMessage("SPOD_NONE");
