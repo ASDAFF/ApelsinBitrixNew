@@ -12,7 +12,7 @@ if(!empty($arResult["ORDER"])) {?>
 <!--		<p>--><?//=Loc::getMessage("SOA_PAYMENT_SUC", array("#PAYMENT_ID#" => $arResult["PAYMENT"][$arResult["ORDER"]["PAYMENT_ID"]]["ACCOUNT_NUMBER"]));?><!--</p>-->
 	<?}?>
 	<p><?=Loc::getMessage("SOA_ORDER_SUC1", array("#LINK#" => $arParams["PATH_TO_PERSONAL"]))?></p>
-	
+
 	<?if($arResult["ORDER"]["IS_ALLOW_PAY"] === "Y") {
 		if(!empty($arResult["PAYMENT"])) {
 			foreach($arResult["PAYMENT"] as $payment) {
@@ -34,11 +34,9 @@ if(!empty($arResult["ORDER"])) {?>
 										<?if(strlen($arPaySystem["ACTION_FILE"]) > 0 && $arPaySystem["NEW_WINDOW"] == "Y" && $arPaySystem["IS_CASH"] != "Y") {
 											$orderAccountNumber = urlencode(urlencode($arResult["ORDER"]["ACCOUNT_NUMBER"]));
 											$paymentAccountNumber = $payment["ACCOUNT_NUMBER"];?>
-                                            <!--
 											<script>
 												window.open('<?=$arParams["PATH_TO_PAYMENT"]?>?ORDER_ID=<?=$orderAccountNumber?>&PAYMENT_ID=<?=$paymentAccountNumber?>');
 											</script>
-											-->
 											<?=Loc::getMessage("SOA_PAY_LINK", array("#LINK#" => $arParams["PATH_TO_PAYMENT"]."?ORDER_ID=".$orderAccountNumber."&PAYMENT_ID=".$paymentAccountNumber));
 											if(CSalePdf::isPdfAvailable() && $arPaySystem["IS_AFFORD_PDF"]) {?>
 												<br/>

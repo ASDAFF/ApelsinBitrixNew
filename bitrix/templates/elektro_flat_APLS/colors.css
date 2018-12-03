@@ -6221,7 +6221,7 @@ a.btn_buy.apuo{
 
 /***Окно "Заказ сформирован***/
 .workarea-order .sale_order_full_table {
-	display: none;
+	/*display: none;*/
 }
 
 /***240px***/
