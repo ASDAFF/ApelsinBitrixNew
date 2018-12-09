@@ -86,9 +86,7 @@ button[disabled] {
 .left-column .news-block,
 .left-column .reviews-block,
 .b-share_theme_counter,
-.catalog-item-card .item-desc,
-.article_rating .catalog-detail-article,
-.article_rating .article {
+.catalog-item-card .item-desc {
     display: none !important;
 }
 

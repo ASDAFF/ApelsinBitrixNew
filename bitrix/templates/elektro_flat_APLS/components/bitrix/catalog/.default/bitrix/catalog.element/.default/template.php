@@ -979,7 +979,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 													<a href="javascript:void(0)" class="plus" id="quantity_plus_<?=$arItemIDs['ID']?>"><span>+</span></a>
 												</div>
 												<input type="hidden" name="ID" class="id" value="<?=$arResult['ID']?>" />
-												<?$props = "";
+												<?$props = array();
 												if(!empty($arResult["PROPERTIES"]["ARTNUMBER"]["VALUE"])) {				
 													$props[] = array(
 														"NAME" => $arResult["PROPERTIES"]["ARTNUMBER"]["NAME"],
@@ -1053,7 +1053,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 								//DETAIL_DELAY//
 								} else {
 									if($arResult["CAN_BUY"] && $arResult["MIN_PRICE"]["RATIO_PRICE"] > 0) {
-										$props = "";
+										$props = array();
 										if(!empty($arResult["PROPERTIES"]["ARTNUMBER"]["VALUE"])) {				
 											$props[] = array(
 												"NAME" => $arResult["PROPERTIES"]["ARTNUMBER"]["NAME"],
