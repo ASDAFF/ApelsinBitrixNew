@@ -20,6 +20,7 @@ use Bitrix\Main\Localization\Loc;?>
 		"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 		"CACHE_TIME" => $arParams["CACHE_TIME"],
 		"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+		"DEFAULT_SORT" => "ID",
 	),
 	false
 );?>
