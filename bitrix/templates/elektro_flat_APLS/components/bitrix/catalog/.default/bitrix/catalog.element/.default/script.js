@@ -1718,8 +1718,8 @@
 					}, this)
 				);
 				BX.adjust(target, {
-					props: {disabled: true},
-					html: "<i class='fa fa-check'></i><span>" + BX.message("DETAIL_ADDITEMINCART_ADDED") + "</span>"
+					// props: {disabled: true},
+					html: "<a href='/personal/cart/'><i class='fa fa-check'></i><span>" + BX.message("DETAIL_ADDITEMINCART_ADDED") + "</span></a>"
 				});
 				this.BasketResult();
 			}, this)			
