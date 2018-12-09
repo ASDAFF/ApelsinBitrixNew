@@ -120,14 +120,14 @@ Loc::loadMessages(__FILE__);?>
 								false
 							);?>
 						</div>
-						<div class="footer_soc_pay">							
+						<div class="footer_soc_pay">
+                            <div class="footer_pay">
+                                <?global $arPayIcFilter;
+                                $arPayIcFilter = array();?>
+                                <?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/payments_icons.php"), false, array("HIDE_ICONS" => "Y"));?>
+                            </div>
 							<div class="footer_soc">
 								<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/join_us.php"), false, array("HIDE_ICONS" => "Y"));?>
-							</div>
-							<div class="footer_pay">
-								<?global $arPayIcFilter;
-								$arPayIcFilter = array();?>
-								<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/payments_icons.php"), false, array("HIDE_ICONS" => "Y"));?>
 							</div>
 						</div>
 					</div>
