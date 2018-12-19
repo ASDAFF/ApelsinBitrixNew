@@ -39,7 +39,7 @@ $aMenuLinks = Array(
 //		""
 //	),
 	Array(
-		"Профиль пользователя",
+		"Профиль",
 		"/personal/private/",
 		Array(), 
 		Array(), 

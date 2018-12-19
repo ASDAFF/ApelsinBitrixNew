@@ -152,6 +152,9 @@ a.btnPrint:hover,
     padding-left: 10px;
     padding-top: 22px;
 }
+.sale-personal-section__list .sale-personal-section__item:last-child {
+    display: none;
+}
 @media screen and (max-width: 787px) and (min-width: 450px) {
     .personal-info_right_column {
         padding-left: 0;
