@@ -541,6 +541,7 @@ ul.left-menu > li > a {
 .catalog-detail .article_rating {
     width: 280px;
     margin: 0px;
+    padding: 0px 20px 10px;
 }
 
 .catalog-item-price-view .item-price .catalog-item-price-old {
