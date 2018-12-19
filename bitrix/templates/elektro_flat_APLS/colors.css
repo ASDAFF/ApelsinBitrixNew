@@ -5991,6 +5991,9 @@ table.compare-grid .delay a.catalog-item-delayed .delay_text{
 	font-size:18px;
 	font-weight:700;
 }
+.btn_buy.detail span{
+	color: #ef7f1a!important;
+}
 
 .btn_buy.boc_anch,
 .btn_buy.subscribe_anch{
