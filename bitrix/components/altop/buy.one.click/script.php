@@ -117,7 +117,20 @@ if($buyMode == "ONE") {
 		\CSaleBasket::Delete($basketItem->getId());
 	}
 	$item = $basket->createItem("catalog", $id);
+
+	$xmlId = "";
+    $arSelect = Array();
+    $arFilter = Array("ID"=>$id );
+    $res = CIBlockElement::GetList( Array(), $arFilter, false, Array(), $arSelect );
+    if ( $ob = $res->GetNextElement() ) {
+        $arFields = $ob->GetFields();
+        $xmlId = $arFields[ "XML_ID" ];
+        $xmlIdCatalog = $arFields[ "IBLOCK_EXTERNAL_ID" ];
+    }
+
 	$item->setFields(array(
+        "PRODUCT_XML_ID" => $xmlId,
+        "CATALOG_XML_ID" => $xmlIdCatalog,
 		"QUANTITY" => $qnt,
 		"CURRENCY" => \Bitrix\Currency\CurrencyManager::getBaseCurrency(),
 		"LID" => \Bitrix\Main\Context::getCurrent()->getSite(),
@@ -235,13 +248,13 @@ $orderId = $order->GetId();
 if($orderId > 0) {
 	$result = array(
 		"success" => array(
-			"text" => Loc::getMessage("ORDER_CREATE_SUCCESS")
+			"text" => $test.Loc::getMessage("ORDER_CREATE_SUCCESS")
 		)
 	);
 } else {
 	$result = array(
 		"error" => array(
-			"text" => Loc::getMessage("ORDER_CREATE_ERROR"),
+			"text" => $test.Loc::getMessage("ORDER_CREATE_ERROR"),
 			"captcha_code" => !empty($captchaSid) ? $APPLICATION->CaptchaGetCode() : ""
 		)
 	);
