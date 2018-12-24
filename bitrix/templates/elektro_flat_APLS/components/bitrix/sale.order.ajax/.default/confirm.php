@@ -1,5 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogHelper.php";
+
 use Bitrix\Main\Localization\Loc;
 
 if($arParams["SET_TITLE"] == "Y") {
@@ -63,3 +65,66 @@ if(!empty($arResult["ORDER"])) {?>
 } else {
 	ShowError(Loc::getMessage("SOA_ERROR_ORDER")."<br />".Loc::getMessage("SOA_ERROR_ORDER_LOST", array("#ORDER_ID#" => $arResult["ACCOUNT_NUMBER"]))."<br />".Loc::getMessage("SOA_ERROR_ORDER_LOST1"));
 }?>
+
+<?
+
+$dbBasket = CSaleBasket::GetList(Array("ID"=>"ASC"), Array("ORDER_ID"=>$arResult['ORDER']['ID']));
+$resultArray = [];
+while ($arItems = $dbBasket->Fetch())
+{
+    $resultArray[$arItems["ORDER_ID"]][$arItems["PRODUCT_ID"]]["NAME"] = $arItems["NAME"];
+    $resultArray[$arItems["ORDER_ID"]][$arItems["PRODUCT_ID"]]["PRICE"] = $arItems["PRICE"];
+    $resultArray[$arItems["ORDER_ID"]][$arItems["PRODUCT_ID"]]["QUANTITY"] = $arItems["QUANTITY"];
+    $resultArray[$arItems["ORDER_ID"]][$arItems["PRODUCT_ID"]]["ARTICUL"] = getArticulValue($arItems["PRODUCT_ID"]);
+    $resultArray[$arItems["ORDER_ID"]][$arItems["PRODUCT_ID"]]["SECTION_NAME"] = getSectionNameBySymbolCode(chunkUrkPath($arItems["DETAIL_PAGE_URL"]));
+}
+?>
+    <script>
+        <? foreach ($resultArray as $orderId=>$productsArray):?>
+        dataLayer = [{
+            'transactionId':'<?=$orderId?>',
+            'transactionTotal':'<?=$arResult["PAYMENT"][$arResult["ORDER_ID"]]["SUM"]?>',
+            <? if (isset($arResult["ORDER"]["PRICE_DELIVERY"]) || $arResult["ORDER"]["PRICE_DELIVERY"] != ''):?>
+            'transactionShipping':'<?=$arResult["ORDER"]["PRICE_DELIVERY"]?>',
+            <?endif;?>
+            'transactionProducts': [
+                <? foreach ($productsArray as $productId=>$product):?>
+                {
+                    'sku':'<?=$product["ARTICUL"]?>',
+                    'name':'<?=$product["NAME"]?>',
+                    'category':'<?=$product["SECTION_NAME"]?>',
+                    'price':'<?=$product["PRICE"]?>',
+                    'quantity':'<?=$product["QUANTITY"]?>'
+                },
+                <?endforeach;?>
+            ]
+        }];
+        <?endforeach;?>
+        console.log(dataLayer);
+    </script>
+<?
+function getArticulValue ($productId) {
+    $arProduct = CIBlockElement::GetProperty(APLS_CatalogHelper::getShopIblockId(), $productId,array("sort" => "asc"),Array("CODE"=>"ARTNUMBER"));
+    while ($arItems = $arProduct->Fetch()) {
+        if (isset($arItems['VALUE'])) {
+            $artValue = $arItems['VALUE'];
+        }
+    }
+    return $artValue;
+}
+function getSectionNameBySymbolCode ($symbolCode) {
+    $section = CIBlockSection::GetList(Array("ID"=>"ASC"), Array("CODE"=>$symbolCode));
+    while ($arItems = $section->Fetch()) {
+        if (isset($arItems["NAME"])) {
+            $sectionName = $arItems["NAME"];
+        }
+    }
+    return $sectionName;
+}
+function chunkUrkPath ($urlPath) {
+    $urlArray = explode("/",$urlPath);
+    array_pop($urlArray);
+    array_pop($urlArray);
+    $sectionSymbolCode = array_pop($urlArray);
+    return $sectionSymbolCode;
+}
