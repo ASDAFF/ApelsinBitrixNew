@@ -16,7 +16,7 @@ if($arResult["ELEMENT"]["ID"] > 0):?>
 		<div class="name"><?=$arResult["ELEMENT"]["NAME"]?></div>
 	</div>
 <?endif;?>
-<form action="<?=$this->__component->__path?>/script.php" id="boc_<?=$arParams['ELEMENT_AREA_ID']?>_form">
+<form action="<?=$this->__component->__path?>/script.php" id="boc_<?=$arParams['ELEMENT_AREA_ID']?>_form" onsubmit="ym(51503324, 'reachGoal', 'bistr_zakaz2'); return true;">
 	<span class="alert"></span>
 	<?foreach($arParams["PROPERTIES"] as $arCode):?>
 		<div class="row">

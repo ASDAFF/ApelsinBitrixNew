@@ -114,7 +114,7 @@ if(strlen($request->get('ORDER_ID')) > 0) {
 	include($server->getDocumentRoot().$templateFolder.'/empty.php');
 } else {
 	$hideDelivery = empty($arResult['DELIVERY']);?>
-	<form action="<?=$APPLICATION->GetCurPage();?>" method="POST" name="ORDER_FORM" id="bx-soa-order-form" enctype="multipart/form-data">
+	<form action="<?=$APPLICATION->GetCurPage();?>" method="POST" name="ORDER_FORM" id="bx-soa-order-form" enctype="multipart/form-data" onsubmit="ym(51503324, 'reachGoal', 'korzina3'); return true;">
 		<?=bitrix_sessid_post();
 		if(strlen($arResult['PREPAY_ADIT_FIELDS']) > 0) {
 			echo $arResult['PREPAY_ADIT_FIELDS'];

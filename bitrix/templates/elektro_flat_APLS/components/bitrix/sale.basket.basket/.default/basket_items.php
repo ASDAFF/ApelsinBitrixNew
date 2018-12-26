@@ -192,7 +192,7 @@ use Bitrix\Sale\DiscountCouponsManager;?>
 				<?if(in_array("BUTTON_BOC", $arSetting["GENERAL_SETTINGS"]["VALUE"])):?>
 					<button type="button" id="boc_anch_cart" class="btn_buy boc_anch_cart" name="boc_anch_cart" value="<?=GetMessage('SALE_BOC')?>"><?=GetMessage('SALE_BOC')?></button>
 				<?endif;?>
-				<button type="button" name="BasketOrder" class="btn_buy popdef bt3" value="<?=GetMessage('SALE_ORDER')?>" onclick="checkOut();"><?=GetMessage("SALE_ORDER")?></button>
+				<button type="button" name="BasketOrder" class="btn_buy popdef bt3" value="<?=GetMessage('SALE_ORDER')?>" onclick="checkOut();ym(51503324, 'reachGoal', 'korzina2'); return true;"><?=GetMessage("SALE_ORDER")?></button>
 			</div>
 			<div class="clr"></div>
 		</div>
