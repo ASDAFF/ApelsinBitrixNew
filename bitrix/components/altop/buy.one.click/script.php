@@ -248,7 +248,8 @@ $orderId = $order->GetId();
 if($orderId > 0) {
 	$result = array(
 		"success" => array(
-			"text" => $test.Loc::getMessage("ORDER_CREATE_SUCCESS")
+			"text" => $test.Loc::getMessage("ORDER_CREATE_SUCCESS"),
+            "orderId" => $orderId,
 		)
 	);
 } else {

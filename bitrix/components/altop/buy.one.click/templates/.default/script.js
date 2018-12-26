@@ -32,7 +32,9 @@ if(!window.BX.BocFormSubmit) {
 			method: "POST",
 			dataType: "json",		
 			onsuccess: function(data) {
+				console.log(data);
 				if(!!data.success) {
+                    window.location.href = "/personal/order/make/index.php?ORDER_ID="+data.success.orderId;
 					if(!!alert)
 						BX.adjust(alert, {html: "<span class='alertMsg good'><i class='fa fa-check'></i><span class='text'>" + data.success.text + "</span></span>"});
 					BX.adjust(target, {props: {disabled: true}});
@@ -47,7 +49,7 @@ if(!window.BX.BocFormSubmit) {
 						if(!!captchaSid)
 							captchaSid.value = data.error.captcha_code;
 					}
-				}		
+				}
 				BX.closeWait(popup, wait);
 			}
 		});
