@@ -67,7 +67,6 @@ if(!empty($arResult["ORDER"])) {?>
 }?>
 
 <?
-
 $dbBasket = CSaleBasket::GetList(Array("ID"=>"ASC"), Array("ORDER_ID"=>$arResult['ORDER']['ID']));
 $resultArray = [];
 while ($arItems = $dbBasket->Fetch())
@@ -83,7 +82,7 @@ while ($arItems = $dbBasket->Fetch())
         <? foreach ($resultArray as $orderId=>$productsArray):?>
         dataLayer = [{
             'transactionId':'<?=$orderId?>',
-            'transactionTotal':'<?=$arResult["PAYMENT"][$arResult["ORDER_ID"]]["SUM"]?>',
+            'transactionTotal':'<?=$arResult["ORDER"]["PRICE"]?>',
             <? if (isset($arResult["ORDER"]["PRICE_DELIVERY"]) || $arResult["ORDER"]["PRICE_DELIVERY"] != ''):?>
             'transactionShipping':'<?=$arResult["ORDER"]["PRICE_DELIVERY"]?>',
             <?endif;?>
