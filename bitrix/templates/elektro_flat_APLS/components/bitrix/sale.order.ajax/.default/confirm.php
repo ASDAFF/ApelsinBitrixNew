@@ -18,9 +18,6 @@ if(!empty($arResult["ORDER"])) {?>
 	<?if($arResult["ORDER"]["IS_ALLOW_PAY"] === "Y") {
 		if(!empty($arResult["PAYMENT"])) {
 			foreach($arResult["PAYMENT"] as $payment) {
-			    echo "<pre>";
-			    var_dump($payment);
-			    echo "</pre>";
 				if($payment["PAID"] != "Y") {
 					if(!empty($arResult["PAY_SYSTEM_LIST"]) && array_key_exists($payment["PAY_SYSTEM_ID"], $arResult["PAY_SYSTEM_LIST"])) {
 						$arPaySystem = $arResult["PAY_SYSTEM_LIST"][$payment["PAY_SYSTEM_ID"]];
