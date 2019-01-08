@@ -996,7 +996,9 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 											</form>									
 											<?//DETAIL_BUY_ONE_CLICK//
 											if($inBtnBoc) {?>
-												<button id="<?=$arItemIDs['POPUP_BTN']?>" class="btn_buy boc_anch" data-action="boc" onclick="ym(51503324, 'reachGoal', 'bistr_zakaz1'); return true;"><i class="fa fa-bolt"></i><span><?=GetMessage('CATALOG_ELEMENT_BOC')?></span></button>
+												<button id="<?=$arItemIDs['POPUP_BTN']?>" class="btn_buy apuo cheaper_anch" data-action="boc" onclick="ym(51503324, 'reachGoal', 'bistr_zakaz1'); return true;">
+<!--                                                    <i class="fa fa-bolt"></i>-->
+                                                    <span><?=GetMessage('CATALOG_ELEMENT_BOC')?></span></button>
 											<?}
 											//DETAIL_CHEAPER					
 											if($inBtnCheaper) {?>

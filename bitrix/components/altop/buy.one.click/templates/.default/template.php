@@ -23,7 +23,16 @@ if($arResult["ELEMENT"]["ID"] > 0):?>
 			<div class="span1"><?=Loc::getMessage("FORMS_1CB_".$arCode).(in_array($arCode, $arParams["REQUIRED"]) ? "<span class='mf-req'>*</span>" : "");?></div>
 			<div class="span2">
 				<?if($arCode != "MESSAGE"):?>
-					<input type="text" name="<?=$arCode?>" value="<?=($arCode == 'NAME' ? $arResult['USER']['NAME'] : ($arCode == 'EMAIL' ? $arResult['USER']['EMAIL'] : ''));?>" />
+					<input type="text" name="<?=$arCode?>" value="<?
+                    if ($arCode == 'NAME') {
+                        echo $arResult['USER']['NAME'];
+                    } else if ($arCode == 'EMAIL') {
+                        echo $arResult['USER']['EMAIL'];
+                    } else if ($arCode == 'PHONE') {
+                        echo substr($arResult['USER']['PHONE'],1);
+                    }
+//                    ($arCode == 'NAME' ? $arResult['USER']['NAME'] : ($arCode == 'EMAIL' ? $arResult['USER']['EMAIL'] : ''));
+					?>" />
 				<?else:?>
 					<textarea name="<?=$arCode?>" rows="3"></textarea>
 				<?endif;?>
