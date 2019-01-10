@@ -1,6 +1,6 @@
 <?global $arPromProdPrFilter;
 $arPromProdPrFilter["PROPERTY_THIS_COLLECTION"] = false;?>
-<?$APPLICATION->IncludeComponent("bitrix:catalog.section", "sections_price",
+<?$APPLICATION->IncludeComponent("bitrix:catalog.section", "sections",
 	array(
         "COMPONENT_TEMPLATE" => ".default",
 		"IBLOCK_TYPE" => "catalog",
@@ -55,7 +55,7 @@ $arPromProdPrFilter["PROPERTY_THIS_COLLECTION"] = false;?>
 		"PRODUCT_PROPERTIES" => "",
 		"DISPLAY_TOP_PAGER" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "N",
-		"PAGER_TITLE" => "Товары участвующие в акции",
+		"PAGER_TITLE" => "",
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => "",
 		"PAGER_DESC_NUMBERING" => "N",
