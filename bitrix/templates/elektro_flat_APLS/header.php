@@ -424,9 +424,9 @@ Loc::loadMessages(__FILE__);?>
 													<a href="javascript:void(0)"><span><?=Loc::getMessage("CR_TITLE_RECOMMEND")?></span></a>
 												</li>
 											<?endif;?>
-											<li class="tabs__tab new">
-												<a href="javascript:void(0)"><span><?=Loc::getMessage("CR_TITLE_NEWPRODUCT")?></span></a>
-											</li>
+<!--											<li class="tabs__tab new">-->
+<!--												<a href="javascript:void(0)"><span>--><?//=Loc::getMessage("CR_TITLE_NEWPRODUCT")?><!--</span></a>-->
+<!--											</li>-->
 											<li class="tabs__tab hit">
 												<a href="javascript:void(0)"><span><?=Loc::getMessage("CR_TITLE_SALELEADER")?></span></a>
 											</li>
@@ -448,21 +448,21 @@ Loc::loadMessages(__FILE__);?>
 												);?>
 											</div>
 										<?endif;?>
-										<div class="tabs__box new">
-											<div class="catalog-top">
-												<?$APPLICATION->IncludeComponent("bitrix:main.include", "",
-													array(
-														"AREA_FILE_SHOW" => "file",
-														"PATH" => SITE_DIR."include/newproduct.php",
-														"AREA_FILE_RECURSIVE" => "N",
-														"EDIT_MODE" => "html",
-													),
-													false,
-													array("HIDE_ICONS" => "Y")
-												);?>
-												<a class="all" href="<?=SITE_DIR?>catalog/newproduct/"><?=Loc::getMessage("CR_TITLE_ALL_NEWPRODUCT");?></a>
-											</div>
-										</div>
+<!--										<div class="tabs__box new">-->
+<!--											<div class="catalog-top">-->
+<!--												--><?//$APPLICATION->IncludeComponent("bitrix:main.include", "",
+//													array(
+//														"AREA_FILE_SHOW" => "file",
+//														"PATH" => SITE_DIR."include/newproduct.php",
+//														"AREA_FILE_RECURSIVE" => "N",
+//														"EDIT_MODE" => "html",
+//													),
+//													false,
+//													array("HIDE_ICONS" => "Y")
+//												);?>
+<!--												<a class="all" href="--><?//=SITE_DIR?><!--catalog/newproduct/">--><?//=Loc::getMessage("CR_TITLE_ALL_NEWPRODUCT");?><!--</a>-->
+<!--											</div>-->
+<!--										</div>-->
 										<div class="tabs__box hit">
 											<div class="catalog-top">
 												<?$APPLICATION->IncludeComponent("bitrix:main.include", "",
