@@ -1,4 +1,4 @@
 <?
-$MESS["GEOLOCATION_POSITIONING"] = "Выберите сеть магазинов";
-$MESS["GEOLOCATION_POPUP_WINDOW_TITLE"] = "Выберите сеть магазинов";
+$MESS["GEOLOCATION_POSITIONING"] = "Выберите город";
+$MESS["GEOLOCATION_POPUP_WINDOW_TITLE"] = "Выберите город";
 ?>
