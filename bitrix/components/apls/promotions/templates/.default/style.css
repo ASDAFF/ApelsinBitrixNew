@@ -230,6 +230,10 @@
     .PromotionsWrapper .PromotionElement:nth-child(4n + 4) {
         margin-right: 0;
     }
+    #pagetitle {
+        position: relative;
+        padding-top: 0;
+    }
 }
 @media (max-width: 1253px) and (min-width: 788px) {
     .PromotionsWrapper .PromotionElement {
@@ -237,6 +241,10 @@
     }
     .PromotionsWrapper .PromotionElement:nth-child(3n + 3) {
         margin-right: 0;
+    }
+    #pagetitle {
+        position: relative;
+        padding-top: 0;
     }
 }
 @media screen and (max-width: 787px) and (min-width: 450px) {
