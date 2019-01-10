@@ -216,6 +216,12 @@
     color: #FFFFFF;
 }
 
+#pagetitle {
+    position: absolute;
+    padding-top: 140px;
+    color: #ef7f1a;
+}
+
 @media (min-width: 1253px) {
     .PromotionsWrapper .PromotionElement {
         margin: 0 10px 10px 0;
@@ -264,6 +270,10 @@
     .PromotionsWrapper .PromotionElement .PromotionContent .PromotionText {
         padding: 0 1em 1em 1em;
     }
+    #pagetitle {
+        position: relative;
+        padding-top: 0;
+    }
 }
 @media screen and (max-width: 450px) {
 
@@ -279,5 +289,9 @@
     .PromotionsWrapper .PromotionElement .PromotionImage img {
         width: 100%;
         height: auto;
+    }
+    #pagetitle {
+        position: relative;
+        padding-top: 0;
     }
 }
