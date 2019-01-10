@@ -217,7 +217,7 @@
     color: #FFFFFF;
 }
 
-#pagetitle {
+.imgTitle {
     position: absolute;
     padding-top: 140px;
     color: #ef7f1a;
@@ -238,7 +238,7 @@
     .PromotionsWrapper .PromotionElement:nth-child(3n + 3) {
         margin-right: 0;
     }
-    #pagetitle {
+    .imgTitle {
         position: relative;
         padding-top: 0;
     }
@@ -275,7 +275,7 @@
     .PromotionsWrapper .PromotionElement .PromotionContent .PromotionText {
         padding: 0 1em 1em 1em;
     }
-    #pagetitle {
+    .imgTitle {
         position: relative;
         padding-top: 0;
     }
@@ -295,7 +295,7 @@
         width: 100%;
         height: auto;
     }
-    #pagetitle {
+    .imgTitle {
         position: relative;
         padding-top: 0;
     }

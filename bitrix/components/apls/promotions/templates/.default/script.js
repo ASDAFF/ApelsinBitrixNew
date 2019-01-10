@@ -52,4 +52,8 @@ BX.PromotionsCityChange = function() {
 /*----------------------*/
 $(document).ready(function () {
     BX.bind(BX("CITY_CHANGE_BUTTON"), "click", BX.delegate(BX.PromotionsCityChange, BX));
+
+    if ($("div").is(".PromotionBannerBlock")) {
+        $("#pagetitle").addClass('imgTitle');
+    }
 });
