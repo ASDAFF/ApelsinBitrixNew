@@ -53,14 +53,30 @@ class APLS_CatalogItemDetailsPropertiesBlock {
             $this->html .= "<div class='ProductAvailableServicesTitle'>Доступные услуги:</div>";
             foreach ($this->requisites as $value) {
                 $this->html .= "<div class='ProductAvailableServicesIconBlock'>";
-                if($value['UF_URL']) {
-                    $this->html .= "<a href='".$value['UF_URL']."'>";
-                }
+//                if($value['UF_URL']) {
+//                    $this->html .= "<a id='".$value['UF_CODE']."' href='".$value['UF_URL']."'>";
+//                }
                 $this->html .= "<span class='ProductAvailableServicesIconText'>".$value['UF_NAME']."</span>";
-                $this->html .= "<img class='ProductAvailableServicesIcon' src='".$value['UF_ICON']."' alt='".$value['UF_NAME']."'>";
-                if($value['UF_URL']) {
-                    $this->html .= "</a>";
-                }
+//                $this->html .= "<img class='ProductAvailableServicesIcon' src='".$value['UF_ICON']."' alt='".$value['UF_NAME']."'>";
+                global $APPLICATION;
+                $APPLICATION->IncludeComponent(
+                    "apls:popap.by.button",
+                    "",
+                    Array(
+                        "ALIAS" => "popapByButton_".$value["UF_CODE"],
+                        "BUTTON_ID" => $value["UF_CODE"],
+                        "BUTTON_TEXT" => " ",
+                        "BUTTON_CREATE" => "N",
+                        "FILE_PATH" => "/include/services/".$value["UF_CODE"].".php",
+                        "OVERLAY"=>"Y",
+                        "CLOSE_BUTTON" => "N",
+                    ),
+                    false
+                );
+                $this->html .= "<div class='ProductAvailableServicesBtn' id='".$value["UF_CODE"]."'></div>";
+//                if($value['UF_URL']) {
+//                    $this->html .= "</a>";
+//                }
                 $this->html .= "</div>";
             }
             $this->html .= "</div>";

@@ -6,35 +6,46 @@ $APPLICATION->SetTitle("Особенности товаров");
 
     <div class="FeaturesProductsWrapper">
         <img class="FeaturesProductsIconBlock" src="../../apls_resources/DeliveryIcons/terms_of_sale.svg">
-        <div class="FeaturesProductsTextBlock">
-            <div class="FeaturesProductsName">Условия продажи</div>
-            <div class="FeaturesProductsText">
-                Товар имеет особые условия продажи (кратность, комплектность, мин. количество и т.п.), поэтому возможно
-                изменение стоимости заказа при обработке оператором.
-            </div>
-        </div>
+        <?$APPLICATION->IncludeComponent("bitrix:main.include", "",
+            array(
+                "AREA_FILE_SHOW" => "file",
+                "PATH" => SITE_DIR."include/services/USLOVIYAPRODAZHI.php",
+                "AREA_FILE_RECURSIVE" => "N",
+                "EDIT_MODE" => "html",
+            ),
+            false,
+            array("HIDE_ICONS" => "Y")
+        );?>
         <div class="clear"></div>
     </div>
 
 	<div class="FeaturesProductsWrapper">
 		<img class="FeaturesProductsIconBlock" src="../../apls_resources/DeliveryIcons/truck_long.svg">
-		<div class="FeaturesProductsTextBlock">
-			<div class="FeaturesProductsName">Длинномер</div>
-			<div class="FeaturesProductsText">
-				Из-за габаритов товара для доставки требуется а/м с длиною кузова более 4 м.
-			</div>
-		</div>
+        <?$APPLICATION->IncludeComponent("bitrix:main.include", "",
+            array(
+                "AREA_FILE_SHOW" => "file",
+                "PATH" => SITE_DIR."include/services/DLINNOMER.php",
+                "AREA_FILE_RECURSIVE" => "N",
+                "EDIT_MODE" => "html",
+            ),
+            false,
+            array("HIDE_ICONS" => "Y")
+        );?>
 		<div class="clear"></div>
 	</div>
 
 	<div class="FeaturesProductsWrapper">
 		<img class="FeaturesProductsIconBlock" src="../../apls_resources/DeliveryIcons/manipulator.svg">
-		<div class="FeaturesProductsTextBlock">
-			<div class="FeaturesProductsName">Манипулятор</div>
-			<div class="FeaturesProductsText">
-				Для доставки требуется манипулятор.
-			</div>
-		</div>
+        <?$APPLICATION->IncludeComponent("bitrix:main.include", "",
+            array(
+                "AREA_FILE_SHOW" => "file",
+                "PATH" => SITE_DIR."include/services/MANIPULYATOR.php",
+                "AREA_FILE_RECURSIVE" => "N",
+                "EDIT_MODE" => "html",
+            ),
+            false,
+            array("HIDE_ICONS" => "Y")
+        );?>
 		<div class="clear"></div>
 	</div>
 
@@ -51,23 +62,31 @@ $APPLICATION->SetTitle("Особенности товаров");
 
 	<div class="FeaturesProductsWrapper">
 		<img class="FeaturesProductsIconBlock" src="../../apls_resources/DeliveryIcons/assembling.svg">
-		<div class="FeaturesProductsTextBlock">
-			<div class="FeaturesProductsName">Установка / Монтаж</div>
-			<div class="FeaturesProductsText">
-				Возможен заказ установки или монтажа.
-			</div>
-		</div>
+        <?$APPLICATION->IncludeComponent("bitrix:main.include", "",
+            array(
+                "AREA_FILE_SHOW" => "file",
+                "PATH" => SITE_DIR."include/services/USTANOVKA.php",
+                "AREA_FILE_RECURSIVE" => "N",
+                "EDIT_MODE" => "html",
+            ),
+            false,
+            array("HIDE_ICONS" => "Y")
+        );?>
 		<div class="clear"></div>
 	</div>
 
 	<div class="FeaturesProductsWrapper">
 		<img class="FeaturesProductsIconBlock" src="../../apls_resources/DeliveryIcons/color.svg">
-		<div class="FeaturesProductsTextBlock">
-			<div class="FeaturesProductsName">Колеровка</div>
-			<div class="FeaturesProductsText">
-				Данный материал можно заколеровать в выбранный вами цвет.
-			</div>
-		</div>
+        <?$APPLICATION->IncludeComponent("bitrix:main.include", "",
+            array(
+                "AREA_FILE_SHOW" => "file",
+                "PATH" => SITE_DIR."include/services/KOLEROVKA.php",
+                "AREA_FILE_RECURSIVE" => "N",
+                "EDIT_MODE" => "html",
+            ),
+            false,
+            array("HIDE_ICONS" => "Y")
+        );?>
 		<div class="clear"></div>
 	</div>
 

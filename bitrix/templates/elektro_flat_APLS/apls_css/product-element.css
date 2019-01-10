@@ -154,6 +154,39 @@
     height: 20px;
 }
 
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock .ProductAvailableServicesBtn {
+    cursor: pointer;
+    background-size: 20px 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock #USTANOVKA {
+    background-image: url('/apls_resources/DeliveryIcons/assembling.svg');
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock #SPETSTSENAPODEMA {
+    background-image: url('/apls_resources/DeliveryIcons/climb.svg');
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock #DLINNOMER {
+    background-image: url('/apls_resources/DeliveryIcons/truck_long.svg');
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock #KOLEROVKA {
+    background-image: url('/apls_resources/DeliveryIcons/color.svg');
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock #MANIPULYATOR {
+    background-image: url('/apls_resources/DeliveryIcons/manipulator.svg');
+}
+.catalog-detail .ProductAvailableServicesWrapper .ProductAvailableServicesIconBlock #USLOVIYAPRODAZHI {
+    background-image: url('/apls_resources/DeliveryIcons/terms_of_sale.svg');
+}
+.popup-window-content .FeaturesProductsName {
+    font-size: 20px;
+    padding-bottom: 15px;
+}
+.popup-window-content .FeaturesProductsText {
+    font-weight: 500;
+}
+
 .ServiceCentersCatalogDetail {
 }
 
