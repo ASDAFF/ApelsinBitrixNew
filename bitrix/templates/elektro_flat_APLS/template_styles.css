@@ -4379,7 +4379,7 @@ a.catalog_item_toogle_filter_reset{
 }
 
 .catalog-item .compare{
-	margin:0px 5px 0px 0px;
+	margin:0px 0px 0px 5px;
 }
 
 .catalog-item .compare a,
@@ -4794,7 +4794,7 @@ a.catalog_item_toogle_filter_reset{
 }
 
 .catalog-item-price-view .buy_more{
-	width:121px;
+	width:158px;
 	display:table-cell;
 	vertical-align:middle;
 	margin:0px;
@@ -4839,7 +4839,7 @@ a.catalog_item_toogle_filter_reset{
 	display:none;
 }
 
-.catalog-item-price-view .buy_more .compare,
+/*.catalog-item-price-view .buy_more .compare,*/
 .catalog-item-price-view .buy_more .delay{
 	display:none;
 }
@@ -11039,7 +11039,7 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 		}
 
 		.catalog-item .buy_more{
-			width:37px;
+			width:59px;
 			display:table-cell;
 			vertical-align:middle;			
 			margin:0px;
@@ -11271,7 +11271,7 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 
 	@media (min-width:450px) and (max-width:787px){
 		.catalog-item-price-view .available{
-			width:189px;
+			width:158px;
 			display:block;
 			position:absolute;
 			right:0px;
@@ -11292,8 +11292,11 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 			margin:23px 5px 0px 0px;
 		}
 
-		.catalog-item-price-view .buy_more .compare,
 		.catalog-item-price-view .buy_more .delay{
+			display:none;
+		}
+
+		.catalog-item-price-view .buy_more .compare{
 			display:block;
 			margin:23px 5px 0px 0px;
 		}
