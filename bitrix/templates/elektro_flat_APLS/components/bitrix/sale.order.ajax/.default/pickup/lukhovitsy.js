@@ -1,0 +1,1 @@
+var ORDER_AJAX_PICK_UP = [60];

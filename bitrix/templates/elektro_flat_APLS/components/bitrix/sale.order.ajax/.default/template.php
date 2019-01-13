@@ -108,6 +108,8 @@ switch(LANGUAGE_ID) {
 $pageAlias = GeolocationRegionHelper::getGeolocationRegionAlias();
 $this->addExternalJs($templateFolder.'/ya.map.calc/'.$pageAlias.'.js');
 $this->addExternalJs($templateFolder.'/ya.map.calc/main.js');
+$this->addExternalJs($templateFolder.'/pickup/'.$pageAlias.'.js');
+$this->addExternalJs($templateFolder.'/pickup/main.js');
 $this->addExternalJs($templateFolder.'/order_ajax.js');
 \Bitrix\Sale\PropertyValueCollection::initJs();
 $this->addExternalJs($scheme.'://api-maps.yandex.ru/2.1.34/?load=package.full&lang='.$locale);

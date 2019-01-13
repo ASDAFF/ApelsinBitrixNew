@@ -5271,6 +5271,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 			if (this.initialized.pickup)
 			{
+                pickUpHideAPLS();
 				BX.remove(BX.lastChild(node));
 				node.appendChild(BX.firstChild(this.pickUpHiddenBlockNode));
 
