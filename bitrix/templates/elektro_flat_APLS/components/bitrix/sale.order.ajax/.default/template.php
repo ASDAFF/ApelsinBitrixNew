@@ -3,6 +3,7 @@
 use Bitrix\Main,
 	Bitrix\Main\Loader,
 	Bitrix\Main\Localization\Loc;
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/geolocation/GeolocationRegionHelper.php";
 
 $context = Main\Application::getInstance()->getContext();
 $request = $context->getRequest();
@@ -104,6 +105,9 @@ switch(LANGUAGE_ID) {
 		$locale = 'en-US'; break;
 }
 
+$pageAlias = GeolocationRegionHelper::getGeolocationRegionAlias();
+$this->addExternalJs($templateFolder.'/ya.map.calc/'.$pageAlias.'.js');
+$this->addExternalJs($templateFolder.'/ya.map.calc/main.js');
 $this->addExternalJs($templateFolder.'/order_ajax.js');
 \Bitrix\Sale\PropertyValueCollection::initJs();
 $this->addExternalJs($scheme.'://api-maps.yandex.ru/2.1.34/?load=package.full&lang='.$locale);

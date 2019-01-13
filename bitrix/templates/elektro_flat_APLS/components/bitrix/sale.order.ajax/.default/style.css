@@ -1602,6 +1602,40 @@
 	}
 }
 
+/*#delivery-map-apply {*/
+	/*border: 1px solid #ef7f1a;*/
+	/*background: transparent;*/
+	/*color: #ef7f1a;*/
+	/*text-align: center;*/
+	/*text-transform: uppercase;*/
+	/*padding: .5em;*/
+	/*cursor: pointer;*/
+	/*margin-top: .5em;*/
+/*}*/
+/*#delivery-map-apply:hover {*/
+	/*background: #ef7f1a;*/
+	/*color: #FFF;*/
+/*}*/
+#soa-property-7-value {
+	font-weight: bold;
+	margin-bottom: .5em;
+	color: #ef7f1a;
+}
+
+#delivery-map-wrapper #delivery-map input[type="text"] {
+	margin-left: 32px !important;
+	border: none !important;
+	width: 90% !important;
+	padding-right: 20px !important;
+}
+#delivery-map-wrapper #delivery-map input[type="text"]:disabled {
+	/*color: #ef7f1a;*/
+	font-weight: bold;
+}
+#delivery-map-wrapper #delivery-map input[type="text"]:enabled {
+	border-bottom: 1px solid #dee0ee !important;
+}
+
 /***720px***/
 @media (min-width:788px) and (max-width:1013px){	
 	.bx-soa-pp-company:nth-child(4n+3) .bx-soa-pp-company-descr .pop-up.pp-descr{
