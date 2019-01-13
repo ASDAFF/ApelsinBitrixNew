@@ -20,14 +20,14 @@ $APPLICATION->SetTitle("Доставка и подъем - Рязань");
             '<th colspan="6"><div class="deliveryMapTitle">Доставка по городу</div></th>' +
             '</tr>' +
             '<tr class="lineGrey">' +
-            '<td><div class="deliveryMapIcon_truck_1_5 deliveryMapTD"></div></td>' +
+//            '<td><div class="deliveryMapIcon_truck_1_5 deliveryMapTD"></div></td>' +
             '<td><div class="deliveryMapIcon_truck_3_5 deliveryMapTD"></div></td>' +
             '<td><div class="deliveryMapIcon_truck_5 deliveryMapTD"></div></td>' +
             '<td><div class="deliveryMapIcon_manipulator deliveryMapTD"></div></td>' +
             '</tr>' +
             '<tr>' +
+//            '<td>500 руб.</td>' +
             '<td>500 руб.</td>' +
-            '<td>650 руб.</td>' +
             '<td>750 руб.</td>' +
             '<td>2600 руб.</td>' +
             '</tr>' +
@@ -43,14 +43,14 @@ $APPLICATION->SetTitle("Доставка и подъем - Рязань");
             '<th colspan="6"><div class="deliveryMapTitle">Доставка до 30 км</div></th>' +
             '</tr>' +
             '<tr class="lineGrey">' +
-            '<td><div class="deliveryMapIcon_truck_1_5 deliveryMapTD"></div></td>' +
+//            '<td><div class="deliveryMapIcon_truck_1_5 deliveryMapTD"></div></td>' +
             '<td><div class="deliveryMapIcon_truck_3_5 deliveryMapTD"></div></td>' +
             '<td><div class="deliveryMapIcon_truck_5 deliveryMapTD"></div></td>' +
             '<td><div class="deliveryMapIcon_manipulator deliveryMapTD"></div></td>' +
             '</tr>' +
             '<tr>' +
+//            '<td>1100 руб.</td>' +
             '<td>1100 руб.</td>' +
-            '<td>1350 руб.</td>' +
             '<td>1750 руб.</td>' +
             '<td><div class="deliveryMapIcon_phone deliveryMapTD"></div></td>' +
             '</tr>' +
@@ -67,13 +67,13 @@ $APPLICATION->SetTitle("Доставка и подъем - Рязань");
             '<th colspan="6"><div class="deliveryMapTitle">Доставка свыше 30 км</div></th>' +
             '</tr>' +
             '<tr class="lineGrey">' +
-            '<td><div class="deliveryMapIcon_truck_1_5 deliveryMapTD"></div></td>' +
+//            '<td><div class="deliveryMapIcon_truck_1_5 deliveryMapTD"></div></td>' +
             '<td><div class="deliveryMapIcon_truck_3_5 deliveryMapTD"></div></td>' +
             '<td><div class="deliveryMapIcon_truck_5 deliveryMapTD"></div></td>' +
             '<td><div class="deliveryMapIcon_manipulator deliveryMapTD"></div></td>' +
             '</tr>' +
             '<tr>' +
-            '<td>32 руб/км</td>' +
+//            '<td>32 руб/км</td>' +
             '<td>32 руб/км</td>' +
             '<td>32 руб/км</td>' +
             '<td><div class="deliveryMapIcon_phone deliveryMapTD"></div></td>' +
@@ -1067,19 +1067,19 @@ $APPLICATION->SetTitle("Доставка и подъем - Рязань");
         <!--			<th>ко времени</th>-->
         <th>свыше 30 км</th>
     </tr>
-    <tr>
-        <td><img src="../apls_resources/DeliveryIcons/truck_1_5.svg" alt="грузоподъемность до 1,5т"></td>
-        <td>500 руб</td>
-        <!--			<td>800 руб</td>-->
-        <td>1100 руб</td>
-        <!--			<td>1500 руб</td>-->
-        <td>32 руб/км</td>
-    </tr>
+<!--    <tr>-->
+<!--        <td><img src="../apls_resources/DeliveryIcons/truck_1_5.svg" alt="грузоподъемность до 1,5т"></td>-->
+<!--        <td>500 руб</td>-->
+<!--        			<td>800 руб</td>-->
+<!--        <td>1100 руб</td>-->
+<!--        			<td>1500 руб</td>-->
+<!--        <td>32 руб/км</td>-->
+<!--    </tr>-->
     <tr>
         <td><img src="../apls_resources/DeliveryIcons/truck_3_5.svg" alt="грузоподъемность до 3,5т"></td>
-        <td>650 руб</td>
+        <td>500 руб</td>
         <!--			<td>1200 руб</td>-->
-        <td>1350 руб</td>
+        <td>1100 руб</td>
         <!--			<td>1700 руб</td>-->
         <td>32 руб/км</td>
     </tr>
