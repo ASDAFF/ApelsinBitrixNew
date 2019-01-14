@@ -1640,6 +1640,11 @@
 #delivery-map-wrapper #delivery-map input[type="text"]:enabled {
 	border-bottom: 1px solid #dee0ee !important;
 }
+#user_card_info {
+	margin-top: 13px;
+	padding-top: 11px;
+	border-top: 1px dotted #dee0ee;
+}
 
 /***720px***/
 @media (min-width:788px) and (max-width:1013px){	

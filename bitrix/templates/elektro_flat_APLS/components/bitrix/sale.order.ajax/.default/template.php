@@ -110,7 +110,48 @@ $this->addExternalJs($templateFolder.'/ya.map.calc/'.$pageAlias.'.js');
 $this->addExternalJs($templateFolder.'/ya.map.calc/main.js');
 $this->addExternalJs($templateFolder.'/pickup/'.$pageAlias.'.js');
 $this->addExternalJs($templateFolder.'/pickup/main.js');
+$rsUser = CUser::GetByID($USER->GetID());
+$arUser = $rsUser->Fetch();
+if($arUser) {
+//    echo "<pre>"; var_dump($arUser["UF_1C_TYPE_PRICE"]); echo "</pre>";
+    $arUser["UF_1C_TYPE_PRICE"];
+    $priceTypeDefault = "86157e22-e56b-11dc-8b6b-000e0c431b58";
+    $priceTypes = array(
+        "a482392d-0b8d-11e6-80df-00155dfef48a" => "Розница",
+        "86157e22-e56b-11dc-8b6b-000e0c431b58" => "Мелкий опт",
+        "feff0693-99ab-11db-937f-000e0c431b59" => "Средний опт",
+        "feff0694-99ab-11db-937f-000e0c431b59" => "Оптовая",
+        "feff0695-99ab-11db-937f-000e0c431b59" => "Крупный опт"
+    );
+    if(isset($priceTypes[$arUser["UF_1C_TYPE_PRICE"]])) {
+        $priceType = $priceTypes[$arUser["UF_1C_TYPE_PRICE"]];
+    } else {
+        $priceType = $priceTypes[$priceTypeDefault];
+    }
+    ?>
+    <script>
+        var USER_DATA_INFO = {
+            REGISTERED: true,
+            NAME: "<?=$arUser["NAME"]?>",
+            LAST_NAME: "<?=$arUser["LAST_NAME"]?>",
+            UF_CARD_NUMBER: "<?=$arUser["UF_CARD_NUMBER"]?>",
+            PRICE_TYPE: "<?=$priceType?>",
+        };
+    </script>
+    <?
+} else {
+    ?>
+    <script>
+        var USER_DATA_INFO = {
+            REGISTERED: false,
+        };
+    </script>
+    <?
+}
+$this->addExternalJs($templateFolder.'/customer_card_info.js');
 $this->addExternalJs($templateFolder.'/order_ajax.js');
+
+
 \Bitrix\Sale\PropertyValueCollection::initJs();
 $this->addExternalJs($scheme.'://api-maps.yandex.ru/2.1.34/?load=package.full&lang='.$locale);
 

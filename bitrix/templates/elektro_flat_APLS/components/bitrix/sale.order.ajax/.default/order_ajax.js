@@ -7507,6 +7507,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			}
 
 			this.editMobileTotalBlock();
+            addUserCardInfo();
 		},
 
 		editMobileTotalBlock: function()
