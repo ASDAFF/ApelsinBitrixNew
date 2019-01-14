@@ -928,6 +928,55 @@ iframe {
     top: 60px !important;
     z-index: 9999;
 }
+.b24-widget-button-wrapper {
+
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 108px !important;
+    z-index: 1100 !important;
+}
+.b24-widget-button-block {
+    width: 40px !important;
+    height: 40px !important;
+
+}
+.b24-widget-button-inner-block {
+    width: 40px !important;
+    height: 40px !important;
+}
+.b24-widget-button-inner-mask {
+    position: absolute !important;
+    top: 0px !important;
+    left: 0px !important;
+    height: 0px !important;
+    width: 0px !important;
+    display: none !important;
+}
+.b24-widget-button-inner-item {
+    padding: 6px !important;
+}
+.b24-widget-button-pulse-animate {
+    animation: none !important;
+    display: none !important;
+}
+.b24-widget-button-inner-container,
+.bx-touch .b24-widget-button-inner-container {
+    -webkit-transform: none !important;
+     transform: none !important;
+}
+.scroll-up:hover {
+    background: #ef7f1a !important;
+}
+.b24-widget-button-inner-block {
+    background-color: #575b71 !important;
+    opacity: 0.3 !important;
+}
+.b24-widget-button-inner-block:hover {
+    background: #ef7f1a !important;
+    opacity: 1 !important;
+}
+
+
 @media (max-width: 1253px) and (min-width: 1014px) {
     .top-menu-fixed .center.inner {
         width: 994px;
