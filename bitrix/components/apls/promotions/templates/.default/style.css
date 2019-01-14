@@ -139,6 +139,7 @@
 .PromotionWrapper .PromotionBannerBlock {
     margin-bottom: 2em;
     border-bottom: 2px solid #ef7f1a;
+    padding-top: 5px;
 }
 .PromotionWrapper .PromotionBannerBlock .PromotionBanner {
     width: 100%;
