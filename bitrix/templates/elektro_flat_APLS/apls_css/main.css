@@ -929,11 +929,8 @@ iframe {
     z-index: 9999;
 }
 .b24-widget-button-wrapper {
-
-    position: fixed !important;
     right: 20px !important;
     bottom: 108px !important;
-    z-index: 1100 !important;
 }
 .b24-widget-button-block {
     width: 40px !important;
