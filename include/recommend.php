@@ -12,14 +12,14 @@ while ($enum_fields = $property_enums->GetNext()) {
 global $arNewPrFilter;
 $arNewPrFilter = array(
     "XML_ID" => array(
-        "ca72403c-7062-11e2-8a1d-005056be271d",
+        "4453eb62-47ed-11dd-9342-000e0c431b58",
+        "86067986-6a5b-11e4-b779-005056be1f7b",
+        "a4f7f20d-9b57-11e8-8102-00155d862e1f",
+        "b5f60de9-eea2-11e8-8103-00155d862e1f",
+        "4e40e896-ed9f-11e5-80d6-00155d41010d",
         "e812498e-982f-11e5-80c7-00155d41010d",
-        "bbf26dd6-42e3-11e3-a092-005056be1f7b",
-        "d2325acc-0b95-11e2-9eed-005056be3bd8",
-        "78ae3000-9daa-11e5-80c8-00155d41010d",
-        "1769a3c9-6e44-11e4-a137-005056be1f7b",
-        "acc94e09-8154-11e6-80ea-00155dfef48a",
-        "897791a0-d4e1-11e3-badf-005056be1f7b"
+        "c69fd7d0-bb62-11e7-80fa-00155d370324",
+        "a5d254cd-1753-11e8-80fe-00155d37033c"
     )
 );
 
