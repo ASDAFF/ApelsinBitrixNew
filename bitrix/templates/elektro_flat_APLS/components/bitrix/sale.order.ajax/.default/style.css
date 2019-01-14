@@ -1255,6 +1255,11 @@
     animation-fill-mode:forwards;
 }
 
+.confirm_link {
+	display: inline-block;
+	margin-top: 1em;
+}
+
 @-webkit-keyframes animationBorderStepOpacity{ 0%{opacity:0} 100%{opacity:100} }
 @-moz-keyframes animationBorderStepOpacity{ 0%{opacity:0} 100%{opacity:100} }
 @-ms-keyframes animationBorderStepOpacity{ 0%{opacity:0} 100%{opacity:100} }
