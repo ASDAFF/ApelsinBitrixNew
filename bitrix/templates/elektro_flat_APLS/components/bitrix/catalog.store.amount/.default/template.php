@@ -7,6 +7,13 @@ if(strlen($arResult["ERROR_MESSAGE"])>0)
 
 if(count($arResult["STORES"]) > 0):
     $counter = 1;
+    ?>
+    <div class="catalog-detail-store header">
+        <div class="title">Адрес магазина / телефон</div>
+        <div class="schedule">Время работы</div>
+        <div class="amount">Количество</div>
+    </div>
+    <?
 	foreach($arResult["STORES"] as $pid => $arProperty):?>
         <?if($arProperty["AMOUNT"] > 0):?>
             <?

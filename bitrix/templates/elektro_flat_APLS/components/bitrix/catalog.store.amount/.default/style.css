@@ -20,6 +20,14 @@
 .catalog-detail-store .title {
     font-weight: 900;
 }
+.catalog-detail-store.header {
+    border: 1px solid #dee0ee!important;
+}
+.catalog-detail-store.header .schedule {
+    text-align: center!important;
+    font-weight: 900;
+    right: 220px!important;
+}
 .catalog-detail-store .phone {
     /*margin-left: 15px;*/
 }
