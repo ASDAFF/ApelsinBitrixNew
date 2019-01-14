@@ -219,6 +219,7 @@
 }
 
 .imgTitle {
+    padding-left: 15px;
     position: absolute;
     padding-top: 140px;
     color: #ef7f1a;
@@ -242,6 +243,7 @@
     .imgTitle {
         position: relative;
         padding-top: 0;
+        padding-left: 0;
     }
 }
 @media screen and (max-width: 787px) and (min-width: 450px) {
@@ -279,6 +281,7 @@
     .imgTitle {
         position: relative;
         padding-top: 0;
+        padding-left: 0;
     }
 }
 @media screen and (max-width: 450px) {
@@ -299,5 +302,6 @@
     .imgTitle {
         position: relative;
         padding-top: 0;
+        padding-left: 0;
     }
 }
