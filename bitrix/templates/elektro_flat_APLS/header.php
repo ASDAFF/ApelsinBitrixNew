@@ -430,9 +430,9 @@ Loc::loadMessages(__FILE__);?>
 											<li class="tabs__tab hit">
 												<a href="javascript:void(0)"><span><?=Loc::getMessage("CR_TITLE_SALELEADER")?></span></a>
 											</li>
-											<li class="tabs__tab discount">
-												<a href="javascript:void(0)"><span><?=Loc::getMessage("CR_TITLE_DISCOUNT")?></span></a>
-											</li>
+<!--											<li class="tabs__tab discount">-->
+<!--												<a href="javascript:void(0)"><span>--><?//=Loc::getMessage("CR_TITLE_DISCOUNT")?><!--</span></a>-->
+<!--											</li>-->
 										</ul>
 										<?if(in_array("RECOMMEND", $arSetting["HOME_PAGE"]["VALUE"])):?>
 											<div class="tabs__box recommend">
@@ -478,21 +478,21 @@ Loc::loadMessages(__FILE__);?>
 												<a class="all" href="<?=SITE_DIR?>catalog/saleleader/"><?=Loc::getMessage("CR_TITLE_ALL_SALELEADER");?></a>
 											</div>
 										</div>
-										<div class="tabs__box discount">
-											<div class="catalog-top">
-												<?$APPLICATION->IncludeComponent("bitrix:main.include", "",
-													array(
-														"AREA_FILE_SHOW" => "file",
-														"PATH" => SITE_DIR."include/discount.php",
-														"AREA_FILE_RECURSIVE" => "N",
-														"EDIT_MODE" => "html",
-													),
-													false,
-													array("HIDE_ICONS" => "Y")
-												);?>
-												<a class="all" href="<?=SITE_DIR?>catalog/discount/"><?=Loc::getMessage("CR_TITLE_ALL_DISCOUNT");?></a>
-											</div>
-										</div>
+<!--										<div class="tabs__box discount">-->
+<!--											<div class="catalog-top">-->
+<!--												--><?//$APPLICATION->IncludeComponent("bitrix:main.include", "",
+//													array(
+//														"AREA_FILE_SHOW" => "file",
+//														"PATH" => SITE_DIR."include/discount.php",
+//														"AREA_FILE_RECURSIVE" => "N",
+//														"EDIT_MODE" => "html",
+//													),
+//													false,
+//													array("HIDE_ICONS" => "Y")
+//												);?>
+<!--												<a class="all" href="--><?//=SITE_DIR?><!--catalog/discount/">--><?//=Loc::getMessage("CR_TITLE_ALL_DISCOUNT");?><!--</a>-->
+<!--											</div>-->
+<!--										</div>-->
 									</div>
 								<?endif;
 							endif;?>
