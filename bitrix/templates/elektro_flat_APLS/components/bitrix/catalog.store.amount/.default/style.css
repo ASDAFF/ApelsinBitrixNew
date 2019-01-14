@@ -39,3 +39,13 @@
     float: right;
     font-weight: 900;
 }
+@media screen and (max-width:450px){
+    .catalog-detail-store.header {
+        display: none!important;
+    }
+}
+@media screen and (min-width:450px) and (max-width:1024px){
+    .catalog-detail-store.header .schedule {
+        display: none;
+    }
+}

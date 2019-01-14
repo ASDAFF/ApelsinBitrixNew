@@ -308,9 +308,13 @@
     .apls-product-details-table tr td:first-child {
         width: auto;
     }
+    .catalog-detail-store {
+        width: auto;
+    }
     .catalog-detail-store .schedule {
         position: relative;
         right: 0;
+        width: 90%;
     }
     .breadcrumb-share {
         display: block;
