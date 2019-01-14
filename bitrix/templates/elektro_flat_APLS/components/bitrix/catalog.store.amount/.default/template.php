@@ -19,7 +19,7 @@ if(count($arResult["STORES"]) > 0):
             <div class="catalog-detail-store <?=$class?>">
                 <div class="title"><?=$arProperty["TITLE"]?></div>
                 <?if(isset($arProperty["PHONE"])):?>
-                <div class="phone">тел: <?=$arProperty["PHONE"]?></div>
+                <br><div class="phone">тел: <?=$arProperty["PHONE"]?></div>
                 <?endif;?>
                 <?if(isset($arProperty["SCHEDULE"])):?>
                 <div class="schedule"><?=$arProperty["SCHEDULE"]?></div>
