@@ -87,7 +87,14 @@ function init() {
     // Покажем пробки на карте.
     control.showTraffic();
     // Добавляем полигон
-    var myPolygon = new ymaps.Polygon([ORDER_AJAX_DELIVERY_MAP.MAP_POLYGON]);
+    var myPolygon = new ymaps.Polygon(
+            [ORDER_AJAX_DELIVERY_MAP.MAP_POLYGON],{},
+            {
+                fillColor: '#ef7f1a',
+                strokeColor: '#ef7f1a',
+                opacity: 0.3
+            }
+        );
     // Делаем полигон видимым
     myPolygon.options.set('visible', true);
     // Добавялем полигон на карту
