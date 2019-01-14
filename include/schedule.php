@@ -4,5 +4,5 @@
 </div>
 <div class='time'>
     <div><span>ПН-ПТ</span> 09:00 - 20:00</div>
-    <div><span>СБ-ВС</span> 09:00 - 19:00</div>
+    <div><span>СБ-ВС</span> 09:00 - 18:00</div>
 </div>
