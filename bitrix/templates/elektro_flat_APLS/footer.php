@@ -58,6 +58,12 @@ Loc::loadMessages(__FILE__);?>
                 <footer>
 				<div class="center<?=($arSetting['SITE_BACKGROUND']['VALUE'] == 'Y' ? ' inner' : '');?>">
 					<div class="footer_menu_soc_pay">
+                        <div class="footer_errorMsg">Заметили неточность или ошибку? <span class="orange">Сообщите</span> нам, пожалуйста.</div>
+                        <script>
+                            $('.footer_errorMsg span').click(function () {
+                                $('.b24-widget-button-block').trigger('click');
+                            });
+                        </script>
 						<div class="footer_menu">
 							<?$APPLICATION->IncludeComponent("bitrix:menu", "bottom", 
 								array(
