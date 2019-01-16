@@ -34,7 +34,7 @@ if(!window.BX.BocFormSubmit) {
 			onsuccess: function(data) {
 				console.log(data);
 				if(!!data.success) {
-                    // window.location.href = "/personal/order/make/index.php?ORDER_ID="+data.success.orderId;
+                    window.location.href = "personal/order/non_autorization/index.php/?ORDER_ID="+data.success.orderId;
 					if(!!alert)
 						BX.adjust(alert, {html: "<span class='alertMsg good'><i class='fa fa-check'></i><span class='text'>" + data.success.text + "</span></span>"});
 					BX.adjust(target, {props: {disabled: true}});
