@@ -1,0 +1,61 @@
+.mainWrapper {
+    width: 99%;
+    color: #8184a1;
+    background: #FFFFFF;
+    padding: 15px;
+}
+.headerBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.headerBlock_text {
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+.headerBlock_select {
+    padding-left: 15px;
+    width: 150px;
+    font-size: 14px;
+}
+.headerBlock_btn {
+    font-size: 14px;
+    border: 1px solid #a3a5a5;
+    text-align: center;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+.headerBlock_btn:hover {
+    background-color: #a3a5a5;
+    color: #ffffff;
+}
+.resultWrapper {
+    padding-top: 15px;
+}
+.productTable {
+    width: 100%;
+    border: 1px solid #a3a5a5;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.col {
+    width: 45%;
+    text-align: center;
+    padding: 10px;
+}
+.col.counter {
+    width: 10%;
+}
+.col.header {
+    color: #FFFFFF;
+    font-weight: 600;
+    background-color: #a3a5a5;
+}
+.productTable .row:nth-child(2n+1) {
+    background-color: #eaecec;
+}

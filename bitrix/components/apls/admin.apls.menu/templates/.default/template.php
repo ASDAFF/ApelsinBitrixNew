@@ -22,12 +22,19 @@ $menuArray = array(
             "apls_upload_items_img"=>"Импорт картинок для товаров",
         ),
     ),
+//    array(
+//            "name" => "Настройка контактов",
+//            "items" => array(
+//                    "apls_contacts_setting"=>"Детальная настройка контактов"
+//            ),
+//    ),
     array(
         "name" => "Инспекторы каталога",
         "items" => array(
             "apls_catalog_sections_no_image"=>"Каталоги без картинок",
             "apls_catalogs_no_items"=>"Каталоги без товаров",
             "apls_items_no_image"=>"Товары без картинок",
+            "apls_items_nds" => "Фильтр товаров по НДС"
         ),
     ),
     array(
