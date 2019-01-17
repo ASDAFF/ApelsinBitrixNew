@@ -44,11 +44,14 @@
     width: 100%;
 }
 .col {
-    width: 45%;
+    width: 40%;
     text-align: center;
     padding: 10px;
 }
 .col.counter {
+    width: 10%;
+}
+.col.activ {
     width: 10%;
 }
 .col.header {

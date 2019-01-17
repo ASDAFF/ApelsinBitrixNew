@@ -11,13 +11,15 @@ if(CModule::IncludeModule("catalog")){
     );
     $product_names = [];
     while ($ar_res = $db_res->Fetch()) {
-        $product_names[$ar_res["ELEMENT_XML_ID"]] = $ar_res["ELEMENT_NAME"];
+        $product_names[$ar_res["ELEMENT_XML_ID"]]["ID"] = $ar_res["ID"];
+        $product_names[$ar_res["ELEMENT_XML_ID"]]["ELEMENT_NAME"] = $ar_res["ELEMENT_NAME"];
     }
 ?>
     <?if(!empty($product_names)){?>
 <div class="productTable">
     <div class="row header">
         <div class="col counter header">№П/П</div>
+        <div class="col activ header">Активность</div>
         <div class="col header">Внешний код</div>
         <div class="col header">Название</div>
     </div>
@@ -25,8 +27,9 @@ if(CModule::IncludeModule("catalog")){
     <?foreach ($product_names as $key=>$value):?>
         <div class="row header">
             <div class="col counter"><?=$counter?></div>
+            <div class="col activ"><?=getElementActivity($value["ID"])?></div>
             <div class="col"><?=$key?></div>
-            <div class="col"><?=$value?></div>
+            <div class="col"><?=$value["ELEMENT_NAME"]?></div>
         </div>
         <?$counter++?>
     <?endforeach;?>
@@ -37,3 +40,11 @@ if(CModule::IncludeModule("catalog")){
 <?
 }
 
+function getElementActivity ($elementId) {
+    if(CModule::IncludeModule("iblock")) {
+        $res = CIBlockElement::GetByID($elementId);
+        if($ar_res = $res->GetNext()) {
+            return $ar_res["ACTIVE"];
+        }
+    }
+}
