@@ -11,6 +11,19 @@ $(document).ready(function () {
             dataType: 'html',
             onsuccess: function (rezult) {
                 $(".resultWrapper").html(rezult);
+                $(".cout_element").click(function () {
+                    data["counter"] = $(this).text();
+                    console.log(data);
+                    BX.ajax({
+                        url: data["templateFolder"] + "/ajax1.php",
+                        data: data,
+                        method: 'POST',
+                        dataType: 'html',
+                        onsuccess: function (rezult) {
+                            $(".resultWrapper").html(rezult);
+                        }
+                    });
+                });
             }
         });
     });

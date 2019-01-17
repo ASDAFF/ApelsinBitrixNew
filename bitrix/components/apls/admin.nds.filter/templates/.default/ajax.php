@@ -14,9 +14,19 @@ if(CModule::IncludeModule("catalog")){
         $product_names[$ar_res["ELEMENT_XML_ID"]]["ID"] = $ar_res["ID"];
         $product_names[$ar_res["ELEMENT_XML_ID"]]["ELEMENT_NAME"] = $ar_res["ELEMENT_NAME"];
     }
+    $products_chunks = array_chunk($product_names,'500');
 ?>
-    <?if(!empty($product_names)){?>
+    <?if(!empty($products_chunks)){?>
 <div class="productTable">
+    <div class="row counter">
+        <?for($i=1;$i<=count($products_chunks)+1;$i++):?>
+            <?if($i<=5):?>
+                <div class="cout_element"><?=$i?></div>
+            <?endif;?>
+        <?endfor;?>
+        <div class="cout_element point">...</div>
+        <div class="cout_element"><?=count($products_chunks)+1?></div>
+    </div>
     <div class="row header">
         <div class="col counter header">№П/П</div>
         <div class="col activ header">Активность</div>
@@ -24,7 +34,7 @@ if(CModule::IncludeModule("catalog")){
         <div class="col header">Название</div>
     </div>
     <?$counter = 1?>
-    <?foreach ($product_names as $key=>$value):?>
+    <?foreach ($products_chunks['0'] as $key=>$value):?>
         <div class="row header">
             <div class="col counter"><?=$counter?></div>
             <div class="col activ"><?=getElementActivity($value["ID"])?></div>

@@ -62,3 +62,16 @@
 .productTable .row:nth-child(2n+1) {
     background-color: #eaecec;
 }
+.row.counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.cout_element {
+    padding: 5px;
+    color: #0a3a68;
+    cursor: pointer;
+}
+.cout_element.point {
+    cursor: default!important;
+}
