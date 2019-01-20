@@ -14,7 +14,7 @@ if(CModule::IncludeModule("catalog")){
         $product_names[$ar_res["ELEMENT_XML_ID"]]["ID"] = $ar_res["ID"];
         $product_names[$ar_res["ELEMENT_XML_ID"]]["ELEMENT_NAME"] = $ar_res["ELEMENT_NAME"];
     }
-    $products_chunks = array_chunk($product_names,'500');
+    $products_chunks = array_chunk($product_names,'500',true);
 ?>
     <?if(!empty($products_chunks)){?>
 <div class="productTable">
@@ -34,6 +34,7 @@ if(CModule::IncludeModule("catalog")){
         <div class="col header">Название</div>
     </div>
     <?$counter = 1?>
+
     <?foreach ($products_chunks['0'] as $key=>$value):?>
         <div class="row header">
             <div class="col counter"><?=$counter?></div>
