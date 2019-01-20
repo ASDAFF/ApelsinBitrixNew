@@ -12,12 +12,12 @@
 			<div class="field">
 				<?=GetMessage("AUTH_FORGOT_PASSWORD_1")?>
 			</div>
-			<div class="field">
-				<label class="field-title"><?=GetMessage("AUTH_LOGIN")?></label>
-				<div class="form-input">
-					<input type="text" name="USER_LOGIN" maxlength="50" value="<?=$arResult["LAST_LOGIN"]?>" />
-				</div>
-			</div>
+<!--			<div class="field">-->
+<!--				<label class="field-title">--><?//=GetMessage("AUTH_LOGIN")?><!--</label>-->
+<!--				<div class="form-input">-->
+<!--					<input type="text" name="USER_LOGIN" maxlength="50" value="--><?//=$arResult["LAST_LOGIN"]?><!--" />-->
+<!--				</div>-->
+<!--			</div>-->
 			<div class="field">
 				<label class="field-title">E-Mail</label>
 				<div class="form-input">
@@ -35,17 +35,17 @@
 					</div>
 				</div>
 			<?endif;?>
-			<?if($arSetting["SHOW_PERSONAL_DATA"] == "Y"){?>
-				<div id="hint_agreement" class="hint_agreement">
-					<input type="hidden" name="PERSONAL_DATA" id="PERSONAL_DATA" value="N">
-					<div class="checkbox">
-						<span class="input-checkbox" id="input-checkbox"></span>
-					</div>	
-					<div class="label">
-						<?=$arSetting["TEXT_PERSONAL_DATA"]?>
-					</div>
-				</div>
-			<?}?>	
+<!--			--><?//if($arSetting["SHOW_PERSONAL_DATA"] == "Y"){?>
+<!--				<div id="hint_agreement" class="hint_agreement">-->
+<!--					<input type="hidden" name="PERSONAL_DATA" id="PERSONAL_DATA" value="N">-->
+<!--					<div class="checkbox">-->
+<!--						<span class="input-checkbox" id="input-checkbox"></span>-->
+<!--					</div>	-->
+<!--					<div class="label">-->
+<!--						--><?//=$arSetting["TEXT_PERSONAL_DATA"]?>
+<!--					</div>-->
+<!--				</div>-->
+<!--			--><?//}?><!--	-->
 			<div class="field field-button">
 				<button type="submit" id="submit" name="send_account_info" class="btn_buy popdef" value="<?=GetMessage("AUTH_SEND")?>"><?=GetMessage("AUTH_SEND")?></button>	
 			</div>
