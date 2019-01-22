@@ -125,5 +125,10 @@ $(function() {
 	}
 	
 	//CUSTOM_FORMS//
-	$(".custom-forms").customForms({});	
+	$(".custom-forms").customForms({});
+
+	/*Скрытие умного фильтра*/
+	if (window.innerWidth <= 800) {
+        $(".catalog_item_toogle_filter").removeClass("active");
+	}
 });
