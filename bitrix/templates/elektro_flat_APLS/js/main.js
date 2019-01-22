@@ -130,5 +130,6 @@ $(function() {
 	/*Скрытие умного фильтра*/
 	if (window.innerWidth <= 800) {
         $(".catalog_item_toogle_filter").removeClass("active");
+        $(".filter").hide();
 	}
 });
