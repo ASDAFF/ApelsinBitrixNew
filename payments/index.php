@@ -8,7 +8,7 @@ $APPLICATION->SetTitle("Оплата");
         <div class="payment_content">
             <div class="payment_header">Наличный расчет</div>
             <div class="payment_text">
-                в любом магазине нашей сети;
+                в любом магазине нашей сети;<br><br>
 <!--                курьеру при получении товара;-->
             </div>
         </div>
