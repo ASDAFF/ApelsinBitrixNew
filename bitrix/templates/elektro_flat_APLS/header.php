@@ -13,6 +13,10 @@ Loc::loadMessages(__FILE__);?>
     <script src="//api-maps.yandex.ru/2.1/?lang=ru-RU" type="text/javascript"></script>
 	<?Asset::getInstance()->addString("<meta name='viewport' content='width=device-width, initial-scale=1.0' />");?>
 	<title><?$APPLICATION->ShowTitle()?></title>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3KRF2S"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 	<?Asset::getInstance()->addCss("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");	
 	Asset::getInstance()->addCss("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic-ext");
 	Asset::getInstance()->addCss(SITE_TEMPLATE_PATH."/colors.css");	
@@ -63,10 +67,6 @@ Loc::loadMessages(__FILE__);?>
 	$APPLICATION->ShowHead();?>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3KRF2S"
-                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 	<?global $arSetting;?>
 	<?$arSetting = $APPLICATION->IncludeComponent("altop:settings", "", array(), false, array("HIDE_ICONS" => "Y"));?>
 	<div class="bx-panel<?=($arSetting['CART_LOCATION']['VALUE'] == 'TOP') ? ' clvt' : ''?>">
