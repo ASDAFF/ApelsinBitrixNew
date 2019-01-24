@@ -1,0 +1,157 @@
+.cityBlock {
+    border: 1px solid #dee0ee;
+    margin-bottom: 5px;
+}
+
+.cityHeaderBlock {
+    width: 100%;
+    background-color: #f6f6fb !important;
+}
+.cityHeaderBlock_text {
+    font-size: 16px;
+    padding: 10px;
+    width: 90%;
+    font-weight: 900;
+    display: inline-block;
+    text-align: center;
+}
+.cityHeaderBlock_icon {
+    font-size: 16px;
+    width: 5%;
+    padding: 10px;
+    font-weight: 900;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+.cityHeaderBlock_description {
+
+}
+.store_row {
+    display: none;
+}
+.store_row .amount {
+    position: absolute;
+    font-weight: 900;
+    right: 36px;
+}
+
+.catalog-detail-store {
+    border: none !important;
+    margin: 0px !important;
+    padding: 10px !important;
+    float: none !important;
+    position: relative;
+    width: 98%!important;
+}
+.catalog-detail-store.first {
+}
+.catalog-detail-store.second {
+    background-color: #f6f6fb !important;
+}
+.catalog-detail-store .title,
+.catalog-detail-store .phone,
+.catalog-detail-store .schedule,
+.catalog-detail-store .amount {
+    display: inline-block;
+}
+.catalog-detail-store .title {
+    font-weight: 900;
+}
+.catalog-detail-store.header {
+    display: none;
+    border-bottom: 1px solid #dee0ee!important;
+}
+.catalog-detail-store.header .title,
+.catalog-detail-store.header .schedule,
+.catalog-detail-store.header .amount {
+    font-weight: 500!important;
+}
+.catalog-detail-store.header .schedule {
+    text-align: center!important;
+    font-weight: 600;
+    right: 220px!important;
+}
+.catalog-detail-store .schedule {
+    position: absolute;
+    right: 100px;
+}
+.catalog-detail-store.header .amount {
+    float: right;
+    font-weight: 900;
+}
+.amount_mobile {
+    display: none;
+}
+@media screen and (min-width:1023px) and (max-width:1025px){
+    .cityHeaderBlock_text {
+        width: 88%!important;
+    }
+}
+@media screen and (min-width:760px) and (max-width:1023px){
+    .catalog-detail-store.header .schedule {
+        display: none;
+    }
+    .cityHeaderBlock_text {
+        width: 89%!important;
+    }
+    .catalog-detail-store .amount {
+        display: block;
+    }
+    .catalog-detail-store {
+        width: auto!important;
+    }
+    .store_row .amount {
+        position: relative;
+        right: auto;
+    }
+    .amount_mobile {
+        display: block;
+    }
+}
+@media screen and (min-width:450px) and (max-width:760px){
+    .catalog-detail-store.header .schedule {
+        display: none;
+    }
+    .cityHeaderBlock_text {
+        width: 82%!important;
+    }
+    .catalog-detail-store .amount {
+        display: block;
+    }
+    .catalog-detail-store {
+        width: auto!important;
+    }
+    .store_row .amount {
+        position: relative;
+        right: auto;
+    }
+    .amount_mobile {
+        display: block;
+    }
+}
+@media screen and (max-width:450px){
+    .catalog-detail-store.header {
+        display: none!important;
+    }
+    .cityHeaderBlock_text {
+        width: 80%!important;
+    }
+    .catalog-detail-store .amount {
+        display: block;
+    }
+    .store_row .amount {
+        position: relative;
+        right: auto;
+    }
+    .amount_mobile {
+        display: inline-block;
+    }
+    .amount_count {
+        display: inline-block;
+    }
+    .catalog-detail-store {
+        width: auto!important;
+    }
+}
+
