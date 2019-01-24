@@ -13,3 +13,5 @@ Disallow: *index.php
 Disallow: *?action
 Disallow: *?login
 Disallow: *?clear_cache
+Host: https://apelsin.ru/
+Sitemap: https://sitemap.xml
