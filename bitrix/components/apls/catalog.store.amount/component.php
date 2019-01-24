@@ -253,8 +253,8 @@ if ($this->startResultCache())
 			if ($arParams["USE_MIN_AMOUNT"] == 'Y')
 				$amount = getStringCatalogStoreAmount($amount, $arParams['MIN_AMOUNT']);
 
-			if ($prop["UF_CITY"] != "")
-			    $storeCity = $prop["UF_CITY"];
+			if ($prop["UF_STORE_CITY"] != "")
+			    $storeCity = $prop["UF_STORE_CITY"];
 			else
                 $storeCity = null;
 

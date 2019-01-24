@@ -184,7 +184,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_Catalo
 		),
 		"USE_MIN_AMOUNT" => "N",
 		"USER_FIELDS" => array(
-			0 => "UF_CITY",
+			0 => "UF_STORE_CITY",
 			1 => "",
 		),
 		"FIELDS" => array(
