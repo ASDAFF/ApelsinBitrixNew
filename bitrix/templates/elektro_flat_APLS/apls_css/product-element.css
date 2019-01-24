@@ -327,8 +327,7 @@
         float: none;
     }
     .breadcrumb__arrow,
-    #breadcrumb_0,
-    .breadcrumb__item:last-child {
+    #breadcrumb_0 {
         display: none !important;
     }
 }
