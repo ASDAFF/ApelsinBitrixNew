@@ -352,7 +352,7 @@ if($arParams["USE_STORE"] == "Y"):
 		if($arSetting["OFFERS_VIEW"]["VALUE"] != "LIST"):
 			$arOffer = $arResult["JS_OFFERS"][$arResult["OFFERS_SELECTED"]];?>
 			<div id="catalog-detail-stores-from" class="catalog-detail-stores-from" style="display:none;">
-				<?$APPLICATION->IncludeComponent("bitrix:catalog.store.amount",	".default",
+				<?$APPLICATION->IncludeComponent("apls:catalog.store.amount",	".default",
 					array(
 						"ELEMENT_ID" => $arOffer["ID"],
 						"STORE_PATH" => $arParams["STORE_PATH"],
@@ -376,7 +376,7 @@ if($arParams["USE_STORE"] == "Y"):
 		<?endif;
 	else:?>
 		<div id="catalog-detail-stores-from" class="catalog-detail-stores-from" style="display:none;">
-			<?$APPLICATION->IncludeComponent("bitrix:catalog.store.amount",	".default",
+			<?$APPLICATION->IncludeComponent("apls:catalog.store.amount",	".default",
 				array(
 					"ELEMENT_ID" => $arResult["ID"],
 					"STORE_PATH" => $arParams["STORE_PATH"],

@@ -178,11 +178,13 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_Catalo
 			13 => "65",
 			14 => "66",
 			15 => "67",
-			16 => "",
+			16 => "68",
+			17 => "69",
+			18 => "70",
 		),
 		"USE_MIN_AMOUNT" => "N",
 		"USER_FIELDS" => array(
-			0 => "",
+			0 => "UF_CITY",
 			1 => "",
 		),
 		"FIELDS" => array(
