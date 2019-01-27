@@ -9872,7 +9872,7 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 	/***ADVANTAGES***/
 	.advantages .advantages-item{
 		display: inline-block;
-		width: 25%;
+		width: 50%;
 		margin:0px 0px 10px 0px;
         vertical-align: top;
 	}
