@@ -6076,6 +6076,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 		editActivePropsBlock: function(activeNodeMode)
 		{
+
+
 			var node = activeNodeMode ? this.propsBlockNode : this.propsHiddenBlockNode,
 				propsContent, propsNode, selectedDelivery, showPropMap = false, i, validationErrors;
 
@@ -6127,6 +6129,21 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 						BX.removeClass(this.propsBlockNode, 'bx-step-error');
 				}
 			}
+			var thisValue = $('#bx-soa-properties input[autocomplete=tel]');
+			if (thisValue == '') {
+                Inputmask('+7 ([9]{3}) [9]{3}-[9]{2}-[9]{2}').mask($("#bx-soa-properties input[autocomplete=tel]"));
+			}
+            $("#bx-soa-properties input[autocomplete=tel]").click(function () {
+                var oldValue = $("#bx-soa-properties input[autocomplete=tel]").attr('value');
+                $("#bx-soa-properties input[autocomplete=tel]").attr('value','');
+                Inputmask('+7 ([9]{3}) [9]{3}-[9]{2}-[9]{2}').mask($("#bx-soa-properties input[autocomplete=tel]"));
+                $("#bx-soa-properties input[autocomplete=tel]").focusout(function () {
+                    if ($("#bx-soa-properties input[autocomplete=tel]").val() == '') {
+                        Inputmask('[9]{11}').mask($("#bx-soa-properties input[autocomplete=tel]"));
+                        $("#bx-soa-properties input[autocomplete=tel]").attr('value',oldValue);
+                    }
+                });
+            });
 		},
 
 		editFadePropsBlock: function()
