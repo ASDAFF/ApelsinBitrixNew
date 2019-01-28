@@ -8,6 +8,7 @@ use Bitrix\Main\Mail\Event;
 $data = array(
     'AUTHOR' => $_REQUEST['clientName'],
     'AUTHOR_PHONE' => $_REQUEST['clientPhone'],
+    'SEARCH_ROW' => $_REQUEST['searchGood'],
 );
 if (isset($_REQUEST['comment'])) {
     $data['AUTHOR_COMMENT'] = $_REQUEST['comment'];
