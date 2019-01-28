@@ -6144,6 +6144,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                     }
                 });
             });
+			$('#bx-soa-properties label[for=orderDescription]').html('Комментарии к заказу (например номер дисконтной карты):');
 		},
 
 		editFadePropsBlock: function()
