@@ -28,7 +28,22 @@ $(document).ready(function () {
     });
 	$('input').each(function () {
         if ($(this).parent().attr('name') == 'Контактный телефон') {
-            Inputmask('+7 ([9]{3}) [9]{3}-[9]{2}-[9]{2}').mask($(this));
+            if ($(this).attr('value') == '') {
+                Inputmask('+7 ([9]{3}) [9]{3}-[9]{2}-[9]{2}').mask($(this));
+            }
+            $(this).click(function () {
+                var oldValue = $(this).attr('value');
+                $(this).attr('value','');
+                Inputmask('+7 ([9]{3}) [9]{3}-[9]{2}-[9]{2}').mask($(this));
+                $(this).focusout(function () {
+                    if ($(this).val() == '') {
+                        Inputmask('[9]{11}').mask($(this));
+                        $(this).attr('value',oldValue);
+                    }
+                });
+            });
+            // Inputmask('+7 ([9]{3}) [9]{3}-[9]{2}-[9]{2}').mask($(this));
         }
+
     });
 });
