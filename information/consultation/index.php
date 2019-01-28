@@ -20,7 +20,7 @@ $APPLICATION->SetTitle("Консультация и расчет");
     </div>
     <div class="consultation_btn">
         <?$APPLICATION->IncludeComponent("apls:include.form",
-            "headerCallBack",
+            "consultation",
             array(),
             false
         );?>
