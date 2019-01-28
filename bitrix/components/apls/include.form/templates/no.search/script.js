@@ -22,10 +22,11 @@ $(document).ready(function () {
         data['clientName'] = $('#noSearch_Name').val();
         data['clientPhone'] = $('#noSearch_Phone').val();
         data['comment'] = $('#noSearch_text').val();
-        if (data['clientName'] = '') {
+        console.log(data);
+        if (data['clientName'] == '') {
             $('#noSearch_Name').after('<div class="ErrMsg">Поле обязательно для заполнения</div>');
             $('#noSearch_Name').css('border-color','red');
-        } else if (data['clientPhone'] = '') {
+        } else if (data['clientPhone'] == '') {
             $('#noSearch_Phone').after('<div class="ErrMsg">Поле обязательно для заполнения</div>');
             $('#noSearch_Phone').css('border-color','red');
         } else {
