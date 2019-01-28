@@ -270,5 +270,10 @@ if(is_array($arElementsNew) && !empty($arElementsNew)) {
 		$APPLICATION->AddHeadString("<link rel='canonical' href='".$APPLICATION->GetCurPageParam("", array('sort', 'order', 'limit', 'view', 'submit', 'PAGEN_2'))."'>");
 	endif;
 } else {
-	ShowNote(GetMessage("CT_BCSE_NOT_FOUND"), "infotext");
+//	ShowNote(GetMessage("CT_BCSE_NOT_FOUND"), "infotext");
+    $APPLICATION->IncludeComponent("apls:include.form",
+        "no.search",
+        array(),
+        false
+    );
 }?>

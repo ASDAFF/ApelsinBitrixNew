@@ -1,0 +1,36 @@
+.noSearch_feedBack_inputBlock {
+    padding-top: 15px;
+}
+.noSearch_feedBack_inputBlock label{
+    display: block;
+}
+.noSearch_feedBack_inputBlock input{
+    padding: 5px 3px;
+    font-size: 14px;
+    width: 300px;
+    margin-top: 5px;
+}
+.noSearch_feedBack_inputBlock textarea{
+    padding: 5px 3px;
+    font-size: 14px;
+    height: 80px;
+    width: 303px;
+    margin-top: 5px;
+}
+.noSearch_btn {
+    margin-top: 15px;
+    width: 289px;
+    text-align: center;
+    padding: 10px;
+    background-color: #ef7f1a;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #ef7f1a;
+}
+.noSearch_btn:hover {
+    background-color: #ffffff;
+    color: #ef7f1a;
+    border: 1px solid #ef7f1a;
+}
