@@ -14,10 +14,9 @@ if (isset($_REQUEST['comment'])) {
 } else {
     $data['AUTHOR_COMMENT'] = 'Не указано';
 }
-var_dump($_REQUEST);
-//Event::send(array(
-//    "EVENT_NAME" => "NOSEARCH_FEEDBACK_FORM",
-//    "LID" => "s1",
-//    "C_FIELDS" => $data,
-//));
+Event::send(array(
+    "EVENT_NAME" => "NOSEARCH_FEEDBACK_FORM",
+    "LID" => "s1",
+    "C_FIELDS" => $data,
+));
 ?>
