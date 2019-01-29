@@ -325,9 +325,16 @@
     }
     .breadcrumb__item {
         float: none;
+        padding-top: 10px;
+    }
+    #breadcrumb_1 {
+        padding-top: 0!important;
     }
     .breadcrumb__arrow,
     #breadcrumb_0 {
         display: none !important;
+    }
+    .breadcrumb__link .breadcrumb__title {
+        font-size: 16px;
     }
 }
