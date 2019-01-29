@@ -1,12 +1,19 @@
 var ORDER_AJAX_DELIVERY_MAP = {
-    DELIVERY_TARIFF: 32, // рублей за доп киллометр
-    CITY_COST: 500, // цена по городу
-    WAY_OUTSIDE_COST: 1100, // цена за городом
-    MINIMUM_OUTSIDE: 30, // количество киллометров включенных за городом
-    MINIMUM_COST: 500, // минимальная цена
-    MAP_CENTER: [54.629216, 39.736375],
+    CITY_MIN_PRICE: 500, // минмиальаня цена по городу
+    CITY_MAX_PRICE: false, // максимальаня цена по городу
+    CITY_CONDITIONS: [],
+    OUTSIDE_MIN_PRICE: 1100, // минимальаня цена за городом
+    OUTSIDE_MAX_PRICE: false, // максимальаня цена за городом
+    OUTSIDE_CONDITIONS: [
+        { KM_MIN: 31, KM_MAX: 50, KM_PRICE: 0, FIX_PRICE: 1650, FULL_PATH_CALC: false },
+        { KM_MIN: 51, KM_MAX: 70, KM_PRICE: 0, FIX_PRICE: 2200, FULL_PATH_CALC: false },
+        { KM_MIN: 71, KM_MAX: 85, KM_PRICE: 0, FIX_PRICE: 2750, FULL_PATH_CALC: false },
+        { KM_MIN: 86, KM_MAX: 100, KM_PRICE: 0, FIX_PRICE: 3300, FULL_PATH_CALC: false },
+        { KM_MIN: 100, KM_MAX: false, KM_PRICE: 32, FIX_PRICE: false, FULL_PATH_CALC: true },
+    ],
+    MAP_CENTER: [54.625427, 39.765992],
     MAP_ZOOM: 10,
-    MAP_FROM: "г Рязан",
+    MAP_FROM: [54.625427, 39.765992],
     MAP_POLYGON: [
         [54.619791381285, 39.635117842703], [54.619564130671, 39.635667695551],
         [54.619285513457, 39.635863496809], [54.618988215887, 39.635949327497],

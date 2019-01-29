@@ -44,18 +44,7 @@ function yaMapCalcInit(currentDelivery) {
 }
 
 function init() {
-    // Стоимость за километр.
-    var DELIVERY_TARIFF = ORDER_AJAX_DELIVERY_MAP.DELIVERY_TARIFF,
-        // цена по городу
-        CITY_COST = ORDER_AJAX_DELIVERY_MAP.CITY_COST,
-        // цена за городом
-        WAY_OUTSIDE_COST = ORDER_AJAX_DELIVERY_MAP.WAY_OUTSIDE_COST,
-        // Включенный трафик за городом.
-        MINIMUM_OUTSIDE = ORDER_AJAX_DELIVERY_MAP.MINIMUM_OUTSIDE,
-        // Минимальная стоимость.
-        MINIMUM_COST = ORDER_AJAX_DELIVERY_MAP.MINIMUM_COST,
-        // Основная карта
-        myMap = new ymaps.Map('delivery-map', {
+    var myMap = new ymaps.Map('delivery-map', {
             center: ORDER_AJAX_DELIVERY_MAP.MAP_CENTER,
             // zoom: ORDER_AJAX_DELIVERY_MAP.MAP_ZOOM,
             zoom: "10",
@@ -68,7 +57,7 @@ function init() {
                 maxWidth: "400px",
                 // Добавим заголовок панели.
                 showHeader: false,
-                title: 'Расчёт доставки'
+                title: 'Расчёт доставки',
             }
         }),
         // Элемент управленяи зумом
@@ -103,15 +92,15 @@ function init() {
     // Пользователь сможет построить только автомобильный маршрут.
     routePanelControl.routePanel.options.set({
         types: {auto: true},
-        avoidTrafficJams: true
+        avoidTrafficJams: true,
+        autofocus: false,
+        allowSwitch: false,
     });
     // Неизменная точка откуда
-    // console.log(DESTINATION_STRING);
     routePanelControl.routePanel.state.set({
         fromEnabled: false,
         from: ORDER_AJAX_DELIVERY_MAP.MAP_FROM,
         to: DESTINATION_STRING,
-        // to: 'Россия, Рязань, улица Есенина, 13'
     });
     // Добавляем на карту управление зумом
     myMap.controls.add(routePanelControl).add(zoomControl);
@@ -163,10 +152,11 @@ function init() {
                                 wayOutsideKm = Math.round(wayOutside / 1000);
                                 if(allPointsLength == index+1) {
                                     var length = route.getActiveRoute().properties.get("distance");
-                                    var price = calculate(wayOutsideKm),
+                                    var allKm = Math.round(length.value / 1000);
+                                    var price = calculate(wayOutsideKm, allKm),
                                         balloonContentLayout = ymaps.templateLayoutFactory.createClass(
-                                            '<span>Расстояние: ' + length.text + '.</span><br/>' +
-                                            '<span>Расстояние за городом: ' + wayOutsideKm + 'км.</span><br/>' +
+                                            '<span>Расстояние: ' + allKm + ' км.</span><br/>' +
+                                            // '<span>Расстояние за городом: ' + wayOutsideKm + 'км.</span><br/>' +
                                             '<span style="font-weight: bold; font-style: italic">Стоимость доставки: ' + price + ' р.</span>'
                                         );
                                     route.options.set('routeBalloonContentLayout', balloonContentLayout);
@@ -183,10 +173,11 @@ function init() {
                     } else {
                         if(allPointsLength == index+1) {
                             var length = route.getActiveRoute().properties.get("distance");
-                            var price = calculate(wayOutsideKm),
+                            var allKm = Math.round(length.value / 1000);
+                            var price = calculate(wayOutsideKm, allKm),
                                 balloonContentLayout = ymaps.templateLayoutFactory.createClass(
-                                    '<span>Расстояние: ' + length.text + '.</span><br/>' +
-                                    '<span>Расстояние за городом: ' + wayOutsideKm + 'км.</span><br/>' +
+                                    '<span>Расстояние: ' + allKm + ' км.</span><br/>' +
+                                    // '<span>Расстояние за городом: ' + wayOutsideKm + 'км.</span><br/>' +
                                     '<span style="font-weight: bold; font-style: italic">Стоимость доставки: ' + price + ' р.</span>'
                                 );
                             route.options.set('routeBalloonContentLayout', balloonContentLayout);
@@ -195,36 +186,87 @@ function init() {
                         }
                     }
                 });
-                // // Получим протяженность маршрута.
-                // var length = route.getActiveRoute().properties.get("distance"),
-                //     // Вычислим стоимость доставки.
-                //     price = calculate(wayOutside),
-                //     // Создадим макет содержимого балуна маршрута.
-                //     balloonContentLayout = ymaps.templateLayoutFactory.createClass(
-                //         '<span>Расстояние: ' + length.text + '.</span><br/>' +
-                //         '<span style="font-weight: bold; font-style: italic">Стоимость доставки: ' + price + ' р.</span>'
-                //     );
-                // // Зададим этот макет для содержимого балуна.
-                // route.options.set('routeBalloonContentLayout', balloonContentLayout);
-                // // Откроем балун.
-                // activeRoute.balloon.open();
             }
         });
-        // $("#delivery-map-wrapper").hide();
     });
 
     // Функция, вычисляющая стоимость доставки.
-    function calculate(outsideLength) {
-        console.log("outsideLength",outsideLength);
+    function calculate(outsideKm, allKm) {
+        console.log("outsideKm",outsideKm);
+        console.log("allKm",allKm);
         var price = 0;
-        if(outsideLength == 0) {
-            price = CITY_COST;
-        } else if (outsideLength <= MINIMUM_OUTSIDE) {
-            price = WAY_OUTSIDE_COST;
+        if(outsideKm == 0) {
+            price = calculateCityPrice(allKm);
         } else {
-            price = Math.max(WAY_OUTSIDE_COST + ((outsideLength - MINIMUM_OUTSIDE) * DELIVERY_TARIFF), MINIMUM_COST);
+            price = calculateOutsidePrice(outsideKm, allKm);
         }
+        price = changePrice(price);
         DELIVERY_PRICE = price;
+        return price;
+    }
+
+    function changePrice(price) {
+        return price;
+    }
+
+    function calculateOutsidePrice(km,allKm) {
+        return calculatePrice(
+            km,
+            allKm,
+            ORDER_AJAX_DELIVERY_MAP.OUTSIDE_MIN_PRICE,
+            ORDER_AJAX_DELIVERY_MAP.OUTSIDE_MAX_PRICE,
+            ORDER_AJAX_DELIVERY_MAP.OUTSIDE_CONDITIONS
+        );
+    }
+
+    function calculateCityPrice(km) {
+        return calculatePrice(
+            km,
+            km,
+            ORDER_AJAX_DELIVERY_MAP.CITY_MIN_PRICE,
+            ORDER_AJAX_DELIVERY_MAP.CITY_MAX_PRICE,
+            ORDER_AJAX_DELIVERY_MAP.CITY_CONDITIONS
+        );
+    }
+
+    function calculatePrice(km, allKm, minPrice, maxPrice, conditions) {
+        $("body").append( "km:" + km + " allKm:" + allKm);
+        var price = minPrice; // устанавливаем минимальную стоимость
+        // перебираем условия стоимости
+        $.each(conditions, function (key, condition) {
+            // проверяем на обязательыне значения условия
+            if(
+                typeof(condition.KM_MIN) != "undefined" && typeof(condition.KM_MAX) != "undefined" &&
+                typeof(condition.KM_PRICE) != "undefined" && typeof(condition.FIX_PRICE) != "undefined" &&
+                typeof(condition.FULL_PATH_CALC) != "undefined"
+            ) {
+                if(
+                    (
+                        condition.KM_MAX >= condition.KM_MIN &&
+                        condition.KM_MAX && km >= condition.KM_MIN &&
+                        km <= condition.KM_MAX
+                    ) || (
+                        km >= condition.KM_MIN
+                    )
+                ) {
+                    if(condition.KM_PRICE) { // если стоимость за киллометраж
+                        if(condition.FULL_PATH_CALC) { // считаем киллометраж по полному пути
+                            price = allKm * condition.KM_PRICE;
+                        } else { // если считаем киллометраж по доп киллометрам
+                            price = condition.FIX_PRICE + ((km + 1 - condition.KM_MIN) * condition.KM_PRICE);
+                        }
+                    } else { // если стоимость фиксированная
+                        price = condition.FIX_PRICE;
+                    }
+                }
+            }
+        });
+        // проверяем не привышает ли текущая стоимость максимума
+        if(maxPrice && price > maxPrice) {
+            // если привышает устаналваием стоимость как максимально доступную
+            price = maxPrice;
+        }
+        $("body").append( " price:" + price + "<br>" );
         return price;
     }
 }
