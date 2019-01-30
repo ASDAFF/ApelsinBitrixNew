@@ -1,5 +1,34 @@
+#pagetitle {
+    display: none;
+}
+.noSearch_wrapper {
+    width: 100%;
+}
+.noSearch_text {
+    /*color:#575b71;*/
+}
+.noSearch_centerWrapper {
+    width: 60%;
+    margin: 0 auto;
+}
+.noSearch_img {
+    width: 100%;
+    text-align: center;
+}
+.noSearch_img img {
+    height: 100%;
+}
+.noSearch_result {
+    padding: 10px 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+.noSearch_form {
+    padding-top: 10px;
+}
 .noSearch_feedBack_inputBlock {
-    padding-top: 15px;
+    width: 49%;
+    display: inline-block;
 }
 .noSearch_feedBack_inputBlock label{
     display: block;
@@ -7,19 +36,24 @@
 .noSearch_feedBack_inputBlock input{
     padding: 5px 3px;
     font-size: 14px;
-    width: 300px;
+    width: 90%;
     margin-top: 5px;
 }
-.noSearch_feedBack_inputBlock textarea{
-    padding: 5px 3px;
-    font-size: 14px;
-    height: 80px;
-    width: 303px;
+.noSearch_feedBack_textarea {
+    padding-top: 10px;
+    width: 100%;
+}
+.noSearch_feedBack_textarea textarea{
     margin-top: 5px;
+    width: 95%;
+    height: 80px;
+}
+.noSearch_btn_block {
+    text-align: center;
 }
 .noSearch_btn {
-    margin-top: 15px;
-    width: 289px;
+    margin-top: 10px;
+    width: 200px;
     text-align: center;
     padding: 10px;
     background-color: #ef7f1a;
@@ -29,19 +63,19 @@
     cursor: pointer;
     border: 1px solid #ef7f1a;
 }
-.noSearch_btn:hover {
-    background-color: #ffffff;
-    color: #ef7f1a;
-    border: 1px solid #ef7f1a;
+.noSearch_promoBlock_header {
+    padding-top: 20px;
+    font-size: 22px;
+    font-weight: 600;
 }
-
 @media screen and (min-width:320px) and (max-width:450px){
-    .noSearch_feedBack_inputBlock input,
-    .noSearch_feedBack_inputBlock textarea{
+    .noSearch_centerWrapper {
         width: 98%;
-        border: 1px solid #A9A9A9;
     }
-    .noSearch_btn {
-        width: 95%;
+    .noSearch_feedBack_inputBlock {
+        width: 100%;
+    }
+    .noSearch_feedBack_inputBlock input{
+        width: 93%;
     }
 }

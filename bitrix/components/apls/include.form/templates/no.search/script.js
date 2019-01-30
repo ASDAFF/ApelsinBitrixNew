@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    var searchRow = $('#pagetitle').html();
+    $('.noSearch_result').html(searchRow.replace('Поиск: ',''));
+
     if ($("#noSearch_Phone").attr('value') == '') {
         Inputmask('+7 ([9]{3}) [9]{3}-[9]{2}-[9]{2}').mask($("#callBack_Phone"));
     }
