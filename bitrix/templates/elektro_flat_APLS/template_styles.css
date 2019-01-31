@@ -3594,7 +3594,7 @@ footer{
 .catalog-section-child a,
 .reviews-section-child a{
 	width:236px;
-	height:58px;
+	height:87px;
 	display:block;
 	margin:0px;
 	padding:0px;
@@ -3610,7 +3610,7 @@ footer{
 .catalog-section-child a .child .image,
 .reviews-section-child a .child .image{
 	width:66px;
-	height:56px;
+	height:85px;
 	display:table-cell;
 	vertical-align:middle;
 }
