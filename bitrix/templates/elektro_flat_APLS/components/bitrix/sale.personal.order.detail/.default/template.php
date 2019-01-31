@@ -40,7 +40,7 @@ if(strlen($arResult["ERROR_MESSAGE"])<=0):?>
 <!--                                        <a href="--><?//=$arResult["PAY_SYSTEM"]["PSA_ACTION_FILE"]?><!--&GOTOPAY=yes" target="_blank">--><?//=GetMessage("SALE_REPEAT_PAY")?><!--</a>-->
 <!--                                    --><?//endif;
                                     /* APLS - Кнопка оплаты активна только при определенном статусе - END */
-									if($arResult["PAY_SYSTEM"]["PSA_NEW_WINDOW"] == "Y"):?>
+									if($arResult["PAY_SYSTEM"]["PSA_NEW_WINDOW"] == "Y" && $val["ORDER"]["STATUS_ID"]!="F"):?>
 										<br />
 										<a href="<?=$arResult["PAY_SYSTEM"]["PSA_ACTION_FILE"]?>" target="_blank"><?=GetMessage("SALE_REPEAT_PAY")?></a>
 									<?endif;
