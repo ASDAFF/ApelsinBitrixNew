@@ -35,3 +35,31 @@ function updateActiveCatalog() {
     }
     return "updateActiveCatalog();";
 }
+
+AddEventHandler("sale", "OnSaleBeforeStatusOrder", "SUD");
+function SUD($ID, $val)
+{
+    CModule::IncludeModule('sale');
+    if($val)
+    {
+        $arSelect = array(
+            'ID',
+            'STATUS_ID',
+        );
+        $arFilter = Array(
+            'ID' => $ID,
+        );
+        $rsSales = CSaleOrder::GetList(array('DATE_INSERT' => 'DESC'), $arFilter, false, false, $arSelect);
+        $statusId = "N";
+        while ($arSales = $rsSales->Fetch())
+        {
+            $statusId = $arSales['STATUS_ID'];
+        }
+        if($statusId == 'F')
+        {
+            GLOBAL $APPLICATION;
+            $APPLICATION->throwException("Статус не изменен. Нельзя сменить статус заказа который был завершен!");
+            return false;
+        }
+    }
+}
