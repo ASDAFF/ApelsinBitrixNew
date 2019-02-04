@@ -137,7 +137,8 @@ class UpdatedUserModel
             }
             if (!empty($this->userData) && $this->userData !== null) {
                 // проверка ФИО
-                if (!APLS_TextInspections::chekFIOString($this->counterpartiesData["UF_NAME"], $this->userData["NAME"], $this->userData["LAST_NAME"])) {
+                // if (!APLS_TextInspections::chekFIOString($this->counterpartiesData["UF_NAME"], $this->userData["NAME"], $this->userData["LAST_NAME"])) {
+                if (false) {
                     $this->userUpdateData["UF_CARD_NUMBER"] = null;
                     $this->userUpdateData["UF_1C_TYPE_PRICE"] = self::DEFAULT_PRICE_TYPE_FOR_REGISTR_USER;
                     if ($this->userData["UF_LAST_CARD_NUMBER"] != $this->counterpartiesData["UF_NOMERKARTYKLIENTA"]) {
