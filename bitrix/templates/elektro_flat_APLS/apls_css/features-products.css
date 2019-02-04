@@ -22,3 +22,53 @@
 
 .FeaturesProductsWrapper .FeaturesProductsTextBlock .FeaturesProductsText {
 }
+
+/*Advantages на главной странице*/
+#popup-window-content-popapByButton_kredit {
+    background-image: url("/images/advantages/Shop_PopUp_kredit.png")!important;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-color: #fff;
+    padding: 2em 3em 2em 12em;
+    text-align: left;
+    font-weight: 500;
+}
+#popup-window-content-popapByButton_express_dostavka {
+    background-image: url("/images/advantages/Shop_PopUp_delivery.png")!important;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-color: #fff;
+    padding: 2em 3em 2em 12em;
+    text-align: left;
+    font-weight: 500;
+}
+#popup-window-content-popapByButton_assortiment_tovarov {
+    background-image: url("/images/advantages/Shop_PopUp_assortiment.png")!important;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-color: #fff;
+    padding: 2em 3em 2em 13em;
+    text-align: left;
+    font-weight: 500;
+}
+#popup-window-content-popapByButton_vozvrat {
+    background-image: url("/images/advantages/Shop_PopUp_vozvrat.png")!important;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-color: #fff;
+    padding: 2em 3em 2em 12em;
+    text-align: left;
+    font-weight: 500;
+}
+#popup-window-content-popapByButton_kredit .adventagesBtn,
+#popapByButton_kredit .adventagesBtn,
+#popapByButton_assortiment_tovarov .adventagesBtn,
+#popapByButton_vozvrat .adventagesBtn{
+    padding: 5px 40px;
+}
+#popapByButton_kredit .popup-window-titlebar,
+#popapByButton_express_dostavka .popup-window-titlebar,
+#popapByButton_assortiment_tovarov .popup-window-titlebar,
+#popapByButton_vozvrat .popup-window-titlebar{
+    height: 0;
+}

@@ -27,7 +27,7 @@ if(count($arResult["ITEMS"]) < 1)
                     "ALIAS" => "popapByButton_".$arItem["CODE"],
                     "BUTTON_ID" => "advantages_".$arItem["CODE"],
                     "BUTTON_TEXT" => "",
-                    "TITLE_TEXT" => $arItem['NAME'],
+//                    "TITLE_TEXT" => $arItem['NAME'],
                     "FILE_PATH" => "/include/advantages/".$arItem["CODE"].".php?g=$randId",
                     "OVERLAY"=>"Y",
                     "AUTO_HIDE"=>"Y",
