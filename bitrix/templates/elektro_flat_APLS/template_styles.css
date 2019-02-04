@@ -10280,6 +10280,11 @@ table.compare-grid .delay .catalog-item-delayed i:nth-child(2){
 		position:static;
 		opacity:1;
 	}
+	.filter form .submit button[id="set_filter"] {
+		background-color: #ef7f1a;
+		color: #fff;
+		border-color: #ef7f1a;
+	}
 
 	@media (min-width:286px) and (max-width:449px){
 		.catalog-item-card .buy_more,
