@@ -22,7 +22,26 @@
 
 .FeaturesProductsWrapper .FeaturesProductsTextBlock .FeaturesProductsText {
 }
-
+#popup-window-content-popapByButton_USTANOVKA,
+#popup-window-content-popapByButton_DLINNOMER,
+#popup-window-content-popapByButton_MANIPULYATOR,
+#popup-window-content-popapByButton_KOLEROVKA{
+    background-color: #ffffff;
+}
+#popup-window-titlebar-popapByButton_USTANOVKA,
+#popup-window-titlebar-popapByButton_DLINNOMER,
+#popup-window-titlebar-popapByButton_MANIPULYATOR,
+#popup-window-titlebar-popapByButton_KOLEROVKA{
+    height: 0;
+}
+.FeaturesProductsIcon {
+    padding-bottom: 15px;
+}
+.FeaturesProductsIcon img{
+    text-align: center;
+    height: 35px;
+    width: 35px;
+}
 /*Advantages на главной странице*/
 #popup-window-content-popapByButton_kredit {
     background-image: url("/images/advantages/Shop_PopUp_kredit.png")!important;
