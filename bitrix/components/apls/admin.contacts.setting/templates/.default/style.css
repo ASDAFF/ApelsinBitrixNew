@@ -1,0 +1,223 @@
+.AdminContactsWrapper {
+    position: relative;
+    background: #FFFFFF;
+    padding: 2em;
+    color: #a1a4b3;
+}
+.contactsSortList .contactsSortListElement {
+    position: relative;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: .5em;
+    border: 1px solid #dee0ee;
+}
+.contactsSortListElement .regionTitle{
+    width: 15%;
+    text-align: left;
+}
+.contactsSortListElement .sort-handle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 1em;
+    cursor: move;
+}
+.contactsSortListElement .regionTitle {
+    padding: 1em 1em 1em 0em;
+    cursor: pointer;
+}
+.contactsSortListElement .header-swap {
+    padding: 1em 1em 1em 0em;
+    width: 80%;
+    cursor: pointer;
+}
+.contactsSortListElement .header-swap i{
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.contactsSortListElement .header-swap .fa-minus {
+    display: none;
+}
+.shopsSortList {
+    display: none;
+    border: 1px solid #dee0ee;
+    background: #f7f7f7;
+    margin-bottom: .5em;
+    padding: 1em;
+}
+.shopsSortList .addShop {
+    padding: 1em;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #dee0ee;
+    cursor: pointer;
+    margin-bottom: .5em;
+}
+.shopsSortList .addShop:hover{
+    background: #40c781;
+    border: 1px solid #40c781;
+    color: #000000;
+}
+.shopsSortList .addShop i {
+    font-size: 16px;
+}
+.shopsSortListElement {
+    padding: 1em 1em 1em .5em;
+    display: flex;
+    background: #ffffff;
+    border: 1px solid #dee0ee;
+    margin-bottom: .5em;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.shopsSortListElement .sort-handle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: .4em;
+    cursor: move;
+    margin-right: .5em;
+    background: #f7f7f7;
+    border: 1px solid #dee0ee;
+}
+.shopsSortListElement .sort-handle i {
+    font-size: 20px;
+    color: #a1a4b3;
+}
+.shopsSortListElement .shopElementName,
+.shopsSortListElement .shopElementFeature,
+.shopsSortListElement .shopElementTime,
+.shopsSortListElement .shopElementCoords{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.shopElementNameTitle, .shopElementFeatureTitle, .shopElementTimeTitle, .shopElementCoordsTitle {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: .5em;
+}
+.shop_element_title input,
+.shop_element_address input,
+.shop_element_mail input{
+    width: 95%;
+}
+.shopElementName div{
+    margin-bottom: .5em;
+    margin-right: .5em;
+}
+.shopElementName:last-child{
+    margin-bottom: 0!important;
+}
+.shopElementFeature .featureCred,
+.shopElementFeature .featureW-sale,
+.shopElementFeature .featurer-of_goods,
+.shopElementFeature .featureR-the_clock{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: .5em;
+}
+.shopsSortListElement.addShopBlock .shopElementFeature .featureCredTitle,
+.shopsSortListElement.addShopBlock .shopElementFeature .featureW-saleTitle,
+.shopsSortListElement.addShopBlock .shopElementFeature .featurer-of_goodsTitle,
+.shopsSortListElement.addShopBlock .shopElementFeature .featureR-the_clockTitle {
+    padding: 6px 0;
+}
+.shopElementFeature input{
+    cursor: pointer;
+    right: 0;
+}
+.shopElementTime input {
+    width: 75px;
+}
+.shopElementTime .elementTimeClock {
+    margin-bottom: .5em;
+}
+.shopsSortListElement.addShopBlock .shopElementTime .elementTimeClockHeader {
+    padding: 5px 0;
+}
+.shopElementTime .elementTimeClockHeader,
+.shopElementTime .elementTimeClockStart {
+    margin-right: .5em;
+}
+.elementCoordsSet .elementCoordsSetHeader {
+    margin-right: .5em;
+}
+.elementCoordsSet .elementCoordsSetValue input{
+    width: 55px;
+}
+.shopsSortListElement .shop_element_phone {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.shopElementTime .elementTimeClock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.shopElementCoords .elementCoordsSet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: .5em;
+}
+.shopElementCoords:last-child {
+    margin-bottom: 0;
+}
+.shopsSortListElement.addShopBlock .elementCoordsSet .elementCoordsSetHeader {
+    padding: 5px 0;
+}
+.shopsSortListElement .shopElementSetting{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.shopElementSetting .shopElementBtnUpd,
+.shopElementSetting .shopElementBtnDel,
+.shopElementSetting .shopElementBtnSave,
+.shopElementSetting .shopElementBtnCancel {
+    padding: .5em;
+    border: 1px solid #dee0ee;
+    text-align: center;
+    cursor: pointer;
+    width: 100px;
+}
+.shopElementSetting .shopElementBtnUpd:hover {
+    border: 1px solid #ef8b00;
+    background: #ef8b00;
+    color: #000000;
+}
+.shopElementSetting .shopElementBtnDel:hover,
+.shopElementSetting .shopElementBtnCancel:hover {
+    border: 1px solid #d44b38;
+    background: #d44b38;
+    color: #000000;
+}
+.shopElementSetting .shopElementBtnSave:hover {
+    border: 1px solid #40c781;
+    background: #40c781;
+    color: #000000;
+}
+/*Общие настройки отображени input на странице*/
+.shopsSortListElement input {
+    height: 25px!important;
+    font-size: 14px!important;
+    color: #a1a4b3!important;
+    border: 1px solid #dee0ee!important;
+    border-radius: 0!important;
+    box-shadow: none!important;
+}
+.rezultBlock {
+    border: 1px solid #d44b38;
+}

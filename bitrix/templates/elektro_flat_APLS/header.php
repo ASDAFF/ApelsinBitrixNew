@@ -163,7 +163,7 @@ Loc::loadMessages(__FILE__);?>
 					<div class="panel_3">
 						<ul class="contacts-vertical">
 							<li>
-								<a class="showcontacts" href="javascript:void(0)"><i class="fa fa-phone"></i></a>
+								<a class="showcontacts" href="javascript:void(0)"><i class="fa fa-map-marker"></i></a>
 							</li>
 						</ul>
 					</div>
