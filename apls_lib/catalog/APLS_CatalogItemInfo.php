@@ -98,6 +98,7 @@ class APLS_CatalogItemInfo
     }
     public static function getRegisterPrice($id) {
         $html = "";
+        /*
         global $USER;
         if (!$USER->IsAuthorized()) {
             $db_res = CPrice::GetList(
@@ -114,6 +115,7 @@ class APLS_CatalogItemInfo
                 $html .= "</div>";
             }
         }
+        */
         return $html;
     }
 
