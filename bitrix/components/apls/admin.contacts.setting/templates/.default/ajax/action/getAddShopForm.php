@@ -1,0 +1,106 @@
+<?php
+if (empty($_SERVER["HTTP_REFERER"])) die();
+define("NOT_CHECK_PERMISSIONS", true);
+require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
+
+$html='';
+$html.='<div class="shopsSortListElement addShopBlock" redionId="'.$_REQUEST["regionId"].'">';
+    $html.='<div class="shopElementName">';
+        $html.='<div class="shopElementNameTitle">Адреса и контакты</div>';
+        $html.='<div class="shop_element_title"><input type="text" placeholder="Короткий адрес"></div>';
+        $html.='<div class="shop_element_address"><input type="text" placeholder="Полный адрес"></div>';
+        $html.='<div class="shop_element_mail"><input type="text" placeholder="Адрес электронной почты"></div>';
+        $html.='<div class="shop_element_phone">';
+            $html.='<div class="shop_element_phone1"><input type="text" placeholder="Телефон 1"></div>';
+            $html.='<div class="shop_element_addphone1"><input type="text" placeholder="Добавочный телефон 1"></div>';
+        $html.='</div>';
+        $html.='<div class="shop_element_phone">';
+            $html.='<div class="shop_element_phone2"><input type="text" placeholder="Телефон 2"></div>';
+            $html.='<div class="shop_element_addphone2"><input type="text" placeholder="Добавочный телефон 2"></div>';
+        $html.='</div>';
+    $html.='</div>';
+    $html.='<div class="shopElementFeature">';
+        $html.='<div class="shopElementFeatureTitle">Особенности магазина</div>';
+        $html.='<div class="featureCred">';
+            $html.='<div class="featureCredTitle">Кредитный отдел</div>';
+            $html.='<div><input type="checkbox"></div>';
+        $html.='</div>';
+        $html.='<div class="featureW-sale">';
+            $html.='<div class="featureW-saleTitle">Оптовый отдел</div>';
+            $html.='<div><input type="checkbox"></div>';
+        $html.='</div>';
+        $html.='<div class="featurer-of_goods">';
+            $html.='<div class="featurer-of_goodsTitle">Пункт выдачи</div>';
+            $html.='<div><input type="checkbox"></div>';
+        $html.='</div>';
+        $html.='<div class="featureR-the_clock">';
+            $html.='<div class="featureR-the_clockTitle">24 часа</div>';
+            $html.='<div><input type="checkbox"></div>';
+        $html.='</div>';
+    $html.='</div>';
+    $html.='<div class="shopElementTime">';
+        $html.='<div class="shopElementTimeTitle">Время работы</div>';
+        $html.='<div class="elementTimeClock">';
+            $html.='<div class="elementTimeClockHeader">Пн</div>';
+            $html.='<div class="elementTimeClockStart"><input id="monStart" type="text" placeholder="Начало"></div>';
+            $html.='<div class="elementTimeClockStop"><input id="monStop" type="text" placeholder="Окончание"></div>';
+        $html.='</div>';
+        $html.='<div class="elementTimeClock">';
+            $html.='<div class="elementTimeClockHeader">Вт</div>';
+            $html.='<div class="elementTimeClockStart"><input id="tueStart" type="text" placeholder="Начало"></div>';
+            $html.='<div class="elementTimeClockStop"><input id="tueStop" type="text" placeholder="Окончание"></div>';
+        $html.='</div>';
+        $html.='<div class="elementTimeClock">';
+            $html.='<div class="elementTimeClockHeader">Ср</div>';
+            $html.='<div class="elementTimeClockStart"><input id="wedStart" type="text" placeholder="Начало"></div>';
+            $html.='<div class="elementTimeClockStop"><input id="wedStop" type="text" placeholder="Окончание"></div>';
+        $html.='</div>';
+        $html.='<div class="elementTimeClock">';
+            $html.='<div class="elementTimeClockHeader">Чт</div>';
+            $html.='<div class="elementTimeClockStart"><input id="thuStart" type="text" placeholder="Начало"></div>';
+            $html.='<div class="elementTimeClockStop"><input id="thuStop" type="text" placeholder="Окончание"></div>';
+        $html.='</div>';
+        $html.='<div class="elementTimeClock">';
+            $html.='<div class="elementTimeClockHeader">Пт</div>';
+            $html.='<div class="elementTimeClockStart"><input id="friStart" type="text" placeholder="Начало"></div>';
+            $html.='<div class="elementTimeClockStop"><input id="friStop" type="text" placeholder="Окончание"></div>';
+        $html.='</div>';
+        $html.='<div class="elementTimeClock">';
+            $html.='<div class="elementTimeClockHeader">Сб</div>';
+            $html.='<div class="elementTimeClockStart"><input id="satStart" type="text" placeholder="Начало"></div>';
+            $html.='<div class="elementTimeClockStop"><input id="satStop" type="text" placeholder="Окончание"></div>';
+        $html.='</div>';
+        $html.='<div class="elementTimeClock">';
+            $html.='<div class="elementTimeClockHeader">Вс</div>';
+            $html.='<div class="elementTimeClockStart"><input id="sunStart" type="text" placeholder="Начало"></div>';
+            $html.='<div class="elementTimeClockStop"><input id="sunStop" type="text" placeholder="Окончание"></div>';
+        $html.='</div>';
+    $html.='</div>';
+    $html.='<div class="shopElementCoords">';
+        $html.='<div class="shopElementCoordsTitle">Координаты магазина</div>';
+        $html.='<div class="elementCoordsSet">';
+            $html.='<div class="elementCoordsSetHeader">Долгота</div>';
+            $html.='<div class="elementCoordsSetValue"><input id="long" type="text"></div>';
+        $html.='</div>';
+        $html.='<div class="elementCoordsSet">';
+            $html.='<div class="elementCoordsSetHeader">Широта</div>';
+            $html.='<div class="elementCoordsSetValue"><input id="lat" type="text"></div>';
+        $html.='</div>';
+        $html.='<div class="elementCoordsSet">';
+            $html.='<div class="elementCoordsSetHeader">Зум</div>';
+            $html.='<div class="elementCoordsSetValue"><input id="zoom" type="text"></div>';
+        $html.='</div>';
+    $html.='</div>';
+    $html.='<div class="shopElementSetting">';
+    $html.='<div class="shopElementBtnSave">Сохранить</div>';
+    $html.='<div class="shopElementBtnCancel">Отменить</div>';
+    $html.='</div>';
+$html.='</div>';
+
+$result = array(
+    "success" => array(
+        "html" => $html,
+        "regionId" => $_REQUEST['regionId'],
+    )
+);
+echo Bitrix\Main\Web\Json::encode($result);?>
