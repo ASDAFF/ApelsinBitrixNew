@@ -499,6 +499,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 														<?=GetMessage("CATALOG_ELEMENT_UNIT")." ".(($inPriceRatio) ? $arOffer["CATALOG_MEASURE_RATIO"] : "1")." ".$arOffer["CATALOG_MEASURE_NAME"];?>
 													</span>
 												</span>
+                                                <?=APLS_CatalogItemInfo::getRegisterPrice($arResult["ID"])?>
                                                 <?=APLS_CatalogItemInfo::getRetailPrice($arResult["PRICES"])?>
 												<?if($arSetting["REFERENCE_PRICE"]["VALUE"] == "Y" && !empty($arSetting["REFERENCE_PRICE_COEF"]["VALUE"])) {?>
 													<span class="catalog-detail-item-price-reference">
@@ -622,6 +623,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 													<?=GetMessage("CATALOG_ELEMENT_UNIT")." ".$arResult["TOTAL_OFFERS"]["MIN_PRICE"]["CATALOG_MEASURE_RATIO"]." ".$arResult["TOTAL_OFFERS"]["MIN_PRICE"]["CATALOG_MEASURE_NAME"];?>
 												</span>
 											</span>
+                                            <?=APLS_CatalogItemInfo::getRegisterPrice($arResult["ID"])?>
                                             <?=APLS_CatalogItemInfo::getRetailPrice($arResult["PRICES"])?>
 											<?if($arSetting["REFERENCE_PRICE"]["VALUE"] == "Y" && !empty($arSetting["REFERENCE_PRICE_COEF"]["VALUE"])) {?>
 												<span class="catalog-detail-item-price-reference">
@@ -700,6 +702,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 											<?=GetMessage("CATALOG_ELEMENT_UNIT")." ".(($inPriceRatio) ? $arResult["CATALOG_MEASURE_RATIO"] : "1")." ".$arResult["CATALOG_MEASURE_NAME"];?>
 										</span>
 									</span>
+                                    <?=APLS_CatalogItemInfo::getRegisterPrice($arResult["ID"])?>
                                     <?=APLS_CatalogItemInfo::getRetailPrice($arResult["PRICES"])?>
 									<?if($arSetting["REFERENCE_PRICE"]["VALUE"] == "Y" && !empty($arSetting["REFERENCE_PRICE_COEF"]["VALUE"])) {?>
 										<span class="catalog-detail-item-price-reference">

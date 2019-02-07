@@ -84,10 +84,33 @@ class APLS_CatalogItemInfo
 
     public static function getRetailPrice($prices) {
         $html = "";
-        foreach ($prices as $price) {
-            if($price["PRICE_ID"] === "1" && isset($price["PRINT_VALUE"]) && $price["PRINT_VALUE"] !== "") {
-                $html .= "<div class='APLS_RetailPrice'>";
-                $html .= "Цена в магазине: <span class='price'>".$price["PRINT_VALUE"]."</span>";
+        global $USER;
+        if ($USER->IsAuthorized()) {
+            foreach ($prices as $price) {
+                if($price["PRICE_ID"] === "1" && isset($price["PRINT_VALUE"]) && $price["PRINT_VALUE"] !== "") {
+                    $html .= "<div class='APLS_RetailPrice'>";
+                    $html .= "Цена в магазине: <span class='price'>".$price["PRINT_VALUE"]."</span>";
+                    $html .= "</div>";
+                }
+            }
+        }
+        return $html;
+    }
+    public static function getRegisterPrice($id) {
+        $html = "";
+        global $USER;
+        if (!$USER->IsAuthorized()) {
+            $db_res = CPrice::GetList(
+                array(),
+                array(
+                    "PRODUCT_ID" => $id,
+                    "CATALOG_GROUP_ID" => DEFAULT_REGISTER_USER_PRICE_ID
+                )
+            );
+            if ($ar_res = $db_res->Fetch())
+            {
+                $html .= "<div class='APLS_RegisterPrice'>";
+                $html .= "Цена после регистрации<br><span class='price'>".CurrencyFormat($ar_res["PRICE"], $ar_res["CURRENCY"])."</span>";
                 $html .= "</div>";
             }
         }

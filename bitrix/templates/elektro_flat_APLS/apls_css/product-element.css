@@ -243,6 +243,25 @@
     color:#5a1a11;
     display: none;
 }
+.price_buy_detail .APLS_RegisterPrice {
+    padding: .5em;
+    font-size: 12px;
+    /*margin: .5em 0 0 0;*/
+    /*border: 1px solid #dee0ee;*/
+    color: #a0a4bc;
+}
+
+.price_buy_detail .APLS_RegisterPrice .text {
+    /*font-size: 12px;*/
+    white-space: nowrap;
+    margin-right: .5em;
+}
+
+.price_buy_detail .APLS_RegisterPrice .price {
+    white-space: nowrap;
+    font-size: 20px;
+    font-weight: 800;
+}
 
 .price_buy_detail .APLS_RetailPrice {
     padding: .5em;
