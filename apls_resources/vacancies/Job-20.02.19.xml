@@ -1,6 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <BodyJobFile>
 	<Item>
+		<Date>16.02.2019 9:16:34</Date>
+		<Unit>Бутырки</Unit>
+		<Author>Николаев Никита</Author>
+		<Number>11</Number>
+		<Job>Работник склада</Job>
+		<Gender>Мужской</Gender>
+		<Telefon>8(953)744-20-00</Telefon>
+		<ExtensionPhone>3409</ExtensionPhone>
+		<InLocalSite>Да</InLocalSite>
+		<InGlobalSite>Да</InGlobalSite>
+	</Item>
+	<Item>
 		<Date>15.02.2019 14:28:21</Date>
 		<Unit>Черновицкая</Unit>
 		<Author>Корнеев Артём</Author>

@@ -1,8 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Оплата");
-?>
-    <h2>СПОСОБЫ ОПЛАТЫ</h2>
+?>    <h2>СПОСОБЫ ОПЛАТЫ</h2>
     <div class="payments_list">
         <div class="payment_logo"><img src="icons/oplata_nal.svg"></div>
         <div class="payment_content">
@@ -50,7 +49,7 @@ $APPLICATION->SetTitle("Оплата");
         <div class="payment_content">
             <div class="payment_header">Бонусные баллы</div>
             <div class="payment_text">
-                оплатить товары Бонусными баллами можно каждую субботу любого месяца в любом магазине нашей <br>сети (при
+                оплатить товары Бонусными баллами можно с понедельника по субботу в любом магазине нашей <br>сети (при
                 условии работы магазина);<br>
                 подробную информацию о ПРОГРАММЕ БОНУС Вы можете получить
                 <a href="../information/loyalty-programs/#bonus_program" target="_blank"> здесь</a>;
