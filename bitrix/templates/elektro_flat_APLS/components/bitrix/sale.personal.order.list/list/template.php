@@ -93,7 +93,8 @@ else
 <!--                                                <a href="--><?//=$val["ORDER"]["PSA_ACTION_FILE"]?><!--&GOTOPAY=yes" target="_blank">--><?//=GetMessage("STPOL_REPEAT_PAY")?><!--</a>-->
 <!--                                            --><?//endif;
                                             /* APLS - Кнопка оплаты активна только при определенном статусе - END */
-											if(isset($val["ORDER"]["PSA_ACTION_FILE"]) && !empty($val["ORDER"]["PSA_ACTION_FILE"]) && $val["ORDER"]["STATUS_ID"]!="F") {?>
+                                            include_once $_SERVER["DOCUMENT_ROOT"]."/apls_lib/catalog/APLS_OrderCheck.php";
+											if(isset($val["ORDER"]["PSA_ACTION_FILE"]) && !empty($val["ORDER"]["PSA_ACTION_FILE"]) && $val["ORDER"]["STATUS_ID"]!="F" && APLS_OrderCheck::orderItemsPayPermission($val["BASKET_ITEMS"])) {?>
 												<br />
 												<a href="<?=$val["ORDER"]["PSA_ACTION_FILE"]?>" target="_blank"><?=GetMessage("STPOL_REPEAT_PAY")?></a>
 											<?}

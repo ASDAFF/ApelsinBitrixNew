@@ -43,7 +43,8 @@ if (strlen($arResult["ERROR_MESSAGE"]) <= 0):?>
                                     ?><!--</a>-->
                                     <!--                                    --><?//endif;
                                     /* APLS - Кнопка оплаты активна только при определенном статусе - END */
-                                    if ($arResult["PAY_SYSTEM"]["PSA_NEW_WINDOW"] == "Y" && $val["ORDER"]["STATUS_ID"] != "F"):?>
+                                    include_once $_SERVER["DOCUMENT_ROOT"]."/apls_lib/catalog/APLS_OrderCheck.php";
+                                    if($arResult["PAY_SYSTEM"]["PSA_NEW_WINDOW"] == "Y" && $val["ORDER"]["STATUS_ID"]!="F" && APLS_OrderCheck::orderItemsPayPermission($val["BASKET_ITEMS"])):?>
                                         <br/>
                                         <a href="<?= $arResult["PAY_SYSTEM"]["PSA_ACTION_FILE"] ?>"
                                            target="_blank"><?= GetMessage("SALE_REPEAT_PAY") ?></a>

@@ -33,7 +33,8 @@ if(!empty($arResult["ORDER"])) {?>
 <!--								</tr>-->
 								<tr>
 									<td>
-										<?if(strlen($arPaySystem["ACTION_FILE"]) > 0 && $arPaySystem["NEW_WINDOW"] == "Y" && $arPaySystem["IS_CASH"] != "Y") {
+										<?include_once $_SERVER["DOCUMENT_ROOT"]."/apls_lib/catalog/APLS_OrderCheck.php";
+                                        if(strlen($arPaySystem["ACTION_FILE"]) > 0 && $arPaySystem["NEW_WINDOW"] == "Y" && $arPaySystem["IS_CASH"] != "Y" && APLS_OrderCheck::orderPayPermission($arResult["ORDER_ID"])) {
 											$orderAccountNumber = urlencode(urlencode($arResult["ORDER"]["ACCOUNT_NUMBER"]));
 											$paymentAccountNumber = $payment["ACCOUNT_NUMBER"];?>
                                             <!--
