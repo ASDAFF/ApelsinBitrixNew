@@ -9,9 +9,9 @@ include_once($_SERVER["DOCUMENT_ROOT"]."/apls_lib/promotions/model/PromotionCata
 <?
 $xmlParser = new AplsXmlParser();
 $result = $xmlParser->xmlwebi($_FILES['file']['tmp_name']);
-if (!empty($result['ref'][0]['#']['refid'])) {
+if (!empty($result['Body'][0]['#']['Item'])) {
     $arrayFromUploadFile = array();
-    foreach ($result['ref'][0]['#']['refid'] as $element) {
+    foreach ($result['Body'][0]['#']['Item'] as $element) {
         $arrayFromUploadFile[] = $element['#'];
     }
     $revision = new PromotionRevisionModel($_REQUEST['revision']);
