@@ -29,7 +29,7 @@ if($arResult["ELEMENT"]["ID"] > 0):?>
                     } else if ($arCode == 'EMAIL') {
                         echo $arResult['USER']['EMAIL'];
                     } else if ($arCode == 'PHONE') {
-                        echo $arResult['USER']['PHONE'];
+                        echo substr($arResult['USER']['PHONE'],1);
                     }
 //                    ($arCode == 'NAME' ? $arResult['USER']['NAME'] : ($arCode == 'EMAIL' ? $arResult['USER']['EMAIL'] : ''));
 					?>" />
