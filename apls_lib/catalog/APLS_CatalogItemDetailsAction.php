@@ -30,7 +30,7 @@ class APLS_CatalogItemDetailsAction {
                 $this->html .= "<a 
                 target='_blank' 
                 class='content_button btn_buy apuo show_promo' 
-                href='" . self::PROMOTIONS_PAGE."id/".$promotionId . "/'>подробнее об акции</a>";
+                href='" . self::PROMOTIONS_PAGE."id/".$promotionId . "/'>подробнее</a>";
             }
             $this->html .= "</div>";
             $this->html .= "</div>";
