@@ -7,6 +7,7 @@ $this->addExternalJs("//ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.j
 $this->addExternalCss("http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css");
 ?>
 
+<div class="sections-no-image-info">Для получения GUID-кода, жмакнике на конечный каталог. Код будет помещен в буфер обмена</div>
 <div class='sections-no-image-list-wrapper'>
     <?=$arResult['sortListNotDone']->getSortListHtml()?>
     <?=$arResult['sortListIsDone']->getSortListHtml()?>

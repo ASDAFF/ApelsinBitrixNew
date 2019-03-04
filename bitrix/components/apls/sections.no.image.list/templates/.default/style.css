@@ -114,3 +114,7 @@
 .breadcrumb__item:hover:last-child>.breadcrumb__title {
     color: #8184a1;
 }
+.sections-no-image-info {
+    font-weight: 600;
+    padding:0 0 10px 10px;
+}
