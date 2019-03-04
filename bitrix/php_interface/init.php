@@ -9,6 +9,33 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogHelper.p
 
 require __DIR__ . "/functions.php";
 
+function weekendDiscount($apply) {
+    $userGroup = array(1, 12);
+    if($apply) {
+        $userGroup[] = 2;
+    }
+    $dbPriceType = CCatalogGroup::GetList(
+        array("SORT" => "ASC"),
+        array("XML_ID" => "feff0695-99ab-11db-937f-000e0c431b59")
+    );
+    while ($arPriceType = $dbPriceType->Fetch())
+    {
+        $arFields = array(
+            "USER_GROUP" => $userGroup,
+            "USER_GROUP_BUY" => $userGroup,
+        );
+        CCatalogGroup::Update($arPriceType["ID"], $arFields);
+    }
+}
+function weekendDiscountApply() {
+    weekendDiscount(true);
+    return "weekendDiscountApply();";
+}
+function weekendDiscountCancel() {
+    weekendDiscount(false);
+    return "weekendDiscountCancel();";
+}
+
 function updateActiveCatalog() {
     $items = array();
     $shopIBlockId = APLS_CatalogHelper::getShopIblockId();
