@@ -1,0 +1,55 @@
+.holidayWrapper {
+    width: 80%;
+}
+.holidayWrapper a {
+    font-size: 1em;
+}
+.holiday_table {
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.holiday_table th, .holiday_table td{
+    border: 1px solid #dee0ee;
+    padding: 5px;
+    text-align: center;
+}
+.holiday_table th, .holidayCityName {
+    font-size: 1.2em!important;
+}
+.holiday_table .holidayCityName {
+    text-align: left;
+    font-weight: 600;
+    padding: 10px 5px;
+}
+.holiday_table th {
+    background-color: #f4f5fd;
+}
+.holiday_table td {
+    font-size: 1.1em;
+}
+.holiday_table .first {
+    background-color: #f4f5fd;
+}
+.holiday_table .col-1 {
+    width: 15%;
+    text-align: left;
+}
+.holiday_table .col-2,
+.holiday_table .col-3,
+.holiday_table .col-4 {
+    width: 10%;
+}
+@media screen and (max-width: 787px) and (min-width: 300px) {
+    .holidayWrapper {
+        width: 100%;
+    }
+    .holiday_table .col-1 {
+        width: 20%;
+        text-align: left;
+    }
+    .holiday_table .col-2,
+    .holiday_table .col-3,
+    .holiday_table .col-4 {
+        width: 15%;
+    }
+}

@@ -423,6 +423,18 @@
         /*width: 25%!important;*/
     /*}*/
 /*}*/
+.info_celebrate_time {
+    font-size: 1.2em;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+.info_celebrate_time span, .info_celebrate_time a{
+    color: #ef7f1a!important;
+    font-weight: 600;
+}
+.info_celebrate_time a:hover{
+    color:#b05a0c!important;
+}
 
 @media (max-width: 1253px) and (min-width: 788px) {
     .shop_element_header .element_header_time {
