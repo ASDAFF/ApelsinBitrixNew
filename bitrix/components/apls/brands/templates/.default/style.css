@@ -1,0 +1,15 @@
+.brand-detail .banner>img {
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+.detail-text {
+    margin-top: 2em;
+}
+.ButtonPanel {
+    margin-top: 1em;
+    text-align: center;
+}
+.ButtonPanel .StylishButton {
+    margin: 0 auto;
+}
