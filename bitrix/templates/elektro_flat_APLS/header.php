@@ -64,6 +64,13 @@ Loc::loadMessages(__FILE__);?>
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/noEnter.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/APLS_ContentToColumns.js");
 	$APPLICATION->ShowHead();?>
+    <?if(CUser::IsAuthorized()):?>
+        <style>
+            .TextIsNotAuthorized {
+                display: none;
+            }
+        </style>
+    <?endif;?>
 </head>
 <body>
 	<?global $arSetting;?>
