@@ -26,7 +26,7 @@ include_once($_SERVER["DOCUMENT_ROOT"] . $templateFolder . "/APLSContactsDateTim
             </div>
         </div>
     </div>
-    <div class="info_celebrate_time"><span>ВНИМАНИЕ!</span> Время работы магазинов в праздничные дни может отличаться. <a href="/contacts/shops/?holiday=Y">Смотреть график...</a></div>
+<!--    <div class="info_celebrate_time"><span>ВНИМАНИЕ!</span> Время работы магазинов в праздничные дни может отличаться. <a href="/contacts/shops/?holiday=Y">Смотреть график...</a></div>-->
     <div class="cities_list">
         <div class="shop_element_header" >
             <div class="element_header_name">Адрес и контакты магазина</div>
