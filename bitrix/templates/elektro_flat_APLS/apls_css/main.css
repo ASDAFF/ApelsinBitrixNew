@@ -901,6 +901,9 @@ iframe {
     #bx-soa-total-mobile .bx-soa-cart-total-button-container.hidden {
         display: none!important;
     }
+    .footer_soc_pay {
+         width: 100%;
+    }
 }
 
 /* Фиксированное меню и поле поиска */
