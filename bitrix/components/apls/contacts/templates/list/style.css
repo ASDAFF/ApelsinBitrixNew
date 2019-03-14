@@ -159,7 +159,12 @@
 .contacts_wrapper .cities_list .shop_element .shop_element_name .shop_element_phone2{
     padding-top: 2px;
 }
-
+.contacts_wrapper .cities_list .shop_element .shop_element_name .shop_element_mail a {
+    color:#8184a1;
+}
+.contacts_wrapper .cities_list .shop_element .shop_element_name .shop_element_mail a:hover {
+    color:#8184a1;
+}
 .contacts_wrapper .cities_list .shop_element .shop_element_feature {
     display: table-cell;
     width: 19%;

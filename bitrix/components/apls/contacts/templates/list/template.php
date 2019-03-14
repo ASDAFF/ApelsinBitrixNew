@@ -40,7 +40,7 @@ include_once($_SERVER["DOCUMENT_ROOT"] . $templateFolder . "/APLSContactsDateTim
                 <div class="shop_element_name">
                     <div class="shop_element_title"><?= $rowData["UF_SHORT_ADDRESS"] ?></div>
                     <div class="shop_element_address"><?= $rowData["UF_LONG_ADDRESS"] ?></div>
-                    <div class="shop_element_mail"><i class="fa fa-envelope-o"></i> <?= $rowData["UF_EMAIL"] ?></div>
+                    <div class="shop_element_mail"><i class="fa fa-envelope-o"></i> <a href="mailto:<?= $rowData["UF_EMAIL"] ?>"><?= $rowData["UF_EMAIL"] ?></a></div>
                     <div class="shop_element_phone1"><i class="fa fa-phone"></i> <?= $rowData["UF_PHONE_NUMBER_1"] ?></div>
                     <?if ($rowData["UF_PHONE_NUMBER_2"] != ""):?>
                         <div class="shop_element_phone2"><i class="fa fa-phone"></i> <?= $rowData["UF_PHONE_NUMBER_2"] ?></div>
