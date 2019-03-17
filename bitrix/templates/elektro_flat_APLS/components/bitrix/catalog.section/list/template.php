@@ -396,7 +396,7 @@ if (APLS_CatalogSections::getAllChildrenListForSection($arResult["XML_ID"]) == N
 						if(isset($arElement["OFFERS"]) && !empty($arElement["OFFERS"])) {
 							//TOTAL_OFFERS_AVAILABILITY//?>
 							<div class="available">
-                                <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
+                                <?=APLS_CatalogItemInfo::getAmountInfo($arElement["ID"])?>
 							</div>
 							<?//OFFERS_BUY//?>							
 							<div class="add2basket_block">
@@ -413,7 +413,7 @@ if (APLS_CatalogSections::getAllChildrenListForSection($arResult["XML_ID"]) == N
 						} else {
 							//ITEM_AVAILABILITY//?>
 							<div class="available">
-                                <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
+                                <?=APLS_CatalogItemInfo::getAmountInfo($arElement["ID"])?>
 							</div>
 							<?//ITEM_BUY//?>												
 							<div class="add2basket_block">

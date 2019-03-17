@@ -448,7 +448,7 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 									if(isset($arElement["OFFERS"]) && !empty($arElement["OFFERS"])) {
 										//TOTAL_OFFERS_AVAILABILITY//?>
 										<div class="available">
-                                            <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
+                                            <?=APLS_CatalogItemInfo::getAmountInfo($arElement["ID"])?>
 										</div>
 										<?//OFFERS_BUY//?>									
 										<div class="add2basket_block">
@@ -463,7 +463,7 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
 									} else {
 										//ITEM_AVAILABILITY//?>
 										<div class="available">
-                                            <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
+                                            <?=APLS_CatalogItemInfo::getAmountInfo($arElement["ID"])?>
 										</div>
 										<?//ITEM_BUY//?>																
 										<div class="add2basket_block">

@@ -283,7 +283,7 @@ if (APLS_CatalogSections::getAllChildrenListForSection($arResult["XML_ID"]) == N
 					</span>
 					<?//TOTAL_OFFERS_ITEM_AVAILABILITY//?>
 					<div class="available">
-                        <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
+                        <?=APLS_CatalogItemInfo::getAmountInfo($arElement["ID"])?>
 					</div>						
 					<?//OFFERS_ITEM_BUY//?>
 					<div class="buy_more">
