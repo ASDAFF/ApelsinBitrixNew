@@ -2,6 +2,7 @@
 
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/APLS_GetGlobalParam.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/hlblock/APLS_GetHighloadEntityDataClass.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_StoreAmount.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . '/apls_lib/catalog/APLS_CatalogItemDetailsPropertiesBlock.php';
 include_once $_SERVER["DOCUMENT_ROOT"] . '/apls_lib/catalog/APLS_CatalogItemDetailsInfo.php';
 include_once $_SERVER["DOCUMENT_ROOT"] . '/apls_lib/catalog/APLS_CatalogItemDetailsAction.php';
@@ -19,6 +20,24 @@ class APLS_CatalogItemInfo
 
     const YES_BOOL_VALUE = "Да";
     const RUB_STRING = "руб.";
+
+    static $amountStatus = array(
+        "IN_STOCK" => array(
+            "class" => "avl",
+            "text" => "В наличии",
+            "icon" => "fa-check-circle",
+        ),
+        "NOT_FOR_SALE" => array(
+            "class" => "not_avl",
+            "text" => "Распродано",
+            "icon" => "fa-clock-o",
+        ),
+        "UNDER_THE_ORDER" => array(
+            "class" => "not_avl",
+            "text" => "Под заказ",
+            "icon" => "fa-plus-circle",
+        ),
+    );
 
     public static function getLables($elementId, $elementXmlId, $properties, $textSpan = false)
     {
@@ -96,6 +115,7 @@ class APLS_CatalogItemInfo
         }
         return $html;
     }
+
     public static function getRegisterPrice($id,$prices) {
         $html = "";
         global $USER;
@@ -175,5 +195,15 @@ class APLS_CatalogItemInfo
         $html .= '});';
         $html .= '</script>';
         return $html;
+    }
+
+    public static function getAmountInfo($elementId) {
+        $amount = APLS_StoreAmount::getStoresAmountByGeolocation ($elementId);
+        if($amount > 0) {
+            $key = "IN_STOCK";
+        } else {
+            $key = "NOT_FOR_SALE";
+        }
+        return '<div class="avl"><i class="fa '.static::$amountStatus[$key]["icon"].'"></i><span> '.static::$amountStatus[$key]["text"].'</span></div>';
     }
 }

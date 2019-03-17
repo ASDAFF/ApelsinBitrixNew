@@ -396,21 +396,7 @@ if (APLS_CatalogSections::getAllChildrenListForSection($arResult["XML_ID"]) == N
 						if(isset($arElement["OFFERS"]) && !empty($arElement["OFFERS"])) {
 							//TOTAL_OFFERS_AVAILABILITY//?>
 							<div class="available">
-								<?if($arElement["TOTAL_OFFERS"]["QUANTITY"] > 0 || !$arElement["CHECK_QUANTITY"]) {?>
-									<div class="avl">
-										<i class="fa fa-check-circle"></i>
-										<span>
-											<?=GetMessage("CATALOG_ELEMENT_AVAILABLE");
-											if($arElement["TOTAL_OFFERS"]["QUANTITY"] > 0 && $inProductQnt)
-												echo " ".$arElement["TOTAL_OFFERS"]["QUANTITY"];?>
-										</span>
-									</div>
-								<?} else {?>
-									<div class="not_avl">
-										<i class="fa fa-times-circle"></i>
-										<span><?=GetMessage("CATALOG_ELEMENT_NOT_AVAILABLE")?></span>
-									</div>
-								<?}?>
+                                <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
 							</div>
 							<?//OFFERS_BUY//?>							
 							<div class="add2basket_block">
@@ -427,21 +413,7 @@ if (APLS_CatalogSections::getAllChildrenListForSection($arResult["XML_ID"]) == N
 						} else {
 							//ITEM_AVAILABILITY//?>
 							<div class="available">
-								<?if($arElement["CAN_BUY"]) {?>									
-									<div class="avl">
-										<i class="fa fa-check-circle"></i>
-										<span>
-											<?=GetMessage("CATALOG_ELEMENT_AVAILABLE");
-											if($arElement["CHECK_QUANTITY"] && $inProductQnt)
-												echo " ".$arElement["CATALOG_QUANTITY"];?>
-										</span>
-									</div>
-								<?} elseif(!$arElement["CAN_BUY"]) {?>									
-									<div class="not_avl">
-										<i class="fa fa-times-circle"></i>
-										<span><?=GetMessage("CATALOG_ELEMENT_NOT_AVAILABLE")?></span>
-									</div>
-								<?}?>
+                                <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
 							</div>
 							<?//ITEM_BUY//?>												
 							<div class="add2basket_block">

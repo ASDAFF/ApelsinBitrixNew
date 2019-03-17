@@ -1,14 +1,15 @@
 <?php
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/geolocation/GeolocationRegionHelper.php";
 
 class APLS_StoreAmount
 {
     protected static $cityArray = [
-        "CNAKBEIAA9D7Q-CMAXB5HXA8E5N-CXJAGZA4H"=>"Рязань",
-        "C9AVBNIWAVDNX-C4AGBRHWACE57-CGJ5G5BDE"=>"Луховицы",
-        "C2A7B3I5ADIB8-C3ARB7DWDOC1H-EAFDFEGBG"=>"Коломна",
-        "CGAKBYI8A6INU-CHAJBUDQDCHIZ-CRIED9AYF"=>"Бронницы",
-        "C3AKB1IXA6IVO-CMAIBMDCDODE4-EEJTBLJRI"=>"Воскресенск",
-        "CPALBSI2AII1W-C7AUBSD0DVD9U-BXJOA0F7G"=>"Дмитров",
+        "ryazan"=>"Рязань",
+        "lukhovitsy"=>"Луховицы",
+        "kolomna"=>"Коломна",
+        "voskresensk"=>"Воскресенск",
+        "bronnitsy"=>"Бронницы",
+        "dmitrov"=>"Дмитров",
         "7"=>"Клин",
     ];
 
@@ -25,10 +26,16 @@ class APLS_StoreAmount
             false,
             array("PRODUCT_AMOUNT")
         );
-        $count = '';
+        $count = 0;
         while ($ar = $dbResult->Fetch()){
             $count += $ar["PRODUCT_AMOUNT"];
         }
         return $count;
     }
+    public static function getStoresAmountByGeolocation ($productId):int {
+        $city = GeolocationRegionHelper::getGeolocationRegionAlias();
+        return static::getStoresAmountByCity ($productId,$city);
+    }
+
+
 }

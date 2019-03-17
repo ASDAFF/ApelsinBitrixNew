@@ -582,21 +582,10 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 											<div class="available">
 												<?if($arOffer["CAN_BUY"]) {?>
 													<meta content="InStock" itemprop="availability" />
-													<div class="avl">
-														<i class="fa fa-check-circle"></i>
-														<span>
-															<?=GetMessage("CATALOG_ELEMENT_AVAILABLE");
-															if($arOffer["CHECK_QUANTITY"] && $inProductQnt)
-																echo " ".$arOffer["CATALOG_QUANTITY"];?>
-														</span>
-													</div>
 												<?} elseif(!$arOffer["CAN_BUY"]) {?>
 													<meta content="OutOfStock" itemprop="availability" />
-													<div class="not_avl">
-														<i class="fa fa-times-circle"></i>
-														<span><?=GetMessage("CATALOG_ELEMENT_NOT_AVAILABLE")?></span>
-													</div>
 												<?}?>
+                                                <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
 											</div>
 										</div>
 									<?}
@@ -637,21 +626,10 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 										<div class="available">
 											<?if($arResult["TOTAL_OFFERS"]["QUANTITY"] > 0 || !$arResult["CHECK_QUANTITY"]) {?>
 												<meta content="InStock" itemprop="availability" />
-												<div class="avl">
-													<i class="fa fa-check-circle"></i>
-													<span>
-														<?=GetMessage("CATALOG_ELEMENT_AVAILABLE");
-														if($arResult["TOTAL_OFFERS"]["QUANTITY"] > 0 && $inProductQnt)
-															echo " ".$arResult["TOTAL_OFFERS"]["QUANTITY"];?>
-													</span>
-												</div>
 											<?} else {?>
 												<meta content="OutOfStock" itemprop="availability" />
-												<div class="not_avl">
-													<i class="fa fa-times-circle"></i>
-													<span><?=GetMessage("CATALOG_ELEMENT_NOT_AVAILABLE")?></span>
-												</div>
-											<?}?>											
+											<?}?>
+                                            <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
 										</div>								
 									</div>						
 								<?}						
@@ -785,21 +763,10 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 								<div class="available">
 									<?if($arResult["CAN_BUY"]) {?>
 										<meta content="InStock" itemprop="availability" />
-										<div class="avl">
-											<i class="fa fa-check-circle"></i>
-											<span>
-												<?=GetMessage("CATALOG_ELEMENT_AVAILABLE");
-												if($arResult["CHECK_QUANTITY"] && $inProductQnt)
-													echo " ".$arResult["CATALOG_QUANTITY"];?>
-											</span>
-										</div>
 									<?} elseif(!$arResult["CAN_BUY"]) {?>
 										<meta content="OutOfStock" itemprop="availability" />
-										<div class="not_avl">
-											<i class="fa fa-times-circle"></i>
-											<span><?=GetMessage("CATALOG_ELEMENT_NOT_AVAILABLE")?></span>
-										</div>
 									<?}?>
+                                    <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
 								</div>						
 								<?//DETAIL_TIME_BUY_QUANTITY//
 								if(array_key_exists("TIME_BUY", $arResult["PROPERTIES"]) && !$arResult["PROPERTIES"]["TIME_BUY"]["VALUE"] == false) {
@@ -1329,21 +1296,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 								<div class="buy_more<?=(!$inBtnBoc) ? " no-one-click" : ""?>">
 									<?//OFFERS_LIST_AVAILABILITY//?>
 									<div class="available">
-										<?if($arOffer["CAN_BUY"]) {?>													
-											<div class="avl">
-												<i class="fa fa-check-circle"></i>													
-												<span>
-													<?=GetMessage("CATALOG_ELEMENT_AVAILABLE");
-													if($arOffer["CHECK_QUANTITY"] && $inProductQnt)
-														echo " ".$arOffer["CATALOG_QUANTITY"];?>
-												</span>
-											</div>
-										<?} elseif(!$arOffer["CAN_BUY"]) {?>													
-											<div class="not_avl">
-												<i class="fa fa-times-circle"></i>
-												<span><?=GetMessage("CATALOG_ELEMENT_NOT_AVAILABLE")?></span>
-											</div>
-										<?}?>
+                                        <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
 									</div>
 									<div class="clr"></div>											
 									<?//OFFERS_LIST_BUY//

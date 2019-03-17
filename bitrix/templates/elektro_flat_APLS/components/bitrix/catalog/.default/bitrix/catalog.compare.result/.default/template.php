@@ -189,21 +189,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogItemInfo
 							}
 							//OFFERS_AVAILABILITY//?>
 							<div class="available">
-								<?if($arElement["TOTAL_OFFERS"]["QUANTITY"] > 0 || !$arElement["CHECK_QUANTITY"]) {?>
-									<div class="avl">
-										<i class="fa fa-check-circle"></i>							
-										<span>
-											<?=GetMessage("CATALOG_ELEMENT_AVAILABLE");
-											if($arElement["TOTAL_OFFERS"]["QUANTITY"] > 0 && $inProductQnt)
-												echo " ".$arElement["TOTAL_OFFERS"]["QUANTITY"];?>
-										</span>
-									</div>
-								<?} else {?>
-									<div class="not_avl">
-										<i class="fa fa-times-circle"></i>
-										<span><?=GetMessage("CATALOG_ELEMENT_NOT_AVAILABLE")?></span>
-									</div>
-								<?}?>
+                                <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
 							</div>		
 						<?//COMPARE_PRICE//
 						} else {
@@ -241,21 +227,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogItemInfo
 							}
 							//COMPARE_AVAILABILITY//?>
 							<div class="available">
-								<?if($arElement["CAN_BUY"]) {?>
-									<div class="avl">
-										<i class="fa fa-check-circle"></i>
-										<span>
-											<?=GetMessage("CATALOG_ELEMENT_AVAILABLE");
-											if($arElement["CHECK_QUANTITY"] && $inProductQnt)
-												echo " ".$arElement["CATALOG_QUANTITY"];?>
-										</span>
-									</div>
-								<?} elseif(!$arElement["CAN_BUY"]) {?>
-									<div class="not_avl">
-										<i class="fa fa-times-circle"></i>
-										<span><?=GetMessage("CATALOG_ELEMENT_NOT_AVAILABLE")?></span>
-									</div>
-								<?}?>
+                                <?=APLS_CatalogItemInfo::getAmountInfo($arResult["ID"])?>
 							</div>
 						<?}?>
 					</td>
