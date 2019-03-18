@@ -96,7 +96,7 @@ function SUD($ID, $val)
  * Если товаров более 2000, отправляет уведомление на почту о превышении
  * @return string
  */
-function deleteUnusedProducts () {
+function deleteUnusedProducts() {
     $arSelect = Array("ID",);
     $arFilter = Array("IBLOCK_ID"=>APLS_CatalogHelper::getShopIblockId(),"SECTION_CODE"=>"tovar_na_udalenie_s_sayta");
     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
