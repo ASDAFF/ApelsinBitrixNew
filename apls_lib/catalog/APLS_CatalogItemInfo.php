@@ -29,7 +29,7 @@ class APLS_CatalogItemInfo
         ),
         "NOT_FOR_SALE" => array(
             "class" => "not_avl",
-            "text" => "Распродано",
+            "text" => "Под заказ",
             "icon" => "fa-clock-o",
         ),
         "UNDER_THE_ORDER" => array(
