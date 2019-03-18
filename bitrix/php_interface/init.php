@@ -91,3 +91,28 @@ function SUD($ID, $val)
         }
     }
 }
+
+/** Агент удаляет товары из папки "Товары на удаление с сайта", при условии что товаров в этой папке менее 2000
+ * Если товаров более 2000, отправляет уведомление на почту о превышении
+ * @return string
+ */
+function deleteUnusedProducts () {
+    $arSelect = Array("ID",);
+    $arFilter = Array("IBLOCK_ID"=>APLS_CatalogHelper::getShopIblockId(),"SECTION_CODE"=>"tovar_na_udalenie_s_sayta");
+    $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
+    while($ar = $res->Fetch())
+    {
+        $resAr[] = $ar["ID"];
+    }
+    if (!empty($resAr)) {
+        $countAr = count($resAr);
+        if ($countAr <= "2000") {
+            foreach ($resAr as $element) {
+                CIBlockElement::Delete($element);
+            }
+        } else {
+            CEvent::Send("DELETE_ERROR","s1",array("COUNT"=>$countAr));
+        }
+    }
+    return "deleteUnusedProducts();";
+}
