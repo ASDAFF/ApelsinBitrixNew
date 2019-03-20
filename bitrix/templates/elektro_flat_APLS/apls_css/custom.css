@@ -16,7 +16,40 @@ ul.left-menu > li > a {
     margin: 0;
     padding: 0 1em;
 }
-
+.banners_left_toRent {
+    background-image: url("/images/SHOP_Banner_toRent.png");
+    background-repeat: no-repeat;
+    height: 300px;
+}
+.banners_left_ustanovka {
+    background-image: url("/images/SHOP_Banner_ustanovka.png");
+    background-repeat: no-repeat;
+    height: 300px;
+}
+.banners_left_consult {
+    background-image: url("/images/SHOP_Banner_consult.png");
+    background-repeat: no-repeat;
+    height: 300px;
+}
+.banners_left_text_1, .banners_left_text_2 {
+    width: 100%;
+    text-align: center;
+}
+.banners_left_text_1 {
+    color: #575b71;
+    padding-top: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.banners_left_text_2 {
+    color: #ef7f1a;
+    font-size: 23px;
+    font-weight: 700;
+}
+.banners_left_text_2 .up {
+    text-transform: uppercase;
+}
 @media screen and (max-width: 787px) {
     .panel_1 .catalog-section-title a,
     .panel_2 .submenu a {
