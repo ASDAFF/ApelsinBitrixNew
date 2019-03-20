@@ -70,13 +70,14 @@ if ($arResult['DATA_SAVED'] == 'Y') {
                             $row = $res->fetch();
                             ?>
                             <img src="<?=$templateFolder?>/barcode.php?f=png&s=ean-13&d=<?=$row['UF_NOMERKARTYKLIENTA']?>&w=280&h=140&th=15&ts=12&ph=5">
+                            <span class="ripple rippleEffect"></span>
                         </div>
                         <div class="personal-info_codebar_bonus"></div>
                     </div>
                 </div>
                 <div class="personal-info_right_column">
                     <div class="input_card_number">
-                        <input class="card_number" type="text" name="UF_CARD_NUMBER" maxlength="255" value="<?=$arResult["arUser"]["UF_CARD_NUMBER"]?>"  placeholder="64777"/>
+                        <input class="card_number" type="text" name="UF_CARD_NUMBER" maxlength="255" value="<?=$arResult["arUser"]["UF_CARD_NUMBER"]?>" autocomplete="off"  placeholder="64777"/>
                     </div>
                     <div class="UF_CARD_NUMBER">
                         <img src="<?=SITE_TEMPLATE_PATH?>/images/card_new.png" alt="Номер карты" title="<?echo GetMessage("UF_CARD_NUMBER_TITLE");?>">

@@ -36,6 +36,8 @@
     text-transform: uppercase;
 }
 .personal-info_codebar {
+    position: relative;
+    overflow: hidden;
     padding-top: 10px;
     text-align: center;
 }
@@ -61,6 +63,26 @@
 }
 .personal_pass {
     display: none;
+}
+.personal-info_codebar .ripple {
+    width: 220px;
+    height: 220px;
+    left: 44px;
+    top: 40px;
+    border-radius: 50%!important;
+    background: rgba(255,255,255,.8);
+    transform: scale(0);
+    position: absolute;
+    opacity: 1;
+}
+.rippleEffect {
+    animation: rippleDrop 2s infinite linear;
+}
+@keyframes rippleDrop {
+    100% {
+        transform: scale(2);
+        opacity: 0
+    }
 }
 @media screen and (max-width: 450px) {
     .personal_tabs {
