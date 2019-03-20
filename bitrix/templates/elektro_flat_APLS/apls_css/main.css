@@ -922,7 +922,7 @@ iframe {
 #altop_search.altop-search-fixed {
     position: fixed;
     top: 1px;
-    margin-left: 21px;
+    margin-left: 35px;
     z-index: 999;
     width: 500px;
 }
