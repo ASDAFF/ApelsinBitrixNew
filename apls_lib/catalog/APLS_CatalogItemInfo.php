@@ -137,8 +137,8 @@ class APLS_CatalogItemInfo
             {
                 if($defaultPrice != $ar_res["PRICE"]) {
                     $html .= "<div class='APLS_RegisterPrice'>";
-                    //$html .= "Цена после регистрации<br><span class='price'>".CurrencyFormat($ar_res["PRICE"], $ar_res["CURRENCY"])."</span>";
-                    $html .= "Скидка на этот товар при регистрации";
+                    $html .= "Цена после регистрации<br><span class='price'>".CurrencyFormat($ar_res["PRICE"], $ar_res["CURRENCY"])."</span>";
+                    //$html .= "Скидка на этот товар при регистрации";
                     $html .= "</div>";
                 }
             }
