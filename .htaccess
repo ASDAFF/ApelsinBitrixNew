@@ -19,6 +19,12 @@ ErrorDocument 404 /404.php
   RewriteCond %{REQUEST_URI} !(.*)/$
   RewriteRule ^(.*[^/])$ $1/ [L,R=301]
 
+  Redirect 301 /information/about/ /information/
+  Redirect 301 /contacts/shops/ /contacts/
+
+  Redirect 301 /index.php/ /
+  Redirect 301 /index.html/ /
+
   RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
   RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
