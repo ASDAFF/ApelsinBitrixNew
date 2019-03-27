@@ -23,7 +23,7 @@ if(CModule::IncludeModule("sale"))
 
 <?
 if ($arOrder["PAY_SYSTEM_ID"] == 10) {
-    ?><p>Вы можете оплатить свой заказ по <a target="_blank" href="/personal/order/payment/?ORDER_ID=<?=$arOrder["ID"]?>&PAYMENT_ID=<?=$arOrder["ID"]?>/1">ссылке</a>.</p><?
+    ?><p>Вы можете оплатить свой заказ по <a target="_blank" href="/personal/order/payment/?ORDER_ID=<?=$arOrder["ID"]?>&PAYMENT_ID=<?=$arOrder["ID"]?>/1">ссылке</a> после авторизации.</p><?
 }
 ?>
 
