@@ -107,6 +107,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_Catalo
 			2 => "Ср. оптовая",
 			3 => "Оптовая",
 			4 => "Кр. оптовая",
+			5 => "ИМ",
 		),
 		"USE_PRICE_COUNT" => "N",
 		"SHOW_PRICE_COUNT" => "1",
