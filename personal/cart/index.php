@@ -46,6 +46,7 @@ $APPLICATION->SetTitle("Моя корзина");?>
             2 => "Ср. оптовая",
             3 => "Оптовая",
             4 => "Кр. оптовая",
+			5 => "ИМ",
         ),
 		"PRICE_VAT_INCLUDE" => "Y",
 		"CONVERT_CURRENCY" => "N",

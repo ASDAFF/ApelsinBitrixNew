@@ -56,6 +56,7 @@ $arDiscPrFilter["ID"] = getRandomElementId(16, 6, array(
             2 => "Ср. оптовая",
             3 => "Оптовая",
             4 => "Кр. оптовая",
+			5 => "ИМ",
         ),
         "USE_PRICE_COUNT" => "N",
         "SHOW_PRICE_COUNT" => "1",
