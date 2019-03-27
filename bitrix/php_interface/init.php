@@ -1,5 +1,5 @@
 <?php
-define("DEFAULT_REGISTER_USER_PRICE_ID", "4");
+define("DEFAULT_REGISTER_USER_PRICE_ID", "6");
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/EventHandlers.php");
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/agents/PromotionsReportAgent.php";
 //
