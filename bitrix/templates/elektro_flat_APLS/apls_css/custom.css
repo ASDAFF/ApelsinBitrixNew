@@ -50,6 +50,48 @@ ul.left-menu > li > a {
 .banners_left_text_2 .up {
     text-transform: uppercase;
 }
+.weFindRent {
+    background-image: url("/images/SHOP_Banner_weFindRent.png");
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 120px;
+    border: 1px dashed #dee0ee;
+    padding: 5px 10px;
+    margin-top: 14px;
+}
+.weFindRent_headerText {
+    display: inline-block;
+    width: 83%;
+    color: #575b71;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.weFindRent_headerPhone {
+    display: inline-block;
+    width: auto;
+    color: #f18c32;
+    font-size: 19px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+}
+.weFindRent_text {
+    width: 64%;
+    line-height: 1.4;
+    font-size: 17px;
+    padding-top: 10px;
+}
+.weFindRent_text .orange {
+    color: #f18c32;
+}
+.weFindRent_text a{
+    color: #f18c32;
+}
+.weFindRent_text a:hover{
+    color:#b05a0c;
+}
 @media screen and (max-width: 787px) {
     .panel_1 .catalog-section-title a,
     .panel_2 .submenu a {
