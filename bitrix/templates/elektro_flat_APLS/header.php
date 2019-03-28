@@ -402,7 +402,7 @@ Loc::loadMessages(__FILE__);?>
     <div class="weFindRent">
         <div class="weFindRent_header">
             <div class="weFindRent_headerText"><h2>Ищем помещение</h2></div>
-            <div class="weFindRent_headerPhone">8 (920) 970-07-01</div>
+            <div class="weFindRent_headerPhone"><a href="rel:+79209700701">8 (920) 970-07-01</a></div>
         </div>
         <div class="weFindRent_text">Компания "Апельсин" рассмотрит предложения по аренде помещения S <span class="orange">3 000 - 50 000 м²</span> для торговли строительно-отделочными материалами в Центральном Федеральном Округе, <a href="/information/to_rent/">подробнее...</a></div>
     </div>

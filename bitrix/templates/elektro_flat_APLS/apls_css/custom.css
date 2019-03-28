@@ -77,6 +77,9 @@ ul.left-menu > li > a {
     text-transform: uppercase;
     line-height: 1;
 }
+.weFindRent_headerPhone a{
+    color: inherit;
+}
 .weFindRent_text {
     width: 64%;
     line-height: 1.4;
@@ -123,5 +126,13 @@ ul.left-menu > li > a {
     }
     .header_1 .logo a img {
         width: 150px;
+    }
+    .weFindRent {
+        background-image: none;
+        margin: 15px;
+    }
+    .weFindRent_headerText, .weFindRent_headerPhone,.weFindRent_text {
+        width: 100%;
+        text-align: center;
     }
 }
