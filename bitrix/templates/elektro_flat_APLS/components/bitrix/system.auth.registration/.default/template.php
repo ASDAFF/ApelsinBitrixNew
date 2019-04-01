@@ -22,7 +22,7 @@
                 <input type="hidden" name="AUTH_FORM" value="Y" />
                 <input type="hidden" name="TYPE" value="REGISTRATION" />
                 <div class="field">
-                    <label class="field-title"><?=GetMessage("AUTH_NAME")?></label>
+                    <label class="field-title"><?=GetMessage("AUTH_NAME")?><span class="starrequired">*</span></label>
                     <div class="form-input">
                         <input type="text" name="USER_NAME" maxlength="50" value="<?=$arResult["USER_NAME"]?>" />
                     </div>
@@ -164,7 +164,10 @@
         var text;
         for(var i in fields){
             name[i] = BX.findChild(BX(fields[i])).name;
-            if(name[i] == "USER_LOGIN") {
+            if (name[i] == "USER_NAME") {
+                text = "<?=GetMessage("NOT_USER_NAME")?>"
+            }
+            else if(name[i] == "USER_LOGIN") {
                 text = "<?=GetMessage("NOT_FIELD_LOGIN")?>"
             }
             else if(name[i] == "USER_PASSWORD") {
@@ -181,7 +184,7 @@
                 text = "<?=GetMessage("NOT_FIELD_CAPTCHA")?>"
             }
             <?}?>
-            if(name[i] == "USER_LOGIN" || name[i] == "USER_PASSWORD" || name[i] == "USER_CONFIRM_PASSWORD" || name[i] == "USER_EMAIL" || name[i] == "captcha_word") {
+            if(name[i] == "USER_NAME" || name[i] == "USER_LOGIN" || name[i] == "USER_PASSWORD" || name[i] == "USER_CONFIRM_PASSWORD" || name[i] == "USER_EMAIL" || name[i] == "captcha_word") {
                 alert[i] = BX.create("span",{
                     props:{
                         className:"alertMsg bad",
