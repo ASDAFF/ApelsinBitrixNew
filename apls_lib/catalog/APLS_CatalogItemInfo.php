@@ -119,7 +119,8 @@ class APLS_CatalogItemInfo
     public static function getRegisterPrice($id,$prices) {
         $html = "";
         global $USER;
-        if (!$USER->IsAuthorized()) {
+        $day = date('N');
+        if (!$USER->IsAuthorized() && $day!=7) {
             $defaultPrice = 0;
             foreach ($prices as $price) {
                 if($price["PRICE_ID"] === "1" && isset($price["PRINT_VALUE"]) && $price["PRINT_VALUE"] !== "") {
