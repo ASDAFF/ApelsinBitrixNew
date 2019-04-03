@@ -315,20 +315,6 @@ $(document).ready(function () {
             var regionId = $(this).parents('.shopsSortList').attr('id');
             $('#'+regionId).sortable();
             $('.'+regionId+' .shopsSortListElement').mouseup(function () {
-
-                // $('.'+regionId+' .shopsSortListElement').first().attr('sort','0');
-                // $('.'+regionId+' .shopsSortListElement').each(function (i) {
-                //
-                //
-                // });
-                //
-                //     var shopId = $(this).attr('shopid');
-                //     var sortIndex = $(this).attr('sort');
-
-                // var data = [];
-                // data['']
-                // data['thisElSortIndex'] = $(this).parents('.shopsSortListElement').attr('sort');
-                // data['nextElSortIndex'] = $(this).next().attr('sort');
             });
         });
     }
@@ -354,21 +340,20 @@ $(document).ready(function () {
                         data["templateFolder"] = $('.AdminContactsWrapper').attr('templateFolder');
                         data["regionId"] = newParentFormId;
                         if ($("#regionLongitudeValue").val() == "") {
-                            data["longitudeValue"] = parentForm.find('.regionLongitude').attr('coordsValue');
+                            data["longitudeValue"] = $("#regionLongitudeValue").attr('coordsValue');
                         } else {
                             data["longitudeValue"] = $("#regionLongitudeValue").val();
                         }
                         if ($("#regionLatitudeValue").val() == "") {
-                            data["latitudeValue"] = parentForm.find('.regionLatitude').attr('coordsValue');
+                            data["latitudeValue"] = $("#regionLatitudeValue").attr('coordsValue');
                         } else {
                             data["latitudeValue"] = $("#regionLatitudeValue").val();
                         }
                         if ($("#regionZoomValue").val() == "") {
-                            data["regionZoom"] = parentForm.find('.regionZoom').attr('coordsValue');
+                            data["regionZoom"] = $("#regionZoomValue").attr('coordsValue');
                         } else {
                             data["regionZoom"] = $("#regionZoomValue").val();
                         }
-                        console.log(data);
                         BX.ajax({
                             url: data["templateFolder"] + "/ajax/ui/updateRegionCoords.php",
                             data: data,
@@ -381,14 +366,6 @@ $(document).ready(function () {
                     });
                 }
             });
-            // var parentForm = $(this).closest('.contactsSortListElement');
-            // var longitudeValue = parentForm.find('.regionLongitude').attr('coordsValue');
-            // parentForm.find('.regionLongitude').html('<input id="regionLongitudeValue" type="text" placeholder="Дологота: '+longitudeValue+'">');
-            // var latitudeValue = parentForm.find('.regionLatitude').attr('coordsValue');
-            // parentForm.find('.regionLatitude').html('<input id="regionLatitudeValue" type="text" placeholder="Широта: '+latitudeValue+'">');
-            // var zoomValue = parentForm.find('.regionZoom').attr('coordsValue');
-            // parentForm.find('.regionZoom').html('<input id="regionZoomValue" type="text" placeholder="Зум: '+zoomValue+'">');
-            // $(this).html("Сохранить").removeClass("regionChange").removeClass("change").addClass("regionSave");
         });
     }
 });
