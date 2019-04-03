@@ -1,4 +1,5 @@
 <?php
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_StoreAmount.php";
 
 class APLS_OrderCheck
 {
