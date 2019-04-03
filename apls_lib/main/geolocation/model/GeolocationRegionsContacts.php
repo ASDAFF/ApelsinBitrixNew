@@ -35,6 +35,8 @@ class GeolocationRegionsContacts extends PromotionModelAbstract
         'latitude',
         'zoom',
         'sort',
+        'b_img',
+        's_img',
     );
 
     /**
