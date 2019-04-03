@@ -44,6 +44,8 @@ foreach ($regions as $region) {
             $arResult["REGIONS"][$region->getId()]["SHOPS"][$shop->getId()]["LATITUDE"] = $shop->getFieldValue("latitude");
             $arResult["REGIONS"][$region->getId()]["SHOPS"][$shop->getId()]["ZOOM"] = $shop->getFieldValue("zoom");
             $arResult["REGIONS"][$region->getId()]["SHOPS"][$shop->getId()]["SORT"] = $shop->getFieldValue("sort");
+            $arResult["REGIONS"][$region->getId()]["SHOPS"][$shop->getId()]["B_IMG"] = $shop->getFieldValue("b_img");
+            $arResult["REGIONS"][$region->getId()]["SHOPS"][$shop->getId()]["S_IMG"] = $shop->getFieldValue("s_img");
         }
     }
 }

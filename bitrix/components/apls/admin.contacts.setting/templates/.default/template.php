@@ -18,9 +18,9 @@ $componentFolder = $this->getComponent()->getPath() . "/";
 
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/geolocation/model/GeolocationRegionsContacts.php";
 ?>
-<!--<pre>-->
-<!--    --><? //var_dump($arResult["REGIONS"])?>
-<!--</pre>-->
+<pre>
+<!--    --><?// var_dump($arResult["REGIONS"])?>
+</pre>
 <div id="MainContactsWrapper" class="AdminContactsWrapper" templateFolder="<?= $templateFolder ?>">
     <div class="contactsSortList">
         <? foreach ($arResult["REGIONS"] as $regionId => $region): ?>
@@ -28,6 +28,24 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/geolocation/model/Geolo
                 <div class="contactsSortListElement" regionId="<?= $regionId ?>">
                     <div class="sort-handle"></div>
                     <div class="regionTitle"><?= $region['NAME'] ?></div>
+                    <div class="regionCoordsValues">
+                        <? if (isset($region['longitude'])) {
+                            ?><div class="regionLongitude" coordsValue="<?=$region['longitude']?>"><span>Дологота: </span><?=$region['longitude']?></div><?
+                        } else {
+                            ?><div class="regionLongitude" coordsValue="0"><span>Дологота: </span>0</div><?
+                        } ?>
+                        <? if ($region['latitude'] != NULL) {
+                            ?><div class="regionLatitude" coordsValue="<?=$region['latitude']?>"><span>Широта: </span><?=$region['latitude']?></div><?
+                        } else {
+                            ?><div class="regionLatitude" coordsValue="0"><span>Широта: </span>0</div><?
+                        } ?>
+                        <? if ($region['zoom'] != NULL) {
+                            ?><div class="regionZoom" coordsValue="<?=$region['zoom']?>"><span>Зум: </span><?=$region['zoom']?></div><?
+                        } else {
+                            ?><div class="regionZoom" coordsValue="0"><span>Зум: </span>0</div><?
+                        } ?>
+                        <div class="regionChange">Изменить</div>
+                    </div>
                     <div class="header-swap">
                         <i class="fa fa-plus"></i>
                         <i class="fa fa-minus"></i>
@@ -40,6 +58,14 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/main/geolocation/model/Geolo
                     <? foreach ($region["SHOPS"] as $shopId => $shop): ?>
                         <div class="shopsSortListElement <?= $shopId ?>" shopId="<?= $shopId ?>" sort="<?=$shop['SORT']?>">
                             <div class="sort-handle"><i class="fa fa-align-justify"></i></div>
+                            <div class="shopElementImgs">
+                                <? if(isset($shop['B_IMG'])):?>
+                                    <div class="shopElementB_Img" imgValue="<?=$shop['B_IMG']?>"><img src="<?=CFile::GetPath($shop['B_IMG'])?>"></div>
+                                <?endif;?>
+                                <? if(isset($shop['S_IMG'])):?>
+                                    <div class="shopElementS_Img" imgValue="<?=$shop['S_IMG']?>"><img src="<?=CFile::GetPath($shop['S_IMG'])?>"></div>
+                                <?endif;?>
+                            </div>
                             <div class="shopElementName">
                                 <div class="shop_element_title"><?= $shop["NAME"] ?></div>
                                 <div class="shop_element_address"><?= $shop["ADDRESS"] ?></div>

@@ -17,6 +17,21 @@ $html = '';
             $html.='<div class="shop_element_phone2"><input type="text" value="'.$_REQUEST["phone2"].'"></div>';
             $html.='<div class="shop_element_addphone2"><input type="text" value="'.$_REQUEST["addphone2"].'"></div>';
         $html.='</div>';
+        $html.='<div class="shop_element_imgs">';
+            $html.='<div class="shop_element_imgs_header">Картинки</div>';
+            if ($_REQUEST["b_img"] != 'undefined') {
+                $html.='<div class="shop_element_b_img"><div class="shop_element_img_header green">Большая</div><input imgType="b_img" type="file"><div class="shop_element_img_save"><i class="fa fa-floppy-o" aria-hidden="true"></i></div></div>';
+            } else {
+                $html.='<div class="shop_element_b_img"><div class="shop_element_img_header">Большая</div><input imgType="b_img" type="file"><div class="shop_element_img_save"><i class="fa fa-floppy-o" aria-hidden="true"></i></div></div>';
+
+            }
+            if ($_REQUEST["s_img"] != 'undefined') {
+                $html.='<div class="shop_element_s_img"><div  class="shop_element_img_header green">Маленькая</div><input imgType="s_img" type="file"><div class="shop_element_img_save"><i class="fa fa-floppy-o" aria-hidden="true"></i></div></div>';
+            } else {
+                $html.='<div class="shop_element_s_img"><div  class="shop_element_img_header">Маленькая</div><input imgType="s_img" type="file"><div class="shop_element_img_save"><i class="fa fa-floppy-o" aria-hidden="true"></i></div></div>';
+
+            }
+        $html.='</div>';
     $html.='</div>';
     $html.='<div class="shopElementFeature">';
         $html.='<div class="shopElementFeatureTitle">Особенности магазина</div>';

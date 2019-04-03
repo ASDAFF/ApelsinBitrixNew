@@ -41,6 +41,10 @@ if ($_REQUEST['name'] == '') {
 
     $html = '';
     $html .= '<div class="sort-handle"><i class="fa fa-align-justify"></i></div>';
+    $html .= '<div class="shopElementImgs">';
+        $html .= '<div class="shopElementB_Img" imgValue="'.$updateShop->getFieldValue("b_img").'"><img src="'.CFile::GetPath($updateShop->getFieldValue("b_img")).'"></div>';
+        $html .= '<div class="shopElementS_Img" imgValue="'.$updateShop->getFieldValue("s_img").'"><img src="'.CFile::GetPath($updateShop->getFieldValue("s_img")).'"></div>';
+    $html .= '</div>';
     $html .= '<div class="shopElementName">';
         $html .= '<div class="shop_element_title">'.$updateShop->getFieldValue("name").'</div>';
         $html .= '<div class="shop_element_address">'.$updateShop->getFieldValue("address").'</div>';

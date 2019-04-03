@@ -26,12 +26,34 @@
     padding: 1em;
     cursor: move;
 }
+.regionCoordsValues {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 65%;
+}
+.contactsSortListElement .regionLongitude, .contactsSortListElement .regionLatitude, .contactsSortListElement .regionZoom, .contactsSortListElement .regionChange, .contactsSortListElement .regionSave {
+    width: 100%;
+    text-align: left;
+    padding: 1em 1em 1em 0;
+    cursor: pointer;
+}
+.regionCoordsValues input {
+    width:95%;
+    font-size: 13px;
+    margin: 1em 1em 1em 0!important;
+    height: 13px!important;
+}
+.contactsSortListElement .regionChange:hover {
+    color: #ef7f1a;
+}
 .contactsSortListElement .regionTitle {
-    padding: 1em 1em 1em 0em;
+    padding: 1em 1em 1em 0;
     cursor: pointer;
 }
 .contactsSortListElement .header-swap {
-    padding: 1em 1em 1em 0em;
+    padding: 1em 1em 1em 0;
     width: 80%;
     cursor: pointer;
 }
@@ -94,7 +116,8 @@
 .shopsSortListElement .shopElementName,
 .shopsSortListElement .shopElementFeature,
 .shopsSortListElement .shopElementTime,
-.shopsSortListElement .shopElementCoords{
+.shopsSortListElement .shopElementCoords,
+.shopsSortListElement .shopElementImgs{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -117,6 +140,39 @@
 }
 .shopElementName:last-child{
     margin-bottom: 0!important;
+}
+.shop_element_imgs .shop_element_b_img,
+.shop_element_imgs .shop_element_s_img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.shopElementImgs {
+    width: 10%;
+}
+.shopElementImgs .shopElementB_Img img {
+    width: 100%;
+}
+.shopElementImgs .shopElementS_Img img {
+    width: 80%;
+}
+.shop_element_imgs .shop_element_imgs_header {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+.shop_element_img_save {
+    font-size: 25px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+.shop_element_imgs .shop_element_img_header {
+    padding: 5px 0;
+    color: red;
+}
+.shop_element_imgs .shop_element_img_header.green {
+    color: green;
 }
 .shopElementFeature .featureCred,
 .shopElementFeature .featureW-sale,
