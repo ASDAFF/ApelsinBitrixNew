@@ -33,13 +33,14 @@ class APLS_OrderCheck
         }
         $result = true;
         foreach ($arBasketItems as $item) {
-            $rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $item["PRODUCT_ID"], 'STORE_ID'=>$storesId), false, false, array('AMOUNT'));
-            $sum = array();
-            $allSum = 0;
-            while ($arStore = $rsStore->Fetch()) {
-                $sum[] = $arStore['AMOUNT'];
-                $allSum += $arStore['AMOUNT'];
-            }
+//            $rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $item["PRODUCT_ID"], 'STORE_ID'=>$storesId), false, false, array('AMOUNT'));
+//            $sum = array();
+//            $allSum = 0;
+//            while ($arStore = $rsStore->Fetch()) {
+//                $sum[] = $arStore['AMOUNT'];
+//                $allSum += $arStore['AMOUNT'];
+//            }
+            $allSum = APLS_StoreAmount::getStoresAmountByGeolocation ($item["PRODUCT_ID"]);
             if($item["CAN_BUY"] != "Y" || $item["QUANTITY"] > $allSum) {
                 $result = false;
             }
