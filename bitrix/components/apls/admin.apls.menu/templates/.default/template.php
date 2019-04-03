@@ -22,12 +22,12 @@ $menuArray = array(
             "apls_upload_items_img"=>"Импорт картинок для товаров",
         ),
     ),
-//    array(
-//            "name" => "Настройка контактов",
-//            "items" => array(
-//                    "apls_contacts_setting"=>"Детальная настройка контактов"
-//            ),
-//    ),
+    array(
+            "name" => "Настройка контактов",
+            "items" => array(
+                    "apls_contacts_setting"=>"Детальная настройка контактов"
+            ),
+    ),
     array(
         "name" => "Инспекторы каталога",
         "items" => array(
