@@ -199,7 +199,25 @@ class APLS_CatalogItemInfo
     }
 
     public static function getAmountInfo($elementId) {
-        $amount = APLS_StoreAmount::getStoresAmountByGeolocation ($elementId);
+        $stores = array();
+        $select_fields = Array();
+        $filter = Array("ACTIVE" => "Y");
+        $resStore = CCatalogStore::GetList(array(),$filter,false,false,$select_fields);
+        while($store = $resStore->Fetch()) {
+            $stores[] = $store;
+        }
+        $storesId = array();
+        foreach (static::getStores() as $store) {
+            $storesId[] = $store["ID"];
+        }
+        $rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $elementId, 'STORE_ID'=>$storesId), false, false, array('AMOUNT'));
+        $sum = array();
+        $amount = 0;
+        while ($arStore = $rsStore->Fetch()) {
+            $sum[] = $arStore['AMOUNT'];
+            $amount += $arStore['AMOUNT'];
+        }
+//        $amount = APLS_StoreAmount::getStoresAmountByGeolocation ($elementId);
         if($amount > 0) {
             $key = "IN_STOCK";
         } else {
