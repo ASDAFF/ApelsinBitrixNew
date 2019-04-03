@@ -207,7 +207,7 @@ class APLS_CatalogItemInfo
             $stores[] = $store;
         }
         $storesId = array();
-        foreach (static::getStores() as $store) {
+        foreach ($stores as $store) {
             $storesId[] = $store["ID"];
         }
         $rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $elementId, 'STORE_ID'=>$storesId), false, false, array('AMOUNT'));
