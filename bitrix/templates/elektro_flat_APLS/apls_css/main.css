@@ -762,7 +762,7 @@ ul.left-menu > li > a {
     font-weight: 400;
 }
 .header_4 .geolocation {
-    height: 28px;
+    height: 24px;
     padding-top: 2px;
 }
 .header_4 .telephone .info_phone .title {
@@ -775,6 +775,9 @@ ul.left-menu > li > a {
 .header_4 .telephone .info_phone .phone span {
     font-size: 12px;
     font-weight: 400;
+}
+.schedule .time {
+    padding-top: 8px;
 }
 /*Кнопка скрытия меню*/
 .menu_header_block{
