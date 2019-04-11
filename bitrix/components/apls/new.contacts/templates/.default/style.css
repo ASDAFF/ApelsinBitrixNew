@@ -88,7 +88,8 @@
     vertical-align: top;
     padding-left: 20px;
 }
-.contactsShopElement_workTime .APLS_contacts_buildings_time_Y {
+.contactsShopElement_workTime .APLS_contacts_buildings_time_Y,
+.contactsShopElement_workTime .APLS_contacts_buildings_time_N {
     text-transform: uppercase;
     font-weight: 700;
     size: 12px;
