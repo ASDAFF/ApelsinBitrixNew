@@ -11,7 +11,7 @@ $arResult["longitude"] = $regionObj->getFieldValue("longitude");
 $arResult["latitude"] = $regionObj->getFieldValue("latitude");
 $arResult["zoom"] = $regionObj->getFieldValue("zoom");
 
-$shopsList = $regionObj->getContacts();
+$shopsList = $regionObj->getContacts(true);
 foreach ($shopsList as $shop) {
     $arResult["SHOPS"][$shop->getFieldValue("id")]["name"] = $shop->getFieldValue("name");
     $arResult["SHOPS"][$shop->getFieldValue("id")]["address"] = $shop->getFieldValue("address");

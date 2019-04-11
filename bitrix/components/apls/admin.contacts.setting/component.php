@@ -13,7 +13,7 @@ foreach ($regions as $region) {
         $arResult["REGIONS"][$region->getId()]["latitude"] = $region->getFieldValue('latitude');
         $arResult["REGIONS"][$region->getId()]["zoom"] = $region->getFieldValue('zoom');
         $regionObj = new PromotionRegionModel($region->getId());
-        $shopsList = $regionObj->getContacts();
+        $shopsList = $regionObj->getContacts(true);
         foreach ($shopsList as $shop) {
             $arResult["REGIONS"][$region->getId()]["SHOPS"][$shop->getId()]["NAME"] = $shop->getFieldValue("name");
             $arResult["REGIONS"][$region->getId()]["SHOPS"][$shop->getId()]["ADDRESS"] = $shop->getFieldValue("address");
