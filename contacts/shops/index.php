@@ -5,7 +5,7 @@ if ($_GET['holiday'] == "Y") {
 } else {
     $header = "Адреса магазинов";
 }
-$APPLICATION->SetTitle($header);
+//$APPLICATION->SetTitle($header);
 ?>
 
 <?

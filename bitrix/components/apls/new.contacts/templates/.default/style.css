@@ -1,0 +1,363 @@
+.contact_settings {
+    text-align: right;
+}
+.contact_settings .contacts_settings_map,
+.contact_settings .contacts_edit_list{
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 16px;
+    color: #8184a1;
+    cursor: pointer;
+}
+.contact_settings .contacts_settings_map.active,
+.contact_settings .contacts_edit_list.active{
+    color: #ef7f1a
+}
+.contactsShopTableHeader {
+    width: 100%;
+    background-color: #edeef8;
+}
+.contactsShopTableHeader .contactsShopTableHeader_element {
+    display: inline-block;
+    color: #575b71;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px 0;
+}
+.contactsShopTableHeader .contactsShopTableHeader_element.col-1 {
+    width: 49%;
+}
+.contactsShopTableHeader .contactsShopTableHeader_element.col-2 {
+    width: 25%;
+}
+.contactsShopTableHeader .contactsShopTableHeader_element.col-3 {
+    width: 25%;
+}
+.contactsShopElement {
+    margin-top: 3px;
+    border: 1px solid #dee0ee;
+    padding: 8px 0px;
+}
+.contactsShopElement .contactsShopElement_img,
+.contactsShopElement .contactsShopElement_name,
+.contactsShopElement .contactsShopElement_features,
+.contactsShopElement .contactsShopElement_workTime,
+.contactsShopElement .contactsShopElement_callBack {
+    display: inline-block;
+}
+.contactsShopElement .contactsShopElement_img {
+    width: 20%;
+    padding-left:8px;
+    cursor: pointer;
+}
+.contactsShopElement .contactsShopElement_img img{
+    width: 100%;
+    vertical-align: bottom;
+}
+.contactsShopElement_name {
+    width: 27%;
+    padding-left: 8px;
+    vertical-align: top;
+}
+.contactsShopElement_name .contactsShopElement_name_header {
+    color: #8184a1;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    size: 12px;
+    padding-bottom: 8px;
+}
+.contactsShopElement_name .contactsShopElement_name_address {
+    word-wrap: break-word;
+    padding-bottom: 5px;
+    width: 95%;
+}
+.contactsShopElement_features {
+    vertical-align: top;
+    width: 2%;
+}
+.contactsShopElement_features_icon {
+    padding-bottom: 8px;
+}
+.contactsShopElement_features img{
+    width: 100%;
+}
+.contactsShopElement_workTime {
+    width:20%;
+    vertical-align: top;
+    padding-left: 20px;
+}
+.contactsShopElement_workTime .APLS_contacts_buildings_time_Y {
+    text-transform: uppercase;
+    font-weight: 700;
+    size: 12px;
+    color: #8184a1;
+    padding-bottom: 8px;
+    padding-left: 12px;
+}
+.dayRow {
+    padding-bottom: 4px;
+}
+.dayRow .dayName, .dayRow .timeStart, .dayRow .timeStart, .dayRow .dayOff {
+    display: inline-block;
+}
+.dayRow .dayName {
+    width: 35%;
+    text-align: center;
+}
+.contactsShopElement_callBack {
+    width: 18%;
+    vertical-align: top;
+    padding-left: 50px;
+    padding-top: 8px;
+}
+.contactsShopElement_callBack .shop_element_feedback_dir,
+.contactsShopElement_callBack .shop_element_feedback_map_scheme {
+    display: block;
+    color: #8184a1;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #dee0ee;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-bottom: 16px;
+}
+.contactsShopElement_callBack .shop_element_feedback_dir:hover,
+.contactsShopElement_callBack .shop_element_feedback_map_scheme:hover {
+    background: #8184A1;
+    color: #FFFFFF;
+    border: 1px solid #8184A1;
+}
+.mapBlock {
+    height: 600px;
+    border: 1px solid #dee0ee;
+    margin-bottom: 10px;
+    display: none;
+}
+/*Обратная связь*/
+
+.feedback {
+    width:100%;
+    height: 2000px;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    z-index: 9000;
+    position:fixed;
+    top:0px;
+}
+
+.feedback .feedback_mail {
+    margin:20% 40%;
+    width:396px;
+    background-color: #eef2f4;
+    position: absolute;
+    height: auto;
+    min-height: 325px;
+    max-height: 500px;
+}
+
+.feedback .feedback_mail .feedback_mail_header {
+    background: #ef7f1a;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 14px 20px;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-align: left;
+}
+
+.feedback .feedback_mail .feedback_mail_form {
+    padding: 20px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_name,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_phone,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_text{
+    width: 100%;
+    display: table;
+    margin-bottom: 5px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_name .feedback_mail_name_header,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_phone .feedback_mail_phone_header,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_text .feedback_mail_text_header{
+    width: 125px;
+    display: table-cell;
+    vertical-align: middle;
+    color: #575b71;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_name .feedback_mail_name_text,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_phone .feedback_mail_phone_text,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_text .feedback_mail_text_text{
+    display: table-cell;
+    vertical-align: top;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_name .feedback_mail_name_text input,
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_phone .feedback_mail_phone_text input{
+    width: 90%;
+    height: 25px;
+    padding: 0px 9px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_text .feedback_mail_text_text textarea {
+    width: 97%;
+    height: 61px;
+    min-height: 61px;
+    max-height: 61px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_agreement {
+    font-size: 11px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_agreement .feedback_mail_agreement_checkbox {
+    padding-right: 10px;
+    display: table-cell;
+    height: 45px;
+    vertical-align: middle;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_agreement .feedback_mail_agreement_checkbox input {
+    width: 12px;
+    height: 12px;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_agreement .feedback_mail_agreement_label {
+    display: table-cell;
+    height: 45px;
+    vertical-align: middle;
+}
+
+.feedback .feedback_mail_close {
+    border-radius: 12px !important;
+    background-color: #575b71;
+    right: -10px;
+    top: -10px;
+    width: 24px;
+    height: 24px;
+    display: table;
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    opacity: 1;
+    text-align: center;
+}
+
+.feedback .feedback_mail_close:hover {
+    background-color: #ef7f1a;
+    cursor: pointer;
+}
+
+.feedback .feedback_mail_close i {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0px;
+    padding: 0px;
+    font-size: 17px;
+    color: #fff;
+}
+
+.feedback .feedback_mail_close i:hover {
+    color: #8184a1;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_submit {
+    display: block;
+    width: 100%;
+    float: left;
+    margin-top: 9px;
+    padding-bottom: 20px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_submit .feedback_mail_submit_button {
+    height: 31px;
+    float: right;
+    padding: 0px 20px;
+    border: 1px solid #dee0ee;
+    background: transparent;
+    color: #8184a1;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_submit .feedback_mail_submit_button:hover {
+    color: #FFFFFF;
+    background: #ef7f1a;
+    cursor: pointer;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_error {
+    width: 100%;
+    display: table;
+    background-color: #fdd4e0;
+    margin: 0px 0px 5px 0px;
+}
+
+.feedback .feedback_mail .feedback_mail_form .feedback_mail_error .feedback_mail_error_text {
+    color: #99475f;
+    font-size: 13px;
+    display: table-cell;
+    vertical-align: top;
+    margin: 0px;
+    padding: 0px 0px 0px 18px;
+}
+.feedback .big_image_wrapper {
+    margin: 0 9%;
+    top: 50px;
+    width: 1600px;
+    background-color: #eef2f4;
+    position: absolute;
+    height: auto;
+    min-height: 791px;
+    max-height: 500px;
+}
+@media screen and (max-width: 787px) and (min-width: 300px) {
+    .contactsShopTableHeader {
+        display: none;
+    }
+    .contactsShopElement .contactsShopElement_img,
+    .contactsShopElement .contactsShopElement_name,
+    .contactsShopElement .contactsShopElement_features,
+    .contactsShopElement .contactsShopElement_workTime,
+    .contactsShopElement .contactsShopElement_callBack {
+        width: 94%;
+        text-align: center;
+    }
+    .contactsShopElement_name {
+        padding-top: 10px;
+    }
+    .contactsShopElement_name_phone_number_1, .contactsShopElement_name_phone_number_2 {
+        padding-top: 5px;
+    }
+    .contactsShopElement .contactsShopElement_features {
+        display: none;
+    }
+    .contactsShopElement .contactsShopElement_workTime {
+        padding-top: 10px;
+        padding-left: 0;
+    }
+    .contactsShopElement_workTime .APLS_contacts_buildings_time_Y {
+        padding-left: 0;
+    }
+    .contactsShopElement .contactsShopElement_callBack {
+        padding-left: 10px;
+    }
+    .feedback .big_image_wrapper {
+        width: 95%;
+        margin: 0 2%;
+        min-height: 0;
+    }
+    .feedback .big_image_wrapper img{
+        width: 100%;
+    }
+}
