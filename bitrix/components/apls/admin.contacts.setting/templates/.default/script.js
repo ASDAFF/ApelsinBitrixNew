@@ -98,6 +98,8 @@ $(document).ready(function () {
                     $('.addShopBlock .shopElementBtnCancel').click(function () {
                         $('.addShopBlock').siblings('.addShop').css('display', 'block');
                         $('.addShopBlock').remove();
+                        updateShop();
+                        deleteShop();
                     });
                 },
                 onfailure: function (rezult) {
@@ -172,6 +174,7 @@ $(document).ready(function () {
             data['zoom'] = $('.' + data['shopid'] + ' .shopElementCoords .elementCoordsZoom .elementCoordsSetValue').text();
             data['b_img'] = $('.' + data['shopid'] + ' .shopElementImgs .shopElementB_Img').attr('imgValue');
             data['s_img'] = $('.' + data['shopid'] + ' .shopElementImgs .shopElementS_Img').attr('imgValue');
+            console.log('123');
             BX.ajax({
                 url: data["templateFolder"] + "/ajax/action/getUpdateShopForm.php",
                 data: data,
@@ -244,8 +247,8 @@ $(document).ready(function () {
                         data['monStop'] = $('.' + data['shopid'] + ' .shopElementTime .elementTimeClockMon .elementTimeClockStop input').val();
                         data['tueStart'] = $('.' + data['shopid'] + ' .shopElementTime .elementTimeClockTue .elementTimeClockStart input').val();
                         data['tueStop'] = $('.' + data['shopid'] + ' .shopElementTime .elementTimeClockTue .elementTimeClockStop input').val();
-                        data['wedStart'] = $('.' + data['shopid'] + ' .shopElementTime .elementTimeClockWen .elementTimeClockStart input').val();
-                        data['wedStop'] = $('.' + data['shopid'] + ' .shopElementTime .elementTimeClockWen .elementTimeClockStop input').val();
+                        data['wedStart'] = $('.' + data['shopid'] + ' .shopElementTime .elementTimeClockWed .elementTimeClockStart input').val();
+                        data['wedStop'] = $('.' + data['shopid'] + ' .shopElementTime .elementTimeClockWed .elementTimeClockStop input').val();
                         data['thuStart'] = $('.' + data['shopid'] + ' .shopElementTime .elementTimeClockThu .elementTimeClockStart input').val();
                         data['thuStop'] = $('.' + data['shopid'] + ' .shopElementTime .elementTimeClockThu .elementTimeClockStop input').val();
                         data['friStart'] = $('.' + data['shopid'] + ' .shopElementTime .elementTimeClockFri .elementTimeClockStart input').val();
@@ -270,6 +273,8 @@ $(document).ready(function () {
                                     $('.' + rezult.success.shopId).removeClass('addShopBlock');
                                     $('.' + rezult.success.shopId).removeClass('updateShopBlock');
                                     $('.' + rezult.success.shopId).html(rezult.success.html);
+                                    updateShop();
+                                    deleteShop();
                                 }
                             },
                             onfailure: function (rezult) {
@@ -295,6 +300,8 @@ $(document).ready(function () {
                                     $('.' + rezult.success.shopId).removeClass('addShopBlock');
                                     $('.' + rezult.success.shopId).removeClass('updateShopBlock');
                                     $('.' + rezult.success.shopId).html(rezult.success.html);
+                                    updateShop();
+                                    deleteShop();
                                 }
                             },
                             onfailure: function (rezult) {
@@ -390,6 +397,7 @@ $(document).ready(function () {
                             dataType: 'HTML',
                             onsuccess: function (rezult) {
                                 $("." + newParentFormId + " .regionCoordsValues").html(rezult);
+                                getChangeRegionsCoords();
                             }
                         });
                     });
