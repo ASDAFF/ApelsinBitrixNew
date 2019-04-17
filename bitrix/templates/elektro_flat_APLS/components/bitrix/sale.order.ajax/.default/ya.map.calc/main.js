@@ -231,6 +231,9 @@ function init() {
 
     function calculatePrice(km, allKm, minPrice, maxPrice, conditions) {
         $("body").append( "km:" + km + " allKm:" + allKm);
+        if(BX.Sale.OrderAjaxComponent.result.TOTAL.ORDER_PRICE <= ORDER_AJAX_DELIVERY_MAP.CITY_PROMO_LIMIT_ORDER_COST) {
+            minPrice = ORDER_AJAX_DELIVERY_MAP.CITY_PROMO_PRICE;
+        }
         var price = minPrice; // устанавливаем минимальную стоимость
         // перебираем условия стоимости
         $.each(conditions, function (key, condition) {

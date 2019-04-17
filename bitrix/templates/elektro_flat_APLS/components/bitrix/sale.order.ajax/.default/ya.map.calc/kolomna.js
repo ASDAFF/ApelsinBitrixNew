@@ -1,6 +1,8 @@
 var ORDER_AJAX_DELIVERY_MAP = {
     CITY_MIN_PRICE: 500, // минмиальаня цена по городу
     CITY_MAX_PRICE: false, // максимальаня цена по городу
+    CITY_PROMO_PRICE: 200,
+    CITY_PROMO_LIMIT_ORDER_COST: 15000,
     CITY_CONDITIONS: [],
     OUTSIDE_MIN_PRICE: 500, // минимальаня цена за городом
     OUTSIDE_MAX_PRICE: false, // максимальаня цена за городом
