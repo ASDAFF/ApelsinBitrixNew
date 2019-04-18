@@ -81,7 +81,7 @@ if($arResult["ELEMENT"]["ID"] > 0):?>
 	//MASK//
 	var input = $("#boc_<?=$arParams['ELEMENT_AREA_ID']?>_form").find("[name='PHONE']");
 	if(!!input)
-//		input.inputmask("<?//=$arParams['PHONE_MASK']?>//");
+		input.inputmask("<?=$arParams['PHONE_MASK']?>");
 	
 	<?if($arResult["ELEMENT"]["ID"] > 0):?>
 		//PROPS//
