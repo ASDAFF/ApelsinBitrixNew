@@ -38,9 +38,11 @@ $arResult["BASKET"]["DelDelCanBuy"]["COUNT"] = 0;
 $basket = Sale\Basket::loadItemsForFUser(Sale\Fuser::getId(), Bitrix\Main\Context::getCurrent()->getSite())->getBasketItems();
 foreach($basket as $basketItem) {	
 	if($basketItem->canBuy() && !$basketItem->isDelay()) {
-		$arResult["BASKET"]["AnDelCanBuy"]["COUNT"] += $basketItem->getQuantity();
+//		$arResult["BASKET"]["AnDelCanBuy"]["COUNT"] += $basketItem->getQuantity();
+        $arResult["BASKET"]["AnDelCanBuy"]["COUNT"] += 1;
 	} elseif($basketItem->canBuy() && $basketItem->isDelay()) {
-		$arResult["BASKET"]["DelDelCanBuy"]["COUNT"] += $basketItem->getQuantity();
+//		$arResult["BASKET"]["DelDelCanBuy"]["COUNT"] += $basketItem->getQuantity();
+        $arResult["BASKET"]["DelDelCanBuy"]["COUNT"] += 1;
 	}
 }
 unset($basketItem, $basket);
