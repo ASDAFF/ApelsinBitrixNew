@@ -5,6 +5,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 <div class="holidayWrapper">
     <a href="/contacts/">Вернуться в контакты</a>
     <p class="headerText"><span class="orange">28 апреля</span> выходной день во всех магазинах сети Апельсин</p>
+    <p class="bottomText"><span class="orange">1, 5, 9, 12 мая</span> действует Скидка до 10%</p>
+    <p class="bottomText">С <span class="orange">1 по 4 мая</span> и с <span>6 по 11 мая</span> действует Программа Бонус</p>
     <table class="holiday_table">
         <tr class="holiday_header">
             <th class="col-1"></th>
@@ -12,12 +14,12 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
             <th class="col-3">2 мая</th>
             <th class="col-5">3 мая</th>
             <th class="col-6">4 мая</th>
-            <th class="col-6">5 мая</th>
+            <th class="col-6"><span class="orange">5 мая</span></th>
             <th class="col-7">6,7,8 мая</th>
             <th class="col-8"><span class="orange">9 мая</span></th>
             <th class="col-9">10 мая</th>
             <th class="col-10">11 мая</th>
-            <th class="col-10">12 мая</th>
+            <th class="col-10"><span class="orange">12 мая</span></th>
         </tr>
         <tr>
             <td class="holidayCityName" colspan="11">Рязань</td>
@@ -338,6 +340,4 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
             <td class="col-4">9:00 - 19:00</td>
         </tr>
     </table>
-    <p class="bottomText"><span class="orange">1, 5, 9, 12 мая</span> действует Скидка до 10%</p>
-    <p class="bottomText">С <span class="orange">1 по 4 мая</span> и с <span>6 по 11 мая</span> действует Программа Бонус</p>
 </div>
