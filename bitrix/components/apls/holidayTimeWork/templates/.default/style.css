@@ -1,5 +1,5 @@
 .holidayWrapper {
-    width: 80%;
+    width: 100%;
 }
 .holidayWrapper a {
     font-size: 1em;
@@ -31,13 +31,21 @@
     background-color: #f4f5fd;
 }
 .holiday_table .col-1 {
-    width: 15%;
+    width: 10%;
     text-align: left;
 }
 .holiday_table .col-2,
 .holiday_table .col-3,
 .holiday_table .col-4 {
-    width: 10%;
+    width: auto;
+}
+.holidayWrapper .headerText, .holidayWrapper .bottomText {
+    padding: 10px 0 0 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+span.orange {
+    color: #ef7f1a;
 }
 @media screen and (max-width: 787px) and (min-width: 300px) {
     .holidayWrapper {
