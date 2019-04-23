@@ -14,7 +14,7 @@ $arNewPrFilter = array(
     "XML_ID" => array(
         "baf737ce-24f1-11de-8db9-000e0c431b58",
         "82fe83b5-e990-11e4-ab92-005056be1f7b",
-        "baf737ce-24f1-11de-8db9-000e0c431b58",
+        "ae2ba61a-b8d9-11e3-bec8-005056be1f7b",
         "e562cab2-cbc5-11e4-a1f9-005056be1f7b",
         "634380ab-ea9c-11e5-80d6-00155d41010d",
         "076f6353-70a7-11e0-894e-000e0c431b58",
