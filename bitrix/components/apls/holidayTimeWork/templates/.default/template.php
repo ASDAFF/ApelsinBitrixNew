@@ -104,16 +104,16 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
         </tr>
         <tr>
             <td class="col-1">Зубковой, 27Б</td>
-            <td class="col-2">9:00 - 18:00</td>
-            <td class="col-3">9:00 - 19:00</td>
-            <td class="col-4">9:00 - 19:00</td>
-            <td class="col-4">9:00 - 19:00</td>
-            <td class="col-4">9:00 - 18:00</td>
-            <td class="col-4">9:00 - 20:00</td>
-            <td class="col-4">9:00 - 15:00</td>
-            <td class="col-4">9:00 - 19:00</td>
-            <td class="col-4">9:00 - 19:00</td>
-            <td class="col-4">9:00 - 18:00</td>
+            <td class="col-2">8:30 - 18:00</td>
+            <td class="col-3">8:30 - 19:00</td>
+            <td class="col-4">8:30 - 19:00</td>
+            <td class="col-4">8:30 - 19:00</td>
+            <td class="col-4">8:30 - 18:00</td>
+            <td class="col-4">8:30 - 20:00</td>
+            <td class="col-4">8:30 - 15:00</td>
+            <td class="col-4">8:30 - 19:00</td>
+            <td class="col-4">8:30 - 19:00</td>
+            <td class="col-4">8:30 - 18:00</td>
         </tr>
         <tr class="first">
             <td class="col-1">Островского, 109/2</td>
