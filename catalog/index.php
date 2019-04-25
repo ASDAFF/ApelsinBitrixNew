@@ -99,8 +99,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_Catalo
 			2 => "PROP3",
 			3 => "",
 		),
-		"COMPARE_ELEMENT_SORT_FIELD" => "sort",
-		"COMPARE_ELEMENT_SORT_ORDER" => "asc",
+		"COMPARE_ELEMENT_SORT_FIELD" => "RELEVANCE",
+		"COMPARE_ELEMENT_SORT_ORDER" => "desc",
 		"PRICE_CODE" => array(
 			0 => "Розничная цена",
 			1 => "М. оптовая",
@@ -120,8 +120,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_Catalo
 			1 => "PROP2",
 			2 => "PROP3",
 		),
-		"ELEMENT_SORT_FIELD" => "sort",
-		"ELEMENT_SORT_ORDER" => "asc",
+		"ELEMENT_SORT_FIELD" => "RELEVANCE",
+		"ELEMENT_SORT_ORDER" => "desc",
 		"LIST_PROPERTY_CODE" => array(
 			0 => "",
 			1 => "",
