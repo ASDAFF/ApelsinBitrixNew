@@ -50,7 +50,7 @@
 //	),
 	Array(
 		"Контакты", 
-		"/contacts/?holiday=Y",
+		"/contacts/",
 		Array(),
 		Array(), 
 		"" 

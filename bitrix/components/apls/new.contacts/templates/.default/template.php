@@ -2,9 +2,9 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 include_once($_SERVER["DOCUMENT_ROOT"] . $templateFolder . "/APLSContactsDateTimeTable.php");
 $APPLICATION->SetTitle('Адреса магазинов в городе ' . $arResult["regionName"]);
-echo "<pre>";
+//echo "<pre>";
 //var_dump($arResult);
-echo "</pre>";
+//echo "</pre>";
 $currentTime = new DateTime(date("G:i"));
 $thisDay = date(D);
 ?>
@@ -15,6 +15,9 @@ $thisDay = date(D);
          longitude="<?= $arResult["longitude"] ?>"
          latitude="<?= $arResult["latitude"] ?>"
          zoom="<?= $arResult["zoom"] ?>">
+        <div class="holidayWork">
+            <a href="/contacts/?holiday=Y">Время работы в выходные и праздничные дни</a>
+        </div>
         <div class="contact_settings">
             <div id="mapBlock" class="contacts_settings_map contacts_settings">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
