@@ -155,4 +155,12 @@ ul.left-menu > li > a {
         width: 100%;
         text-align: center;
     }
+    .holidaysBlock {
+        background-image: none;
+        margin: 15px;
+    }
+    .holidaysBlock .holidaysBlock_text {
+        width: 100%!important;
+        text-align: center;
+    }
 }
