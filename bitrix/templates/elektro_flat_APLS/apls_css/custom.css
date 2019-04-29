@@ -60,6 +60,16 @@ ul.left-menu > li > a {
     padding: 5px 10px;
     margin-top: 14px;
 }
+.holidaysBlock {
+    background-image: url("/images/SHOP_Banner_holidays.png");
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 120px;
+    border: 1px dashed #dee0ee;
+    padding: 5px 10px;
+    margin-top: 14px;
+}
 .weFindRent_headerText {
     display: inline-block;
     width: 83%;
@@ -85,6 +95,16 @@ ul.left-menu > li > a {
     line-height: 1.4;
     font-size: 17px;
     padding-top: 10px;
+}
+.holidaysBlock .holidaysBlock_text{
+    width: 64%;
+    line-height: 1.4;
+    font-size: 17px;
+    padding-top: 10px;
+}
+.holidaysBlock .holidaysBlock_text p{
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .weFindRent_text .orange {
     color: #f18c32;
