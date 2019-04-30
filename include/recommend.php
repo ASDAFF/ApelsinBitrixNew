@@ -12,14 +12,22 @@ while ($enum_fields = $property_enums->GetNext()) {
 global $arNewPrFilter;
 $arNewPrFilter = array(
     "XML_ID" => array(
-        "baf737ce-24f1-11de-8db9-000e0c431b58",
-        "82fe83b5-e990-11e4-ab92-005056be1f7b",
-        "ae2ba61a-b8d9-11e3-bec8-005056be1f7b",
-        "e562cab2-cbc5-11e4-a1f9-005056be1f7b",
-        "634380ab-ea9c-11e5-80d6-00155d41010d",
-        "076f6353-70a7-11e0-894e-000e0c431b58",
-        "86a7f18f-c471-11e6-80ec-00155dfef48a",
-        "4e40e896-ed9f-11e5-80d6-00155d41010d",
+//        "baf737ce-24f1-11de-8db9-000e0c431b58",
+//        "82fe83b5-e990-11e4-ab92-005056be1f7b",
+//        "ae2ba61a-b8d9-11e3-bec8-005056be1f7b",
+//        "e562cab2-cbc5-11e4-a1f9-005056be1f7b",
+//        "634380ab-ea9c-11e5-80d6-00155d41010d",
+//        "076f6353-70a7-11e0-894e-000e0c431b58",
+//        "86a7f18f-c471-11e6-80ec-00155dfef48a",
+//        "4e40e896-ed9f-11e5-80d6-00155d41010d",
+        "28338583-58f0-11e4-af06-005056be1f7b",
+        "a27bc941-a898-11e1-aa15-005056be3bd8",
+        "c6a65176-95cc-11e6-80eb-00155dfef489",
+        "5325f454-55cb-11e7-80e2-00155d410242",
+        "e7f19134-ff1a-11e6-80dc-00155d410385",
+        "20b7f8be-99a8-11db-937f-000e0c431b59",
+        "4c944d74-c9fb-11e3-a4fc-005056be1f7b",
+        "a38782b1-2dc0-11df-860d-000e0c431b58",
     )
 );
 
