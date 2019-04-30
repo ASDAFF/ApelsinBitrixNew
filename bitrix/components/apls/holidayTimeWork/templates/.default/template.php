@@ -6,7 +6,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
     <a href="/contacts/">Вернуться в контакты</a>
     <p class="headerText"><span class="orange">28 апреля</span> выходной день во всех магазинах сети Апельсин</p>
     <p class="bottomText"><span class="orange">1, 5, 9, 12 мая</span> действует Скидка до 10%</p>
-    <p class="bottomText">С <span class="orange">1 по 4 мая</span> и с <span>6 по 11 мая</span> действует Программа Бонус</p>
+    <p class="bottomText"><span class="orange">2, 3, 4, 6, 7, 8, 10, 11 мая</span> действует Программа Бонус</p>
     <table class="holiday_table">
         <tr class="holiday_header">
             <th class="col-1"></th>
