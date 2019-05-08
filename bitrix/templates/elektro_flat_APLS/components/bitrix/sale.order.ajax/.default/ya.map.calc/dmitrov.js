@@ -7,7 +7,7 @@ var ORDER_AJAX_DELIVERY_MAP = {
     OUTSIDE_MIN_PRICE: 500, // минимальаня цена за городом
     OUTSIDE_MAX_PRICE: false, // максимальаня цена за городом
     OUTSIDE_CONDITIONS: [
-        { KM_MIN: 1, KM_MAX: false, KM_PRICE: 40, FIX_PRICE: 500, FULL_PATH_CALC: false },
+        { KM_MIN: 1, KM_MAX: false, KM_PRICE: 40, FIX_PRICE: 500, FULL_PATH_CALC: true },
     ],
     MAP_CENTER: [56.343942, 37.520348],
     MAP_ZOOM: 11,

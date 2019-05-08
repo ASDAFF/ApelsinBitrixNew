@@ -254,7 +254,7 @@ function init() {
                 ) {
                     if(condition.KM_PRICE) { // если стоимость за киллометраж
                         if(condition.FULL_PATH_CALC) { // считаем киллометраж по полному пути
-                            price = allKm * condition.KM_PRICE;
+                            price = condition.FIX_PRICE + (allKm * condition.KM_PRICE);
                         } else { // если считаем киллометраж по доп киллометрам
                             price = condition.FIX_PRICE + ((km + 1 - condition.KM_MIN) * condition.KM_PRICE);
                         }
