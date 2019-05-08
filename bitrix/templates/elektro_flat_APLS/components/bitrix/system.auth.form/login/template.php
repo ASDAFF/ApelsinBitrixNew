@@ -1,5 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
+
 <div class="kabinet" id="kabinet">
 	<?$frame = $this->createFrame("kabinet")->begin("");?>
 		<script type="text/javascript">
@@ -84,10 +85,11 @@
 					<?endif?>					
 				</div>
 			</div>
-			<a class="register" href="<?=SITE_DIR?>personal/private/?register=yes" title="<?=GetMessage("REGISTRATION")?>" rel="nofollow"><i class="fa fa-user-plus"></i><span><?=GetMessage("REGISTRATION")?></span></a>
+<!--			<a class="register" href="--><?//=SITE_DIR?><!--personal/private/?register=yes" title="--><?//=GetMessage("REGISTRATION")?><!--" rel="nofollow"><i class="fa fa-user-plus"></i><span>--><?//=GetMessage("REGISTRATION")?><!--</span></a>-->
 		<?else:?>
-			<a class="personal" href="<?=SITE_DIR?>personal/" title="<?=GetMessage("PERSONAL")?>" rel="nofollow"><i class="fa fa-user"></i><span><?=GetMessage("PERSONAL")?></span></a>
-			<a class="exit" href="?logout=yes" title="<?=GetMessage("EXIT")?>"><i class="fa fa-sign-out"></i></a>
+            <a class="orders" href="<?=SITE_DIR?>personal/orders/" title="Заказы" rel="nofollow"><i class="fa fa-list"></i><span>Заказы</span></a>
+			<a class="personal" href="<?=SITE_DIR?>personal/" title="<?=GetMessage("PERSONAL")?>" rel="nofollow"><i class="fa fa-user"></i><span><?=$USER->GetFirstName()?></span></a>
+<!--			<a class="exit" href="?logout=yes" title="--><?//=GetMessage("EXIT")?><!--"><i class="fa fa-sign-out"></i></a>-->
 		<?endif;
 	$frame->end();?>
 </div>

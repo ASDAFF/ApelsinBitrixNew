@@ -156,6 +156,9 @@ a.btnPrint:hover,
     display: none;
 }
 @media screen and (max-width: 787px) and (min-width: 450px) {
+    .personal-info_right_column .UF_CARD_NUMBER img {
+        width: 100%;
+    }
     .personal-info_right_column {
         padding-left: 0;
         padding-top: 15px;
@@ -165,5 +168,8 @@ a.btnPrint:hover,
     .personal-info_right_column {
         padding-left: 0;
         padding-top: 15px;
+    }
+    .personal-info_right_column .UF_CARD_NUMBER img {
+        width: 100%;
     }
 }

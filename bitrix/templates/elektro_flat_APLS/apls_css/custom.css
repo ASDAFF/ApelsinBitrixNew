@@ -115,7 +115,119 @@ ul.left-menu > li > a {
 .weFindRent_text a:hover{
     color:#b05a0c;
 }
+.foot_panel_2 .oformit_cont {
+    display: none;
+}
+.foot_panel_2 .kabinet {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+.foot_panel_2 .kabinet a.login_anch {
+    padding: 5px 14px 0px 15px;
+    text-align: center;
+}
+.kabinet a.login_anch, .kabinet a.login_anch i{
+    font-size: 25px;
+    display: block;
+}
+.kabinet a.login_anch, #kabinet a.login_anch span{
+    display: table-cell!important;
+    font-size: 10px;
+}
+.kabinet a.login_anch, #kabinet a.login_anch:hover span{
+    color: #f18c32!important;
+}
+.kabinet a.login_anch {
+    border-right: none;
+    border-left:1px solid rgba(0,0,0,0.05);
+    padding: 5px 14px 0px 15px;
+    text-align: center;
+}
+.kabinet a.personal {
+    border-right: none;
+    border-left:1px solid rgba(0,0,0,0.05);
+    padding: 5px 10px 0px 9px;
+    text-align: center;
+}
+.kabinet a.login_anch, .kabinet a.personal i{
+    font-size: 25px;
+    display: block!important;
+}
+.kabinet a.login_anch span, #kabinet a.personal span{
+    display: block!important;
+    font-size: 10px;
+}
+.kabinet a.login_anch, #kabinet a.personal:hover span{
+    color: #f18c32!important;
+}
+.kabinet a.login_anch:hover, .kabinet a.personal:hover, .kabinet a.orders:hover {
+    background: #ffffff;
+}
+.kabinet a.login_anch:hover i, .kabinet a.personal:hover i, .kabinet a.orders:hover i {
+    color: #f18c32!important;
+}
+.kabinet a.orders {
+    height: 48px;
+    float: left;
+    display: table;
+    margin: 0px;
+    padding: 0px 14px 0px 15px;
+    border-left:1px solid rgba(0,0,0,0.05);
+}
+.kabinet a.orders i {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0px;
+    padding: 0px;
+    font-size: 30px;
+}
+.kabinet .pop-up.login {
+    right: 0 !important;
+    left: auto!important;
+}
+.kabinet .login:after {
+    right: 20px;
+    left: auto;
+}
+.foot_panel_1_mobile {
+    display: none;
+}
 @media screen and (max-width: 787px) {
+    .foot_panel_1 .kabinet a.login_anch, .foot_panel_1 .kabinet a.personal {
+        display: table!important;
+        padding: 0!important;
+    }
+    .kabinet a.login_anch i, .kabinet a.personal i{
+        display: table-cell!important;
+    }
+    .foot_panel_1_mobile {
+        display: block;
+        width: 33.33%;
+        height: 46px;
+    }
+    .foot_panel_1 .foot_panel_1_mobile .kabinet {
+        float: left;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    .foot_panel_2 .kabinet, .kabinet a.orders {
+        display: none;
+    }
+    .foot_panel_1_mobile .kabinet .pop-up.login {
+        left: 10px !important;
+        right: 10px!important;
+    }
+    .foot_panel_1_mobile .kabinet .pop-up.login:after {
+        left: 28px!important;
+        right: auto;
+    }
+    .foot_panel_1 #kabinet a.login_anch span, .foot_panel_1 #kabinet a.personal span{
+        display: none!important;
+    }
     .panel_1 .catalog-section-title a,
     .panel_2 .submenu a {
         font-size: 20px !important;

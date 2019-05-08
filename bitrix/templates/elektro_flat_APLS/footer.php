@@ -206,16 +206,18 @@ Loc::loadMessages(__FILE__); ?>
     <div class="foot_panel_all">
         <div class="foot_panel">
             <div class="foot_panel_1">
-                <? $APPLICATION->IncludeComponent("bitrix:system.auth.form", "login",
-                    array(
-                        "REGISTER_URL" => SITE_DIR . "personal/private/",
-                        "FORGOT_PASSWORD_URL" => SITE_DIR . "personal/private/",
-                        "PROFILE_URL" => SITE_DIR . "personal/private/",
-                        "SHOW_ERRORS" => "N"
-                    ),
-                    false,
-                    array("HIDE_ICONS" => "Y")
-                ); ?>
+                <div class="foot_panel_1_mobile">
+                    <? $APPLICATION->IncludeComponent("bitrix:system.auth.form", "login",
+                        array(
+                            "REGISTER_URL" => SITE_DIR . "personal/private/",
+                            "FORGOT_PASSWORD_URL" => SITE_DIR . "personal/private/",
+                            "PROFILE_URL" => SITE_DIR . "personal/private/",
+                            "SHOW_ERRORS" => "N"
+                        ),
+                        false,
+                        array("HIDE_ICONS" => "Y")
+                    ); ?>
+                </div>
                 <? $APPLICATION->IncludeComponent("bitrix:main.include", "",
                     array(
                         "AREA_FILE_SHOW" => "file",
@@ -239,6 +241,16 @@ Loc::loadMessages(__FILE__); ?>
                         "PATH_TO_ORDER" => SITE_DIR . "personal/order/make/",
                         "HIDE_ON_BASKET_PAGES" => "N",
                         "COUNT_DISCOUNT_4_ALL_QUANTITY" => "N",
+                    ),
+                    false,
+                    array("HIDE_ICONS" => "Y")
+                ); ?>
+                <? $APPLICATION->IncludeComponent("bitrix:system.auth.form", "login",
+                    array(
+                        "REGISTER_URL" => SITE_DIR . "personal/private/",
+                        "FORGOT_PASSWORD_URL" => SITE_DIR . "personal/private/",
+                        "PROFILE_URL" => SITE_DIR . "personal/private/",
+                        "SHOW_ERRORS" => "N"
                     ),
                     false,
                     array("HIDE_ICONS" => "Y")
