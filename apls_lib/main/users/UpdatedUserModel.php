@@ -186,11 +186,8 @@ class UpdatedUserModel
                     !empty($this->counterpartiesData) &&
                     $this->counterpartiesData !== null &&
                     $this->counterpartiesData["UF_ZABLOKIROVAN"] < 1 &&
-                    $this->noCardDuplicate($this->userData["ID"]) /*&&
-                    APLS_TextInspections::chekFIOString(
-                        $this->counterpartiesData["UF_NAME"],
-                        $this->userData["NAME"],
-                        $this->userData["LAST_NAME"])*/
+                    $this->noCardDuplicate($this->userData["ID"]) &&
+                    mb_strlen($this->userData['UF_CARD_NUMBER']) >= 12
                 ) {
 
                     if ($this->userData["UF_LAST_CARD_NUMBER"] != $this->userData["UF_CARD_NUMBER"]) {
