@@ -99,6 +99,9 @@ Loc::loadMessages(__FILE__);?>
 						<div class="logo">
 							<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/company_logo.php"), false);?>
 						</div>
+                        <div class="header_city">
+                            <?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/geolocation_mobile.php"), false, array("HIDE_ICONS" => "Y"));?>
+                        </div>
 					</div>
 					<div class="header_2">
 						<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/header_search.php"), false, array("HIDE_ICONS" => "Y"));?>
