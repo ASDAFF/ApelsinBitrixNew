@@ -406,9 +406,9 @@ Loc::loadMessages(__FILE__);?>
         </div>
         <div class="weFindRent_text">Компания "Апельсин" рассмотрит предложения по аренде помещения S <span class="orange">3 000 - 50 000 м²</span> для торговли строительно-отделочными материалами в Центральном Федеральном Округе, <a href="/information/to_rent/">подробнее...</a></div>
     </div>
-    <div class="holidaysBlock">
-        <div class="holidaysBlock_text"><p>Уважаемые покупатели, обратите внимание на график работы наших магазинов в праздничные дни, <a href="/contacts/?holiday=Y">подробнее...</a></p><p>Поздравляем с праздниками!</p></div>
-    </div>
+<!--    <div class="holidaysBlock">-->
+<!--        <div class="holidaysBlock_text"><p>Уважаемые покупатели, обратите внимание на график работы наших магазинов в праздничные дни, <a href="/contacts/?holiday=Y">подробнее...</a></p><p>Поздравляем с праздниками!</p></div>-->
+<!--    </div>-->
                                 <?
 								if(in_array("PROMOTIONS", $arSetting["HOME_PAGE"]["VALUE"])):?>
 									<?$APPLICATION->IncludeComponent("bitrix:main.include", "",
