@@ -193,7 +193,25 @@ ul.left-menu > li > a {
 .foot_panel_1_mobile {
     display: none;
 }
+.header_1 .header_city {
+    display: none;
+}
 @media screen and (max-width: 787px) {
+    .header_1 .logo a {
+        margin-left: 5px;
+    }
+    .header_1 .logo {
+        display: inline-block;
+        width: auto;
+    }
+    .header_1 .header_city {
+        display: inline-block;
+        width: 49%;
+        text-align: right;
+        padding-right: 5px;
+        right: 0;
+        position: absolute;
+    }
     .foot_panel_1 .kabinet a.login_anch, .foot_panel_1 .kabinet a.personal {
         display: table!important;
         padding: 0!important;
