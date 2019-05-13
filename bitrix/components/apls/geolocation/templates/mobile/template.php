@@ -12,7 +12,7 @@ use Bitrix\Main\Localization\Loc;
     </a>
 </div>
 <div class="telephone">8 (800) 550-54-43</div>
-<div class="email">info@apelsin.ru</div>
+<!--<div class="email">info@apelsin.ru</div>-->
 <script type="text/javascript">
     BX.message({
         GEOLOCATION_POPUP_WINDOW_TITLE: "<?=Loc::getMessage('GEOLOCATION_POPUP_WINDOW_TITLE')?>",
