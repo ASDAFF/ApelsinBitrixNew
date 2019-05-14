@@ -14,7 +14,7 @@ use Bitrix\Main\Localization\Loc;
 <div class="telephone">
     <?=(!empty($arResult["CONTACTS"]) ? $arResult["CONTACTS"] : "");?>
 </div>
-<div class="email">info@apelsin.ru</div>
+<!--<div class="email">info@apelsin.ru</div>-->
 <script type="text/javascript">
     BX.message({
         GEOLOCATION_POPUP_WINDOW_TITLE: "<?=Loc::getMessage('GEOLOCATION_POPUP_WINDOW_TITLE')?>",
