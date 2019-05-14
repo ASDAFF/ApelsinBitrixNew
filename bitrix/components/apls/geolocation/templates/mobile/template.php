@@ -4,7 +4,7 @@ use Bitrix\Main\Localization\Loc;
 ?>
 
 <div id="geolocation" class="geolocation">
-    <a id="geolocationChangeCity" class="geolocation__link" href="javascript:void(0);">
+    <a id="geolocationChangeCity_mobile" class="geolocation__link" href="javascript:void(0);">
         <i class="fa fa-map-marker" aria-hidden="true"></i>
         <span class="geolocation__value">
             <?=(!empty($arParams["GEOLOCATION_REGION_NAME"]) ? $arParams["GEOLOCATION_REGION_NAME"] : Loc::getMessage("GEOLOCATION_POSITIONING"));?>
@@ -12,7 +12,7 @@ use Bitrix\Main\Localization\Loc;
     </a>
 </div>
 <div class="telephone">8 (800) 550-54-43</div>
-<div class="email">info@apelsin.ru</div>
+<!--<div class="email">info@apelsin.ru</div>-->
 <script type="text/javascript">
     BX.message({
         GEOLOCATION_POPUP_WINDOW_TITLE: "<?=Loc::getMessage('GEOLOCATION_POPUP_WINDOW_TITLE')?>",
@@ -21,5 +21,5 @@ use Bitrix\Main\Localization\Loc;
         GEOLOCATION_PARAMS: <?=CUtil::PhpToJSObject($arParams["PARAMS_STRING"])?>,
     });
 
-    BX.bind(BX("geolocationChangeCity"), "click", BX.delegate(BX.CityChange, BX));
+    BX.bind(BX("geolocationChangeCity_mobile"), "click", BX.delegate(BX.CityChange, BX));
 </script>
