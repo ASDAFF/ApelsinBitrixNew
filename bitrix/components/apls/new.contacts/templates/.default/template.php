@@ -18,7 +18,9 @@ $thisDay = date(D);
 <!--        <div class="holidayWork">-->
 <!--            <a href="/contacts/?holiday=Y">Время работы в выходные и праздничные дни</a>-->
 <!--        </div>-->
+
         <div class="contact_settings">
+            <div class="internet_shop_contacts">Интернет-магазин 8 (800) 500-54-43 info@apelsin.ru</div>
             <div id="mapBlock" class="contacts_settings_map contacts_settings">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <strong>Карта</strong>

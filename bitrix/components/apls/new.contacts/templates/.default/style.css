@@ -1,13 +1,28 @@
+.internet_shop_contacts {
+    display: inline-block;
+    width: auto;
+    font-size: 14px;
+}
 .contact_settings {
-    text-align: right;
+    /*display: inline-block;*/
+    /*text-align: right;*/
+    position: relative;
+    padding: 10px 15px;
 }
 .contact_settings .contacts_settings_map,
 .contact_settings .contacts_edit_list{
     display: inline-block;
-    padding: 5px 15px;
     font-size: 16px;
     color: #8184a1;
     cursor: pointer;
+    position: absolute;
+
+}
+.contact_settings .contacts_settings_map {
+    right: 15px;
+}
+.contact_settings .contacts_edit_list{
+    right: 95px;
 }
 .contact_settings .contacts_settings_map.active,
 .contact_settings .contacts_edit_list.active{
@@ -366,5 +381,14 @@
     }
     .feedback .big_image_wrapper img{
         width: 100%;
+    }
+    .internet_shop_contacts {
+        padding-bottom: 10px;
+    }
+    .contact_settings .contacts_settings_map, .contact_settings .contacts_edit_list {
+        position: initial;
+    }
+    .contacts_settings_map {
+        padding-right: 15px;
     }
 }
