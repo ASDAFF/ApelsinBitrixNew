@@ -212,6 +212,9 @@ ul.left-menu > li > a {
         right: 0;
         position: absolute;
     }
+    .header_1 .telephone {
+        padding-top: 10px;
+    }
     .foot_panel_1 .kabinet a.login_anch, .foot_panel_1 .kabinet a.personal {
         display: table!important;
         padding: 0!important;
