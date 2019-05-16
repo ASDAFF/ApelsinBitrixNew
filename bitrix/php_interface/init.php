@@ -43,7 +43,7 @@ function updateAmountInfo() {
     if(CModule::IncludeModule("iblock")) {
         $elements = CIBlockElement::GetList (
             Array("ID" => "ASC"),
-            Array("IBLOCK_ID" => $CATALOG_IBLOCK,"ACTIVE" => "Y"),
+            Array("IBLOCK_ID" => $CATALOG_IBLOCK),
             false,
             false,
             Array('ID','PROPERTY_'.$FOR_SALE_PROPERTY_CODE,'PROPERTY_'.$AMOUNT_PROPERTY_CODE)
@@ -67,6 +67,8 @@ function updateAmountInfo() {
             }
             if($AMOUNT_STATUS[$key]["VALUE"] != $element['PROPERTY_'.$AMOUNT_PROPERTY_CODE.'_VALUE']) {
                 CIBlockElement::SetPropertyValues($element['ID'], $CATALOG_IBLOCK, $AMOUNT_STATUS[$key]["ID"], $AMOUNT_PROPERTY_CODE);
+                $el = new CIBlockElement;
+                $el->Update($element['ID'], array());
             }
         }
     }

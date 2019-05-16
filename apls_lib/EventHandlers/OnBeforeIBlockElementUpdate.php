@@ -10,7 +10,8 @@ class APLS_ActivateUpdater
 {
     const SITE_DEL_SECTION_XML_ID = "98557c36-f99a-11e6-80ec-00155dfef48a";
     const AKTIVNOST_XML_ID = "26e05687-c602-4c36-8b63-debb1b4e0250";
-    const CHECKEDPRODUCT_XML_ID = "26e05687-c602-4c36-8b63-desc5g0XN322";
+    const CHECKEDPRODUCT_XML_ID = "26e05687-c602-4c36-8b63-desc5g0XN322"; // ТоварЗаполнен
+    const AMOUNT_STATUS_XML_ID = "AMOUNT_STATUS"; // Статус товара
     const KOEFF_XML_ID = "26e05687-c602-4c36-8b63-debb3g4eu248";
     const XML_ARRAY = array(
         "KOEFF" => "26e05687-c602-4c36-8b63-debb3g4eu248",
@@ -28,6 +29,8 @@ class APLS_ActivateUpdater
     private static $aktivnost_code;
     private static $checkedProduct_code;
     private static $checkedProduct_id;
+    private static $amountStatus_id;
+    private static $amountStatus_code;
     private static $dimensions_koeff_id = array();
     private static $dimensions_id = array();
     private static $siteDelSectionId;
@@ -43,7 +46,9 @@ class APLS_ActivateUpdater
         self::$aktivnost_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::AKTIVNOST_XML_ID);
         self::$aktivnost_code = APLS_CatalogProperties::convertPropertyXMLIDtoCODE(self::AKTIVNOST_XML_ID);
         self::$checkedProduct_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::CHECKEDPRODUCT_XML_ID);
+        self::$amountStatus_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::AMOUNT_STATUS_XML_ID);
         self::$checkedProduct_code = APLS_CatalogProperties::convertPropertyXMLIDtoCODE(self::CHECKEDPRODUCT_XML_ID);
+        self::$amountStatus_code = APLS_CatalogProperties::convertPropertyXMLIDtoCODE(self::AMOUNT_STATUS_XML_ID);
         self::$dimensions_koeff_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::KOEFF_XML_ID);
         foreach (self::XML_ARRAY as $key => $code) {
             self::$dimensions_id[$key] = APLS_CatalogProperties::convertPropertyXMLIDtoID($code);
@@ -52,6 +57,14 @@ class APLS_ActivateUpdater
         $property_enums = CIBlockPropertyEnum::GetList(
             Array("DEF"=>"DESC", "SORT"=>"ASC"),
             Array("IBLOCK_ID"=>APLS_CatalogHelper::getShopIblockId(), "CODE"=>self::$checkedProduct_code)
+        );
+        while($enum_fields = $property_enums->GetNext())
+        {
+            self::$options[$enum_fields["ID"]] = $enum_fields["XML_ID"];
+        }
+        $property_enums = CIBlockPropertyEnum::GetList(
+            Array("DEF"=>"DESC", "SORT"=>"ASC"),
+            Array("IBLOCK_ID"=>APLS_CatalogHelper::getShopIblockId(), "CODE"=>self::$amountStatus_code)
         );
         while($enum_fields = $property_enums->GetNext())
         {
@@ -77,9 +90,12 @@ class APLS_ActivateUpdater
         $res_arr = $rs->Fetch();
         $activeValue = isset($arFields["ACTIVE"]) ? $arFields["ACTIVE"] : $res_arr["ACTIVE"];
         if ($res_arr['IBLOCK_SECTION_ID'] === self::$siteDelSectionId && $res_arr["ACTIVE"] === "Y") {
+            // если товар в разделе на удаление и активен, то мы его деактивируем
             $arFields["ACTIVE"] = "N";
         } else {
-            if (self::$options[self::getArrayPropertyValue($arFields, self::$checkedProduct_id)] == "true") {
+            // если товар в обычном разделе
+            if (self::$options[self::getArrayPropertyValue($arFields, self::$checkedProduct_id)] == "true" && self::$options[self::getArrayPropertyValue($arFields, self::$amountStatus_id)] != "NOT_FOR_SALE") {
+                // если твоар заполнен
                 $arr_akt = CIBlockElement::GetProperty($arFields["IBLOCK_ID"], $arFields["ID"], array(), array("CODE" => self::$aktivnost_code));
                 if ($prop_akt = $arr_akt->Fetch()) {
                     if (
@@ -99,6 +115,7 @@ class APLS_ActivateUpdater
                     }
                 }
             } else {
+                // если твоар не заполнен
                 $arFields["ACTIVE"] = "N";
             }
         }
