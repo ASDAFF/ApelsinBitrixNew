@@ -9,6 +9,61 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogHelper.p
 
 require __DIR__ . "/functions.php";
 
+function updateAmountInfo() {
+    $CATALOG_IBLOCK = APLS_CatalogHelper::getShopIblockId();
+    $FOR_SALE_PROPERTY_CODE = "SKRYVATNULEVOYOSTATOK";
+    $AMOUNT_PROPERTY_CODE = "AMOUNT_STATUS";
+    $AMOUNT_STATUS = array(
+        "IN_STOCK" => "В наличии",
+        "NOT_FOR_SALE" => "Ожидает поставки",
+        "UNDER_THE_ORDER" => "Под заказ",
+    );
+    // получаем список складов
+    $stores = array();
+    $select_fields = Array();
+    $filter = Array("ACTIVE" => "Y");
+    $resStore = CCatalogStore::GetList(array(),$filter,false,false,$select_fields);
+    while($store = $resStore->Fetch()) {
+        $stores[] = $store;
+    }
+    $storesId = array();
+    foreach ($stores as $store) {
+        $storesId[] = $store["ID"];
+    }
+    // получаем список товаров
+    if(CModule::IncludeModule("iblock")) {
+        $elements = CIBlockElement::GetList (
+            Array("ID" => "ASC"),
+            Array("IBLOCK_ID" => $CATALOG_IBLOCK,"ACTIVE" => "Y"),
+            false,
+            false,
+            Array('ID','PROPERTY_'.$FOR_SALE_PROPERTY_CODE,'PROPERTY_'.$AMOUNT_PROPERTY_CODE)
+        );
+        while($element= $elements->GetNext())
+        {
+            $FOR_SALE = $element['PROPERTY_'.$FOR_SALE_PROPERTY_CODE.'_VALUE'] == "Да";
+            $rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $element['ID'], 'STORE_ID'=>$storesId), false, false, array('AMOUNT'));
+            $sum = array();
+            $amount = 0;
+            while ($arStore = $rsStore->Fetch()) {
+                $sum[] = $arStore['AMOUNT'];
+                $amount += $arStore['AMOUNT'];
+            }
+            if($amount > 0) {
+                $key = "IN_STOCK";
+            } else if($FOR_SALE) {
+                $key = "NOT_FOR_SALE";
+            } else {
+                $key = "UNDER_THE_ORDER";
+            }
+            if($AMOUNT_STATUS[$key] != $element['PROPERTY_'.$AMOUNT_PROPERTY_CODE.'_VALUE']) {
+                CIBlockElement::SetPropertyValues($element['ID'], $CATALOG_IBLOCK, $AMOUNT_STATUS[$key], $AMOUNT_PROPERTY_CODE);
+            }
+        }
+    }
+    return "updateAmountInfo();";
+}
+
 function weekendDiscount($apply) {
     $userGroup = array(1, 12);
     if($apply) {
