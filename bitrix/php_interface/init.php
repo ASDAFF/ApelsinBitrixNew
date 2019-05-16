@@ -14,10 +14,19 @@ function updateAmountInfo() {
     $FOR_SALE_PROPERTY_CODE = "SKRYVATNULEVOYOSTATOK";
     $AMOUNT_PROPERTY_CODE = "AMOUNT_STATUS";
     $AMOUNT_STATUS = array(
-        "IN_STOCK" => "В наличии",
-        "NOT_FOR_SALE" => "Ожидает поставки",
-        "UNDER_THE_ORDER" => "Под заказ",
+        "IN_STOCK" => array("ID"=>"","VALUE"=>"В наличии"),
+        "NOT_FOR_SALE" => array("ID"=>"","VALUE"=>"Ожидает поставки"),
+        "UNDER_THE_ORDER" => array("ID"=>"","VALUE"=>"Под заказ"),
     );
+    // Устанвока соответствия значений и ID значенйи свойства
+    $property_enums = CIBlockPropertyEnum::GetList(Array("ID"=>"ASC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$CATALOG_IBLOCK, "CODE"=>$AMOUNT_PROPERTY_CODE));
+    while ($enum_fields = $property_enums->GetNext()) {
+        foreach ($AMOUNT_STATUS as $key => $el) {
+            if($enum_fields["VALUE"] == $el["VALUE"]) {
+                $AMOUNT_STATUS[$key]["ID"] = $enum_fields["ID"];
+            }
+        }
+    }
     // получаем список складов
     $stores = array();
     $select_fields = Array();
@@ -56,8 +65,8 @@ function updateAmountInfo() {
             } else {
                 $key = "UNDER_THE_ORDER";
             }
-            if($AMOUNT_STATUS[$key] != $element['PROPERTY_'.$AMOUNT_PROPERTY_CODE.'_VALUE']) {
-                CIBlockElement::SetPropertyValues($element['ID'], $CATALOG_IBLOCK, $AMOUNT_STATUS[$key], $AMOUNT_PROPERTY_CODE);
+            if($AMOUNT_STATUS[$key]["VALUE"] != $element['PROPERTY_'.$AMOUNT_PROPERTY_CODE.'_VALUE']) {
+                CIBlockElement::SetPropertyValues($element['ID'], $CATALOG_IBLOCK, $AMOUNT_STATUS[$key]["ID"], $AMOUNT_PROPERTY_CODE);
             }
         }
     }
