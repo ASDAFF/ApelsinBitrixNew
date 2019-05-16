@@ -8,6 +8,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/apls_lib/catalog/APLS_CatalogItemDeta
 include_once $_SERVER["DOCUMENT_ROOT"] . '/apls_lib/catalog/APLS_CatalogItemDetailsAction.php';
 include_once $_SERVER["DOCUMENT_ROOT"] . '/apls_lib/catalog/APLS_CatalogItemDetailsServiceCenters.php';
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/classes/PromotionHelper.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogHelper.php";
 
 class APLS_CatalogItemInfo
 {
@@ -21,6 +22,8 @@ class APLS_CatalogItemInfo
     const YES_BOOL_VALUE = "Да";
     const RUB_STRING = "руб.";
 
+    const FOR_SALE_PROPERTY_CODE = "SKRYVATNULEVOYOSTATOK";
+
     static $amountStatus = array(
         "IN_STOCK" => array(
             "class" => "avl",
@@ -29,7 +32,7 @@ class APLS_CatalogItemInfo
         ),
         "NOT_FOR_SALE" => array(
             "class" => "not_avl",
-            "text" => "Под заказ",
+            "text" => "Ожидает поставки",
             "icon" => "fa-clock-o",
         ),
         "UNDER_THE_ORDER" => array(
@@ -218,10 +221,24 @@ class APLS_CatalogItemInfo
             $amount += $arStore['AMOUNT'];
         }
 //        $amount = APLS_StoreAmount::getStoresAmountByGeolocation ($elementId);
+        $elementDataArr = CIBlockElement::GetList (
+            Array("ID" => "ASC"),
+            Array("IBLOCK_ID" => APLS_CatalogHelper::getShopIblockId(),"ID" => $elementId),
+            false,
+            false,
+            Array('ID','PROPERTY_'.self::FOR_SALE_PROPERTY_CODE)
+        );
+        $FOR_SALE = false;
+        while($elementData= $elementDataArr->GetNext())
+        {
+            $FOR_SALE = $elementData['PROPERTY_'.self::FOR_SALE_PROPERTY_CODE.'_VALUE'] == "Да";
+        }
         if($amount > 0) {
             $key = "IN_STOCK";
-        } else {
+        } else if($FOR_SALE) {
             $key = "NOT_FOR_SALE";
+        } else {
+            $key = "UNDER_THE_ORDER";
         }
         return '<div class="avl"><i class="fa '.static::$amountStatus[$key]["icon"].'"></i><span> '.static::$amountStatus[$key]["text"].'</span></div>';
     }
