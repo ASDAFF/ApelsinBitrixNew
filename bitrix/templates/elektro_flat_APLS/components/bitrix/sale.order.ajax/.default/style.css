@@ -1535,6 +1535,7 @@
 
 	.bx-soa-cart-total{
 		width:100% !important;
+		display: none;
 	}
 
 	.bx-soa-cart-total.bx-soa-cart-total-fixed{
