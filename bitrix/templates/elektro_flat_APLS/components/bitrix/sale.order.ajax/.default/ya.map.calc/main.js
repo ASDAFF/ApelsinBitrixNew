@@ -157,7 +157,7 @@ function init() {
                                         balloonContentLayout = ymaps.templateLayoutFactory.createClass(
                                             '<span>Расстояние: ' + allKm + ' км.</span><br/>' +
                                             // '<span>Расстояние за городом: ' + wayOutsideKm + 'км.</span><br/>' +
-                                            '<span style="font-weight: bold; font-style: italic">Стоимость доставки: ' + price + ' р.</span>'
+                                            '<span style="font-weight: bold; font-style: italic">Стоимость доставки: <span class="mapBalloonPrice">' + price + '</span> р.</span>'
                                         );
                                     route.options.set('routeBalloonContentLayout', balloonContentLayout);
                                     activeRoute.balloon.open();
@@ -178,11 +178,19 @@ function init() {
                                 balloonContentLayout = ymaps.templateLayoutFactory.createClass(
                                     '<span>Расстояние: ' + allKm + ' км.</span><br/>' +
                                     // '<span>Расстояние за городом: ' + wayOutsideKm + 'км.</span><br/>' +
-                                    '<span style="font-weight: bold; font-style: italic">Стоимость доставки: ' + price + ' р.</span>'
+                                    '<span style="font-weight: bold; font-style: italic">Стоимость доставки: <span class="mapBalloonPrice">' + price + '</span> р.</span>'
                                 );
                             route.options.set('routeBalloonContentLayout', balloonContentLayout);
                             activeRoute.balloon.open();
-                            setPrice();
+                            if(ORDER_AJAX_DELIVERY_MAP.CITY_FREE_DELIVERY_PRICE) {
+                                var atr = {
+                                    "allKm" : allKm,
+                                    "route" : route,
+                                };
+                                getPropertyValues(['26e05687-c602-4c36-8b63-debb1b4ee315'],freeDeliveryCallback, atr);
+                            } else {
+                                setPrice();
+                            }
                         }
                     }
                 });
@@ -287,8 +295,39 @@ function setPrice() {
     }
 }
 
+function freeDeliveryCallback(result, atr) {
+    var freeDeliveryItem = [];
+    var notFreeDeliveryItem = [];
+    var counterFree = 0;
+    var counterNotFree = 0;
+    $.each(result.values, function (property,value) {
+        $.each(value,function (key, val) {
+            if(val == "Да") {
+                freeDeliveryItem[counterFree++] = key;
+            } else {
+                notFreeDeliveryItem[counterNotFree++] = key;
+            }
+        });
+    });
+    if(freeDeliveryItem.length > 0 && freeDeliveryItem.length >= notFreeDeliveryItem.length) {
+        if(BX.Sale.OrderAjaxComponent.result.TOTAL.ORDER_PRICE >= ORDER_AJAX_DELIVERY_MAP.CITY_FREE_DELIVERY_LIMIT_ORDER_COST) {
+            DELIVERY_PRICE = 0;
+        } else {
+            DELIVERY_PRICE = ORDER_AJAX_DELIVERY_MAP.CITY_FREE_DELIVERY_PRICE;
+        }
+    }
+    // $('.mapBalloonPrice').html(DELIVERY_PRICE);
+    console.log(atr);
+    var balloonContentLayout = ymaps.templateLayoutFactory.createClass(
+        '<span>Расстояние: ' + atr.allKm + ' км.</span><br/>' +
+        '<span style="font-weight: bold; font-style: italic">Стоимость доставки: <span class="mapBalloonPrice">' + DELIVERY_PRICE + '</span> р.</span>'
+    );
+    atr.route.options.set('routeBalloonContentLayout', balloonContentLayout);
+    setPrice();
+}
 
-function getPropertyValues(array, callback) {
+
+function getPropertyValues(array, callback, atr) {
     var data = [];
     var counter = 1;
     array.forEach(function (item) {
@@ -301,7 +340,7 @@ function getPropertyValues(array, callback) {
         method: 'POST',
         dataType: 'JSON',
         onsuccess: function (result) {
-            callback(result);
+            callback(result, atr);
         }
     });
 }
