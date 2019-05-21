@@ -286,3 +286,22 @@ function setPrice() {
         $("input[name~='DELIVERY_EXTRA_SERVICES[20][15]']")[0].dispatchEvent(event);
     }
 }
+
+
+function getPropertyValues(array, callback) {
+    var data = [];
+    var counter = 1;
+    array.forEach(function (item) {
+        data["item_"+counter] = item;
+        counter++;
+    });
+    return BX.ajax({
+        url: "/bitrix/templates/elektro_flat_APLS/components/bitrix/sale.order.ajax/.default/ya.map.calc/ajax/getPropertyValues.php",
+        data: data,
+        method: 'POST',
+        dataType: 'JSON',
+        onsuccess: function (result) {
+            callback(result);
+        }
+    });
+}
