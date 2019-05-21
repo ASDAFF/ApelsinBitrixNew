@@ -1538,7 +1538,7 @@
 	}
 
 	.bx-soa-cart-total.bx-soa-cart-total-fixed{
-		position:static;
+		position:static!important;
 	}
 
 	.bx-soa-cart-total.bx-soa-cart-total-bottom{
