@@ -34,9 +34,9 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label class="field-title"><?=GetMessage("AUTH_LOGIN_MIN")?><span class="starrequired">*</span></label>
+                    <label class="field-title"><?=GetMessage("AUTH_LOGIN_MIN")?></label>
                     <div class="form-input">
-                        <input type="text" name="USER_LOGIN" maxlength="50" value="<?=$arResult["USER_LOGIN"]?>" />
+                        <input id="form-input-login" type="text" name="USER_LOGIN" maxlength="50" value="<?=$arResult["USER_LOGIN"]?>" />
                     </div>
 <!--                    <div class="description">&mdash; --><?//=GetMessage("LOGIN_REQUIREMENTS")?><!--</div>-->
                 </div>
@@ -56,7 +56,7 @@
                 <div class="field">
                     <label class="field-title">E-Mail<span class="starrequired">*</span></label>
                     <div class="form-input">
-                        <input type="text" name="USER_EMAIL" maxlength="255" value="<?=$arResult["USER_EMAIL"]?>" />
+                        <input id="form-input-email" type="text" name="USER_EMAIL" maxlength="255" value="<?=$arResult["USER_EMAIL"]?>" />
                     </div>
                 </div>
                 <div class="field">
@@ -158,6 +158,9 @@
     //SUBMIT//
     BX.bind(BX("submit"),"click",function(e){
         //OTHER_FIELDS//
+        if (BX('form-input-login').value == '' && BX('form-input-email').value != '') {
+            BX('form-input-login').value = BX('form-input-email').value;
+        }
         var fields = BX.findChildren(BX("register-form"),{"class":"form-input"},true);
         var alert = Array();
         var name = Array();
