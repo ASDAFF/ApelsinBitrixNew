@@ -187,7 +187,7 @@ function init() {
                                     "allKm" : allKm,
                                     "route" : route,
                                 };
-                                getPropertyValues(['26e05687-c602-4c36-8b63-debb1b4ee315'],freeDeliveryCallback, atr);
+                                getPropertyValues(['0685b3bb-d2bc-46ab-a5db-2507c9eb8324'],freeDeliveryCallback, atr);
                             } else {
                                 setPrice();
                             }
