@@ -149,16 +149,18 @@ ul.left-menu > li > a {
     border-left:1px solid rgba(0,0,0,0.05);
     padding: 5px 10px 0px 9px;
     text-align: center;
+    float: right;
 }
-.kabinet a.login_anch, .kabinet a.personal i{
+.kabinet a.login_anch, .kabinet a.personal i, .kabinet a.orders i{
     font-size: 25px;
     display: block!important;
 }
-.kabinet a.login_anch span, #kabinet a.personal span{
+.kabinet a.login_anch span, #kabinet a.personal span, #kabinet a.orders span{
     display: block!important;
     font-size: 10px;
+    font-weight: 700;
 }
-.kabinet a.login_anch, #kabinet a.personal:hover span{
+.kabinet a.login_anch, #kabinet a.personal:hover span, #kabinet a.orders:hover span{
     color: #f18c32!important;
 }
 .kabinet a.login_anch:hover, .kabinet a.personal:hover, .kabinet a.orders:hover {
@@ -168,19 +170,19 @@ ul.left-menu > li > a {
     color: #f18c32!important;
 }
 .kabinet a.orders {
-    height: 48px;
-    float: left;
-    display: table;
-    margin: 0px;
-    padding: 0px 14px 0px 15px;
+    border-right: none;
     border-left:1px solid rgba(0,0,0,0.05);
+    padding: 5px 10px 0px 9px;
+    text-align: center;
+    display: inline-block;
+    color: #ffffff;
 }
 .kabinet a.orders i {
-    display: table-cell;
-    vertical-align: middle;
-    margin: 0px;
-    padding: 0px;
-    font-size: 30px;
+    /*display: table-cell;*/
+    /*vertical-align: middle;*/
+    /*margin: 0px;*/
+    /*padding: 0px;*/
+    /*font-size: 30px;*/
 }
 .kabinet .pop-up.login {
     right: 0 !important;
