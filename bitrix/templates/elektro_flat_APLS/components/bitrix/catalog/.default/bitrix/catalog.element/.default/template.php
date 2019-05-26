@@ -1,4 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+include_once $_SERVER["DOCUMENT_ROOT"].'/apls_lib/catalog/APLS_CatalogItemInfo.php';
 
 global $arSetting;
 $isPreviewImg = is_array($arResult["PREVIEW_IMG"]);
@@ -155,7 +156,6 @@ $templateData = array(
 $sticker = "";
 $timeBuy = "";
 if(array_key_exists("PROPERTIES", $arResult) && is_array($arResult["PROPERTIES"])) {
-    include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogItemInfo.php";
     $sticker .= APLS_CatalogItemInfo::getLables($arResult['ID'],$arResult['XML_ID'],$arResult["PROPERTIES"]);
 	//NEW//
 	if(array_key_exists("NEWPRODUCT", $arResult["PROPERTIES"]) && !$arResult["PROPERTIES"]["NEWPRODUCT"]["VALUE"] == false)
@@ -464,7 +464,6 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 				<?}?>
                 <?
                 /*** Выводим наш блок с реквизитами товаров ***/
-                include_once $_SERVER["DOCUMENT_ROOT"].'/apls_lib/catalog/APLS_CatalogItemInfo.php';
                 echo APLS_CatalogItemInfo::getItemMorInfo($arResult["ID"],$arResult["XML_ID"],$arResult["PROPERTIES"]);
                 ?>
 				<div class="column three">
