@@ -133,11 +133,11 @@ if ($arResult['DATA_SAVED'] == 'Y') {
 		<div class="personal-info personal_pass">
 			<div class="personal-info_in">
 				<?=GetMessage('NEW_PASSWORD_REQ')?><br>
-				<input type="password" name="NEW_PASSWORD" maxlength="50" class="input_text_style" value="" autocomplete="off" />
+				<input type="password" name="NEW_PASSWORD" maxlength="50" class="input_text_style" value="" autocomplete="new-password" />
 				<br><br>
 
 				<?=GetMessage('NEW_PASSWORD_CONFIRM')?><br>
-				<input type="password" name="NEW_PASSWORD_CONFIRM" maxlength="50" class="input_text_style" value="" autocomplete="off" />
+				<input type="password" name="NEW_PASSWORD_CONFIRM" maxlength="50" class="input_text_style" value="" autocomplete="new-password" />
 			</div>
 		</div>
             <button type="submit" name="save" class="btn_buy popdef bt3" value="<?=GetMessage('MAIN_SAVE')?>"><?=GetMessage("MAIN_SAVE")?></button>
