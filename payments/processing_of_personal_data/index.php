@@ -238,10 +238,9 @@ $APPLICATION->SetTitle("ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ");
                     интернет-магазина, если иное не предусмотрено новой редакцией Политики конфиденциальности.
                 </li>
                 <li>Все предложения или вопросы по настоящей Политике конфиденциальности следует сообщать по адресу:
-                    site.support@apelsin.ru
+                    info@apelsin.ru
                 </li>
-                <li>Действующая Политика конфиденциальности размещена на странице по адресу apelsin.ru/
-                    payments/processing_of_personal_data/.
+                <li>Действующая Политика конфиденциальности размещена на странице по адресу <a href="https://apelsin.ru/payments/processing_of_personal_data/">apelsin.ru/payments/processing_of_personal_data/</a>.
                 </li>
             </ol>
         </li
