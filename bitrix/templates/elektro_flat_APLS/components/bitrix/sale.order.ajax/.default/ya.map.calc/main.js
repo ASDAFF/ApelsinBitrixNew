@@ -2,6 +2,7 @@ var DELIVERY_PRICE = 0;
 var DESTINATION_COORDINATE = "";
 var DESTINATION_STRING = "";
 var TEST = 0;
+var CART_DATA = [];
 
 function yaMapCalcInit(currentDelivery) {
     // console.log(soAjax);
@@ -44,6 +45,7 @@ function yaMapCalcInit(currentDelivery) {
 }
 
 function init() {
+    getCartInfo();
     var myMap = new ymaps.Map('delivery-map', {
             center: ORDER_AJAX_DELIVERY_MAP.MAP_CENTER,
             // zoom: ORDER_AJAX_DELIVERY_MAP.MAP_ZOOM,
@@ -343,4 +345,16 @@ function getPropertyValues(array, callback, atr) {
             callback(result, atr);
         }
     });
+}
+
+function getCartInfo() {
+    return BX.ajax({
+        url: "/bitrix/templates/elektro_flat_APLS/components/bitrix/sale.order.ajax/.default/ya.map.calc/ajax/getCartInfo.php",
+        // data: data,
+        method: 'POST',
+        dataType: 'JSON',
+        onsuccess: function (result) {
+            CART_DATA = result;
+        }
+    })
 }
