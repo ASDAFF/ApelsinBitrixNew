@@ -158,7 +158,6 @@ function init() {
                                     var price = calculate(wayOutsideKm, allKm),
                                         balloonContentLayout = ymaps.templateLayoutFactory.createClass(
                                             '<span>Расстояние: ' + allKm + ' км.</span><br/>' +
-                                            // '<span>Расстояние за городом: ' + wayOutsideKm + 'км.</span><br/>' +
                                             '<span style="font-weight: bold; font-style: italic">Стоимость доставки: <span class="mapBalloonPrice">' + price + '</span> р.</span>'
                                         );
                                     route.options.set('routeBalloonContentLayout', balloonContentLayout);
@@ -179,7 +178,6 @@ function init() {
                             var price = calculate(wayOutsideKm, allKm),
                                 balloonContentLayout = ymaps.templateLayoutFactory.createClass(
                                     '<span>Расстояние: ' + allKm + ' км.</span><br/>' +
-                                    // '<span>Расстояние за городом: ' + wayOutsideKm + 'км.</span><br/>' +
                                     '<span style="font-weight: bold; font-style: italic">Стоимость доставки: <span class="mapBalloonPrice">' + price + '</span> р.</span>'
                                 );
                             route.options.set('routeBalloonContentLayout', balloonContentLayout);
@@ -302,6 +300,7 @@ function freeDeliveryCallback(result, atr) {
     var notFreeDeliveryItem = [];
     var counterFree = 0;
     var counterNotFree = 0;
+    var freeDelivery = false;
     $.each(result.values, function (property,value) {
         $.each(value,function (key, val) {
             if(val == "Да") {
@@ -312,6 +311,7 @@ function freeDeliveryCallback(result, atr) {
         });
     });
     if(freeDeliveryItem.length > 0 && freeDeliveryItem.length >= notFreeDeliveryItem.length) {
+        freeDelivery = true;
         if(BX.Sale.OrderAjaxComponent.result.TOTAL.ORDER_PRICE >= ORDER_AJAX_DELIVERY_MAP.CITY_FREE_DELIVERY_LIMIT_ORDER_COST) {
             DELIVERY_PRICE = 0;
         } else {
@@ -320,9 +320,14 @@ function freeDeliveryCallback(result, atr) {
     }
     // $('.mapBalloonPrice').html(DELIVERY_PRICE);
     console.log(atr);
+    var CITY_FREE_DELIVERY_TEXT = "";
+    if(freeDelivery) {
+        CITY_FREE_DELIVERY_TEXT = '<br/><span style="font-weight: bold; font-style: italic">' + ORDER_AJAX_DELIVERY_MAP.CITY_FREE_DELIVERY_TEXT + '</span>';
+    }
     var balloonContentLayout = ymaps.templateLayoutFactory.createClass(
         '<span>Расстояние: ' + atr.allKm + ' км.</span><br/>' +
-        '<span style="font-weight: bold; font-style: italic">Стоимость доставки: <span class="mapBalloonPrice">' + DELIVERY_PRICE + '</span> р.</span>'
+        '<span style="font-weight: bold; font-style: italic">Стоимость доставки: <span class="mapBalloonPrice">' + DELIVERY_PRICE + '</span> р.</span>' +
+        CITY_FREE_DELIVERY_TEXT
     );
     atr.route.options.set('routeBalloonContentLayout', balloonContentLayout);
     setPrice();
