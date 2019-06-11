@@ -15,9 +15,9 @@ $thisDay = date(D);
          longitude="<?= $arResult["longitude"] ?>"
          latitude="<?= $arResult["latitude"] ?>"
          zoom="<?= $arResult["zoom"] ?>">
-        <div class="holidayWork">
-            <a href="/contacts/?holiday=Y">Время работы в выходные и праздничные дни</a>
-        </div>
+<!--        <div class="holidayWork">-->
+<!--            <a href="/contacts/?holiday=Y">Время работы в выходные и праздничные дни</a>-->
+<!--        </div>-->
 
         <div class="contact_settings">
             <div class="internet_shop_contacts">Интернет-магазин 8 (800) 500-54-43 info@apelsin.ru</div>
