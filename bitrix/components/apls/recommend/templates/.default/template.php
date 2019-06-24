@@ -55,7 +55,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_COMPARE" => "Y",
         "PAGE_ELEMENT_COUNT" => "8",
         "LINE_ELEMENT_COUNT" => "",
-        "PRICE_CODE" => "priceCode",
+        "PRICE_CODE" => $priceCode,
         "USE_PRICE_COUNT" => "N",
         "SHOW_PRICE_COUNT" => "1",
         "PRICE_VAT_INCLUDE" => "Y",
