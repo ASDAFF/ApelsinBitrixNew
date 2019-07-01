@@ -23,6 +23,7 @@ ErrorDocument 404 /404.php
   Redirect 301 /contacts/shops/ /contacts/
 
   RewriteRule ^index.php$ / [NC,R=301,L]
+  RewriteRule ^index.php/$ / [NC,R=301,L]
   RewriteRule ^index.html$ / [NC,R=301,L]
   RewriteRule ^index.html/$ / [NC,R=301,L]
 
