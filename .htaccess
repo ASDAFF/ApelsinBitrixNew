@@ -22,8 +22,8 @@ ErrorDocument 404 /404.php
   Redirect 301 /information/about/ /information/
   Redirect 301 /contacts/shops/ /contacts/
 
-  Redirect 301 /index.php/ /
-  Redirect 301 /index.html/ /
+  RewriteRule ^index.php$ / [NC,R=301,L]
+  RewriteRule ^index.html$ / [NC,R=301,L]
 
   RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
   RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
