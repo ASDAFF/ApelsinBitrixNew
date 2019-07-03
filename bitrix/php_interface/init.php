@@ -6,6 +6,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/promotions/agents/Promotions
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/sections/APLS_CatalogSections.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/models/CatalogElementModel.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogHelper.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/models/CatalogElementPropertyModel.php";
 
 require __DIR__ . "/functions.php";
 
@@ -159,16 +160,19 @@ function SUD($ID, $val)
 }
 
 /** Агент удаляет товары из папки "Товары на удаление с сайта", при условии что товаров в этой папке менее 2000
+ * 03.07.19 - добавление функционала удаления дублей, совпадающих по свойству Код товара
  * Если товаров более 2000, отправляет уведомление на почту о превышении
  * @return string
  */
 function deleteUnusedProducts() {
-    $arSelect = Array("ID",);
+    $arSelect = Array("ID","PROPERTY_ARTNUMBER_VALUE");
     $arFilter = Array("IBLOCK_ID"=>APLS_CatalogHelper::getShopIblockId(),"SECTION_CODE"=>"tovar_na_udalenie_s_sayta");
     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
+    $keyString = "";
     while($ar = $res->Fetch())
     {
         $resAr[] = $ar["ID"];
+        $keyString .= "'".$ar["PROPERTY_ARTNUMBER_VALUE"]."',";
     }
     if (!empty($resAr)) {
         $countAr = count($resAr);
@@ -178,6 +182,22 @@ function deleteUnusedProducts() {
             }
         } else {
             CEvent::Send("DELETE_ERROR","s1",array("COUNT"=>$countAr));
+        }
+    }
+    $keyString = substr ($keyString,'0','-1');
+    $keyString .= ")";
+    $w1 = MySQLWhereElementString::getBinaryOperationString('IBLOCK_PROPERTY_ID',MySQLWhereElementString::OPERATOR_B_EQUAL,'6219');
+    $w2 = MySQLWhereElementString::getBinaryOperationString('VALUE',MySQLWhereElementString::OPERATOR_B_IN, $keyString,"","",array('IS_FIELD'),array("WITHOUT_QUOTES","IS_SQL"));
+    $where = new MySQLWhereString(MySQLWhereString::AND_BLOCK);
+    $where->addElement($w1);
+    $where->addElement($w2);
+    $dataArr = CatalogElementPropertyModel::getElementList($where);
+    foreach ($dataArr as $element) {
+        $resArray[] = $element->getFieldValue("ID");
+    }
+    if (!empty($resArray)) {
+        foreach ($resArray as $elementId) {
+            CIBlockElement::Delete($elementId);
         }
     }
     return "deleteUnusedProducts();";
