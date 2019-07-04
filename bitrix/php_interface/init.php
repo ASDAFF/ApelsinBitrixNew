@@ -169,10 +169,18 @@ function deleteUnusedProducts() {
     $arFilter = Array("IBLOCK_ID"=>APLS_CatalogHelper::getShopIblockId(),"SECTION_CODE"=>"tovar_na_udalenie_s_sayta");
     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
     $keyString = "";
+    $searchTrigger = false;
     while($ar = $res->Fetch())
     {
         $resAr[] = $ar["ID"];
         $keyString .= "'".$ar["PROPERTY_ARTNUMBER_VALUE"]."',";
+        if(
+            !$searchTrigger &&
+            isset($ar["PROPERTY_ARTNUMBER_VALUE"]) &&
+            $ar["PROPERTY_ARTNUMBER_VALUE"] != null &&
+            $ar["PROPERTY_ARTNUMBER_VALUE"] != "") {
+            $searchTrigger = true;
+        }
     }
     if (!empty($resAr)) {
         $countAr = count($resAr);
@@ -184,20 +192,21 @@ function deleteUnusedProducts() {
             CEvent::Send("DELETE_ERROR","s1",array("COUNT"=>$countAr));
         }
     }
-    $keyString = substr ($keyString,'0','-1');
-    $keyString .= ")";
-    $w1 = MySQLWhereElementString::getBinaryOperationString('IBLOCK_PROPERTY_ID',MySQLWhereElementString::OPERATOR_B_EQUAL,'6219');
-    $w2 = MySQLWhereElementString::getBinaryOperationString('VALUE',MySQLWhereElementString::OPERATOR_B_IN, $keyString,"","",array('IS_FIELD'),array("WITHOUT_QUOTES","IS_SQL"));
-    $where = new MySQLWhereString(MySQLWhereString::AND_BLOCK);
-    $where->addElement($w1);
-    $where->addElement($w2);
-    $dataArr = CatalogElementPropertyModel::getElementList($where);
-    foreach ($dataArr as $element) {
-        $resArray[] = $element->getFieldValue("ID");
-    }
-    if (!empty($resArray)) {
-        foreach ($resArray as $elementId) {
-            CIBlockElement::Delete($elementId);
+    if ($searchTrigger) {
+        $keyString = substr ($keyString,'0','-1');
+        $w1 = MySQLWhereElementString::getBinaryOperationString('IBLOCK_PROPERTY_ID',MySQLWhereElementString::OPERATOR_B_EQUAL,'6219');
+        $w2 = MySQLWhereElementString::getBinaryOperationString('VALUE',MySQLWhereElementString::OPERATOR_B_IN, $keyString,"","",array('IS_FIELD'),array("WITHOUT_QUOTES","IS_SQL"));
+        $where = new MySQLWhereString(MySQLWhereString::AND_BLOCK);
+        $where->addElement($w1);
+        $where->addElement($w2);
+        $dataArr = CatalogElementPropertyModel::getElementList($where);
+        foreach ($dataArr as $element) {
+            $resArray[] = $element->getFieldValue("ID");
+        }
+        if (!empty($resArray)) {
+            foreach ($resArray as $elementId) {
+                CIBlockElement::Delete($elementId);
+            }
         }
     }
     return "deleteUnusedProducts();";
