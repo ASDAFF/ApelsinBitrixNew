@@ -31,6 +31,7 @@ $menuArray = array(
     array(
         "name" => "Инспекторы каталога",
         "items" => array(
+            "apls_duplicate_search"=>"Поиск дубликатов товаров",
             "apls_catalog_sections_no_image"=>"Каталоги без картинок",
             "apls_catalogs_no_items"=>"Каталоги без товаров",
             "apls_items_no_image"=>"Товары без картинок",
