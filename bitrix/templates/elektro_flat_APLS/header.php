@@ -9,7 +9,7 @@ Loc::loadMessages(__FILE__);?>
 	<link rel="apple-touch-icon" sizes="57x57" href="<?=SITE_TEMPLATE_PATH?>/images/apelsin_touch_icon_57.png" />
 	<link rel="apple-touch-icon" sizes="114x114" href="<?=SITE_TEMPLATE_PATH?>/images/apelsin_touch_icon_114.png" />
 	<link rel="apple-touch-icon" sizes="72x72" href="<?=SITE_TEMPLATE_PATH?>/images/apelsin_touch_icon_72.png" />
-    <script src="//api-maps.yandex.ru/2.1/?lang=ru-RU" type="text/javascript"></script>
+    <script src="//api-maps.yandex.ru/2.1/?lang=ru-RU&apikey=2c69c84d-a78d-45d6-a0f9-c33800397ead" type="text/javascript"></script>
 	<?Asset::getInstance()->addString("<meta name='viewport' content='width=device-width, initial-scale=1.0' />");?>
 	<title><?$APPLICATION->ShowTitle()?></title>
     <!-- Google Tag Manager (noscript) -->
