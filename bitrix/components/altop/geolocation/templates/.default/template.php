@@ -35,7 +35,7 @@ if($arParams["USE_GEOLOCATION"] == "Y"):?>
 				};
 				BX.Geolocation(geolocation);
 			<?} else {
-				$this->addExternalJS("https://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU");?>
+				$this->addExternalJS("https://api-maps.yandex.ru/2.0/?apikey=2c69c84d-a78d-45d6-a0f9-c33800397ead&load=package.standard&lang=ru-RU");?>
 				ymaps.ready(BX.GeolocationYandex);
 			<?}?>
 		<?}?>

@@ -1,6 +1,6 @@
 <?
 /*
-	Если в оформлении заказа при выборе ПВЗ затеняется экран, и виджет оказывается "под" маской - нужно раскомментить скрипт с меткой // BLACK MASK FIX и закомментить (или удалить) html виджета.
+	пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅ" пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ // BLACK MASK FIX пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ) html пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 */
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 include_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/js/'.CDeliveryapiship::$MODULE_ID.'/jsloader.php');
@@ -10,7 +10,7 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/js/'.CDeliveryapiship::$MODULE_I
 global $APPLICATION;
 CModule::IncludeModule(CDeliveryapiship::$MODULE_ID);
 if($arParams['NOMAPS']!='Y')
-	$APPLICATION->AddHeadString('<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>');
+	$APPLICATION->AddHeadString('<script src="https://api-maps.yandex.ru/2.1/?apikey=2c69c84d-a78d-45d6-a0f9-c33800397ead&lang=ru_RU" type="text/javascript"></script>');
 
 $APPLICATION->AddHeadString('<link href="/bitrix/js/'.CDeliveryapiship::$MODULE_ID.'/jquery.jscrollpane.css" type="text/css"  rel="stylesheet" />');
 
@@ -21,7 +21,7 @@ if(apishipHelper::isConverted()){
 	$htmlId = 'ID_DELIVERY_apiship_pickup';
 ?>
 <script>
-// находит первого попавшегося родителя со свойством position: relative
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ position: relative
 // var maxIter = 0;
 if (typeof IPOLapiship_pvzFindRelativeParent == "undefined")
 	function IPOLapiship_pvzFindRelativeParent(obj)
@@ -35,12 +35,12 @@ if (typeof IPOLapiship_pvzFindRelativeParent == "undefined")
 	}
 
 var IPOLapiship_pvz = {
-	city: '<?=$arResult['cityName']?>',//город
+	city: '<?=$arResult['cityName']?>',//пїЅпїЅпїЅпїЅпїЅ
 	cityID: '<?=$arResult['city']?>',
 	
-	button: '<a href="javascript:void(0);" id="apiship_selectPVZ" onclick="IPOLapiship_pvz.selectPVZ(); return false;"><?=GetMessage("IPOLapiship_FRNT_CHOOSEPICKUP")?></a>',// html кнопки "выбрать ПВЗ".
+	button: '<a href="javascript:void(0);" id="apiship_selectPVZ" onclick="IPOLapiship_pvz.selectPVZ(); return false;"><?=GetMessage("IPOLapiship_FRNT_CHOOSEPICKUP")?></a>',// html пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ".
 	
-	pvzInputs: [<?=substr($arResult['propAddr'],0,-1)?>],//инпуты, куда грузится адрес пвз
+	pvzInputs: [<?=substr($arResult['propAddr'],0,-1)?>],//пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	deliveryLink: '<?=$htmlId?>',
 	deliveryIDs: <?=CUtil::PHPToJSObject($arDelivs)?>,
 	
@@ -88,7 +88,7 @@ var IPOLapiship_pvz = {
 		
 		IPOLapiship_pvz.Y_init();
 		
-		// сбрасываем выбранный ПВЗ, если такого теперь нет, например город поменяли
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if (typeof IPOLapiship_pvz.PVZ[IPOLapiship_pvz.pvzId] == "undefined")
 		{
 			IPOLapiship_pvz.pvzId = false;
@@ -126,12 +126,12 @@ var IPOLapiship_pvz = {
 			IPOLapiship_pvz.orderForm = "bx-soa-order-form";
 		}
 		
-		// ==== подписываемся на перезагрузку формы
+		// ==== пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		if(typeof BX !== 'undefined' && BX.addCustomEvent)
 			BX.addCustomEvent('onAjaxSuccess', IPOLapiship_pvz.onLoad); 
 		
-		// Для старого JS-ядра
-		if (window.jsAjaxUtil) // Переопределение Ajax-завершающей функции для навешивания js-событий новым эл-там
+		// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ JS-пїЅпїЅпїЅпїЅ
+		if (window.jsAjaxUtil) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Ajax-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ js-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ-пїЅпїЅпїЅ
 		{
 			jsAjaxUtil._CloseLocalWaitWindow = jsAjaxUtil.CloseLocalWaitWindow;
 			jsAjaxUtil.CloseLocalWaitWindow = function (TID, cont)
@@ -144,7 +144,7 @@ var IPOLapiship_pvz = {
 		
 		IPOLapiship_pvz.onLoad();
 		
-		// html маски
+		// html пїЅпїЅпїЅпїЅпїЅ
 		$('body').append("<div id='apiship_mask'></div>");
 		$('#apiship_pvz').appendTo("body");
 	},
@@ -152,12 +152,12 @@ var IPOLapiship_pvz = {
 	onLoad: function(ajaxAns)
 	{
 		console.log(ajaxAns);
-		// место, где будет кнопка "выбрать ПВЗ"
+		// пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ"
 		var tag = false;
 		
 		var newTemplateAjax = (typeof(ajaxAns) != 'undefined' && ajaxAns !== null && typeof(ajaxAns.apiship) == 'object') ? true : false;
 		
-		// первый раз берем данные из компонента, далее из полей, которые приходят из буферконтент в аякс ответах в html
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ html
 		if (!IPOLapiship_pvz.LoadFromAJAX)
 		{	
 			IPOLapiship_pvz.GetPVZ();
@@ -188,7 +188,7 @@ var IPOLapiship_pvz = {
 		// console.log(ajaxAns);
 		if (IPOLapiship_pvz.oldTemplate)
 		{
-			if($('#apiship_city').length>0){//обновляем город
+			if($('#apiship_city').length>0){//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				IPOLapiship_pvz.city   = $('#apiship_city').val();
 				IPOLapiship_pvz.cityID   = $('#apiship_city_id').val();
 			}
@@ -216,7 +216,7 @@ var IPOLapiship_pvz = {
 		IPOLapiship_pvz.ChangeLabelHTML();
 	},
 	
-	// показываем окошко
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	selectPVZ: function()
 	{
 		if(!IPOLapiship_pvz.isActive){
@@ -232,11 +232,11 @@ var IPOLapiship_pvz = {
 		}
 	},
 	
-	// считаем положение и размеры окна с пвз
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
 	getWinPosition: function(){
 		var hndlr = $('#apiship_pvz');
 		
-		// находим родителя со свойством position: relative и считаем поправку от его положения
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ position: relative пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if (IPOLapiship_pvz.relativeParent == false)
 		{
 			IPOLapiship_pvz.relativeParent = IPOLapiship_pvzFindRelativeParent(hndlr);
@@ -249,7 +249,7 @@ var IPOLapiship_pvz = {
 		var shiftWidth = 0, 
 			shiftHeight = 0;
 		
-		// считаем поправку
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if (IPOLapiship_pvz.relativeParent != -1)
 		{
 			shiftWidth = IPOLapiship_pvz.relativeParent.offset().left;
@@ -268,23 +268,23 @@ var IPOLapiship_pvz = {
 		});	
 	},
 	
-	// обрабатываем изменение размера окна браузера
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	resize: function(){
 		if (IPOLapiship_pvz.isActive)
 			IPOLapiship_pvz.getWinPosition();
 	},
 	
-	initCityPVZ: function(){ // грузим пункты самовывоза для выбранного города
+	initCityPVZ: function(){ // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		var city = IPOLapiship_pvz.city;
 		var cnt = [];
 		// IPOLapiship_pvz.PVZ = IPOLapiship_pvz.PVZ;
 		
-		IPOLapiship_pvz.PVZHTML();//грузим html PVZ. Два раза пробегаем по массиву, но не критично.
+		IPOLapiship_pvz.PVZHTML();//пїЅпїЅпїЅпїЅпїЅпїЅ html PVZ. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 		
 		IPOLapiship_pvz.multiPVZ = (IPOLapiship_pvz.PVZ.length == 1)? false:true;
 	},
 	
-	PVZHTML: function(){ // заполняем список ПВЗ города
+	PVZHTML: function(){ // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		
 		var arHTML = {};
 		
@@ -342,7 +342,7 @@ var IPOLapiship_pvz = {
 		IPOLapiship_pvz.scrollPVZ = window.ipol$('#apiship_wrapper').jScrollPane();
 	},
 	
-	paintPVZ: function(ind){ //красим адресс пвз, если задан цвет
+	paintPVZ: function(ind){ //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		var addr = '';
 		if(IPOLapiship_pvz.PVZ[ind].color && IPOLapiship_pvz.PVZ[ind].Address.indexOf(',')!==false)
 			addr="<span style='color:"+IPOLapiship_pvz.PVZ[ind].color+"'>"+IPOLapiship_pvz.PVZ[ind].Address.substr(0,IPOLapiship_pvz.PVZ[ind].Address.indexOf(','))+"</span><br>"+IPOLapiship_pvz.PVZ[ind].Name;
@@ -351,17 +351,17 @@ var IPOLapiship_pvz = {
 		return addr;
 	},
 	
-	// выбрали ПВЗ
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	pvzAdress: '',
 	pvzId: false,
-	choozePVZ: function(pvzId,isAjax){// выбрали ПВЗ
+	choozePVZ: function(pvzId,isAjax){// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	
 		if(typeof IPOLapiship_pvz.PVZ[pvzId] == 'undefined')
 			return;
 
 		IPOLapiship_pvz.pvzAdress=IPOLapiship_pvz.city+", "+IPOLapiship_pvz.PVZ[pvzId]['Address']+" #S"+IPOLapiship_pvz.PVZ[pvzId].id;
 
-		// пишем информацию о ПВЗ в инпуты для использования в оформлении заказа
+		// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		IPOLapiship_pvz.chosenPVZProviderKey = IPOLapiship_pvz.PVZ[pvzId].providerKey;
 		IPOLapiship_pvz.chosenPVZProviderID = IPOLapiship_pvz.PVZ[pvzId].code;
 		IPOLapiship_pvz.pvzId = pvzId;
@@ -383,7 +383,7 @@ var IPOLapiship_pvz = {
 		}
 		
 		if(typeof isAjax == 'undefined')
-		{ // Перезагружаем форму (с применением новой стоимости доставки)
+		{ // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 			if(typeof IPOLapiship_DeliveryChangeEvent == 'function')
 				IPOLapiship_DeliveryChangeEvent();
 			else
@@ -404,10 +404,10 @@ var IPOLapiship_pvz = {
 	},
 	
 	ChangeLabelHTML: function(){
-		// Выводим подпись о выбранном ПВЗ рядом с кнопкой "Выбрать ПВЗ"
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ"
 		var tmpHTML = "<div class='apiship_pvzLair'>"+IPOLapiship_pvz.button;
 		
-		// если выбран ПВЗ, выводим его адрес
+		// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		if (IPOLapiship_pvz.pvzId)
 		{
 			tmpHTML += "<br><span class='apiship_pvzAddr'>" + IPOLapiship_pvz.PVZ[IPOLapiship_pvz.pvzId].Address+"</span>";
@@ -419,7 +419,7 @@ var IPOLapiship_pvz = {
 			var daysMin, daysMax, days = 0;
 			if (!IPOLapiship_pvz.pvzId)
 			{
-				// считаем количество дней доставки
+				// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				IPOLapiship_pvz.pvzPrice = "<?=GetMessage("IPOLapiship_STOIMOST")?>" + IPOLapiship_pvz.DefaultVals.VALUE_MIN;
 				
 				daysMin = IPOLapiship_pvz.DefaultVals.TRANSIT_MIN;
@@ -547,7 +547,7 @@ var IPOLapiship_pvz = {
 		}
 	},
 	
-	close: function(fromChoose){//закрываем функционал
+	close: function(fromChoose){//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		<?if(COption::GetOptionString(CDeliveryapiship::$MODULE_ID,'autoSelOne','') == 'Y'){?>
 			if(IPOLapiship_pvz.multiPVZ !== false && typeof(fromChoose) == 'undefined')
 				IPOLapiship_pvz.choozePVZ(IPOLapiship_pvz.multiPVZ);
@@ -558,8 +558,8 @@ var IPOLapiship_pvz = {
 		$('#apiship_mask').css('display','none');
 		IPOLapiship_pvz.isActive = false;
 	},
-	// Yкарты
-	Y_map: false,//указатель на y-карту
+	// YпїЅпїЅпїЅпїЅпїЅ
+	Y_map: false,//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ y-пїЅпїЅпїЅпїЅпїЅ
 
 	Y_init: function(){
 		
@@ -593,7 +593,7 @@ var IPOLapiship_pvz = {
 					IPOLapiship_pvz.Y_map.setCenter(coords);
 					IPOLapiship_pvz.Y_map.setZoom(10);
 				}
-				if(!IPOLapiship_pvz.Y_markedCities[IPOLapiship_pvz.city]) //чтобы не грузились повторно
+				if(!IPOLapiship_pvz.Y_markedCities[IPOLapiship_pvz.city]) //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					IPOLapiship_pvz.Y_markPVZ();
 				else
 					IPOLapiship_pvz.PVZ = IPOLapiship_pvz.Y_markedCities[IPOLapiship_pvz.city];
@@ -604,7 +604,7 @@ var IPOLapiship_pvz = {
 		for(var i in IPOLapiship_pvz.PVZ){
 			var baloonHTML = "";
 			
-			// логтип доставщика
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (typeof IPOLapiship_pvz.arImages[IPOLapiship_pvz.PVZ[i].providerKey] != "undefined")
 				baloonHTML += "<img class = 'apiship_provider_baloon_img' src = '"+ IPOLapiship_pvz.image_url + IPOLapiship_pvz.arImages[IPOLapiship_pvz.PVZ[i].providerKey] +"'>";
 			else
@@ -677,9 +677,9 @@ var IPOLapiship_pvz = {
 	
 	Y_markedCities: {},
 	
-	isPickUpChecked: false,// признак, что выбран самовывоз
+	isPickUpChecked: false,// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
-	// проверяет выбран ли самовывоз и пишет в флаг isPickUpChecked
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ isPickUpChecked
 	CheckChosenPickUp: function(ajaxAns)
 	{
 		var label_obj = $('#'+IPOLapiship_pvz.deliveryLink);
@@ -708,7 +708,7 @@ var IPOLapiship_pvz = {
 	
 	ChooseFirstPVZ: function()
 	{
-		if (IPOLapiship_pvz.pvzId != false)// если выбирали уже пвз, то ставим его
+		if (IPOLapiship_pvz.pvzId != false)// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			IPOLapiship_pvz.choozePVZ(IPOLapiship_pvz.pvzId);
 		
 		else
@@ -721,7 +721,7 @@ var IPOLapiship_pvz = {
 			}
 			if (firstPVZ != false)
 				IPOLapiship_pvz.choozePVZ(firstPVZ);
-			// иначе случится не может, не будет профиля самовывоз в этом случае
+			// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		}	
 	},
 	
@@ -732,16 +732,16 @@ var IPOLapiship_pvz = {
 		$(window).resize(function(){IPOLapiship_pvz.resize();});
 		
 		ymaps.ready(IPOLapiship_pvz.init);
-		// ymaps.ready(IPOLapiship_pvz.CheckChosenPickUp);// для определения выбран ли самовывоз
+		// ymaps.ready(IPOLapiship_pvz.CheckChosenPickUp);// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
 		$(orderForm).submit(function(e){
-			// нажали на кнопку оформить заказ
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			if (BX('confirmorder').value == "Y")
 			{
-				IPOLapiship_pvz.CheckChosenPickUp();// проверяем выбран ли самовывоз
-				if (IPOLapiship_pvz.isPickUpChecked)// выбран самовывоз
+				IPOLapiship_pvz.CheckChosenPickUp();// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				if (IPOLapiship_pvz.isPickUpChecked)// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				{
-					// если не выбрали пвз
+					// пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 					if (IPOLapiship_pvz.pvzId == false)
 					{
 						IPOLapiship_pvz.ChooseFirstPVZ();

@@ -1,6 +1,6 @@
 <?
 /*
-	Дефолтный шаблон для вывода карты на пустой странице
+	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 */
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 include_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/js/'.CDeliveryapiship::$MODULE_ID.'/jsloader.php');
@@ -12,7 +12,7 @@ if($arParams['NOMAPS']!='Y')
 {
 	$prot = (strpos(CDeliveryapiship::toUpper($_SERVER['SERVER_PROTOCOL']),'HTTPS')!==false || strpos(CDeliveryapiship::toUpper($_SERVER['HTTP_X_FORWARDED_PROTO']),'HTTPS')!==false || $_SERVER['HTTPS'] == 'on')?'https':'http';
 	global $APPLICATION;
-	$APPLICATION->AddHeadString('<script src="'.$prot.'://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>');
+	$APPLICATION->AddHeadString('<script src="'.$prot.'://api-maps.yandex.ru/2.1/?apikey=2c69c84d-a78d-45d6-a0f9-c33800397ead&lang=ru_RU" type="text/javascript"></script>');
 }
 /*$APPLICATION->AddHeadString('<script src="/bitrix/js/'.CDeliveryapiship::$MODULE_ID.'/jquery.mousewheel.js" type="text/javascript"></script>');
 $APPLICATION->AddHeadString('<script src="/bitrix/js/'.CDeliveryapiship::$MODULE_ID.'/jquery.jscrollpane.js" type="text/javascript"></script>');*/
@@ -24,7 +24,7 @@ $TemplateFolder = $this->GetFolder();
 
 ?>
 <script>
-    // находит первого попавшегося родителя со свойством position: relative
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ position: relative
     function findRelativeParent(obj)
     {
         if (obj.is("body"))
@@ -36,9 +36,9 @@ $TemplateFolder = $this->GetFolder();
     }
 
     var IPOLapiship_pvz = {
-        city: '<?=$arResult['cityName']?>',//город
+        city: '<?=$arResult['cityName']?>',//пїЅпїЅпїЅпїЅпїЅ
 
-        pvzInputs: [<?=substr($arResult['propAddr'],0,-1)?>],//инпуты, куда грузится адрес пвз
+        pvzInputs: [<?=substr($arResult['propAddr'],0,-1)?>],//пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 
         pvzLabel: "",
         presizion: 2,
@@ -80,7 +80,7 @@ $TemplateFolder = $this->GetFolder();
             if ($("#ipolapiship_pvz_list_tag_ajax").length > 0)
                 IPOLapiship_pvz.PVZ = JSON.parse($("#ipolapiship_pvz_list_tag_ajax").html());
 
-            // сбрасываем выбранный ПВЗ, если такого теперь нет, например город поменяли
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             if (typeof IPOLapiship_pvz.PVZ[IPOLapiship_pvz.pvzId] == "undefined")
             {
                 IPOLapiship_pvz.pvzId = false;
@@ -105,7 +105,7 @@ $TemplateFolder = $this->GetFolder();
 
         onLoad: function()
         {
-            // первый раз берем данные из компонента, далее из полей, которые приходят из буферконтент в аякс ответах в html
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ html
             if (!IPOLapiship_pvz.LoadFromAJAX)
             {
                 IPOLapiship_pvz.GetPVZ();
@@ -124,9 +124,9 @@ $TemplateFolder = $this->GetFolder();
 
                 var hndlr = $('#apiship_pvz');
 
-                // находим родителя со свойством position: relative и считаем поправку от его положения
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ position: relative пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 var parent = findRelativeParent(hndlr);
-                // считаем поправку
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 var shiftWidth = 0, shiftHeight = 0;
                 if (typeof parent[0] == "object")
                 {
@@ -151,17 +151,17 @@ $TemplateFolder = $this->GetFolder();
             }
         },
 
-        initCityPVZ: function(){ // грузим пункты самовывоза для выбранного города
+        initCityPVZ: function(){ // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             var city = IPOLapiship_pvz.city;
             var cnt = [];
             IPOLapiship_pvz.cityPVZ = IPOLapiship_pvz.PVZ;
 
-            IPOLapiship_pvz.cityPVZHTML();//грузим html PVZ. Два раза пробегаем по массиву, но не критично.
+            IPOLapiship_pvz.cityPVZHTML();//пїЅпїЅпїЅпїЅпїЅпїЅ html PVZ. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 
             IPOLapiship_pvz.multiPVZ = (IPOLapiship_pvz.PVZ.length == 1)? false:true;
         },
 
-        cityPVZHTML: function(){ // заполняем список ПВЗ города
+        cityPVZHTML: function(){ // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
             var arHTML = {};
 
@@ -223,7 +223,7 @@ $TemplateFolder = $this->GetFolder();
             IPOLapiship_pvz.scrollPVZ=$('#apiship_wrapper').jScrollPane();
         },
 
-        paintPVZ: function(ind){ //красим адресс пвз, если задан цвет
+        paintPVZ: function(ind){ //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             var addr = '';
             if(IPOLapiship_pvz.cityPVZ[ind].color && IPOLapiship_pvz.cityPVZ[ind].Address.indexOf(',')!==false)
                 addr="<span style='color:"+IPOLapiship_pvz.cityPVZ[ind].color+"'>"+IPOLapiship_pvz.cityPVZ[ind].Address.substr(0,IPOLapiship_pvz.cityPVZ[ind].Address.indexOf(','))+"</span><br>"+IPOLapiship_pvz.cityPVZ[ind].Name;
@@ -255,8 +255,8 @@ $TemplateFolder = $this->GetFolder();
             }
         },
 
-        // Yкарты
-        Y_map: false,//указатель на y-карту
+        // YпїЅпїЅпїЅпїЅпїЅ
+        Y_map: false,//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ y-пїЅпїЅпїЅпїЅпїЅ
 
         Y_init: function(){
 
@@ -290,7 +290,7 @@ $TemplateFolder = $this->GetFolder();
                     IPOLapiship_pvz.Y_map.setCenter(coords);
                     IPOLapiship_pvz.Y_map.setZoom(10);
                 }
-                if(!IPOLapiship_pvz.Y_markedCities[IPOLapiship_pvz.city]) //чтобы не грузились повторно
+                if(!IPOLapiship_pvz.Y_markedCities[IPOLapiship_pvz.city]) //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                     IPOLapiship_pvz.Y_markPVZ();
                 else
                     IPOLapiship_pvz.cityPVZ = IPOLapiship_pvz.Y_markedCities[IPOLapiship_pvz.city];
@@ -301,7 +301,7 @@ $TemplateFolder = $this->GetFolder();
             for(var i in IPOLapiship_pvz.cityPVZ){
                 var baloonHTML = "";
 
-                // логтип доставщика
+                // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 if (typeof IPOLapiship_pvz.arImages[IPOLapiship_pvz.cityPVZ[i].providerKey] != "undefined")
                     baloonHTML += "<img class = 'apiship_provider_baloon_img' src = '"+ IPOLapiship_pvz.image_url + IPOLapiship_pvz.arImages[IPOLapiship_pvz.cityPVZ[i].providerKey] +"'>";
                 else
@@ -417,19 +417,19 @@ $TemplateFolder = $this->GetFolder();
                         dataAJAX = data;
                     }
                 })).done(function(){
-                // заменяем на введенный город
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                 if (dataAJAX.cityName == "")
                     dataAJAX.cityName = "<?=getMessage("IPOLapiship_CITY_NOT_FOUND")?>";
                 $("#apiship_cityName").html(dataAJAX.cityName);
                 IPOLapiship_pvz.hideCitySel();
 
-                // апдейтим карту
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                 IPOLapiship_pvz.city = dataAJAX.cityName;
                 IPOLapiship_pvz.PVZ = dataAJAX.PVZ;
 
                 IPOLapiship_pvz.init();
 
-                // апдейтим курьера
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 // console.log(dataAJAX);
                 var courier = dataAJAX.bestsTariffs.deliveryToDoorShown,
                     cost = 0,
