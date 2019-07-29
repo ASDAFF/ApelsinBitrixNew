@@ -16,3 +16,5 @@ require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItOnAfterSaveSaleOr
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/DoItOnAfterIBlockPropertyAdd.php");
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/OnBeforeIBlockElementUpdate.php");
 require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlersClasses/DoItOnBeforeUserLogin.php");
+
+require($_SERVER["DOCUMENT_ROOT"]."/apls_lib/EventHandlers/OnSaleComponentOrderOneStepPaySystem.php");

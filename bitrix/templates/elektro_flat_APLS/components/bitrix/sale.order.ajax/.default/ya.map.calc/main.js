@@ -162,6 +162,17 @@ function init() {
                                         );
                                     route.options.set('routeBalloonContentLayout', balloonContentLayout);
                                     activeRoute.balloon.open();
+                                    var data = [];
+                                    data["itCity"] = false;
+                                    BX.ajax({
+                                        url: "/bitrix/templates/elektro_flat_APLS/components/bitrix/sale.order.ajax/.default/ya.map.calc/ajax/itCity.php",
+                                        data: data,
+                                        method: 'POST',
+                                        dataType: 'HTML',
+                                        onsuccess: function (result) {
+                                        }
+                                    });
+                                    // BX.Sale.OrderAjaxComponent.result.IT_SITY = false;
                                     setPrice();
                                 }
                             },
@@ -182,6 +193,17 @@ function init() {
                                 );
                             route.options.set('routeBalloonContentLayout', balloonContentLayout);
                             activeRoute.balloon.open();
+                            var data = [];
+                            data["itCity"] = true;
+                            BX.ajax({
+                                url: "/bitrix/templates/elektro_flat_APLS/components/bitrix/sale.order.ajax/.default/ya.map.calc/ajax/itCity.php",
+                                data: data,
+                                method: 'POST',
+                                dataType: 'HTML',
+                                onsuccess: function (result) {
+                                }
+                            });
+                            // BX.Sale.OrderAjaxComponent.result.IT_SITY = true;
                             if(ORDER_AJAX_DELIVERY_MAP.CITY_FREE_DELIVERY_PRICE) {
                                 var atr = {
                                     "allKm" : allKm,
@@ -210,6 +232,7 @@ function init() {
         }
         price = changePrice(price);
         DELIVERY_PRICE = price;
+        BX.Sale.OrderAjaxComponent.options.totalPriceChanged = true;
         return price;
     }
 
