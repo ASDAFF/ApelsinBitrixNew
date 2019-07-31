@@ -41,6 +41,13 @@
         Array(),
         ""
     ),
+    Array(
+        "Вакансии",
+        "/information/vacancies/",
+        Array(),
+        Array(),
+        ""
+    ),
 //	Array(
 //		"О Компании",
 //		"/about/",

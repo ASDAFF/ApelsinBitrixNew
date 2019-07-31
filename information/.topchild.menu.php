@@ -41,13 +41,13 @@
 		Array(), 
 		"" 
 	),
-	Array(
-		"Вакансии", 
-		"vacancies/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
+//	Array(
+//		"Вакансии",
+//		"vacancies/",
+//		Array(),
+//		Array(),
+//		""
+//	),
 	Array(
 		"Особенности товаров",
 		"features_products/",
