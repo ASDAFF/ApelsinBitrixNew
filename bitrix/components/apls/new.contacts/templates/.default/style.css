@@ -83,6 +83,13 @@
     size: 12px;
     padding-bottom: 8px;
 }
+.contactsShopElement_name .contactsShopElement_name_email a{
+    padding-left: 3px;
+    color: #8184a1;
+}
+.contactsShopElement_name .contactsShopElement_name_email a:hover{
+    color: #575b71;
+}
 .contactsShopElement_name .contactsShopElement_name_address {
     word-wrap: break-word;
     padding-bottom: 5px;

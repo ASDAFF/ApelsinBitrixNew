@@ -50,7 +50,7 @@ $thisDay = date(D);
                             <div class="contactsShopElement_name_header"><?= $shop["name"] ?></div>
                             <div class="contactsShopElement_name_address"><?= $shop["address"] ?></div>
                             <div class="contactsShopElement_name_email"><i
-                                        class="fa fa-envelope-o"></i> <?= $shop["email"] ?></div>
+                                        class="fa fa-envelope-o"></i><a href=mailto><?= $shop["email"] ?></a></div>
                             <div class="contactsShopElement_name_phone1">
                                 <div class="contactsShopElement_name_phone_number_1"><i
                                             class="fa fa-phone"></i> <?= $shop["phone_number_1"] ?></div>
