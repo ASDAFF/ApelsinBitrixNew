@@ -69,7 +69,7 @@ function updateAmountInfo() {
             if($AMOUNT_STATUS[$key]["VALUE"] != $element['PROPERTY_'.$AMOUNT_PROPERTY_CODE.'_VALUE']) {
                 CIBlockElement::SetPropertyValues($element['ID'], $CATALOG_IBLOCK, $AMOUNT_STATUS[$key]["ID"], $AMOUNT_PROPERTY_CODE);
                 $el = new CIBlockElement;
-                $el->Update($element['ID'], array());
+                $el->Update($element['ID'], array("ACTIVE"=>"Y"));
             }
         }
     }
