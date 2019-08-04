@@ -10,6 +10,24 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/models/CatalogElemen
 
 require __DIR__ . "/functions.php";
 
+function updateAllItems() {
+    $CATALOG_IBLOCK = APLS_CatalogHelper::getShopIblockId();
+    if(CModule::IncludeModule("iblock")) {
+        $elements = CIBlockElement::GetList (
+            Array("ID" => "ASC"),
+            Array("IBLOCK_ID" => $CATALOG_IBLOCK),
+            false,
+            false,
+            Array('ID')
+        );
+        while($element= $elements->GetNext()) {
+            $el = new CIBlockElement;
+            $el->Update($element['ID'], array("ACTIVE"=>"Y"));
+        }
+    }
+    return "updateAllItems();";
+}
+
 function updateAmountInfo() {
     $CATALOG_IBLOCK = APLS_CatalogHelper::getShopIblockId();
     $FOR_SALE_PROPERTY_CODE = "SKRYVATNULEVOYOSTATOK";
