@@ -46,8 +46,8 @@ class APLS_ActivateUpdater
         self::$aktivnost_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::AKTIVNOST_XML_ID);
         self::$aktivnost_code = APLS_CatalogProperties::convertPropertyXMLIDtoCODE(self::AKTIVNOST_XML_ID);
         self::$checkedProduct_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::CHECKEDPRODUCT_XML_ID);
-        self::$amountStatus_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::AMOUNT_STATUS_XML_ID);
         self::$checkedProduct_code = APLS_CatalogProperties::convertPropertyXMLIDtoCODE(self::CHECKEDPRODUCT_XML_ID);
+        self::$amountStatus_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::AMOUNT_STATUS_XML_ID);
         self::$amountStatus_code = APLS_CatalogProperties::convertPropertyXMLIDtoCODE(self::AMOUNT_STATUS_XML_ID);
         self::$dimensions_koeff_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::KOEFF_XML_ID);
         foreach (self::XML_ARRAY as $key => $code) {
@@ -82,73 +82,101 @@ class APLS_ActivateUpdater
 
     public static function init(&$arFields)
     {
+        // поулчаем код инфоблока
         if($arFields["IBLOCK_ID"] != APLS_CatalogHelper::getShopIblockId()) {
             return;
         }
+        // создаем объект
         self::getInstance();
-        $rs = CIBlockElement::GetList(array(), array("ID" => $arFields["ID"]), false, array("nTopCount" => 1));
-        $res_arr = $rs->Fetch();
-        $activeValue = isset($arFields["ACTIVE"]) ? $arFields["ACTIVE"] : $res_arr["ACTIVE"];
-        if ($res_arr['IBLOCK_SECTION_ID'] === self::$siteDelSectionId && $res_arr["ACTIVE"] === "Y") {
-            // если товар в разделе на удаление и активен, то мы его деактивируем
-            $arFields["ACTIVE"] = "N";
-        } else {
-            // если товар в обычном разделе
-            if (self::$options[self::getArrayPropertyValue($arFields, self::$checkedProduct_id)] == "true" && self::$options[self::getArrayPropertyValue($arFields, self::$amountStatus_id)] != "NOT_FOR_SALE") {
-                // если твоар заполнен
-                $arr_akt = CIBlockElement::GetProperty($arFields["IBLOCK_ID"], $arFields["ID"], array(), array("CODE" => self::$aktivnost_code));
-                if ($prop_akt = $arr_akt->Fetch()) {
-                    if (
-                        self::getArrayPropertyValue($arFields, self::$aktivnost_id) !== $prop_akt["VALUE"] &&
-                        self::getArrayPropertyValue($arFields, self::$aktivnost_id) !== NULL
-                    ) {
-                        $yes = "false";
-                        $no = "true";
-                    } else {
-                        $yes = "true";
-                        $no = "false";
+
+        if(isset($arFields["PROPERTY_VALUES"])) {
+            $rs = CIBlockElement::GetList(array(), array("ID" => $arFields["ID"]), false, array("nTopCount" => 1));
+            $res_arr = $rs->Fetch();
+            $activeValue = isset($arFields["ACTIVE"]) ? $arFields["ACTIVE"] : $res_arr["ACTIVE"];
+            if ($res_arr['IBLOCK_SECTION_ID'] === self::$siteDelSectionId && $res_arr["ACTIVE"] === "Y") {
+                // если товар в разделе на удаление и активен, то мы его деактивируем
+                $arFields["ACTIVE"] = "N";
+            } else {
+                // если товар в обычном разделе
+                if (self::$options[self::getArrayPropertyValue($arFields, self::$checkedProduct_id)] == "true" && self::$options[self::getArrayPropertyValue($arFields, self::$amountStatus_id)] != "NOT_FOR_SALE") {
+                    // если твоар заполнен
+                    $arr_akt = CIBlockElement::GetProperty($arFields["IBLOCK_ID"], $arFields["ID"], array(), array("CODE" => self::$aktivnost_code));
+                    if ($prop_akt = $arr_akt->Fetch()) {
+                        if (
+                            self::getArrayPropertyValue($arFields, self::$aktivnost_id) !== $prop_akt["VALUE"] &&
+                            self::getArrayPropertyValue($arFields, self::$aktivnost_id) !== NULL
+                        ) {
+                            $yes = "false";
+                            $no = "true";
+                        } else {
+                            $yes = "true";
+                            $no = "false";
+                        }
+                        if ($activeValue === "N" && $prop_akt["VALUE_XML_ID"] === $yes) {
+                            $arFields["ACTIVE"] = "Y";
+                        } elseif ($activeValue === "Y" && $prop_akt["VALUE_XML_ID"] === $no) {
+                            $arFields["ACTIVE"] = "N";
+                        }
                     }
-                    if ($activeValue === "N" && $prop_akt["VALUE_XML_ID"] === $yes) {
-                        $arFields["ACTIVE"] = "Y";
-                    } elseif ($activeValue === "Y" && $prop_akt["VALUE_XML_ID"] === $no) {
-                        $arFields["ACTIVE"] = "N";
+                } else {
+                    // если твоар не заполнен
+                    $arFields["ACTIVE"] = "N";
+                }
+            }
+
+            $updateArray = array();
+            //Получение значений размеров из торгового каталога товара
+            $dimensionsCatalogValues = self::getCatalogValue($arFields["ID"]);
+            $dimensionsCatalogValues["KOEFF"] = self::getCoefficientValue($arFields["IBLOCK_ID"], $arFields["ID"]);
+            $dimensionsHighloadValue = self::getHLbValue($arFields["XML_ID"]);
+            //Проверка необходимости обновления размеров и коэффициэнта
+            foreach (self::XML_ARRAY as $key => $value) {
+                $ufkey = "UF_" . $key;
+                $dimensionsEditValue = self::getArrayPropertyValue($arFields, self::$dimensions_id[$key]);
+                if (self::checkEmptyValue($dimensionsEditValue)) {
+                    if (
+                        (!self::checkEmptyValue($dimensionsHighloadValue[$ufkey]) && !self::checkEmptyValue($dimensionsCatalogValues[$key])) ||
+                        (!self::checkEmptyValue($dimensionsHighloadValue[$ufkey]) && $dimensionsCatalogValues[$key] !== $dimensionsEditValue) ||
+                        (!self::checkEmptyValue($dimensionsCatalogValues[$key]) && $dimensionsHighloadValue[$ufkey] !== $dimensionsEditValue) ||
+                        ($dimensionsCatalogValues[$key] !== $dimensionsEditValue && $dimensionsHighloadValue[$ufkey] !== $dimensionsEditValue)
+                    ) {
+//                    var_dump($dimensionsEditValue);
+                        $updateArray["UF_XMLID"] = $arFields["XML_ID"];
+                        $updateArray[$ufkey] = $dimensionsEditValue;
+                    } elseif (
+                        ($dimensionsCatalogValues[$key] === $dimensionsEditValue && $dimensionsHighloadValue[$ufkey] === $dimensionsEditValue) ||
+                        ($dimensionsCatalogValues[$key] === $dimensionsEditValue && $dimensionsHighloadValue[$ufkey] !== $dimensionsEditValue)
+                    ) {
+                        $updateArray["UF_XMLID"] = $arFields["XML_ID"];
+                        $updateArray[$ufkey] = null;
                     }
                 }
-            } else {
-                // если твоар не заполнен
+            }
+            self::setHLbValue($updateArray, $arFields["XML_ID"]);
+        } else {
+            $rs = CIBlockElement::GetList(
+                array(),
+                array("ID" => $arFields["ID"]),
+                false,
+                array("nTopCount" => 1),
+                array(
+                    'ACTIVE',
+                    'PROPERTY_'.self::$aktivnost_code,
+                    'PROPERTY_'.self::$checkedProduct_code,
+                    'PROPERTY_'.self::$amountStatus_code
+                )
+            );
+            $res_arr = $rs->Fetch();
+            if($res_arr["PROPERTY_".self::$aktivnost_code."_VALUE"] != "Да") {
+                $arFields["ACTIVE"] = "N";
+            }
+            if($res_arr["PROPERTY_".self::$checkedProduct_code."_VALUE"] != "Да") {
+                $arFields["ACTIVE"] = "N";
+            }
+            if($res_arr["PROPERTY_".self::$aktivnost_code."_VALUE"] == "Ожидает поставки") {
                 $arFields["ACTIVE"] = "N";
             }
         }
-
-        $updateArray = array();
-        //Получение значений размеров из торгового каталога товара
-        $dimensionsCatalogValues = self::getCatalogValue($arFields["ID"]);
-        $dimensionsCatalogValues["KOEFF"] = self::getCoefficientValue($arFields["IBLOCK_ID"], $arFields["ID"]);
-        $dimensionsHighloadValue = self::getHLbValue($arFields["XML_ID"]);
-        //Проверка необходимости обновления размеров и коэффициэнта
-        foreach (self::XML_ARRAY as $key => $value) {
-            $ufkey = "UF_" . $key;
-            $dimensionsEditValue = self::getArrayPropertyValue($arFields, self::$dimensions_id[$key]);
-            if (self::checkEmptyValue($dimensionsEditValue)) {
-                if (
-                    (!self::checkEmptyValue($dimensionsHighloadValue[$ufkey]) && !self::checkEmptyValue($dimensionsCatalogValues[$key])) ||
-                    (!self::checkEmptyValue($dimensionsHighloadValue[$ufkey]) && $dimensionsCatalogValues[$key] !== $dimensionsEditValue) ||
-                    (!self::checkEmptyValue($dimensionsCatalogValues[$key]) && $dimensionsHighloadValue[$ufkey] !== $dimensionsEditValue) ||
-                    ($dimensionsCatalogValues[$key] !== $dimensionsEditValue && $dimensionsHighloadValue[$ufkey] !== $dimensionsEditValue)
-                ) {
-//                    var_dump($dimensionsEditValue);
-                    $updateArray["UF_XMLID"] = $arFields["XML_ID"];
-                    $updateArray[$ufkey] = $dimensionsEditValue;
-                } elseif (
-                    ($dimensionsCatalogValues[$key] === $dimensionsEditValue && $dimensionsHighloadValue[$ufkey] === $dimensionsEditValue) ||
-                    ($dimensionsCatalogValues[$key] === $dimensionsEditValue && $dimensionsHighloadValue[$ufkey] !== $dimensionsEditValue)
-                ) {
-                    $updateArray["UF_XMLID"] = $arFields["XML_ID"];
-                    $updateArray[$ufkey] = null;
-                }
-            }
-        }
-        self::setHLbValue($updateArray, $arFields["XML_ID"]);
     }
 
     private static function checkEmptyValue($val)
