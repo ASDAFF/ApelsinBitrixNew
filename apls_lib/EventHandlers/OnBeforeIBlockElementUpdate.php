@@ -173,7 +173,7 @@ class APLS_ActivateUpdater
             if($res_arr["PROPERTY_".self::$checkedProduct_code."_VALUE"] != "Да") {
                 $arFields["ACTIVE"] = "N";
             }
-            if($res_arr["PROPERTY_".self::$aktivnost_code."_VALUE"] == "Ожидает поставки") {
+            if($res_arr["PROPERTY_".self::$amountStatus_code."_VALUE"] == "Ожидает поставки") {
                 $arFields["ACTIVE"] = "N";
             }
         }

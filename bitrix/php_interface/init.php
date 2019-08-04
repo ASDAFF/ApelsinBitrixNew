@@ -11,39 +11,20 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/models/CatalogElemen
 require __DIR__ . "/functions.php";
 
 function updateAllItems() {
-
-    $el = new CIBlockElement;
-    $el->Update('133585', array("ACTIVE"=>"Y"));
-    $el->Update('133586', array("ACTIVE"=>"Y"));
-    $el->Update('133587', array("ACTIVE"=>"Y"));
-    $el->Update('133588', array("ACTIVE"=>"Y"));
-
-
-    // должны быть деактивированы
-    $el->Update('121704', array("ACTIVE"=>"Y"));
-    $el->Update('133624', array("ACTIVE"=>"Y"));
-    // должны быть деактивированы
-    $el->Update('102005', array("ACTIVE"=>"Y"));
-    $el->Update('102004', array("ACTIVE"=>"Y"));
-    // должны быть деактивированы
-    $el->Update('167566', array("ACTIVE"=>"Y"));
-
-
-
-//    $CATALOG_IBLOCK = APLS_CatalogHelper::getShopIblockId();
-//    if(CModule::IncludeModule("iblock")) {
-//        $elements = CIBlockElement::GetList (
-//            Array("ID" => "ASC"),
-//            Array("IBLOCK_ID" => $CATALOG_IBLOCK,),
-//            false,
-//            false,
-//            Array('ID')
-//        );
-//        while($element= $elements->GetNext()) {
-//            $el = new CIBlockElement;
-//            $el->Update($element['ID'], array("ACTIVE"=>"Y"));
-//        }
-//    }
+    $CATALOG_IBLOCK = APLS_CatalogHelper::getShopIblockId();
+    if(CModule::IncludeModule("iblock")) {
+        $elements = CIBlockElement::GetList (
+            Array("ID" => "ASC"),
+            Array("IBLOCK_ID" => $CATALOG_IBLOCK,),
+            false,
+            false,
+            Array('ID')
+        );
+        while($element= $elements->GetNext()) {
+            $el = new CIBlockElement;
+            $el->Update($element['ID'], array("ACTIVE"=>"Y"));
+        }
+    }
     return "updateAllItems();";
 }
 
@@ -105,6 +86,8 @@ function updateAmountInfo() {
             }
             if($AMOUNT_STATUS[$key]["VALUE"] != $element['PROPERTY_'.$AMOUNT_PROPERTY_CODE.'_VALUE']) {
                 CIBlockElement::SetPropertyValues($element['ID'], $CATALOG_IBLOCK, $AMOUNT_STATUS[$key]["ID"], $AMOUNT_PROPERTY_CODE);
+                $el = new CIBlockElement;
+                $el->Update($element['ID'], array("ACTIVE"=>"Y"));
             }
         }
     }
