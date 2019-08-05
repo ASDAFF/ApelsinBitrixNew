@@ -3,10 +3,10 @@
 class UpdateUserController
 {
     const SMALL_WHOLESALE_GROUP = "9";      // мелкий опт
-    const AVERAGE_WHOLESALE_GROUP = "10";    // средний опт
+    const AVERAGE_WHOLESALE_GROUP = "10";   // средний опт
     const WHOLESALE_GROUP = "11";           // опт
     const BIG_WHOLESALE_GROUP = "12";       // крупный опт
-    const DEFAULT_USER_GROUP_FOR_REGISTR_USER = self::SMALL_WHOLESALE_GROUP;    // мелкий опт (id группы в Bitrix)
+    const DEFAULT_USER_GROUP_FOR_REGISTR_USER = "6";
 
     private $APLS_USER;
     private $userID;
@@ -15,10 +15,10 @@ class UpdateUserController
     private $userUpdateData = array();
     private $groupUpdateData = array();
     private $arTypePrice = [
-        UpdatedUserModel::DEFAULT_PRICE_TYPE_FOR_REGISTR_USER => self::SMALL_WHOLESALE_GROUP,
-        "feff0693-99ab-11db-937f-000e0c431b59" => self::AVERAGE_WHOLESALE_GROUP,
-        "feff0694-99ab-11db-937f-000e0c431b59" => self::WHOLESALE_GROUP,
-        "feff0695-99ab-11db-937f-000e0c431b59" => self::BIG_WHOLESALE_GROUP
+        "86157e22-e56b-11dc-8b6b-000e0c431b58" => self::SMALL_WHOLESALE_GROUP,      // мелкий опт
+        "feff0693-99ab-11db-937f-000e0c431b59" => self::AVERAGE_WHOLESALE_GROUP,    // средний опт
+        "feff0694-99ab-11db-937f-000e0c431b59" => self::WHOLESALE_GROUP,            // опт
+        "feff0695-99ab-11db-937f-000e0c431b59" => self::BIG_WHOLESALE_GROUP         // крупный опт
     ];
     private $arTypePriceGroups = [
         self::SMALL_WHOLESALE_GROUP,
