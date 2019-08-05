@@ -5,7 +5,7 @@ use Bitrix\Highloadblock as HL;
 class UpdatedUserModel
 {
     const HLBL_ID = "2"; // ID Highload-блока "Kontragenty"
-    const DEFAULT_PRICE_TYPE_FOR_REGISTR_USER = "80997247-3bef-11e9-8105-00155d862e1e"; // ИМ (1с тип цен)
+    const DEFAULT_PRICE_TYPE_FOR_REGISTR_USER = "749c408f-3a8f-11e9-8105-00155d862e1e"; // ИМ (1с тип цен)
 
     private $userData = array();
     private $counterpartiesData = array();
