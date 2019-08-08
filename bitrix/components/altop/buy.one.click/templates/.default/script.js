@@ -30,7 +30,7 @@ if(!window.BX.BocFormSubmit) {
 			url: form.getAttribute("action"),
 			data: data,
 			method: "POST",
-			dataType: "json",		
+			dataType: "json",
 			onsuccess: function(data) {
 				console.log(data);
 				if(!!data.success) {

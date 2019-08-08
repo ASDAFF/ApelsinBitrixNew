@@ -221,7 +221,6 @@ function getPropertyByCode($propertyCollection, $code) {
 }
 
 $propertyCollection = $order->getPropertyCollection();
-
 $fioProperty = getPropertyByCode($propertyCollection, "FIO");
 if(!empty($fioProperty))
 	$fioProperty->setValue($name);
@@ -250,6 +249,7 @@ if($orderId > 0) {
 		"success" => array(
 			"text" => $test.Loc::getMessage("ORDER_CREATE_SUCCESS"),
             "orderId" => $orderId,
+            "fioProperty" => $phone,
 		)
 	);
 } else {
