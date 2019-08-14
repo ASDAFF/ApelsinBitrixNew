@@ -36,6 +36,7 @@ $whereObj->addElement($whereDETAILPICTURE);
 $orderByObj = new MySQLOrderByString();
 $orderByObj->add('IBLOCK_SECTION_ID',MySQLOrderByString::ASC);
 $items = CatalogElementModel::getElementList($whereObj,500,null,$orderByObj);
+$count = CatalogElementModel::getElementList($whereObj,'',null,$orderByObj);
 $sortListElements = new APLS_SortListElements();
 foreach ($items as $item) {
     if($item instanceof CatalogElementModel) {
@@ -61,9 +62,7 @@ foreach ($items as $item) {
 $sortListNotDone = new APLS_SortList($sortListElements);
 $sortListNotDone->setSortListElements($sortListElements);
 $arResult['sortListNotDone'] = $sortListNotDone;
-
-
-//var_dump(count($items));
+$arResult['count'] = count($count);
 
 
 $this->IncludeComponentTemplate();
