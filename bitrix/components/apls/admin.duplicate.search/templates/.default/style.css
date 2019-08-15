@@ -4,7 +4,7 @@
     color: #a1a4b3;
 }
 .duplicate_buttons {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 .duplicate_buttons_delete, .duplicate_buttons_refresh {
     display: inline-block;
@@ -13,6 +13,10 @@
     margin-right: .5em;
     border: 1px solid #dee0ee;
     cursor: pointer;
+}
+.duplicate_description {
+    padding-bottom: 1em;
+    font-size: 1.1em;
 }
 .duplicate_buttons_delete:hover, .duplicate_buttons_refresh:hover {
     box-shadow: 0 0 1px rgba(0,0,0,0.2);

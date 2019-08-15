@@ -15,6 +15,7 @@ $this->addExternalCss("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/fo
         <div class="duplicate_buttons_delete">Удалить выбранное</div>
         <div class="duplicate_buttons_refresh">Обновить выборку</div>
     </div>
+    <div class="duplicate_description">Всего <b><?=count($arResult)?></b> пар дубликатов товаров</div>
     <?foreach ($arResult as $key=>$code):?>
         <div class="duplicate_element" id="<?=$key?>" code="<?=$code?>">
             <div class="duplicate_element_title" >
