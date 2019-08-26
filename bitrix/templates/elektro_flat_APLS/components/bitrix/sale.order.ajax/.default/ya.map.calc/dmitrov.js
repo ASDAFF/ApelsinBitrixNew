@@ -12,7 +12,7 @@ var ORDER_AJAX_DELIVERY_MAP = {
     OUTSIDE_CONDITIONS: [
         { KM_MIN: 1, KM_MAX: false, KM_PRICE: 40, FIX_PRICE: 500, FULL_PATH_CALC: true },
     ],
-    MAP_CENTER: [56.343942, 37.520348],
+    MAP_CENTER: [56.355300, 37.500127],
     MAP_ZOOM: 11,
     MAP_FROM: "г Дмитров",
     MAP_POLYGON: [

@@ -12,7 +12,7 @@ var ORDER_AJAX_DELIVERY_MAP = {
     OUTSIDE_CONDITIONS: [
         { KM_MIN: 1, KM_MAX: false, KM_PRICE: 40, FIX_PRICE: 500, FULL_PATH_CALC: false },
     ],
-    MAP_CENTER: [55.103152, 38.752917],
+    MAP_CENTER: [55.071721, 38.756825],
     MAP_ZOOM: 11,
     MAP_FROM: "г Коломна",
     MAP_POLYGON: [

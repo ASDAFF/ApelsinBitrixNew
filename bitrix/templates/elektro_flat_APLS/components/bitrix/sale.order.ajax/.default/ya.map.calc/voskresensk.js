@@ -12,7 +12,7 @@ var ORDER_AJAX_DELIVERY_MAP = {
     OUTSIDE_CONDITIONS: [
         { KM_MIN: 1, KM_MAX: false, KM_PRICE: 40, FIX_PRICE: 500, FULL_PATH_CALC: false },
     ],
-    MAP_CENTER: [55.322978, 38.673353],
+    MAP_CENTER: [55.312773, 38.629722],
     MAP_ZOOM: 11,
     MAP_FROM: "г Воскресенск",
     MAP_POLYGON: [

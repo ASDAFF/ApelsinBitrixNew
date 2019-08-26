@@ -12,7 +12,7 @@ var ORDER_AJAX_DELIVERY_MAP = {
     OUTSIDE_CONDITIONS: [
         { KM_MIN: 1, KM_MAX: false, KM_PRICE: 40, FIX_PRICE: 500, FULL_PATH_CALC: false },
     ],
-    MAP_CENTER: [54.965217, 39.025394],
+    MAP_CENTER: [54.957562, 39.019348],
     MAP_ZOOM: 11,
     MAP_FROM: "г Луховицы",
     MAP_POLYGON: [

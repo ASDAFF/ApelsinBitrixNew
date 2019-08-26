@@ -12,7 +12,7 @@ var ORDER_AJAX_DELIVERY_MAP = {
     OUTSIDE_CONDITIONS: [
         { KM_MIN: 1, KM_MAX: false, KM_PRICE: 40, FIX_PRICE: 500, FULL_PATH_CALC: false },
     ],
-    MAP_CENTER: [55.425471, 38.264108],
+    MAP_CENTER: [55.415773, 38.243599],
     MAP_ZOOM: 12,
     MAP_FROM: "г Бронницы",
     MAP_POLYGON: [
