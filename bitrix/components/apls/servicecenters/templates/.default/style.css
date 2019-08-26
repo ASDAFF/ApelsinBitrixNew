@@ -94,3 +94,35 @@
 	font-size: 20px;
 	color: #dee0ee;
 }
+.APLS_serviceCenter {
+	border: 1px solid #dee0ee;
+	margin-bottom: 10px;
+	padding: 15px;
+}
+.APLS_serviceCenter_left, .APLS_serviceCenter_right, .APLS_serviceCenter_center {
+	display: inline-block;
+}
+.APLS_serviceCenter_left {
+	width: 40%;
+	vertical-align: top;
+}
+.APLS_serviceCenter_center {
+	width: 35%;
+}
+.APLS_serviceCenter_center ul {
+	padding: 0!important;
+}
+.APLS_serviceCenter_right {
+	width: 20%;
+	vertical-align: top;
+}
+.APLS_serviceCenter_left_header {
+	font-size: 14px;
+	line-height: 16px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+.APLS_serviceCenter_left_address, .APLS_serviceCenter_left_phone, .APLS_serviceCenter_left_email {
+	font-size: 11px;
+	line-height: 14px;
+}

@@ -6,14 +6,12 @@ if (strlen($arResult["ERROR_MESSAGE"]) > 0)
     ShowError($arResult["ERROR_MESSAGE"]);
 
 if (count($arResult["STORES"]) > 0):?>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <? foreach ($arResult["STORES"] as $city => $storeges): ?>
     <div class="cityBlock">
         <div class="cityHeaderBlock">
             <div class="cityHeaderBlock_main">
                 <div class="cityHeaderBlock_text"><?= $city ?></div>
-                <div class="cityHeaderBlock_icon"><i class="fas fa-plus"></i></div>
+                <div class="cityHeaderBlock_icon"><i class="fa fa-plus"></i></div>
             </div>
             <div class="catalog-detail-store header">
                 <div class="title">Адрес магазина / телефон</div>
