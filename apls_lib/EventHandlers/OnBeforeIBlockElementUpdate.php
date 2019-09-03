@@ -10,6 +10,7 @@ class APLS_ActivateUpdater
 {
     const SITE_DEL_SECTION_XML_ID = "98557c36-f99a-11e6-80ec-00155dfef48a";
     const AKTIVNOST_XML_ID = "26e05687-c602-4c36-8b63-debb1b4e0250";
+    const HIDE_XML_ID = "60edb6d0-cd62-11e9-8107-00155d862e1f"; // скрывать товар
     const CHECKEDPRODUCT_XML_ID = "26e05687-c602-4c36-8b63-desc5g0XN322"; // ТоварЗаполнен
     const AMOUNT_STATUS_XML_ID = "AMOUNT_STATUS"; // Статус товара
     const KOEFF_XML_ID = "26e05687-c602-4c36-8b63-debb3g4eu248";
@@ -27,6 +28,8 @@ class APLS_ActivateUpdater
     private static $entity_data_class;
     private static $aktivnost_id;
     private static $aktivnost_code;
+    private static $hide_id;
+    private static $hide_code;
     private static $checkedProduct_code;
     private static $checkedProduct_id;
     private static $amountStatus_id;
@@ -45,6 +48,8 @@ class APLS_ActivateUpdater
         }
         self::$aktivnost_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::AKTIVNOST_XML_ID);
         self::$aktivnost_code = APLS_CatalogProperties::convertPropertyXMLIDtoCODE(self::AKTIVNOST_XML_ID);
+        self::$hide_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::HIDE_XML_ID);
+        self::$hide_code = APLS_CatalogProperties::convertPropertyXMLIDtoCODE(self::HIDE_XML_ID);
         self::$checkedProduct_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::CHECKEDPRODUCT_XML_ID);
         self::$checkedProduct_code = APLS_CatalogProperties::convertPropertyXMLIDtoCODE(self::CHECKEDPRODUCT_XML_ID);
         self::$amountStatus_id = APLS_CatalogProperties::convertPropertyXMLIDtoID(self::AMOUNT_STATUS_XML_ID);
@@ -97,8 +102,12 @@ class APLS_ActivateUpdater
                 // если товар в разделе на удаление и активен, то мы его деактивируем
                 $arFields["ACTIVE"] = "N";
             } else {
-                // если товар в обычном разделе
-                if (self::$options[self::getArrayPropertyValue($arFields, self::$checkedProduct_id)] == "true" && self::$options[self::getArrayPropertyValue($arFields, self::$amountStatus_id)] != "NOT_FOR_SALE") {
+                // если товар в обычном разделе и не скрыт
+                if (
+                    self::$options[self::getArrayPropertyValue($arFields, self::$checkedProduct_id)] == "true" &&
+                    self::$options[self::getArrayPropertyValue($arFields, self::$amountStatus_id)] != "NOT_FOR_SALE" &&
+                    self::$options[self::getArrayPropertyValue($arFields, self::$hide_id)] != "true"
+                ) {
                     // если твоар заполнен
                     $arr_akt = CIBlockElement::GetProperty($arFields["IBLOCK_ID"], $arFields["ID"], array(), array("CODE" => self::$aktivnost_code));
                     if ($prop_akt = $arr_akt->Fetch()) {
