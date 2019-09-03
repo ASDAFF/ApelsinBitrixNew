@@ -6,6 +6,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/apls_lib/catalog/APLS_CatalogHelper.p
 AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", ["APLS_ActivateUpdater", "init"]);
 AddEventHandler("iblock", "OnBeforeIBlockElementAdd", ["APLS_ActivateUpdater", "init"]);
 
+use Bitrix\Main\Diag\Debug;
+
 class APLS_ActivateUpdater
 {
     const SITE_DEL_SECTION_XML_ID = "98557c36-f99a-11e6-80ec-00155dfef48a";
@@ -59,9 +61,18 @@ class APLS_ActivateUpdater
             self::$dimensions_id[$key] = APLS_CatalogProperties::convertPropertyXMLIDtoID($code);
         }
         self::$siteDelSectionId = self::getNonActiveProducts();
+
         $property_enums = CIBlockPropertyEnum::GetList(
             Array("DEF"=>"DESC", "SORT"=>"ASC"),
             Array("IBLOCK_ID"=>APLS_CatalogHelper::getShopIblockId(), "CODE"=>self::$checkedProduct_code)
+        );
+        while($enum_fields = $property_enums->GetNext())
+        {
+            self::$options[$enum_fields["ID"]] = $enum_fields["XML_ID"];
+        }
+        $property_enums = CIBlockPropertyEnum::GetList(
+            Array("DEF"=>"DESC", "SORT"=>"ASC"),
+            Array("IBLOCK_ID"=>APLS_CatalogHelper::getShopIblockId(), "CODE"=>self::$hide_code)
         );
         while($enum_fields = $property_enums->GetNext())
         {
@@ -171,12 +182,16 @@ class APLS_ActivateUpdater
                 array(
                     'ACTIVE',
                     'PROPERTY_'.self::$aktivnost_code,
+                    'PROPERTY_'.self::$hide_code,
                     'PROPERTY_'.self::$checkedProduct_code,
                     'PROPERTY_'.self::$amountStatus_code
                 )
             );
             $res_arr = $rs->Fetch();
             if($res_arr["PROPERTY_".self::$aktivnost_code."_VALUE"] != "Да") {
+                $arFields["ACTIVE"] = "N";
+            }
+            if($res_arr["PROPERTY_".self::$hide_code."_VALUE"] == "Да") {
                 $arFields["ACTIVE"] = "N";
             }
             if($res_arr["PROPERTY_".self::$checkedProduct_code."_VALUE"] != "Да") {
