@@ -4,7 +4,7 @@ var ORDER_AJAX_DELIVERY_MAP = {
     CITY_PROMO_PRICE: 500,
     CITY_PROMO_LIMIT_ORDER_COST: 15000,
     CITY_FREE_DELIVERY_PRICE: 500,
-    CITY_FREE_DELIVERY_TEXT: 'Доставка в течении суток (при наличии товара в Рязани). Доставка ко времени +300 рублей',
+    CITY_FREE_DELIVERY_TEXT: 'Доставка в течении суток (при наличии товара в Рязани)',
     CITY_FREE_DELIVERY_LIMIT_ORDER_COST: 15000,
     CITY_CONDITIONS: [],
     OUTSIDE_MIN_PRICE: 1100, // минимальаня цена за городом
