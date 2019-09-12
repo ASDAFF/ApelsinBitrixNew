@@ -6,7 +6,11 @@ var ORDER_AJAX_DELIVERY_MAP = {
     CITY_FREE_DELIVERY_PRICE: 500,
     CITY_FREE_DELIVERY_TEXT: '',
     CITY_FREE_DELIVERY_LIMIT_ORDER_COST: 15000,
-    CITY_CONDITIONS: [],
+    CITY_CONDITIONS: [
+        { KM_MIN: 1, KM_MAX: 7, KM_PRICE: false, FIX_PRICE: 500, FULL_PATH_CALC: true },
+        { KM_MIN: 8, KM_MAX: 10, KM_PRICE: false, FIX_PRICE: 900, FULL_PATH_CALC: true },
+        { KM_MIN: 11, KM_MAX: false, KM_PRICE: false, FIX_PRICE: 1200, FULL_PATH_CALC: true },
+    ],
     OUTSIDE_MIN_PRICE: 500, // минимальаня цена за городом
     OUTSIDE_MAX_PRICE: false, // максимальаня цена за городом
     OUTSIDE_CONDITIONS: [
