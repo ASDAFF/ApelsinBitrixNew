@@ -13,6 +13,12 @@ CModule::IncludeModule('highloadblock');
 use Bitrix\Highloadblock as HL;
 use Bitrix\Main\Entity;
 
+
+$request = \Bitrix\Main\Application::getInstance()->getContext()->getRequest();
+
+global $USER;
+$debug = $USER->IsAdmin() && ($request->get('debug') == 'y');
+
 try {
     $entity_data_class = APLS_GetHighloadEntityDataClass::getByHLName("ServisnyeTSentryIM");
     $rsData = $entity_data_class::getList(array(
@@ -28,6 +34,11 @@ try {
         $Adress = str_replace("// ","<br />",$Adress);
         $arResult['SERVICE_CENTERS'][$arData['UF_RODITEL']][$arData['ID']]['UF_ADRES'] = nl2br($Adress);
         $arResult['SERVICE_CENTERS'][$arData['UF_RODITEL']][$arData['ID']]['UF_KOD'] = $arData['UF_KOD'];
+    }
+    if($debug) {
+        echo "<pre>";
+        print_r($arResult);
+        echo "</pre>";
     }
 } catch (Exception $e) {
     $html = 'Выброшено исключение: ' . $e->getMessage() . "<br>";
