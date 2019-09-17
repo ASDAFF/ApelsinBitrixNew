@@ -24,7 +24,7 @@ try {
     $rsData = $entity_data_class::getList(array(
         "select" => array('ID','UF_NAME','UF_ADRES','UF_KOD','UF_RODITEL'),
         "order" => array("UF_NAME" => "ASC"),
-        "filter" => array('UF_VYGRUZHATNASAYT'=>'да','UF_POMETKAUDALENIYA'=>'нет','!UF_RODITEL'=>$arResult['EXCEPTION_RODITEL'],'!UF_ADRES'=>"")
+        "filter" => array('UF_VYGRUZHATNASAYT'=>true,'UF_POMETKAUDALENIYA'=>false,'!UF_RODITEL'=>$arResult['EXCEPTION_RODITEL'],'!UF_ADRES'=>"")
     ));
     while($arData = $rsData->Fetch())
     {
