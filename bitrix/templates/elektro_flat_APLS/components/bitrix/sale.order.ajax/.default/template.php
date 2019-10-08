@@ -153,7 +153,7 @@ $this->addExternalJs($templateFolder.'/order_ajax.js');
 
 
 \Bitrix\Sale\PropertyValueCollection::initJs();
-$this->addExternalJs($scheme.'://api-maps.yandex.ru/2.1.34/?apikey=2c69c84d-a78d-45d6-a0f9-c33800397ead&load=package.full&lang='.$locale);
+$this->addExternalJs($scheme.'://api-maps.yandex.ru/2.1.34/?load=package.full&lang='.$locale);
 
 if(strlen($request->get('ORDER_ID')) > 0) {
 	include($server->getDocumentRoot().$templateFolder.'/confirm.php');
