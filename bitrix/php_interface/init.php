@@ -31,6 +31,7 @@ function updateAllItems() {
 function updateAmountInfo() {
     $CATALOG_IBLOCK = APLS_CatalogHelper::getShopIblockId();
     $FOR_SALE_PROPERTY_CODE = "SKRYVATNULEVOYOSTATOK";
+    $STATUS_PROPERTY_CODE = "OTOBRAZHENIE_TOVARA";
     $AMOUNT_PROPERTY_CODE = "AMOUNT_STATUS";
     $AMOUNT_STATUS = array(
         "IN_STOCK" => array("ID"=>"","VALUE"=>"В наличии"),
@@ -65,11 +66,13 @@ function updateAmountInfo() {
             Array("IBLOCK_ID" => $CATALOG_IBLOCK),
             false,
             false,
-            Array('ID','PROPERTY_'.$FOR_SALE_PROPERTY_CODE,'PROPERTY_'.$AMOUNT_PROPERTY_CODE)
+            Array('ID','PROPERTY_'.$FOR_SALE_PROPERTY_CODE,'PROPERTY_'.$AMOUNT_PROPERTY_CODE,'PROPERTY_'.$STATUS_PROPERTY_CODE)
         );
         while($element= $elements->GetNext())
         {
-            $FOR_SALE = $element['PROPERTY_'.$FOR_SALE_PROPERTY_CODE.'_VALUE'] == "Да";
+            $FOR_SALE =
+//                $element['PROPERTY_'.$FOR_SALE_PROPERTY_CODE.'_VALUE']  == "Да" ||
+                $element['PROPERTY_'.$STATUS_PROPERTY_CODE.'_VALUE']    == "Скрывать при нулевом остатке";
             $rsStore = CCatalogStoreProduct::GetList(array(), array('PRODUCT_ID' => $element['ID'], 'STORE_ID'=>$storesId), false, false, array('AMOUNT'));
             $sum = array();
             $amount = 0;
