@@ -86,6 +86,11 @@ $inPriceRatio = in_array("PRICE_RATIO", $arSetting["GENERAL_SETTINGS"]["VALUE"])
                             "BTN_BUY" => $arElement["STR_MAIN_ID"]."_btn_buy"
                         );
 
+                        /* Скрывать товары котоыре только для резерва */
+                        if($arElement["PROPERTIES"]["OTOBRAZHENIE_TOVARA"]["VALUE"] === "Только резерв") {
+                            $arElement["CAN_BUY"] = false;
+                        }
+
                         //CURRENCY_FORMAT//
                         $arCurFormat = $currency = false;
                         if(isset($arElement["OFFERS"]) && !empty($arElement["OFFERS"])) {

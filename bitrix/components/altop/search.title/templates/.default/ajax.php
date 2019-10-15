@@ -47,6 +47,11 @@ if(!empty($arResult["CATEGORIES"])) {?>
 					"PROPS_BTN" => $arElement["STR_MAIN_ID"]."_props_btn",
 					"BTN_BUY" => $arElement["STR_MAIN_ID"]."_btn_buy"
 				);
+
+                /* Скрывать товары котоыре только для резерва */
+                if($arElement["PROPERTIES"]["OTOBRAZHENIE_TOVARA"]["VALUE"] === "Только резерв") {
+                    $arElement["CAN_BUY"] = false;
+                }
 				
 				//PRICES//
 				if($arParams["SHOW_PRICE"] == "Y") {

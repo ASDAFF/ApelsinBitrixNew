@@ -39,6 +39,14 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_T
 //JS//?>
 <script type="text/javascript">
 	BX.ready(function() {
+
+	    <?
+        /* Скрывать товары котоыре только для резерва */
+        if($arResult["PROPERTIES"]["OTOBRAZHENIE_TOVARA"]["VALUE"] === "Только резерв") {
+            $arResult["CAN_BUY"] = false;
+        }
+        ?>
+
 		//OFFERS_LIST_PROPS//
 		<?if(isset($arResult["OFFERS"]) && !empty($arResult["OFFERS"]) && $arSetting["OFFERS_VIEW"] == "LIST") {
 			foreach($arResult["OFFERS"] as $key_off => $arOffer) {?>

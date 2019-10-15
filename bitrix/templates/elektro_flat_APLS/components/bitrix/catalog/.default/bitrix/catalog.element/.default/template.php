@@ -43,6 +43,12 @@ $templateData = array(
 	"JS_OBJ" => $strObName
 );
 
+/* Скрывать товары котоыре только для резерва */
+if($arResult["PROPERTIES"]["OTOBRAZHENIE_TOVARA"]["VALUE"] === "Только резерв") {
+    $arResult["CAN_BUY"] = false;
+}
+
+
 //JS//?>
 <script type="text/javascript">
 	BX.ready(function() {
@@ -982,7 +988,7 @@ $strTitle = (isset($arResult["IPROPERTY_VALUES"]["ELEMENT_DETAIL_PICTURE_FILE_TI
 							<?}?>
 						</div>
 						<?//DETAIL_SUBSCRIBE//?>
-						<div id="<?=$arItemIDs['SUBSCRIBE']?>"></div>
+<!--						<div id="--><?//=$arItemIDs['SUBSCRIBE']?><!--"></div>-->
 						<?//COMPARE_DELAY//?>
 						<div class="compare_delay">
 							<?//DETAIL_COMPARE//

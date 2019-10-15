@@ -61,6 +61,11 @@ if (APLS_CatalogSections::getAllChildrenListForSection($arResult["XML_ID"]) == N
 				"PRICE_MATRIX_BTN" => $arElement["STR_MAIN_ID"]."_price_ranges_btn"
 			);
 
+            /* Скрывать товары котоыре только для резерва */
+            if($arElement["PROPERTIES"]["OTOBRAZHENIE_TOVARA"]["VALUE"] === "Только резерв") {
+                $arElement["CAN_BUY"] = false;
+            }
+
 			//CURRENCY_FORMAT//
 			$arCurFormat = $currency = false;
 			if(isset($arElement["OFFERS"]) && !empty($arElement["OFFERS"])) {
