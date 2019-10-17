@@ -12,6 +12,22 @@ Loc::loadMessages(__FILE__);?>
     <script src="//api-maps.yandex.ru/2.1/?lang=ru-RU&apikey=2c69c84d-a78d-45d6-a0f9-c33800397ead" type="text/javascript"></script>
 	<?Asset::getInstance()->addString("<meta name='viewport' content='width=device-width, initial-scale=1.0' />");?>
 	<title><?$APPLICATION->ShowTitle()?></title>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(51503324, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true,
+            ecommerce:"dataLayer"
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/51503324" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3KRF2S"
                       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
