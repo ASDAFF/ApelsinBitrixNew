@@ -32,6 +32,14 @@ $arUrlRewrite=array (
     'PATH' => '/promotions/index.php',
     'SORT' => 100,
   ),
+  8 => 
+  array (
+    'CONDITION' => '#^/vendors/([^/\\.]+).*#',
+    'RULE' => 'p1=$1',
+    'ID' => 'apls:brands',
+    'PATH' => '/vendors/index.php',
+    'SORT' => 100,
+  ),
   4 => 
   array (
     'CONDITION' => '#^/online/(/?)([^/]*)#',
@@ -48,6 +56,14 @@ $arUrlRewrite=array (
     'PATH' => '/bitrix/services/stssync/calendar/index.php',
     'SORT' => 100,
   ),
+  11 => 
+  array (
+    'CONDITION' => '#^/op/([^/\\.]+).*#',
+    'RULE' => 'ORDER_ID=$1',
+    'ID' => '',
+    'PATH' => '/personal/order/non_autorization/index.php',
+    'SORT' => 100,
+  ),
   6 => 
   array (
     'CONDITION' => '#^/personal/#',
@@ -62,14 +78,6 @@ $arUrlRewrite=array (
     'RULE' => '',
     'ID' => 'bitrix:news',
     'PATH' => '/reviews/index.php',
-    'SORT' => 100,
-  ),
-  8 => 
-  array (
-    'CONDITION' => '#^/vendors/#',
-    'RULE' => '',
-    'ID' => 'bitrix:news',
-    'PATH' => '/vendors/index.php',
     'SORT' => 100,
   ),
   9 => 
