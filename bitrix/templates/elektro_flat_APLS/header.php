@@ -530,14 +530,15 @@ Loc::loadMessages(__FILE__);?>
 <!--											</div>-->
 <!--										</div>-->
 									</div>
+                                    <div class="weFindRent">
+                                        <div class="weFindRent_header">
+                                            <div class="weFindRent_headerText"><h2>Ищем помещение</h2></div>
+                                        </div>
+                                        <div class="weFindRent_text">Компания "Апельсин" рассмотрит предложения по аренде помещения S <span class="orange">3 000 - 15 000 м²</span> для торговли строительно-отделочными материалами в Центральном Федеральном Округе, <a href="/information/to_rent/">подробнее...</a></div>
+                                    </div>
 								<?endif;
 							endif;?>
-    <div class="weFindRent">
-        <div class="weFindRent_header">
-            <div class="weFindRent_headerText"><h2>Ищем помещение</h2></div>
-        </div>
-        <div class="weFindRent_text">Компания "Апельсин" рассмотрит предложения по аренде помещения S <span class="orange">3 000 - 15 000 м²</span> для торговли строительно-отделочными материалами в Центральном Федеральном Округе, <a href="/information/to_rent/">подробнее...</a></div>
-    </div>
+
 							<div class="body_text" style="<?=($APPLICATION->GetCurPage(true) == SITE_DIR.'index.php') ? 'padding:0px 15px;' : 'padding:0px;';?>">
 								<?if($APPLICATION->GetCurPage(true)!= SITE_DIR."index.php"):?>
 									<div class="breadcrumb-share">
