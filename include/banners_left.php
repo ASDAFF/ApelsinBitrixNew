@@ -46,23 +46,26 @@
 //	),
 //	false
 //);?>
-<div class="banners_left">
+<!--<div class="banners_left">-->
+
 <!--    <a class="banners_left_toRent" href="/information/to_rent/">-->
 <!--        <div class="banners_left_text">-->
 <!--            <div class="banners_left_text_1">Ищем помещение</div>-->
 <!--            <div class="banners_left_text_2">8(920)970-07-01</div>-->
 <!--        </div>-->
 <!--    </a>-->
-    <a class="banners_left_ustanovka" href="/promotions/id/CCAKBMIOABEG7-B8IZB2F4D1DNX-FUJBJJG9A/">
-        <div class="banners_left_text">
-            <div class="banners_left_text_1">Установка металлической двери</div>
-            <div class="banners_left_text_2">в <span class="up">подарок</span></div>
-        </div>
-    </a>
-    <a class="banners_left_consult" href="/information/consultation/">
-        <div class="banners_left_text">
-            <div class="banners_left_text_1">Квалифицированная</div>
-            <div class="banners_left_text_2"><span class="up">Консультация</span> и <span class="up">расчет</span></div>
-        </div>
-    </a>
-</div>
+
+
+<!--    <a class="banners_left_ustanovka" href="/promotions/id/CCAKBMIOABEG7-B8IZB2F4D1DNX-FUJBJJG9A/">-->
+<!--        <div class="banners_left_text">-->
+<!--            <div class="banners_left_text_1">Установка металлической двери</div>-->
+<!--            <div class="banners_left_text_2">в <span class="up">подарок</span></div>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--    <a class="banners_left_consult" href="/information/consultation/">-->
+<!--        <div class="banners_left_text">-->
+<!--            <div class="banners_left_text_1">Квалифицированная</div>-->
+<!--            <div class="banners_left_text_2"><span class="up">Консультация</span> и <span class="up">расчет</span></div>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--</div>-->

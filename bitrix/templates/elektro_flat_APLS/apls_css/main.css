@@ -741,6 +741,9 @@ ul.left-menu > li > a {
 }
 
 /* телефоны в шапке */
+.header_3 .schedule {
+    margin-bottom: -30px;
+}
 .header_3 .schedule .main_phone {
     margin-bottom: 2px;
     padding-bottom: 2px;
