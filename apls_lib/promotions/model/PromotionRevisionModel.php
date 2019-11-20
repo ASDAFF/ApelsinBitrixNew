@@ -373,12 +373,13 @@ class PromotionRevisionModel extends PromotionModelAbstract
     }
 
     public function verificationOfEditingRights() {
-        $rsUser = CUser::GetByID(CUser::GetID());
-        $arUser = $rsUser->Fetch();
-        if ($this->originalData['created_user'] == $arUser['LOGIN']) {
-            return true;
-        }
-        return false;
+//        $rsUser = CUser::GetByID(CUser::GetID());
+//        $arUser = $rsUser->Fetch();
+//        if ($this->originalData['created_user'] == $arUser['LOGIN']) {
+//            return true;
+//        }
+//        return false;
+        return true;
     }
 
     public function hasProblemsWithRegions() {
