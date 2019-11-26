@@ -1,6 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Оплата");
+$APPLICATION->SetPageProperty("description",  "Условия оплаты в интернет-магазине Апельсин. Все для строительства, ремонта и обустройства, сантехника и инструмент.");
+$APPLICATION->SetTitle("Оплата в интернет-магазине Апельсин");
 ?>    <h2>СПОСОБЫ ОПЛАТЫ</h2>
     <div class="payments_list">
         <div class="payment_logo"><img src="icons/oplata_nal.svg"></div>

@@ -12,6 +12,7 @@ Loc::loadMessages(__FILE__);?>
     <script src="//api-maps.yandex.ru/2.1/?lang=ru-RU&apikey=2c69c84d-a78d-45d6-a0f9-c33800397ead" type="text/javascript"></script>
 	<?Asset::getInstance()->addString("<meta name='viewport' content='width=device-width, initial-scale=1.0' />");?>
 	<title><?$APPLICATION->ShowTitle()?></title>
+    <?$APPLICATION->ShowMeta("description")?>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -87,6 +88,7 @@ Loc::loadMessages(__FILE__);?>
             }
         </style>
     <?endif;?>
+    <?$APPLICATION->SetPageProperty("description",  "Товары для строительства и ремонта с доставкой по Рязани и области оптом и в розницу. 12 складов в Рязани для самовывоза. Разгрузка строительных материалов и подъем на этаж. Купите строительные и отделочные материалы, инструменты и сантехнику по низким ценам в интернет-магазине Апельсин в Рязани.");?>
 </head>
 <body>
 	<?global $arSetting;?>

@@ -1,5 +1,5 @@
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Интернет-магазин ");
+$APPLICATION->SetTitle("Строительные материалы в Апельсине — товары для строительства и ремонта в интернет-магазине Апельсин с доставкой по Рязани");
 global $arSetting;
 if (in_array("CONTENT", $arSetting["HOME_PAGE"]["VALUE"])):?>
 <!--    <h1 id="pagetitle">О МАГАЗИНЕ</h1>-->
