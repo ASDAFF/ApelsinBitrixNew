@@ -19,6 +19,9 @@ while ($arUser = $result->fetch()) {
             $data = array_pop($list);
             if(isset($data['VALUES_ORIG']['3'])) {
                 $arUser['PERSONAL_PHONE'] = preg_replace('/[^0-9]/', '', $data['VALUES_ORIG']['3']);
+                if(strlen($arUser['PERSONAL_PHONE']) > 0) {
+                    $arUser['PERSONAL_PHONE'] = "8".substr($arUser['PERSONAL_PHONE'], 1);
+                }
             }
         }
     }
