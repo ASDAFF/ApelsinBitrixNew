@@ -20,7 +20,12 @@ while ($arUser = $result->fetch()) {
             if(isset($data['VALUES_ORIG']['3'])) {
                 $arUser['PERSONAL_PHONE'] = preg_replace('/[^0-9]/', '', $data['VALUES_ORIG']['3']);
                 if(strlen($arUser['PERSONAL_PHONE']) > 0) {
-                    $arUser['PERSONAL_PHONE'] = "8".substr($arUser['PERSONAL_PHONE'], 1);
+                    $arUser['PERSONAL_PHONE'] = "+7".substr($arUser['PERSONAL_PHONE'], 1);
+                    $arUser['PERSONAL_PHONE_text'] =
+                        "+7 (".substr($arUser['PERSONAL_PHONE'], 1,3).")-".
+                        substr($arUser['PERSONAL_PHONE'], 4,3)."-".
+                        substr($arUser['PERSONAL_PHONE'], 7,2)."-".
+                        substr($arUser['PERSONAL_PHONE'], 9,2)."-";
                 }
             }
         }
