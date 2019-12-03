@@ -22,10 +22,10 @@ while ($arUser = $result->fetch()) {
                 if(strlen($arUser['PERSONAL_PHONE']) > 0) {
                     $arUser['PERSONAL_PHONE'] = "+7".substr($arUser['PERSONAL_PHONE'], 1);
                     $arUser['PERSONAL_PHONE_text'] =
-                        "+7 (".substr($arUser['PERSONAL_PHONE'], 1,3).")-".
-                        substr($arUser['PERSONAL_PHONE'], 4,3)."-".
-                        substr($arUser['PERSONAL_PHONE'], 7,2)."-".
-                        substr($arUser['PERSONAL_PHONE'], 9,2)."-";
+                        "+7 (".substr($arUser['PERSONAL_PHONE'], 2,3).")-".
+                        substr($arUser['PERSONAL_PHONE'], 5,3)."-".
+                        substr($arUser['PERSONAL_PHONE'], 8,2)."-".
+                        substr($arUser['PERSONAL_PHONE'], 10,2);
                 }
             }
         }
