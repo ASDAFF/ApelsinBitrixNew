@@ -5,7 +5,7 @@ CModule::IncludeModule("sale");
 $result = \Bitrix\Main\UserTable::getList(array(
     'select' => array("ID","XML_ID","ACTIVE","LOGIN","PASSWORD","NAME","SECOND_NAME","LAST_NAME","EMAIL","PERSONAL_PHONE"),
     'order' => array('ID'=>'ASC'),
-    'limit' => 10
+//    'limit' => 10
 ));
 $allUserData = array();
 while ($arUser = $result->fetch()) {
