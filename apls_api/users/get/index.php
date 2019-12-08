@@ -32,7 +32,7 @@ while ($arUser = $result->fetch()) {
     }
     $allUserData[] = $arUser;
 }
-if($_GET["debug"]=="Y") {
+if(strtolower($_GET["debug"])=="y" || strtolower($_GET["DEBUG"])=="y") {
     echo "<pre>";
     print_r($allUserData);
     echo "</pre>";
