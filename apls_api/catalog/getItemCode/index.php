@@ -5,7 +5,7 @@ if(isset($_GET["XML_ID"])) {
     global $DB;
     CModule::IncludeModule("sale");
     $dbItems = \Bitrix\Iblock\ElementTable::getList(array(
-        'select' => array('CODE',"PREVIEW_TEXT","PREVIEW_TEXT_TYPE","DETAIL_TEXT","DETAIL_TEXT_TYPE"),
+        'select' => array('CODE'),
         'filter' => array('IBLOCK_ID' => 16, 'XML_ID' => $_GET["XML_ID"]),
         'limit' => 1,
         'cache' => array(
